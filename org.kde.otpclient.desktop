@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OTP client
+Comment=My first Plasma Mobile App
+Version=1.0
+Exec=org.kde.otpclient
+Icon=applications-development
+Type=Application
+Terminal=false
+Categories=Qt;KDE;
