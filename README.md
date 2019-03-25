@@ -7,7 +7,6 @@ It uses the [oath-toolkit](https://www.nongnu.org/oath-toolkit/) provided librar
 Some todo items include,
 
  - Verify the generated oath code is correct
- - Make refreshing token work
  - QR code scanning
  - Backup and Restore of accounts
  - Clipboard support to automatically copy code.
