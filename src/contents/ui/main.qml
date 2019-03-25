@@ -77,13 +77,50 @@ Kirigami.ApplicationWindow {
                                 Kirigami.Heading {
                                     level: 2
                                     text: model.otp
+                                    onTextChanged: {
+                                        if(model.type === Account.TypeTOTP) {
+                                            timeoutTimer.restart();
+                                        }
+                                    }
                                 }
                             }
                             Controls.Button {
                                 Layout.alignment: Qt.AlignRight|Qt.AlignVCenter
                                 Layout.columnSpan: 2
-                                text: "Refresh"
-                                visible: model.type == Account.TypeHOTP
+                                text: "Refresh (" + model.counter + ")"
+                                visible: model.type === Account.TypeHOTP
+                                onClicked: {
+                                    accounts.generateNext(index);
+                                }
+                            }
+                            Timer {
+                                id: timeoutTimer
+                                repeat: true
+                                interval: model.timeStep * 1000
+                                running: model.type === Account.TypeTOTP
+                            }
+                            Rectangle {
+                                id: timeoutIndicatorRect
+                                Layout.fillHeight: true
+                                width: 5
+                                radius: width
+                                color: "green"
+                                visible: timeoutTimer.running && units.longDuration > 1
+                                opacity: timeoutIndicatorAnimation.running ? 0.6 : 0
+                                Behavior on opacity {
+                                    NumberAnimation {
+                                        duration: units.longDuration
+                                    }
+                                }
+                            }
+                            NumberAnimation {
+                                id: timeoutIndicatorAnimation
+                                target: timeoutIndicatorRect
+                                property: "height"
+                                from: delegateLayout.height
+                                to: 0
+                                duration: timeoutTimer.interval
+                                running: model.type === Account.TypeTOTP && units.longDuration > 1
                             }
                         }
                     }
