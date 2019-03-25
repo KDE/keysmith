@@ -33,11 +33,6 @@ AccountModel::AccountModel(QObject *parent) :
 //        qDebug() << "found group" << group << QUuid(group).toString();
 
         QUuid id = QUuid(group);
-        bool migrateAccount = false;
-        if (id.isNull()) {
-            migrateAccount = true;
-            id = QUuid::createUuid();
-        }
 
         settings.beginGroup(group);
         Account *account = new Account(id, this);
@@ -57,11 +52,6 @@ AccountModel::AccountModel(QObject *parent) :
         connect(account, SIGNAL(otpChanged()), SLOT(accountChanged()));
 
         m_accounts.append(account);
-
-        if (migrateAccount) {
-            settings.remove("");
-            storeAccount(account);
-        }
         settings.endGroup();
     }
 }
