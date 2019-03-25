@@ -83,6 +83,7 @@ Kirigami.ApplicationWindow {
                                 Layout.alignment: Qt.AlignRight|Qt.AlignVCenter
                                 Layout.columnSpan: 2
                                 text: "Refresh"
+                                visible: model.type == Account.TypeHOTP
                             }
                         }
                     }
