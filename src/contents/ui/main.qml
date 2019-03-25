@@ -72,11 +72,11 @@ Kirigami.ApplicationWindow {
                             ColumnLayout {
                                 Controls.Label {
                                     Layout.fillWidth: true
-                                    text: name
+                                    text: model.name
                                 }
                                 Kirigami.Heading {
                                     level: 2
-                                    text: otp
+                                    text: model.otp
                                 }
                             }
                             Controls.Button {
