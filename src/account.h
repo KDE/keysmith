@@ -23,6 +23,8 @@
 #include <QUuid>
 #include <QTimer>
 
+#include <functional>
+
 class Account : public QObject
 {
     Q_OBJECT
@@ -42,6 +44,7 @@ public:
     };
 
     explicit Account(const QUuid &id, QObject *parent = 0);
+    explicit Account(const QUuid &id, const std::function<qint64(void)>& clock, QObject *parent = 0);
 
     QUuid id() const;
 
@@ -90,6 +93,7 @@ private:
     int m_pinLength;
     QString m_otp;
     QTimer m_totpTimer;
+    const std::function<qint64(void)> m_clock;
 };
 
 #endif // ACCOUNT_H

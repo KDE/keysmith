@@ -24,8 +24,9 @@
 #include <QDateTime>
 #include <QtDebug>
 
+Account::Account(const QUuid &id, QObject *parent) : Account(id, &QDateTime::currentMSecsSinceEpoch, parent) {}
 
-Account::Account(const QUuid &id, QObject *parent) :
+Account::Account(const QUuid &id, const std::function<qint64(void)>& clock, QObject *parent) :
     QObject(parent),
     m_id(id),
     /*
@@ -37,7 +38,8 @@ Account::Account(const QUuid &id, QObject *parent) :
     m_type(Account::TypeTOTP),
     m_counter(0),
     m_timeStep(30),
-    m_pinLength(6)
+    m_pinLength(6),
+    m_clock(clock)
 {
     m_totpTimer.setSingleShot(true);
     connect(&m_totpTimer, SIGNAL(timeout()), SLOT(generate()));
@@ -142,7 +144,7 @@ qint64 Account::msecsToNext() const
     if (m_timeStep <= 0) {
         return 0;
     }
-    qint64 now = QDateTime::currentMSecsSinceEpoch();
+    qint64 now = m_clock();
     qint64 msecsSinceLast = now % (m_timeStep * 1000);
     qint64 msecsToNext = (m_timeStep * 1000) - msecsSinceLast;
     return msecsToNext;
@@ -185,7 +187,8 @@ void Account::generate()
     if (m_type == TypeHOTP) {
         oath_hotp_generate(secret->data(), secret->length(), m_counter, m_pinLength, false, OATH_HOTP_DYNAMIC_TRUNCATION, code);
     } else {
-        oath_totp_generate(secret->data(), secret->length(), QDateTime::currentDateTime().toTime_t(), m_timeStep, 0, m_pinLength, code);
+        QDateTime now = QDateTime::fromMSecsSinceEpoch(m_clock());
+        oath_totp_generate(secret->data(), secret->length(), now.toTime_t(), m_timeStep, 0, m_pinLength, code);
     }
 
     m_otp = QLatin1String(code);
