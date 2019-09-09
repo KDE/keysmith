@@ -28,6 +28,13 @@
 Account::Account(const QUuid &id, QObject *parent) :
     QObject(parent),
     m_id(id),
+    /*
+     * Make sure to initialise each member beforehand to some default
+     * This is needed because the setters for various properties trigger a re-computation of the OTP token,
+     * and that computation depends itself on the values of these fields.
+     * I.e. without this the code would branch on uninitialised memory.
+     */
+    m_type(Account::TypeTOTP),
     m_counter(0),
     m_timeStep(30),
     m_pinLength(6)
