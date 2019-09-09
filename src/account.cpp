@@ -17,10 +17,12 @@
  ****************************************************************************/
 
 #include "account.h"
+
+#include "base32.h"
 #include "oath_p.h"
 
-#include <QDebug>
 #include <QDateTime>
+#include <QtDebug>
 
 
 Account::Account(const QUuid &id, QObject *parent) :
@@ -165,13 +167,18 @@ void Account::generate()
     }
 
 //    qDebug() << "generating for account" << m_name;
-    QByteArray hexSecret = fromBase32(m_secret.toLatin1());
+    std::optional<QByteArray> secret = base32::decode(m_secret);
+
+    if(!secret.has_value()) {
+        return;
+    }
+
 //    qDebug() << "hexSecret" << hexSecret;
     char code[m_pinLength];
     if (m_type == TypeHOTP) {
-        oath_hotp_generate(hexSecret.data(), hexSecret.length(), m_counter, m_pinLength, false, OATH_HOTP_DYNAMIC_TRUNCATION, code);
+        oath_hotp_generate(secret->data(), secret->length(), m_counter, m_pinLength, false, OATH_HOTP_DYNAMIC_TRUNCATION, code);
     } else {
-        oath_totp_generate(hexSecret.data(), hexSecret.length(), QDateTime::currentDateTime().toTime_t(), m_timeStep, 0, m_pinLength, code);
+        oath_totp_generate(secret->data(), secret->length(), QDateTime::currentDateTime().toTime_t(), m_timeStep, 0, m_pinLength, code);
     }
 
     m_otp = QLatin1String(code);
@@ -190,48 +197,3 @@ void Account::generate()
 
 }
 
-QByteArray Account::fromBase32(const QByteArray &input)
-{
-    int buffer = 0;
-    int bitsLeft = 0;
-    int count = 0;
-
-    QByteArray result;
-
-    for (int i = 0; i < input.length(); ++i) {
-
-        char ch = input.at(i);
-
-        if (ch == ' ' || ch == '\t' || ch == '\r' || ch == '\n' || ch == '-') {
-            continue;
-        }
-        buffer <<= 5;
-
-        if (ch == '0') {
-            ch = 'O';
-        } else if (ch == '1') {
-            ch = 'L';
-        } else if (ch == '8') {
-            ch = 'B';
-        }
-
-        if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
-            ch = (ch & 0x1F) - 1;
-        } else if (ch >= '2' && ch <= '7') {
-            ch -= '2' - 26;
-        } else {
-            return QByteArray();
-        }
-
-        buffer |= ch;
-        bitsLeft += 5;
-        if (bitsLeft >= 8) {
-            result[count++] = buffer >> (bitsLeft - 8);
-            bitsLeft -= 8;
-        }
-
-    }
-
-    return result;
-
-}

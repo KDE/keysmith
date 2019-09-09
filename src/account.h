@@ -81,10 +81,6 @@ public slots:
     void next();
 
 private:
-
-    static QByteArray fromBase32(const QByteArray &input);
-
-private:
     QUuid m_id;
     QString m_name;
     Type m_type;
