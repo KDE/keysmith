@@ -2,6 +2,7 @@ set(otpclient_SRCS
     main.cpp
     accountmodel.cpp
     account.cpp
+    base32.cpp
     )
 
 qt5_add_resources(RESOURCES resources.qrc)
