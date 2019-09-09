@@ -1,6 +1,10 @@
 project(otpclient)
 
-cmake_minimum_required(VERSION 2.8.12)
+
+#
+# Need 3.10.3 for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
+#
+cmake_minimum_required(VERSION 3.10.3)
 set(KF5_MIN_VERSION "5.18.0")
 set(QT_MIN_VERSION "5.5.0")
 
@@ -26,17 +30,14 @@ include(KDECMakeSettings)
 include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 ################# Find dependencies #################
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test Gui Svg QuickControls2)
 find_package(LibOath REQUIRED)
 find_package(KF5Kirigami2 ${KF5_MIN_VERSION})
-
-################# Enable C++11 features for clang and gcc #################
-
-if(UNIX)
-   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++0x")
-endif()
 
 ################# build and install #################
 add_subdirectory(src)
