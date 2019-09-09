@@ -25,6 +25,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMAddTests)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(ECMPoQmTools)
@@ -39,8 +40,13 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Test
 find_package(LibOath REQUIRED)
 find_package(KF5Kirigami2 ${KF5_MIN_VERSION})
 
+################ Find testing dependencies ##########
+
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
+
 ################# build and install #################
 add_subdirectory(src)
+add_subdirectory(autotests)
 
 install(PROGRAMS org.kde.otpclient.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.otpclient.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
