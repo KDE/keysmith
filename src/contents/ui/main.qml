@@ -30,7 +30,7 @@ Kirigami.ApplicationWindow {
 
     title: "OTP Client"
 
-    pageStack.initialPage: mainPageComponent
+    pageStack.initialPage: accounts.rowCount() > 0 ? mainPageComponent : addPageComponent
 
     AccountModel {
         id: accounts
@@ -143,11 +143,26 @@ Kirigami.ApplicationWindow {
                     newAccount.counter = parseInt(counterField.text)
                     newAccount.timeStep = parseInt(timerField.text)
                     newAccount.pinLength = parseInt(pinLengthField.text)
+
                     pageStack.pop();
+                    /*
+                     * Check if the pageStack is now 'empty', which will be the case if
+                     * the starting page was this addPageComponent.
+                     *
+                     * According to Qt docs the StackView 'empty' property is supposed to exist
+                     * and be a bool but in practice it does not appear to work (it is undefined).
+                     * Therefore check the StackView.depth instead.
+                     */
+                    if (pageStack.depth < 1) {
+                        pageStack.push(mainPageComponent);
+                    }
                 }
             }
             Kirigami.FormLayout {
                 id: layout
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
                 Controls.TextField {
                     id: accountName
                     Kirigami.FormData.label: "Account Name:"
