@@ -28,11 +28,12 @@ AccountModel::AccountModel(QObject *parent) :
     QAbstractListModel(parent)
 {
     QSettings settings("org.kde.otpclient", "otpclient");
+    const QStringList entries = settings.childGroups();
 //    qDebug() << "loading settings file:" << settings.fileName();
-    foreach(const QString & group, settings.childGroups()) {
+    for(const QString &group : entries) {
 //        qDebug() << "found group" << group << QUuid(group).toString();
 
-        QUuid id = QUuid(group);
+        QUuid id(group);
 
         settings.beginGroup(group);
         Account *account = new Account(id, this);
@@ -43,15 +44,8 @@ AccountModel::AccountModel(QObject *parent) :
         account->setTimeStep(settings.value("timeStep").toInt());
         account->setPinLength(settings.value("pinLength").toInt());
 
-        connect(account, SIGNAL(nameChanged()), SLOT(accountChanged()));
-        connect(account, SIGNAL(typeChanged()), SLOT(accountChanged()));
-        connect(account, SIGNAL(secretChanged()), SLOT(accountChanged()));
-        connect(account, SIGNAL(counterChanged()), SLOT(accountChanged()));
-        connect(account, SIGNAL(timeStepChanged()), SLOT(accountChanged()));
-        connect(account, SIGNAL(pinLengthChanged()), SLOT(accountChanged()));
-        connect(account, SIGNAL(otpChanged()), SLOT(accountChanged()));
-
         m_accounts.append(account);
+        wireAccount(account);
         settings.endGroup();
     }
 }
@@ -60,6 +54,17 @@ int AccountModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return m_accounts.count();
+}
+
+void AccountModel::wireAccount(const Account *account)
+{
+    const auto h = &AccountModel::accountChanged;
+    QObject::connect(account, &Account::nameChanged, this, h);
+    QObject::connect(account, &Account::typeChanged, this, h);
+    QObject::connect(account, &Account::secretChanged, this, h);
+    QObject::connect(account, &Account::counterChanged, this, h);
+    QObject::connect(account, &Account::pinLengthChanged, this, h);
+    QObject::connect(account, &Account::otpChanged, this, h);
 }
 
 QVariant AccountModel::data(const QModelIndex &index, int role) const
@@ -89,7 +94,7 @@ Account *AccountModel::get(int index) const
     if (index > -1 && m_accounts.count() > index) {
         return m_accounts.at(index);
     }
-    return 0;
+    return nullptr;
 }
 
 Account *AccountModel::createAccount()
@@ -97,13 +102,8 @@ Account *AccountModel::createAccount()
     Account *account = new Account(QUuid::createUuid(), this);
     beginInsertRows(QModelIndex(), m_accounts.count(), m_accounts.count());
     m_accounts.append(account);
-    connect(account, SIGNAL(nameChanged()), SLOT(accountChanged()));
-    connect(account, SIGNAL(typeChanged()), SLOT(accountChanged()));
-    connect(account, SIGNAL(secretChanged()), SLOT(accountChanged()));
-    connect(account, SIGNAL(counterChanged()), SLOT(accountChanged()));
-    connect(account, SIGNAL(pinLengthChanged()), SLOT(accountChanged()));
-    connect(account, SIGNAL(otpChanged()), SLOT(accountChanged()));
 
+    wireAccount(account);
     storeAccount(account);
 
     endInsertRows();
@@ -151,13 +151,13 @@ QHash<int, QByteArray> AccountModel::roleNames() const
 void AccountModel::generateNext(int account)
 {
     m_accounts.at(account)->next();
-    emit dataChanged(index(account), index(account), QVector<int>() << RoleCounter << RoleOtp);
+    Q_EMIT dataChanged(index(account), index(account), QVector<int>() << RoleCounter << RoleOtp);
 }
 
 void AccountModel::refresh()
 {
-    emit beginResetModel();
-    emit endResetModel();
+    Q_EMIT beginResetModel();
+    Q_EMIT endResetModel();
 }
 
 void AccountModel::accountChanged()
@@ -167,10 +167,10 @@ void AccountModel::accountChanged()
 
 //    qDebug() << "account changed";
     int accountIndex = m_accounts.indexOf(account);
-    emit dataChanged(index(accountIndex), index(accountIndex));
+    Q_EMIT dataChanged(index(accountIndex), index(accountIndex));
 }
 
-void AccountModel::storeAccount(Account *account)
+void AccountModel::storeAccount(const Account *account)
 {
     QSettings settings("org.kde.otpclient", "otpclient");
     settings.beginGroup(account->id().toString());

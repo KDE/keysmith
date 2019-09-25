@@ -37,7 +37,7 @@ public:
         RoleOtp
     };
 
-    explicit AccountModel(QObject *parent = 0);
+    explicit AccountModel(QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -48,14 +48,16 @@ public:
     Q_INVOKABLE void deleteAccount(int index);
     Q_INVOKABLE void deleteAccount(Account *account);
 
-
-public slots:
+public Q_SLOTS:
     void generateNext(int account);
     void refresh();
 
-private slots:
+private Q_SLOTS:
     void accountChanged();
-    void storeAccount(Account *account);
+    void storeAccount(const Account *account);
+
+private:
+    void wireAccount(const Account *account);
 
 private:
     QList<Account*> m_accounts;
