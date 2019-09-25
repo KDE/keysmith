@@ -42,7 +42,7 @@ Account::Account(const QUuid &id, const std::function<qint64(void)>& clock, QObj
     m_clock(clock)
 {
     m_totpTimer.setSingleShot(true);
-    connect(&m_totpTimer, SIGNAL(timeout()), SLOT(generate()));
+    connect(&m_totpTimer, &QTimer::timeout, this, &Account::generate);
 }
 
 QUuid Account::id() const
@@ -59,7 +59,7 @@ void Account::setName(const QString &name)
 {
     if (m_name != name) {
         m_name = name;
-        emit nameChanged();
+        Q_EMIT nameChanged();
     }
 }
 
@@ -73,7 +73,7 @@ void Account::setType(Account::Type type)
     if (m_type != type) {
         m_type = type;
 //        qDebug() << "setting type" << type;
-        emit typeChanged();
+        Q_EMIT typeChanged();
         generate();
     }
 }
@@ -87,7 +87,7 @@ void Account::setSecret(const QString &secret)
 {
     if (m_secret != secret) {
         m_secret = secret;
-        emit secretChanged();
+        Q_EMIT secretChanged();
         generate();
     }
 }
@@ -101,7 +101,7 @@ void Account::setCounter(quint64 counter)
 {
     if (m_counter != counter) {
         m_counter = counter;
-        emit counterChanged();
+        Q_EMIT counterChanged();
         generate();
     }
 }
@@ -115,7 +115,7 @@ void Account::setTimeStep(int timeStep)
 {
     if (m_timeStep != timeStep) {
         m_timeStep = timeStep;
-        emit timeStepChanged();
+        Q_EMIT timeStepChanged();
         generate();
     }
 }
@@ -129,7 +129,7 @@ void Account::setPinLength(int pinLength)
 {
     if (m_pinLength != pinLength) {
         m_pinLength = pinLength;
-        emit pinLengthChanged();
+        Q_EMIT pinLengthChanged();
         generate();
     }
 }
@@ -154,7 +154,7 @@ void Account::next()
 {
     m_counter++;
 //    qDebug() << "emitting changed";
-    emit counterChanged();
+    Q_EMIT counterChanged();
     generate();
 }
 
@@ -193,7 +193,7 @@ void Account::generate()
 
     m_otp = QLatin1String(code);
 //    qDebug() << "Generating secret" << m_name << m_secret << m_counter << m_pinLength << m_otp << m_timeStep;
-    emit otpChanged();
+    Q_EMIT otpChanged();
 
     if (m_type == TypeTOTP) {
 

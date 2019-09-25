@@ -70,7 +70,7 @@ public:
 
     Q_INVOKABLE qint64 msecsToNext() const;
 
-signals:
+Q_SIGNALS:
     void nameChanged();
     void typeChanged();
     void secretChanged();
@@ -79,7 +79,7 @@ signals:
     void pinLengthChanged();
     void otpChanged();
 
-public slots:
+public Q_SLOTS:
     void generate();
     void next();
 
