@@ -201,12 +201,18 @@ Kirigami.ApplicationWindow {
                     inputMask: "0009"
                     inputMethodHints: Qt.ImhDigitsOnly
                 }
-                Controls.TextField {
+                /*
+                 * The liboath API is documented to support tokens which are
+                 * 6, 7 or 8 characters long only.
+                 *
+                 * Make a virtue of it by offering a spinner for better UX
+                 */
+                Controls.SpinBox {
                     id: pinLengthField
-                    Kirigami.FormData.label: "Pin length:"
-                    text: "6"
-                    inputMask: "0D"
-                    inputMethodHints: Qt.ImhDigitsOnly
+                    Kirigami.FormData.label: "Token length:"
+                    from: 6
+                    to: 8
+                    value: 6
                 }
             }
         }
