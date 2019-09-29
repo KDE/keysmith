@@ -16,18 +16,24 @@
  *                                                                           *
  ****************************************************************************/
 
-#include "qmlsupport.h"
+#ifndef NAME_VALIDATOR_H
+#define NAME_VALIDATOR_H
 
-#include "namevalidator.h"
-#include "secretvalidator.h"
-
-#include <QtQml>
+#include <QRegularExpressionValidator>
+#include <QValidator>
 
 namespace validators
 {
-    void registerValidatorTypes(void)
+    class NameValidator: public QValidator
     {
-        qmlRegisterType<validators::NameValidator>("Oath.Validators", 1, 0, "AccountNameValidator");
-        qmlRegisterType<validators::Base32Validator>("Oath.Validators", 1, 0, "Base32SecretValidator");
-    }
+        Q_OBJECT
+    public:
+        explicit NameValidator(QObject *parent = nullptr);
+        QValidator::State validate(QString &input, int &pos) const override;
+        void fixup(QString &input) const override;
+    private:
+        const QRegularExpressionValidator m_pattern;
+    };
 }
+
+#endif

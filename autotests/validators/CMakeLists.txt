@@ -1,6 +1,7 @@
 
 set(validator_lib_test_SRCS
     base32-validator.cpp
+    name-validator.cpp
 )
 
 #

@@ -16,18 +16,48 @@
  *                                                                           *
  ****************************************************************************/
 
-#include "qmlsupport.h"
-
 #include "namevalidator.h"
-#include "secretvalidator.h"
 
-#include <QtQml>
+#include <QRegularExpression>
+#include <QString>
+
+static const QRegularExpression& match_pattern(void)
+{
+    static const QRegularExpression re(QLatin1String("^\\S+( \\S+)*$"));
+    re.optimize();
+    return re;
+}
 
 namespace validators
 {
-    void registerValidatorTypes(void)
+    NameValidator::NameValidator(QObject *parent):
+        QValidator(parent),
+        m_pattern(match_pattern())
     {
-        qmlRegisterType<validators::NameValidator>("Oath.Validators", 1, 0, "AccountNameValidator");
-        qmlRegisterType<validators::Base32Validator>("Oath.Validators", 1, 0, "Base32SecretValidator");
+    }
+
+    void NameValidator::fixup(QString &input) const
+    {
+        QString fixed = input.simplified();
+
+        // make sure the user can type in at least one space
+        if (input.endsWith(QLatin1Char(' ')) && fixed.size() > 0) {
+            fixed += QLatin1Char(' ');
+        }
+
+        input = fixed;
+    }
+
+    QValidator::State NameValidator::validate(QString &input, int &cursor) const
+    {
+        fixup(input);
+
+        // spaces may have been removed, adjust cursor
+        int size = input.size();
+        if (cursor > size) {
+            cursor = size;
+        }
+
+        return m_pattern.validate(input, cursor);
     }
 }

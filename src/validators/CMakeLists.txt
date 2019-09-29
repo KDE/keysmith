@@ -3,7 +3,11 @@
 # For the QML bindings see: qmlsupport.cpp
 #
 
-set(validator_SRCS qmlsupport.cpp secretvalidator.cpp)
+set(validator_SRCS
+    qmlsupport.cpp
+    namevalidator.cpp
+    secretvalidator.cpp
+)
 
 add_library(validator_lib STATIC ${validator_SRCS})
 target_link_libraries(validator_lib Qt5::Core Qt5::Qml Qt5::Gui)
