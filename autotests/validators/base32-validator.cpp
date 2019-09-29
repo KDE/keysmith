@@ -16,36 +16,11 @@
  *                                                                           *
  ****************************************************************************/
 
+#include "test-util.h"
+
 #include "validators/secretvalidator.h"
 
-#include <QTest>
-#include <QValidator>
-#include <QtDebug>
-
-Q_DECLARE_METATYPE(QValidator::State);
-
-class Base32ValidatorTest: public QObject
-{
-    Q_OBJECT
-private Q_SLOTS:
-    void testFixup(void);
-    void testFixup_data(void);
-    void testValidate(void);
-    void testValidate_data(void);
-};
-
-static void define_test_data_columns(void)
-{
-    QTest::addColumn<QString>("input");
-    QTest::addColumn<QString>("fixed");
-    QTest::addColumn<int>("cursor");
-    QTest::addColumn<QValidator::State>("result");
-}
-
-static void define_test_case(const QString &input, const QString &fixed, int cursor=0, QValidator::State result=QValidator::Intermediate)
-{
-    QTest::newRow(qPrintable(input)) << input << fixed << cursor << result;
-}
+using namespace validators::test;
 
 static void define_padding_test_cases(const QString &prefix, const QString &fixed, QValidator::State result)
 {
@@ -118,36 +93,7 @@ static void define_empty_table()
     define_test_case(QLatin1String("\r\n"), QLatin1String(""), 0, QValidator::Intermediate);
 }
 
-void Base32ValidatorTest::testFixup(void)
-{
-    const validators::Base32Validator uut;
-    QFETCH(QString, input);
-
-    uut.fixup(input);
-    QTEST(input, "fixed");
-
-    // test if output is stable
-    // ie.: fixup(fixup()) == fixup()
-    uut.fixup(input);
-    QTEST(input, "fixed");
-}
-
-void Base32ValidatorTest::testValidate(void)
-{
-    const validators::Base32Validator uut;
-
-    QFETCH(QString, input);
-    QFETCH(QString, fixed);
-    QFETCH(int, cursor);
-
-    int position = input.size();
-
-    QTEST(uut.validate(input, position), "result");
-    QCOMPARE(input, fixed);
-    QCOMPARE(position, cursor);
-}
-
-void Base32ValidatorTest::testValidate_data(void)
+static void define_validate_data(void)
 {
     define_test_data_columns();
     define_empty_table();
@@ -169,7 +115,7 @@ void Base32ValidatorTest::testValidate_data(void)
     define_test_case(QLatin1String("WILLNOTFIXTHIS1"), QLatin1String("WILLNOTFIXTHIS1"), 15, QValidator::Invalid);
 }
 
-void Base32ValidatorTest::testFixup_data(void)
+static void define_fixup_data(void)
 {
     define_test_data_columns();
     define_empty_table();
@@ -189,7 +135,8 @@ void Base32ValidatorTest::testFixup_data(void)
     define_test_case(QLatin1String("========="), QLatin1String(""));
 }
 
+DEFINE_VALIDATOR_TEST(Base32ValidatorTest, validators::Base32Validator, define_fixup_data, define_validate_data);
+
 QTEST_APPLESS_MAIN(Base32ValidatorTest)
 
 #include "base32-validator.moc"
-
