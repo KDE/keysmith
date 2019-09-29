@@ -1,3 +1,5 @@
+add_subdirectory(validators)
+
 set(otpclient_SRCS
     main.cpp
     accountmodel.cpp

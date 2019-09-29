@@ -2,6 +2,8 @@
 enable_testing()
 include_directories(BEFORE ../src)
 
+add_subdirectory(validators)
+
 set(Base32_UUT_SRCS ../src/base32.cpp)
 set(Account_UUT_SRCS ../src/account.cpp ${Base32_UUT_SRCS})
 set(Test_DEP_LIBS Qt5::Core Qt5::Test)
