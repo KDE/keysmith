@@ -20,6 +20,7 @@
  */
 
 import Oath 1.0
+import Oath.Validators 1.0 as Validators
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
@@ -184,6 +185,9 @@ Kirigami.ApplicationWindow {
                 Controls.TextField {
                     id: accountSecret
                     Kirigami.FormData.label: "Secret key:"
+                    validator: Validators.Base32SecretValidator {
+                        id: secretValidator
+                    }
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
                 }
                 Controls.TextField {
