@@ -26,6 +26,7 @@
 
 #include "accountmodel.h"
 #include "account.h"
+#include "validators/qmlsupport.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -39,6 +40,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     qmlRegisterType<AccountModel>("Oath", 1, 0, "AccountModel");
     qmlRegisterUncreatableType<Account>("Oath", 1, 0, "Account", "Use AccountModel::createAccount() to create a new account");
+    validators::registerValidatorTypes();
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 
     if (engine.rootObjects().isEmpty()) {
