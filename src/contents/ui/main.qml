@@ -19,7 +19,7 @@
  * 
  */
 
-import OAth 1.0
+import Oath 1.0
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls

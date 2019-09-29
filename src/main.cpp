@@ -37,8 +37,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    qmlRegisterType<AccountModel>("OAth", 1, 0, "AccountModel");
-    qmlRegisterUncreatableType<Account>("OAth", 1, 0, "Account", "Use AccountModel::createAccount() to create a new account");
+    qmlRegisterType<AccountModel>("Oath", 1, 0, "AccountModel");
+    qmlRegisterUncreatableType<Account>("Oath", 1, 0, "Account", "Use AccountModel::createAccount() to create a new account");
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 
     if (engine.rootObjects().isEmpty()) {
