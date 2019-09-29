@@ -167,6 +167,9 @@ Kirigami.ApplicationWindow {
                 Controls.TextField {
                     id: accountName
                     Kirigami.FormData.label: "Account Name:"
+                    validator: Validators.AccountNameValidator {
+                        id: nameValidator
+                    }
                 }
                 ColumnLayout {
                     Layout.rowSpan: 2
