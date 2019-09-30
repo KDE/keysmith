@@ -5,6 +5,7 @@
 
 set(validator_SRCS
     qmlsupport.cpp
+    countervalidator.cpp
     namevalidator.cpp
     secretvalidator.cpp
     util.cpp

@@ -16,20 +16,27 @@
  *                                                                           *
  ****************************************************************************/
 
-#include "qmlsupport.h"
+#ifndef COUNTER_VALIDATOR_H
+#define COUNTER_VALIDATOR_H
 
-#include "countervalidator.h"
-#include "namevalidator.h"
-#include "secretvalidator.h"
+#include <QLocale>
+#include <QString>
+#include <QValidator>
 
-#include <QtQml>
+#include <optional>
 
 namespace validators
 {
-    void registerValidatorTypes(void)
+    std::optional<qulonglong> parse(const QString &input, const QLocale &locale = QLocale::system());
+
+    class UnsignedLongValidator: public QValidator
     {
-        qmlRegisterType<validators::NameValidator>("Oath.Validators", 1, 0, "AccountNameValidator");
-        qmlRegisterType<validators::UnsignedLongValidator>("Oath.Validators", 1, 0, "HOTPCounterValidator");
-        qmlRegisterType<validators::Base32Validator>("Oath.Validators", 1, 0, "Base32SecretValidator");
-    }
+        Q_OBJECT
+    public:
+        explicit UnsignedLongValidator(QObject *parent = nullptr);
+        QValidator::State validate(QString &input, int &pos) const override;
+        void fixup(QString &input) const override;
+    };
 }
+
+#endif
