@@ -205,7 +205,9 @@ Kirigami.ApplicationWindow {
                     id: counterField
                     Kirigami.FormData.label: "Counter:"
                     enabled: hotpRadio.checked
-                    inputMask: "0009"
+                    validator: Validators.HOTPCounterValidator {
+                        id: counterValidator
+                    }
                     inputMethodHints: Qt.ImhDigitsOnly
                 }
                 /*
