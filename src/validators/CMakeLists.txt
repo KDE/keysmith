@@ -7,6 +7,7 @@ set(validator_SRCS
     qmlsupport.cpp
     namevalidator.cpp
     secretvalidator.cpp
+    util.cpp
 )
 
 add_library(validator_lib STATIC ${validator_SRCS})

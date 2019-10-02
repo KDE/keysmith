@@ -18,6 +18,8 @@
 
 #include "secretvalidator.h"
 
+#include "util.h"
+
 #include <QRegularExpression>
 #include <QString>
 
@@ -38,13 +40,6 @@ static QValidator::State check_padding(int length)
     }
 }
 
-static QString strip_spaces(QString &input)
-{
-    static const QRegularExpression re("\\s*");
-    re.optimize();
-    return input.replace(re, QLatin1String(""));
-}
-
 static const QRegularExpression& match_pattern(void)
 {
     static const QRegularExpression re(QLatin1String("^[A-Za-z2-7]+=*$"));
@@ -62,7 +57,7 @@ namespace validators
 
     void Base32Validator::fixup(QString &input) const
     {
-        input = strip_spaces(input);
+        input = validators::strip_spaces(input);
         input = input.toUpper();
         m_pattern.fixup(input);
 
