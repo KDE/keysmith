@@ -19,12 +19,14 @@
 #ifndef VALIDATOR_TEST_UTIL_H
 #define VALIDATOR_TEST_UTIL_H
 
+#include <QLocale>
 #include <QObject>
 #include <QTest>
 #include <QValidator>
 #include <QtDebug>
 
 Q_DECLARE_METATYPE(QValidator::State);
+Q_DECLARE_METATYPE(QLocale);
 
 namespace validators
 {
@@ -35,12 +37,20 @@ namespace validators
             QTest::addColumn<QString>("input");
             QTest::addColumn<QString>("fixed");
             QTest::addColumn<int>("cursor");
+            QTest::addColumn<QLocale>("locale");
             QTest::addColumn<QValidator::State>("result");
+
         };
 
-        void define_test_case(const QString &input, const QString &fixed, int cursor=0, QValidator::State result=QValidator::Intermediate)
+        void define_test_case(
+            const QString &input,
+            const QString &fixed,
+            int cursor=0,
+            QValidator::State result=QValidator::Intermediate,
+            const QLocale &locale=QLocale::c())
         {
-            QTest::newRow(qPrintable(input)) << input << fixed << cursor << result;
+            QString name = QStringLiteral("locale=%1, input=%2").arg(locale.name()).arg(input);
+            QTest::newRow(qPrintable(name)) << input << fixed << cursor << locale << result;
         };
 
         template<class T, auto f_fixup_data, auto f_validate_data>
@@ -53,7 +63,9 @@ namespace validators
 
             void testValidate(void)
             {
-                const T uut;
+                T uut;
+                QFETCH(QLocale, locale);
+                uut.setLocale(locale);
 
                 QFETCH(QString, input);
                 QFETCH(QString, fixed);
@@ -68,7 +80,9 @@ namespace validators
 
             void testFixup(void)
             {
-                const T uut;
+                T uut;
+                QFETCH(QLocale, locale);
+                uut.setLocale(locale);
 
                 QFETCH(QString, input);
 
