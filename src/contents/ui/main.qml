@@ -33,21 +33,28 @@ Kirigami.ApplicationWindow {
 
     pageStack.initialPage: accounts.rowCount() > 0 ? mainPageComponent : addPageComponent
 
+    property bool addActionEnabled: true
+
     AccountModel {
         id: accounts
+    }
+
+    Kirigami.Action {
+        id: addAction
+        text: "Add"
+        iconName: "list-add"
+        visible: addActionEnabled
+        onTriggered: {
+            pageStack.push(addPageComponent);
+            addActionEnabled = false
+        }
     }
 
     Component {
         id: mainPageComponent
         Kirigami.ScrollablePage {
             title: "OTP"
-            actions.main: Kirigami.Action {
-                text: "Add"
-                iconName: "list-add"
-                onTriggered: {
-                    pageStack.push(addPageComponent);
-                }
-            }
+            actions.main: addAction
             Controls.Label {
                 text: "No account set up. Use the add button to add accounts."
                 visible: view.count == 0
@@ -146,6 +153,7 @@ Kirigami.ApplicationWindow {
                     newAccount.pinLength = parseInt(pinLengthField.text)
 
                     pageStack.pop();
+                    addActionEnabled = true;
                     /*
                      * Check if the pageStack is now 'empty', which will be the case if
                      * the starting page was this addPageComponent.
