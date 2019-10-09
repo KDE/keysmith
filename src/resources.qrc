@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
+        <file alias="TokenDetailsForm.qml">contents/ui/TokenDetailsForm.qml</file>
     </qresource>
 </RCC>

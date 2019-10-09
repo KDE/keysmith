@@ -146,11 +146,11 @@ Kirigami.ApplicationWindow {
                 onTriggered: {
                     var newAccount = accounts.createAccount();
                     newAccount.name = accountName.text;
-                    newAccount.type = totpRadio.checked ? Account.TypeTOTP : Account.TypeHOTP
-                    newAccount.secret = accountSecret.text
-                    newAccount.counter = parseInt(counterField.text)
-                    newAccount.timeStep = parseInt(timerField.text)
-                    newAccount.pinLength = parseInt(pinLengthField.text)
+                    newAccount.type = tokenDetails.type
+                    newAccount.secret = tokenDetails.secret
+                    newAccount.counter = parseInt(tokenDetails.counter)
+                    newAccount.timeStep = parseInt(tokenDetails.timeStep)
+                    newAccount.pinLength = parseInt(tokenDetails.tokenLength)
 
                     pageStack.pop();
                     addActionEnabled = true;
@@ -167,69 +167,25 @@ Kirigami.ApplicationWindow {
                     }
                 }
             }
-            Kirigami.FormLayout {
-                id: layout
+
+            ColumnLayout {
+                id: addFormLayout
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
-                Controls.TextField {
-                    id: accountName
-                    Kirigami.FormData.label: "Account Name:"
-                    validator: Validators.AccountNameValidator {
-                        id: nameValidator
+
+                Kirigami.FormLayout {
+
+                    Controls.TextField {
+                        id: accountName
+                        Kirigami.FormData.label: "Account Name:"
+                        validator: Validators.AccountNameValidator {
+                            id: nameValidator
+                        }
                     }
                 }
-                ColumnLayout {
-                    Layout.rowSpan: 2
-                    Kirigami.FormData.label: "Account Type:"
-                    Kirigami.FormData.buddyFor: totpRadio
-                    Controls.RadioButton {
-                        id: totpRadio
-                        checked: true
-                        text: "Time-based OTP"
-                    }
-                    Controls.RadioButton {
-                        id: hotpRadio
-                        text: "Hash-based OTP"
-                    }
-                }
-                Controls.TextField {
-                    id: accountSecret
-                    Kirigami.FormData.label: "Secret key:"
-                    validator: Validators.Base32SecretValidator {
-                        id: secretValidator
-                    }
-                    inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
-                }
-                Controls.TextField {
-                    id: timerField
-                    Kirigami.FormData.label: "Timer:"
-                    enabled: totpRadio.checked
-                    text: "30"
-                    inputMask: "0009"
-                    inputMethodHints: Qt.ImhDigitsOnly
-                }
-                Controls.TextField {
-                    id: counterField
-                    Kirigami.FormData.label: "Counter:"
-                    enabled: hotpRadio.checked
-                    validator: Validators.HOTPCounterValidator {
-                        id: counterValidator
-                    }
-                    inputMethodHints: Qt.ImhDigitsOnly
-                }
-                /*
-                 * The liboath API is documented to support tokens which are
-                 * 6, 7 or 8 characters long only.
-                 *
-                 * Make a virtue of it by offering a spinner for better UX
-                 */
-                Controls.SpinBox {
-                    id: pinLengthField
-                    Kirigami.FormData.label: "Token length:"
-                    from: 6
-                    to: 8
-                    value: 6
+                TokenDetailsForm {
+                    id: tokenDetails
                 }
             }
         }
