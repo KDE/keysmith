@@ -28,7 +28,6 @@
 class Account : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(Type)
 
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(Type type READ type WRITE setType NOTIFY typeChanged)
@@ -42,6 +41,7 @@ public:
         TypeHOTP,
         TypeTOTP
     };
+    Q_ENUM(Type)
 
     explicit Account(const QUuid &id, QObject *parent = 0);
     explicit Account(const QUuid &id, const std::function<qint64(void)>& clock, QObject *parent = 0);
