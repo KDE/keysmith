@@ -63,6 +63,21 @@ Kirigami.ApplicationWindow {
                 id: view
                 model: accounts
                 delegate: Kirigami.AbstractCard {
+                    onClicked: {
+                        /*
+                         * `model` is some kind of wrapper item that exposes
+                         * bound properties but is not a *real* account.
+                         *
+                         * Retrieve the actual underlying account by its index
+                         */
+                        var actualAccount = accounts.get(index);
+                        pageStack.push(accountDetailsPageComponent, {
+                            account: actualAccount,
+                            accountIndex: index,
+                            editMode: false,
+                            hideSensitive: true
+                        });
+                    }
                     contentItem: Item {
                         implicitWidth: delegateLayout.implicitWidth
                         implicitHeight: delegateLayout.implicitHeight
@@ -144,7 +159,16 @@ Kirigami.ApplicationWindow {
                 text: "Add"
                 iconName: "answer-correct"
                 onTriggered: {
+                    /*
+                     * Nota Bene: order is significant.
+                     * Accounts are being appended in order of creation,
+                     * meaning the account index for the newly created
+                     * account is equal to the size of the list as it was
+                     * before createAccount() (which will add the new entry).
+                     */
+                    var newAccountIndex = accounts.rowCount();
                     var newAccount = accounts.createAccount();
+
                     newAccount.name = accountName.text;
                     newAccount.type = tokenDetails.type
                     newAccount.secret = tokenDetails.secret
@@ -165,6 +189,17 @@ Kirigami.ApplicationWindow {
                     if (pageStack.depth < 1) {
                         pageStack.push(mainPageComponent);
                     }
+
+                    /*
+                     * Auto navigate to the details page for the newly
+                     * created account
+                     */
+                    pageStack.push(accountDetailsPageComponent, {
+                        account: newAccount,
+                        accountIndex: newAccountIndex,
+                        editMode: false,
+                        hideSensitive: true
+                    });
                 }
             }
 
@@ -187,6 +222,22 @@ Kirigami.ApplicationWindow {
                 TokenDetailsForm {
                     id: tokenDetails
                 }
+            }
+        }
+    }
+
+    Component {
+        id: accountDetailsPageComponent
+        AccountDetailsPage {
+            onTokenRefresh: {
+                accounts.generateNext(index);
+            }
+            onAccountUpdate: {
+                /*
+                 * This is a NOP for now because account edits are instant
+                 * apply, possibly by accident of implementation rather
+                 * than by design. I.e. there is nothing to do here, yet.
+                 */
             }
         }
     }

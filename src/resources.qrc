@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="TokenDetailsForm.qml">contents/ui/TokenDetailsForm.qml</file>
+        <file alias="AccountDetailsPage.qml">contents/ui/AccountDetailsPage.qml</file>
     </qresource>
 </RCC>
