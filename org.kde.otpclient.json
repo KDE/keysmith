@@ -38,13 +38,11 @@
                 },
                 {
                     "type": "patch",
-                    "path": "flatpak/2fffce2a471f74a585939c84cce16ef3015e5d3d.diff",
-                    "sha256": "4093d69a22af60fac339fcee22ff29c3b8418b76bc1286e5226505af884e0c21"
+                    "path": "flatpak/2fffce2a471f74a585939c84cce16ef3015e5d3d.diff"
                 },
                 {
                     "type": "patch",
-                    "path": "flatpak/oath-toolkit/fseeko.patch",
-                    "sha256": "b93dc7bafe32a3477127e55b1c470063660b1f5c3f25622ea581b41502783020"
+                    "path": "flatpak/oath-toolkit/fseeko.patch"
                 },
                 {
                     "type" : "shell",
