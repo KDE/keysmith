@@ -26,7 +26,12 @@ static QLocale frFR(QLocale::French, QLocale::France);
 static QLocale nlNL(QLocale::Dutch, QLocale::Netherlands);
 static QLocale enUK(QLocale::English, QLocale::UnitedKingdom);
 
-static const QString french = QString::fromWCharArray(L"123\u00A0456");
+/*
+ * French is weird.
+ * Or at least the QLocale for France is definitely inconsistent.
+ * Sometimes you get 123\u00A0456, sometimes you get 123\202f\456...
+ */
+static const QString french = frFR.toString(123456ULL);
 
 static void define_valid_table(void)
 {
