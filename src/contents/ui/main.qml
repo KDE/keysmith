@@ -29,7 +29,7 @@ import org.kde.kirigami 2.4 as Kirigami
 Kirigami.ApplicationWindow {
     id: root
 
-    title: "OTP Client"
+    title: "Keysmith"
 
     pageStack.initialPage: accounts.rowCount() > 0 ? mainPageComponent : addPageComponent
 
@@ -154,7 +154,7 @@ Kirigami.ApplicationWindow {
     Component {
         id: addPageComponent
         Kirigami.Page {
-            title: "Add new OTP"
+            title: "Add new account"
             actions.main: Kirigami.Action {
                 text: "Add"
                 iconName: "answer-correct"

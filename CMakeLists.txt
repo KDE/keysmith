@@ -1,4 +1,4 @@
-project(otpclient)
+project(keysmith)
 
 
 #
@@ -48,7 +48,7 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
 add_subdirectory(src)
 add_subdirectory(autotests)
 
-install(PROGRAMS org.kde.otpclient.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.otpclient.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+install(PROGRAMS org.kde.keysmith.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.keysmith.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

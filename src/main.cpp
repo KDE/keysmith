@@ -34,7 +34,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QCoreApplication::setOrganizationName("KDE");
     QCoreApplication::setOrganizationDomain("kde.org");
-    QCoreApplication::setApplicationName("otpclient");
+    QCoreApplication::setApplicationName("Keysmith");
 
     QQmlApplicationEngine engine;
 

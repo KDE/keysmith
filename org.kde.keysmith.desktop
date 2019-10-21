@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=OTP client
-Comment=My first Plasma Mobile App
+Name=Keysmith
+Comment=Manage your OTP tokens for two factor authentication (2fa)
 Version=1.0
-Exec=org.kde.otpclient
+Exec=org.kde.keysmith
 Icon=applications-development
 Type=Application
 Terminal=false

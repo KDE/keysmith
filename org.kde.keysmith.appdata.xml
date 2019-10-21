@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
-  <id>org.kde.otpclient</id>
-  <name>Kirigami Example Application</name>
+  <id>org.kde.keysmith</id>
+  <name>Keysmith</name>
   <summary>A short summary describing what this software is about</summary>
   <metadata_license>A permissive license for this metadata, e.g. "FSFAP"</metadata_license>
   <project_license>The license of this software as SPDX string, e.g. "GPL-3+"</project_license>

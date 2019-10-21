@@ -1,12 +1,11 @@
-[![pipeline status](https://invent.kde.org/bshah/otpclient/badges/master/pipeline.svg)](https://invent.kde.org/bshah/otpclient/commits/master)
+[![pipeline status](https://invent.kde.org/bshah/keysmith/badges/master/pipeline.svg)](https://invent.kde.org/bshah/keysmith/commits/master)
 
-# OTP client
+# Keysmith
 
 It uses the [oath-toolkit](https://www.nongnu.org/oath-toolkit/) provided library liboath to generate the 2FA codes, both TOTP and HOTP based. Currently it is largely untested. From initial rough testing it seems that auto-refreshing of code is not working. Also button to refresh token for HOTP is also dummy at moment.
 
 Some todo items include,
 
- - Verify the generated oath code is correct
  - QR code scanning
  - Backup and Restore of accounts
  - Clipboard support to automatically copy code.

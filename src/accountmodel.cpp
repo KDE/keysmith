@@ -27,7 +27,7 @@
 AccountModel::AccountModel(QObject *parent) :
     QAbstractListModel(parent)
 {
-    QSettings settings("org.kde.otpclient", "otpclient");
+    QSettings settings("org.kde.keysmith", "Keysmith");
     const QStringList entries = settings.childGroups();
 //    qDebug() << "loading settings file:" << settings.fileName();
     for(const QString &group : entries) {
@@ -117,7 +117,7 @@ void AccountModel::deleteAccount(int index)
 
     Account *account = m_accounts.takeAt(index);
 //    qDebug() << "got account" << account;
-    QSettings settings("org.kde.otpclient", "otpclient");
+    QSettings settings("org.kde.keysmith", "Keysmith");
     settings.beginGroup(account->id().toString());
     settings.remove("");
     settings.endGroup();
@@ -172,7 +172,7 @@ void AccountModel::accountChanged()
 
 void AccountModel::storeAccount(const Account *account)
 {
-    QSettings settings("org.kde.otpclient", "otpclient");
+    QSettings settings("org.kde.keysmith", "Keysmith");
     settings.beginGroup(account->id().toString());
     settings.setValue("account", account->name());
     settings.setValue("type", account->type() == Account::TypeTOTP ? "totp" : "hotp");

@@ -1,9 +1,9 @@
 {
-    "id": "org.kde.otpclient",
+    "id": "org.kde.keysmith",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
-    "command": "org.kde.otpclient",
+    "command": "org.kde.keysmith",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": [
@@ -51,7 +51,7 @@
             ]
         },
         {
-            "name": "org.kde.otpclient",
+            "name": "org.kde.keysmith",
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]

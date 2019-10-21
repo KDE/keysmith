@@ -3,12 +3,12 @@ include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/binary-flatpak.yml
 
 variables:
-  BUNDLE: org.kde.otpclient.flatpak
+  BUNDLE: org.kde.keysmith.flatpak
 
 flatpak:
   extends: .flatpak
   variables:
-    MANIFEST_PATH: org.kde.otpclient.json
-    APP_ID: org.kde.otpclient
-    FLATPAK_MODULE: org.kde.otpclient
+    MANIFEST_PATH: org.kde.keysmith.json
+    APP_ID: org.kde.keysmith
+    FLATPAK_MODULE: org.kde.keysmith
     CMAKE_ARGS: -DENABLE_TESTING=OFF
