@@ -42,11 +42,19 @@ find_package(KF5Kirigami2 ${KF5_MIN_VERSION} REQUIRED)
 
 ################ Find testing dependencies ##########
 
-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Test)
+option(ENABLE_TESTING "Enable tests" ON)
+
+if (ENABLE_TESTING)
+    enable_testing()
+    find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Test)
+endif()
 
 ################# build and install #################
 add_subdirectory(src)
-add_subdirectory(autotests)
+
+if (ENABLE_TESTING)
+    add_subdirectory(autotests)
+endif()
 
 install(PROGRAMS org.kde.keysmith.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES org.kde.keysmith.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
