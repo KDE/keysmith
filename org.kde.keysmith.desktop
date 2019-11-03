@@ -4,7 +4,6 @@ Comment=Manage your OTP tokens for two factor authentication (2fa)
 Version=1.0
 Exec=org.kde.keysmith
 Icon=org.kde.keysmith
-Icon=applications-development
 Type=Application
 Terminal=false
 Categories=Qt;KDE;
