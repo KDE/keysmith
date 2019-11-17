@@ -6,6 +6,7 @@
   <name xml:lang="cs">Keysmith</name>
   <name xml:lang="nl">Keysmith</name>
   <name xml:lang="pt">Keysmith</name>
+  <name xml:lang="sv">Keysmith</name>
   <name xml:lang="uk">Keysmith</name>
   <name xml:lang="x-test">xxKeysmithxx</name>
   <name xml:lang="zh-TW">Keysmith</name>
@@ -13,6 +14,7 @@
   <summary xml:lang="ca">Un breu resum descrivint de què tracta aquest programari</summary>
   <summary xml:lang="nl">Een korte samenvatting die beschrijft waar deze software over gaat</summary>
   <summary xml:lang="pt">Um breve resumo que descreve para que serve esta aplicação</summary>
+  <summary xml:lang="sv">En kort sammanfattning som beskriver vad programvaran gör</summary>
   <summary xml:lang="uk">Короткий опис призначення цього програмного забезпечення</summary>
   <summary xml:lang="x-test">xxA short summary describing what this software is aboutxx</summary>
   <metadata_license>A permissive license for this metadata, e.g. "FSFAP"</metadata_license>
@@ -21,6 +23,7 @@
   <developer_name xml:lang="ca">El nom del venedor de programari, p. ex., «ACME Corporation»</developer_name>
   <developer_name xml:lang="nl">De leveranciersnaam van de software, bijv. "ACME Corporation"</developer_name>
   <developer_name xml:lang="pt">O nome do criador da aplicação, p.ex. "Empresa XPTO"</developer_name>
+  <developer_name xml:lang="sv">Namn på programvarans leverantör, t.ex. "ACME AB"</developer_name>
   <developer_name xml:lang="uk">Назва розробника програмного забезпечення, наприклад «ACME Corporation»</developer_name>
   <developer_name xml:lang="x-test">xxThe software vendor name, e.g. "ACME Corporation"xx</developer_name>
   <description>
@@ -28,12 +31,14 @@
     <p xml:lang="ca">Múltiples paràgrafs de descripció llarga, descrivint aquest component de programari.</p>
     <p xml:lang="nl">Meerdere paragrafen van lange beschrijvingen, die deze softwarecomponent beschrijven.</p>
     <p xml:lang="pt">Diversos parágrafos de uma longa descrição, descrevendo o componente da aplicação.</p>
+    <p xml:lang="sv">Flera stycken med en lång beskrivning, som beskriver programvarukomponenterna.</p>
     <p xml:lang="uk">Декілька абзаців повного опису цього компонента програмного забезпечення.</p>
     <p xml:lang="x-test">xxMultiple paragraphs of long description, describing this software component.xx</p>
     <p>You can also use ordered and unordered lists:</p>
     <p xml:lang="ca">També podeu emprar llistes ordenades i sense ordenar:</p>
     <p xml:lang="nl">U kunt ook geordende en ongeordende lijsten gebruiken:</p>
     <p xml:lang="pt">Também poderá usar listas ordenadas ou não-ordenadas:</p>
+    <p xml:lang="sv">Du kan också använda ordnade och oordnade listor</p>
     <p xml:lang="uk">Ви можете використовувати упорядковані і неупорядковані списки:</p>
     <p xml:lang="x-test">xxYou can also use ordered and unordered lists:xx</p>
     <ul>
@@ -42,6 +47,7 @@
       <li xml:lang="cs">Vlastnost 1</li>
       <li xml:lang="nl">Functie 1</li>
       <li xml:lang="pt">Funcionalidade 1</li>
+      <li xml:lang="sv">Funktion 1</li>
       <li xml:lang="uk">Можливість 1</li>
       <li xml:lang="x-test">xxFeature 1xx</li>
       <li>Feature 2</li>
@@ -49,6 +55,7 @@
       <li xml:lang="cs">Vlastnost 2</li>
       <li xml:lang="nl">Functie 2</li>
       <li xml:lang="pt">Funcionalidade 2</li>
+      <li xml:lang="sv">Funktion 2</li>
       <li xml:lang="uk">Можливість 2</li>
       <li xml:lang="x-test">xxFeature 2xx</li>
     </ul>
@@ -56,6 +63,7 @@
     <p xml:lang="ca">Tingueu en compte els caràcters d'escapament en XML i que no està en un marcatge en HTML.</p>
     <p xml:lang="nl">Houd rekening met XML-escape tekens en dat dit geen HTML-opmaak is.</p>
     <p xml:lang="pt">Lembre-se de usar os caracteres de escape do XML e de que isto não está formatado em HTML.</p>
+    <p xml:lang="sv">Var medveten om att XML-hantera tecken, och att det inte är HTML-taggar.</p>
     <p xml:lang="uk">Слід пам'ятати, що символи XML слід екранувати, і що це не зовсім розмітка HTML.</p>
     <p xml:lang="x-test">xxKeep in mind to XML-escape characters, and that this is not HTML markup.xx</p>
   </description>
