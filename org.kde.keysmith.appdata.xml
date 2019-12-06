@@ -8,41 +8,17 @@
   <name xml:lang="nl">Keysmith</name>
   <name xml:lang="pt">Keysmith</name>
   <name xml:lang="sv">Keysmith</name>
-  <name xml:lang="uk">Keysmith</name> 
+  <name xml:lang="uk">Keysmith</name>
+  <name xml:lang="x-test">xxKeysmithxx</name>
   <name xml:lang="zh-TW">Keysmith</name>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
-  <summary xml:lang="ca">Un breu resum descrivint de què tracta aquest programari</summary>
-  <summary xml:lang="it">Un breve riepilogo che descrive che cosa fa il software</summary>
-  <summary xml:lang="nl">Een korte samenvatting die beschrijft waar deze software over gaat</summary>
-  <summary xml:lang="pt">Um breve resumo que descreve para que serve esta aplicação</summary>
-  <summary xml:lang="sv">En kort sammanfattning som beskriver vad programvaran gör</summary>
-  <summary xml:lang="uk">Короткий опис призначення цього програмного забезпечення</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <developer_name>KDE Community</developer_name>
-  <developer_name xml:lang="ca">El nom del venedor de programari, p. ex., «ACME Corporation»</developer_name>
-  <developer_name xml:lang="it">Il nome del fornitore del software, ad es "ACME Corporation"</developer_name>
-  <developer_name xml:lang="nl">De leveranciersnaam van de software, bijv. "ACME Corporation"</developer_name>
-  <developer_name xml:lang="pt">O nome do criador da aplicação, p.ex. "Empresa XPTO"</developer_name>
-  <developer_name xml:lang="sv">Namn på programvarans leverantör, t.ex. "ACME AB"</developer_name>
-  <developer_name xml:lang="uk">Назва розробника програмного забезпечення, наприклад «ACME Corporation»</developer_name>
   <description>
     <p>Keysmith generates tokens for your two-factor logins (2FA)</p>
-    <p xml:lang="ca">Múltiples paràgrafs de descripció llarga, descrivint aquest component de programari.</p>
-    <p xml:lang="it">Paragrafi multipli di una lunga descrizione, che descrivono questo componente software.</p>
-    <p xml:lang="nl">Meerdere paragrafen van lange beschrijvingen, die deze softwarecomponent beschrijven.</p>
-    <p xml:lang="pt">Diversos parágrafos de uma longa descrição, descrevendo o componente da aplicação.</p>
-    <p xml:lang="sv">Flera stycken med en lång beskrivning, som beskriver programvarukomponenterna.</p>
-    <p xml:lang="uk">Декілька абзаців повного опису цього компонента програмного забезпечення.</p>
     <ul>
       <li>Time and Hash-based OTP</li>
-      <li xml:lang="ca">Característica 1</li>
-      <li xml:lang="cs">Vlastnost 1</li>
-      <li xml:lang="it">Funzionalità 1</li>
-      <li xml:lang="nl">Functie 1</li>
-      <li xml:lang="pt">Funcionalidade 1</li>
-      <li xml:lang="sv">Funktion 1</li>
-      <li xml:lang="uk">Можливість 1</li>
     </ul>
   </description>
 </component>
