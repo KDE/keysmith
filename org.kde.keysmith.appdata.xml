@@ -17,14 +17,17 @@
   <summary xml:lang="pt">Gerador de códigos de duplo-factor para o Plasma Mobile e normal</summary>
   <summary xml:lang="uk">Засіб для створення двофакторних кодів для мобільної і стільничної Плазми</summary>
   <summary xml:lang="x-test">xxTwo-factor code generator for Plasma Mobile and Desktopxx</summary>
+  <summary xml:lang="zh-TW">適用於 Plasma 行動版及桌面版的兩步驟驗證碼產生器</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
+  <developer_name xml:lang="cs">Komunita KDE</developer_name>
   <developer_name xml:lang="nl">KDE gemeenschap</developer_name>
   <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
+  <developer_name xml:lang="zh-TW">KDE 社群</developer_name>
   <description>
     <p>Keysmith generates tokens for your two-factor logins (2FA)</p>
     <p xml:lang="ca">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
@@ -32,6 +35,7 @@
     <p xml:lang="pt">O Keysmith gera códigos para as suas autenticações em dois-factores (2FA)</p>
     <p xml:lang="uk">Keysmith створює ключі для двофакторного входу (2FA)</p>
     <p xml:lang="x-test">xxKeysmith generates tokens for your two-factor logins (2FA)xx</p>
+    <p xml:lang="zh-TW">Keysmith 會產生用於兩步驟登入 (2FA) 的憑證</p>
     <ul>
       <li>Time and Hash-based OTP</li>
       <li xml:lang="ca">OTP basat en l'hora i en el resum</li>
@@ -39,6 +43,7 @@
       <li xml:lang="pt">OTP baseado em códigos e no tempo</li>
       <li xml:lang="uk">OTP на основі часових даних і хешів</li>
       <li xml:lang="x-test">xxTime and Hash-based OTPxx</li>
+      <li xml:lang="zh-TW">基於時間及雜湊值的 OTP</li>
     </ul>
   </description>
 </component>
