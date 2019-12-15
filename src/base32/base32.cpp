@@ -18,7 +18,7 @@
 
 #include "base32.h"
 
-#include "oath_p.h"
+#include "../oath_p.h"
 
 #include <QtDebug>
 

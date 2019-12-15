@@ -1,13 +1,13 @@
+add_subdirectory(base32)
 add_subdirectory(validators)
 
 set(keysmith_SRCS
     main.cpp
     accountmodel.cpp
     account.cpp
-    base32.cpp
-    )
+)
 
-set(keysmith_internal_libs validator_lib)
+set(keysmith_internal_libs base32_lib validator_lib)
 
 qt5_add_resources(RESOURCES resources.qrc)
 add_executable(org.kde.keysmith ${keysmith_SRCS} ${RESOURCES})

@@ -18,7 +18,7 @@
 
 #include "account.h"
 
-#include "base32.h"
+#include "base32/base32.h"
 #include "oath_p.h"
 
 #include <QDateTime>

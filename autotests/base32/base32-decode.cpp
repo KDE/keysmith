@@ -16,7 +16,7 @@
  *                                                                           *
  ****************************************************************************/
 
-#include "base32.h"
+#include "base32/base32.h"
 
 #include <QTest>
 #include <QtDebug>
