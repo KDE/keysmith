@@ -1,12 +1,10 @@
+# Need 3.10.3 for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
+cmake_minimum_required(VERSION 3.10.3)
+
 project(keysmith)
 
-
-#
-# Need 3.10.3 for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
-#
-cmake_minimum_required(VERSION 3.10.3)
-set(KF5_MIN_VERSION "5.18.0")
-set(QT_MIN_VERSION "5.5.0")
+set(KF5_MIN_VERSION "5.37.0")
+set(QT_MIN_VERSION "5.7.0")
 
 ################# Disallow in-source build #################
 
@@ -18,18 +16,17 @@ include(FeatureSummary)
 
 ################# set KDE specific information #################
 
-find_package(ECM 0.0.8 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-include(ECMSetupVersion)
-include(ECMGenerateHeaders)
-include(ECMAddTests)
 include(KDEInstallDirs)
 include(KDECMakeSettings)
-include(ECMPoQmTools)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+
+include(ECMAddTests)
+include(ECMPoQmTools)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

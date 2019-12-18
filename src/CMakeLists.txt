@@ -16,4 +16,4 @@ target_link_libraries(org.kde.keysmith
     ${LIBOATH_LIBRARIES}
     ${keysmith_internal_libs}
 )
-install(TARGETS org.kde.keysmith ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS org.kde.keysmith ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

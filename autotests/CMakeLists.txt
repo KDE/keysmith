@@ -1,5 +1,3 @@
-
-enable_testing()
 include_directories(BEFORE ../src)
 
 add_subdirectory(validators)
