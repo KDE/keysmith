@@ -85,7 +85,7 @@ namespace base32
         /*
         * sanity check that:
         *  - decoding base32 succeeded
-        *  - the library agrees on how big the output buffer should be, i.e. that the preceeding allocation logic was correct
+        *  - the library agrees on how big the output buffer should be, i.e. that the preceding allocation logic was correct
         */
         ok = status == OATH_OK && reportedCapacity == ((size_t) capacity);
 

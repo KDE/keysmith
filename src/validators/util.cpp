@@ -20,7 +20,7 @@
 
 #include <QRegularExpression>
 
-QRegularExpression spaces_patern(void)
+QRegularExpression spaces_pattern(void)
 {
     static const QRegularExpression re("\\s*");
     re.optimize();
@@ -32,7 +32,7 @@ namespace validators
 
     QString strip_spaces(QString &input)
     {
-        static const QRegularExpression re = spaces_patern();
+        static const QRegularExpression re = spaces_pattern();
         return input.replace(re, QLatin1String(""));
     }
 }

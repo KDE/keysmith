@@ -31,7 +31,7 @@ namespace validators
             return std::optional<qulonglong>(v);
         } else {
             /*
-             * Fall back to parsing according to C locale for beter UX.
+             * Fall back to parsing according to C locale for better UX.
              * This simplifies copy-pasting from websites which may be a bit
              * biased towards the Anglosphere.
              */
