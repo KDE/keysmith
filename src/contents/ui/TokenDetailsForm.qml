@@ -19,7 +19,6 @@
  *
  */
 
-import Oath 1.0
 import Oath.Validators 1.0 as Validators
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
@@ -28,14 +27,12 @@ import org.kde.kirigami 2.4 as Kirigami
 
 Kirigami.FormLayout {
     id: root
-    property int type: totpRadio.checked ? Account.TypeTOTP : Account.TypeHOTP
+    property bool isTotp: totpRadio.checked && !hotpRadio.checked
+    property bool isHotp: hotpRadio.checked && !totpRadio.checked
     property int tokenLength: pinLengthField.value
     property string timeStep: timerField.text
     property string secret: accountSecret.text
     property string counter: counterField.text
-
-    property Account account: null
-    property bool editable: false
 
     ColumnLayout {
         Layout.rowSpan: 2
@@ -43,18 +40,18 @@ Kirigami.FormLayout {
         Kirigami.FormData.buddyFor: totpRadio
         Controls.RadioButton {
             id: totpRadio
-            checked: !account || account.type == Account.TypeTOTP
+            checked: true
             text: i18nc("@option:radio", "Time-based OTP")
         }
         Controls.RadioButton {
             id: hotpRadio
-            checked: account && account.type == Account.TypeHOTP
+            checked: false
             text: i18nc("@option:radio", "Hash-based OTP")
         }
     }
     Controls.TextField {
         id: accountSecret
-        text: account ? account.secret : ""
+        text: ""
         Kirigami.FormData.label: i18nc("@label:textbox", "Secret key:")
         validator: Validators.Base32SecretValidator {
             id: secretValidator
@@ -65,13 +62,13 @@ Kirigami.FormLayout {
         id: timerField
         Kirigami.FormData.label: i18nc("@label:textbox", "Timer:")
         enabled: totpRadio.checked
-        text: account ? "" + account.timeStep : "30"
+        text: "30"
         inputMask: "0009"
         inputMethodHints: Qt.ImhDigitsOnly
     }
     Controls.TextField {
         id: counterField
-        text: account ? "" + account.counter : ""
+        text: "0"
         Kirigami.FormData.label: i18nc("@label:textbox", "Counter:")
         enabled: hotpRadio.checked
         validator: Validators.HOTPCounterValidator {
@@ -90,6 +87,6 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18nc("@label:spinbox", "Token length:")
         from: 6
         to: 8
-        value: account ? account.pinLength : 6
+        value: 6
     }
 }

@@ -6,11 +6,9 @@ add_subdirectory(app)
 
 set(keysmith_SRCS
     main.cpp
-    accountmodel.cpp
-    account.cpp
 )
 
-set(keysmith_internal_libs base32_lib validator_lib)
+set(keysmith_internal_libs base32_lib validator_lib account_lib model_lib keysmith_lib)
 
 qt5_add_resources(RESOURCES resources.qrc)
 add_executable(keysmith ${keysmith_SRCS} ${RESOURCES})

@@ -27,9 +27,9 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
-#include "accountmodel.h"
-#include "account.h"
-#include "validators/qmlsupport.h"
+#include "app/keysmith.h"
+#include "model/accounts.h"
+#include "../validators/qmlsupport.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -45,11 +45,18 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
-    qmlRegisterType<AccountModel>("Oath", 1, 0, "AccountModel");
-    qmlRegisterUncreatableType<Account>("Oath", 1, 0, "Account", "Use AccountModel::createAccount() to create a new account");
     validators::registerValidatorTypes();
-    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
+    qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel", "Use the Keysmith singleton to obtain an AccountListModel");
+    qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models", 1, 0, "Account", "Use an AccountListModel from the Keysmith singleton to obtain an Account");
+    qmlRegisterSingletonType<app::Keysmith>("Keysmith.Application", 1, 0, "Keysmith", [](QQmlEngine *qml, QJSEngine *js) -> QObject *
+    {
+        Q_UNUSED(qml);
+        Q_UNUSED(js);
 
+        return new app::Keysmith();
+    });
+
+    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }

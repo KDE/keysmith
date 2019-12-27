@@ -19,8 +19,10 @@
  * 
  */
 
-import Oath 1.0
+import Keysmith.Application 1.0
+import Keysmith.Models 1.0 as Models
 import Oath.Validators 1.0 as Validators
+
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
@@ -29,13 +31,11 @@ import org.kde.kirigami 2.4 as Kirigami
 Kirigami.ApplicationWindow {
     id: root
 
-    pageStack.initialPage: accounts.rowCount() > 0 ? mainPageComponent : addPageComponent
+    pageStack.initialPage: mainPageComponent
 
     property bool addActionEnabled: true
 
-    AccountModel {
-        id: accounts
-    }
+    property Models.AccountListModel accounts: Keysmith.accountListModel()
 
     Kirigami.Action {
         id: addAction
@@ -53,29 +53,10 @@ Kirigami.ApplicationWindow {
         Kirigami.ScrollablePage {
             title: i18n("OTP")
             actions.main: addAction
-            Controls.Label {
-                text: i18nc("Text shown when no accounts are added", "No account set up. Use the Add button to add accounts.")
-                visible: view.count == 0
-            }
             Kirigami.CardsListView {
                 id: view
                 model: accounts
                 delegate: Kirigami.AbstractCard {
-                    onClicked: {
-                        /*
-                         * `model` is some kind of wrapper item that exposes
-                         * bound properties but is not a *real* account.
-                         *
-                         * Retrieve the actual underlying account by its index
-                         */
-                        var actualAccount = accounts.get(index);
-                        pageStack.push(accountDetailsPageComponent, {
-                            account: actualAccount,
-                            accountIndex: index,
-                            editMode: false,
-                            hideSensitive: true
-                        });
-                    }
                     contentItem: Item {
                         implicitWidth: delegateLayout.implicitWidth
                         implicitHeight: delegateLayout.implicitHeight
@@ -93,32 +74,39 @@ Kirigami.ApplicationWindow {
                             ColumnLayout {
                                 Controls.Label {
                                     Layout.fillWidth: true
-                                    text: model.name
+                                    text: model.account ? model.account.name : i18nc("placeholder text if no account name is available", "(untitled)")
                                 }
                                 Kirigami.Heading {
                                     level: 2
-                                    text: model.otp
-                                    onTextChanged: {
-                                        if(model.type === Account.TypeTOTP) {
-                                            timeoutTimer.restart();
-                                        }
-                                    }
+                                    text: model.account && model.account.token && model.account.token.length > 0 ? model.account.token : i18nc("placeholder text if no token is available", "(refresh)")
                                 }
                             }
                             Controls.Button {
                                 Layout.alignment: Qt.AlignRight|Qt.AlignVCenter
                                 Layout.columnSpan: 2
                                 text: i18nc("%1 is current counter numerical value", "Refresh (%1)", model.counter)
-                                visible: model.type === Account.TypeHOTP
+                                visible: model.account && model.account.isHotp
                                 onClicked: {
-                                    accounts.generateNext(index);
+                                    if(model.account) {
+                                        model.account.advanceCounter();
+                                    }
                                 }
                             }
                             Timer {
                                 id: timeoutTimer
-                                repeat: true
-                                interval: model.timeStep * 1000
-                                running: model.type === Account.TypeTOTP
+                                repeat: false
+                                interval: model.account && model.account.isTotp ? model.account.millisecondsLeftForToken() : 0
+                                running: model.account && model.account.isTotp
+                                onTriggered: {
+                                    if (model.account) {
+                                        model.account.recompute();
+                                        timeoutTimer.stop();
+                                        timeoutIndicatorAnimation.stop();
+                                        timeoutTimer.interval = model.account.millisecondsLeftForToken();
+                                        timeoutTimer.restart();
+                                        timeoutIndicatorAnimation.restart();
+                                    }
+                                }
                             }
                             Rectangle {
                                 id: timeoutIndicatorRect
@@ -141,7 +129,7 @@ Kirigami.ApplicationWindow {
                                 from: delegateLayout.height
                                 to: 0
                                 duration: timeoutTimer.interval
-                                running: model.type === Account.TypeTOTP && units.longDuration > 1
+                                running: model.account && model.account.isTotp && units.longDuration > 1
                             }
                         }
                     }
@@ -157,47 +145,15 @@ Kirigami.ApplicationWindow {
                 text: i18n("Add")
                 iconName: "answer-correct"
                 onTriggered: {
-                    /*
-                     * Nota Bene: order is significant.
-                     * Accounts are being appended in order of creation,
-                     * meaning the account index for the newly created
-                     * account is equal to the size of the list as it was
-                     * before createAccount() (which will add the new entry).
-                     */
-                    var newAccountIndex = accounts.rowCount();
-                    var newAccount = accounts.createAccount();
-
-                    newAccount.name = accountName.text;
-                    newAccount.type = tokenDetails.type
-                    newAccount.secret = tokenDetails.secret
-                    newAccount.counter = parseInt(tokenDetails.counter)
-                    newAccount.timeStep = parseInt(tokenDetails.timeStep)
-                    newAccount.pinLength = parseInt(tokenDetails.tokenLength)
+                    if (tokenDetails.isTotp) {
+                        accounts.addTotp(accountName.text, tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);
+                    }
+                    if (tokenDetails.isHotp) {
+                        accounts.addHotp(accountName.text, tokenDetails.secret, parseInt(tokenDetails.counter), tokenDetails.tokenLength);
+                    }
 
                     pageStack.pop();
                     addActionEnabled = true;
-                    /*
-                     * Check if the pageStack is now 'empty', which will be the case if
-                     * the starting page was this addPageComponent.
-                     *
-                     * According to Qt docs the StackView 'empty' property is supposed to exist
-                     * and be a bool but in practice it does not appear to work (it is undefined).
-                     * Therefore check the StackView.depth instead.
-                     */
-                    if (pageStack.depth < 1) {
-                        pageStack.push(mainPageComponent);
-                    }
-
-                    /*
-                     * Auto navigate to the details page for the newly
-                     * created account
-                     */
-                    pageStack.push(accountDetailsPageComponent, {
-                        account: newAccount,
-                        accountIndex: newAccountIndex,
-                        editMode: false,
-                        hideSensitive: true
-                    });
                 }
             }
 
@@ -220,22 +176,6 @@ Kirigami.ApplicationWindow {
                 TokenDetailsForm {
                     id: tokenDetails
                 }
-            }
-        }
-    }
-
-    Component {
-        id: accountDetailsPageComponent
-        AccountDetailsPage {
-            onTokenRefresh: {
-                accounts.generateNext(index);
-            }
-            onAccountUpdate: {
-                /*
-                 * This is a NOP for now because account edits are instant
-                 * apply, possibly by accident of implementation rather
-                 * than by design. I.e. there is nothing to do here, yet.
-                 */
             }
         }
     }
