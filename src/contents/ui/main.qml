@@ -49,94 +49,33 @@ Kirigami.ApplicationWindow {
     }
 
     Component {
+        id: mainListDelegate
+        AccountEntryView {
+            account: model.account
+        }
+    }
+
+    Component {
         id: mainPageComponent
         Kirigami.ScrollablePage {
-            title: i18n("OTP")
+            title: i18nc("@title:window", "Accounts")
             actions.main: addAction
-            Kirigami.CardsListView {
-                id: view
+            /*
+             * Explicitly opt-out of scroll-to-refresh/drag-to-refresh behaviour
+             * Underlying model implementations don't offer the hooks for that.
+             */
+            supportsRefreshing: false
+            ListView {
+                id: mainList
                 model: accounts
-                delegate: Kirigami.AbstractCard {
-                    contentItem: Item {
-                        implicitWidth: delegateLayout.implicitWidth
-                        implicitHeight: delegateLayout.implicitHeight
-                        GridLayout {
-                            id: delegateLayout
-                            anchors {
-                                left: parent.left
-                                top: parent.top
-                                right: parent.right
-                                //IMPORTANT: never put the bottom margin
-                            }
-                            rowSpacing: Kirigami.Units.largeSpacing
-                            columnSpacing: Kirigami.Units.largeSpacing
-                            columns: width > Kirigami.Units.gridUnit * 20 ? 4 : 2
-                            ColumnLayout {
-                                Controls.Label {
-                                    Layout.fillWidth: true
-                                    text: model.account ? model.account.name : i18nc("placeholder text if no account name is available", "(untitled)")
-                                }
-                                Kirigami.Heading {
-                                    level: 2
-                                    text: model.account && model.account.token && model.account.token.length > 0 ? model.account.token : i18nc("placeholder text if no token is available", "(refresh)")
-                                }
-                            }
-                            Controls.Button {
-                                Layout.alignment: Qt.AlignRight|Qt.AlignVCenter
-                                Layout.columnSpan: 2
-                                text: i18nc("%1 is current counter numerical value", "Refresh (%1)", model.counter)
-                                visible: model.account && model.account.isHotp
-                                onClicked: {
-                                    if(model.account) {
-                                        model.account.advanceCounter();
-                                    }
-                                }
-                            }
-                            Timer {
-                                id: timeoutTimer
-                                repeat: false
-                                interval: model.account && model.account.isTotp ? model.account.millisecondsLeftForToken() : 0
-                                running: model.account && model.account.isTotp
-                                onTriggered: {
-                                    if (model.account) {
-                                        model.account.recompute();
-                                        timeoutTimer.stop();
-                                        timeoutIndicatorAnimation.stop();
-                                        timeoutTimer.interval = model.account.millisecondsLeftForToken();
-                                        timeoutTimer.restart();
-                                        timeoutIndicatorAnimation.restart();
-                                    }
-                                }
-                            }
-                            Rectangle {
-                                id: timeoutIndicatorRect
-                                Layout.fillHeight: true
-                                width: 5
-                                radius: width
-                                color: "green"
-                                visible: timeoutTimer.running && units.longDuration > 1
-                                opacity: timeoutIndicatorAnimation.running ? 0.6 : 0
-                                Behavior on opacity {
-                                    NumberAnimation {
-                                        duration: units.longDuration
-                                    }
-                                }
-                            }
-                            NumberAnimation {
-                                id: timeoutIndicatorAnimation
-                                target: timeoutIndicatorRect
-                                property: "height"
-                                from: delegateLayout.height
-                                to: 0
-                                duration: timeoutTimer.interval
-                                running: model.account && model.account.isTotp && units.longDuration > 1
-                            }
-                        }
-                    }
+                delegate:  Kirigami.DelegateRecycler {
+                    width: parent ? parent.width : implicitWidth
+                    sourceComponent: mainListDelegate
                 }
             }
         }
     }
+
     Component {
         id: addPageComponent
         Kirigami.Page {
