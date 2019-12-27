@@ -1,0 +1,17 @@
+<!--
+  - SPDX-License-Identifier: GPL-3.0-or-later
+  - SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+  -
+ -->
+<RCC>
+    <qresource prefix="/">
+        <file>load-accounts/sample-accounts.ini</file>
+        <file>load-accounts/empty-accounts.ini</file>
+        <file>save-hotp/expected-accounts.ini</file>
+        <file>save-totp/expected-accounts.ini</file>
+        <file>delete-accounts/sample-accounts.ini</file>
+        <file>delete-accounts/empty-accounts.ini</file>
+        <file>delete-accounts/only-hotp-left.ini</file>
+        <file>delete-accounts/only-totp-left.ini</file>
+    </qresource>
+</RCC>

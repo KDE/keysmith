@@ -1,6 +1,7 @@
 include_directories(BEFORE ../src)
 
 add_subdirectory(base32)
+add_subdirectory(account)
 add_subdirectory(validators)
 
 set(Account_UUT_SRCS ../src/account.cpp)

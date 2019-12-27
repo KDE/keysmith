@@ -1,4 +1,5 @@
 add_subdirectory(base32)
+add_subdirectory(account)
 add_subdirectory(validators)
 
 set(keysmith_SRCS

@@ -1,0 +1,14 @@
+<!--
+  - SPDX-License-Identifier: GPL-3.0-or-later
+  - SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+  -
+ -->
+<RCC>
+    <qresource prefix="/">
+        <file>storage-lifecycles/starting.ini</file>
+        <file>storage-lifecycles/after-removing.ini</file>
+        <file>storage-lifecycles/after-adding.ini</file>
+        <file>counter-update/starting.ini</file>
+        <file>counter-update/after-updating-counter.ini</file>
+    </qresource>
+</RCC>
