@@ -2,6 +2,7 @@ add_subdirectory(base32)
 add_subdirectory(account)
 add_subdirectory(model)
 add_subdirectory(validators)
+add_subdirectory(app)
 
 set(keysmith_SRCS
     main.cpp
