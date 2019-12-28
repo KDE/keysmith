@@ -39,23 +39,23 @@ Kirigami.FormLayout {
 
     ColumnLayout {
         Layout.rowSpan: 2
-        Kirigami.FormData.label: "Account Type:"
+        Kirigami.FormData.label: i18nc("@label:chooser", "Account Type:")
         Kirigami.FormData.buddyFor: totpRadio
         Controls.RadioButton {
             id: totpRadio
             checked: !account || account.type == Account.TypeTOTP
-            text: "Time-based OTP"
+            text: i18nc("@option:radio", "Time-based OTP")
         }
         Controls.RadioButton {
             id: hotpRadio
             checked: account && account.type == Account.TypeHOTP
-            text: "Hash-based OTP"
+            text: i18nc("@option:radio", "Hash-based OTP")
         }
     }
     Controls.TextField {
         id: accountSecret
         text: account ? account.secret : ""
-        Kirigami.FormData.label: "Secret key:"
+        Kirigami.FormData.label: i18nc("@label:textbox", "Secret key:")
         validator: Validators.Base32SecretValidator {
             id: secretValidator
         }
@@ -63,7 +63,7 @@ Kirigami.FormLayout {
     }
     Controls.TextField {
         id: timerField
-        Kirigami.FormData.label: "Timer:"
+        Kirigami.FormData.label: i18nc("@label:textbox", "Timer:")
         enabled: totpRadio.checked
         text: account ? "" + account.timeStep : "30"
         inputMask: "0009"
@@ -72,7 +72,7 @@ Kirigami.FormLayout {
     Controls.TextField {
         id: counterField
         text: account ? "" + account.counter : ""
-        Kirigami.FormData.label: "Counter:"
+        Kirigami.FormData.label: i18nc("@label:textbox", "Counter:")
         enabled: hotpRadio.checked
         validator: Validators.HOTPCounterValidator {
             id: counterValidator
@@ -87,7 +87,7 @@ Kirigami.FormLayout {
      */
     Controls.SpinBox {
         id: pinLengthField
-        Kirigami.FormData.label: "Token length:"
+        Kirigami.FormData.label: i18nc("@label:spinbox", "Token length:")
         from: 6
         to: 8
         value: account ? account.pinLength : 6

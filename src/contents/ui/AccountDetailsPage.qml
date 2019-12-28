@@ -40,7 +40,7 @@ Kirigami.Page {
 
     Kirigami.Action {
         id: leftAction
-        text: root.hideSensitive ? "Show" : "Hide"
+        text: root.hideSensitive ? i18n("Show") : i18n("Hide")
         iconName: root.hideSensitive ? "view-visible" : "view-hidden"
         onTriggered: {
             root.hideSensitive = !root.hideSensitive;
@@ -50,7 +50,7 @@ Kirigami.Page {
 
     Kirigami.Action {
         id: rightAction
-        text: "Generate token"
+        text: i18nc("@action:button", "Generate Token")
         iconName: "view-refresh"
         onTriggered: {
             root.tokenRefresh(account, accountIndex)
@@ -59,7 +59,7 @@ Kirigami.Page {
 
     Kirigami.Action {
         id: mainAction
-        text: root.editMode ? "Apply" : "Edit"
+        text: root.editMode ? i18n("Apply") : i18n("Edit")
         iconName: root.editMode ? "document-save" : "document-edit"
         onTriggered: {
             var fromEditor = root.editMode;
@@ -73,7 +73,7 @@ Kirigami.Page {
     actions.main: mainAction
     actions.left: editMode ? null : leftAction
     actions.right: editMode ? null : rightAction
-    title: account ? account.name : "Account Details"
+    title: account ? account.name : i18nc("@title:window", "Account Details")
 
     ColumnLayout {
         id: layout

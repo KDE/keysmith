@@ -29,7 +29,7 @@ import org.kde.kirigami 2.4 as Kirigami
 Kirigami.ApplicationWindow {
     id: root
 
-    title: "Keysmith"
+    title: application.displayName
 
     pageStack.initialPage: accounts.rowCount() > 0 ? mainPageComponent : addPageComponent
 
@@ -41,7 +41,7 @@ Kirigami.ApplicationWindow {
 
     Kirigami.Action {
         id: addAction
-        text: "Add"
+        text: i18n("Add")
         iconName: "list-add"
         visible: addActionEnabled
         onTriggered: {
@@ -53,10 +53,10 @@ Kirigami.ApplicationWindow {
     Component {
         id: mainPageComponent
         Kirigami.ScrollablePage {
-            title: "OTP"
+            title: i18n("OTP")
             actions.main: addAction
             Controls.Label {
-                text: "No account set up. Use the add button to add accounts."
+                text: i18nc("Text shown when no accounts are added", "No account set up. Use the Add button to add accounts.")
                 visible: view.count == 0
             }
             Kirigami.CardsListView {
@@ -110,7 +110,7 @@ Kirigami.ApplicationWindow {
                             Controls.Button {
                                 Layout.alignment: Qt.AlignRight|Qt.AlignVCenter
                                 Layout.columnSpan: 2
-                                text: "Refresh (" + model.counter + ")"
+                                text: i18nc("%1 is current counter numerical value", "Refresh (%1)", model.counter)
                                 visible: model.type === Account.TypeHOTP
                                 onClicked: {
                                     accounts.generateNext(index);
@@ -154,9 +154,9 @@ Kirigami.ApplicationWindow {
     Component {
         id: addPageComponent
         Kirigami.Page {
-            title: "Add new account"
+            title: i18nc("@title:window", "Add new account")
             actions.main: Kirigami.Action {
-                text: "Add"
+                text: i18n("Add")
                 iconName: "answer-correct"
                 onTriggered: {
                     /*
@@ -213,7 +213,7 @@ Kirigami.ApplicationWindow {
 
                     Controls.TextField {
                         id: accountName
-                        Kirigami.FormData.label: "Account Name:"
+                        Kirigami.FormData.label: i18nc("@label:textbox", "Account Name:")
                         validator: Validators.AccountNameValidator {
                             id: nameValidator
                         }

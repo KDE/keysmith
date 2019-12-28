@@ -24,6 +24,9 @@
 #include <QtQml>
 #include <QUrl>
 
+#include <KLocalizedContext>
+#include <KLocalizedString>
+
 #include "accountmodel.h"
 #include "account.h"
 #include "validators/qmlsupport.h"
@@ -32,11 +35,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
+    KLocalizedString::setApplicationDomain("keysmith");
+
     QCoreApplication::setOrganizationName("KDE");
     QCoreApplication::setOrganizationDomain("kde.org");
     QCoreApplication::setApplicationName("Keysmith");
+    QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
     qmlRegisterType<AccountModel>("Oath", 1, 0, "AccountModel");
     qmlRegisterUncreatableType<Account>("Oath", 1, 0, "Account", "Use AccountModel::createAccount() to create a new account");
