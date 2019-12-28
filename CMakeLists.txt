@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.10.3)
 
 project(keysmith)
 
-set(KF5_MIN_VERSION "5.37.0")
-set(QT_MIN_VERSION "5.7.0")
+set(KF5_MIN_VERSION "5.62.0")
+set(QT_MIN_VERSION "5.12.0")
 
 ################# Disallow in-source build #################
 
