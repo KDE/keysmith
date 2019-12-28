@@ -39,17 +39,14 @@ find_package(KF5Kirigami2 ${KF5_MIN_VERSION} REQUIRED)
 
 ################ Find testing dependencies ##########
 
-option(ENABLE_TESTING "Enable tests" ON)
-
-if (ENABLE_TESTING)
-    enable_testing()
+if (BUILD_TESTING)
     find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Test)
 endif()
 
 ################# build and install #################
 add_subdirectory(src)
 
-if (ENABLE_TESTING)
+if (BUILD_TESTING)
     add_subdirectory(autotests)
 endif()
 

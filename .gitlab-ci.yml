@@ -11,4 +11,4 @@ flatpak:
     MANIFEST_PATH: org.kde.keysmith.json
     APP_ID: org.kde.keysmith
     FLATPAK_MODULE: org.kde.keysmith
-    CMAKE_ARGS: -DENABLE_TESTING=OFF
+    CMAKE_ARGS: -DBUILD_TESTING=OFF
