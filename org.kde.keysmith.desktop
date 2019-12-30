@@ -2,6 +2,7 @@
 Name=Keysmith
 Name[ca]=Keysmith
 Name[cs]=Keysmith
+Name[en_GB]=Keysmith
 Name[es]=Keysmith
 Name[et]=Keysmith
 Name[fr]=Keysmith
@@ -17,6 +18,7 @@ Name[zh_TW]=Keysmith
 Comment=Manage your OTP tokens for two factor authentication (2fa)
 Comment[ca]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[cs]=Spravujte tokeny OTP pomocí dvoufaktorového ověření (2fa)
+Comment[en_GB]=Manage your OTP tokens for two factor authentication (2fa)
 Comment[es]=Gestión de elementos OTP para autenticación de dos factores (2fa)
 Comment[et]=Kaheastmelise autentimise (2fa) OTP-pääsmike haldamine 
 Comment[fr]=Gérez vos jetons OTP pour l'authentification à 2 facteurs (2fa)
