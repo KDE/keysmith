@@ -29,8 +29,6 @@ import org.kde.kirigami 2.4 as Kirigami
 Kirigami.ApplicationWindow {
     id: root
 
-    title: application.displayName
-
     pageStack.initialPage: accounts.rowCount() > 0 ? mainPageComponent : addPageComponent
 
     property bool addActionEnabled: true
