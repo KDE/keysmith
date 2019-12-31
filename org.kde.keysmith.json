@@ -3,7 +3,7 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
-    "command": "org.kde.keysmith",
+    "command": "keysmith",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": [

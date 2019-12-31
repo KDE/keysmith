@@ -52,7 +52,7 @@ if (BUILD_TESTING)
 endif()
 
 install(PROGRAMS org.kde.keysmith.desktop DESTINATION ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.keysmith.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
+install(FILES keysmith.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
 install(FILES org.kde.keysmith.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
