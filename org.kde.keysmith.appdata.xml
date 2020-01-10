@@ -13,6 +13,7 @@
   <name xml:lang="nl">Keysmith</name>
   <name xml:lang="pt">Keysmith</name>
   <name xml:lang="pt-BR">Keysmith</name>
+  <name xml:lang="sk">Keysmith</name>
   <name xml:lang="sv">Keysmith</name>
   <name xml:lang="uk">Keysmith</name>
   <name xml:lang="x-test">xxKeysmithxx</name>
@@ -45,6 +46,7 @@
   <developer_name xml:lang="nl">KDE gemeenschap</developer_name>
   <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
   <developer_name xml:lang="pt-BR">Comunidade KDE</developer_name>
+  <developer_name xml:lang="sk">KDE komunita</developer_name>
   <developer_name xml:lang="sv">KDE-gemenskapen</developer_name>
   <developer_name xml:lang="uk">Спільнота KDE</developer_name>
   <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
