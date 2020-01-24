@@ -87,7 +87,7 @@ void Base32DecodingTest::testSample_data(void)
     define_test_case("''", ok_corpus[12], 0, QLatin1String(""));
 
     define_test_case("without any padding", NULL, 0, QLatin1String("ZZ"));
-    define_test_case("too litle padding", NULL, 0, QLatin1String("ZZ==="));
+    define_test_case("too little padding", NULL, 0, QLatin1String("ZZ==="));
     define_test_case("padding only", NULL, 0, QLatin1String("========"));
     define_test_case("embedded spaces", NULL,  0, QLatin1String("ZZ \n===="));
     define_test_case("invalid base32 (1)", NULL, 0, QLatin1String("1AABBCCD"));

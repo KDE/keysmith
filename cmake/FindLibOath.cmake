@@ -79,5 +79,5 @@ mark_as_advanced(LIBOATH_INCLUDE_DIRS LIBOATH_INCLUDE_DIR
 
 include(FeatureSummary)
 set_package_properties(LIBOATH PROPERTIES
-  URL "http://www.nongnu.org/oath-toolkit/"
+  URL "https://www.nongnu.org/oath-toolkit/"
   DESCRIPTION "Library for Open AuTHentication (OATH) HOTP etc support.")
