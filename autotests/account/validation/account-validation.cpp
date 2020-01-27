@@ -80,7 +80,7 @@ void AccountValidationTest::checkSecret_data()
 
     QTest::newRow("null value") << QString() << false;
     QTest::newRow("empty secret") << QString(QLatin1String("")) << false;
-    QTest::newRow("valid secret") << QString(QLatin1String("something")) << true;
+    QTest::newRow("valid secret") << QString(QLatin1String("ONSWG4TFOQ======")) << true;
 }
 
 void AccountValidationTest::checkTokenLength_data()

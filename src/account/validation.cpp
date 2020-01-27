@@ -4,6 +4,8 @@
  */
 #include "validation.h"
 
+#include "../base32/base32.h"
+
 namespace accounts
 {
 
@@ -14,7 +16,7 @@ namespace accounts
 
     bool checkSecret(const QString &secret)
     {
-        return !secret.isEmpty();
+        return !secret.isEmpty() && base32::validate(secret);
     }
 
     bool checkName(const QString &name)
