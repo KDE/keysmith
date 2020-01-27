@@ -11,4 +11,4 @@ set(account_SRCS
 )
 
 add_library(account_lib STATIC ${account_SRCS})
-target_link_libraries(account_lib Qt5::Core base32_lib ${LIBOATH_LIBRARIES})
+target_link_libraries(account_lib Qt5::Core base32_lib oath_lib)

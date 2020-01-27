@@ -6,7 +6,7 @@
 #include "validation.h"
 
 #include "../base32/base32.h"
-#include "../oath_p.h"
+#include "../oath/oath.h"
 
 #include <QTimer>
 
@@ -212,44 +212,55 @@ namespace accounts
     {
         if (!checkTotp(m_secret, m_tokenLength, m_timeStep)) {
             Q_EMIT finished();
+            // TODO warn about this
             return;
         }
 
         std::optional<QByteArray> secret = base32::decode(m_secret);
         if (!secret.has_value()) {
             Q_EMIT finished();
+            // TODO warn about this
             return;
         }
 
-        QByteArray code;
-        code.reserve(m_tokenLength);
-        QDateTime now = QDateTime::fromMSecsSinceEpoch(m_clock());
-        int oath_totp_flags = 0;
+        QCryptographicHash::Algorithm hash;
         switch(m_hash)
         {
         case Account::Hash::Sha256:
-            oath_totp_flags |= OATH_TOTP_HMAC_SHA256;
+            hash = QCryptographicHash::Sha256;
             break;
         case Account::Hash::Sha512:
-            oath_totp_flags |= OATH_TOTP_HMAC_SHA512;
+            hash = QCryptographicHash::Sha512;
+            break;
+        case Account::Hash::Default:
+            hash = QCryptographicHash::Sha1;
             break;
         default:
-            break;
+            Q_EMIT finished();
+            // TODO warn about this
+            return;
+
         }
 
-        int result = oath_totp_generate2(secret->constData(),
-                                         secret->length(),
-                                         now.toTime_t(),
-                                         m_timeStep,
-                                         m_epoch.toTime_t(),
-                                         m_tokenLength,
-                                         oath_totp_flags,
-                                         code.data());
-
-        if (result == OATH_OK) {
-            QString token = QString::fromUtf8(code.constData(), m_tokenLength);
-            Q_EMIT otp(token);
+        const std::optional<oath::Algorithm> algorithm = oath::Algorithm::usingDynamicTruncation(hash, m_tokenLength);
+        if (!algorithm) {
+            Q_EMIT finished();
+            // TODO warn about this
+            return;
         }
+
+        const std::optional<quint64> counter = oath::count(m_epoch, m_timeStep, m_clock);
+        if (!counter) {
+            Q_EMIT finished();
+            // TODO warn about this
+            return;
+        }
+
+        const std::optional<QString> token = algorithm->compute(*counter, secret->data(), secret->size());
+        if (token) {
+            Q_EMIT otp(*token);
+        }
+        // TODO warn if not
 
         Q_EMIT finished();
     }
@@ -263,31 +274,32 @@ namespace accounts
     {
         if (!checkHotp(m_secret, m_tokenLength)) {
             Q_EMIT finished();
+            // TODO warn about this
             return;
         }
 
         std::optional<QByteArray> secret = base32::decode(m_secret);
         if (!secret.has_value()) {
             Q_EMIT finished();
+            // TODO warn about this
             return;
         }
 
-        QByteArray code;
-        code.reserve(m_tokenLength);
-        size_t offset = m_offset < 0 ? OATH_HOTP_DYNAMIC_TRUNCATION : (size_t) m_offset;
-
-        int result = oath_hotp_generate(secret->constData(),
-                                        secret->length(),
-                                        m_counter,
-                                        m_tokenLength,
-                                        m_checksum,
-                                        offset,
-                                        code.data());
-
-        if (result == OATH_OK) {
-            QString token = QString::fromUtf8(code.constData(), m_tokenLength);
-            Q_EMIT otp(token);
+        const oath::Encoder encoder(m_tokenLength, m_checksum);
+        const std::optional<oath::Algorithm> algorithm = m_offset >=0
+            ? oath::Algorithm::usingTruncationOffset(QCryptographicHash::Sha1, (uint) m_offset, encoder)
+            : oath::Algorithm::usingDynamicTruncation(QCryptographicHash::Sha1, encoder);
+        if (!algorithm) {
+            Q_EMIT finished();
+            // TODO warn about this
+            return;
         }
+
+        const std::optional<QString> token = algorithm->compute(m_counter, secret->data(), secret->size());
+        if (token) {
+            Q_EMIT otp(*token);
+        }
+        // TODO warn if not
 
         Q_EMIT finished();
     }
