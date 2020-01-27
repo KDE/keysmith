@@ -1,0 +1,11 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+#
+set(oath_SRCS
+    oath.cpp
+    util.cpp
+)
+
+add_library(oath_lib STATIC ${oath_SRCS})
+target_link_libraries(oath_lib Qt5::Core hmac_lib)
