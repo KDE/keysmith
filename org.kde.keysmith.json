@@ -19,38 +19,6 @@
 
     "modules": [
         {
-            "name": "xmlsec1",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.aleksey.com/xmlsec/download/xmlsec1-1.2.27.tar.gz",
-                    "sha256": "97d756bad8e92588e6997d2227797eaa900d05e34a426829b149f65d87118eb6"
-                }
-            ]
-        },
-        {
-            "name": "oath-toolkit",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.savannah.nongnu.org/releases/oath-toolkit/oath-toolkit-2.6.2.tar.gz",
-                    "sha256": "b03446fa4b549af5ebe4d35d7aba51163442d255660558cd861ebce536824aa0"
-                },
-                {
-                    "type": "patch",
-                    "path": "flatpak/2fffce2a471f74a585939c84cce16ef3015e5d3d.diff"
-                },
-                {
-                    "type": "patch",
-                    "path": "flatpak/oath-toolkit/fseeko.patch"
-                },
-                {
-                    "type" : "shell",
-                    "commands" : [ "autoreconf -vfi" ]
-                }
-            ]
-        },
-        {
             "name": "org.kde.keysmith",
             "buildsystem": "cmake-ninja",
             "builddir": true,
