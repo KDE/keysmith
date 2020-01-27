@@ -1,0 +1,13 @@
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+#
+
+set(Test_DEP_LIBS Qt5::Core Qt5::Test hmac_lib)
+
+set(hmac_test_SRCS
+    hmac-samples.cpp
+    hmac-validate-keysize.cpp
+)
+
+ecm_add_tests(${hmac_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS} NAME_PREFIX hmac-)
