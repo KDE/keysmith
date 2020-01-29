@@ -2,6 +2,15 @@
 <component type="desktop-application">
   <id>org.kde.keysmith</id>
   <name>Keysmith</name>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>keysmith</binary>
+  </provides>
+  <categories>
+    <category>Utility</category>
+  </categories>
   <name xml:lang="ca">Keysmith</name>
   <name xml:lang="cs">Keysmith</name>
   <name xml:lang="en-GB">Keysmith</name>
@@ -32,8 +41,6 @@
   <summary xml:lang="uk">Засіб для створення двофакторних кодів для мобільної і стільничної Плазми</summary>
   <summary xml:lang="x-test">xxTwo-factor code generator for Plasma Mobile and Desktopxx</summary>
   <summary xml:lang="zh-TW">適用於 Plasma 行動版及桌面版的兩步驟驗證碼產生器</summary>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0-or-later</project_license>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
