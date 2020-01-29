@@ -40,4 +40,4 @@ Exec=keysmith
 Icon=keysmith
 Type=Application
 Terminal=false
-Categories=Qt;KDE;
+Categories=Qt;KDE;Utility
