@@ -108,7 +108,7 @@ Kirigami.SwipeListItem {
                 from: timer.interval / root.interval
                 to: 0
                 duration: timer.interval
-                running: model.account && model.account.isTotp && units.longDuration > 1
+                running: model.account && model.account.isTotp && Kirigami.Units.longDuration > 1
             }
         }
     }
