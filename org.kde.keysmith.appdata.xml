@@ -2,15 +2,6 @@
 <component type="desktop-application">
   <id>org.kde.keysmith</id>
   <name>Keysmith</name>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0-or-later</project_license>
-  <project_group>KDE</project_group>
-  <provides>
-    <binary>keysmith</binary>
-  </provides>
-  <categories>
-    <category>Utility</category>
-  </categories>
   <name xml:lang="ca">Keysmith</name>
   <name xml:lang="cs">Keysmith</name>
   <name xml:lang="en-GB">Keysmith</name>
@@ -27,6 +18,15 @@
   <name xml:lang="uk">Keysmith</name>
   <name xml:lang="x-test">xxKeysmithxx</name>
   <name xml:lang="zh-TW">Keysmith</name>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <project_group>KDE</project_group>
+  <provides>
+    <binary>keysmith</binary>
+  </provides>
+  <categories>
+    <category>Utility</category>
+  </categories>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mòbil i l'escriptori</summary>
   <summary xml:lang="en-GB">Two-factor code generator for Plasma Mobile and Desktop</summary>
