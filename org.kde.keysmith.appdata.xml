@@ -3,6 +3,7 @@
   <id>org.kde.keysmith</id>
   <name>Keysmith</name>
   <name xml:lang="ca">Keysmith</name>
+  <name xml:lang="ca-valencia">Keysmith</name>
   <name xml:lang="cs">Keysmith</name>
   <name xml:lang="en-GB">Keysmith</name>
   <name xml:lang="es">Keysmith</name>
@@ -29,6 +30,7 @@
   </categories>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mòbil i l'escriptori</summary>
+  <summary xml:lang="ca-valencia">Generador del codi de dos factors per al Plasma Mòbil i l'escriptori</summary>
   <summary xml:lang="en-GB">Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="es">Generador de códigos de dos factores para Plasma Mobile y para el escritorio</summary>
   <summary xml:lang="et">Kaheastmelise autentimise koodi genereerimine Plasma Mobile ja Plasma töölaua tarbeks</summary>
@@ -43,6 +45,7 @@
   <summary xml:lang="zh-TW">適用於 Plasma 行動版及桌面版的兩步驟驗證碼產生器</summary>
   <developer_name>KDE Community</developer_name>
   <developer_name xml:lang="ca">La comunitat KDE</developer_name>
+  <developer_name xml:lang="ca-valencia">La comunitat KDE</developer_name>
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
   <developer_name xml:lang="en-GB">KDE Community</developer_name>
   <developer_name xml:lang="es">Comunidad KDE</developer_name>
@@ -61,6 +64,7 @@
   <description>
     <p>Keysmith generates tokens for your two-factor logins (2FA)</p>
     <p xml:lang="ca">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
+    <p xml:lang="ca-valencia">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="en-GB">Keysmith generates tokens for your two-factor logins (2FA)</p>
     <p xml:lang="es">Keysmith genera elementos para los inicios de sesión de dos factores (2FA)</p>
     <p xml:lang="et">Keysmith genereerib pääsmikke kaheastmelise autentimise (2FA) tarbeks</p>
@@ -76,6 +80,7 @@
     <ul>
       <li>Time and Hash-based OTP</li>
       <li xml:lang="ca">OTP basat en l'hora i en el resum</li>
+      <li xml:lang="ca-valencia">OTP basat en l'hora i en el resum</li>
       <li xml:lang="en-GB">Time and Hash-based OTP</li>
       <li xml:lang="es">OTP basada en el tiempo y en resúmenes criptográficos</li>
       <li xml:lang="et">Aja- ja räsipõhine OTP</li>
