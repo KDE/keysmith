@@ -4,7 +4,6 @@
  */
 #include "hmac.h"
 
-
 static QByteArray hmac_stage(QCryptographicHash::Algorithm algorithm, char * const keyBuf, int ksize, int blockSize, const char fillPad, const char xorKey, const QByteArray &message)
 {
     QCryptographicHash hash(algorithm);

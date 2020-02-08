@@ -9,6 +9,7 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 
+#include <functional>
 #include <optional>
 
 namespace oath
