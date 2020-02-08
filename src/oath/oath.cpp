@@ -36,7 +36,7 @@ static QString encodeDefaultsWithChecksum(quint32 value, uint tokenLength)
 static quint32 truncate(const QByteArray &hash, uint offset)
 {
     Q_ASSERT_X(hash.size() >= 4, Q_FUNC_INFO, "hash output is too small");
-    Q_ASSERT_X(offset <= (hash.size() - 4), Q_FUNC_INFO, "truncation offset is too large for the hash output");
+    Q_ASSERT_X(offset <= (((uint) hash.size()) - 4UL), Q_FUNC_INFO, "truncation offset is too large for the hash output");
 
     return ((((quint32) hash[offset]) & 0x7FUL) << 24)
         | ((((quint32) hash[offset + 1]) & 0xFFUL) << 16)
