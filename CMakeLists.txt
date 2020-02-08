@@ -1,5 +1,5 @@
-# Need 3.10.3 for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
-cmake_minimum_required(VERSION 3.10.3)
+# Need 3.10.X for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
+cmake_minimum_required(VERSION 3.10)
 
 project(keysmith)
 
