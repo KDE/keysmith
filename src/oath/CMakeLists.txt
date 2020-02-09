@@ -4,7 +4,6 @@
 #
 set(oath_SRCS
     oath.cpp
-    util.cpp
 )
 
 add_library(oath_lib STATIC ${oath_SRCS})

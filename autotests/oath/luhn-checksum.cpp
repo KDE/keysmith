@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
-#include "oath/util.h"
+#include "oath/oath.h"
 
 #include <QTest>
 #include <QtDebug>

@@ -43,10 +43,10 @@ void HMacValidateKeySizeTest::testValidation_data(void)
 {
     define_test_data();
 
-    define_test_case("short keys for HMAC-SHA1 permitted", QCryptographicHash::Sha1, 42, false, true);
-    define_test_case("exact match for HMAC-SHA1 blocks", QCryptographicHash::Sha1, 64, true, true);
+    define_test_case("short keys for HMAC-SHA1 permitted", QCryptographicHash::Sha1, 19, false, true);
+    define_test_case("exact match for HMAC-SHA1 output", QCryptographicHash::Sha1, 20, true, true);
     define_test_case("long keys for HMAC-SHA1", QCryptographicHash::Sha1, 500, true, true);
-    define_test_case("short keys for HMAC-SHA1 disallowed", QCryptographicHash::Sha1, 42, true, false);
+    define_test_case("short keys for HMAC-SHA1 disallowed", QCryptographicHash::Sha1, 19, true, false);
     define_test_case("invalid key size: -1", QCryptographicHash::Sha1, -1, false, false);
     define_test_case("invalid algorithm: -1", (QCryptographicHash::Algorithm) -1, 500, true, false);
 }

@@ -4,8 +4,6 @@
  */
 #include "oath.h"
 
-#include "util.h"
-
 #include "../hmac/hmac.h"
 
 static QString encodeDefaults(quint32 value, uint tokenLength)
@@ -100,7 +98,7 @@ namespace oath
 
     std::optional<Algorithm> Algorithm::usingDynamicTruncation(QCryptographicHash::Algorithm algorithm, const Encoder &encoder, bool requireSaneKeyLength)
     {
-        std::optional<uint> digestSize = outputSize(algorithm);
+        std::optional<uint> digestSize = hmac::outputSize(algorithm);
         if (!digestSize) {
             // TODO warn about this
             return std::nullopt;
@@ -122,7 +120,7 @@ namespace oath
 
     std::optional<Algorithm> Algorithm::usingTruncationOffset(QCryptographicHash::Algorithm algorithm, uint offset, const Encoder &encoder, bool requireSaneKeyLength)
     {
-        std::optional<uint> digestSize = outputSize(algorithm);
+        std::optional<uint> digestSize = hmac::outputSize(algorithm);
         if (!digestSize) {
             // TODO warn about this
             return std::nullopt;
@@ -177,6 +175,37 @@ namespace oath
         // TODO warn if not
 
         return std::nullopt;
+    }
+
+    uint luhnChecksum(quint32 value, uint digits)
+    {
+        static const uint lookupTable[10] = {
+            0, // 0 * 2
+            2, // 1 * 2
+            4, // 2 * 2
+            6, // 3 * 2
+            8, // 4 * 2
+            1, // 5 * 2 - 9
+            3, // 6 * 2 - 9
+            5, // 7 * 2 - 9
+            7, // 8 * 2 - 9
+            9, // 9 * 2 - 9
+        };
+
+        Q_ASSERT_X(digits > 0UL, Q_FUNC_INFO, "checksum cannot be computed over less than 1 digit");
+        uint sum = 0UL;
+        bool doubledMinus9 = true;
+        for (uint d = 0UL; d < digits && value != 0UL; ++d) {
+            uint position = value % 10UL;
+
+            sum += doubledMinus9 ? lookupTable[position] : position;
+
+            value /= 10UL;
+            doubledMinus9 = !doubledMinus9;
+        }
+
+        sum = sum % 10ULL;
+        return sum == 0UL ? 0UL : 10UL - sum;
     }
 
     std::optional<quint64> count(const QDateTime &epoch, uint timeStep, const std::function<qint64(void)> &clock)

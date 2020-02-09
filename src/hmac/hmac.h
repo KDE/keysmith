@@ -13,6 +13,7 @@
 namespace hmac
 {
     std::optional<int> blockSize(QCryptographicHash::Algorithm algorithm);
+    std::optional<uint> outputSize(QCryptographicHash::Algorithm algorithm);
 
     bool validateKeySize(QCryptographicHash::Algorithm algorithm, int ksize, bool requireSaneKeyLength = false);
     std::optional<QByteArray> compute(QCryptographicHash::Algorithm algorithm, char * rawKey, int ksize, const QByteArray &message, bool requireSaneKeyLength = false);
