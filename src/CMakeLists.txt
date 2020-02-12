@@ -19,4 +19,14 @@ target_link_libraries(keysmith
     KF5::I18n
     ${keysmith_internal_libs}
 )
+
+if(ANDROID)
+    kirigami_package_breeze_icons(ICONS
+        go-next
+        edit-delete
+        list-add
+        answer-correct
+    )
+endif()
+
 install(TARGETS keysmith ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
