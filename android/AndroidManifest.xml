@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="org.kde.keysmith"
           android:versionName="0.0.1"
-          android:versionCode="1581182304"
+          android:versionCode="1581541456"
           android:installLocation="auto">
-    <application android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="Keysmith">
+    <application android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="Keysmith" android:icon="@drawable/keysmith">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
                   android:name="org.qtproject.qt5.android.bindings.QtActivity"
                   android:label="Keysmith"
