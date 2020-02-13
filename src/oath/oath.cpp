@@ -63,7 +63,7 @@ namespace oath
     quint32 Encoder::reduceMod10(quint32 value, uint tokenLength)
     {
         /*
-         * Skip modulo 10 reducation for tokens of 10 or more characters:
+         * Skip modulo 10 reduction for tokens of 10 or more characters:
          * the value is already guaranteed to be in its modulo 10 reduced form, because 2^32 is less than 10^10.
          * This check also takes care of possible integer overflow, for the same reason.
          */
@@ -88,7 +88,7 @@ namespace oath
 
     bool Algorithm::validate(const Encoder &encoder)
     {
-        // HOTP spec mandages a mimimum token length of 6 digits
+        // HOTP spec manages a minimum token length of 6 digits
         return encoder.tokenLength() >= 6;
     }
 

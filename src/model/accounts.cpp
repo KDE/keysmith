@@ -21,7 +21,7 @@ namespace model
             qint64 diff = epoch.msecsTo(now);
 
             /*
-             * Compensate for the fact that % operator is not the same as mathemtical mod in case diff is negative.
+             * Compensate for the fact that % operator is not the same as mathematical mod in case diff is negative.
              * diff is negative when the given epoch is in the 'future' compared to the current clock value.
              */
             return diff < 0 ? - (diff % step) : step - (diff % step);

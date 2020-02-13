@@ -140,7 +140,7 @@ namespace accounts
     public:
         explicit Dispatcher(QThread *thread, QObject *parent = nullptr);
         bool empty(void) const;
-        void queueAndProceed(AccountJob *job, const std::function<void(void)> &setup_calbacks);
+        void queueAndProceed(AccountJob *job, const std::function<void(void)> &setup_callbacks);
     Q_SIGNALS:
         void dispatch(void);
     private Q_SLOTS:
