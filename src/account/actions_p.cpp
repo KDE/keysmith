@@ -165,6 +165,7 @@ namespace accounts
                 const int tokenLength = settings.value("pinLength").toInt(&ok);
 
                 if (!ok || (type != "hotp" && type != "totp")) {
+                    settings.endGroup();
                     continue;
                 }
 
