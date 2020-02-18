@@ -86,7 +86,7 @@ namespace oath
 
     bool Algorithm::validate(const Encoder &encoder)
     {
-        // HOTP spec manages a minimum token length of 6 digits
+        // HOTP spec mandates a minimum token length of 6 digits
         return encoder.tokenLength() >= 6;
     }
 
