@@ -38,6 +38,10 @@ namespace accounts
         Q_ASSERT_X(false, Q_FUNC_INFO, "should be overridden in derived classes!");
     }
 
+    RequestAccountPassword::RequestAccountPassword(const SettingsProvider &settings, AccountSecret *secret) : AccountJob(), m_settings(settings), m_secret(secret), m_failed(false), m_succeeded(false)
+    {
+    }
+
     LoadAccounts::LoadAccounts(const SettingsProvider &settings) : AccountJob(), m_settings(settings)
     {
     }
@@ -161,6 +165,146 @@ namespace accounts
         m_settings(act);
 
         Q_EMIT finished();
+    }
+
+    void RequestAccountPassword::fail(void)
+    {
+        if (m_failed || m_succeeded) {
+            qCDebug(logger) << "Suppressing 'failure' in unlocking accounts: already handled";
+            return;
+        }
+
+        m_failed = true;
+        QObject::disconnect(m_secret, &AccountSecret::requestsCancelled, this, &RequestAccountPassword::fail);
+        QObject::disconnect(m_secret, &AccountSecret::passwordAvailable, this, &RequestAccountPassword::unlock);
+        Q_EMIT failed();
+        Q_EMIT finished();
+    }
+
+    void RequestAccountPassword::unlock(void)
+    {
+        if (m_succeeded || m_failed) {
+            qCDebug(logger) << "Suppressing 'success' in unlocking accounts: already handled";
+            return;
+        }
+
+        QObject::disconnect(m_secret, &AccountSecret::requestsCancelled, this, &RequestAccountPassword::fail);
+        QObject::disconnect(m_secret, &AccountSecret::passwordAvailable, this, &RequestAccountPassword::unlock);
+        secrets::SecureMasterKey * derived = m_secret->deriveKey();
+        if (!derived) {
+            qCInfo(logger) << "Failed to unlock storage: unable to derive secret encryption/decryption key";
+            m_failed = true;
+            Q_EMIT failed();
+            Q_EMIT finished();
+            return;
+        }
+
+        bool ok = false;
+        m_settings([this, derived, &ok](QSettings &settings) -> void
+        {
+            if (!settings.isWritable()) {
+                qCWarning(logger) << "Unable to save account secret key parameters: storage not writable";
+                return;
+            }
+
+            const secrets::KeyDerivationParameters params = derived->params();
+
+            QString encodedSalt = QString::fromUtf8(derived->salt().toBase64(QByteArray::Base64Encoding));
+            settings.beginGroup("master-key");
+            settings.setValue("salt", encodedSalt);
+            settings.setValue("cpu", params.cpuCost());
+            settings.setValue("memory", (quint64) params.memoryCost());
+            settings.setValue("algorithm", params.algorithm());
+            settings.setValue("length", params.keyLength());
+            settings.endGroup();
+            ok = true;
+        });
+
+        if (ok) {
+            qCInfo(logger) << "Successfully unlocked storage";
+            m_succeeded = true;
+            Q_EMIT unlocked();
+        } else {
+            qCInfo(logger) << "Failed to unlock storage: unable to store parameters";
+            m_failed = true;
+            Q_EMIT failed();
+        }
+        Q_EMIT finished();
+    }
+
+    void RequestAccountPassword::run(void)
+    {
+        if (!m_secret) {
+            qCDebug(logger) << "Unable to request accounts password: no account secret object";
+            m_failed = true;
+            Q_EMIT failed();
+            Q_EMIT finished();
+            return;
+        }
+
+        QObject::connect(m_secret, &AccountSecret::passwordAvailable, this, &RequestAccountPassword::unlock);
+        QObject::connect(m_secret, &AccountSecret::requestsCancelled, this, &RequestAccountPassword::fail);
+
+        if (!m_secret->isStillAlive()) {
+            qCDebug(logger) << "Unable to request accounts password: account secret marked for death";
+            fail();
+            return;
+        }
+
+        bool ok = false;
+        m_settings([this, &ok](QSettings &settings) -> void
+        {
+            if (!settings.isWritable()) {
+                qCWarning(logger) << "Unable to request password for accounts: storage not writable";
+                return;
+            }
+
+            QStringList groups = settings.childGroups();
+            if (!groups.contains(QLatin1String("master-key"))) {
+                qCInfo(logger) << "No key derivation parameters found: requesting 'new' password for accounts";
+                ok = m_secret->requestNewPassword();
+                return;
+            }
+
+            settings.beginGroup("master-key");
+            QByteArray salt;
+            quint64 cpuCost = 0ULL;
+            quint64 keyLength = 0ULL;
+            size_t memoryCost = 0ULL;
+            int algorithm = settings.value("algorithm").toInt(&ok);
+            if (ok) {
+                ok = false;
+                keyLength = settings.value("length").toULongLong(&ok);
+            }
+            if (ok) {
+                ok = false;
+                cpuCost = settings.value("cpu").toULongLong(&ok);
+            }
+            if (ok) {
+                ok = false;
+                memoryCost = settings.value("memory").toULongLong(&ok);
+            }
+            if (ok) {
+                QByteArray encodedSalt = settings.value("salt").toString().toUtf8();
+                salt = QByteArray::fromBase64(encodedSalt, QByteArray::Base64Encoding);
+                ok = secrets::SecureMasterKey::validate(salt);
+            }
+            settings.endGroup();
+
+            std::optional<secrets::KeyDerivationParameters> params = secrets::KeyDerivationParameters::create(keyLength, algorithm, memoryCost, cpuCost);
+            if (!ok || !params || !secrets::SecureMasterKey::validate(*params)) {
+                qCDebug(logger) << "Unable to request 'existing' password: invalid salt or key derivation parameters";
+                return;
+            }
+
+            qCInfo(logger) << "Requesting 'existing' password for accounts";
+            ok = m_secret->requestExistingPassword(salt, *params);
+        });
+
+        if (!ok) {
+            qCInfo(logger) << "Unable to unlock storage: failed to request password for accounts";
+            fail();
+        }
     }
 
     void LoadAccounts::run(void)

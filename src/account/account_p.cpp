@@ -316,6 +316,11 @@ namespace accounts
         return m_settings;
     }
 
+    AccountSecret * AccountStoragePrivate::secret(void) const
+    {
+        return m_secret;
+    }
+
     void AccountStoragePrivate::removeAccounts(const QSet<QString> &accountNames)
     {
         if (!m_is_still_open) {
@@ -381,6 +386,7 @@ namespace accounts
 
         m_is_still_open = false;
         Null *job = new Null();
+        m_secret->cancelRequests();
         m_actions->queueAndProceed(job, [job, &handler](void) -> void
         {
             handler(job);
@@ -408,6 +414,7 @@ namespace accounts
             m_ids.remove(id);
             QTimer::singleShot(0, account, &accounts::Account::deleteLater);
         }
+        QTimer::singleShot(0, m_secret, &accounts::AccountSecret::deleteLater);
         Q_EMIT q->disposed();
     }
 
@@ -478,6 +485,21 @@ namespace accounts
         });
     }
 
+    void AccountStoragePrivate::unlock(const std::function<void(RequestAccountPassword*)> &handler)
+    {
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Will not attempt to unlock accounts: storage no longer open";
+            return;
+        }
+
+        qCDebug(logger) << "Requesting to unlock account storage";
+        RequestAccountPassword *job = new RequestAccountPassword(m_settings, m_secret);
+        m_actions->queueAndProceed(job, [job, &handler](void) -> void
+        {
+            handler(job);
+        });
+    }
+
     void AccountStoragePrivate::load(const std::function<void(LoadAccounts*)> &handler)
     {
         if (!m_is_still_open) {
@@ -528,8 +550,8 @@ namespace accounts
         return m_accounts[id];
     }
 
-    AccountStoragePrivate::AccountStoragePrivate(const SettingsProvider &settings, AccountStorage *storage, Dispatcher *dispatcher) :
-        q_ptr(storage), m_is_still_open(true), m_actions(dispatcher), m_settings(settings)
+    AccountStoragePrivate::AccountStoragePrivate(const SettingsProvider &settings, AccountSecret *secret, AccountStorage *storage, Dispatcher *dispatcher) :
+        q_ptr(storage), m_is_still_open(true), m_actions(dispatcher), m_settings(settings), m_secret(secret)
     {
     }
 

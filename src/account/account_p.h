@@ -7,6 +7,7 @@
 
 #include "account.h"
 #include "actions_p.h"
+#include "keys.h"
 
 #include <QDateTime>
 #include <QHash>
@@ -77,9 +78,10 @@ namespace accounts
     class AccountStoragePrivate
     {
     public:
-        explicit AccountStoragePrivate(const SettingsProvider &settings, AccountStorage *storage, Dispatcher *dispatcher);
+        explicit AccountStoragePrivate(const SettingsProvider &settings, AccountSecret *secret, AccountStorage *storage, Dispatcher *dispatcher);
         void dispose(const std::function<void(Null*)> &handler);
         void acceptDisposal(void);
+        void unlock(const std::function<void(RequestAccountPassword*)> &handler);
         void load(const std::function<void(LoadAccounts*)> &handler);
         QVector<QString> activeAccounts(void) const;
         bool isStillOpen(void) const;
@@ -87,6 +89,7 @@ namespace accounts
         SettingsProvider settings(void) const;
         bool isNameStillAvailable(const QString &name) const;
         Account * get(const QString &account) const;
+        AccountSecret *secret(void) const;
         void removeAccounts(const QSet<QString> &accountNames);
         void acceptAccountRemoval(const QString &accountName);
         Account * acceptHotpAccount(const QUuid &id,
@@ -127,6 +130,7 @@ namespace accounts
         bool m_is_still_open;
         Dispatcher * const m_actions;
         const SettingsProvider m_settings;
+        AccountSecret * m_secret;
     private:
         QSet<QUuid> m_ids;
         QHash<QString, QUuid> m_names;

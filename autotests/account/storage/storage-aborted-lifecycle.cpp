@@ -7,17 +7,14 @@
 #include "../test-utils/output.h"
 #include "../test-utils/spy.h"
 
-#include <QDateTime>
-#include <QFile>
 #include <QSignalSpy>
 #include <QString>
 #include <QTest>
-#include <QVector>
 #include <QtDebug>
 
 static QString testIniResource(QLatin1String("test.ini"));
 
-class StorageDefaultLifeCycleTest: public QObject
+class StorageAbortLifeCycleTest: public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -25,16 +22,15 @@ private Q_SLOTS:
     void testLifecycle(void);
 };
 
-void StorageDefaultLifeCycleTest::initTestCase(void)
+void StorageAbortLifeCycleTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
     QVERIFY2(test::copyResourceAsWritable(":/storage-lifecycles/starting.ini", testIniResource), "test corpus INI resource should be available as file");
 }
 
-void StorageDefaultLifeCycleTest::testLifecycle(void)
+void StorageAbortLifeCycleTest::testLifecycle(void)
 {
     const QString iniResource = test::path(testIniResource);
-    const QString sampleAccountName(QLatin1String("valid-hotp-sample-1"));
 
     const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void
     {
@@ -55,39 +51,23 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     QSignalSpy passwordRequestsCancelled(secret, &accounts::AccountSecret::requestsCancelled);
     QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
 
-    // first phase: check that account objects can be loaded from storage
-
-    // expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
+    // first phase:  expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
     QVERIFY2(test::signal_eventually_emitted_once(existingPasswordNeeded), "(existing) password should be asked by now");
     QCOMPARE(newPasswordNeeded.count(), 0);
-
-    QString password(QLatin1String("password"));
-    secret->answerExistingPassword(password);
-
-    QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "(existing) password should have been accepted by now");
-    QCOMPARE(password, QString(QLatin1String("********")));
-
-    QVERIFY2(test::signal_eventually_emitted_once(keyAvailable, 2500), "key should have been derived by now");
-
-    // expect that loading is scheduled automatically, so advancing the event loop should trigger the signal
-    QVERIFY2(test::signal_eventually_emitted_once(accountAdded), "sample account should be loaded by now");
-    QCOMPARE(accountAdded.at(0).at(0), sampleAccountName);
-
-    accounts::Account *sampleAccount = uut->get(sampleAccountName);
-    QVERIFY2(sampleAccount != nullptr, "get() should return the sample account");
-
-    QSignalSpy sampleAccountCleaned(sampleAccount, &accounts::Account::destroyed);
 
     // second phase: check that disposing storage cleans up objects properly
     uut->dispose();
 
     QVERIFY2(test::signal_eventually_emitted_once(passwordRequestsCancelled), "account secret should have signalled cancellation by now");
     QVERIFY2(test::signal_eventually_emitted_once(storageDisposed), "storage should be disposed of by now");
-    QVERIFY2(test::signal_eventually_emitted_once(sampleAccountCleaned), "sample account should be cleaned up by now");
     QVERIFY2(test::signal_eventually_emitted_once(secretCleaned), "account secret should be cleaned up by now");
     QVERIFY2(test::signal_eventually_emitted_once(storageCleaned), "storage should be cleaned up by now");
+
+    QCOMPARE(passwordAvailable.count(), 0);
+    QCOMPARE(keyAvailable.count(), 0);
+    QCOMPARE(accountAdded.count(), 0);
 }
 
-QTEST_MAIN(StorageDefaultLifeCycleTest)
+QTEST_MAIN(StorageAbortLifeCycleTest)
 
-#include "storage-default-lifecycle.moc"
+#include "storage-aborted-lifecycle.moc"

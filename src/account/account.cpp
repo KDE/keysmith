@@ -103,15 +103,16 @@ namespace accounts
         d->remove();
     }
 
-    AccountStorage::AccountStorage(const SettingsProvider &settings, QThread *worker, QObject *parent) : QObject(parent), m_dptr(new AccountStoragePrivate(settings, this, new Dispatcher(worker, this)))
+    AccountStorage::AccountStorage(const SettingsProvider &settings, QThread *worker, AccountSecret *secret, QObject *parent) :
+        QObject(parent), m_dptr(new AccountStoragePrivate(settings, secret ? secret : new AccountSecret(secrets::defaultSecureRandom, this), this, new Dispatcher(worker, this)))
     {
-        QTimer::singleShot(0, this, &AccountStorage::load);
+        QTimer::singleShot(0, this, &AccountStorage::unlock);
     }
 
-    AccountStorage * AccountStorage::open(const SettingsProvider &settings, QObject *parent)
+    AccountStorage * AccountStorage::open(const SettingsProvider &settings, AccountSecret *secret, QObject *parent)
     {
         QThread *worker = new QThread(parent);
-        AccountStorage *storage = new AccountStorage(settings, worker, parent);
+        AccountStorage *storage = new AccountStorage(settings, worker, secret, parent);
 
         QObject::connect(storage, &AccountStorage::disposed, worker, &QThread::quit);
         QObject::connect(worker, &QThread::finished, worker, &QThread::deleteLater);
@@ -119,6 +120,16 @@ namespace accounts
         worker->start();
 
         return storage;
+    }
+
+    void AccountStorage::unlock(void)
+    {
+        Q_D(AccountStorage);
+        const std::function<void(RequestAccountPassword*)> handler([this](RequestAccountPassword *job) -> void
+        {
+            QObject::connect(job, &RequestAccountPassword::unlocked, this, &AccountStorage::load);
+        });
+        d->unlock(handler);
     }
 
     void AccountStorage::load(void)
@@ -142,6 +153,12 @@ namespace accounts
     {
         Q_D(const AccountStorage);
         return d->get(name);
+    }
+
+    AccountSecret * AccountStorage::secret(void) const
+    {
+        Q_D(const AccountStorage);
+        return d->secret();
     }
 
     bool AccountStorage::isNameStillAvailable(const QString &name) const

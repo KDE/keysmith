@@ -10,3 +10,4 @@ ecm_add_test(load-accounts.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TE
 ecm_add_test(delete-accounts.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME delete-accounts NAME_PREFIX account-jobs-)
 ecm_add_test(save-hotp.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME save-hotp NAME_PREFIX account-jobs-)
 ecm_add_test(save-totp.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME save-totp NAME_PREFIX account-jobs-)
+ecm_add_test(request-account-password.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME request-account-password NAME_PREFIX account-jobs-)

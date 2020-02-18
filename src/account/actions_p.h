@@ -17,6 +17,8 @@
 
 #include <functional>
 
+#include "keys.h"
+
 namespace accounts
 {
     class AccountJob: public QObject
@@ -37,6 +39,26 @@ namespace accounts
     public:
         explicit Null();
         void run(void) override;
+    };
+
+    class RequestAccountPassword: public AccountJob
+    {
+        Q_OBJECT
+    public:
+        explicit RequestAccountPassword(const SettingsProvider &settings, AccountSecret *secret);
+        void run(void) override;
+    private Q_SLOTS:
+        void fail(void);
+        void unlock(void);
+    Q_SIGNALS:
+        void unlocked(void);
+        void failed(void);
+    private:
+        const SettingsProvider m_settings;
+        AccountSecret * m_secret;
+    private:
+        bool m_failed;
+        bool m_succeeded;
     };
 
     class LoadAccounts: public AccountJob

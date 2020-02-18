@@ -13,5 +13,8 @@
         <file>delete-accounts/empty-accounts.ini</file>
         <file>delete-accounts/only-hotp-left.ini</file>
         <file>delete-accounts/only-totp-left.ini</file>
+        <file>request-account-password/new-password.ini</file>
+        <file>request-account-password/new-password-result.ini</file>
+        <file>request-account-password/existing-password.ini</file>
     </qresource>
 </RCC>

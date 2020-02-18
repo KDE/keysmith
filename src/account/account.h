@@ -16,6 +16,8 @@
 
 #include <functional>
 
+#include "keys.h"
+
 namespace accounts
 {
     using PersistenceAction = std::function<void(QSettings&)>;
@@ -64,12 +66,13 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        static AccountStorage * open(const SettingsProvider &settings, QObject *parent = nullptr);
-        explicit AccountStorage(const SettingsProvider &settings, QThread *thread, QObject *parent = nullptr);
+        static AccountStorage * open(const SettingsProvider &settings, AccountSecret *secret = nullptr, QObject *parent = nullptr);
+        explicit AccountStorage(const SettingsProvider &settings, QThread *thread, AccountSecret *secret = nullptr, QObject *parent = nullptr);
         void removeAll(const QSet<Account*> &accounts) const;
         bool isNameStillAvailable(const QString &name) const;
         bool contains(const QString &name) const;
         Account * get(const QString &name) const;
+        AccountSecret * secret(void) const;
         QVector<QString> accounts(void) const;
         void dispose(void);
         void addHotp(const QString &name,
@@ -89,6 +92,7 @@ namespace accounts
         void removed(const QString name);
         void disposed(void);
     private Q_SLOTS:
+        void unlock(void);
         void load(void);
         void accountRemoved(void);
         void handleDisposal(void);

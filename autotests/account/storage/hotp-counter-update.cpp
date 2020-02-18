@@ -59,7 +59,27 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
     QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
 
+    accounts::AccountSecret *secret = uut->secret();
+    QSignalSpy existingPasswordNeeded(secret, &accounts::AccountSecret::existingPasswordNeeded);
+    QSignalSpy newPasswordNeeded(secret, &accounts::AccountSecret::newPasswordNeeded);
+    QSignalSpy passwordAvailable(secret, &accounts::AccountSecret::passwordAvailable);
+    QSignalSpy keyAvailable(secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy passwordRequestsCancelled(secret, &accounts::AccountSecret::requestsCancelled);
+    QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
+
     // first phase: check that account objects can be loaded from storage
+
+    // expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
+    QVERIFY2(test::signal_eventually_emitted_once(existingPasswordNeeded), "(existing) password should be asked by now");
+    QCOMPARE(newPasswordNeeded.count(), 0);
+
+    QString password(QLatin1String("password"));
+    secret->answerExistingPassword(password);
+
+    QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "(existing) password should have been accepted by now");
+    QCOMPARE(password, QString(QLatin1String("********")));
+
+    QVERIFY2(test::signal_eventually_emitted_once(keyAvailable, 2500), "key should have been derived by now");
 
     // expect that loading is scheduled automatically, so advancing the event loop should trigger the signal
     QVERIFY2(test::signal_eventually_emitted_once(accountAdded), "sample account should be loaded by now");
@@ -118,7 +138,9 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     uut->dispose();
 
     QVERIFY2(test::signal_eventually_emitted_once(storageDisposed), "storage should be disposed of by now");
+    QVERIFY2(test::signal_eventually_emitted_once(passwordRequestsCancelled), "account secret should have signalled cancellation by now");
     QVERIFY2(test::signal_eventually_emitted_once(sampleAccountCleaned), "sample account should be cleaned up by now");
+    QVERIFY2(test::signal_eventually_emitted_once(secretCleaned), "account secret should be cleaned up by now");
 
     // fifth phase: check the sum-total effects
 

@@ -57,11 +57,31 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
     QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
 
+    accounts::AccountSecret *secret = uut->secret();
+    QSignalSpy existingPasswordNeeded(secret, &accounts::AccountSecret::existingPasswordNeeded);
+    QSignalSpy newPasswordNeeded(secret, &accounts::AccountSecret::newPasswordNeeded);
+    QSignalSpy passwordAvailable(secret, &accounts::AccountSecret::passwordAvailable);
+    QSignalSpy keyAvailable(secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy passwordRequestsCancelled(secret, &accounts::AccountSecret::requestsCancelled);
+    QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
+
     // first phase: check that account objects can be loaded from storage
     QCOMPARE(accountAdded.count(), 0);
     QVERIFY2(uut->isNameStillAvailable(initialAccountName),  "sample account name should still be available");
     QVERIFY2(uut->isNameStillAvailable(addedAccountName),  "new account name should still be available");
     QCOMPARE(uut->accounts(), QVector<QString>());
+
+    // expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
+    QVERIFY2(test::signal_eventually_emitted_once(existingPasswordNeeded), "(existing) password should be asked by now");
+    QCOMPARE(newPasswordNeeded.count(), 0);
+
+    QString password(QLatin1String("password"));
+    secret->answerExistingPassword(password);
+
+    QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "(existing) password should have been accepted by now");
+    QCOMPARE(password, QString(QLatin1String("********")));
+
+    QVERIFY2(test::signal_eventually_emitted_once(keyAvailable, 2500), "key should have been derived by now");
 
     // expect that loading is scheduled automatically, so advancing the event loop should trigger the signal
     QVERIFY2(test::signal_eventually_emitted_once(accountAdded), "sample account should be loaded by now");
@@ -164,6 +184,8 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(!uut->contains(addedAccountName), "contains() should no longer report the new account");
     QVERIFY2(uut->get(addedAccountName) == nullptr, "get() should no longer return the new account");
 
+    QVERIFY2(test::signal_eventually_emitted_once(passwordRequestsCancelled), "account secret should have signalled cancellation by now");
+
     /*
      * The disposed() signal is the hook for consuming code to know when to drop objects.
      * Check that it is emitted *before* account objects are actually destroyed, i.e that the signal arrives before, and not after the fact.
@@ -172,6 +194,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QCOMPARE(addedAccountCleaned.count(), 0);
 
     QVERIFY2(test::signal_eventually_emitted_once(addedAccountCleaned), "new account should be disposed of by now");
+    QVERIFY2(test::signal_eventually_emitted_once(secretCleaned), "account secret should be cleaned up by now");
 
     // fifth phase: check the sum-total effects
 
