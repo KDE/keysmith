@@ -31,11 +31,12 @@ target_link_libraries(keysmith
 
 if(ANDROID)
     kirigami_package_breeze_icons(ICONS
-        go-next
+        answer-correct
         edit-delete
         edit-undo
+        go-next
         list-add
-        answer-correct
+        unlock
     )
 endif()
 
