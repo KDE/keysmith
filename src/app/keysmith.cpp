@@ -40,6 +40,11 @@ namespace app
         return new model::SimpleAccountListModel(storage(), this);
     }
 
+    model::PasswordRequest * Keysmith::passwordRequest(void)
+    {
+        return new model::PasswordRequest(storage()->secret(), this);
+    }
+
     accounts::AccountStorage * Keysmith::storage(void)
     {
         if (!m_storage) {

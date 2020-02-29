@@ -5,6 +5,7 @@
 
 set(model_SRCS
     accounts.cpp
+    password.cpp
 )
 
 add_library(model_lib STATIC ${model_SRCS})

@@ -7,6 +7,7 @@
 
 #include "../account/account.h"
 #include "../model/accounts.h"
+#include "../model/password.h"
 
 #include <QObject>
 
@@ -20,6 +21,7 @@ namespace app
         virtual ~Keysmith();
         Q_INVOKABLE void copyToClipboard(const QString &text);
         Q_INVOKABLE model::SimpleAccountListModel * accountListModel(void);
+        Q_INVOKABLE model::PasswordRequest * passwordRequest(void);
     private:
         accounts::AccountStorage * storage(void);
     private:
