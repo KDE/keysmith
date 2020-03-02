@@ -6,8 +6,9 @@
 set(account_test_lib_SRCS
     job.cpp
     output.cpp
+    secret.cpp
     spy.cpp
 )
 
 add_library(account_test_lib STATIC ${account_test_lib_SRCS})
-target_link_libraries(account_test_lib Qt5::Core Qt5::Test)
+target_link_libraries(account_test_lib Qt5::Core Qt5::Test account_lib)

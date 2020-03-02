@@ -206,7 +206,7 @@ namespace accounts
         return d->activeAccounts();
     }
 
-    void AccountStorage::handleHotp(const QUuid id, const QString name, const QString secret, quint64 counter, int tokenLength)
+    void AccountStorage::handleHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {
@@ -223,13 +223,21 @@ namespace accounts
             return;
         }
 
-        Account *accepted = d->acceptHotpAccount(id, name, secret, counter, tokenLength);
+        std::optional<secrets::EncryptedSecret> encryptedSecret = secrets::EncryptedSecret::from(secret, nonce);
+        if (!encryptedSecret) {
+            qCDebug(logger)
+                << "Not handling HOTP account:" << id
+                << "Invalid encrypted secret/nonce";
+            return;
+        }
+
+        Account *accepted = d->acceptHotpAccount(id, name, *encryptedSecret, counter, tokenLength);
         QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
 
         Q_EMIT added(name);
     }
 
-    void AccountStorage::handleTotp(const QUuid id, const QString name, const QString secret, uint timeStep, int tokenLength)
+    void AccountStorage::handleTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {
@@ -246,7 +254,15 @@ namespace accounts
             return;
         }
 
-        Account *accepted = d->acceptTotpAccount(id, name, secret, timeStep, tokenLength);
+        std::optional<secrets::EncryptedSecret> encryptedSecret = secrets::EncryptedSecret::from(secret, nonce);
+        if (!encryptedSecret) {
+            qCDebug(logger)
+                << "Not handling TOTP account:" << id
+                << "Invalid encrypted secret/nonce";
+            return;
+        }
+
+        Account *accepted = d->acceptTotpAccount(id, name, *encryptedSecret, timeStep, tokenLength);
         QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
 
         Q_EMIT added(name);

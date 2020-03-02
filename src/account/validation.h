@@ -15,12 +15,6 @@ namespace accounts
     bool checkName(const QString &name);
     bool checkTokenLength(int tokenLength);
     bool checkTimeStep(uint timeStep);
-
-    bool checkHotp(const QString &secret, const int tokenLength);
-    bool checkTotp(const QString &secret, const int tokenLength, const uint timeStep);
-
-    bool checkHotpAccount(const QUuid &id, const QString &name, const QString &secret, const int tokenLength);
-    bool checkTotpAccount(const QUuid &id, const QString &name, const QString &secret, const int tokenLength, const uint timeStep);
 }
 
 #endif

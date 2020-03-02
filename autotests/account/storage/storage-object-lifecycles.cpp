@@ -7,6 +7,8 @@
 #include "../test-utils/output.h"
 #include "../test-utils/spy.h"
 
+#include "../../secrets/test-utils/random.h"
+
 #include <QDateTime>
 #include <QFile>
 #include <QSignalSpy>
@@ -14,6 +16,8 @@
 #include <QTest>
 #include <QVector>
 #include <QtDebug>
+
+#include <string.h>
 
 static QString testIniResource(QLatin1String("test.ini"));
 static QString testIniLockFile(QLatin1String("test.ini.lock"));
@@ -51,19 +55,19 @@ void StorageLifeCyclesTest::testLifecycle(void)
     thread->start();
     QVERIFY2(test::signal_eventually_emitted_once(threadStarted), "worker thread should be running by now");
 
-    accounts::AccountStorage *uut = new accounts::AccountStorage(settings, thread);
-    QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
-    QSignalSpy accountRemoved(uut, &accounts::AccountStorage::removed);
-    QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
-    QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
-
-    accounts::AccountSecret *secret = uut->secret();
+    accounts::AccountSecret *secret = new accounts::AccountSecret(&test::fakeRandom);
     QSignalSpy existingPasswordNeeded(secret, &accounts::AccountSecret::existingPasswordNeeded);
     QSignalSpy newPasswordNeeded(secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(secret, &accounts::AccountSecret::keyAvailable);
     QSignalSpy passwordRequestsCancelled(secret, &accounts::AccountSecret::requestsCancelled);
     QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
+
+    accounts::AccountStorage *uut = new accounts::AccountStorage(settings, thread, secret);
+    QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
+    QSignalSpy accountRemoved(uut, &accounts::AccountStorage::removed);
+    QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
+    QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
 
     // first phase: check that account objects can be loaded from storage
     QCOMPARE(accountAdded.count(), 0);
@@ -141,7 +145,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(test::signal_eventually_emitted_once(initialAccountCleaned), "sample account should be cleaned up by now");
 
     // third phase: check that new account objects can be added to storage
-    uut->addTotp(addedAccountName, QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 42, 8);
+    uut->addTotp(addedAccountName, QLatin1String("NBSWY3DPFQQHO33SNRSCC==="), 42, 8);
 
     QVERIFY2(test::signal_eventually_emitted_twice(accountAdded), "new account should be added to storage by now");
     QCOMPARE(accountAdded.at(1).at(0), addedAccountName);

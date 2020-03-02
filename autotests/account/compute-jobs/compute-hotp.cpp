@@ -4,6 +4,7 @@
  */
 #include "account/actions_p.h"
 
+#include "../test-utils/secret.h"
 #include "../test-utils/spy.h"
 
 #include <QSignalSpy>
@@ -13,24 +14,32 @@ class ComputeHotpTest: public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
+    void initTestCase(void);
     void testDefaults(void);
     void testDefaults_data(void);
+private:
+    accounts::AccountSecret m_secret;
 };
 
-/*
- * RFC test vector uses the key: 12345678901234567890
- * The secret value below is the bas32 encoded version of that
- */
-static QLatin1String secret("GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ");
+// RFC test vector uses the key: 12345678901234567890
+static QByteArray rfcSecret("12345678901234567890");
 
 // the RFC test vector consists of 6-character tokens
 static int tokenLength = 6;
+
+void ComputeHotpTest::initTestCase(void)
+{
+    QVERIFY2(test::useDummyPassword(&m_secret), "should be able to set up the master key");
+}
 
 void ComputeHotpTest::testDefaults(void)
 {
     QFETCH(quint64, counter);
 
-    accounts::ComputeHotp uut(secret, counter, tokenLength);
+    std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, rfcSecret);
+    QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
+
+    accounts::ComputeHotp uut(&m_secret, *tokenSecret, counter, tokenLength);
     QSignalSpy tokenGenerated(&uut, &accounts::ComputeHotp::otp);
     QSignalSpy jobFinished(&uut, &accounts::ComputeHotp::finished);
 

@@ -33,6 +33,8 @@ namespace accounts
         secrets::SecureMasterKey * deriveKey(void);
 
         secrets::SecureMasterKey * key(void) const;
+        std::optional<secrets::EncryptedSecret> encrypt(const secrets::SecureMemory *secret) const;
+        secrets::SecureMemory * decrypt(const secrets::EncryptedSecret &secret) const;
         bool isStillAlive(void) const;
         bool isNewPasswordRequested(void) const;
         bool isExistingPasswordRequested(void) const;

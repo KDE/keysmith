@@ -39,11 +39,11 @@ namespace accounts
     public:
         explicit AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                 AccountStoragePrivate *storage, Dispatcher *dispatcher, const QUuid &id,
-                                const QString &name, const QString &secret,
+                                const QString &name, const secrets::EncryptedSecret &secret,
                                 quint64 counter, int tokenLength, int offset, bool addChecksum);
         explicit AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                 AccountStoragePrivate *storage, Dispatcher *dispatcher, const QUuid &id,
-                                const QString &name, const QString &secret,
+                                const QString &name, const secrets::EncryptedSecret &secret,
                                 const QDateTime &epoch, uint timeStep, int tokenLength, Account::Hash hash);
         void recompute(void);
         void setCounter(quint64 counter);
@@ -65,7 +65,7 @@ namespace accounts
     private:
         QString m_token;
         const QString m_name;
-        const QString m_secret;
+        const secrets::EncryptedSecret m_secret;
         const int m_tokenLength;
         quint64 m_counter;
         const int m_offset;
@@ -94,14 +94,14 @@ namespace accounts
         void acceptAccountRemoval(const QString &accountName);
         Account * acceptHotpAccount(const QUuid &id,
                                     const QString &name,
-                                    const QString &secret,
+                                    const secrets::EncryptedSecret &secret,
                                     quint64 counter = 0ULL,
                                     int tokenLength = 6,
                                     int offset = -1,
                                     bool addChecksum = false);
         Account * acceptTotpAccount(const QUuid &id,
                                     const QString &name,
-                                    const QString &secret,
+                                    const secrets::EncryptedSecret &secret,
                                     uint timeStep = 30,
                                     int tokenLength = 6,
                                     const QDateTime &epoch = QDateTime::fromMSecsSinceEpoch(0),
@@ -121,6 +121,8 @@ namespace accounts
                      const QDateTime &epoch = QDateTime::fromMSecsSinceEpoch(0),
                      Account::Hash hash = Account::Hash::Default);
     private:
+        bool validateGenericNewToken(const QString &name, const QString &secret, int tokenLength) const;
+        std::optional<secrets::EncryptedSecret> encrypt(const QString &secret) const;
         QUuid generateId(const QString &name) const;
     private:
         Q_DECLARE_PUBLIC(AccountStorage);

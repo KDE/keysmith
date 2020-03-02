@@ -9,6 +9,7 @@
 #include "../logging_p.h"
 #include "../oath/oath.h"
 
+#include <QScopedPointer>
 #include <QTimer>
 
 KEYSMITH_LOGGER(logger, ".accounts.actions")
@@ -42,7 +43,7 @@ namespace accounts
     {
     }
 
-    LoadAccounts::LoadAccounts(const SettingsProvider &settings) : AccountJob(), m_settings(settings)
+    LoadAccounts::LoadAccounts(const SettingsProvider &settings, const AccountSecret *secret) : AccountJob(), m_settings(settings), m_secret(secret)
     {
     }
 
@@ -50,19 +51,19 @@ namespace accounts
     {
     }
 
-    SaveHotp::SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &secret, quint64 counter, int tokenLength) :
+    SaveHotp::SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength) :
         AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_secret(secret), m_counter(counter), m_tokenLength(tokenLength)
     {
     }
 
-    SaveTotp::SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &secret, uint timeStep, int tokenLength) :
+    SaveTotp::SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength) :
         AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_secret(secret), m_timeStep(timeStep), m_tokenLength(tokenLength)
     {
     }
 
     void SaveHotp::run(void)
     {
-        if (!checkHotpAccount(m_id, m_accountName, m_secret, m_tokenLength)) {
+        if (!checkId(m_id) || !checkName(m_accountName) || !checkTokenLength(m_tokenLength)) {
             qCDebug(logger)
                 << "Unable to save HOTP account:" << m_id
                 << "Invalid account details";
@@ -88,7 +89,10 @@ namespace accounts
             settings.beginGroup(group);
             settings.setValue("account", m_accountName);
             settings.setValue("type", "hotp");
-            settings.setValue("secret", m_secret);
+            QString encodedNonce = QString::fromUtf8(m_secret.nonce().toBase64(QByteArray::Base64Encoding));
+            QString encodedSecret = QString::fromUtf8(m_secret.cryptText().toBase64(QByteArray::Base64Encoding));
+            settings.setValue("secret", encodedSecret);
+            settings.setValue("nonce", encodedNonce);
             settings.setValue("counter", m_counter);
             settings.setValue("pinLength", m_tokenLength);
             settings.endGroup();
@@ -96,7 +100,7 @@ namespace accounts
             // Try to guarantee that data will have been written before claiming the account was actually saved
             settings.sync();
 
-            Q_EMIT saved(m_id, m_accountName, m_secret, m_counter, m_tokenLength);
+            Q_EMIT saved(m_id, m_accountName, m_secret.cryptText(), m_secret.nonce(), m_counter, m_tokenLength);
         });
         m_settings(act);
 
@@ -105,7 +109,7 @@ namespace accounts
 
     void SaveTotp::run(void)
     {
-        if (!checkTotpAccount(m_id, m_accountName, m_secret, m_tokenLength, m_timeStep)) {
+        if (!checkId(m_id) || !checkName(m_accountName) || !checkTokenLength(m_tokenLength) || !checkTimeStep(m_timeStep)) {
             qCDebug(logger)
                 << "Unable to save TOTP account:" << m_id
                 << "Invalid account details";
@@ -131,7 +135,10 @@ namespace accounts
             settings.beginGroup(group);
             settings.setValue("account", m_accountName);
             settings.setValue("type", "totp");
-            settings.setValue("secret", m_secret);
+            QString encodedNonce = QString::fromUtf8(m_secret.nonce().toBase64(QByteArray::Base64Encoding));
+            QString encodedSecret = QString::fromUtf8(m_secret.cryptText().toBase64(QByteArray::Base64Encoding));
+            settings.setValue("secret", encodedSecret);
+            settings.setValue("nonce", encodedNonce);
             settings.setValue("timeStep", m_timeStep);
             settings.setValue("pinLength", m_tokenLength);
             settings.endGroup();
@@ -139,7 +146,7 @@ namespace accounts
             // Try to guarantee that data will have been written before claiming the account was actually saved
             settings.sync();
 
-            Q_EMIT saved(m_id, m_accountName, m_secret, m_timeStep, m_tokenLength);
+            Q_EMIT saved(m_id, m_accountName, m_secret.cryptText(), m_secret.nonce(), m_timeStep, m_tokenLength);
         });
         m_settings(act);
 
@@ -309,13 +316,22 @@ namespace accounts
 
     void LoadAccounts::run(void)
     {
+        if (!m_secret || !m_secret->key()) {
+            qCDebug(logger) << "Unable to load accounts: secret decryption key not available";
+            Q_EMIT finished();
+            return;
+        }
+
         const PersistenceAction act([this](QSettings &settings) -> void
         {
             qCInfo(logger, "Loading accounts from storage");
             const QStringList entries = settings.childGroups();
             for (const QString &group : entries) {
-                const QUuid id(group);
+                if (group == QLatin1String("master-key")) {
+                    continue;
+                }
 
+                const QUuid id(group);
                 if (id.isNull()) {
                     qCDebug(logger)
                         << "Ignoring:" << group
@@ -323,47 +339,87 @@ namespace accounts
                     continue;
                 }
 
-                bool ok = false;
                 settings.beginGroup(group);
 
-                const QString secret = settings.value("secret").toString();
                 const QString accountName = settings.value("account").toString();
-                const QString type = settings.value("type", "hotp").toString();
-                const int tokenLength = settings.value("pinLength").toInt(&ok);
-
-                if (!ok || (type != "hotp" && type != "totp")) {
-                    qCWarning(logger) << "Skipping invalid account:" << id;
+                if (!checkName(accountName)) {
+                    qCWarning(logger)
+                        << "Skipping invalid account:" << id
+                        << "Invalid account name";
                     settings.endGroup();
                     continue;
                 }
 
-                if (type == "totp") {
+                const QString type = settings.value("type", "hotp").toString();
+                if (type != QLatin1String("hotp") && type != QLatin1String("totp")) {
+                    qCWarning(logger)
+                        << "Skipping invalid account:" << id
+                        << "Invalid account type";
+                    settings.endGroup();
+                    continue;
+                }
+
+                bool ok = false;
+                const int tokenLength = settings.value("pinLength").toInt(&ok);
+                if (!ok || !checkTokenLength(tokenLength)) {
+                    qCWarning(logger)
+                        << "Skipping invalid account:" << id
+                        << "Invalid token length";
+                    settings.endGroup();
+                    continue;
+                }
+
+                const QByteArray encodedNonce = settings.value("nonce").toString().toUtf8();
+                const QByteArray encodedSecret = settings.value("secret").toString().toUtf8();
+                const QByteArray nonce = QByteArray::fromBase64(encodedNonce, QByteArray::Base64Encoding);
+                const QByteArray secret = QByteArray::fromBase64(encodedSecret, QByteArray::Base64Encoding);
+
+                std::optional<secrets::EncryptedSecret> encryptedSecret = secrets::EncryptedSecret::from(secret, nonce);
+                if (!encryptedSecret) {
+                    qCWarning(logger)
+                        << "Skipping invalid account:" << id
+                        << "Invalid token secret";
+                    settings.endGroup();
+                    continue;
+                }
+
+                QScopedPointer<secrets::SecureMemory> decrypted(m_secret->decrypt(*encryptedSecret));
+                if (!decrypted) {
+                    qCWarning(logger)
+                        << "Skipping invalid account:" << id
+                        << "Unable to decrypt token secret";
+                    settings.endGroup();
+                    continue;
+                }
+
+                if (type == QLatin1String("totp")) {
                     ok = false;
                     const uint timeStep = settings.value("timeStep").toUInt(&ok);
-                    if (ok && checkTotpAccount(id, accountName, secret, tokenLength, timeStep)) {
-                        qCInfo(logger) << "Found valid TOTP account:" << id;
-                        Q_EMIT foundTotp(
-                            id,
-                            accountName,
-                            secret,
-                            timeStep,
-                            tokenLength
-                        );
+                    if (!ok || !checkTimeStep(timeStep)) {
+                        qCWarning(logger)
+                            << "Skipping invalid account:" << id
+                            << "Invalid time step";
+                        settings.endGroup();
+                        continue;
                     }
+
+                    qCInfo(logger) << "Found valid TOTP account:" << id;
+                    Q_EMIT foundTotp(id, accountName, secret, nonce, timeStep, tokenLength);
                 }
-                if (type == "hotp") {
+
+                if (type == QLatin1String("hotp")) {
                     ok = false;
                     const quint64 counter = settings.value("counter").toULongLong(&ok);
-                    if (ok && checkHotpAccount(id, accountName, secret, tokenLength)) {
-                        qCInfo(logger) << "Found valid HOTP account:" << id;
-                        Q_EMIT foundHotp(
-                            id,
-                            accountName,
-                            secret,
-                            counter,
-                            tokenLength
-                        );
+                    if (!ok) {
+                        qCWarning(logger)
+                            << "Skipping invalid account:" << id
+                            << "Invalid counter";
+                        settings.endGroup();
+                        continue;
                     }
+
+                    qCInfo(logger) << "Found valid HOTP account:" << id;
+                    Q_EMIT foundHotp(id, accountName, secret, nonce, counter, tokenLength);
                 }
 
                 settings.endGroup();
@@ -374,22 +430,27 @@ namespace accounts
         Q_EMIT finished();
     }
 
-    ComputeTotp::ComputeTotp(const QString &secret, const QDateTime &epoch, uint timeStep, int tokenLength, const Account::Hash &hash, const std::function<qint64(void)> &clock) :
-        AccountJob(), m_secret(secret), m_epoch(epoch), m_timeStep(timeStep), m_tokenLength(tokenLength), m_hash(hash), m_clock(clock)
+    ComputeTotp::ComputeTotp(const AccountSecret *secret, const secrets::EncryptedSecret &tokenSecret, const QDateTime &epoch, uint timeStep, int tokenLength, const Account::Hash &hash, const std::function<qint64(void)> &clock) :
+        AccountJob(), m_secret(secret), m_tokenSecret(tokenSecret), m_epoch(epoch), m_timeStep(timeStep), m_tokenLength(tokenLength), m_hash(hash), m_clock(clock)
     {
     }
 
     void ComputeTotp::run(void)
     {
-        if (!checkTotp(m_secret, m_tokenLength, m_timeStep)) {
-            qCDebug(logger) << "Unable to compute TOTP token: invalid token details";
+        if (!m_secret || !m_secret->key()) {
+            qCDebug(logger) << "Unable to compute TOTP token: secret decryption key not available";
             Q_EMIT finished();
             return;
         }
 
-        std::optional<QByteArray> secret = base32::decode(m_secret);
-        if (!secret.has_value()) {
-            qCDebug(logger) << "Unable to compute TOTP token: unable to decode secret";
+        if (!checkTokenLength(m_tokenLength)) {
+            qCDebug(logger) << "Unable to compute THOTP token: invalid token length:" << m_tokenLength;
+            Q_EMIT finished();
+            return;
+        }
+
+        if (!checkTimeStep(m_timeStep)) {
+            qCDebug(logger) << "Unable to compute THOTP token: invalid time step:" << m_timeStep;
             Q_EMIT finished();
             return;
         }
@@ -415,19 +476,26 @@ namespace accounts
 
         const std::optional<oath::Algorithm> algorithm = oath::Algorithm::usingDynamicTruncation(hash, m_tokenLength);
         if (!algorithm) {
-            qCDebug(logger) << "Unable to compute TOTP token: unable to set up truncation for token length:" << m_tokenLength;
+            qCDebug(logger) << "Unable to compute TOTP token: failed to construct algorithm";
             Q_EMIT finished();
             return;
         }
 
         const std::optional<quint64> counter = oath::count(m_epoch, m_timeStep, m_clock);
         if (!counter) {
-            qCDebug(logger) << "Unable to compute TOTP token: unable to count time steps";
+            qCDebug(logger) << "Unable to compute TOTP token: failed to count time steps";
             Q_EMIT finished();
             return;
         }
 
-        const std::optional<QString> token = algorithm->compute(*counter, secret->data(), secret->size());
+        QScopedPointer<secrets::SecureMemory> secret(m_secret->decrypt(m_tokenSecret));
+        if (!secret) {
+            qCDebug(logger) << "Unable to compute TOTP token: failed to decrypt secret";
+            Q_EMIT finished();
+            return;
+        }
+
+        const std::optional<QString> token = algorithm->compute(*counter, reinterpret_cast<char*>(secret->data()), secret->size());
         if (token) {
             Q_EMIT otp(*token);
         } else {
@@ -437,22 +505,21 @@ namespace accounts
         Q_EMIT finished();
     }
 
-    ComputeHotp::ComputeHotp(const QString &secret, quint64 counter, int tokenLength, int offset, bool checksum) :
-        AccountJob(), m_secret(secret), m_counter(counter), m_tokenLength(tokenLength), m_offset(offset), m_checksum(checksum)
+    ComputeHotp::ComputeHotp(const AccountSecret *secret, const secrets::EncryptedSecret &tokenSecret, quint64 counter, int tokenLength, int offset, bool checksum) :
+        AccountJob(), m_secret(secret), m_tokenSecret(tokenSecret), m_counter(counter), m_tokenLength(tokenLength), m_offset(offset), m_checksum(checksum)
     {
     }
 
     void ComputeHotp::run(void)
     {
-        if (!checkHotp(m_secret, m_tokenLength)) {
-            qCDebug(logger) << "Unable to compute HOTP token: invalid token details";
+        if (!m_secret || !m_secret->key()) {
+            qCDebug(logger) << "Unable to compute HOTP token: secret decryption key not available";
             Q_EMIT finished();
             return;
         }
 
-        std::optional<QByteArray> secret = base32::decode(m_secret);
-        if (!secret.has_value()) {
-            qCDebug(logger) << "Unable to compute HOTP token: unable to decode secret";
+        if (!checkTokenLength(m_tokenLength)) {
+            qCDebug(logger) << "Unable to compute HOTP token: invalid token length:" << m_tokenLength;
             Q_EMIT finished();
             return;
         }
@@ -462,12 +529,19 @@ namespace accounts
             ? oath::Algorithm::usingTruncationOffset(QCryptographicHash::Sha1, (uint) m_offset, encoder)
             : oath::Algorithm::usingDynamicTruncation(QCryptographicHash::Sha1, encoder);
         if (!algorithm) {
-            qCDebug(logger) << "Unable to compute HOTP token: unable to set up truncation for token length:" << m_tokenLength;
+            qCDebug(logger) << "Unable to compute HOTP token: failed to construct algorithm";
             Q_EMIT finished();
             return;
         }
 
-        const std::optional<QString> token = algorithm->compute(m_counter, secret->data(), secret->size());
+        QScopedPointer<secrets::SecureMemory> secret(m_secret->decrypt(m_tokenSecret));
+        if (!secret) {
+            qCDebug(logger) << "Unable to compute HOTP token: failed to decrypt secret";
+            Q_EMIT finished();
+            return;
+        }
+
+        const std::optional<QString> token = algorithm->compute(m_counter, reinterpret_cast<char*>(secret->data()), secret->size());
         if (token) {
             Q_EMIT otp(*token);
         } else {

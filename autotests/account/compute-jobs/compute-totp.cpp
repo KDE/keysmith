@@ -4,6 +4,7 @@
  */
 #include "account/actions_p.h"
 
+#include "../test-utils/secret.h"
 #include "../test-utils/spy.h"
 
 #include <QSignalSpy>
@@ -13,15 +14,15 @@ class ComputeTotpTest: public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
+    void initTestCase(void);
     void testDefaults(void);
     void testDefaults_data(void);
+private:
+    accounts::AccountSecret m_secret;
 };
 
-/*
- * RFC test vector uses the key: 12345678901234567890
- * The secret value below is the bas32 encoded version of that
- */
-static QLatin1String secret("GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ");
+// RFC test vector uses the key: 12345678901234567890
+static QByteArray rfcSecret("12345678901234567890");
 
 // the RFC test vector consists of 6-character tokens
 static int tokenLength = 6;
@@ -32,6 +33,11 @@ static uint timeStep = 30;
 // the default TOTP epoch is the Unix epoch
 static QDateTime epoch = QDateTime::fromMSecsSinceEpoch(0);
 
+void ComputeTotpTest::initTestCase(void)
+{
+    QVERIFY2(test::useDummyPassword(&m_secret), "should be able to set up the master key");
+}
+
 void ComputeTotpTest::testDefaults(void)
 {
     QFETCH(qint64, counter);
@@ -39,7 +45,10 @@ void ComputeTotpTest::testDefaults(void)
         return counter * timeStep * 1000;
     });
 
-    accounts::ComputeTotp uut(secret, epoch, timeStep, tokenLength, accounts::Account::Hash::Default, clock);
+    std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, rfcSecret);
+    QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
+
+    accounts::ComputeTotp uut(&m_secret, *tokenSecret, epoch, timeStep, tokenLength, accounts::Account::Hash::Default, clock);
     QSignalSpy tokenGenerated(&uut, &accounts::ComputeTotp::otp);
     QSignalSpy jobFinished(&uut, &accounts::ComputeTotp::finished);
 

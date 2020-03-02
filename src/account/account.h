@@ -96,8 +96,8 @@ namespace accounts
         void load(void);
         void accountRemoved(void);
         void handleDisposal(void);
-        void handleHotp(const QUuid id, const QString name, const QString secret, quint64 counter, int tokenLength);
-        void handleTotp(const QUuid id, const QString name, const QString secret, uint timeStep, int tokenLength);
+        void handleHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
+        void handleTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
     private:
         QScopedPointer<AccountStoragePrivate> m_dptr;
         Q_DECLARE_PRIVATE_D(m_dptr, AccountStorage)

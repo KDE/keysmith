@@ -7,6 +7,8 @@
 #include "../test-utils/output.h"
 #include "../test-utils/spy.h"
 
+#include "../../secrets/test-utils/random.h"
+
 #include <QDateTime>
 #include <QFile>
 #include <QSignalSpy>
@@ -53,19 +55,19 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     thread->start();
     QVERIFY2(test::signal_eventually_emitted_once(threadStarted), "worker thread should be running by now");
 
-    accounts::AccountStorage *uut = new accounts::AccountStorage(settings, thread);
-    QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
-    QSignalSpy accountRemoved(uut, &accounts::AccountStorage::removed);
-    QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
-    QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
-
-    accounts::AccountSecret *secret = uut->secret();
+    accounts::AccountSecret *secret = new accounts::AccountSecret(&test::fakeRandom);
     QSignalSpy existingPasswordNeeded(secret, &accounts::AccountSecret::existingPasswordNeeded);
     QSignalSpy newPasswordNeeded(secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(secret, &accounts::AccountSecret::keyAvailable);
     QSignalSpy passwordRequestsCancelled(secret, &accounts::AccountSecret::requestsCancelled);
     QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
+
+    accounts::AccountStorage *uut = new accounts::AccountStorage(settings, thread, secret);
+    QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
+    QSignalSpy accountRemoved(uut, &accounts::AccountStorage::removed);
+    QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
+    QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
 
     // first phase: check that account objects can be loaded from storage
 

@@ -220,5 +220,25 @@ namespace accounts
         return m_stillAlive && m_key ? m_key.data() : nullptr;
     }
 
+    std::optional<secrets::EncryptedSecret> AccountSecret::encrypt(const secrets::SecureMemory *secret) const
+    {
+        secrets::SecureMasterKey *k = key();
+        if (!k) {
+            qCDebug(logger) << "Unable to encrypt secret: encryption key not available";
+            return std::nullopt;
+        }
 
+        return k->encrypt(secret);
+    }
+
+    secrets::SecureMemory * AccountSecret::decrypt(const secrets::EncryptedSecret &secret) const
+    {
+        secrets::SecureMasterKey *k = key();
+        if (!k) {
+            qCDebug(logger) << "Unable to decrypt secret: decryption key not available";
+            return  nullptr;
+        }
+
+        return k->decrypt(secret);
+    }
 }
