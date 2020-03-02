@@ -4,10 +4,10 @@
  */
 #include "secrets/secrets.h"
 
+#include "test-utils/random.h"
+
 #include <QTest>
 #include <QtDebug>
-
-#include <string.h>
 
 class KeyDerivationTest: public QObject
 {
@@ -25,19 +25,13 @@ void KeyDerivationTest::testRecovery(void)
     std::optional<secrets::KeyDerivationParameters> defaults = secrets::KeyDerivationParameters::create();
     QVERIFY2(defaults, "defaults should yield a valid key parameters object");
 
-    const secrets::SecureRandom fakeRandom([](void *buf, size_t amount) -> bool
-    {
-        memset(buf, 'A', amount);
-        return true;
-    });
-
-    QScopedPointer<secrets::SecureMasterKey> origMasterKey(secrets::SecureMasterKey::derive(passwd.data(), *defaults, fakeRandom));
+    QScopedPointer<secrets::SecureMasterKey> origMasterKey(secrets::SecureMasterKey::derive(passwd.data(), *defaults, &test::fakeRandom));
     QVERIFY2(origMasterKey, "key derivation should succeed");
 
     QByteArray expectedSalt(crypto_pwhash_SALTBYTES, 'A');
     QCOMPARE(origMasterKey->salt(), expectedSalt);
 
-    QScopedPointer<secrets::SecureMasterKey> copyKey(secrets::SecureMasterKey::derive(passwd.data(), *defaults, expectedSalt, fakeRandom));
+    QScopedPointer<secrets::SecureMasterKey> copyKey(secrets::SecureMasterKey::derive(passwd.data(), *defaults, expectedSalt, &test::fakeRandom));
     QVERIFY2(copyKey, "recovering/re-deriving a copy of the master key should succeed");
 
     QScopedPointer<secrets::SecureMemory> payload(secrets::SecureMemory::allocate(42ULL));
