@@ -6,12 +6,11 @@
 [![pipeline status](https://invent.kde.org/bshah/keysmith/badges/master/pipeline.svg)](https://invent.kde.org/bshah/keysmith/commits/master)
 
 # Keysmith
+Keysmith is an application to generate two-factor authentication (2FA) tokens when logging in to your (online) accounts. Currently it supports both HOTP and TOTP tokens.
 
-It uses the [oath-toolkit](https://www.nongnu.org/oath-toolkit/) provided library liboath to generate the 2FA codes, both TOTP and HOTP based. Currently it is largely untested. From initial rough testing it seems that auto-refreshing of code is not working. Also button to refresh token for HOTP is also dummy at moment.
-
-Some todo items include,
+Some todo items include:
 
  - QR code scanning
  - Backup and Restore of accounts
 
-This code is largely based on the [authenticator-ng](https://github.com/dobey/authenticator-ng) application by the Rodney Dawes and Michael Zanetti for the Ubuntu Touch.
+Originally this code was based largely on the [authenticator-ng](https://github.com/dobey/authenticator-ng) application by the Rodney Dawes and Michael Zanetti for Ubuntu Touch.
