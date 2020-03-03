@@ -1,3 +1,11 @@
+#
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
+# SPDX-FileCopyrightText: 2019 Friedrich W. H. Kossebau <kossebau@kde.org>
+# SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
+#
+
 add_subdirectory(base32)
 add_subdirectory(hmac)
 add_subdirectory(oath)

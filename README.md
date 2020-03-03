@@ -1,3 +1,8 @@
+<!--
+  - SPDX-License-Identifier: CC0-1.0
+  - SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
+  - SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ -->
 [![pipeline status](https://invent.kde.org/bshah/keysmith/badges/master/pipeline.svg)](https://invent.kde.org/bshah/keysmith/commits/master)
 
 # Keysmith

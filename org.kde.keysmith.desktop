@@ -1,3 +1,9 @@
+#
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
+# SPDX-FileCopyrightText: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
+#
 [Desktop Entry]
 Name=Keysmith
 Name[ca]=Keysmith

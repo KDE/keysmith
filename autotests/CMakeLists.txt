@@ -1,3 +1,8 @@
+#
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2019 Friedrich W. H. Kossebau <kossebau@kde.org>
+#
 include_directories(BEFORE ../src)
 
 add_subdirectory(base32)

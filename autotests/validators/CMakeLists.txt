@@ -1,3 +1,7 @@
+#
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+#
 
 set(validator_lib_test_SRCS
     base32-validator.cpp

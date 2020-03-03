@@ -1,1 +1,7 @@
+#
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
+#
+
+
 .flatpak-builder/*
