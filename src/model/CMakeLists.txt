@@ -8,4 +8,4 @@ set(model_SRCS
 )
 
 add_library(model_lib STATIC ${model_SRCS})
-target_link_libraries(model_lib Qt5::Core Qt5::Qml Qt5::Gui account_lib)
+target_link_libraries(model_lib Qt5::Core Qt5::Qml Qt5::Gui account_lib validator_lib)

@@ -178,4 +178,42 @@ namespace model
         // TODO: warn if not
     }
 
+    bool SimpleAccountListModel::isNameStillAvailable(const QString &account) const
+    {
+        return m_storage && m_storage->isNameStillAvailable(account);
+    }
+
+    AccountNameValidator::AccountNameValidator(QObject *parent) : QValidator(parent), m_accounts(nullptr), m_delegate(nullptr)
+    {
+    }
+
+    QValidator::State AccountNameValidator::validate(QString &input, int &pos) const
+    {
+        if (!m_accounts) {
+            // TODO warn about this
+            return QValidator::Invalid;
+        }
+
+        QValidator::State result = m_delegate.validate(input, pos);
+        return result != QValidator::Acceptable ||  m_accounts->isNameStillAvailable(input) ? result : QValidator::Intermediate;
+    }
+
+    void AccountNameValidator::fixup(QString &input) const
+    {
+        m_delegate.fixup(input);
+    }
+
+    SimpleAccountListModel * AccountNameValidator::accounts(void) const
+    {
+        return m_accounts;
+    }
+
+    void AccountNameValidator::setAccounts(SimpleAccountListModel *accounts)
+    {
+        if (accounts) {
+            m_accounts = accounts;
+            Q_EMIT accountsChanged();
+        }
+        // TODO warn if not
+    }
 }

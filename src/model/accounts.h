@@ -6,6 +6,7 @@
 #define MODEL_ACCOUNTS_H
 
 #include "../account/account.h"
+#include "../validators/namevalidator.h"
 
 #include <QAbstractListModel>
 #include <QByteArray>
@@ -13,6 +14,7 @@
 #include <QModelIndex>
 #include <QObject>
 #include <QString>
+#include <QValidator>
 #include <QVector>
 
 namespace model
@@ -60,11 +62,11 @@ namespace model
         explicit SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent = nullptr);
         Q_INVOKABLE void addTotp(const QString &account, const QString &secret, uint timeStep, int tokenLength);
         Q_INVOKABLE void addHotp(const QString &account, const QString &secret, quint64 counter, int tokenLength);
+        Q_INVOKABLE bool isNameStillAvailable(const QString &account) const;
         Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const override;
         Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
         QHash<int, QByteArray> roleNames(void) const override;
     private Q_SLOTS:
-
         void added(const QString &account);
         void removed(const QString &removed);
     private:
@@ -73,8 +75,26 @@ namespace model
         QVector<QString> m_index;
         QHash<QString, accounts::Account*> m_accounts;
     };
+
+    class AccountNameValidator: public QValidator
+    {
+        Q_OBJECT
+        Q_PROPERTY(model::SimpleAccountListModel * accounts READ accounts WRITE setAccounts NOTIFY accountsChanged);
+    public:
+        explicit AccountNameValidator(QObject *parent = nullptr);
+        QValidator::State validate(QString &input, int &pos) const override;
+        void fixup(QString &input) const override;
+        SimpleAccountListModel * accounts(void) const;
+        void setAccounts(SimpleAccountListModel *accounts);
+    Q_SIGNALS:
+        void accountsChanged(void);
+    private:
+        SimpleAccountListModel * m_accounts;
+        validators::NameValidator m_delegate;
+    };
 }
 
 Q_DECLARE_METATYPE(model::AccountView *);
+Q_DECLARE_METATYPE(model::SimpleAccountListModel *);
 
 #endif
