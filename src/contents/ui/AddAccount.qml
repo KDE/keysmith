@@ -17,6 +17,7 @@ Kirigami.Page {
     title: i18nc("@title:window", "Add new account")
     signal dismissed
     property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property bool acceptable: accountName.acceptableInput && tokenDetails.acceptable
 
     ColumnLayout {
         anchors {
@@ -39,6 +40,7 @@ Kirigami.Page {
     actions.main: Kirigami.Action {
         text: i18n("Add")
         iconName: "answer-correct"
+        enabled: acceptable
         onTriggered: {
             if (tokenDetails.isTotp) {
                 accounts.addTotp(accountName.text, tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);

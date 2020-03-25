@@ -8,16 +8,22 @@ import Keysmith.Validators 1.0 as Validators
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
-import org.kde.kirigami 2.4 as Kirigami
+import org.kde.kirigami 2.8 as Kirigami
 
 Kirigami.FormLayout {
     id: root
     property bool isTotp: totpRadio.checked && !hotpRadio.checked
     property bool isHotp: hotpRadio.checked && !totpRadio.checked
-    property int tokenLength: pinLengthField.value
-    property string timeStep: timerField.text
+    property int tokenLength: tokenLengthField.value
+    property string timeStep: timeStepField.text
     property string secret: accountSecret.text
     property string counter: counterField.text
+
+    property bool secretAcceptable: accountSecret.acceptableInput
+    property bool timeStepAcceptable: timeStepField.acceptableInput || isHotp
+    property bool counterAcceptable: counterField.acceptableInput || isTotp
+    property bool tokenTypeAcceptable: isHotp || isTotp
+    property bool acceptable: counterAcceptable && timeStepAcceptable && secretAcceptable && tokenTypeAcceptable
 
     ColumnLayout {
         Layout.rowSpan: 2
@@ -34,17 +40,18 @@ Kirigami.FormLayout {
             text: i18nc("@option:radio", "Hash-based OTP")
         }
     }
-    Controls.TextField {
+    Kirigami.PasswordField {
         id: accountSecret
+        placeholderText: i18n("Token secret")
         text: ""
         Kirigami.FormData.label: i18nc("@label:textbox", "Secret key:")
         validator: Validators.Base32SecretValidator {
             id: secretValidator
         }
-        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
     }
     Controls.TextField {
-        id: timerField
+        id: timeStepField
         Kirigami.FormData.label: i18nc("@label:textbox", "Timer:")
         enabled: totpRadio.checked
         text: "30"
@@ -71,7 +78,7 @@ Kirigami.FormLayout {
      * Make a virtue of it by offering a spinner for better UX
      */
     Controls.SpinBox {
-        id: pinLengthField
+        id: tokenLengthField
         Kirigami.FormData.label: i18nc("@label:spinbox", "Token length:")
         from: 6
         to: 10
