@@ -1,20 +1,7 @@
-/*****************************************************************************
- * Copyright: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>                  *
- *                                                                           *
- * This project is free software: you can redistribute it and/or modify      *
- * it under the terms of the GNU General Public License as published by      *
- * the Free Software Foundation, either version 3 of the License, or         *
- * (at your option) any later version.                                       *
- *                                                                           *
- * This project is distributed in the hope that it will be useful,           *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of            *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
- * GNU General Public License for more details.                              *
- *                                                                           *
- * You should have received a copy of the GNU General Public License         *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- *                                                                           *
- ****************************************************************************/
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ */
 
 #include "countervalidator.h"
 
@@ -77,28 +64,9 @@ namespace validators
 
     QValidator::State UnsignedLongValidator::validate(QString &input, int &cursor) const
     {
-        int s = input.size();
-        fixup(input);
-
-        /*
-         * Size might have changed:
-         *
-         *  - decreased through the removal of whitespace
-         *  - increased through the addition of digit group separators
-         *
-         * Adjust the cursor as necessary, in particular make sure to
-         * advance the cursor if the size has increased and the cursor was
-         * at the end of the original input string. In this way the user
-         * can simply continue typing input digits while enjoying
-         * 'auto formatting'.
-         */
-        int size = input.size();
-        if (size != s && (cursor == s || cursor > size)) {
-            cursor = size;
-        }
-
+        Q_UNUSED(cursor);
         // Avoid a hard error on empty string.
-        if (size == 0) {
+        if (input.size() == 0) {
             return QValidator::Intermediate;
         } else {
 

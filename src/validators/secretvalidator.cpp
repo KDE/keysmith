@@ -1,24 +1,12 @@
-/*****************************************************************************
- * Copyright: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>                  *
- *                                                                           *
- * This project is free software: you can redistribute it and/or modify      *
- * it under the terms of the GNU General Public License as published by      *
- * the Free Software Foundation, either version 3 of the License, or         *
- * (at your option) any later version.                                       *
- *                                                                           *
- * This project is distributed in the hope that it will be useful,           *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of            *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
- * GNU General Public License for more details.                              *
- *                                                                           *
- * You should have received a copy of the GNU General Public License         *
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
- *                                                                           *
- ****************************************************************************/
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ */
 
 #include "secretvalidator.h"
 
 #include "util.h"
+#include "../base32/base32.h"
 
 #include <QRegularExpression>
 #include <QString>
@@ -69,8 +57,13 @@ namespace validators
         QValidator::State result = check_padding(length);
 
         if (result == QValidator::Acceptable) {
-            while ((fixed.size() % 8) != 0) {
-                fixed += QLatin1Char('=');
+            QString maybeFixed = fixed;
+            while ((maybeFixed.size() % 8) != 0) {
+                maybeFixed += QLatin1Char('=');
+            }
+
+            if (base32::validate(maybeFixed)) {
+                fixed = maybeFixed;
             }
         }
 
@@ -79,29 +72,10 @@ namespace validators
 
     QValidator::State Base32Validator::validate(QString &input, int &cursor) const
     {
-        input = strip_spaces(input);
-
-        // spaces may have been removed, adjust cursor
-        int size = input.size();
-        if (cursor > size) {
-            cursor = size;
-        }
-
-        // if the basics are covered, check the padding & alignment
         QValidator::State s = m_pattern.validate(input, cursor);
         if (s == QValidator::Acceptable) {
-            fixup(input);
-
-            // fixup might have trimmed the string, adjust cursor
-            size = input.size();
-            if (cursor > size) {
-                cursor = size;
-            }
-
-            // check if despite auto-fixup the string is still misaligned
-            return (size % 8) == 0
-                ? QValidator::Acceptable
-                : QValidator::Intermediate;
+            // if the basics are covered, check the padding & alignment
+            return base32::validate(input) ? QValidator::Acceptable : QValidator::Intermediate;
         } else {
             return s;
         }

@@ -36,24 +36,21 @@ namespace validators
         {
             QTest::addColumn<QString>("input");
             QTest::addColumn<QString>("fixed");
-            QTest::addColumn<int>("cursor");
             QTest::addColumn<QLocale>("locale");
             QTest::addColumn<QValidator::State>("result");
-
         };
 
         void define_test_case(
             const QString &input,
             const QString &fixed,
-            int cursor=0,
             QValidator::State result=QValidator::Intermediate,
             const QLocale &locale=QLocale::c())
         {
             QString name = QStringLiteral("locale=%1, input=%2").arg(locale.name()).arg(input);
-            QTest::newRow(qPrintable(name)) << input << fixed << cursor << locale << result;
+            QTest::newRow(qPrintable(name)) << input << fixed << locale << result;
         };
 
-        template<class T, auto f_fixup_data, auto f_validate_data>
+        template<class T, auto f_data>
         class ValidatorTestBase : public QObject
         {
         public:
@@ -63,28 +60,25 @@ namespace validators
 
             void testValidate(void)
             {
-                T uut;
-                QFETCH(QLocale, locale);
-                uut.setLocale(locale);
-
                 QFETCH(QString, input);
-                QFETCH(QString, fixed);
-                QFETCH(int, cursor);
+                QFETCH(QLocale, locale);
 
+                T uut;
+                uut.setLocale(locale);
                 int position = input.size();
+                int copy = position;
 
                 QTEST(uut.validate(input, position), "result");
-                QCOMPARE(input, fixed);
-                QCOMPARE(position, cursor);
+                QCOMPARE(position, copy);
             };
 
             void testFixup(void)
             {
-                T uut;
-                QFETCH(QLocale, locale);
-                uut.setLocale(locale);
-
                 QFETCH(QString, input);
+                QFETCH(QLocale, locale);
+
+                T uut;
+                uut.setLocale(locale);
 
                 uut.fixup(input);
                 QTEST(input, "fixed");
@@ -98,20 +92,20 @@ namespace validators
             void testValidate_data(void)
             {
                 define_test_data_columns();
-                f_validate_data();
+                f_data();
             };
 
             void testFixup_data(void)
             {
                 define_test_data_columns();
-                f_fixup_data();
+                f_data();
             };
         };
     }
 }
 
-#define DEFINE_VALIDATOR_TEST(name, type, fixup_data, validate_data) \
-class name : public validators::test::ValidatorTestBase<type, fixup_data, validate_data> \
+#define DEFINE_VALIDATOR_TEST(name, type, data_tables) \
+class name : public validators::test::ValidatorTestBase<type, data_tables> \
 { \
     Q_OBJECT \
 private Q_SLOTS: \

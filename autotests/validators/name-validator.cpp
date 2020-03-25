@@ -24,17 +24,17 @@ using namespace validators::test;
 
 static void define_valid_table(void)
 {
-    define_test_case(QLatin1String("Outis"), QLatin1String("Outis"), 5, QValidator::Acceptable);
-    define_test_case(QLatin1String("test\taccount"), QLatin1String("test account"), 12, QValidator::Acceptable);
-    define_test_case(QLatin1String("\r \n\ttest\r\t \naccount \r\t\n"), QLatin1String("test account"), 12, QValidator::Acceptable);
+    define_test_case(QLatin1String("Outis"), QLatin1String("Outis"), QValidator::Acceptable);
+    define_test_case(QLatin1String("test\taccount"), QLatin1String("test account"), QValidator::Invalid);
+    define_test_case(QLatin1String("\r \n\ttest\r\t \naccount \r\t\n"), QLatin1String("test account"), QValidator::Invalid);
 }
 
 static void define_empty_table(void)
 {
-    define_test_case(QLatin1String(""), QLatin1String(""), 0, QValidator::Intermediate);
-    define_test_case(QLatin1String("  "), QLatin1String(""), 0, QValidator::Intermediate);
-    define_test_case(QLatin1String("\t"), QLatin1String(""), 0, QValidator::Intermediate);
-    define_test_case(QLatin1String("\r\n"), QLatin1String(""), 0, QValidator::Intermediate);
+    define_test_case(QLatin1String(""), QLatin1String(""), QValidator::Intermediate);
+    define_test_case(QLatin1String("  "), QLatin1String(""), QValidator::Invalid);
+    define_test_case(QLatin1String("\t"), QLatin1String(""), QValidator::Invalid);
+    define_test_case(QLatin1String("\r\n"), QLatin1String(""), QValidator::Invalid);
 }
 
 /*
@@ -51,10 +51,10 @@ static void define_data(void)
     define_empty_table();
     define_valid_table();
 
-    define_test_case(QLatin1String("test  "), QLatin1String("test "), 5, QValidator::Intermediate);
+    define_test_case(QLatin1String("test  "), QLatin1String("test "), QValidator::Invalid);
 }
 
-DEFINE_VALIDATOR_TEST(NameValidatorTest, validators::NameValidator, define_data, define_data);
+DEFINE_VALIDATOR_TEST(NameValidatorTest, validators::NameValidator, define_data);
 
 QTEST_APPLESS_MAIN(NameValidatorTest)
 
