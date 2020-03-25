@@ -1,25 +1,10 @@
 /*
- * Copyright 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 3 of
- * the License or any later version accepted by the membership of
- * KDE e.V. (or its successor approved by the membership of KDE
- * e.V.), which shall act as a proxy defined in Section 14 of
- * version 3 of the license.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
+ * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
-import Oath.Validators 1.0 as Validators
+import Keysmith.Validators 1.0 as Validators
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
@@ -63,7 +48,9 @@ Kirigami.FormLayout {
         Kirigami.FormData.label: i18nc("@label:textbox", "Timer:")
         enabled: totpRadio.checked
         text: "30"
-        inputMask: "0009"
+        validator: IntValidator {
+            bottom: 1
+        }
         inputMethodHints: Qt.ImhDigitsOnly
     }
     Controls.TextField {
@@ -77,8 +64,9 @@ Kirigami.FormLayout {
         inputMethodHints: Qt.ImhDigitsOnly
     }
     /*
-     * The liboath API is documented to support tokens which are
-     * 6, 7 or 8 characters long only.
+     * OATH tokens are derived from a 32bit value, base-10 encoded.
+     * Meaning tokens should not be longer than 10 digits max.
+     * In addition tokens must be 6 digits long at minimum.
      *
      * Make a virtue of it by offering a spinner for better UX
      */
@@ -86,7 +74,7 @@ Kirigami.FormLayout {
         id: pinLengthField
         Kirigami.FormData.label: i18nc("@label:spinbox", "Token length:")
         from: 6
-        to: 8
+        to: 10
         value: 6
     }
 }

@@ -29,7 +29,8 @@
 
 #include "app/keysmith.h"
 #include "model/accounts.h"
-#include "../validators/qmlsupport.h"
+#include "validators/countervalidator.h"
+#include "validators/secretvalidator.h"
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -45,9 +46,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
-    validators::registerValidatorTypes();
     qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel", "Use the Keysmith singleton to obtain an AccountListModel");
     qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models", 1, 0, "Account", "Use an AccountListModel from the Keysmith singleton to obtain an Account");
+    qmlRegisterType<model::AccountNameValidator>("Keysmith.Validators", 1, 0, "AccountNameValidator");
+    qmlRegisterType<validators::Base32Validator>("Keysmith.Validators", 1, 0, "Base32SecretValidator");
+    qmlRegisterType<validators::UnsignedLongValidator>("Keysmith.Validators", 1, 0, "HOTPCounterValidator");
     qmlRegisterSingletonType<app::Keysmith>("Keysmith.Application", 1, 0, "Keysmith", [](QQmlEngine *qml, QJSEngine *js) -> QObject *
     {
         Q_UNUSED(qml);

@@ -3,5 +3,7 @@
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="TokenDetailsForm.qml">contents/ui/TokenDetailsForm.qml</file>
         <file alias="AccountEntryView.qml">contents/ui/AccountEntryView.qml</file>
+        <file alias="AccountsOverview.qml">contents/ui/AccountsOverview.qml</file>
+        <file alias="AddAccount.qml">contents/ui/AddAccount.qml</file>
     </qresource>
 </RCC>
