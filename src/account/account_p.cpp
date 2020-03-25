@@ -259,7 +259,6 @@ namespace accounts
 
     void AccountStoragePrivate::dispose(const std::function<void(Null*)> &handler)
     {
-        Q_Q(AccountStorage);
         if (m_is_still_open) {
             m_is_still_open = false;
             Null *job = new Null();
@@ -300,7 +299,6 @@ namespace accounts
 
     void AccountStoragePrivate::addHotp(const std::function<void(SaveHotp*)> &handler, const QString &name, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
     {
-        Q_Q(AccountStorage);
         Q_UNUSED(offset);
         Q_UNUSED(addChecksum);
         if (m_is_still_open && isNameStillAvailable(name)) {
@@ -319,7 +317,6 @@ namespace accounts
 
     void AccountStoragePrivate::addTotp(const std::function<void(SaveTotp*)> &handler, const QString &name, const QString &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
     {
-        Q_Q(AccountStorage);
         Q_UNUSED(epoch);
         Q_UNUSED(hash);
         if (m_is_still_open && isNameStillAvailable(name)) {
