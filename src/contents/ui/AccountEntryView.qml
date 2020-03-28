@@ -8,6 +8,7 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
 import org.kde.kirigami 2.4 as Kirigami
 
+import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
 
 Kirigami.SwipeListItem {
@@ -15,6 +16,7 @@ Kirigami.SwipeListItem {
     property Models.Account account: null
     property int phase : account && account.isTotp ? account.millisecondsLeftForToken() : 0
     property int interval: account && account.isTotp ? 1000 * account.timeStep : 0
+    property bool tokenAvailable: account && account.token && account.token.length > 0
 
     property real healthIndicator: 0
 
@@ -59,7 +61,7 @@ Kirigami.SwipeListItem {
                 horizontalAlignment: Text.AlignRight
                 Layout.fillWidth: true
                 font.weight: Font.Bold
-                text: account && account.token && account.token.length > 0 ? account.token : i18nc("placeholder text if no token is available", "(refresh)")
+                text: tokenAvailable ? account.token : i18nc("placeholder text if no token is available", "(refresh)")
             }
         }
         Timer {
@@ -111,5 +113,13 @@ Kirigami.SwipeListItem {
                 running: model.account && model.account.isTotp && Kirigami.Units.longDuration > 1
             }
         }
+    }
+
+    onClicked: {
+        // TODO convert to C++ helper, have proper logging?
+        if (tokenAvailable) {
+            Keysmith.copyToClipboard(account.token);
+        }
+        // TODO warn if not
     }
 }

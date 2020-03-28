@@ -18,6 +18,7 @@ namespace app
     public:
         explicit Keysmith(QObject *parent = nullptr);
         virtual ~Keysmith();
+        Q_INVOKABLE void copyToClipboard(const QString &text);
         Q_INVOKABLE model::SimpleAccountListModel * accountListModel(void);
     private:
         accounts::AccountStorage * storage(void);

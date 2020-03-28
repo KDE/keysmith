@@ -4,7 +4,8 @@
  */
 #include "keysmith.h"
 
-#include <QtDebug>
+#include <QClipboard>
+#include <QGuiApplication>
 
 namespace app
 {
@@ -18,6 +19,15 @@ namespace app
         if (m_storage) {
             m_storage->dispose();
         }
+    }
+
+    void Keysmith::copyToClipboard(const QString &text)
+    {
+        QClipboard * clipboard = QGuiApplication::clipboard();
+        if (clipboard) {
+            clipboard->setText(text);
+        }
+        // TODO warn about this
     }
 
     model::SimpleAccountListModel * Keysmith::accountListModel(void)
