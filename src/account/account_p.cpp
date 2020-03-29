@@ -97,7 +97,7 @@ namespace accounts
         SaveHotp *job = new SaveHotp(m_storage->settings(),m_id, m_name, m_secret, counter, m_tokenLength);
         m_actions->queueAndProceed(job, [counter, job, q, this](void) -> void
         {
-            new HandleCounterUpdate(this, counter, job, q);
+            new HandleCounterUpdate(this, m_storage, counter, job, q);
         });
     }
 
@@ -453,24 +453,24 @@ namespace accounts
         return checkTokenLength(tokenLength) && checkName(name) && isNameStillAvailable(name) && checkSecret(secret);
     }
 
-    void AccountStoragePrivate::addHotp(const std::function<void(SaveHotp*)> &handler, const QString &name, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
+    bool AccountStoragePrivate::addHotp(const std::function<void(SaveHotp*)> &handler, const QString &name, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
     {
         Q_UNUSED(offset);
         Q_UNUSED(addChecksum);
         if (!m_is_still_open) {
             qCDebug(logger) << "Will not add new HOTP account: storage no longer open";
-            return;
+            return false;
         }
 
         if (!validateGenericNewToken(name, secret, tokenLength)) {
             qCDebug(logger) << "Will not add new HOTP account: invalid account details";
-            return;
+            return false;
         }
 
         std::optional<secrets::EncryptedSecret> encryptedSecret = encrypt(secret);
         if (!encryptedSecret) {
             qCDebug(logger) << "Will not add new HOTP account: failed to encrypt secret";
-            return;
+            return false;
         }
 
         QUuid id = generateId(name);
@@ -482,26 +482,27 @@ namespace accounts
         {
             handler(job);
         });
+        return true;
     }
 
-    void AccountStoragePrivate::addTotp(const std::function<void(SaveTotp*)> &handler, const QString &name, const QString &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
+    bool AccountStoragePrivate::addTotp(const std::function<void(SaveTotp*)> &handler, const QString &name, const QString &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
     {
         Q_UNUSED(epoch);
         Q_UNUSED(hash);
         if (!m_is_still_open) {
             qCDebug(logger) << "Will not add new TOTP account: storage no longer open";
-            return;
+            return false;
         }
 
         if (!validateGenericNewToken(name, secret, tokenLength) || !checkTimeStep(timeStep)) {
             qCDebug(logger) << "Will not add new TOTP account: invalid account details";
-            return;
+            return false;
         }
 
         std::optional<secrets::EncryptedSecret> encryptedSecret = encrypt(secret);
         if (!encryptedSecret) {
             qCDebug(logger) << "Will not add new TOTP account: failed to encrypt secret";
-            return;
+            return false;
         }
 
         QUuid id = generateId(name);
@@ -513,6 +514,7 @@ namespace accounts
         {
             handler(job);
         });
+        return true;
     }
 
     void AccountStoragePrivate::unlock(const std::function<void(RequestAccountPassword*)> &handler)
@@ -580,13 +582,42 @@ namespace accounts
         return m_accounts[id];
     }
 
+    bool AccountStoragePrivate::isLoaded(void) const
+    {
+        return m_is_loaded;
+    }
+
+    void AccountStoragePrivate::notifyLoaded(void)
+    {
+        Q_Q(AccountStorage);
+        m_is_loaded = true;
+        Q_EMIT q->loaded();
+    }
+
+    void AccountStoragePrivate::notifyError(void)
+    {
+        Q_Q(AccountStorage);
+        m_has_error = true;
+        Q_EMIT q->error();
+    }
+
+    void AccountStoragePrivate::clearError(void)
+    {
+        m_has_error = false;
+    }
+
+    bool AccountStoragePrivate::hasError(void) const
+    {
+        return m_has_error;
+    }
+
     AccountStoragePrivate::AccountStoragePrivate(const SettingsProvider &settings, AccountSecret *secret, AccountStorage *storage, Dispatcher *dispatcher) :
-        q_ptr(storage), m_is_still_open(true), m_actions(dispatcher), m_settings(settings), m_secret(secret)
+        q_ptr(storage), m_is_loaded(false), m_has_error(false), m_is_still_open(true), m_actions(dispatcher), m_settings(settings), m_secret(secret)
     {
     }
 
-    HandleCounterUpdate::HandleCounterUpdate(AccountPrivate *account, quint64 counter, SaveHotp *job, QObject *parent) :
-        QObject(parent), m_accept_on_finish(true), m_counter(counter), m_account(account)
+    HandleCounterUpdate::HandleCounterUpdate(AccountPrivate *account, AccountStoragePrivate *storage, quint64 counter, SaveHotp *job, QObject *parent) :
+        QObject(parent), m_accept_on_finish(true), m_counter(counter), m_account(account), m_storage(storage)
     {
         QObject::connect(job, &SaveHotp::invalid, this, &HandleCounterUpdate::rejected);
         QObject::connect(job, &SaveHotp::finished, this, &HandleCounterUpdate::finished);
@@ -595,6 +626,7 @@ namespace accounts
     void HandleCounterUpdate::rejected(void)
     {
         m_accept_on_finish = false;
+        m_storage->notifyError();
     }
 
     void HandleCounterUpdate::finished(void)

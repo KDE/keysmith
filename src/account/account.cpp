@@ -128,6 +128,7 @@ namespace accounts
         const std::function<void(RequestAccountPassword*)> handler([this](RequestAccountPassword *job) -> void
         {
             QObject::connect(job, &RequestAccountPassword::unlocked, this, &AccountStorage::load);
+            QObject::connect(job, &RequestAccountPassword::failed, this, &AccountStorage::handleError);
         });
         d->unlock(handler);
     }
@@ -139,6 +140,8 @@ namespace accounts
         {
             QObject::connect(job, &LoadAccounts::foundHotp, this, &AccountStorage::handleHotp);
             QObject::connect(job, &LoadAccounts::foundTotp, this, &AccountStorage::handleTotp);
+            QObject::connect(job, &LoadAccounts::finished, this, &AccountStorage::handleLoaded);
+            QObject::connect(job, &LoadAccounts::failedToLoadAllAccounts, this, &AccountStorage::handleError);
         });
         d->load(handler);
     }
@@ -173,8 +176,11 @@ namespace accounts
         const std::function<void(SaveHotp*)> handler([this](SaveHotp *job) -> void
         {
             QObject::connect(job, &SaveHotp::saved, this, &AccountStorage::handleHotp);
+            QObject::connect(job, &SaveHotp::invalid, this, &AccountStorage::handleError);
         });
-        d->addHotp(handler, name, secret, counter, tokenLength, offset, addChecksum);
+        if (!d->addHotp(handler, name, secret, counter, tokenLength, offset, addChecksum)) {
+            Q_EMIT error();
+        }
     }
 
     void AccountStorage::addTotp(const QString &name, const QString &secret, int timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
@@ -183,8 +189,11 @@ namespace accounts
         const std::function<void(SaveTotp*)> handler([this](SaveTotp *job) -> void
         {
             QObject::connect(job, &SaveTotp::saved, this, &AccountStorage::handleTotp);
+            QObject::connect(job, &SaveTotp::invalid, this, &AccountStorage::handleError);
         });
-        d->addTotp(handler, name, secret, timeStep, tokenLength, epoch, hash);
+        if (!d->addTotp(handler, name, secret, timeStep, tokenLength, epoch, hash)) {
+            Q_EMIT error();
+        }
     }
 
     void AccountStorage::accountRemoved(void)
@@ -285,5 +294,35 @@ namespace accounts
     {
         Q_D(AccountStorage);
         d->acceptDisposal();
+    }
+
+    bool AccountStorage::hasError(void) const
+    {
+        Q_D(const AccountStorage);
+        return d->hasError();
+    }
+
+    void AccountStorage::clearError(void)
+    {
+        Q_D(AccountStorage);
+        d->clearError();
+    }
+
+    void AccountStorage::handleError(void)
+    {
+        Q_D(AccountStorage);
+        d->notifyError();
+    }
+
+    void AccountStorage::handleLoaded(void)
+    {
+        Q_D(AccountStorage);
+        d->notifyLoaded();
+    }
+
+    bool AccountStorage::isLoaded(void) const
+    {
+        Q_D(const AccountStorage);
+        return d->isLoaded();
     }
 }

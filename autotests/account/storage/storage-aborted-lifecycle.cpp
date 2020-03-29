@@ -39,6 +39,8 @@ void StorageAbortLifeCycleTest::testLifecycle(void)
     });
 
     accounts::AccountStorage *uut = accounts::AccountStorage::open(settings);
+    QSignalSpy error(uut, &accounts::AccountStorage::error);
+    QSignalSpy loaded(uut, &accounts::AccountStorage::loaded);
     QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
     QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
     QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
@@ -66,6 +68,8 @@ void StorageAbortLifeCycleTest::testLifecycle(void)
     QCOMPARE(passwordAvailable.count(), 0);
     QCOMPARE(keyAvailable.count(), 0);
     QCOMPARE(accountAdded.count(), 0);
+    QCOMPARE(loaded.count(), 0);
+    QCOMPARE(error.count(), 1);
 }
 
 QTEST_MAIN(StorageAbortLifeCycleTest)

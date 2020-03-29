@@ -87,15 +87,22 @@ namespace accounts
                      int tokenLength = 6,
                      const QDateTime &epoch = QDateTime::fromMSecsSinceEpoch(0),
                      Account::Hash hash = Account::Hash::Default);
+        void clearError(void);
+        bool hasError(void) const;
+        bool isLoaded(void) const;
     Q_SIGNALS:
         void added(const QString name);
         void removed(const QString name);
+        void error(void);
+        void loaded(void);
         void disposed(void);
     private Q_SLOTS:
         void unlock(void);
         void load(void);
         void accountRemoved(void);
         void handleDisposal(void);
+        void handleError(void);
+        void handleLoaded(void);
         void handleHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
         void handleTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
     private:

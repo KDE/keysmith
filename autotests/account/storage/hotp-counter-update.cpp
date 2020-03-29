@@ -64,6 +64,8 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
 
     accounts::AccountStorage *uut = new accounts::AccountStorage(settings, thread, secret);
+    QSignalSpy error(uut, &accounts::AccountStorage::error);
+    QSignalSpy loaded(uut, &accounts::AccountStorage::loaded);
     QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
     QSignalSpy accountRemoved(uut, &accounts::AccountStorage::removed);
     QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
@@ -84,7 +86,11 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     QVERIFY2(test::signal_eventually_emitted_once(keyAvailable, 2500), "key should have been derived by now");
 
     // expect that loading is scheduled automatically, so advancing the event loop should trigger the signal
-    QVERIFY2(test::signal_eventually_emitted_once(accountAdded), "sample account should be loaded by now");
+    QVERIFY2(test::signal_eventually_emitted_once(loaded), "sample account should be loaded by now");
+    QCOMPARE(uut->isLoaded(), true);
+    QCOMPARE(uut->hasError(), false);
+    QCOMPARE(error.count(), 0);
+    QCOMPARE(accountAdded.count(), 1);
     QCOMPARE(accountAdded.at(0).at(0), sampleAccountName);
 
     accounts::Account *sampleAccount = uut->get(sampleAccountName);
@@ -128,6 +134,8 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
 
     QVERIFY2(test::signal_eventually_emitted_twice(sampleAccountTokenUpdated), "sample account should be updated in storage by now");
     QCOMPARE(sampleAccountTokenUpdated.at(1).at(0), updatedToken);
+    QCOMPARE(uut->hasError(), false);
+    QCOMPARE(error.count(), 0);
 
     QFile afterUpdatingCounterLockFile(test::path(testIniLockFile));
     QVERIFY2(!afterUpdatingCounterLockFile.exists(), "after updating counter: lock file should not be present anymore");
@@ -146,6 +154,8 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
 
     // fifth phase: check the sum-total effects
 
+    QCOMPARE(error.count(), 0);
+    QCOMPARE(loaded.count(), 1);
     QCOMPARE(accountAdded.count(), 1);
     QCOMPARE(accountRemoved.count(), 0);
     QCOMPARE(sampleAccountRemoved.count(), 0);

@@ -322,7 +322,8 @@ namespace accounts
             return;
         }
 
-        const PersistenceAction act([this](QSettings &settings) -> void
+        bool failed = false;
+        const PersistenceAction act([this, &failed](QSettings &settings) -> void
         {
             qCInfo(logger, "Loading accounts from storage");
             const QStringList entries = settings.childGroups();
@@ -336,6 +337,7 @@ namespace accounts
                     qCDebug(logger)
                         << "Ignoring:" << group
                         << "Not an account section";
+                    failed = true;
                     continue;
                 }
 
@@ -350,12 +352,13 @@ namespace accounts
                     continue;
                 }
 
-                const QString type = settings.value("type", "hotp").toString();
+                const QString type = settings.value("type").toString();
                 if (type != QLatin1String("hotp") && type != QLatin1String("totp")) {
                     qCWarning(logger)
                         << "Skipping invalid account:" << id
                         << "Invalid account type";
                     settings.endGroup();
+                    failed = true;
                     continue;
                 }
 
@@ -366,6 +369,7 @@ namespace accounts
                         << "Skipping invalid account:" << id
                         << "Invalid token length";
                     settings.endGroup();
+                    failed = true;
                     continue;
                 }
 
@@ -380,6 +384,7 @@ namespace accounts
                         << "Skipping invalid account:" << id
                         << "Invalid token secret";
                     settings.endGroup();
+                    failed = true;
                     continue;
                 }
 
@@ -389,6 +394,7 @@ namespace accounts
                         << "Skipping invalid account:" << id
                         << "Unable to decrypt token secret";
                     settings.endGroup();
+                    failed = true;
                     continue;
                 }
 
@@ -400,6 +406,7 @@ namespace accounts
                             << "Skipping invalid account:" << id
                             << "Invalid time step";
                         settings.endGroup();
+                        failed = true;
                         continue;
                     }
 
@@ -415,6 +422,7 @@ namespace accounts
                             << "Skipping invalid account:" << id
                             << "Invalid counter";
                         settings.endGroup();
+                        failed = true;
                         continue;
                     }
 
@@ -427,6 +435,9 @@ namespace accounts
         });
         m_settings(act);
 
+        if (failed) {
+            Q_EMIT failedToLoadAllAccounts();
+        }
         Q_EMIT finished();
     }
 

@@ -71,6 +71,7 @@ namespace accounts
     Q_SIGNALS:
         void foundHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
         void foundTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void failedToLoadAllAccounts(void);
     private:
         const SettingsProvider m_settings;
         const AccountSecret * m_secret;

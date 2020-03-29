@@ -106,20 +106,25 @@ namespace accounts
                                     int tokenLength = 6,
                                     const QDateTime &epoch = QDateTime::fromMSecsSinceEpoch(0),
                                     Account::Hash hash = Account::Hash::Default);
-        void addHotp(const std::function<void(SaveHotp*)> &handler,
+        bool addHotp(const std::function<void(SaveHotp*)> &handler,
                      const QString &name,
                      const QString &secret,
                      quint64 counter = 0ULL,
                      int tokenLength = 6,
                      int offset = -1,
                      bool addChecksum = false);
-        void addTotp(const std::function<void(SaveTotp*)> &handler,
+        bool addTotp(const std::function<void(SaveTotp*)> &handler,
                      const QString &name,
                      const QString &secret,
                      uint timeStep = 30,
                      int tokenLength = 6,
                      const QDateTime &epoch = QDateTime::fromMSecsSinceEpoch(0),
                      Account::Hash hash = Account::Hash::Default);
+        void notifyLoaded(void);
+        bool isLoaded(void) const;
+        void notifyError(void);
+        void clearError(void);
+        bool hasError(void) const;
     private:
         bool validateGenericNewToken(const QString &name, const QString &secret, int tokenLength) const;
         std::optional<secrets::EncryptedSecret> encrypt(const QString &secret) const;
@@ -129,6 +134,8 @@ namespace accounts
         Q_DISABLE_COPY(AccountStoragePrivate);
         AccountStorage * const q_ptr;
     private:
+        bool m_is_loaded;
+        bool m_has_error;
         bool m_is_still_open;
         Dispatcher * const m_actions;
         const SettingsProvider m_settings;
@@ -144,11 +151,12 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit HandleCounterUpdate(AccountPrivate *account, quint64 counter, SaveHotp * job, QObject *parent = nullptr);
+        explicit HandleCounterUpdate(AccountPrivate *account, AccountStoragePrivate *storage, quint64 counter, SaveHotp *job, QObject *parent = nullptr);
     private:
         bool m_accept_on_finish;
         const quint64 m_counter;
         AccountPrivate * const m_account;
+        AccountStoragePrivate * const m_storage;
     private Q_SLOTS:
         void rejected(void);
         void finished(void);
@@ -158,8 +166,8 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit HandleTokenUpdate(AccountPrivate *account, ComputeHotp * job, QObject *parent = nullptr);
-        explicit HandleTokenUpdate(AccountPrivate *account, ComputeTotp * job, QObject *parent = nullptr);
+        explicit HandleTokenUpdate(AccountPrivate *account, ComputeHotp *job, QObject *parent = nullptr);
+        explicit HandleTokenUpdate(AccountPrivate *account, ComputeTotp *job, QObject *parent = nullptr);
     private:
         AccountPrivate * const m_account;
     private Q_SLOTS:

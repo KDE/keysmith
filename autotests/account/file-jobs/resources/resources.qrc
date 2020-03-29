@@ -6,6 +6,7 @@
 <RCC>
     <qresource prefix="/">
         <file>load-accounts/sample-accounts.ini</file>
+        <file>load-accounts/invalid-accounts.ini</file>
         <file>load-accounts/empty-accounts.ini</file>
         <file>save-hotp/expected-accounts.ini</file>
         <file>save-totp/expected-accounts.ini</file>

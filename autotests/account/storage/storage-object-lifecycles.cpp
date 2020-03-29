@@ -64,13 +64,19 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
 
     accounts::AccountStorage *uut = new accounts::AccountStorage(settings, thread, secret);
+    QSignalSpy error(uut, &accounts::AccountStorage::error);
+    QSignalSpy loaded(uut, &accounts::AccountStorage::loaded);
     QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
     QSignalSpy accountRemoved(uut, &accounts::AccountStorage::removed);
     QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
     QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
 
     // first phase: check that account objects can be loaded from storage
+    QCOMPARE(uut->isLoaded(), false);
+    QCOMPARE(uut->hasError(), false);
     QCOMPARE(accountAdded.count(), 0);
+    QCOMPARE(loaded.count(), 0);
+    QCOMPARE(error.count(), 0);
     QVERIFY2(uut->isNameStillAvailable(initialAccountName),  "sample account name should still be available");
     QVERIFY2(uut->isNameStillAvailable(addedAccountName),  "new account name should still be available");
     QCOMPARE(uut->accounts(), QVector<QString>());
@@ -88,7 +94,11 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(test::signal_eventually_emitted_once(keyAvailable, 2500), "key should have been derived by now");
 
     // expect that loading is scheduled automatically, so advancing the event loop should trigger the signal
-    QVERIFY2(test::signal_eventually_emitted_once(accountAdded), "sample account should be loaded by now");
+    QVERIFY2(test::signal_eventually_emitted_once(loaded), "sample account should be loaded by now");
+    QCOMPARE(uut->isLoaded(), true);
+    QCOMPARE(uut->hasError(), false);
+    QCOMPARE(error.count(), 0);
+    QCOMPARE(accountAdded.count(), 1);
     QCOMPARE(accountAdded.at(0).at(0), initialAccountName);
 
     QVERIFY2(!uut->isNameStillAvailable(initialAccountName),  "sample account name should no longer be available");
@@ -148,6 +158,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     uut->addTotp(addedAccountName, QLatin1String("NBSWY3DPFQQHO33SNRSCC==="), 42, 8);
 
     QVERIFY2(test::signal_eventually_emitted_twice(accountAdded), "new account should be added to storage by now");
+    QCOMPARE(error.count(), 0);
     QCOMPARE(accountAdded.at(1).at(0), addedAccountName);
 
     QVERIFY2(uut->isNameStillAvailable(initialAccountName),  "sample account name should again still be available");
@@ -202,6 +213,8 @@ void StorageLifeCyclesTest::testLifecycle(void)
 
     // fifth phase: check the sum-total effects
 
+    QCOMPARE(error.count(), 0);
+    QCOMPARE(loaded.count(), 1);
     QCOMPARE(addedAccountRemoved.count(), 0);
     QCOMPARE(accountAdded.count(), 2);
     QCOMPARE(accountRemoved.count(), 1);

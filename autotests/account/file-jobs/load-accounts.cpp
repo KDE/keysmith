@@ -18,6 +18,7 @@
 
 static QString emptyIniResource(QLatin1String("empty-accounts.ini"));
 static QString corpusIniResource(QLatin1String("sample-accounts.ini"));
+static QString invalidIniResource(QLatin1String("invalid-accounts.ini"));
 
 class LoadAccountsTest: public QObject
 {
@@ -26,6 +27,7 @@ private Q_SLOTS:
     void initTestCase(void);
     void emptyAccountsFile(void);
     void sampleAccountsFile(void);
+    void invalidSampleAccountsFile(void);
 private:
     accounts::AccountSecret m_secret {&test::fakeRandom};
 };
@@ -38,6 +40,7 @@ void LoadAccountsTest::initTestCase(void)
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
     QVERIFY2(test::copyResource(":/load-accounts/empty-accounts.ini", emptyIniResource), "empty INI resource should be available as file");
     QVERIFY2(test::copyResource(":/load-accounts/sample-accounts.ini", corpusIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResource(":/load-accounts/invalid-accounts.ini", invalidIniResource), "invalid INI resource should be available as file");
     QVERIFY2(test::useDummyPassword(&m_secret), "should be able to set up the master key");
 }
 
@@ -55,6 +58,7 @@ void LoadAccountsTest::emptyAccountsFile(void)
 
     QSignalSpy hotpFound(&uut, &accounts::LoadAccounts::foundHotp);
     QSignalSpy totpFound(&uut, &accounts::LoadAccounts::foundTotp);
+    QSignalSpy loadingError(&uut, &accounts::LoadAccounts::failedToLoadAllAccounts);
     QSignalSpy jobFinished(&uut, &accounts::LoadAccounts::finished);
 
     uut.run();
@@ -63,6 +67,7 @@ void LoadAccountsTest::emptyAccountsFile(void)
     QVERIFY2(actionRun, "accounts action should have run");
     QCOMPARE(hotpFound.count(), 0);
     QCOMPARE(totpFound.count(), 0);
+    QCOMPARE(loadingError.count(), 0);
 }
 
 void LoadAccountsTest::sampleAccountsFile(void)
@@ -79,6 +84,7 @@ void LoadAccountsTest::sampleAccountsFile(void)
 
     QSignalSpy hotpFound(&uut, &accounts::LoadAccounts::foundHotp);
     QSignalSpy totpFound(&uut, &accounts::LoadAccounts::foundTotp);
+    QSignalSpy loadingError(&uut, &accounts::LoadAccounts::failedToLoadAllAccounts);
     QSignalSpy jobFinished(&uut, &accounts::LoadAccounts::finished);
 
     uut.run();
@@ -87,6 +93,7 @@ void LoadAccountsTest::sampleAccountsFile(void)
     QVERIFY2(actionRun, "accounts action should have run");
     QCOMPARE(hotpFound.count(), 1);
     QCOMPARE(totpFound.count(), 1);
+    QCOMPARE(loadingError.count(), 0);
 
     const auto firstHotp = hotpFound.at(0);
     QCOMPARE(firstHotp.at(0).toUuid(), QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")));
@@ -103,6 +110,32 @@ void LoadAccountsTest::sampleAccountsFile(void)
     QCOMPARE(firstHotp.at(3).toByteArray(), rawNonce);
     QCOMPARE(firstTotp.at(4).toUInt(), 30);
     QCOMPARE(firstTotp.at(5).toInt(), 6);
+}
+
+void LoadAccountsTest::invalidSampleAccountsFile(void)
+{
+    bool actionRun = false;
+    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void
+    {
+        QSettings data(test::path(invalidIniResource), QSettings::IniFormat);
+        actionRun = true;
+        action(data);
+    });
+
+    accounts::LoadAccounts uut(settings, &m_secret);
+
+    QSignalSpy hotpFound(&uut, &accounts::LoadAccounts::foundHotp);
+    QSignalSpy totpFound(&uut, &accounts::LoadAccounts::foundTotp);
+    QSignalSpy loadingError(&uut, &accounts::LoadAccounts::failedToLoadAllAccounts);
+    QSignalSpy jobFinished(&uut, &accounts::LoadAccounts::finished);
+
+    uut.run();
+
+    QVERIFY2(test::signal_eventually_emitted_once(jobFinished), "job should be finished");
+    QVERIFY2(actionRun, "accounts action should have run");
+    QCOMPARE(hotpFound.count(), 0);
+    QCOMPARE(totpFound.count(), 0);
+    QCOMPARE(loadingError.count(), 1);
 }
 
 QTEST_MAIN(LoadAccountsTest)

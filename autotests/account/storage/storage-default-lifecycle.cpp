@@ -43,6 +43,8 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     });
 
     accounts::AccountStorage *uut = accounts::AccountStorage::open(settings);
+    QSignalSpy error(uut, &accounts::AccountStorage::error);
+    QSignalSpy loaded(uut, &accounts::AccountStorage::loaded);
     QSignalSpy accountAdded(uut, &accounts::AccountStorage::added);
     QSignalSpy storageDisposed(uut, &accounts::AccountStorage::disposed);
     QSignalSpy storageCleaned(uut, &accounts::AccountStorage::destroyed);
@@ -56,6 +58,8 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     QSignalSpy secretCleaned(secret, &accounts::AccountSecret::destroyed);
 
     // first phase: check that account objects can be loaded from storage
+    QCOMPARE(uut->isLoaded(), false);
+    QCOMPARE(uut->hasError(), false);
 
     // expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
     QVERIFY2(test::signal_eventually_emitted_once(existingPasswordNeeded), "(existing) password should be asked by now");
@@ -70,7 +74,11 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     QVERIFY2(test::signal_eventually_emitted_once(keyAvailable, 2500), "key should have been derived by now");
 
     // expect that loading is scheduled automatically, so advancing the event loop should trigger the signal
-    QVERIFY2(test::signal_eventually_emitted_once(accountAdded), "sample account should be loaded by now");
+    QVERIFY2(test::signal_eventually_emitted_once(loaded), "sample account should be loaded by now");
+    QCOMPARE(uut->isLoaded(), true);
+    QCOMPARE(uut->hasError(), false);
+    QCOMPARE(error.count(),  0);
+    QCOMPARE(accountAdded.count(), 1);
     QCOMPARE(accountAdded.at(0).at(0), sampleAccountName);
 
     accounts::Account *sampleAccount = uut->get(sampleAccountName);
