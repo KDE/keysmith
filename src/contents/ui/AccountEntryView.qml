@@ -18,6 +18,7 @@ Kirigami.SwipeListItem {
     property int interval: account && account.isTotp ? 1000 * account.timeStep : 0
     property bool tokenAvailable: account && account.token && account.token.length > 0
 
+    signal actionTriggered
     property real healthIndicator: 0
     property bool alive: true
 
@@ -27,6 +28,7 @@ Kirigami.SwipeListItem {
         onTriggered: {
             // TODO convert to C++ helper, have proper logging?
             if (alive && account && account.isHotp) {
+                root.actionTriggered();
                 account.advanceCounter(1);
             }
             // TODO warn if not
@@ -40,6 +42,7 @@ Kirigami.SwipeListItem {
             // TODO convert to C++ helper, have proper logging?
             if (alive && account) {
                 root.sheet.open();
+                root.actionTriggered();
             }
             // TODO warn if not
         }
@@ -164,6 +167,7 @@ Kirigami.SwipeListItem {
     onClicked: {
         // TODO convert to C++ helper, have proper logging?
         if (alive && tokenAvailable) {
+            root.actionTriggered();
             Keysmith.copyToClipboard(account.token);
         }
         // TODO warn if not
