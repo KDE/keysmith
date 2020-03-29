@@ -53,6 +53,8 @@ namespace model
     class SimpleAccountListModel: public QAbstractListModel
     {
         Q_OBJECT
+        Q_PROPERTY(bool loaded READ loaded NOTIFY loadedChanged);
+        Q_PROPERTY(bool error READ error WRITE setError NOTIFY errorChanged);
     public:
         enum NonStandardRoles {
             AccountRole = Qt::ItemDataRole::UserRole
@@ -66,12 +68,21 @@ namespace model
         Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const override;
         Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
         QHash<int, QByteArray> roleNames(void) const override;
+    public:
+        bool loaded(void) const;
+        bool error(void) const;
+        void setError(bool markAsError);
+    Q_SIGNALS:
+        void loadedChanged(void);
+        void errorChanged(void);
     private Q_SLOTS:
         void added(const QString &account);
         void removed(const QString &removed);
+        void handleError(void);
     private:
         accounts::AccountStorage * const m_storage;
     private:
+        bool m_has_error;
         QVector<QString> m_index;
         QHash<QString, accounts::Account*> m_accounts;
     };

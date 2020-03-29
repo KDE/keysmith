@@ -82,10 +82,12 @@ namespace model
         return model::millisecondsLeftForToken(m_model->epoch(), m_model->timeStep());
     }
 
-    SimpleAccountListModel::SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent) : QAbstractListModel(parent), m_storage(storage), m_index(QVector<QString>())
+    SimpleAccountListModel::SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent) : QAbstractListModel(parent), m_storage(storage), m_has_error(false), m_index(QVector<QString>())
     {
         QObject::connect(storage, &accounts::AccountStorage::added, this, &SimpleAccountListModel::added);
         QObject::connect(storage, &accounts::AccountStorage::removed, this, &SimpleAccountListModel::removed);
+        QObject::connect(storage, &accounts::AccountStorage::error, this, &SimpleAccountListModel::handleError);
+        QObject::connect(storage, &accounts::AccountStorage::loaded, this, &SimpleAccountListModel::loadedChanged);
 
         beginResetModel();
         for (const QString &name : m_storage->accounts()) {
@@ -98,7 +100,35 @@ namespace model
                 qCDebug(logger) << "Account storage reported an account (name) but did not yield a valid account object";
             }
         }
+        m_has_error = storage->hasError();
         endResetModel();
+    }
+
+    bool SimpleAccountListModel::error(void) const
+    {
+        return m_has_error;
+    }
+
+    void SimpleAccountListModel::setError(bool markAsError)
+    {
+        if (!markAsError && m_storage->hasError()) {
+            m_storage->clearError();
+        }
+
+        if (markAsError != m_has_error) {
+            m_has_error = markAsError;
+            Q_EMIT errorChanged();
+        }
+    }
+
+    void SimpleAccountListModel::handleError(void)
+    {
+        setError(true);
+    }
+
+    bool SimpleAccountListModel::loaded(void) const
+    {
+        return m_storage->isLoaded();
     }
 
     void SimpleAccountListModel::addTotp(const QString &account, const QString &secret, uint timeStep, int tokenLength)
