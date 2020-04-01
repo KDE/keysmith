@@ -34,10 +34,7 @@ Kirigami.ScrollablePage {
     ListView {
         id: mainList
         model: accounts
-        delegate:  Kirigami.DelegateRecycler {
-            width: parent ? parent.width : implicitWidth
-            sourceComponent: mainListDelegate
-        }
+        delegate: mainListDelegate
     }
 
     actions.main: Kirigami.Action {
