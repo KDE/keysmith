@@ -19,13 +19,14 @@ Kirigami.SwipeListItem {
     property bool tokenAvailable: account && account.token && account.token.length > 0
 
     property real healthIndicator: 0
+    property bool alive: true
 
     property Kirigami.Action advanceCounter : Kirigami.Action {
         iconName: "go-next" // "view-refresh"
         text: "Next token"
         onTriggered: {
             // TODO convert to C++ helper, have proper logging?
-            if (account && account.isHotp) {
+            if (alive && account && account.isHotp) {
                 account.advanceCounter(1);
             }
             // TODO warn if not
@@ -37,7 +38,8 @@ Kirigami.SwipeListItem {
         text: "Delete account"
         onTriggered: {
             // TODO convert to C++ helper, have proper logging?
-            if (account) {
+            if (alive && account) {
+                alive = false;
                 account.remove();
             }
             // TODO warn if not
@@ -70,7 +72,7 @@ Kirigami.SwipeListItem {
             interval: phase
             onTriggered: {
                 // TODO convert to C++ helper, have proper logging?
-                if (account) {
+                if (alive && account) {
                     if (account.isTotp) {
                         timer.stop()
                         timeoutIndicatorAnimation.stop();
@@ -117,7 +119,7 @@ Kirigami.SwipeListItem {
 
     onClicked: {
         // TODO convert to C++ helper, have proper logging?
-        if (tokenAvailable) {
+        if (alive && tokenAvailable) {
             Keysmith.copyToClipboard(account.token);
         }
         // TODO warn if not
