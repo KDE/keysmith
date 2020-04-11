@@ -134,7 +134,7 @@ void SaveTotpTest::invalidHotp_data(void)
     define_test_case("empty secret", QUuid("fe68a65e-287e-5dcd-909b-1837d7ab94ee"), QLatin1String("empty secret"), QLatin1String(""), 30, 6);
     define_test_case("timeStep too small", QUuid("5ab8749b-f973-5f48-a70e-c261ebd0521a"), QLatin1String("timeStep too small"),  QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 0, 6);
     define_test_case("tokenLength too small", QUuid("bca12e13-4b5b-5e4e-b162-3b86a6284dea"), QLatin1String("tokenLength too small"), QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 30, 5);
-    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 30, 9);
+    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 30, 11);
 }
 
 void SaveTotpTest::initTestCase(void)

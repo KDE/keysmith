@@ -26,7 +26,7 @@ namespace accounts
 
     bool checkTokenLength(int tokenLength)
     {
-        return tokenLength >= 6 && tokenLength <= 8;
+        return tokenLength >= 6 && tokenLength <= 10;
     }
 
     bool checkTimeStep(uint timeStep)

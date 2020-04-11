@@ -89,7 +89,7 @@ void AccountValidationTest::checkTokenLength_data()
     QTest::addColumn<bool>("expected");
 
     QTest::newRow("too small") << 5 << false;
-    QTest::newRow("too large") << 9 << false;
+    QTest::newRow("too large") << 11 << false;
     QTest::newRow("minimum") << 6 << true;
     QTest::newRow("maximum") << 8 << true;
 }

@@ -133,7 +133,7 @@ void SaveHotpTest::invalidHotp_data(void)
     define_test_case("null secret", QUuid("6e5ba95c-984d-538c-844e-f9edc1341bd2"), QLatin1String("null secret"), QString(), 0, 6);
     define_test_case("empty secret", QUuid("fe68a65e-287e-5dcd-909b-1837d7ab94ee"), QLatin1String("empty secret"), QLatin1String(""), 0, 6);
     define_test_case("tokenLength too small", QUuid("bca12e13-4b5b-5e4e-b162-3b86a6284dea"), QLatin1String("tokenLength too small"), QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 0, 5);
-    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 0, 9);
+    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), QLatin1String("NBSWY3DPFQQHO33SNRSCCCQ="), 0, 11);
 }
 
 void SaveHotpTest::initTestCase(void)
