@@ -3,6 +3,9 @@
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "hmac.h"
+#include "../logging_p.h"
+
+KEYSMITH_LOGGER(logger, ".hmac")
 
 static QByteArray hmac_stage(QCryptographicHash::Algorithm algorithm, char * const keyBuf, int ksize, int blockSize, const char fillPad, const char xorKey, const QByteArray &message)
 {
@@ -98,12 +101,14 @@ namespace hmac
 
         std::optional<int> maybeBlockSize = blockSize(algorithm);
         if (!maybeBlockSize) {
-            // TODO warn
+            qCDebug(logger) << "Unable to determine block size for hashing algorithm:" << algorithm;
             return std::nullopt;
         }
 
         if (!validateKeySize(algorithm, ksize, requireSaneKeyLength)) {
-            // TODO warn
+            qCDebug(logger)
+                << "Invalid HMAC key size:" << ksize << "for hashing algorithm:" << algorithm
+                << "Sane key length requirements apply:" << requireSaneKeyLength;
             return std::nullopt;
         }
 

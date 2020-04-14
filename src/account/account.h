@@ -30,9 +30,11 @@ namespace accounts
             Totp,
             Hotp
         };
+        Q_ENUM(Algorithm)
         enum Hash {
             Default, Sha256, Sha512
         };
+        Q_ENUM(Hash)
         explicit Account(AccountPrivate *d, QObject *parent = nullptr);
         QString name(void) const;
         QString token(void) const;

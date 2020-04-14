@@ -3,6 +3,9 @@
  * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "base32.h"
+#include "../logging_p.h"
+
+KEYSMITH_LOGGER(logger, ".base32")
 
 static const QChar alphaMinLowerCase(QLatin1Char('a'));
 static const QChar alphaMaxLowerCase(QLatin1Char('z'));
@@ -47,11 +50,12 @@ static std::optional<quint64> decode(const QString &encoded, int index)
     quint64 result = 0ULL;
 
     for (int i = 0; i < 8; ++i) {
-        std::optional<int> v = decode(encoded[index + i]);
+        const QChar inputChar = encoded[index + i];
+        std::optional<int> v = decode(inputChar);
         if (v) {
             result = (result << 5) | *v;
         } else {
-            // TODO warn about this
+            qCDebug(logger) << "Not a valid base32 character:" << inputChar;
             return std::nullopt;
         }
     }
@@ -229,19 +233,19 @@ namespace base32
     {
         int max = until == -1 ? encoded.size() : until;
         if (!checkInputRange(encoded, from, max)) {
-            // TODO warn about this
+            qCDebug(logger) << "Invalid input range from:" << from << "until:" << until << "implied limit:" << max;
             return std::nullopt;
         }
 
         std::optional<int> padding = isBase32(encoded, from, max);
         if (!padding) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to decode: input range is not valid base32";
             return std::nullopt;
         }
 
         size_t needed = requiredCapacity(*padding, from, max);
         if (outlen < needed) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to decode: required capacity:" << needed << "exceeds allocated output buffer size:" << outlen;
             return std::nullopt;
         }
 
@@ -265,7 +269,7 @@ namespace base32
         std::optional<size_t> capacity = validate(encoded);
 
         if (!capacity) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to decode input: invalid base32";
             return std::nullopt;
         }
 
@@ -274,8 +278,9 @@ namespace base32
         decoded.resize((int) *capacity);
         if (decode(encoded, decoded.data(), *capacity)) {
             result.emplace(decoded);
+        } else {
+            qCDebug(logger) << "Failed to decode base32";
         }
-        // TODO warn if not
 
         return result;
     }

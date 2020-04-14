@@ -5,6 +5,9 @@
 #include "oath.h"
 
 #include "../hmac/hmac.h"
+#include "../logging_p.h"
+
+KEYSMITH_LOGGER(logger, ".oath")
 
 static QString encodeDefaults(quint32 value, uint tokenLength)
 {
@@ -100,17 +103,17 @@ namespace oath
     {
         std::optional<uint> digestSize = hmac::outputSize(algorithm);
         if (!digestSize) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to determine digest size for algorithm:" << algorithm;
             return std::nullopt;
         }
 
         if ((*digestSize) < 20) {
-            // TODO warn about this
+            qCDebug(logger) << "Digest is too small for dynamic truncation with algorithm:" << algorithm << "digest size:" << *digestSize << "needed:" << 20;
             return std::nullopt;
         }
 
         if (!validate(encoder)) {
-            // TODO warn about this
+            qCDebug(logger) << "Invalid token encoder";
             return std::nullopt;
         }
 
@@ -122,17 +125,17 @@ namespace oath
     {
         std::optional<uint> digestSize = hmac::outputSize(algorithm);
         if (!digestSize) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to determine digest size for algorithm:" << algorithm;
             return std::nullopt;
         }
 
         if (offset >= ((*digestSize) - 4)) {
-            // TODO warn about this
+            qCDebug(logger) << "Digest is too small for truncation offset:" << offset << "with algorithm:" << algorithm << "digest size:" << *digestSize << "needed:" << offset + 4;
             return std::nullopt;
         }
 
         if (!validate(encoder)) {
-            // TODO warn about this
+            qCDebug(logger) << "Invalid token encoder";
             return std::nullopt;
         }
 
@@ -155,7 +158,9 @@ namespace oath
         }
 
         if (!hmac::validateKeySize(m_algorithm, length, m_enforceKeyLength)) {
-            // TODO warn about this
+            qCDebug(logger)
+                << "Invalid key size:" << length << "for algorithm:" << m_algorithm
+                << "Sane key length requirements apply:" << m_enforceKeyLength;
             return std::nullopt;
         }
 
@@ -172,8 +177,8 @@ namespace oath
             result = Encoder::reduceMod10(result, m_encoder.tokenLength());
             return std::optional<QString>(m_encoder.encode(result));
         }
-        // TODO warn if not
 
+        qCDebug(logger) << "Failed to compute token";
         return std::nullopt;
     }
 
@@ -214,12 +219,12 @@ namespace oath
         qint64 now = clock();
 
         if (now < epochMillis) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to count time steps: epoch is in the future";
             return std::nullopt;
         }
 
         if (timeStep == 0UL) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to count time steps: invalid step size:" << timeStep;
             return std::nullopt;
         }
 

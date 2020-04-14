@@ -5,8 +5,12 @@
 #include "account_p.h"
 #include "validation.h"
 
+#include "../logging_p.h"
+
 #include <QObject>
 #include <QTimer>
+
+KEYSMITH_LOGGER(logger, ".accounts.account_p")
 
 namespace accounts
 {
@@ -68,71 +72,145 @@ namespace accounts
     void AccountPrivate::setCounter(quint64 counter)
     {
         Q_Q(Account);
-        if (m_is_still_alive && m_storage->isStillOpen() && m_algorithm == Account::Algorithm::Hotp) {
-            SaveHotp *job = new SaveHotp(m_storage->settings(),m_id, m_name, m_secret, counter, m_tokenLength);
-            m_actions->queueAndProceed(job, [counter, job, q, this](void) -> void
-            {
-                new HandleCounterUpdate(this, counter, job, q);
-            });
+        if (!m_is_still_alive) {
+            qCDebug(logger)
+                << "Will not set counter for account:" << m_id
+                << "Object marked for death";
+            return;
         }
-        // TODO: warn if not
+
+        if (!m_storage->isStillOpen()) {
+            qCDebug(logger)
+                << "Will not set counter for account:" << m_id
+                << "Storage no longer open";
+            return;
+        }
+
+        if (m_algorithm != Account::Algorithm::Hotp) {
+            qCDebug(logger)
+                << "Will not set counter for account:" << m_id
+                << "Algorithm not applicable:" << m_algorithm;
+            return;
+        }
+
+        qCDebug(logger) << "Requesting to store updated details for account:" << m_id;
+        SaveHotp *job = new SaveHotp(m_storage->settings(),m_id, m_name, m_secret, counter, m_tokenLength);
+        m_actions->queueAndProceed(job, [counter, job, q, this](void) -> void
+        {
+            new HandleCounterUpdate(this, counter, job, q);
+        });
     }
 
     void AccountPrivate::acceptCounter(quint64 counter)
     {
-        if (m_is_still_alive && m_storage->isStillOpen() && m_algorithm == Account::Algorithm::Hotp) {
-            m_counter = counter;
-            recompute();
+        if (!m_is_still_alive) {
+            qCDebug(logger)
+                << "Ignoring counter update for account:" << m_id
+                << "Object marked for death";
+            return;
         }
-        // TODO: warn if not
+
+        if (!m_storage->isStillOpen()) {
+            qCDebug(logger)
+                << "Ignoring counter update for account:" << m_id
+                << "Storage no longer open";
+            return;
+        }
+
+        if (m_algorithm != Account::Algorithm::Hotp) {
+            qCDebug(logger)
+                << "Ignoring counter update for account:" << m_id
+                << "Algorithm not applicable:" << m_algorithm;
+            return;
+        }
+
+        qCDebug(logger) << "Counter is updated for account:" << m_id;
+        m_counter = counter;
+        recompute();
     }
 
     void AccountPrivate::acceptToken(QString token)
     {
         Q_Q(Account);
-        if (m_is_still_alive && m_storage->isStillOpen()) {
-            m_token = token;
-            Q_EMIT q->tokenChanged(m_token);
+        if (!m_is_still_alive) {
+            qCDebug(logger)
+                << "Ignoring token update for account:" << m_id
+                << "Object marked for death";
+            return;
         }
-        // TODO: warn if not
+
+        if (!m_storage->isStillOpen()) {
+            qCDebug(logger)
+                << "Ignoring token update for account:" << m_id
+                << "Storage no longer open";
+            return;
+        }
+
+        qCDebug(logger) << "Token is updated for account:" << m_id;
+        m_token = token;
+        Q_EMIT q->tokenChanged(m_token);
     }
 
     void AccountPrivate::recompute(void)
     {
         Q_Q(Account);
-        if (m_is_still_alive && m_storage->isStillOpen()) {
-            ComputeHotp *hotpJob = nullptr;
-            ComputeTotp *totpJob = nullptr;
-
-            switch (m_algorithm) {
-            case Account::Algorithm::Hotp:
-                hotpJob = new ComputeHotp(m_secret, m_counter, m_tokenLength, m_offset, m_checksum);
-                m_actions->queueAndProceed(hotpJob, [hotpJob, q, this](void) -> void {
-                    new HandleTokenUpdate(this, hotpJob, q);
-                });
-                break;
-            case Account::Algorithm::Totp:
-                totpJob = new ComputeTotp(m_secret, m_epoch, m_timeStep, m_tokenLength, m_hash);
-                m_actions->queueAndProceed(totpJob, [totpJob, q, this](void) -> void
-                {
-                    new HandleTokenUpdate(this, totpJob, q);
-                });
-                break;
-            default:
-                break;
-            }
+        if (!m_is_still_alive) {
+            qCDebug(logger)
+                << "Will not recompute token for account:" << m_id
+                << "Object marked for death";
+            return;
         }
-        // TODO: warn if not
+
+        if (!m_storage->isStillOpen()) {
+            qCDebug(logger)
+                << "Will not recompute token for account:" << m_id
+                << "Storage no longer open";
+            return;
+        }
+
+        qCDebug(logger) << "Requesting recomputed token for account:" << m_id;
+        ComputeHotp *hotpJob = nullptr;
+        ComputeTotp *totpJob = nullptr;
+
+        switch (m_algorithm) {
+        case Account::Algorithm::Hotp:
+            hotpJob = new ComputeHotp(m_secret, m_counter, m_tokenLength, m_offset, m_checksum);
+            m_actions->queueAndProceed(hotpJob, [hotpJob, q, this](void) -> void {
+                new HandleTokenUpdate(this, hotpJob, q);
+            });
+            break;
+        case Account::Algorithm::Totp:
+            totpJob = new ComputeTotp(m_secret, m_epoch, m_timeStep, m_tokenLength, m_hash);
+            m_actions->queueAndProceed(totpJob, [totpJob, q, this](void) -> void
+            {
+                new HandleTokenUpdate(this, totpJob, q);
+            });
+            break;
+        default:
+            Q_ASSERT_X(false, Q_FUNC_INFO, "unknown algorithm value");
+            break;
+        }
     }
 
     void AccountPrivate::remove(void)
     {
-        if (m_is_still_alive && m_storage->isStillOpen()) {
-            QSet<QString> self;
-            self.insert(m_name);
-            m_storage->removeAccounts(self);
+        if (!m_is_still_alive) {
+            qCDebug(logger)
+                << "Will not remove account:" << m_id
+                << "Object marked for death";
+            return;
         }
-        // TODO: warn if not
+
+        if (!m_storage->isStillOpen()) {
+            qCDebug(logger)
+                << "Will not remove account:" << m_id
+                << "Storage no longer open";
+            return;
+        }
+
+        QSet<QString> self;
+        self.insert(m_name);
+        m_storage->removeAccounts(self);
     }
 
     void AccountPrivate::markForRemoval(void)
@@ -166,14 +244,20 @@ namespace accounts
     QVector<QString> AccountStoragePrivate::activeAccounts(void) const
     {
         QVector<QString> active;
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Not returning accounts: account storage no longer open";
+            return active;
+        }
 
-        if (m_is_still_open) {
-            const QList<QString> all = m_names.keys();
-            for (const QString &account : all) {
-                if (m_accountsPrivate[m_names[account]]->isStillAlive()) {
-                    active.append(account);
-                }
-                // TODO: log if not
+        const QList<QString> all = m_names.keys();
+        for (const QString &account : all) {
+            const QUuid id = m_names[account];
+            if (m_accountsPrivate[id]->isStillAlive()) {
+                active.append(account);
+            } else {
+                qCDebug(logger)
+                    << "Not returning account:" << id
+                    << "Object marked for death";
             }
         }
 
@@ -187,7 +271,12 @@ namespace accounts
 
     bool AccountStoragePrivate::isNameStillAvailable(const QString &name) const
     {
-        return m_is_still_open && !m_names.contains(name);
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Pretending no name is available: account storage no longer open";
+            return false;
+        }
+
+        return !m_names.contains(name);
     }
 
     bool AccountStoragePrivate::contains(const QString &account) const
@@ -197,13 +286,28 @@ namespace accounts
          * This lets the behaviour of get() and contains() be mutually consistent
          * without having to hand out pointers which may be about to go stale in get()
          */
-        return m_is_still_open && m_names.contains(account) && m_accountsPrivate[m_names[account]]->isStillAlive();
-        // TODO: warn if not still open, log if account not alive
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Pretending no account exists: account storage no longer open";
+            return false;
+        }
+
+        if (!m_names.contains(account)) {
+            return false;
+        }
+
+        const QUuid id = m_names[account];
+        if (!m_accountsPrivate[id]->isStillAlive()) {
+            qCDebug(logger)
+                << "Pretending account does not exist:" << id
+                << "Object marked for death";
+            return false;
+        }
+
+        return true;
     }
 
     Account * AccountStoragePrivate::get(const QString &account) const
     {
-        // TODO: warn if not
         return contains(account) ? m_accounts[m_names[account]] : nullptr;
     }
 
@@ -214,39 +318,89 @@ namespace accounts
 
     void AccountStoragePrivate::removeAccounts(const QSet<QString> &accountNames)
     {
-        if (m_is_still_open) {
-            QSet<QUuid> ids;
-            for (const QString &accountName : accountNames) {
-                if (m_names.contains(accountName)) {
-                    const QUuid id = m_names[accountName];
-                    AccountPrivate *p = m_accountsPrivate[id];
-                    /*
-                     * Avoid doing anything with accounts which are already about to be removed from the maps
-                     */
-                    if (p->isStillAlive()) {
-                        p->markForRemoval();
-                        ids.insert(id);
-                    }
-                    // TODO: log if not
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Not removing accounts: account storage no longer open";
+            return;
+        }
+
+        QSet<QUuid> ids;
+        for (const QString &accountName : accountNames) {
+            if (m_names.contains(accountName)) {
+                const QUuid id = m_names[accountName];
+                AccountPrivate *p = m_accountsPrivate[id];
+                /*
+                 * Avoid doing anything with accounts which are already about to be removed from the maps
+                 */
+                if (p->isStillAlive()) {
+                    p->markForRemoval();
+                    ids.insert(id);
+                } else {
+                    qCDebug(logger)
+                        << "Not removing account:" << id
+                        << "Object marked for death";
                 }
             }
-
-            DeleteAccounts *job = new DeleteAccounts(m_settings, ids);
-            m_actions->queueAndProceed(job, [&ids, job, this](void) -> void
-            {
-                for (const QUuid &id : ids) {
-                    Account *account = m_accounts[id];
-                    QObject::connect(job, &DeleteAccounts::finished, account, &Account::removed);
-                }
-            });
         }
-        // TODO: warn if not
+
+        DeleteAccounts *job = new DeleteAccounts(m_settings, ids);
+        m_actions->queueAndProceed(job, [&ids, job, this](void) -> void
+        {
+            for (const QUuid &id : ids) {
+                Account *account = m_accounts[id];
+                QObject::connect(job, &DeleteAccounts::finished, account, &Account::removed);
+            }
+        });
     }
 
     void AccountStoragePrivate::acceptAccountRemoval(const QString &accountName)
     {
-        if (m_names.contains(accountName)) {
+        if (!m_names.contains(accountName)) {
+            qCDebug(logger) << "Not accepting account removal: account name unknown";
+            return;
+        }
+
+        const QUuid id = m_names[accountName];
+        qCDebug(logger) << "Handling account cleanup for account:" << id;
+
+        Account *account = m_accounts[id];
+        m_accounts.remove(id);
+        m_accountsPrivate.remove(id);
+        m_names.remove(accountName);
+        m_ids.remove(id);
+        QTimer::singleShot(0, account, &accounts::Account::deleteLater);
+    }
+
+    void AccountStoragePrivate::dispose(const std::function<void(Null*)> &handler)
+    {
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Not disposing of storage: account storage no longer open";
+            return;
+        }
+
+        qCDebug(logger) << "Disposing of storage";
+
+        m_is_still_open = false;
+        Null *job = new Null();
+        m_actions->queueAndProceed(job, [job, &handler](void) -> void
+        {
+            handler(job);
+        });
+    }
+
+    void AccountStoragePrivate::acceptDisposal(void)
+    {
+        Q_Q(AccountStorage);
+        if (m_is_still_open) {
+            qCDebug(logger) << "Ignoring disposal of storage: account storage is still open";
+            return;
+        }
+
+        qCDebug(logger) << "Handling storage disposal";
+
+        for (const QString &accountName : m_names.keys()) {
             const QUuid id = m_names[accountName];
+            qCDebug(logger) << "Handling account cleanup for account:" << id;
+
             Account *account = m_accounts[id];
             m_accounts.remove(id);
             m_accountsPrivate.remove(id);
@@ -254,38 +408,7 @@ namespace accounts
             m_ids.remove(id);
             QTimer::singleShot(0, account, &accounts::Account::deleteLater);
         }
-        // TODO: warn if not
-    }
-
-    void AccountStoragePrivate::dispose(const std::function<void(Null*)> &handler)
-    {
-        if (m_is_still_open) {
-            m_is_still_open = false;
-            Null *job = new Null();
-            m_actions->queueAndProceed(job, [job, &handler](void) -> void
-            {
-                handler(job);
-            });
-        }
-        // TODO: warn if not
-    }
-
-    void AccountStoragePrivate::acceptDisposal(void)
-    {
-        Q_Q(AccountStorage);
-        if (!m_is_still_open) {
-            for (const QString &accountName : m_names.keys()) {
-                const QUuid id = m_names[accountName];
-                Account *account = m_accounts[id];
-                m_accounts.remove(id);
-                m_accountsPrivate.remove(id);
-                m_names.remove(accountName);
-                m_ids.remove(id);
-                QTimer::singleShot(0, account, &accounts::Account::deleteLater);
-            }
-            Q_EMIT q->disposed();
-        }
-        // TODO: warn if not
+        Q_EMIT q->disposed();
     }
 
     QUuid AccountStoragePrivate::generateId(const QString &name) const
@@ -301,53 +424,78 @@ namespace accounts
     {
         Q_UNUSED(offset);
         Q_UNUSED(addChecksum);
-        if (m_is_still_open && isNameStillAvailable(name)) {
-            QUuid id = generateId(name);
-            if (checkHotpAccount(id, name, secret, tokenLength)) {
-                m_ids.insert(id);
-                SaveHotp *job = new SaveHotp(m_settings, id, name, secret, counter, tokenLength);
-                m_actions->queueAndProceed(job, [job, &handler](void) -> void
-                {
-                    handler(job);
-                });
-            }
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Will not add new HOTP account: storage no longer open";
+            return;
         }
-        // TODO: warn if not
+        if (!isNameStillAvailable(name)) {
+            qCDebug(logger) << "Will not add new HOTP account: account name not available";
+            return;
+        }
+
+        QUuid id = generateId(name);
+        if (!checkHotpAccount(id, name, secret, tokenLength)) {
+            qCDebug(logger) << "Will not add new HOTP account: invalid account details";
+            return;
+        }
+
+        qCDebug(logger) << "Requesting to store details for new HOTP account:" << id;
+
+        m_ids.insert(id);
+        SaveHotp *job = new SaveHotp(m_settings, id, name, secret, counter, tokenLength);
+        m_actions->queueAndProceed(job, [job, &handler](void) -> void
+        {
+            handler(job);
+        });
     }
 
     void AccountStoragePrivate::addTotp(const std::function<void(SaveTotp*)> &handler, const QString &name, const QString &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
     {
         Q_UNUSED(epoch);
         Q_UNUSED(hash);
-        if (m_is_still_open && isNameStillAvailable(name)) {
-            QUuid id = generateId(name);
-            if (checkTotpAccount(id, name, secret, tokenLength, timeStep)) {
-                m_ids.insert(id);
-                SaveTotp *job = new SaveTotp(m_settings, id, name, secret, timeStep, tokenLength);
-                m_actions->queueAndProceed(job, [job, &handler](void) -> void
-                {
-                    handler(job);
-                });
-            }
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Will not add new TOTP account: storage no longer open";
+            return;
         }
-        // TODO: warn if not
+        if (!isNameStillAvailable(name)) {
+            qCDebug(logger) << "Will not add new TOTP account: account name not available";
+            return;
+        }
+
+        QUuid id = generateId(name);
+        if (!checkTotpAccount(id, name, secret, tokenLength, timeStep)) {
+            qCDebug(logger) << "Will not add new TOTP account: invalid account details";
+            return;
+        }
+
+        qCDebug(logger) << "Requesting to store details for new TOTP account:" << id;
+
+        m_ids.insert(id);
+        SaveTotp *job = new SaveTotp(m_settings, id, name, secret, timeStep, tokenLength);
+        m_actions->queueAndProceed(job, [job, &handler](void) -> void
+        {
+            handler(job);
+        });
     }
 
     void AccountStoragePrivate::load(const std::function<void(LoadAccounts*)> &handler)
     {
-        if (m_is_still_open) {
-            LoadAccounts *job = new LoadAccounts(m_settings);
-            m_actions->queueAndProceed(job, [job, &handler](void) -> void
-            {
-                handler(job);
-            });
+        if (!m_is_still_open) {
+            qCDebug(logger) << "Will not load accounts: storage no longer open";
+            return;
         }
-        // TODO: warn if not
+
+        LoadAccounts *job = new LoadAccounts(m_settings);
+        m_actions->queueAndProceed(job, [job, &handler](void) -> void
+        {
+            handler(job);
+        });
     }
 
     Account * AccountStoragePrivate::acceptHotpAccount(const QUuid &id, const QString &name, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
     {
         Q_Q(AccountStorage);
+        qCDebug(logger) << "Registering HOTP account:" << id;
         const std::function<Account*(AccountPrivate*)> registration([this, q, &id](AccountPrivate *p) -> Account *
         {
             Account *account = new Account(p, q);
@@ -365,6 +513,7 @@ namespace accounts
     Account * AccountStoragePrivate::acceptTotpAccount(const QUuid &id, const QString &name, const QString &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
     {
         Q_Q(AccountStorage);
+        qCDebug(logger) << "Registering TOTP account:" << id;
         const std::function<Account*(AccountPrivate*)> registration([this, q, &id](AccountPrivate *p) -> Account *
         {
             Account *account = new Account(p, q);
@@ -400,8 +549,11 @@ namespace accounts
     {
         if (m_accept_on_finish) {
             m_account->acceptCounter(m_counter);
+        } else {
+            qCWarning(logger)
+                << "Rejecting counter update for account:" << m_account->id()
+                << "Failed to save the updated account details to storage";
         }
-        // TODO: warn if not
         deleteLater();
     }
 

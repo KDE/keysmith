@@ -4,31 +4,35 @@
  */
 #include "accounts.h"
 
+#include "../logging_p.h"
+
 #include <QtDebug>
+
+KEYSMITH_LOGGER(logger, ".model.accounts")
 
 namespace model
 {
     qint64 millisecondsLeftForToken(const QDateTime &epoch, uint timeStep, const std::function<qint64(void)> &clock)
     {
         QDateTime now = QDateTime::fromMSecsSinceEpoch(clock());
-        if (epoch.isValid() && now.isValid() && timeStep > 0) {
-            /*
-             * Avoid integer overflow by casting to the wider type first before multiplying.
-             * Not likely to happen 'in the wild', but good practice nevertheless
-             */
-            qint64 step = ((qint64) timeStep) * 1000LL;
-
-            qint64 diff = epoch.msecsTo(now);
-
-            /*
-             * Compensate for the fact that % operator is not the same as mathematical mod in case diff is negative.
-             * diff is negative when the given epoch is in the 'future' compared to the current clock value.
-             */
-            return diff < 0 ? - (diff % step) : step - (diff % step);
+        if (!epoch.isValid() || !now.isValid() || timeStep == 0) {
+            qCDebug(logger) << "Unable to compute milliseconds left: invalid arguments";
+            return -1;
         }
-        // TODO: warn if not
 
-        return -1;
+        /*
+         * Avoid integer overflow by casting to the wider type first before multiplying.
+         * Not likely to happen 'in the wild', but good practice nevertheless
+         */
+        qint64 step = ((qint64) timeStep) * 1000LL;
+
+        qint64 diff = epoch.msecsTo(now);
+
+        /*
+         * Compensate for the fact that % operator is not the same as mathematical mod in case diff is negative.
+         * diff is negative when the given epoch is in the 'future' compared to the current clock value.
+         */
+        return diff < 0 ? - (diff % step) : step - (diff % step);
     }
 
     AccountView::AccountView(accounts::Account *model, QObject *parent) : QObject(parent), m_model(model)
@@ -72,11 +76,12 @@ namespace model
 
     qint64 AccountView::millisecondsLeftForToken(void) const
     {
-        if (isTotp()) {
-            return model::millisecondsLeftForToken(m_model->epoch(), m_model->timeStep());
+        if (!isTotp()) {
+            qCDebug(logger) << "Unable to compute milliseconds left for token, wrong account type:" << m_model->algorithm();
+            return -1;
         }
-        // TODO: warn if not
-        return -1;
+
+        return model::millisecondsLeftForToken(m_model->epoch(), m_model->timeStep());
     }
 
     SimpleAccountListModel::SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent) : QAbstractListModel(parent), m_storage(storage), m_index(QVector<QString>())
@@ -91,8 +96,9 @@ namespace model
                 m_index.append(name);
                 m_accounts[name] = existingAccount;
                 existingAccount->recompute();
+            } else {
+                qCDebug(logger) << "Account storage reported an account (name) but did not yield a valid account object";
             }
-            // TODO: warn if not
         }
         endResetModel();
     }
@@ -117,27 +123,29 @@ namespace model
     QVariant SimpleAccountListModel::data(const QModelIndex &account, int role) const
     {
         if (!account.isValid()) {
-            // TODO warn about this
+            qCDebug(logger) << "Not returning any data, model index is invalid";
             return QVariant();
         }
 
         int accountIndex = account.row();
         if (accountIndex < 0 || m_index.size() < accountIndex) {
-            // TODO warn about this
+            qCDebug(logger) << "Not returning any data, model index is out of bounds:" << accountIndex << "model size is:" << m_index.size();
             return QVariant();
         }
 
-        if (role == NonStandardRoles::AccountRole) {
-            const QString accountName = m_index.at(accountIndex);
-            accounts::Account * model = m_accounts.value(accountName, nullptr);
-            if (model) {
-                // assume QML ownership: don't worry about object lifecycle
-                return QVariant::fromValue(new AccountView(model));
-            }
+        if (role != NonStandardRoles::AccountRole) {
+            qCDebug(logger) << "Not returning any data, unknown role:" << role;
         }
 
-        // TODO warn about this
-        return QVariant();
+        const QString accountName = m_index.at(accountIndex);
+        accounts::Account * model = m_accounts.value(accountName, nullptr);
+        if (model) {
+            // assume QML ownership: don't worry about object lifecycle
+            return QVariant::fromValue(new AccountView(model));
+        } else {
+            qCDebug(logger) << "Not returning any data, unable to find associated account model for:" << accountIndex;
+            return QVariant();
+        }
     }
 
     int SimpleAccountListModel::rowCount(const QModelIndex &parent) const
@@ -149,33 +157,40 @@ namespace model
     void SimpleAccountListModel::added(const QString &account)
     {
         accounts::Account * newAccount = m_storage->get(account);
-        if (newAccount) {
-            if (m_accounts.contains(account)) {
-                //TODO warn about this
-                removed(account);
-            }
-
-            int accountIndex = m_index.size();
-            beginInsertRows(QModelIndex(), accountIndex, accountIndex);
-            m_index.append(account);
-            m_accounts[account] = newAccount;
-            newAccount->recompute();
-            endInsertRows();
+        if (!newAccount) {
+            qCDebug(logger) << "Unable to handle added account: underlying storage did not return a valid object";
+            return;
         }
-        // TODO: warn if not
+
+        if (m_accounts.contains(account)) {
+            qCDebug(logger) << "Added account already/still part of the model: requesting removal of the old one from the model first";
+            removed(account);
+        }
+
+        int accountIndex = m_index.size();
+        qCDebug(logger) << "Adding (new) account to the model at position:" << accountIndex;
+
+        beginInsertRows(QModelIndex(), accountIndex, accountIndex);
+        m_index.append(account);
+        m_accounts[account] = newAccount;
+        newAccount->recompute();
+        endInsertRows();
     }
 
     void SimpleAccountListModel::removed(const QString &account)
     {
         int accountIndex = m_index.indexOf(account);
         if (accountIndex >= 0) {
+            qCDebug(logger) << "Removing (old) account from the model at position:" << accountIndex;
+
             beginRemoveRows(QModelIndex(), accountIndex, accountIndex);
             m_index.remove(accountIndex);
 
             m_accounts.remove(account);
             endRemoveRows();
+        } else {
+            qCDebug(logger) << "Unable to handle account removal: account not part of the model";
         }
-        // TODO: warn if not
     }
 
     bool SimpleAccountListModel::isNameStillAvailable(const QString &account) const
@@ -190,7 +205,7 @@ namespace model
     QValidator::State AccountNameValidator::validate(QString &input, int &pos) const
     {
         if (!m_accounts) {
-            // TODO warn about this
+            qCDebug(logger) << "Unable to validat account name: missing accounts model object";
             return QValidator::Invalid;
         }
 
@@ -213,7 +228,8 @@ namespace model
         if (accounts) {
             m_accounts = accounts;
             Q_EMIT accountsChanged();
+        } else {
+            qCDebug(logger) << "Ignoring new accounts model: not a valid object";
         }
-        // TODO warn if not
     }
 }

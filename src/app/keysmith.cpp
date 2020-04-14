@@ -3,9 +3,12 @@
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "keysmith.h"
+#include "../logging_p.h"
 
 #include <QClipboard>
 #include <QGuiApplication>
+
+KEYSMITH_LOGGER(logger, ".app")
 
 namespace app
 {
@@ -15,7 +18,7 @@ namespace app
 
     Keysmith::~Keysmith()
     {
-        //TODO: log about this
+        qCDebug(logger) << "Tearing down Keysmith application; requesting disposal of account storage";
         if (m_storage) {
             m_storage->dispose();
         }
@@ -24,10 +27,12 @@ namespace app
     void Keysmith::copyToClipboard(const QString &text)
     {
         QClipboard * clipboard = QGuiApplication::clipboard();
-        if (clipboard) {
-            clipboard->setText(text);
+        if (!clipboard) {
+            qCWarning(logger) << "Unable to copy text: clipboard not available";
+            return;
         }
-        // TODO warn about this
+
+        clipboard->setText(text);
     }
 
     model::SimpleAccountListModel * Keysmith::accountListModel(void)

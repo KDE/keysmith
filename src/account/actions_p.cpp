@@ -6,9 +6,13 @@
 #include "validation.h"
 
 #include "../base32/base32.h"
+#include "../logging_p.h"
 #include "../oath/oath.h"
 
 #include <QTimer>
+
+KEYSMITH_LOGGER(logger, ".accounts.actions")
+KEYSMITH_LOGGER(dispatcherLogger, ".accounts.dispatcher")
 
 namespace accounts
 {
@@ -55,6 +59,9 @@ namespace accounts
     void SaveHotp::run(void)
     {
         if (!checkHotpAccount(m_id, m_accountName, m_secret, m_tokenLength)) {
+            qCDebug(logger)
+                << "Unable to save HOTP account:" << m_id
+                << "Invalid account details";
             Q_EMIT invalid();
             Q_EMIT finished();
             return;
@@ -63,10 +70,14 @@ namespace accounts
         const PersistenceAction act([this](QSettings &settings) -> void
         {
             if (!settings.isWritable()) {
-                // TODO: warn if not
+                qCWarning(logger)
+                    << "Unable to save HOTP account:" << m_id
+                    << "Storage not writable";
                 Q_EMIT invalid();
                 return;
             }
+
+            qCInfo(logger) << "Saving HOTP account:" << m_id;
 
             const QString group = m_id.toString();
             settings.remove(group);
@@ -91,7 +102,9 @@ namespace accounts
     void SaveTotp::run(void)
     {
         if (!checkTotpAccount(m_id, m_accountName, m_secret, m_tokenLength, m_timeStep)) {
-            // TODO: warn if not
+            qCDebug(logger)
+                << "Unable to save TOTP account:" << m_id
+                << "Invalid account details";
             Q_EMIT invalid();
             Q_EMIT finished();
             return;
@@ -100,10 +113,14 @@ namespace accounts
         const PersistenceAction act([this](QSettings &settings) -> void
         {
             if (!settings.isWritable()) {
-                // TODO: warn if not
+                qCWarning(logger)
+                    << "Unable to save TOTP account:" << m_id
+                    << "Storage not writable";
                 Q_EMIT invalid();
                 return;
             }
+
+            qCInfo(logger) << "Saving TOTP account:" << m_id;
 
             const QString group = m_id.toString();
             settings.remove(group);
@@ -130,10 +147,12 @@ namespace accounts
         const PersistenceAction act([this](QSettings &settings) -> void
         {
             if (!settings.isWritable()) {
-                // TODO: warn if not
+                qCWarning(logger) << "Unable to delete accounts: storage not writable";
                 Q_EMIT invalid();
                 return;
             }
+
+            qCInfo(logger) << "Deleting accounts";
 
             for (const QUuid &id : m_ids) {
                 settings.remove(id.toString());
@@ -148,11 +167,15 @@ namespace accounts
     {
         const PersistenceAction act([this](QSettings &settings) -> void
         {
+            qCInfo(logger, "Loading accounts from storage");
             const QStringList entries = settings.childGroups();
             for (const QString &group : entries) {
                 const QUuid id(group);
 
                 if (id.isNull()) {
+                    qCDebug(logger)
+                        << "Ignoring:" << group
+                        << "Not an account section";
                     continue;
                 }
 
@@ -165,6 +188,7 @@ namespace accounts
                 const int tokenLength = settings.value("pinLength").toInt(&ok);
 
                 if (!ok || (type != "hotp" && type != "totp")) {
+                    qCWarning(logger) << "Skipping invalid account:" << id;
                     settings.endGroup();
                     continue;
                 }
@@ -173,6 +197,7 @@ namespace accounts
                     ok = false;
                     const uint timeStep = settings.value("timeStep").toUInt(&ok);
                     if (ok && checkTotpAccount(id, accountName, secret, tokenLength, timeStep)) {
+                        qCInfo(logger) << "Found valid TOTP account:" << id;
                         Q_EMIT foundTotp(
                             id,
                             accountName,
@@ -186,6 +211,7 @@ namespace accounts
                     ok = false;
                     const quint64 counter = settings.value("counter").toULongLong(&ok);
                     if (ok && checkHotpAccount(id, accountName, secret, tokenLength)) {
+                        qCInfo(logger) << "Found valid HOTP account:" << id;
                         Q_EMIT foundHotp(
                             id,
                             accountName,
@@ -212,15 +238,15 @@ namespace accounts
     void ComputeTotp::run(void)
     {
         if (!checkTotp(m_secret, m_tokenLength, m_timeStep)) {
+            qCDebug(logger) << "Unable to compute TOTP token: invalid token details";
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
         std::optional<QByteArray> secret = base32::decode(m_secret);
         if (!secret.has_value()) {
+            qCDebug(logger) << "Unable to compute TOTP token: unable to decode secret";
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
@@ -237,31 +263,32 @@ namespace accounts
             hash = QCryptographicHash::Sha1;
             break;
         default:
+            qCDebug(logger) << "Unable to compute TOTP token: unknown hashing algorithm:" << m_hash;
             Q_EMIT finished();
-            // TODO warn about this
             return;
 
         }
 
         const std::optional<oath::Algorithm> algorithm = oath::Algorithm::usingDynamicTruncation(hash, m_tokenLength);
         if (!algorithm) {
+            qCDebug(logger) << "Unable to compute TOTP token: unable to set up truncation for token length:" << m_tokenLength;
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
         const std::optional<quint64> counter = oath::count(m_epoch, m_timeStep, m_clock);
         if (!counter) {
+            qCDebug(logger) << "Unable to compute TOTP token: unable to count time steps";
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
         const std::optional<QString> token = algorithm->compute(*counter, secret->data(), secret->size());
         if (token) {
             Q_EMIT otp(*token);
+        } else {
+            qCDebug(logger) << "Failed to compute TOTP token";
         }
-        // TODO warn if not
 
         Q_EMIT finished();
     }
@@ -274,15 +301,15 @@ namespace accounts
     void ComputeHotp::run(void)
     {
         if (!checkHotp(m_secret, m_tokenLength)) {
+            qCDebug(logger) << "Unable to compute HOTP token: invalid token details";
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
         std::optional<QByteArray> secret = base32::decode(m_secret);
         if (!secret.has_value()) {
+            qCDebug(logger) << "Unable to compute HOTP token: unable to decode secret";
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
@@ -291,16 +318,17 @@ namespace accounts
             ? oath::Algorithm::usingTruncationOffset(QCryptographicHash::Sha1, (uint) m_offset, encoder)
             : oath::Algorithm::usingDynamicTruncation(QCryptographicHash::Sha1, encoder);
         if (!algorithm) {
+            qCDebug(logger) << "Unable to compute HOTP token: unable to set up truncation for token length:" << m_tokenLength;
             Q_EMIT finished();
-            // TODO warn about this
             return;
         }
 
         const std::optional<QString> token = algorithm->compute(m_counter, secret->data(), secret->size());
         if (token) {
             Q_EMIT otp(*token);
+        } else {
+            qCDebug(logger) << "Failed to compute HOTP token";
         }
-        // TODO warn if not
 
         Q_EMIT finished();
     }
@@ -317,6 +345,7 @@ namespace accounts
     void Dispatcher::queueAndProceed(AccountJob *job, const std::function<void(void)> &setup_callbacks)
     {
         if (job) {
+            qCDebug(dispatcherLogger) << "Queuing job for dispatcher";
             job->moveToThread(m_thread);
             setup_callbacks();
             m_pending.append(job);
@@ -326,7 +355,11 @@ namespace accounts
 
     void Dispatcher::dispatchNext(void)
     {
+        qCDebug(dispatcherLogger) << "Handling request to dispatch next job";
+
         if (!empty() && !m_current) {
+            qCDebug(dispatcherLogger) << "Dispatching next job";
+
             m_current = m_pending.takeFirst();
             QObject::connect(m_current, &AccountJob::finished, this, &Dispatcher::next);
             QObject::connect(this, &Dispatcher::dispatch, m_current, &AccountJob::run);
@@ -336,6 +369,8 @@ namespace accounts
 
     void Dispatcher::next(void)
     {
+        qCDebug(dispatcherLogger) << "Handling next continuation in dispatcher";
+
         QObject *from = sender();
         AccountJob *job = from ? qobject_cast<AccountJob*>(from) : nullptr;
         if (job) {

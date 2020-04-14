@@ -6,11 +6,14 @@
 #include "account_p.h"
 #include "actions_p.h"
 
+#include "../logging_p.h"
+
 #include <QTimer>
+
+KEYSMITH_LOGGER(logger, ".accounts.account")
 
 namespace accounts
 {
-
     Account::Account(AccountPrivate *d, QObject *parent) : QObject(parent), m_dptr(d)
     {
     }
@@ -189,25 +192,47 @@ namespace accounts
     void AccountStorage::handleHotp(const QUuid id, const QString name, const QString secret, quint64 counter, int tokenLength)
     {
         Q_D(AccountStorage);
-        if (d->isStillOpen() && isNameStillAvailable(name)) {
-            Account *accepted = d->acceptHotpAccount(id, name, secret, counter, tokenLength);
-            QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
-
-            Q_EMIT added(name);
+        if (!d->isStillOpen()) {
+            qCDebug(logger)
+                << "Not handling HOTP account:" << id
+                << "Storage no longer open";
+            return;
         }
-        // TODO: warn if not
+
+        if (!isNameStillAvailable(name)) {
+            qCDebug(logger)
+                << "Not handling HOTP account:" << id
+                << "Account name not available";
+            return;
+        }
+
+        Account *accepted = d->acceptHotpAccount(id, name, secret, counter, tokenLength);
+        QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
+
+        Q_EMIT added(name);
     }
 
     void AccountStorage::handleTotp(const QUuid id, const QString name, const QString secret, uint timeStep, int tokenLength)
     {
         Q_D(AccountStorage);
-        if (d->isStillOpen() && isNameStillAvailable(name)) {
-            Account *accepted = d->acceptTotpAccount(id, name, secret, timeStep, tokenLength);
-            QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
-
-            Q_EMIT added(name);
+        if (!d->isStillOpen()) {
+            qCDebug(logger)
+                << "Not handling TOTP account:" << id
+                << "Storage no longer open";
+            return;
         }
-        // TODO: warn if not
+
+        if (!isNameStillAvailable(name)) {
+            qCDebug(logger)
+                << "Not handling TOTP account:" << id
+                << "Account name not available";
+            return;
+        }
+
+        Account *accepted = d->acceptTotpAccount(id, name, secret, timeStep, tokenLength);
+        QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
+
+        Q_EMIT added(name);
     }
 
     void AccountStorage::dispose(void)
