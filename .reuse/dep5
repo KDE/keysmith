@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Keysmith
+Source: https://invent.kde.org/kde/keysmith.git
+
+Files: android/res/drawable/keysmith.png
+Copyright: 2020 Nicolas Fella <nicolas.fella@gmx.de>
+Copyright: 2020 Carson Black <uhhadd@gmail.com>
+License: CC-BY-SA-4.0
