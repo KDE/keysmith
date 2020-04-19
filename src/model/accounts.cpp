@@ -6,8 +6,6 @@
 
 #include "../logging_p.h"
 
-#include <QtDebug>
-
 KEYSMITH_LOGGER(logger, ".model.accounts")
 
 namespace model
