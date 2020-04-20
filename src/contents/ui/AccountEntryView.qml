@@ -35,14 +35,58 @@ Kirigami.SwipeListItem {
 
     property Kirigami.Action deleteAccount : Kirigami.Action {
         iconName: "edit-delete"
-        text: "Delete account"
+        text: i18nc("Button for removal of a single account", "Delete account")
         onTriggered: {
             // TODO convert to C++ helper, have proper logging?
             if (alive && account) {
-                alive = false;
-                account.remove();
+                root.sheet.open();
             }
             // TODO warn if not
+        }
+    }
+
+    property Kirigami.OverlaySheet sheet: Kirigami.OverlaySheet {
+        sheetOpen: false
+        header: Kirigami.Heading {
+            text: i18nc("Confirm dialog title: %1 is the name of the account to remove", "Removing account: %1", account ? account.name : "")
+        }
+        ColumnLayout {
+            spacing: Kirigami.Units.largeSpacing * 5
+            Controls.Label {
+                Layout.fillWidth: true
+                wrapMode: Text.WordWrap
+                text: i18n("<p>Removing this account from Keysmith will not disable two-factor authentication (2FA). Make sure you can still access your account without using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA app set up for your account, or:</li><li>Make sure you have recovery codes for your account, or:</li><li>Disable two-factor authentication on your account</li></ul>")
+            }
+        }
+        footer: RowLayout {
+            Controls.Button {
+                action: Kirigami.Action {
+                    iconName: "edit-undo"
+                    text: i18nc("Button cancelling account removal", "Cancel")
+                    onTriggered: {
+                        sheet.close();
+                    }
+                }
+            }
+            Rectangle {
+                color: "transparent"
+                Layout.fillWidth: true
+            }
+            Controls.Button {
+                action: Kirigami.Action {
+                    iconName: "edit-delete"
+                    text: i18nc("Button confirming account removal", "Delete account")
+                    onTriggered: {
+                        // TODO convert to C++ helper, have proper logging?
+                        if (alive && account) {
+                            alive = false;
+                            account.remove();
+                        }
+                        // TODO warn if not
+                        sheet.close();
+                    }
+                }
+            }
         }
     }
 

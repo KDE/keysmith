@@ -32,6 +32,7 @@ if(ANDROID)
     kirigami_package_breeze_icons(ICONS
         go-next
         edit-delete
+        edit-undo
         list-add
         answer-correct
     )
