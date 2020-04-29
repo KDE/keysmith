@@ -5,7 +5,6 @@
 
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.2 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
 import Keysmith.Application 1.0
@@ -27,18 +26,6 @@ Kirigami.ScrollablePage {
     property string accountErrorMessage: i18nc("generic error shown when adding or updating an account failed", "Failed to update accounts")
     property string loadingErrorMessage: i18nc("error message shown when loading accounts from storage failed", "Some accounts failed to load.")
     property string errorMessage: loadingErrorMessage
-
-    Component {
-        id: mainListDelegate
-        AccountEntryView {
-            id: entry
-            account: model.account
-            onActionTriggered: {
-                root.accounts.error = false;
-                root.errorMessage = root.accountErrorMessage;
-            }
-        }
-    }
 
     header: ColumnLayout {
         id: column
@@ -77,17 +64,78 @@ Kirigami.ScrollablePage {
         }
     }
 
+    Component {
+        id: hotpDelegate
+        HOTPAccountEntryView {
+            account: value
+            onActionTriggered: {
+                root.accounts.error = false;
+                root.errorMessage = root.accountErrorMessage;
+            }
+        }
+    }
+
+    Component {
+        id: totpDelegate
+        TOTPAccountEntryView {
+            account: value
+            onActionTriggered: {
+                root.accounts.error = false;
+                root.errorMessage = root.accountErrorMessage;
+            }
+        }
+    }
+
     ListView {
         id: mainList
         model: accounts
-        Layout.fillWidth: true
-        delegate: mainListDelegate
+        /*
+         * Use a Loader to get a switch-like statement to select an
+         * appropriate delegate based on properties of the account model.
+         */
+        delegate: Loader {
+            /*
+             * Fix up width manually.
+             * It doesn't seem to be propagated correctly by itself otherwise.
+             */
+            width: mainList.width
+
+            /*
+             * The `model` and related properties from the ListView delegate
+             * context will not survive into the actual delegate components.
+             * However Loader will also inject properties in *its* context
+             * which will be observed by those delegate components.
+             *
+             * Fill the Loader's context with properties from the model passed
+             * by ListView, to make these values propagate into delegates.
+             *
+             * See also: https://doc.qt.io/qt-5/qml-qtquick-loader.html#using-a-loader-within-a-view-delegate
+             */
+            property Models.Account value: model.account
+            property int index: model.index
+
+            sourceComponent: {
+                /*
+                 * Guard against a broken account model.
+                 * Will simply render nothing at all in that case.
+                 */
+                if (!value) {
+                    // TODO warn about this
+                    return null;
+                }
+                if (value.isHotp) {
+                    return hotpDelegate;
+                }
+                if (value.isTotp) {
+                    return totpDelegate;
+                }
+
+                // TODO warn about this
+                return null;
+            }
+        }
     }
 
-    topPadding: 0
-    leftPadding: 0
-    rightPadding: 0
-    bottomPadding: 0
     actions.main: Kirigami.Action {
         id: addAction
         text: i18n("Add")

@@ -7,10 +7,13 @@
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="TokenDetailsForm.qml">contents/ui/TokenDetailsForm.qml</file>
-        <file alias="AccountEntryView.qml">contents/ui/AccountEntryView.qml</file>
         <file alias="AccountsOverview.qml">contents/ui/AccountsOverview.qml</file>
         <file alias="AddAccount.qml">contents/ui/AddAccount.qml</file>
         <file alias="UnlockAccounts.qml">contents/ui/UnlockAccounts.qml</file>
         <file alias="SetupPassword.qml">contents/ui/SetupPassword.qml</file>
+        <file alias="TokenEntryViewLabels.qml">contents/ui/TokenEntryViewLabels.qml</file>
+        <file alias="AccountEntryViewBase.qml">contents/ui/AccountEntryViewBase.qml</file>
+        <file alias="HOTPAccountEntryView.qml">contents/ui/HOTPAccountEntryView.qml</file>
+        <file alias="TOTPAccountEntryView.qml">contents/ui/TOTPAccountEntryView.qml</file>
     </qresource>
 </RCC>
