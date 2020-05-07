@@ -27,7 +27,7 @@ include(FeatureSummary)
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -42,9 +42,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ################# Find dependencies #################
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2)
-find_package(sodium ${SODIUM_MIN_VERSION} REQUIRED)
 find_package(KF5Kirigami2 ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
+
+if(NOT BUILD_EXTERNAL AND (NOT ANDROID OR DEFINED BUILD_EXTERNAL))
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+
+    message(STATUS "Will build against system version of: libsodium")
+    find_package(sodium ${SODIUM_MIN_VERSION} REQUIRED)
+endif()
 
 ################ Find testing dependencies ##########
 
@@ -54,6 +60,10 @@ endif()
 
 ################# build and install #################
 add_subdirectory(src)
+
+if (ANDROID)
+    add_subdirectory(android)
+endif()
 
 if (BUILD_TESTING)
     add_subdirectory(autotests)

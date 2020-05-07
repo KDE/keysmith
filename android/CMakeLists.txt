@@ -1,0 +1,12 @@
+#
+# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+#
+
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/android-export.in.sh" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/android-export.sh" @ONLY ESCAPE_QUOTES)
+
+file (
+    COPY "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/android-export.sh"
+    DESTINATION "${CMAKE_CURRENT_BINARY_DIR}"
+    FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+)
