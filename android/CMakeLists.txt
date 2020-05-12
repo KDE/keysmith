@@ -10,3 +10,12 @@ file (
     DESTINATION "${CMAKE_CURRENT_BINARY_DIR}"
     FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
+
+#
+# The KDE Android SDK overwrites the AndroidManifest to set an auto-generated versionCode.
+# When building against a local clone, this results in annoying git diffs that must be manually reset.
+#
+# As a work-around, the AndroidManifest.xml is gitignore'd and generated (copied) from another file, taking care to
+# preserve a file-level dependency between the 'real' source and the generated file.
+#
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml.in" "${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml" COPYONLY)
