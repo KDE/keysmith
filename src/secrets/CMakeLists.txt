@@ -107,6 +107,14 @@ if (BUILD_EXTERNAL OR (NOT DEFINED BUILD_EXTERNAL AND ANDROID))
     set_target_properties(sodium PROPERTIES IMPORTED_LOCATION "${INSTALL_DIR}/${sodium_LIBRARY_PATH}" INTERFACE_INCLUDE_DIRECTORIES "${INSTALL_DIR}/${sodium_INCLUDE_PATH}")
 
     add_dependencies(secrets_lib ext_libsodium)
+
+    #
+    # Add an explicit install rule for libsodium: without it a make/ninja install will not pick it up.
+    #
+    # Note that the androiddeployqt tooling is documented to explicitly require a make/ninja install step:
+    # https://doc.qt.io/qt-5/deployment-android.html#package-template
+    #
+    install(FILES "${INSTALL_DIR}/${sodium_LIBRARY_PATH}" TYPE LIB)
 endif()
 
 target_link_libraries(secrets_lib Qt5::Core sodium base32_lib)
