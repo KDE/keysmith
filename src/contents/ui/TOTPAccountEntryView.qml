@@ -85,7 +85,7 @@ AccountEntryViewBase {
         Rectangle {
             id: health
             x: - root.leftPadding
-            y: Math.max(mainLayout.height, mainLayout.implicitHeight)
+            y: root.height - health.height - root.bottomPadding
             radius: health.height
             height: Kirigami.Units.smallSpacing
             opacity: timeoutIndicatorAnimation.running ? 0.6 : 0
