@@ -24,6 +24,30 @@ AccountEntryViewBase {
         }
     ]
 
+    /*
+     * If the application is suspended the displayed state may be out-of-date by the time the application is woken from
+     * suspend again. Use a property to monitor for this condition and recover when the application wakes: reset timers,
+     * animations and recompute token in case it has lapsed.
+     */
+    property bool shouldBeActive: Qt.application.state === Qt.ApplicationActive
+    onShouldBeActiveChanged: {
+        if (root.alive && root.shouldBeActive) {
+            timer.stop()
+            timeoutIndicatorAnimation.stop();
+
+            root.account.recompute();
+
+            var phase = root.account.millisecondsLeftForToken();
+            timer.interval = phase;
+            root.healthIndicator = phase;
+            timeoutIndicatorAnimation.duration = phase;
+            timeoutIndicatorAnimation.from = phase;
+
+            timer.restart();
+            timeoutIndicatorAnimation.restart();
+        }
+    }
+
     TokenEntryViewLabels {
         id: mainLayout
         accountName: account.name
