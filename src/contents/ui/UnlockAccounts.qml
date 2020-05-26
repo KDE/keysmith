@@ -27,6 +27,8 @@ Kirigami.Page {
         Controls.Label {
             text: bannerText
             color: bannerTextError ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.textColor
+            Layout.maximumWidth: root.width - 2 * Kirigami.Units.largeSpacing
+            wrapMode: Text.WordWrap
         }
         Kirigami.FormLayout {
             Kirigami.PasswordField {
