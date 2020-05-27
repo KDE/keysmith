@@ -18,6 +18,7 @@ Kirigami.SwipeListItem {
     property Models.Account account: null
     property bool alive: account !== null
     property bool tokenAvailable: alive && account.token && account.token.length > 0
+    property color labelColor: root.pressed || root.checked ? root.activeTextColor : root.textColor
 
     visible: alive
     enabled: alive

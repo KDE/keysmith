@@ -52,6 +52,7 @@ AccountEntryViewBase {
         id: mainLayout
         accountName: account.name
         tokenValue: account.token
+        labelColor: root.labelColor
 
         /*
          * For some reason the running NumberAnimation seems to trigger very sluggish QML UI when the window is resized.

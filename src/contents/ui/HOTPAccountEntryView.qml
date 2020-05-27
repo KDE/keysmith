@@ -33,5 +33,6 @@ AccountEntryViewBase {
         id: mainLayout
         accountName: account.name
         tokenValue: account.token
+        labelColor: root.labelColor
     }
 }

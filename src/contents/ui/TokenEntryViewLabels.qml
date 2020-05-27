@@ -10,6 +10,7 @@ import org.kde.kirigami 2.8 as Kirigami
 Item {
     property string accountName
     property string tokenValue
+    property color labelColor
 
     id: root
     /*
@@ -28,6 +29,7 @@ Item {
         font.weight: Font.Light
         elide: Text.ElideRight
         text: accountName
+        color: labelColor
         anchors.left: root.left
         anchors.verticalCenter: root.verticalCenter
     }
@@ -36,6 +38,7 @@ Item {
         horizontalAlignment: Text.AlignRight
         font.weight: Font.Bold
         text: tokenValue && tokenValue.length > 0 ? tokenValue : i18nc("placeholder text if no token is available", "(refresh)")
+        color: labelColor
         anchors.right: root.right
         anchors.verticalCenter: root.verticalCenter
     }
