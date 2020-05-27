@@ -12,13 +12,18 @@ import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
 
 Kirigami.SwipeListItem {
-    id: root
+    /*
+     * WARNING: AccountEntryViewBase is a derivative of SwipeListItem and SwipeListem instances *must* be
+     * called `listItem`. This took *way* too long to figure out. If you change it, things will break for example the
+     * flood fill effect when pressing a list entry on Android.
+     */
+    id: listItem
 
     signal actionTriggered
     property Models.Account account: null
     property bool alive: account !== null
     property bool tokenAvailable: alive && account.token && account.token.length > 0
-    property color labelColor: root.pressed || root.checked ? root.activeTextColor : root.textColor
+    property color labelColor: listItem.pressed || listItem.checked ? listItem.activeTextColor : listItem.textColor
 
     visible: alive
     enabled: alive

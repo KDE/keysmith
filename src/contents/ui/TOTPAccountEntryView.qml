@@ -7,19 +7,24 @@ import QtQuick 2.1
 import org.kde.kirigami 2.4 as Kirigami
 
 AccountEntryViewBase {
-    id: root
+    /*
+     * WARNING: AccountEntryViewBase is a derivative of SwipeListItem and SwipeListem instances *must* be
+     * called `listItem`. This took *way* too long to figure out. If you change it, things will break for example the
+     * flood fill effect when pressing a list entry on Android.
+     */
+    id: listItem
 
     property real healthIndicator: 0
-    property real interval: root.alive ? 1000 * root.account.timeStep : 0
+    property real interval: listItem.alive ? 1000 * listItem.account.timeStep : 0
 
     actions: [
         Kirigami.Action {
             iconName: "edit-delete"
             text: i18nc("Button for removal of a single account", "Delete account")
-            enabled: root.alive
+            enabled: listItem.alive
             onTriggered: {
-                root.actionTriggered();
-                root.sheet.open();
+                listItem.actionTriggered();
+                listItem.sheet.open();
             }
         }
     ]
@@ -31,15 +36,15 @@ AccountEntryViewBase {
      */
     property bool shouldBeActive: Qt.application.state === Qt.ApplicationActive
     onShouldBeActiveChanged: {
-        if (root.alive && root.shouldBeActive) {
+        if (listItem.alive && listItem.shouldBeActive) {
             timer.stop()
             timeoutIndicatorAnimation.stop();
 
-            root.account.recompute();
+            listItem.account.recompute();
 
-            var phase = root.account.millisecondsLeftForToken();
+            var phase = listItem.account.millisecondsLeftForToken();
             timer.interval = phase;
-            root.healthIndicator = phase;
+            listItem.healthIndicator = phase;
             timeoutIndicatorAnimation.duration = phase;
             timeoutIndicatorAnimation.from = phase;
 
@@ -52,7 +57,7 @@ AccountEntryViewBase {
         id: mainLayout
         accountName: account.name
         tokenValue: account.token
-        labelColor: root.labelColor
+        labelColor: listItem.labelColor
 
         /*
          * For some reason the running NumberAnimation seems to trigger very sluggish QML UI when the window is resized.
@@ -74,9 +79,9 @@ AccountEntryViewBase {
         onWidthChanged: {
             if (timeoutIndicatorAnimation.running) {
                 timeoutIndicatorAnimation.stop();
-                var phase = root.account.millisecondsLeftForToken();
+                var phase = listItem.account.millisecondsLeftForToken();
 
-                root.healthIndicator = phase;
+                listItem.healthIndicator = phase;
                 timeoutIndicatorAnimation.from = phase;
                 timeoutIndicatorAnimation.duration = phase;
                 timeoutIndicatorAnimation.restart();
@@ -85,36 +90,36 @@ AccountEntryViewBase {
 
         Rectangle {
             id: health
-            x: - root.leftPadding
-            y: root.height - health.height - root.bottomPadding
+            x: - listItem.leftPadding
+            y: listItem.height - health.height - listItem.bottomPadding
             radius: health.height
             height: Kirigami.Units.smallSpacing
             opacity: timeoutIndicatorAnimation.running ? 0.6 : 0
-            width: root.alive && root.interval > 0 ? root.width * root.healthIndicator / root.interval : 0
+            width: listItem.alive && listItem.interval > 0 ? listItem.width * listItem.healthIndicator / listItem.interval : 0
             color: Kirigami.Theme.positiveTextColor
             NumberAnimation {
                 id: timeoutIndicatorAnimation
-                target: root
+                target: listItem
                 property: "healthIndicator"
                 from: timer.interval
                 to: 0
                 duration: timer.interval
-                running: root.alive
+                running: listItem.alive
             }
             Timer {
                 id: timer
-                running: root.alive
-                interval: root.alive ? root.account.millisecondsLeftForToken() : 0
+                running: listItem.alive
+                interval: listItem.alive ? listItem.account.millisecondsLeftForToken() : 0
                 onTriggered: {
-                    if (root.alive) {
+                    if (listItem.alive) {
                         timer.stop()
                         timeoutIndicatorAnimation.stop();
 
-                        root.account.recompute();
+                        listItem.account.recompute();
 
-                        var phase = root.account.millisecondsLeftForToken();
+                        var phase = listItem.account.millisecondsLeftForToken();
                         timer.interval = phase;
-                        root.healthIndicator = phase;
+                        listItem.healthIndicator = phase;
                         timeoutIndicatorAnimation.duration = phase;
                         timeoutIndicatorAnimation.from = phase;
 
