@@ -90,13 +90,28 @@ AccountEntryViewBase {
 
         Rectangle {
             id: health
-            x: - listItem.leftPadding
+            // make the indicator sit flush with the bottom edge of the list item
             y: listItem.height - health.height - listItem.bottomPadding
-            radius: health.height
-            height: Kirigami.Units.smallSpacing
-            opacity: timeoutIndicatorAnimation.running ? 0.6 : 0
-            width: listItem.alive && listItem.interval > 0 ? listItem.width * listItem.healthIndicator / listItem.interval : 0
-            color: Kirigami.Theme.positiveTextColor
+            /*
+             * Horizontal positioning of the rectangle relies on clippling of the list item. The idea is to make the health
+             * indicator sit flush with the left border while maintaining soft rounded corners on the right (asymmetry).
+             *
+             * To achieve this simply add a dummy amount of width to the rectangle and compensate for it by offseting it
+             * a corresponding amount further to the left; due to clipping the dummy amount will not be shown (but the
+             * portion being clipped will contain the rounded corners on the left). The required length for the dummy part
+             * depends on the corner radius of the rectangle.
+             */
+            x: - listItem.leftPadding - health.height
+            width: listItem.alive && listItem.interval > 0 ? health.height + listItem.width * listItem.healthIndicator / listItem.interval : 0
+            radius: health.height // right edge becomes a semi-circle
+            /*
+             * Height and opacity are a bit of a balancing act between good looking visuals with few accounts and avoiding
+             * an overwhelming UI with many accounts (and therefore many running animations). Opacity is increased when
+             * highlighted to get better contrast.
+             */
+            height: Kirigami.Units.devicePixelRatio * 6
+            opacity: timeoutIndicatorAnimation.running ? listItem.highlightActive ? 0.6 : 0.4 : 0
+            color: listItem.highlightActive ? listItem.labelColor : Kirigami.Theme.positiveTextColor
             NumberAnimation {
                 id: timeoutIndicatorAnimation
                 target: listItem
