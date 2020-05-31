@@ -13,6 +13,7 @@
 #include <QHash>
 #include <QModelIndex>
 #include <QObject>
+#include <QSortFilterProxyModel>
 #include <QString>
 #include <QValidator>
 #include <QVector>
@@ -85,6 +86,16 @@ namespace model
         bool m_has_error;
         QVector<QString> m_index;
         QHash<QString, accounts::Account*> m_accounts;
+    };
+
+    class SortedAccountsListModel: public QSortFilterProxyModel
+    {
+        Q_OBJECT
+    public:
+        explicit SortedAccountsListModel(QObject *parent = nullptr);
+        void setSourceModel(QAbstractItemModel *sourceModel) override;
+    protected:
+        bool lessThan(const QModelIndex &source_left, const QModelIndex &source_right) const override;
     };
 
     class AccountNameValidator: public QValidator

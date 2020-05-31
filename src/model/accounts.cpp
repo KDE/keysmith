@@ -260,4 +260,64 @@ namespace model
             qCDebug(logger) << "Ignoring new accounts model: not a valid object";
         }
     }
+
+    SortedAccountsListModel::SortedAccountsListModel(QObject *parent) : QSortFilterProxyModel(parent)
+    {
+    }
+
+    void SortedAccountsListModel::setSourceModel(QAbstractItemModel *sourceModel)
+    {
+        SimpleAccountListModel *model = qobject_cast<SimpleAccountListModel*>(sourceModel);
+        if (!model) {
+            qCDebug(logger) << "Not setting source model: it is not an accounts list model!";
+            return;
+        }
+
+        QSortFilterProxyModel::setSourceModel(sourceModel);
+        qCDebug(logger) << "Updating properties & resorting the model";
+        setSortRole(SimpleAccountListModel::NonStandardRoles::AccountRole);
+        setDynamicSortFilter(true);
+        setSortLocaleAware(true);
+        sort(0);
+    }
+
+    bool SortedAccountsListModel::lessThan(const QModelIndex &source_left, const QModelIndex &source_right) const
+    {
+        QAbstractItemModel *source = sourceModel();
+        Q_ASSERT_X(source, Q_FUNC_INFO, "should have a source model at this point");
+
+        SimpleAccountListModel *model = qobject_cast<SimpleAccountListModel*>(source);
+        // useless junk: implement sorting as no-op: claim equality between left & right
+        if (!model) {
+            qCDebug(logger) << "Short-circuiting lessThan operator: source model is not an accounts list model!";
+            return false;
+        }
+
+        QVariant leftValue = model->data(source_left, SimpleAccountListModel::NonStandardRoles::AccountRole);
+        QVariant rightValue = model->data(source_right, SimpleAccountListModel::NonStandardRoles::AccountRole);
+
+        AccountView * leftAccount = leftValue.isNull() ? nullptr : leftValue.value<AccountView*>();
+        AccountView * rightAccount = rightValue.isNull() ? nullptr : rightValue.value<AccountView*>();
+
+        // useless junk: implement sorting as no-op: claim left == right
+        if (!leftAccount && !rightAccount) {
+            qCDebug(logger) << "Short-circuiting lessThan operator: both source model indices do not point to accounts";
+            return false;
+        }
+
+        // Sort actual accounts before useless junk: claim left >= right
+        if (!leftAccount) {
+            qCDebug(logger) << "Short-circuiting lessThan operator: left source model index does not point to an account";
+            return false;
+        }
+
+        // Sort actual accounts before useless junk: claim left < right
+        if (!rightAccount) {
+            qCDebug(logger) << "Short-circuiting lessThan operator: right source model index does not point to an account";
+            return true;
+        }
+
+        // actual sorting by account name
+        return leftAccount->name().localeAwareCompare(rightAccount->name()) < 0;
+    }
 }

@@ -88,7 +88,9 @@ Kirigami.ScrollablePage {
 
     ListView {
         id: mainList
-        model: accounts
+        model: Models.SortedAccountListModel {
+            sourceModel: accounts
+        }
         /*
          * Use a Loader to get a switch-like statement to select an
          * appropriate delegate based on properties of the account model.
