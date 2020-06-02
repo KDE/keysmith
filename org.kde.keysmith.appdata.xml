@@ -41,6 +41,7 @@
   <summary xml:lang="en-GB">Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="es">Generador de códigos de dos factores para Plasma Mobile y para el escritorio</summary>
   <summary xml:lang="et">Kaheastmelise autentimise koodi genereerimine Plasma Mobile ja Plasma töölaua tarbeks</summary>
+  <summary xml:lang="fr">Générateur de code à deux facteurs pour Plasma mobile et le bureau Plasma </summary>
   <summary xml:lang="id">Penghasil kode two-factor untuk Plasma Mobile dan Desktop</summary>
   <summary xml:lang="it">Generatore di codice a due fattori per Plasma Mobile e Desktop</summary>
   <summary xml:lang="ko">Plasma 모바일과 데스크톱용 2단계 인증 코드 생성기</summary>
@@ -78,6 +79,7 @@
     <p xml:lang="en-GB">Keysmith generates tokens for your two-factor logins (2FA)</p>
     <p xml:lang="es">Keysmith genera elementos para los inicios de sesión de dos factores (2FA)</p>
     <p xml:lang="et">Keysmith genereerib pääsmikke kaheastmelise autentimise (2FA) tarbeks</p>
+    <p xml:lang="fr">Keysmith génère des jetons pour vos connexions avec authentification à deux facteurs (2FA)</p>
     <p xml:lang="id">Keysmith menghasilkan token-token untuk login two-factor kamu (2FA)</p>
     <p xml:lang="it">Keysmith genera token per i tuoi accessi a due fattori (2FA)</p>
     <p xml:lang="ko">Keysmith는 2단계 인증(2FA) 토큰을 생성합니다</p>
@@ -95,6 +97,7 @@
       <li xml:lang="en-GB">Time and Hash-based OTP</li>
       <li xml:lang="es">OTP basada en el tiempo y en resúmenes criptográficos</li>
       <li xml:lang="et">Aja- ja räsipõhine OTP</li>
+      <li xml:lang="fr">Temps et OTP (One Time Password) sur code de hachage</li>
       <li xml:lang="id">Waktu dan Hash berbasiskan OTP</li>
       <li xml:lang="it">OTP basato su tempo e hash</li>
       <li xml:lang="ko">시간과 해시 기반 OTP</li>
