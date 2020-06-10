@@ -13,6 +13,7 @@ namespace accounts
     bool checkId(const QUuid &id);
     bool checkSecret(const QString &secret);
     bool checkName(const QString &name);
+    bool checkIssuer(const QString &issuer);
     bool checkTokenLength(int tokenLength);
     bool checkTimeStep(uint timeStep);
 }

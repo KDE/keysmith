@@ -69,8 +69,8 @@ namespace accounts
         explicit LoadAccounts(const SettingsProvider &settings, const AccountSecret *secret);
         void run(void) override;
     Q_SIGNALS:
-        void foundHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
-        void foundTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void foundHotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
+        void foundTotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
         void failedToLoadAllAccounts(void);
     private:
         const SettingsProvider m_settings;
@@ -94,15 +94,16 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength);
+        explicit SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &issuer, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength);
         void run(void) override;
     Q_SIGNALS:
         void invalid(void);
-        void saved(const QUuid id, const QString accountName, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
+        void saved(const QUuid id, const QString accountName, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
     private:
         const SettingsProvider m_settings;
         const QUuid m_id;
         const QString m_accountName;
+        const QString m_issuer;
         const secrets::EncryptedSecret m_secret;
         const quint64 m_counter;
         const int m_tokenLength;
@@ -112,15 +113,16 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength);
+        explicit SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &issuer, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength);
         void run(void) override;
     Q_SIGNALS:
         void invalid(void);
-        void saved(const QUuid id, const QString accountName, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void saved(const QUuid id, const QString accountName, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
     private:
         const SettingsProvider m_settings;
         const QUuid m_id;
         const QString m_accountName;
+        const QString m_issuer;
         const secrets::EncryptedSecret m_secret;
         const uint m_timeStep;
         const int m_tokenLength;

@@ -51,19 +51,19 @@ namespace accounts
     {
     }
 
-    SaveHotp::SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength) :
-        AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_secret(secret), m_counter(counter), m_tokenLength(tokenLength)
+    SaveHotp::SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &issuer, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength) :
+        AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_issuer(issuer), m_secret(secret), m_counter(counter), m_tokenLength(tokenLength)
     {
     }
 
-    SaveTotp::SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength) :
-        AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_secret(secret), m_timeStep(timeStep), m_tokenLength(tokenLength)
+    SaveTotp::SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &issuer, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength) :
+        AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_issuer(issuer), m_secret(secret), m_timeStep(timeStep), m_tokenLength(tokenLength)
     {
     }
 
     void SaveHotp::run(void)
     {
-        if (!checkId(m_id) || !checkName(m_accountName) || !checkTokenLength(m_tokenLength)) {
+        if (!checkId(m_id) || !checkName(m_accountName) || !checkIssuer(m_issuer) || !checkTokenLength(m_tokenLength)) {
             qCDebug(logger)
                 << "Unable to save HOTP account:" << m_id
                 << "Invalid account details";
@@ -88,6 +88,9 @@ namespace accounts
             settings.remove(group);
             settings.beginGroup(group);
             settings.setValue("account", m_accountName);
+            if (!m_issuer.isNull()) {
+                settings.setValue("issuer", m_issuer);
+            }
             settings.setValue("type", "hotp");
             QString encodedNonce = QString::fromUtf8(m_secret.nonce().toBase64(QByteArray::Base64Encoding));
             QString encodedSecret = QString::fromUtf8(m_secret.cryptText().toBase64(QByteArray::Base64Encoding));
@@ -100,7 +103,7 @@ namespace accounts
             // Try to guarantee that data will have been written before claiming the account was actually saved
             settings.sync();
 
-            Q_EMIT saved(m_id, m_accountName, m_secret.cryptText(), m_secret.nonce(), m_counter, m_tokenLength);
+            Q_EMIT saved(m_id, m_accountName, m_issuer, m_secret.cryptText(), m_secret.nonce(), m_counter, m_tokenLength);
         });
         m_settings(act);
 
@@ -109,7 +112,7 @@ namespace accounts
 
     void SaveTotp::run(void)
     {
-        if (!checkId(m_id) || !checkName(m_accountName) || !checkTokenLength(m_tokenLength) || !checkTimeStep(m_timeStep)) {
+        if (!checkId(m_id) || !checkName(m_accountName) || !checkIssuer(m_issuer) || !checkTokenLength(m_tokenLength) || !checkTimeStep(m_timeStep)) {
             qCDebug(logger)
                 << "Unable to save TOTP account:" << m_id
                 << "Invalid account details";
@@ -134,6 +137,9 @@ namespace accounts
             settings.remove(group);
             settings.beginGroup(group);
             settings.setValue("account", m_accountName);
+            if (!m_issuer.isNull()) {
+                settings.setValue("issuer", m_issuer);
+            }
             settings.setValue("type", "totp");
             QString encodedNonce = QString::fromUtf8(m_secret.nonce().toBase64(QByteArray::Base64Encoding));
             QString encodedSecret = QString::fromUtf8(m_secret.cryptText().toBase64(QByteArray::Base64Encoding));
@@ -146,7 +152,7 @@ namespace accounts
             // Try to guarantee that data will have been written before claiming the account was actually saved
             settings.sync();
 
-            Q_EMIT saved(m_id, m_accountName, m_secret.cryptText(), m_secret.nonce(), m_timeStep, m_tokenLength);
+            Q_EMIT saved(m_id, m_accountName, m_issuer, m_secret.cryptText(), m_secret.nonce(), m_timeStep, m_tokenLength);
         });
         m_settings(act);
 
@@ -352,6 +358,15 @@ namespace accounts
                     continue;
                 }
 
+                const QString issuer = settings.value("issuer", QString()).toString();
+                if (!checkIssuer(issuer)) {
+                    qCWarning(logger)
+                        << "Skipping invalid account:" << id
+                        << "Invalid account issuer";
+                    settings.endGroup();
+                    continue;
+                }
+
                 const QString type = settings.value("type").toString();
                 if (type != QLatin1String("hotp") && type != QLatin1String("totp")) {
                     qCWarning(logger)
@@ -411,7 +426,7 @@ namespace accounts
                     }
 
                     qCInfo(logger) << "Found valid TOTP account:" << id;
-                    Q_EMIT foundTotp(id, accountName, secret, nonce, timeStep, tokenLength);
+                    Q_EMIT foundTotp(id, accountName, issuer, secret, nonce, timeStep, tokenLength);
                 }
 
                 if (type == QLatin1String("hotp")) {
@@ -427,7 +442,7 @@ namespace accounts
                     }
 
                     qCInfo(logger) << "Found valid HOTP account:" << id;
-                    Q_EMIT foundHotp(id, accountName, secret, nonce, counter, tokenLength);
+                    Q_EMIT foundHotp(id, accountName, issuer, secret, nonce, counter, tokenLength);
                 }
 
                 settings.endGroup();

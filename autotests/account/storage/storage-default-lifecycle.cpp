@@ -34,7 +34,7 @@ void StorageDefaultLifeCycleTest::initTestCase(void)
 void StorageDefaultLifeCycleTest::testLifecycle(void)
 {
     const QString iniResource = test::path(testIniResource);
-    const QString sampleAccountName(QLatin1String("valid-hotp-sample-1"));
+    const QString samleAccountFullName(QLatin1String("autotests:valid-hotp-sample-1"));
 
     const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void
     {
@@ -79,9 +79,9 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     QCOMPARE(uut->hasError(), false);
     QCOMPARE(error.count(),  0);
     QCOMPARE(accountAdded.count(), 1);
-    QCOMPARE(accountAdded.at(0).at(0), sampleAccountName);
+    QCOMPARE(accountAdded.at(0).at(0), samleAccountFullName);
 
-    accounts::Account *sampleAccount = uut->get(sampleAccountName);
+    accounts::Account *sampleAccount = uut->get(samleAccountFullName);
     QVERIFY2(sampleAccount != nullptr, "get() should return the sample account");
 
     QSignalSpy sampleAccountCleaned(sampleAccount, &accounts::Account::destroyed);

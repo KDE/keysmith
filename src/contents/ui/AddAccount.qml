@@ -29,6 +29,7 @@ Kirigami.Page {
                 Kirigami.FormData.label: i18nc("@label:textbox", "Account Name:")
                 validator: Validators.AccountNameValidator {
                     accounts: root.accounts
+                    issuer: ""
                 }
             }
         }
@@ -43,10 +44,10 @@ Kirigami.Page {
         enabled: acceptable
         onTriggered: {
             if (tokenDetails.isTotp) {
-                accounts.addTotp(accountName.text, tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);
+                accounts.addTotp(accountName.text, "", tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);
             }
             if (tokenDetails.isHotp) {
-                accounts.addHotp(accountName.text, tokenDetails.secret, parseInt(tokenDetails.counter), tokenDetails.tokenLength);
+                accounts.addHotp(accountName.text, "", tokenDetails.secret, parseInt(tokenDetails.counter), tokenDetails.tokenLength);
             }
             root.dismissed();
         }

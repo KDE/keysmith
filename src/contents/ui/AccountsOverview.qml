@@ -5,7 +5,7 @@
 
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.8 as Kirigami
+import org.kde.kirigami 2.10 as Kirigami
 
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
@@ -134,6 +134,12 @@ Kirigami.ScrollablePage {
 
                 // TODO warn about this
                 return null;
+            }
+        }
+        section {
+            property: "account.issuer"
+            delegate: Kirigami.ListSectionHeader {
+                text: section
             }
         }
     }

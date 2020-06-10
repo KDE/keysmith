@@ -101,6 +101,7 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     QSignalSpy sampleAccountTokenUpdated(sampleAccount, &accounts::Account::tokenChanged);
 
     QCOMPARE(sampleAccount->name(), sampleAccountName);
+    QCOMPARE(sampleAccount->issuer(), QString());
     QCOMPARE(sampleAccount->algorithm(), accounts::Account::Hotp);
     QCOMPARE(sampleAccount->token(), QString());
 

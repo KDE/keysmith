@@ -29,6 +29,7 @@ namespace accounts
         int offset(void) const;
         QString name(void) const;
         QString token(void) const;
+        QString issuer(void) const;
         quint64 counter(void) const;
         QDateTime epoch(void) const;
         uint timeStep(void) const;
@@ -37,13 +38,14 @@ namespace accounts
         int tokenLength(void) const;
         bool checksum(void) const;
     public:
+        static QString toFullName(const QString &name, const QString &issuer);
         explicit AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                 AccountStoragePrivate *storage, Dispatcher *dispatcher, const QUuid &id,
-                                const QString &name, const secrets::EncryptedSecret &secret,
+                                const QString &name, const QString &issuer, const secrets::EncryptedSecret &secret,
                                 quint64 counter, int tokenLength, int offset, bool addChecksum);
         explicit AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                 AccountStoragePrivate *storage, Dispatcher *dispatcher, const QUuid &id,
-                                const QString &name, const secrets::EncryptedSecret &secret,
+                                const QString &name, const QString &issuer, const secrets::EncryptedSecret &secret,
                                 const QDateTime &epoch, uint timeStep, int tokenLength, Account::Hash hash);
         void recompute(void);
         void setCounter(quint64 counter);
@@ -65,6 +67,7 @@ namespace accounts
     private:
         QString m_token;
         const QString m_name;
+        const QString m_issuer;
         const secrets::EncryptedSecret m_secret;
         const int m_tokenLength;
         quint64 m_counter;
@@ -87,13 +90,14 @@ namespace accounts
         bool isStillOpen(void) const;
         bool contains(const QString &account) const;
         SettingsProvider settings(void) const;
-        bool isNameStillAvailable(const QString &name) const;
+        bool isAccountStillAvailable(const QString &account) const;
         Account * get(const QString &account) const;
         AccountSecret *secret(void) const;
         void removeAccounts(const QSet<QString> &accountNames);
         void acceptAccountRemoval(const QString &accountName);
         Account * acceptHotpAccount(const QUuid &id,
                                     const QString &name,
+                                    const QString &issuer,
                                     const secrets::EncryptedSecret &secret,
                                     quint64 counter = 0ULL,
                                     int tokenLength = 6,
@@ -101,6 +105,7 @@ namespace accounts
                                     bool addChecksum = false);
         Account * acceptTotpAccount(const QUuid &id,
                                     const QString &name,
+                                    const QString &issuer,
                                     const secrets::EncryptedSecret &secret,
                                     uint timeStep = 30,
                                     int tokenLength = 6,
@@ -108,6 +113,7 @@ namespace accounts
                                     Account::Hash hash = Account::Hash::Default);
         bool addHotp(const std::function<void(SaveHotp*)> &handler,
                      const QString &name,
+                     const QString &issuer,
                      const QString &secret,
                      quint64 counter = 0ULL,
                      int tokenLength = 6,
@@ -115,6 +121,7 @@ namespace accounts
                      bool addChecksum = false);
         bool addTotp(const std::function<void(SaveTotp*)> &handler,
                      const QString &name,
+                     const QString &issuer,
                      const QString &secret,
                      uint timeStep = 30,
                      int tokenLength = 6,
@@ -126,7 +133,7 @@ namespace accounts
         void clearError(void);
         bool hasError(void) const;
     private:
-        bool validateGenericNewToken(const QString &name, const QString &secret, int tokenLength) const;
+        bool validateGenericNewToken(const QString &name, const QString &issuer, const QString &secret, int tokenLength) const;
         std::optional<secrets::EncryptedSecret> encrypt(const QString &secret) const;
         QUuid generateId(const QString &name) const;
     private:

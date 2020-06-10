@@ -39,8 +39,12 @@ void StorageLifeCyclesTest::initTestCase(void)
 void StorageLifeCyclesTest::testLifecycle(void)
 {
     const QString iniResource = test::path(testIniResource);
+    const QString initialAccountFullName(QLatin1String("autotests:valid-hotp-sample-1"));
+    const QString addedAccountFullName(QLatin1String("autotests:valid-totp-sample-1"));
+    const QString accountIssuer(QLatin1String("autotests"));
     const QString initialAccountName(QLatin1String("valid-hotp-sample-1"));
     const QString addedAccountName(QLatin1String("valid-totp-sample-1"));
+
     const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void
     {
         QSettings data(iniResource, QSettings::IniFormat);
@@ -77,8 +81,10 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QCOMPARE(accountAdded.count(), 0);
     QCOMPARE(loaded.count(), 0);
     QCOMPARE(error.count(), 0);
-    QVERIFY2(uut->isNameStillAvailable(initialAccountName),  "sample account name should still be available");
-    QVERIFY2(uut->isNameStillAvailable(addedAccountName),  "new account name should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(initialAccountName, accountIssuer),  "sample account, issuer should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(initialAccountFullName),  "sample account (full name) should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(addedAccountName, accountIssuer),  "new account, issuer should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(addedAccountFullName),  "new account (full name) should still be available");
     QCOMPARE(uut->accounts(), QVector<QString>());
 
     // expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
@@ -99,21 +105,26 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QCOMPARE(uut->hasError(), false);
     QCOMPARE(error.count(), 0);
     QCOMPARE(accountAdded.count(), 1);
-    QCOMPARE(accountAdded.at(0).at(0), initialAccountName);
+    QCOMPARE(accountAdded.at(0).at(0), initialAccountFullName);
 
-    QVERIFY2(!uut->isNameStillAvailable(initialAccountName),  "sample account name should no longer be available");
-    QVERIFY2(uut->isNameStillAvailable(addedAccountName),  "new account name should still be available");
-    QCOMPARE(uut->accounts(), QVector<QString>() << initialAccountName);
+    QVERIFY2(!uut->isAccountStillAvailable(initialAccountName, accountIssuer),  "sample account, issuer should no longer be available");
+    QVERIFY2(!uut->isAccountStillAvailable(initialAccountFullName),  "sample account (full name) should no longer be available");
+    QVERIFY2(uut->isAccountStillAvailable(addedAccountName, accountIssuer),  "new account, issuer should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(addedAccountFullName),  "new account (full name) should still be available");
+    QCOMPARE(uut->accounts(), QVector<QString>() << initialAccountFullName);
 
-    QVERIFY2(uut->contains(initialAccountName), "contains() should report the sample account");
+    QVERIFY2(uut->contains(initialAccountName, accountIssuer), "contains(name, issuer) should report the sample account");
+    QVERIFY2(uut->contains(initialAccountFullName), "contains(full name) should report the sample account");
 
-    accounts::Account *initialAccount = uut->get(initialAccountName);
-    QVERIFY2(initialAccount != nullptr, "get() should return the sample account");
+    accounts::Account *initialAccount = uut->get(initialAccountFullName);
+    QVERIFY2(initialAccount != nullptr, "get(full name) should return the sample account");
+    QCOMPARE(uut->get(initialAccountName, accountIssuer), initialAccount);
 
     QSignalSpy initialAccountRemoved(initialAccount, &accounts::Account::removed);
     QSignalSpy initialAccountCleaned(initialAccount, &accounts::Account::destroyed);
 
     QCOMPARE(initialAccount->name(), initialAccountName);
+    QCOMPARE(initialAccount->issuer(), accountIssuer);
     QCOMPARE(initialAccount->algorithm(), accounts::Account::Hotp);
     QCOMPARE(initialAccount->token(), QString());
 
@@ -135,14 +146,18 @@ void StorageLifeCyclesTest::testLifecycle(void)
     initialAccount->remove();
 
     QVERIFY2(test::signal_eventually_emitted_once(accountRemoved), "sample account should be removed from storage by now");
-    QCOMPARE(accountRemoved.at(0).at(0), initialAccountName);
+    QCOMPARE(accountRemoved.at(0).at(0), initialAccountFullName);
 
-    QVERIFY2(uut->isNameStillAvailable(initialAccountName),  "sample account name should again be available");
-    QVERIFY2(uut->isNameStillAvailable(addedAccountName),  "new account name should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(initialAccountName, accountIssuer),  "sample account, issuer should again be available");
+    QVERIFY2(uut->isAccountStillAvailable(initialAccountFullName),  "sample account (full name) should again be available");
+    QVERIFY2(uut->isAccountStillAvailable(addedAccountName, accountIssuer),  "new account, issuer should still be available");
+    QVERIFY2(uut->isAccountStillAvailable(addedAccountFullName),  "new account (full name) should still be available");
     QCOMPARE(uut->accounts(), QVector<QString>());
 
-    QVERIFY2(!uut->contains(initialAccountName), "contains() should no longer report the sample account");
-    QVERIFY2(uut->get(initialAccountName) == nullptr, "get() should no longer return the sample account");
+    QVERIFY2(!uut->contains(initialAccountName, accountIssuer), "contains(name, issuer) should no longer report the sample account");
+    QVERIFY2(!uut->contains(initialAccountFullName), "contains(full name) should no longer report the sample account");
+    QVERIFY2(uut->get(initialAccountFullName) == nullptr, "get(full name) should no longer return the sample account");
+    QVERIFY2(uut->get(initialAccountName, accountIssuer) == nullptr, "get(name, issuer) should no longer return the sample account");
 
     QFile afterRemovingLockFile(test::path(testIniLockFile));
     QVERIFY2(!afterRemovingLockFile.exists(), "after removing: lock file should not be present anymore");
@@ -155,25 +170,30 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(test::signal_eventually_emitted_once(initialAccountCleaned), "sample account should be cleaned up by now");
 
     // third phase: check that new account objects can be added to storage
-    uut->addTotp(addedAccountName, QLatin1String("NBSWY3DPFQQHO33SNRSCC==="), 42, 8);
+    uut->addTotp(addedAccountName, accountIssuer, QLatin1String("NBSWY3DPFQQHO33SNRSCC==="), 42, 8);
 
     QVERIFY2(test::signal_eventually_emitted_twice(accountAdded), "new account should be added to storage by now");
     QCOMPARE(error.count(), 0);
-    QCOMPARE(accountAdded.at(1).at(0), addedAccountName);
+    QCOMPARE(accountAdded.at(1).at(0), addedAccountFullName);
 
-    QVERIFY2(uut->isNameStillAvailable(initialAccountName),  "sample account name should again still be available");
-    QVERIFY2(!uut->isNameStillAvailable(addedAccountName),  "new account name should no longer be available");
-    QCOMPARE(uut->accounts(), QVector<QString>() << addedAccountName);
+    QVERIFY2(uut->isAccountStillAvailable(initialAccountName, accountIssuer),  "sample account, issuer should again still be available");
+    QVERIFY2(uut->isAccountStillAvailable(initialAccountFullName),  "sample account (full name) should again still be available");
+    QVERIFY2(!uut->isAccountStillAvailable(addedAccountName, accountIssuer),  "new account, issuer should no longer be available");
+    QVERIFY2(!uut->isAccountStillAvailable(addedAccountFullName),  "new account (full name) should no longer be available");
+    QCOMPARE(uut->accounts(), QVector<QString>() << addedAccountFullName);
 
-    QVERIFY2(uut->contains(addedAccountName), "contains() should report the new account");
+    QVERIFY2(uut->contains(addedAccountName, accountIssuer), "contains(name, issuer) should report the new account");
+    QVERIFY2(uut->contains(addedAccountFullName), "contains(full name) should report the new account");
 
-    accounts::Account *addedAccount = uut->get(addedAccountName);
-    QVERIFY2(addedAccount != nullptr, "get() should return the new account");
+    accounts::Account *addedAccount = uut->get(addedAccountFullName);
+    QVERIFY2(addedAccount != nullptr, "get(full name) should return the new account");
+    QCOMPARE(uut->get(addedAccountName, accountIssuer), addedAccount);
 
     QSignalSpy addedAccountRemoved(addedAccount, &accounts::Account::removed);
     QSignalSpy addedAccountCleaned(addedAccount, &accounts::Account::destroyed);
 
     QCOMPARE(addedAccount->name(), addedAccountName);
+    QCOMPARE(addedAccount->issuer(), accountIssuer);
     QCOMPARE(addedAccount->algorithm(), accounts::Account::Totp);
     QCOMPARE(addedAccount->token(), QString());
 
@@ -192,12 +212,16 @@ void StorageLifeCyclesTest::testLifecycle(void)
     // fourth phase: check that disposing storage cleans up objects properly
     uut->dispose();
 
-    QVERIFY2(!uut->isNameStillAvailable(initialAccountName),  "sample account name should again no longer be available");
-    QVERIFY2(!uut->isNameStillAvailable(addedAccountName),  "new account name should no longer be available still");
+    QVERIFY2(!uut->isAccountStillAvailable(initialAccountName, accountIssuer),  "sample account, issuer should again no longer be available");
+    QVERIFY2(!uut->isAccountStillAvailable(initialAccountFullName),  "sample account (full name) should again no longer be available");
+    QVERIFY2(!uut->isAccountStillAvailable(addedAccountName, accountIssuer),  "new account, issuer should no longer be available still");
+    QVERIFY2(!uut->isAccountStillAvailable(addedAccountFullName),  "new account (full name) should no longer be available still");
     QCOMPARE(uut->accounts(), QVector<QString>());
 
-    QVERIFY2(!uut->contains(addedAccountName), "contains() should no longer report the new account");
-    QVERIFY2(uut->get(addedAccountName) == nullptr, "get() should no longer return the new account");
+    QVERIFY2(!uut->contains(addedAccountName, accountIssuer), "contains(name, issuer) should no longer report the new account");
+    QVERIFY2(!uut->contains(addedAccountFullName), "contains(full name) should no longer report the new account");
+    QVERIFY2(uut->get(addedAccountFullName) == nullptr, "get(full name) should no longer return the new account");
+    QVERIFY2(uut->get(addedAccountName, accountIssuer) == nullptr, "get(name, issuer) should no longer return the new account");
 
     QVERIFY2(test::signal_eventually_emitted_once(passwordRequestsCancelled), "account secret should have signalled cancellation by now");
 

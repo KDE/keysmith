@@ -57,6 +57,11 @@ namespace model
         return m_model->name();
     }
 
+    QString AccountView::issuer(void) const
+    {
+        return m_model->issuer();
+    }
+
     QString AccountView::token(void) const
     {
         return m_model->token();
@@ -131,14 +136,14 @@ namespace model
         return m_storage->isLoaded();
     }
 
-    void SimpleAccountListModel::addTotp(const QString &account, const QString &secret, uint timeStep, int tokenLength)
+    void SimpleAccountListModel::addTotp(const QString &account, const QString &issuer, const QString &secret, uint timeStep, int tokenLength)
     {
-        m_storage->addTotp(account, secret, timeStep, tokenLength);
+        m_storage->addTotp(account, issuer, secret, timeStep, tokenLength);
     }
 
-    void SimpleAccountListModel::addHotp(const QString &account, const QString &secret, quint64 counter, int tokenLength)
+    void SimpleAccountListModel::addHotp(const QString &account, const QString &issuer, const QString &secret, quint64 counter, int tokenLength)
     {
-        m_storage->addHotp(account, secret, counter, tokenLength);
+        m_storage->addHotp(account, issuer, secret, counter, tokenLength);
     }
 
     QHash<int, QByteArray> SimpleAccountListModel::roleNames(void) const
@@ -220,13 +225,29 @@ namespace model
         endRemoveRows();
     }
 
-    bool SimpleAccountListModel::isNameStillAvailable(const QString &account) const
+    bool SimpleAccountListModel::isAccountStillAvailable(const QString &name, const QString &issuer) const
     {
-        return m_storage && m_storage->isNameStillAvailable(account);
+        return m_storage && m_storage->isAccountStillAvailable(name, issuer);
     }
 
-    AccountNameValidator::AccountNameValidator(QObject *parent) : QValidator(parent), m_accounts(nullptr), m_delegate(nullptr)
+    AccountNameValidator::AccountNameValidator(QObject *parent) : QValidator(parent), m_issuer(std::nullopt), m_accounts(nullptr), m_delegate(nullptr)
     {
+    }
+
+    QString AccountNameValidator::issuer(void) const
+    {
+        return m_issuer ? *m_issuer : QLatin1String(":: WARNING: dummy invalid issuer; this is meant as a write-only property anyway ::");
+    }
+
+    void AccountNameValidator::setIssuer(const QString &issuer)
+    {
+        if (m_issuer && issuer == *m_issuer) {
+            qCDebug(logger) << "Ignoring new issuer: same as the current issuer";
+            return;
+        }
+
+        m_issuer.emplace(issuer);
+        Q_EMIT issuerChanged();
     }
 
     QValidator::State AccountNameValidator::validate(QString &input, int &pos) const
@@ -236,8 +257,13 @@ namespace model
             return QValidator::Invalid;
         }
 
+        if (!m_issuer) {
+            qCDebug(logger) << "Unable to validate account name: missing issuer";
+            return QValidator::Invalid;
+        }
+
         QValidator::State result = m_delegate.validate(input, pos);
-        return result != QValidator::Acceptable ||  m_accounts->isNameStillAvailable(input) ? result : QValidator::Intermediate;
+        return result != QValidator::Acceptable ||  m_accounts->isAccountStillAvailable(input, *m_issuer) ? result : QValidator::Intermediate;
     }
 
     void AccountNameValidator::fixup(QString &input) const
@@ -293,11 +319,11 @@ namespace model
             return false;
         }
 
-        QVariant leftValue = model->data(source_left, SimpleAccountListModel::NonStandardRoles::AccountRole);
-        QVariant rightValue = model->data(source_right, SimpleAccountListModel::NonStandardRoles::AccountRole);
+        const QVariant leftValue = model->data(source_left, SimpleAccountListModel::NonStandardRoles::AccountRole);
+        const QVariant rightValue = model->data(source_right, SimpleAccountListModel::NonStandardRoles::AccountRole);
 
-        AccountView * leftAccount = leftValue.isNull() ? nullptr : leftValue.value<AccountView*>();
-        AccountView * rightAccount = rightValue.isNull() ? nullptr : rightValue.value<AccountView*>();
+        const AccountView * leftAccount = leftValue.isNull() ? nullptr : leftValue.value<AccountView*>();
+        const AccountView * rightAccount = rightValue.isNull() ? nullptr : rightValue.value<AccountView*>();
 
         // useless junk: implement sorting as no-op: claim left == right
         if (!leftAccount && !rightAccount) {
@@ -317,7 +343,26 @@ namespace model
             return true;
         }
 
-        // actual sorting by account name
-        return leftAccount->name().localeAwareCompare(rightAccount->name()) < 0;
+        const QString leftIssuer = leftAccount->issuer();
+        const QString rightIssuer = rightAccount->issuer();
+
+        // both issuers are null: sort by account name
+        if (leftIssuer.isNull() && rightIssuer.isNull()) {
+            return leftAccount->name().localeAwareCompare(rightAccount->name()) < 0;
+        }
+
+        // Sort accounts without issuer to the top: claim left < right
+        if (leftIssuer.isNull()) {
+            return true;
+        }
+
+        // Sort accounts without issuer to the top: claim left >= right
+        if (rightIssuer.isNull()) {
+            return false;
+        }
+
+        // actual sorting by account issuer, then name
+        int issuer = leftIssuer.localeAwareCompare(rightIssuer);
+        return issuer == 0 ? leftAccount->name().localeAwareCompare(rightAccount->name()) < 0 : issuer < 0;
     }
 }

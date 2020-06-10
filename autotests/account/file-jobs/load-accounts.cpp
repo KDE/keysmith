@@ -91,25 +91,45 @@ void LoadAccountsTest::sampleAccountsFile(void)
 
     QVERIFY2(test::signal_eventually_emitted_once(jobFinished), "job should be finished");
     QVERIFY2(actionRun, "accounts action should have run");
-    QCOMPARE(hotpFound.count(), 1);
-    QCOMPARE(totpFound.count(), 1);
+    QCOMPARE(hotpFound.count(), 2);
+    QCOMPARE(totpFound.count(), 2);
     QCOMPARE(loadingError.count(), 0);
 
     const auto firstHotp = hotpFound.at(0);
     QCOMPARE(firstHotp.at(0).toUuid(), QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")));
     QCOMPARE(firstHotp.at(1).toString(), QLatin1String("valid-hotp-sample-1"));
-    QCOMPARE(firstHotp.at(2).toByteArray(), rawSecret);
-    QCOMPARE(firstHotp.at(3).toByteArray(), rawNonce);
-    QCOMPARE(firstHotp.at(4).toULongLong(), 0ULL);
-    QCOMPARE(firstHotp.at(5).toInt(), 6);
+    QCOMPARE(firstHotp.at(2).toString(), QString());
+    QCOMPARE(firstHotp.at(3).toByteArray(), rawSecret);
+    QCOMPARE(firstHotp.at(4).toByteArray(), rawNonce);
+    QCOMPARE(firstHotp.at(5).toULongLong(), 0ULL);
+    QCOMPARE(firstHotp.at(6).toInt(), 6);
+
+    const auto secondHotp = hotpFound.at(1);
+    QCOMPARE(secondHotp.at(0).toUuid(), QUuid(QLatin1String("437c23aa-2fb0-519a-9a34-a5a2671eea24")));
+    QCOMPARE(secondHotp.at(1).toString(), QLatin1String("valid-hotp-sample-2"));
+    QCOMPARE(secondHotp.at(2).toString(), QLatin1String("autotests"));
+    QCOMPARE(secondHotp.at(3).toByteArray(), rawSecret);
+    QCOMPARE(secondHotp.at(4).toByteArray(), rawNonce);
+    QCOMPARE(secondHotp.at(5).toULongLong(), 0ULL);
+    QCOMPARE(secondHotp.at(6).toInt(), 6);
 
     const auto firstTotp = totpFound.at(0);
     QCOMPARE(firstTotp.at(0).toUuid(), QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
     QCOMPARE(firstTotp.at(1).toString(), QLatin1String("valid-totp-sample-1"));
-    QCOMPARE(firstHotp.at(2).toByteArray(), rawSecret);
-    QCOMPARE(firstHotp.at(3).toByteArray(), rawNonce);
-    QCOMPARE(firstTotp.at(4).toUInt(), 30);
-    QCOMPARE(firstTotp.at(5).toInt(), 6);
+    QCOMPARE(firstTotp.at(2).toString(), QString());
+    QCOMPARE(firstHotp.at(3).toByteArray(), rawSecret);
+    QCOMPARE(firstHotp.at(4).toByteArray(), rawNonce);
+    QCOMPARE(firstTotp.at(5).toUInt(), 30);
+    QCOMPARE(firstTotp.at(6).toInt(), 6);
+
+    const auto secondTotp = totpFound.at(1);
+    QCOMPARE(secondTotp.at(0).toUuid(), QUuid(QLatin1String("6537d6a5-005e-5a92-b560-b09df3c2e676")));
+    QCOMPARE(secondTotp.at(1).toString(), QLatin1String("valid-totp-sample-2"));
+    QCOMPARE(secondTotp.at(2).toString(), QLatin1String("autotests"));
+    QCOMPARE(secondHotp.at(3).toByteArray(), rawSecret);
+    QCOMPARE(secondHotp.at(4).toByteArray(), rawNonce);
+    QCOMPARE(secondTotp.at(5).toUInt(), 30);
+    QCOMPARE(secondTotp.at(6).toInt(), 6);
 }
 
 void LoadAccountsTest::invalidSampleAccountsFile(void)

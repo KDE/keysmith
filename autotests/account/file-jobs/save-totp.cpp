@@ -22,10 +22,10 @@ class SaveTotpTest: public QObject
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase(void);
-    void validHotp(void);
-    void validHotp_data(void);
-    void invalidHotp(void);
-    void invalidHotp_data(void);
+    void validTotp(void);
+    void validTotp_data(void);
+    void invalidTotp(void);
+    void invalidTotp_data(void);
 private:
     accounts::AccountSecret m_secret {&test::fakeRandom};
 };
@@ -34,24 +34,30 @@ static void define_test_data(void)
 {
     QTest::addColumn<QUuid>("id");
     QTest::addColumn<QString>("name");
+    QTest::addColumn<QString>("issuer");
     QTest::addColumn<uint>("timeStep");
     QTest::addColumn<int>("tokenLength");
+    QTest::addColumn<QString>("actualAccountsIni");
+    QTest::addColumn<QString>("expectedAccountsIni");
 }
 
-static void define_test_case(const char * label, const QUuid &id, const QString &accountName, uint timeStep, int tokenLength)
+static void define_test_case(const char * label, const QUuid &id, const QString &accountName, const QString &issuer, uint timeStep, int tokenLength, const QString &actualIni, const QString &expectedIni)
 {
-    QTest::newRow(label) << id << accountName << timeStep << tokenLength;
+    QTest::newRow(label) << id << accountName << issuer << timeStep << tokenLength << actualIni << expectedIni;
 }
 
-void SaveTotpTest::validHotp(void)
+void SaveTotpTest::validTotp(void)
 {
     QFETCH(QUuid, id);
     QFETCH(QString, name);
+    QFETCH(QString, issuer);
     QFETCH(uint, timeStep);
     QFETCH(int, tokenLength);
+    QFETCH(QString, actualAccountsIni);
+    QFETCH(QString, expectedAccountsIni);
 
-    const QString actual = test::path("actual-accounts.ini");
-    const QString lock = test::path("actual-accounts.ini.lock");
+    const QString actual = test::path(actualAccountsIni);
+    const QString lock = test::path(actualAccountsIni + QLatin1String(".lock"));
     bool actionRun = false;
 
     const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void
@@ -64,7 +70,7 @@ void SaveTotpTest::validHotp(void)
     std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, QByteArray("Hello, world!"));
     QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
 
-    accounts::SaveTotp uut(settings, id, name, *tokenSecret, timeStep, tokenLength);
+    accounts::SaveTotp uut(settings, id, name, issuer, *tokenSecret, timeStep, tokenLength);
     QSignalSpy invalidAccount(&uut, &accounts::SaveTotp::invalid);
     QSignalSpy savedAccount(&uut, &accounts::SaveTotp::saved);
     QSignalSpy jobFinished(&uut, &accounts::SaveTotp::finished);
@@ -76,7 +82,7 @@ void SaveTotpTest::validHotp(void)
 
     QFile result(actual);
     QVERIFY2(result.exists(), "accounts file should have been created");
-    QCOMPARE(test::slurp(actual), test::slurp(":/save-totp/expected-accounts.ini"));
+    QCOMPARE(test::slurp(actual), test::slurp(expectedAccountsIni));
 
     QFile lockFile(lock);
     QVERIFY2(!lockFile.exists(), "lock file should no longer exist");
@@ -86,15 +92,18 @@ void SaveTotpTest::validHotp(void)
     QCOMPARE(savedAccount.count(), 1);
 }
 
-void SaveTotpTest::invalidHotp(void)
+void SaveTotpTest::invalidTotp(void)
 {
     QFETCH(QUuid, id);
     QFETCH(QString, name);
+    QFETCH(QString, issuer);
     QFETCH(uint, timeStep);
     QFETCH(int, tokenLength);
+    QFETCH(QString, actualAccountsIni);
+    QFETCH(QString, expectedAccountsIni);
 
-    const QString actual = test::path("dummy-accounts.ini");
-    const QString lock = test::path("dummy-accounts.ini.lock");
+    const QString actual = test::path(actualAccountsIni);
+    const QString lock = test::path(actualAccountsIni + QLatin1String(".lock"));
     bool actionRun = false;
 
     const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void
@@ -107,7 +116,7 @@ void SaveTotpTest::invalidHotp(void)
     std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, QByteArray("Hello, world!"));
     QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
 
-    accounts::SaveTotp uut(settings, id, name, *tokenSecret, timeStep, tokenLength);
+    accounts::SaveTotp uut(settings, id, name, issuer, *tokenSecret, timeStep, tokenLength);
     QSignalSpy invalidAccount(&uut, &accounts::SaveTotp::invalid);
     QSignalSpy savedAccount(&uut, &accounts::SaveTotp::saved);
     QSignalSpy jobFinished(&uut, &accounts::SaveTotp::finished);
@@ -126,21 +135,24 @@ void SaveTotpTest::invalidHotp(void)
     QVERIFY2(!lockFile.exists(), "lock file should not have been created");
 }
 
-void SaveTotpTest::validHotp_data(void)
+void SaveTotpTest::validTotp_data(void)
 {
     define_test_data();
-    define_test_case("valid-totp-sample-1", QUuid("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc"), QLatin1String("valid-totp-sample-1"), 30, 6);
+    define_test_case("valid-totp-sample-1", QUuid("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc"), QLatin1String("valid-totp-sample-1"), QString(), 30, 6, QLatin1String("save-valid-totp-accounts-1.ini"), QLatin1String(":/save-totp/expected-accounts-1.ini"));
+    define_test_case("valid-totp-sample-2", QUuid("6537d6a5-005e-5a92-b560-b09df3c2e676"), QLatin1String("valid-totp-sample-2"), QLatin1String("autotests"), 30, 6, QLatin1String("save-valid-totp-accounts-2.ini"), QLatin1String(":/save-totp/expected-accounts-2.ini"));
 }
 
-void SaveTotpTest::invalidHotp_data(void)
+void SaveTotpTest::invalidTotp_data(void)
 {
     define_test_data();
-    define_test_case("null UUID", QUuid(), QLatin1String("null UUID"), 30, 6);
-    define_test_case("null account name", QUuid("00611bbf-5e0b-5c6a-9847-ad865315ce86"), QString(), 30, 6);
-    define_test_case("empty account name", QUuid("1e42b907-99d8-5da3-a59b-89b257e49c83"), QLatin1String(""), 30, 6);
-    define_test_case("timeStep too small", QUuid("5ab8749b-f973-5f48-a70e-c261ebd0521a"), QLatin1String("timeStep too small"), 0, 6);
-    define_test_case("tokenLength too small", QUuid("bca12e13-4b5b-5e4e-b162-3b86a6284dea"), QLatin1String("tokenLength too small"), 30, 5);
-    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), 30, 11);
+    define_test_case("null UUID", QUuid(), QLatin1String("null UUID"), QString(), 30, 6, QLatin1String("save-totp-dummy-accounts-1.ini"), QString());
+    define_test_case("null account name", QUuid("00611bbf-5e0b-5c6a-9847-ad865315ce86"), QString(), QString(), 30, 6, QLatin1String("save-totp-dummy-accounts-2.ini"), QString());
+    define_test_case("empty account name", QUuid("1e42b907-99d8-5da3-a59b-89b257e49c83"), QLatin1String(""), QString(), 30, 6, QLatin1String("save-totp-dummy-accounts-3.ini"), QString());
+    define_test_case("empty issuer name", QUuid("533b406b-ad04-5203-a26f-5deb0afeba22"), QLatin1String("empty issuer name"), QLatin1String(""), 30, 6, QLatin1String("save-totp-dummy-accounts-4.ini"), QString());
+    define_test_case("empty issuer name", QUuid("1c1ffa42-bb9f-5413-a8a7-6c5b0eb8a36f"), QLatin1String("invalid issuer name"), QLatin1String(":"), 30, 6, QLatin1String("save-totp-dummy-accounts-5.ini"), QString());
+    define_test_case("timeStep too small", QUuid("5ab8749b-f973-5f48-a70e-c261ebd0521a"), QLatin1String("timeStep too small"), QString(), 0, 6, QLatin1String("save-totp-dummy-accounts-6.ini"), QString());
+    define_test_case("tokenLength too small", QUuid("bca12e13-4b5b-5e4e-b162-3b86a6284dea"), QLatin1String("tokenLength too small"), QString(), 30, 5, QLatin1String("save-totp-dummy-accounts-7.ini"), QString());
+    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), QString(), 30, 11, QLatin1String("save-totp-dummy-accounts-8.ini"), QString());
 }
 
 void SaveTotpTest::initTestCase(void)

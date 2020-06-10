@@ -8,8 +8,10 @@
         <file>load-accounts/sample-accounts.ini</file>
         <file>load-accounts/invalid-accounts.ini</file>
         <file>load-accounts/empty-accounts.ini</file>
-        <file>save-hotp/expected-accounts.ini</file>
-        <file>save-totp/expected-accounts.ini</file>
+        <file>save-hotp/expected-accounts-1.ini</file>
+        <file>save-hotp/expected-accounts-2.ini</file>
+        <file>save-totp/expected-accounts-1.ini</file>
+        <file>save-totp/expected-accounts-2.ini</file>
         <file>delete-accounts/sample-accounts.ini</file>
         <file>delete-accounts/empty-accounts.ini</file>
         <file>delete-accounts/only-hotp-left.ini</file>

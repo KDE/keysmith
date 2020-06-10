@@ -18,6 +18,8 @@
 #include <QValidator>
 #include <QVector>
 
+#include <optional>
+
 namespace model
 {
     qint64 millisecondsLeftForToken(const QDateTime &epoch, uint timeStep, const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
@@ -26,6 +28,7 @@ namespace model
     {
         Q_OBJECT
         Q_PROPERTY(QString name READ name NOTIFY never)
+        Q_PROPERTY(QString issuer READ issuer NOTIFY never)
         Q_PROPERTY(QString token READ token NOTIFY tokenChanged)
         Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged);
         Q_PROPERTY(uint timeStep READ timeStep NOTIFY never);
@@ -34,6 +37,7 @@ namespace model
     public:
         explicit AccountView(accounts::Account *model, QObject *parent = nullptr);
         QString name(void) const;
+        QString issuer(void) const;
         QString token(void) const;
         uint timeStep(void) const;
         quint64 counter(void) const;
@@ -63,9 +67,9 @@ namespace model
         Q_ENUM(NonStandardRoles)
     public:
         explicit SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent = nullptr);
-        Q_INVOKABLE void addTotp(const QString &account, const QString &secret, uint timeStep, int tokenLength);
-        Q_INVOKABLE void addHotp(const QString &account, const QString &secret, quint64 counter, int tokenLength);
-        Q_INVOKABLE bool isNameStillAvailable(const QString &account) const;
+        Q_INVOKABLE void addTotp(const QString &account, const QString &issuer, const QString &secret, uint timeStep, int tokenLength);
+        Q_INVOKABLE void addHotp(const QString &account, const QString &issuer, const QString &secret, quint64 counter, int tokenLength);
+        Q_INVOKABLE bool isAccountStillAvailable(const QString &name, const QString &issuer) const;
         Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const override;
         Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
         QHash<int, QByteArray> roleNames(void) const override;
@@ -101,16 +105,21 @@ namespace model
     class AccountNameValidator: public QValidator
     {
         Q_OBJECT
+        Q_PROPERTY(QString issuer READ issuer WRITE setIssuer NOTIFY issuerChanged)
         Q_PROPERTY(model::SimpleAccountListModel * accounts READ accounts WRITE setAccounts NOTIFY accountsChanged);
     public:
         explicit AccountNameValidator(QObject *parent = nullptr);
         QValidator::State validate(QString &input, int &pos) const override;
         void fixup(QString &input) const override;
+        QString issuer(void) const;
+        void setIssuer(const QString &issuer);
         SimpleAccountListModel * accounts(void) const;
         void setAccounts(SimpleAccountListModel *accounts);
     Q_SIGNALS:
+        void issuerChanged(void);
         void accountsChanged(void);
     private:
+        std::optional<QString> m_issuer;
         SimpleAccountListModel * m_accounts;
         const validators::NameValidator m_delegate;
     };

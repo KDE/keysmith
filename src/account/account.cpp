@@ -24,6 +24,12 @@ namespace accounts
         return d->name();
     }
 
+    QString Account::issuer(void) const
+    {
+        Q_D(const Account);
+        return d->issuer();
+    }
+
     QString Account::token(void) const
     {
         Q_D(const Account);
@@ -146,16 +152,26 @@ namespace accounts
         d->load(handler);
     }
 
-    bool AccountStorage::contains(const QString &name) const
+    bool AccountStorage::contains(const QString &fullName) const
     {
         Q_D(const AccountStorage);
-        return d->contains(name);
+        return d->contains(fullName);
     }
 
-    Account * AccountStorage::get(const QString &name) const
+    bool AccountStorage::contains(const QString &name, const QString &issuer) const
+    {
+        return contains(AccountPrivate::toFullName(name, issuer));
+    }
+
+    Account * AccountStorage::get(const QString &fullName) const
     {
         Q_D(const AccountStorage);
-        return d->get(name);
+        return d->get(fullName);
+    }
+
+    Account * AccountStorage::get(const QString &name, const QString &issuer) const
+    {
+        return get(AccountPrivate::toFullName(name, issuer));
     }
 
     AccountSecret * AccountStorage::secret(void) const
@@ -164,13 +180,18 @@ namespace accounts
         return d->secret();
     }
 
-    bool AccountStorage::isNameStillAvailable(const QString &name) const
+    bool AccountStorage::isAccountStillAvailable(const QString &fullName) const
     {
         Q_D(const AccountStorage);
-        return d->isNameStillAvailable(name);
+        return d->isAccountStillAvailable(fullName);
     }
 
-    void AccountStorage::addHotp(const QString &name, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
+    bool AccountStorage::isAccountStillAvailable(const QString &name, const QString &issuer) const
+    {
+        return isAccountStillAvailable(AccountPrivate::toFullName(name, issuer));
+    }
+
+    void AccountStorage::addHotp(const QString &name, const QString &issuer, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
     {
         Q_D(AccountStorage);
         const std::function<void(SaveHotp*)> handler([this](SaveHotp *job) -> void
@@ -178,12 +199,12 @@ namespace accounts
             QObject::connect(job, &SaveHotp::saved, this, &AccountStorage::handleHotp);
             QObject::connect(job, &SaveHotp::invalid, this, &AccountStorage::handleError);
         });
-        if (!d->addHotp(handler, name, secret, counter, tokenLength, offset, addChecksum)) {
+        if (!d->addHotp(handler, name, issuer.isEmpty() ? QString() : issuer, secret, counter, tokenLength, offset, addChecksum)) {
             Q_EMIT error();
         }
     }
 
-    void AccountStorage::addTotp(const QString &name, const QString &secret, int timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
+    void AccountStorage::addTotp(const QString &name, const QString &issuer, const QString &secret, int timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
     {
         Q_D(AccountStorage);
         const std::function<void(SaveTotp*)> handler([this](SaveTotp *job) -> void
@@ -191,7 +212,7 @@ namespace accounts
             QObject::connect(job, &SaveTotp::saved, this, &AccountStorage::handleTotp);
             QObject::connect(job, &SaveTotp::invalid, this, &AccountStorage::handleError);
         });
-        if (!d->addTotp(handler, name, secret, timeStep, tokenLength, epoch, hash)) {
+        if (!d->addTotp(handler, name, issuer.isEmpty() ? QString() : issuer, secret, timeStep, tokenLength, epoch, hash)) {
             Q_EMIT error();
         }
     }
@@ -204,9 +225,9 @@ namespace accounts
         Account *account = from ? qobject_cast<Account*>(from) : nullptr;
         Q_ASSERT_X(account, Q_FUNC_INFO, "event should be sent by an account");
 
-        const QString name = account->name();
-        Q_EMIT removed(name);
-        d->acceptAccountRemoval(name);
+        const QString fullName = AccountPrivate::toFullName(account->name(), account->issuer());
+        d->acceptAccountRemoval(fullName);
+        Q_EMIT removed(fullName);
     }
 
     QVector<QString> AccountStorage::accounts(void) const
@@ -215,7 +236,7 @@ namespace accounts
         return d->activeAccounts();
     }
 
-    void AccountStorage::handleHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength)
+    void AccountStorage::handleHotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {
@@ -225,10 +246,10 @@ namespace accounts
             return;
         }
 
-        if (!isNameStillAvailable(name)) {
+        if (!isAccountStillAvailable(name, issuer)) {
             qCDebug(logger)
                 << "Not handling HOTP account:" << id
-                << "Account name not available";
+                << "Account name or issuer not available";
             return;
         }
 
@@ -240,13 +261,13 @@ namespace accounts
             return;
         }
 
-        Account *accepted = d->acceptHotpAccount(id, name, *encryptedSecret, counter, tokenLength);
+        Account *accepted = d->acceptHotpAccount(id, name, issuer, *encryptedSecret, counter, tokenLength);
         QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
 
-        Q_EMIT added(name);
+        Q_EMIT added(AccountPrivate::toFullName(name, issuer));
     }
 
-    void AccountStorage::handleTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength)
+    void AccountStorage::handleTotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {
@@ -256,10 +277,10 @@ namespace accounts
             return;
         }
 
-        if (!isNameStillAvailable(name)) {
+        if (!isAccountStillAvailable(name, issuer)) {
             qCDebug(logger)
                 << "Not handling TOTP account:" << id
-                << "Account name not available";
+                << "Account name or issuer not available";
             return;
         }
 
@@ -271,10 +292,10 @@ namespace accounts
             return;
         }
 
-        Account *accepted = d->acceptTotpAccount(id, name, *encryptedSecret, timeStep, tokenLength);
+        Account *accepted = d->acceptTotpAccount(id, name, issuer, *encryptedSecret, timeStep, tokenLength);
         QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
 
-        Q_EMIT added(name);
+        Q_EMIT added(AccountPrivate::toFullName(name, issuer));
     }
 
     void AccountStorage::dispose(void)

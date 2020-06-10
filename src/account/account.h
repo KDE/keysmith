@@ -40,6 +40,7 @@ namespace accounts
         explicit Account(AccountPrivate *d, QObject *parent = nullptr);
         QString name(void) const;
         QString token(void) const;
+        QString issuer(void) const;
         quint64 counter(void) const;
         QDateTime epoch(void) const;
         uint timeStep(void) const;
@@ -69,19 +70,24 @@ namespace accounts
         static AccountStorage * open(const SettingsProvider &settings, AccountSecret *secret = nullptr, QObject *parent = nullptr);
         explicit AccountStorage(const SettingsProvider &settings, QThread *thread, AccountSecret *secret = nullptr, QObject *parent = nullptr);
         void removeAll(const QSet<Account*> &accounts) const;
-        bool isNameStillAvailable(const QString &name) const;
-        bool contains(const QString &name) const;
-        Account * get(const QString &name) const;
+        bool isAccountStillAvailable(const QString &fullName) const;
+        bool isAccountStillAvailable(const QString &name, const QString &issuer) const;
+        bool contains(const QString &fullName) const;
+        bool contains(const QString &name, const QString &issuer) const;
+        Account * get(const QString &fullName) const;
+        Account * get(const QString &name, const QString &issuer) const;
         AccountSecret * secret(void) const;
         QVector<QString> accounts(void) const;
         void dispose(void);
         void addHotp(const QString &name,
+                     const QString &issuer,
                      const QString &secret,
                      quint64 counter = 0ULL,
                      int tokenLength = 6,
                      int offset = -1,
                      bool addChecksum = false);
         void addTotp(const QString &name,
+                     const QString &issuer,
                      const QString &secret,
                      int timeStep = 30,
                      int tokenLength = 6,
@@ -91,8 +97,8 @@ namespace accounts
         bool hasError(void) const;
         bool isLoaded(void) const;
     Q_SIGNALS:
-        void added(const QString name);
-        void removed(const QString name);
+        void added(const QString fullName);
+        void removed(const QString fullName);
         void error(void);
         void loaded(void);
         void disposed(void);
@@ -103,8 +109,8 @@ namespace accounts
         void handleDisposal(void);
         void handleError(void);
         void handleLoaded(void);
-        void handleHotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
-        void handleTotp(const QUuid id, const QString name, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void handleHotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
+        void handleTotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
     private:
         QScopedPointer<AccountStoragePrivate> m_dptr;
         Q_DECLARE_PRIVATE_D(m_dptr, AccountStorage)

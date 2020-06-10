@@ -24,6 +24,11 @@ namespace accounts
         return !name.isEmpty();
     }
 
+    bool checkIssuer(const QString &issuer)
+    {
+        return issuer.isNull() || (!issuer.isEmpty() && !issuer.contains(QLatin1Char(':')));
+    }
+
     bool checkTokenLength(int tokenLength)
     {
         return tokenLength >= 6 && tokenLength <= 10;
