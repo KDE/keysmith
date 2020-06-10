@@ -17,7 +17,7 @@ Kirigami.Page {
     title: i18nc("@title:window", "Add new account")
     signal dismissed
     property Models.AccountListModel accounts: Keysmith.accountListModel()
-    property bool acceptable: accountName.acceptableInput && tokenDetails.acceptable
+    property bool acceptable: accountName.acceptableInput && issuerName.acceptableInput && tokenDetails.acceptable
 
     ColumnLayout {
         anchors {
@@ -28,8 +28,29 @@ Kirigami.Page {
                 id: accountName
                 Kirigami.FormData.label: i18nc("@label:textbox", "Account Name:")
                 validator: Validators.AccountNameValidator {
+                    id: accountNameValidator
                     accounts: root.accounts
-                    issuer: ""
+                    issuer: issuerName.text
+                }
+            }
+            Controls.TextField {
+                id: issuerName
+                Kirigami.FormData.label: i18nc("@label:textbox", "Account Issuer:")
+                validator: Validators.AccountIssuerValidator {}
+                /*
+                 * When the issuer changes, the account name should be revalidated as well. It may have become eligible or in-eligible depending on
+                 * whether or not other accounts with the same name for the same new issuer value already exist.
+                 *
+                 * Unfortunately because the property binding only affects the validator, there seems to be nothing to explicitly trigger revalidation
+                 * on the text field. Work around is to force revalidation to happen by "editing" the value in the text field directly.
+                 */
+                onTextChanged: {
+                    /*
+                     * This signal handler may run before property bindings have been fully (re-)evaluated.
+                     * First update the account name validator to the correct new issuer value before triggering revalidation.
+                     */
+                    accountNameValidator.issuer = issuerName.text;
+                    accountName.insert(accountName.text.length, "");
                 }
             }
         }
@@ -44,10 +65,10 @@ Kirigami.Page {
         enabled: acceptable
         onTriggered: {
             if (tokenDetails.isTotp) {
-                accounts.addTotp(accountName.text, "", tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);
+                accounts.addTotp(accountName.text, issuerName.text, tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);
             }
             if (tokenDetails.isHotp) {
-                accounts.addHotp(accountName.text, "", tokenDetails.secret, parseInt(tokenDetails.counter), tokenDetails.tokenLength);
+                accounts.addHotp(accountName.text, issuerName.text, tokenDetails.secret, parseInt(tokenDetails.counter), tokenDetails.tokenLength);
             }
             root.dismissed();
         }
