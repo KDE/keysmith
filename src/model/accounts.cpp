@@ -208,17 +208,16 @@ namespace model
     void SimpleAccountListModel::removed(const QString &account)
     {
         int accountIndex = m_index.indexOf(account);
-        if (accountIndex >= 0) {
-            qCDebug(logger) << "Removing (old) account from the model at position:" << accountIndex;
-
-            beginRemoveRows(QModelIndex(), accountIndex, accountIndex);
-            m_index.remove(accountIndex);
-
-            m_accounts.remove(account);
-            endRemoveRows();
-        } else {
+        if (accountIndex < 0) {
             qCDebug(logger) << "Unable to handle account removal: account not part of the model";
+            return;
         }
+
+        qCDebug(logger) << "Removing (old) account from the model at position:" << accountIndex;
+        beginRemoveRows(QModelIndex(), accountIndex, accountIndex);
+        m_index.remove(accountIndex);
+        m_accounts.remove(account);
+        endRemoveRows();
     }
 
     bool SimpleAccountListModel::isNameStillAvailable(const QString &account) const
@@ -253,12 +252,13 @@ namespace model
 
     void AccountNameValidator::setAccounts(SimpleAccountListModel *accounts)
     {
-        if (accounts) {
-            m_accounts = accounts;
-            Q_EMIT accountsChanged();
-        } else {
+        if (!accounts) {
             qCDebug(logger) << "Ignoring new accounts model: not a valid object";
+            return;
         }
+
+        m_accounts = accounts;
+        Q_EMIT accountsChanged();
     }
 
     SortedAccountsListModel::SortedAccountsListModel(QObject *parent) : QSortFilterProxyModel(parent)
@@ -286,7 +286,7 @@ namespace model
         QAbstractItemModel *source = sourceModel();
         Q_ASSERT_X(source, Q_FUNC_INFO, "should have a source model at this point");
 
-        SimpleAccountListModel *model = qobject_cast<SimpleAccountListModel*>(source);
+        const SimpleAccountListModel *model = qobject_cast<const SimpleAccountListModel*>(source);
         // useless junk: implement sorting as no-op: claim equality between left & right
         if (!model) {
             qCDebug(logger) << "Short-circuiting lessThan operator: source model is not an accounts list model!";

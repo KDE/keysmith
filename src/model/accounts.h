@@ -112,7 +112,7 @@ namespace model
         void accountsChanged(void);
     private:
         SimpleAccountListModel * m_accounts;
-        validators::NameValidator m_delegate;
+        const validators::NameValidator m_delegate;
     };
 }
 
