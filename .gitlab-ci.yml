@@ -6,6 +6,7 @@
 
 include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-before.yml
+  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-reuse.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/binary-flatpak.yml
 
 variables:
