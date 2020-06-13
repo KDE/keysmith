@@ -168,17 +168,18 @@ namespace model
 
         if (role != NonStandardRoles::AccountRole) {
             qCDebug(logger) << "Not returning any data, unknown role:" << role;
+            return QVariant();
         }
 
         const QString accountName = m_index.at(accountIndex);
         accounts::Account * model = m_accounts.value(accountName, nullptr);
-        if (model) {
-            // assume QML ownership: don't worry about object lifecycle
-            return QVariant::fromValue(new AccountView(model));
-        } else {
+        if (!model) {
             qCDebug(logger) << "Not returning any data, unable to find associated account model for:" << accountIndex;
             return QVariant();
         }
+
+        // assume QML ownership: don't worry about object lifecycle
+        return QVariant::fromValue(new AccountView(model));
     }
 
     int SimpleAccountListModel::rowCount(const QModelIndex &parent) const
