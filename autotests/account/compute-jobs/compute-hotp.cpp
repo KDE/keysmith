@@ -25,7 +25,7 @@ private:
 static QByteArray rfcSecret("12345678901234567890");
 
 // the RFC test vector consists of 6-character tokens
-static int tokenLength = 6;
+static uint tokenLength = 6;
 
 void ComputeHotpTest::initTestCase(void)
 {
@@ -39,7 +39,7 @@ void ComputeHotpTest::testDefaults(void)
     std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, rfcSecret);
     QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
 
-    accounts::ComputeHotp uut(&m_secret, *tokenSecret, counter, tokenLength);
+    accounts::ComputeHotp uut(&m_secret, *tokenSecret, tokenLength, counter, std::nullopt, false);
     QSignalSpy tokenGenerated(&uut, &accounts::ComputeHotp::otp);
     QSignalSpy jobFinished(&uut, &accounts::ComputeHotp::finished);
 

@@ -35,9 +35,10 @@ namespace oath
     {
     public:
         static bool validate(const Encoder& encoder);
-        static std::optional<Algorithm> usingDynamicTruncation(QCryptographicHash::Algorithm algorithm, uint tokenLength, bool addChecksum = false, bool requireSaneKeyLength = false);
-        static std::optional<Algorithm> usingDynamicTruncation(QCryptographicHash::Algorithm algorithm, const Encoder &encoder, bool requireSaneKeyLength = false);
-        static std::optional<Algorithm> usingTruncationOffset(QCryptographicHash::Algorithm algorithm, uint offset, const Encoder &encoder, bool requireSaneKeyLength = false);
+        static bool validate(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset);
+        static std::optional<Algorithm> create(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset, const Encoder &encoder, bool requireSaneKeyLength = false);
+        static std::optional<Algorithm> totp(QCryptographicHash::Algorithm algorithm, uint tokenLength, bool requireSaneKeyLength = false);
+        static std::optional<Algorithm> hotp(const std::optional<uint> &offset, uint tokenLength, bool checksum, bool requireSaneKeyLength = false);
         std::optional<QString> compute(quint64 counter, char * secretBuffer, int length) const;
     private:
         Algorithm(const Encoder &encoder, const std::function<quint32(QByteArray)> &truncation, QCryptographicHash::Algorithm algorithm, bool requireSaneKeyLength);

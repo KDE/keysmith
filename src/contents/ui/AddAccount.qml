@@ -65,10 +65,11 @@ Kirigami.Page {
         enabled: acceptable
         onTriggered: {
             if (tokenDetails.isTotp) {
-                accounts.addTotp(accountName.text, issuerName.text, tokenDetails.secret, parseInt(tokenDetails.timeStep), tokenDetails.tokenLength);
+                console.log("WTF: ", Models.AccountListModel.Sha1);
+                accounts.addTotp(accountName.text, issuerName.text, tokenDetails.secret, tokenDetails.tokenLength, parseInt(tokenDetails.timeStep), new Date(0), Models.AccountListModel.Sha1);
             }
             if (tokenDetails.isHotp) {
-                accounts.addHotp(accountName.text, issuerName.text, tokenDetails.secret, parseInt(tokenDetails.counter), tokenDetails.tokenLength);
+                accounts.addHotp(accountName.text, issuerName.text, tokenDetails.secret, tokenDetails.tokenLength, parseInt(tokenDetails.counter), false, 0, false);
             }
             root.dismissed();
         }

@@ -107,7 +107,7 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
 
     QCOMPARE(sampleAccount->counter(), 0ULL);
     QCOMPARE(sampleAccount->tokenLength(), 6);
-    QCOMPARE(sampleAccount->offset(), -1);
+    QCOMPARE(sampleAccount->offset(), std::nullopt);
     QCOMPARE(sampleAccount->checksum(), false);
 
     QFile initialLockFile(test::path(testIniLockFile));

@@ -36,7 +36,7 @@ void HotpAlgorithmTest::rfcTestVector(void)
     QFETCH(quint64, counter);
     QFETCH(bool, checksum);
 
-    std::optional<oath::Algorithm> uut = oath::Algorithm::usingDynamicTruncation(QCryptographicHash::Sha1, tokenLength, checksum);
+    std::optional<oath::Algorithm> uut = oath::Algorithm::hotp(std::nullopt, tokenLength, checksum);
     QVERIFY2(uut, "should be able to construct the algorithm using settings of the RFC test vector");
 
     QByteArray copy(secret);

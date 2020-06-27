@@ -33,7 +33,8 @@ namespace model
         return diff < 0 ? - (diff % step) : step - (diff % step);
     }
 
-    AccountView::AccountView(accounts::Account *model, QObject *parent) : QObject(parent), m_model(model)
+    AccountView::AccountView(accounts::Account *model, QObject *parent) :
+        QObject(parent), m_model(model)
     {
         QObject::connect(model, &accounts::Account::tokenChanged, this, &AccountView::tokenChanged);
         QObject::connect(this, &AccountView::remove, model, &accounts::Account::remove);
@@ -87,7 +88,8 @@ namespace model
         return model::millisecondsLeftForToken(m_model->epoch(), m_model->timeStep());
     }
 
-    SimpleAccountListModel::SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent) : QAbstractListModel(parent), m_storage(storage), m_has_error(false), m_index(QVector<QString>())
+    SimpleAccountListModel::SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent) :
+        QAbstractListModel(parent), m_storage(storage), m_has_error(false), m_index(QVector<QString>())
     {
         QObject::connect(storage, &accounts::AccountStorage::added, this, &SimpleAccountListModel::added);
         QObject::connect(storage, &accounts::AccountStorage::removed, this, &SimpleAccountListModel::removed);
@@ -136,14 +138,34 @@ namespace model
         return m_storage->isLoaded();
     }
 
-    void SimpleAccountListModel::addTotp(const QString &account, const QString &issuer, const QString &secret, uint timeStep, int tokenLength)
+    accounts::Account::Hash SimpleAccountListModel::toHash(TOTPAlgorithms value)
     {
-        m_storage->addTotp(account, issuer, secret, timeStep, tokenLength);
+        switch (value) {
+        case TOTPAlgorithms::Sha1:
+            return accounts::Account::Hash::Sha1;
+        case TOTPAlgorithms::Sha256:
+            return accounts::Account::Hash::Sha256;
+        case TOTPAlgorithms::Sha512:
+            return accounts::Account::Hash::Sha512;
+        default:
+            Q_ASSERT_X(false, Q_FUNC_INFO, "Unknown/unsupported totp algorithm value");
+            return accounts::Account::Hash::Sha1;
+        }
     }
 
-    void SimpleAccountListModel::addHotp(const QString &account, const QString &issuer, const QString &secret, quint64 counter, int tokenLength)
+    void SimpleAccountListModel::addTotp(const QString &account, const QString &issuer,
+                                         const QString &secret, uint tokenLength,
+                                         uint timeStep, const QDateTime &epoch, TOTPAlgorithms hash)
     {
-        m_storage->addHotp(account, issuer, secret, counter, tokenLength);
+        m_storage->addTotp(account, issuer, secret, tokenLength, timeStep, epoch, toHash(hash));
+    }
+
+    void SimpleAccountListModel::addHotp(const QString &account, const QString &issuer,
+                                         const QString &secret, uint tokenLength,
+                                         quint64 counter, bool fixedTruncation, uint offset, bool checksum)
+    {
+        const auto o = fixedTruncation ? std::optional<uint>(offset) : std::nullopt;
+        m_storage->addHotp(account, issuer, secret, tokenLength, counter, o, checksum);
     }
 
     QHash<int, QByteArray> SimpleAccountListModel::roleNames(void) const
@@ -162,7 +184,8 @@ namespace model
 
         int accountIndex = account.row();
         if (accountIndex < 0 || m_index.size() < accountIndex) {
-            qCDebug(logger) << "Not returning any data, model index is out of bounds:" << accountIndex << "model size is:" << m_index.size();
+            qCDebug(logger) << "Not returning any data, model index is out of bounds:" << accountIndex
+                << "model size is:" << m_index.size();
             return QVariant();
         }
 
@@ -231,7 +254,8 @@ namespace model
         return m_storage && m_storage->isAccountStillAvailable(name, issuer);
     }
 
-    AccountNameValidator::AccountNameValidator(QObject *parent) : QValidator(parent), m_issuer(std::nullopt), m_accounts(nullptr), m_delegate(nullptr)
+    AccountNameValidator::AccountNameValidator(QObject *parent) :
+        QValidator(parent), m_issuer(std::nullopt), m_accounts(nullptr), m_delegate(nullptr)
     {
     }
 
@@ -264,7 +288,8 @@ namespace model
         }
 
         QValidator::State result = m_delegate.validate(input, pos);
-        return result != QValidator::Acceptable ||  m_accounts->isAccountStillAvailable(input, *m_issuer) ? result : QValidator::Intermediate;
+        return result != QValidator::Acceptable
+            ||  m_accounts->isAccountStillAvailable(input, *m_issuer) ? result : QValidator::Intermediate;
     }
 
     void AccountNameValidator::fixup(QString &input) const

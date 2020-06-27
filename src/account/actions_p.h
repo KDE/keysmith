@@ -16,6 +16,7 @@
 #include <QVector>
 
 #include <functional>
+#include <optional>
 
 #include "../secrets/secrets.h"
 #include "keys.h"
@@ -34,7 +35,7 @@ namespace accounts
         void finished(void);
     };
 
-    class Null : public AccountJob
+    class Null: public AccountJob
     {
         Q_OBJECT
     public:
@@ -56,7 +57,7 @@ namespace accounts
         void failed(void);
     private:
         const SettingsProvider m_settings;
-        AccountSecret * m_secret;
+        AccountSecret * const m_secret;
     private:
         bool m_failed;
         bool m_succeeded;
@@ -66,15 +67,21 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit LoadAccounts(const SettingsProvider &settings, const AccountSecret *secret);
+        explicit LoadAccounts(const SettingsProvider &settings, const AccountSecret *secret,
+                              const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
         void run(void) override;
     Q_SIGNALS:
-        void foundHotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
-        void foundTotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void foundHotp(const QUuid id, const QString name, const QString issuer,
+                       const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                       quint64 counter, bool fixedTruncation, uint offset, bool checksum);
+        void foundTotp(const QUuid id, const QString name, const QString issuer,
+                       const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                       uint timeStep, const QDateTime epoch, accounts::Account::Hash hash);
         void failedToLoadAllAccounts(void);
     private:
         const SettingsProvider m_settings;
-        const AccountSecret * m_secret;
+        const AccountSecret * const m_secret;
+        const std::function<qint64(void)> m_clock;
     };
 
     class DeleteAccounts: public AccountJob
@@ -94,54 +101,73 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit SaveHotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &issuer, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength);
+        explicit SaveHotp(const SettingsProvider &settings,
+                          const QUuid &id, const QString &accountName, const QString &issuer,
+                          const secrets::EncryptedSecret &secret, uint tokenLength,
+                          quint64 counter, const std::optional<uint> &offset, bool checksum);
         void run(void) override;
     Q_SIGNALS:
         void invalid(void);
-        void saved(const QUuid id, const QString accountName, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
+        void saved(const QUuid id, const QString accountName, const QString issuer,
+                   const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                   quint64 counter, bool fixedTruncation, uint offset, bool checksum);
     private:
         const SettingsProvider m_settings;
         const QUuid m_id;
         const QString m_accountName;
         const QString m_issuer;
         const secrets::EncryptedSecret m_secret;
+        const uint m_tokenLength;
         const quint64 m_counter;
-        const int m_tokenLength;
+        const std::optional<uint> m_offset;
+        const bool m_checksum;
     };
 
     class SaveTotp: public AccountJob
     {
         Q_OBJECT
     public:
-        explicit SaveTotp(const SettingsProvider &settings, const QUuid &id, const QString &accountName, const QString &issuer, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength);
+        explicit SaveTotp(const SettingsProvider &settings,
+                          const QUuid &id, const QString &accountName, const QString &issuer,
+                          const secrets::EncryptedSecret &secret, uint tokenLength,
+                          uint timeStep, const QDateTime &epoch, Account::Hash hash,
+                          const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
         void run(void) override;
     Q_SIGNALS:
         void invalid(void);
-        void saved(const QUuid id, const QString accountName, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void saved(const QUuid id, const QString accountName, const QString issuer,
+                   const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                   uint timeStep, const QDateTime epoch, accounts::Account::Hash hash);
     private:
         const SettingsProvider m_settings;
         const QUuid m_id;
         const QString m_accountName;
         const QString m_issuer;
         const secrets::EncryptedSecret m_secret;
+        const uint m_tokenLength;
         const uint m_timeStep;
-        const int m_tokenLength;
+        const QDateTime m_epoch;
+        const Account::Hash m_hash;
+        const std::function<qint64(void)> m_clock;
     };
 
     class ComputeTotp: public AccountJob
     {
         Q_OBJECT
     public:
-        explicit ComputeTotp(const AccountSecret *secret, const secrets::EncryptedSecret &tokenSecret, const QDateTime &epoch, uint timeStep, int tokenLength, const Account::Hash &hash = Account::Hash::Default, const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
+        explicit ComputeTotp(const AccountSecret *secret,
+                             const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
+                             const QDateTime &epoch, uint timeStep, const Account::Hash &hash,
+                             const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
         void run(void) override;
     Q_SIGNALS:
         void otp(const QString otp);
     private:
-        const AccountSecret * m_secret;
+        const AccountSecret * const m_secret;
         const secrets::EncryptedSecret m_tokenSecret;
+        const uint m_tokenLength;
         const QDateTime m_epoch;
         const uint m_timeStep;
-        const int m_tokenLength;
         const Account::Hash m_hash;
         const std::function<qint64(void)> m_clock;
     };
@@ -150,16 +176,18 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        explicit ComputeHotp(const AccountSecret *secret, const secrets::EncryptedSecret &tokenSecret, quint64 counter, int tokenLength, int offset = -1, bool checksum = false);
+        explicit ComputeHotp(const AccountSecret *secret,
+                             const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
+                             quint64 counter, const std::optional<uint> &offset, bool checksum);
         void run(void) override;
     Q_SIGNALS:
         void otp(const QString otp);
     private:
-        const AccountSecret * m_secret;
+        const AccountSecret * const m_secret;
         const secrets::EncryptedSecret m_tokenSecret;
+        const uint m_tokenLength;
         const quint64 m_counter;
-        const int m_tokenLength;
-        const int m_offset;
+        const std::optional<uint> m_offset;
         const bool m_checksum;
     };
 

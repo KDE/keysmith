@@ -25,7 +25,7 @@ private:
 static QByteArray rfcSecret("12345678901234567890");
 
 // the RFC test vector consists of 6-character tokens
-static int tokenLength = 6;
+static uint tokenLength = 6;
 
 // the default TOTP timestep is 30s
 static uint timeStep = 30;
@@ -48,7 +48,7 @@ void ComputeTotpTest::testDefaults(void)
     std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, rfcSecret);
     QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
 
-    accounts::ComputeTotp uut(&m_secret, *tokenSecret, epoch, timeStep, tokenLength, accounts::Account::Hash::Default, clock);
+    accounts::ComputeTotp uut(&m_secret, *tokenSecret, tokenLength, epoch, timeStep, accounts::Account::Hash::Sha1, clock);
     QSignalSpy tokenGenerated(&uut, &accounts::ComputeTotp::otp);
     QSignalSpy jobFinished(&uut, &accounts::ComputeTotp::finished);
 

@@ -35,6 +35,11 @@ private:
 static QByteArray rawSecret = QByteArray::fromBase64(QByteArray("8juE9gJFLp3OgL4CxJ5v5q8sw+h7Vbn06+NY4uc="), QByteArray::Base64Encoding);
 static QByteArray rawNonce = QByteArray::fromBase64(QByteArray("QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB"), QByteArray::Base64Encoding);
 
+static qint64 dummyClock(void)
+{
+    return 1'234'567'890LL;
+}
+
 void LoadAccountsTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
@@ -54,7 +59,7 @@ void LoadAccountsTest::emptyAccountsFile(void)
         action(data);
     });
 
-    accounts::LoadAccounts uut(settings, &m_secret);
+    accounts::LoadAccounts uut(settings, &m_secret, &dummyClock);
 
     QSignalSpy hotpFound(&uut, &accounts::LoadAccounts::foundHotp);
     QSignalSpy totpFound(&uut, &accounts::LoadAccounts::foundTotp);
@@ -80,7 +85,7 @@ void LoadAccountsTest::sampleAccountsFile(void)
         action(data);
     });
 
-    accounts::LoadAccounts uut(settings, &m_secret);
+    accounts::LoadAccounts uut(settings, &m_secret, &dummyClock);
 
     QSignalSpy hotpFound(&uut, &accounts::LoadAccounts::foundHotp);
     QSignalSpy totpFound(&uut, &accounts::LoadAccounts::foundTotp);
@@ -101,8 +106,11 @@ void LoadAccountsTest::sampleAccountsFile(void)
     QCOMPARE(firstHotp.at(2).toString(), QString());
     QCOMPARE(firstHotp.at(3).toByteArray(), rawSecret);
     QCOMPARE(firstHotp.at(4).toByteArray(), rawNonce);
-    QCOMPARE(firstHotp.at(5).toULongLong(), 0ULL);
-    QCOMPARE(firstHotp.at(6).toInt(), 6);
+    QCOMPARE(firstHotp.at(5).toUInt(), 6U);
+    QCOMPARE(firstHotp.at(6).toULongLong(), 0ULL);
+    QCOMPARE(firstHotp.at(7).toBool(), false);
+    QCOMPARE(firstHotp.at(8).toUInt(), 0U);
+    QCOMPARE(firstHotp.at(9).toBool(), false);
 
     const auto secondHotp = hotpFound.at(1);
     QCOMPARE(secondHotp.at(0).toUuid(), QUuid(QLatin1String("437c23aa-2fb0-519a-9a34-a5a2671eea24")));
@@ -110,8 +118,11 @@ void LoadAccountsTest::sampleAccountsFile(void)
     QCOMPARE(secondHotp.at(2).toString(), QLatin1String("autotests"));
     QCOMPARE(secondHotp.at(3).toByteArray(), rawSecret);
     QCOMPARE(secondHotp.at(4).toByteArray(), rawNonce);
-    QCOMPARE(secondHotp.at(5).toULongLong(), 0ULL);
-    QCOMPARE(secondHotp.at(6).toInt(), 6);
+    QCOMPARE(secondHotp.at(5).toUInt(), 6U);
+    QCOMPARE(secondHotp.at(6).toULongLong(), 0ULL);
+    QCOMPARE(secondHotp.at(7).toBool(), true);
+    QCOMPARE(secondHotp.at(8).toUInt(), 12U);
+    QCOMPARE(secondHotp.at(9).toBool(), true);
 
     const auto firstTotp = totpFound.at(0);
     QCOMPARE(firstTotp.at(0).toUuid(), QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
@@ -119,8 +130,10 @@ void LoadAccountsTest::sampleAccountsFile(void)
     QCOMPARE(firstTotp.at(2).toString(), QString());
     QCOMPARE(firstHotp.at(3).toByteArray(), rawSecret);
     QCOMPARE(firstHotp.at(4).toByteArray(), rawNonce);
-    QCOMPARE(firstTotp.at(5).toUInt(), 30);
-    QCOMPARE(firstTotp.at(6).toInt(), 6);
+    QCOMPARE(firstTotp.at(5).toUInt(), 6);
+    QCOMPARE(firstTotp.at(6).toUInt(), 30U);
+    QCOMPARE(firstTotp.at(7).toDateTime(), QDateTime::fromMSecsSinceEpoch(0));
+    QCOMPARE(firstTotp.at(8).value<accounts::Account::Hash>(), accounts::Account::Hash::Sha1);
 
     const auto secondTotp = totpFound.at(1);
     QCOMPARE(secondTotp.at(0).toUuid(), QUuid(QLatin1String("6537d6a5-005e-5a92-b560-b09df3c2e676")));
@@ -128,8 +141,10 @@ void LoadAccountsTest::sampleAccountsFile(void)
     QCOMPARE(secondTotp.at(2).toString(), QLatin1String("autotests"));
     QCOMPARE(secondHotp.at(3).toByteArray(), rawSecret);
     QCOMPARE(secondHotp.at(4).toByteArray(), rawNonce);
-    QCOMPARE(secondTotp.at(5).toUInt(), 30);
-    QCOMPARE(secondTotp.at(6).toInt(), 6);
+    QCOMPARE(secondTotp.at(5).toUInt(), 6U);
+    QCOMPARE(secondTotp.at(6).toUInt(), 30U);
+    QCOMPARE(secondTotp.at(7).toDateTime(), QDateTime::fromMSecsSinceEpoch(1'234'567'890LL).toUTC());
+    QCOMPARE(secondTotp.at(8).value<accounts::Account::Hash>(), accounts::Account::Hash::Sha256);
 }
 
 void LoadAccountsTest::invalidSampleAccountsFile(void)
@@ -142,7 +157,7 @@ void LoadAccountsTest::invalidSampleAccountsFile(void)
         action(data);
     });
 
-    accounts::LoadAccounts uut(settings, &m_secret);
+    accounts::LoadAccounts uut(settings, &m_secret, &dummyClock);
 
     QSignalSpy hotpFound(&uut, &accounts::LoadAccounts::foundHotp);
     QSignalSpy totpFound(&uut, &accounts::LoadAccounts::foundTotp);

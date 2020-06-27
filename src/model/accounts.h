@@ -22,7 +22,8 @@
 
 namespace model
 {
-    qint64 millisecondsLeftForToken(const QDateTime &epoch, uint timeStep, const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
+    qint64 millisecondsLeftForToken(const QDateTime &epoch, uint timeStep,
+                                    const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
 
     class AccountView : public QObject
     {
@@ -65,10 +66,18 @@ namespace model
             AccountRole = Qt::ItemDataRole::UserRole
         };
         Q_ENUM(NonStandardRoles)
+        enum TOTPAlgorithms {
+            Sha1, Sha256, Sha512
+        };
+        Q_ENUM(TOTPAlgorithms)
+    private:
+        static accounts::Account::Hash toHash(const TOTPAlgorithms value);
     public:
         explicit SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent = nullptr);
-        Q_INVOKABLE void addTotp(const QString &account, const QString &issuer, const QString &secret, uint timeStep, int tokenLength);
-        Q_INVOKABLE void addHotp(const QString &account, const QString &issuer, const QString &secret, quint64 counter, int tokenLength);
+        Q_INVOKABLE void addTotp(const QString &account, const QString &issuer, const QString &secret, uint tokenLength,
+                                 uint timeStep, const QDateTime &epoch, model::SimpleAccountListModel::TOTPAlgorithms hash);
+        Q_INVOKABLE void addHotp(const QString &account, const QString &issuer, const QString &secret, uint tokenLength,
+                                 quint64 counter, bool fixedTruncation, uint offset, bool checksum);
         Q_INVOKABLE bool isAccountStillAvailable(const QString &name, const QString &issuer) const;
         Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const override;
         Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

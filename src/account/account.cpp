@@ -14,7 +14,8 @@ KEYSMITH_LOGGER(logger, ".accounts.account")
 
 namespace accounts
 {
-    Account::Account(AccountPrivate *d, QObject *parent) : QObject(parent), m_dptr(d)
+    Account::Account(AccountPrivate *d, QObject *parent) :
+        QObject(parent), m_dptr(d)
     {
     }
 
@@ -54,7 +55,7 @@ namespace accounts
         return d->timeStep();
     }
 
-    int Account::offset(void) const
+    std::optional<uint> Account::offset(void) const
     {
         Q_D(const Account);
         return d->offset();
@@ -109,8 +110,13 @@ namespace accounts
         d->remove();
     }
 
-    AccountStorage::AccountStorage(const SettingsProvider &settings, QThread *worker, AccountSecret *secret, QObject *parent) :
-        QObject(parent), m_dptr(new AccountStoragePrivate(settings, secret ? secret : new AccountSecret(secrets::defaultSecureRandom, this), this, new Dispatcher(worker, this)))
+    AccountStorage::AccountStorage(const SettingsProvider &settings, QThread *worker, AccountSecret *secret,
+                                   QObject *parent) :
+        QObject(parent),
+        m_dptr(new AccountStoragePrivate(settings,
+                                         secret ? secret : new AccountSecret(secrets::defaultSecureRandom, this),
+                                         this,
+                                         new Dispatcher(worker, this)))
     {
         QTimer::singleShot(0, this, &AccountStorage::unlock);
     }
@@ -191,7 +197,8 @@ namespace accounts
         return isAccountStillAvailable(AccountPrivate::toFullName(name, issuer));
     }
 
-    void AccountStorage::addHotp(const QString &name, const QString &issuer, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
+    void AccountStorage::addHotp(const QString &name, const QString &issuer, const QString &secret, uint tokenLength,
+                                 quint64 counter, const std::optional<uint> &offset, bool addChecksum)
     {
         Q_D(AccountStorage);
         const std::function<void(SaveHotp*)> handler([this](SaveHotp *job) -> void
@@ -199,12 +206,13 @@ namespace accounts
             QObject::connect(job, &SaveHotp::saved, this, &AccountStorage::handleHotp);
             QObject::connect(job, &SaveHotp::invalid, this, &AccountStorage::handleError);
         });
-        if (!d->addHotp(handler, name, issuer.isEmpty() ? QString() : issuer, secret, counter, tokenLength, offset, addChecksum)) {
+        if (!d->addHotp(handler, name, issuer.isEmpty() ? QString() : issuer, secret, tokenLength, counter, offset, addChecksum)) {
             Q_EMIT error();
         }
     }
 
-    void AccountStorage::addTotp(const QString &name, const QString &issuer, const QString &secret, int timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
+    void AccountStorage::addTotp(const QString &name, const QString &issuer, const QString &secret, uint tokenLength,
+                                 uint timeStep, const QDateTime &epoch, Account::Hash hash)
     {
         Q_D(AccountStorage);
         const std::function<void(SaveTotp*)> handler([this](SaveTotp *job) -> void
@@ -212,7 +220,7 @@ namespace accounts
             QObject::connect(job, &SaveTotp::saved, this, &AccountStorage::handleTotp);
             QObject::connect(job, &SaveTotp::invalid, this, &AccountStorage::handleError);
         });
-        if (!d->addTotp(handler, name, issuer.isEmpty() ? QString() : issuer, secret, timeStep, tokenLength, epoch, hash)) {
+        if (!d->addTotp(handler, name, issuer.isEmpty() ? QString() : issuer, secret, tokenLength, timeStep, epoch, hash)) {
             Q_EMIT error();
         }
     }
@@ -236,7 +244,9 @@ namespace accounts
         return d->activeAccounts();
     }
 
-    void AccountStorage::handleHotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength)
+    void AccountStorage::handleHotp(const QUuid id, const QString name, const QString issuer,
+                                    const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                                    quint64 counter, bool fixedTruncation, uint offset, bool checksum)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {
@@ -261,13 +271,17 @@ namespace accounts
             return;
         }
 
-        Account *accepted = d->acceptHotpAccount(id, name, issuer, *encryptedSecret, counter, tokenLength);
+        const std::optional<uint> offsetValue = fixedTruncation ? std::optional<uint>((uint) offset) : std::nullopt;
+        Account *accepted = d->acceptHotpAccount(id, name, issuer,
+                                                 *encryptedSecret, tokenLength, counter, offsetValue, checksum);
         QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
 
         Q_EMIT added(AccountPrivate::toFullName(name, issuer));
     }
 
-    void AccountStorage::handleTotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength)
+    void AccountStorage::handleTotp(const QUuid id, const QString name, const QString issuer,
+                                    const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                                    uint timeStep, const QDateTime epoch, Account::Hash hash)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {
@@ -292,7 +306,8 @@ namespace accounts
             return;
         }
 
-        Account *accepted = d->acceptTotpAccount(id, name, issuer, *encryptedSecret, timeStep, tokenLength);
+        Account *accepted = d->acceptTotpAccount(id, name, issuer,
+                                                 *encryptedSecret, tokenLength, timeStep, epoch, hash);
         QObject::connect(accepted, &Account::removed, this, &AccountStorage::accountRemoved);
 
         Q_EMIT added(AccountPrivate::toFullName(name, issuer));
@@ -304,8 +319,8 @@ namespace accounts
         d->dispose([this](Null *job) -> void
         {
             /*
-             * Use destroyed() instead of finished() to guarantee the Null job has been disposed of before e.g. threads are cleaned up.
-             * (If the QThread is disposed of before the Null job is cleaned up, the job would leak.)
+             * Use destroyed() instead of finished() to guarantee the Null job has been disposed of before e.g. threads
+             * are cleaned up. If the QThread is disposed of before the Null job is cleaned up, the job would leak.
              */
             QObject::connect(job, &Null::destroyed, this, &AccountStorage::handleDisposal);
         });

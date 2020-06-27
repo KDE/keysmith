@@ -57,7 +57,7 @@ void TotpAlgorithmTest::rfcTestVector(void)
 
     QVERIFY2(counter, "should be able to count timesteps using the settings of the RFC test vector");
 
-    std::optional<oath::Algorithm> uut = oath::Algorithm::usingDynamicTruncation((QCryptographicHash::Algorithm) hash, tokenLength);
+    std::optional<oath::Algorithm> uut = oath::Algorithm::totp((QCryptographicHash::Algorithm) hash, tokenLength);
     QVERIFY2(uut, "should be able to construct the algorithm using settings of the RFC test vector");
 
     QByteArray copy(secret);

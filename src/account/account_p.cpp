@@ -19,7 +19,7 @@ namespace accounts
         return m_id;
     }
 
-    int AccountPrivate::offset(void) const
+    std::optional<uint> AccountPrivate::offset(void) const
     {
         return m_offset;
     }
@@ -28,7 +28,6 @@ namespace accounts
     {
         return m_name;
     }
-
 
     QString AccountPrivate::issuer(void) const
     {
@@ -100,7 +99,9 @@ namespace accounts
         }
 
         qCDebug(logger) << "Requesting to store updated details for account:" << m_id;
-        SaveHotp *job = new SaveHotp(m_storage->settings(),m_id, m_name, m_issuer, m_secret, counter, m_tokenLength);
+        SaveHotp *job = new SaveHotp(m_storage->settings(),
+                                     m_id, m_name, m_issuer, m_secret, m_tokenLength,
+                                     counter, m_offset, m_checksum);
         m_actions->queueAndProceed(job, [counter, job, q, this](void) -> void
         {
             new HandleCounterUpdate(this, m_storage, counter, job, q);
@@ -180,13 +181,13 @@ namespace accounts
 
         switch (m_algorithm) {
         case Account::Algorithm::Hotp:
-            hotpJob = new ComputeHotp(m_storage->secret(), m_secret, m_counter, m_tokenLength, m_offset, m_checksum);
+            hotpJob = new ComputeHotp(m_storage->secret(), m_secret, m_tokenLength, m_counter, m_offset, m_checksum);
             m_actions->queueAndProceed(hotpJob, [hotpJob, q, this](void) -> void {
                 new HandleTokenUpdate(this, hotpJob, q);
             });
             break;
         case Account::Algorithm::Totp:
-            totpJob = new ComputeTotp(m_storage->secret(), m_secret, m_epoch, m_timeStep, m_tokenLength, m_hash);
+            totpJob = new ComputeTotp(m_storage->secret(), m_secret, m_tokenLength, m_epoch, m_timeStep, m_hash);
             m_actions->queueAndProceed(totpJob, [totpJob, q, this](void) -> void
             {
                 new HandleTokenUpdate(this, totpJob, q);
@@ -229,20 +230,30 @@ namespace accounts
         return m_is_still_alive;
     }
 
-    AccountPrivate::AccountPrivate(const std::function<Account*(AccountPrivate*)> &account, AccountStoragePrivate *storage, Dispatcher *dispatcher, const QUuid &id,
-                                   const QString &name, const QString &issuer, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength, int offset, bool addChecksum) :
-        q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true), m_algorithm(Account::Algorithm::Hotp), m_id(id), m_token(QString()),
-        m_name(name), m_issuer(issuer), m_secret(secret), m_tokenLength(tokenLength),
+    AccountPrivate::AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
+                                   AccountStoragePrivate *storage, Dispatcher *dispatcher,
+                                   const QUuid &id, const QString &name, const QString &issuer,
+                                   const secrets::EncryptedSecret &secret, uint tokenLength,
+                                   quint64 counter, const std::optional<uint> &offset, bool addChecksum) :
+        q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true),
+        m_algorithm(Account::Algorithm::Hotp), m_id(id), m_token(QString()), m_name(name), m_issuer(issuer),
+        m_secret(secret), m_tokenLength(tokenLength),
         m_counter(counter), m_offset(offset), m_checksum(addChecksum),
-        m_epoch(QDateTime::fromMSecsSinceEpoch(0)), m_timeStep(30), m_hash(Account::Hash::Default) // not a totp token so these values don't really matter
+        // not a totp token so these values don't really matter
+        m_epoch(QDateTime::fromMSecsSinceEpoch(0)), m_timeStep(30), m_hash(Account::Hash::Sha1)
     {
     }
 
-    AccountPrivate::AccountPrivate(const std::function<Account*(AccountPrivate*)> &account, AccountStoragePrivate *storage, Dispatcher *dispatcher, const QUuid &id,
-                                   const QString &name, const QString &issuer, const secrets::EncryptedSecret &secret, const QDateTime &epoch, uint timeStep, int tokenLength, Account::Hash hash) :
-        q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true), m_algorithm(Account::Algorithm::Totp), m_id(id), m_token(QString()),
-        m_name(name), m_issuer(issuer), m_secret(secret), m_tokenLength(tokenLength),
-        m_counter(0), m_offset(-1), m_checksum(false), // not a hotp token so these values don't really matter
+    AccountPrivate::AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
+                                   AccountStoragePrivate *storage, Dispatcher *dispatcher,
+                                   const QUuid &id, const QString &name, const QString &issuer,
+                                   const secrets::EncryptedSecret &secret, uint tokenLength,
+                                   const QDateTime &epoch, uint timeStep, Account::Hash hash) :
+        q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true),
+        m_algorithm(Account::Algorithm::Totp), m_id(id), m_token(QString()), m_name(name), m_issuer(issuer),
+        m_secret(secret), m_tokenLength(tokenLength),
+        // not a hotp token so these values don't really matter
+        m_counter(0), m_offset(std::nullopt), m_checksum(false),
         m_epoch(epoch), m_timeStep(timeStep), m_hash(hash)
     {
     }
@@ -459,21 +470,25 @@ namespace accounts
         return m_secret->encrypt(decoded.data());
     }
 
-    bool AccountStoragePrivate::validateGenericNewToken(const QString &name, const QString &issuer, const QString &secret, int tokenLength) const
+    bool AccountStoragePrivate::validateGenericNewToken(const QString &name, const QString &issuer,
+                                                        const QString &secret, uint tokenLength) const
     {
-        return checkTokenLength(tokenLength) && checkName(name) && checkIssuer(issuer) && isAccountStillAvailable(AccountPrivate::toFullName(name, issuer)) && checkSecret(secret);
+        return checkTokenLength(tokenLength) && checkName(name) && checkIssuer(issuer)
+            && isAccountStillAvailable(AccountPrivate::toFullName(name, issuer)) && checkSecret(secret);
     }
 
-    bool AccountStoragePrivate::addHotp(const std::function<void(SaveHotp*)> &handler, const QString &name, const QString &issuer, const QString &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
+    bool AccountStoragePrivate::addHotp(const std::function<void(SaveHotp*)> &handler,
+                                        const QString &name, const QString &issuer,
+                                        const QString &secret, uint tokenLength,
+                                        quint64 counter, const std::optional<uint> &offset, bool checksum)
     {
-        Q_UNUSED(offset);
-        Q_UNUSED(addChecksum);
         if (!m_is_still_open) {
             qCDebug(logger) << "Will not add new HOTP account: storage no longer open";
             return false;
         }
 
-        if (!validateGenericNewToken(name, issuer, secret, tokenLength)) {
+        if (!validateGenericNewToken(name, issuer, secret, tokenLength) ||
+            !checkOffset(offset, QCryptographicHash::Sha1)) {
             qCDebug(logger) << "Will not add new HOTP account: invalid account details";
             return false;
         }
@@ -488,7 +503,8 @@ namespace accounts
         qCDebug(logger) << "Requesting to store details for new HOTP account:" << id;
 
         m_ids.insert(id);
-        SaveHotp *job = new SaveHotp(m_settings, id, name, issuer, *encryptedSecret, counter, tokenLength);
+        SaveHotp *job = new SaveHotp(m_settings, id, name, issuer, *encryptedSecret, tokenLength,
+                                     counter, offset, checksum);
         m_actions->queueAndProceed(job, [job, &handler](void) -> void
         {
             handler(job);
@@ -496,16 +512,18 @@ namespace accounts
         return true;
     }
 
-    bool AccountStoragePrivate::addTotp(const std::function<void(SaveTotp*)> &handler, const QString &name, const QString &issuer, const QString &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
+    bool AccountStoragePrivate::addTotp(const std::function<void(SaveTotp*)> &handler,
+                                        const QString &name, const QString &issuer,
+                                        const QString &secret, uint tokenLength,
+                                        uint timeStep, const QDateTime &epoch, Account::Hash hash)
     {
-        Q_UNUSED(epoch);
-        Q_UNUSED(hash);
         if (!m_is_still_open) {
             qCDebug(logger) << "Will not add new TOTP account: storage no longer open";
             return false;
         }
 
-        if (!validateGenericNewToken(name, issuer, secret, tokenLength) || !checkTimeStep(timeStep)) {
+        if (!validateGenericNewToken(name, issuer, secret, tokenLength) ||
+            !checkTimeStep(timeStep) || !checkEpoch(epoch)) {
             qCDebug(logger) << "Will not add new TOTP account: invalid account details";
             return false;
         }
@@ -520,7 +538,8 @@ namespace accounts
         qCDebug(logger) << "Requesting to store details for new TOTP account:" << id;
 
         m_ids.insert(id);
-        SaveTotp *job = new SaveTotp(m_settings, id, name, issuer, *encryptedSecret, timeStep, tokenLength);
+        SaveTotp *job = new SaveTotp(m_settings, id, name, issuer, *encryptedSecret, tokenLength,
+                                     timeStep, epoch, hash);
         m_actions->queueAndProceed(job, [job, &handler](void) -> void
         {
             handler(job);
@@ -557,7 +576,9 @@ namespace accounts
         });
     }
 
-    Account * AccountStoragePrivate::acceptHotpAccount(const QUuid &id, const QString &name, const QString &issuer, const secrets::EncryptedSecret &secret, quint64 counter, int tokenLength, int offset, bool addChecksum)
+    Account * AccountStoragePrivate::acceptHotpAccount(const QUuid &id, const QString &name, const QString &issuer,
+                                                       const secrets::EncryptedSecret &secret, uint tokenLength,
+                                                       quint64 counter, const std::optional<uint> &offset, bool checksum)
     {
         Q_Q(AccountStorage);
         qCDebug(logger) << "Registering HOTP account:" << id;
@@ -569,13 +590,17 @@ namespace accounts
         });
         m_ids.insert(id);
         m_names.insert(AccountPrivate::toFullName(name, issuer), id);
-        m_accountsPrivate.insert(id, new AccountPrivate(registration, this, m_actions, id, name, issuer, secret, counter, tokenLength, offset, addChecksum));
+        const auto p = new AccountPrivate(registration, this, m_actions,
+                                          id, name, issuer, secret, tokenLength, counter, offset, checksum);
+        m_accountsPrivate.insert(id, p);
 
         Q_ASSERT_X(m_accounts.contains(id), Q_FUNC_INFO, "account should have been registered");
         return m_accounts[id];
     }
 
-    Account * AccountStoragePrivate::acceptTotpAccount(const QUuid &id, const QString &name, const QString &issuer, const secrets::EncryptedSecret &secret, uint timeStep, int tokenLength, const QDateTime &epoch, Account::Hash hash)
+    Account * AccountStoragePrivate::acceptTotpAccount(const QUuid &id, const QString &name, const QString &issuer,
+                                                       const secrets::EncryptedSecret &secret, uint tokenLength,
+                                                       uint timeStep, const QDateTime &epoch, Account::Hash hash)
     {
         Q_Q(AccountStorage);
         qCDebug(logger) << "Registering TOTP account:" << id;
@@ -587,7 +612,9 @@ namespace accounts
         });
         m_ids.insert(id);
         m_names.insert(AccountPrivate::toFullName(name, issuer), id);
-        m_accountsPrivate.insert(id, new AccountPrivate(registration, this, m_actions, id, name, issuer, secret, epoch, timeStep, tokenLength, hash));
+        const auto p = new AccountPrivate(registration, this, m_actions,
+                                          id, name, issuer, secret, tokenLength, epoch, timeStep, hash);
+        m_accountsPrivate.insert(id, p);
 
         Q_ASSERT_X(m_accounts.contains(id), Q_FUNC_INFO, "account should have been registered");
         return m_accounts[id];
@@ -622,12 +649,15 @@ namespace accounts
         return m_has_error;
     }
 
-    AccountStoragePrivate::AccountStoragePrivate(const SettingsProvider &settings, AccountSecret *secret, AccountStorage *storage, Dispatcher *dispatcher) :
-        q_ptr(storage), m_is_loaded(false), m_has_error(false), m_is_still_open(true), m_actions(dispatcher), m_settings(settings), m_secret(secret)
+    AccountStoragePrivate::AccountStoragePrivate(const SettingsProvider &settings,
+                                                 AccountSecret *secret, AccountStorage *storage, Dispatcher *dispatcher) :
+        q_ptr(storage), m_is_loaded(false), m_has_error(false), m_is_still_open(true),
+        m_actions(dispatcher), m_settings(settings), m_secret(secret)
     {
     }
 
-    HandleCounterUpdate::HandleCounterUpdate(AccountPrivate *account, AccountStoragePrivate *storage, quint64 counter, SaveHotp *job, QObject *parent) :
+    HandleCounterUpdate::HandleCounterUpdate(AccountPrivate *account, AccountStoragePrivate *storage,
+                                             quint64 counter, SaveHotp *job, QObject *parent) :
         QObject(parent), m_accept_on_finish(true), m_counter(counter), m_account(account), m_storage(storage)
     {
         QObject::connect(job, &SaveHotp::invalid, this, &HandleCounterUpdate::rejected);

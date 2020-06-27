@@ -130,7 +130,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
 
     QCOMPARE(initialAccount->counter(), 42ULL);
     QCOMPARE(initialAccount->tokenLength(), 7);
-    QCOMPARE(initialAccount->offset(), -1);
+    QCOMPARE(initialAccount->offset(), std::nullopt);
     QCOMPARE(initialAccount->checksum(), false);
 
     QFile initialLockFile(test::path(testIniLockFile));
@@ -170,7 +170,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(test::signal_eventually_emitted_once(initialAccountCleaned), "sample account should be cleaned up by now");
 
     // third phase: check that new account objects can be added to storage
-    uut->addTotp(addedAccountName, accountIssuer, QLatin1String("NBSWY3DPFQQHO33SNRSCC==="), 42, 8);
+    uut->addTotp(addedAccountName, accountIssuer, QLatin1String("NBSWY3DPFQQHO33SNRSCC==="), 8U, 42U);
 
     QVERIFY2(test::signal_eventually_emitted_twice(accountAdded), "new account should be added to storage by now");
     QCOMPARE(error.count(), 0);
@@ -200,7 +200,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QCOMPARE(addedAccount->timeStep(), 42U);
     QCOMPARE(addedAccount->tokenLength(), 8);
     QCOMPARE(addedAccount->epoch(), QDateTime::fromMSecsSinceEpoch(0));
-    QCOMPARE(addedAccount->hash(), accounts::Account::Default);
+    QCOMPARE(addedAccount->hash(), accounts::Account::Sha1);
 
     QFile afterAddingLockFile(test::path(testIniLockFile));
     QVERIFY2(!afterAddingLockFile.exists(), "after adding: lock file should not be present anymore");

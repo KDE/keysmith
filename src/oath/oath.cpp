@@ -93,22 +93,27 @@ namespace oath
         return encoder.tokenLength() >= 6;
     }
 
-    std::optional<Algorithm> Algorithm::usingDynamicTruncation(QCryptographicHash::Algorithm algorithm, uint tokenLength, bool addChecksum, bool requireSaneKeyLength)
+    bool Algorithm::validate(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset)
     {
-        const Encoder encoder(tokenLength, addChecksum);
-        return usingDynamicTruncation(algorithm, encoder, requireSaneKeyLength);
+        /*
+         * An nullopt offset indicates dynamic truncation.
+         * Dynamic truncation works by taking the last nible and interpreting it as offset for truncation, i.e. it will always be <= 15.
+         * Accounting for the last nibble (therefore last byte) assume a max truncation offset of 16 if dynamic truncation is used.
+         */
+        uint truncateAt = offset ? *offset : 16U;
+
+        /*
+         * The given algorithm must be supported/have a known digest size.
+         * There must be at least 4 bytes available at the given truncation offset/limit.
+         */
+        std::optional<uint> digestSize = hmac::outputSize(algorithm);
+        return digestSize && *digestSize >= 4U && (*digestSize - 4U) >= truncateAt;
     }
 
-    std::optional<Algorithm> Algorithm::usingDynamicTruncation(QCryptographicHash::Algorithm algorithm, const Encoder &encoder, bool requireSaneKeyLength)
+    std::optional<Algorithm> Algorithm::create(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset, const Encoder &encoder, bool requireSaneKeyLength)
     {
-        std::optional<uint> digestSize = hmac::outputSize(algorithm);
-        if (!digestSize) {
-            qCDebug(logger) << "Unable to determine digest size for algorithm:" << algorithm;
-            return std::nullopt;
-        }
-
-        if ((*digestSize) < 20) {
-            qCDebug(logger) << "Digest is too small for dynamic truncation with algorithm:" << algorithm << "digest size:" << *digestSize << "needed:" << 20;
+        if(!validate(algorithm, offset)) {
+            qCDebug(logger) << "Invalid algorithm:" << algorithm << "or incompatible with truncation offset:" << (offset ? *offset : 16U);
             return std::nullopt;
         }
 
@@ -117,33 +122,28 @@ namespace oath
             return std::nullopt;
         }
 
-        const std::function<quint32(QByteArray)> truncation(truncateDynamically);
+        std::function<quint32(QByteArray)> truncation(truncateDynamically);
+        if (offset) {
+            uint at = *offset;
+            truncation = [at](QByteArray bytes) -> quint32
+            {
+                return truncate(bytes, at);
+            };
+        }
+
         return std::optional<Algorithm>(Algorithm(encoder, truncation, algorithm, requireSaneKeyLength));
     }
 
-    std::optional<Algorithm> Algorithm::usingTruncationOffset(QCryptographicHash::Algorithm algorithm, uint offset, const Encoder &encoder, bool requireSaneKeyLength)
+    std::optional<Algorithm> Algorithm::totp(QCryptographicHash::Algorithm algorithm, uint tokenLength, bool requireSaneKeyLength)
     {
-        std::optional<uint> digestSize = hmac::outputSize(algorithm);
-        if (!digestSize) {
-            qCDebug(logger) << "Unable to determine digest size for algorithm:" << algorithm;
-            return std::nullopt;
-        }
+        const Encoder encoder(tokenLength, false);
+        return create(algorithm, std::nullopt, encoder, requireSaneKeyLength);
+    }
 
-        if (offset >= ((*digestSize) - 4)) {
-            qCDebug(logger) << "Digest is too small for truncation offset:" << offset << "with algorithm:" << algorithm << "digest size:" << *digestSize << "needed:" << offset + 4;
-            return std::nullopt;
-        }
-
-        if (!validate(encoder)) {
-            qCDebug(logger) << "Invalid token encoder";
-            return std::nullopt;
-        }
-
-        const std::function<quint32(QByteArray)> truncation([offset](QByteArray bytes) -> quint32
-        {
-            return truncate(bytes, offset);
-        });
-        return std::optional<Algorithm>(Algorithm(encoder, truncation, algorithm, requireSaneKeyLength));
+    std::optional<Algorithm> Algorithm::hotp(const std::optional<uint> &offset, uint tokenLength, bool checksum, bool requireSaneKeyLength)
+    {
+        const Encoder encoder(tokenLength, checksum);
+        return create(QCryptographicHash::Sha1, offset, encoder, requireSaneKeyLength);
     }
 
     Algorithm::Algorithm(const Encoder &encoder, const std::function<quint32(QByteArray)> &truncation, QCryptographicHash::Algorithm algorithm, bool requireSaneKeyLength) :

@@ -15,6 +15,7 @@
 #include <QVector>
 
 #include <functional>
+#include <optional>
 
 #include "keys.h"
 
@@ -34,7 +35,7 @@ namespace accounts
         };
         Q_ENUM(Algorithm)
         enum Hash {
-            Default, Sha256, Sha512
+            Sha1, Sha256, Sha512
         };
         Q_ENUM(Hash)
         explicit Account(AccountPrivate *d, QObject *parent = nullptr);
@@ -44,7 +45,7 @@ namespace accounts
         quint64 counter(void) const;
         QDateTime epoch(void) const;
         uint timeStep(void) const;
-        int offset(void) const;
+        std::optional<uint> offset(void) const;
         int tokenLength(void) const;
         bool checksum(void) const;
         Hash hash(void) const;
@@ -67,8 +68,10 @@ namespace accounts
     {
         Q_OBJECT
     public:
-        static AccountStorage * open(const SettingsProvider &settings, AccountSecret *secret = nullptr, QObject *parent = nullptr);
-        explicit AccountStorage(const SettingsProvider &settings, QThread *thread, AccountSecret *secret = nullptr, QObject *parent = nullptr);
+        static AccountStorage * open(const SettingsProvider &settings, AccountSecret *secret = nullptr,
+                                     QObject *parent = nullptr);
+        explicit AccountStorage(const SettingsProvider &settings, QThread *thread, AccountSecret *secret = nullptr,
+                                QObject *parent = nullptr);
         void removeAll(const QSet<Account*> &accounts) const;
         bool isAccountStillAvailable(const QString &fullName) const;
         bool isAccountStillAvailable(const QString &name, const QString &issuer) const;
@@ -82,17 +85,17 @@ namespace accounts
         void addHotp(const QString &name,
                      const QString &issuer,
                      const QString &secret,
+                     uint tokenLength = 6U,
                      quint64 counter = 0ULL,
-                     int tokenLength = 6,
-                     int offset = -1,
+                     const std::optional<uint> &offset = std::nullopt,
                      bool addChecksum = false);
         void addTotp(const QString &name,
                      const QString &issuer,
                      const QString &secret,
-                     int timeStep = 30,
-                     int tokenLength = 6,
+                     uint tokenLength = 6U,
+                     uint timeStep = 30U,
                      const QDateTime &epoch = QDateTime::fromMSecsSinceEpoch(0),
-                     Account::Hash hash = Account::Hash::Default);
+                     Account::Hash hash = Account::Hash::Sha1);
         void clearError(void);
         bool hasError(void) const;
         bool isLoaded(void) const;
@@ -109,8 +112,12 @@ namespace accounts
         void handleDisposal(void);
         void handleError(void);
         void handleLoaded(void);
-        void handleHotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, quint64 counter, int tokenLength);
-        void handleTotp(const QUuid id, const QString name, const QString issuer, const QByteArray secret, const QByteArray nonce, uint timeStep, int tokenLength);
+        void handleHotp(const QUuid id, const QString name, const QString issuer,
+                        const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                        quint64 counter, bool fixedTruncation, uint offset, bool checksum);
+        void handleTotp(const QUuid id, const QString name, const QString issuer,
+                        const QByteArray secret, const QByteArray nonce, uint tokenLength,
+                        uint timeStep, const QDateTime epoch, Account::Hash hash);
     private:
         QScopedPointer<AccountStoragePrivate> m_dptr;
         Q_DECLARE_PRIVATE_D(m_dptr, AccountStorage)
