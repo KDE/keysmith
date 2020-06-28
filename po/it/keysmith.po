@@ -1,0 +1,208 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the keysmith package.
+# Paolo Zamponi <zapaolo@email.it>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keysmith\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-06-02 02:14+0200\n"
+"PO-Revision-Date: 2020-05-03 09:21+0200\n"
+"Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 20.04.0\n"
+
+#: src/contents/ui/AccountEntryViewBase.qml:35
+#, kde-format
+msgctxt "Confirm dialog title: %1 is the name of the account to remove"
+msgid "Removing account: %1"
+msgstr "Rimozione dell'account: %1"
+
+#: src/contents/ui/AccountEntryViewBase.qml:42
+#, kde-format
+msgid ""
+"<p>Removing this account from Keysmith will not disable two-factor "
+"authentication (2FA). Make sure you can still access your account without "
+"using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA "
+"app set up for your account, or:</li><li>Make sure you have recovery codes "
+"for your account, or:</li><li>Disable two-factor authentication on your "
+"account</li></ul>"
+msgstr ""
+"<p>La rimozione di questo account da Keysmith non disabiliterà "
+"l'autenticazione a due fattori (2FA). Assicurati di poter ancora accedere al "
+"tuo account senza usare Keysmith prima di procedere:</p><ul><li>Assicurati "
+"di avere un'altra applicazione 2FA impostata per il tuo account, oppure:</"
+"li><li>Assicurati di avere i codici di recupero del tuo account, oppure:</"
+"li><li>Disabilita l'autenticazione a due fattori per il tuo account</li></ul>"
+
+#: src/contents/ui/AccountEntryViewBase.qml:49
+#, kde-format
+msgctxt "Button cancelling account removal"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/contents/ui/AccountEntryViewBase.qml:62
+#, kde-format
+msgctxt "Button confirming account removal"
+msgid "Delete account"
+msgstr "Elimina account"
+
+#: src/contents/ui/AccountsOverview.qml:20
+#, kde-format
+msgctxt "@title:window"
+msgid "Accounts"
+msgstr "Account"
+
+#: src/contents/ui/AccountsOverview.qml:26
+#, kde-format
+msgctxt "generic error shown when adding or updating an account failed"
+msgid "Failed to update accounts"
+msgstr "Impossibile aggiornare gli account"
+
+#: src/contents/ui/AccountsOverview.qml:27
+#, kde-format
+msgctxt "error message shown when loading accounts from storage failed"
+msgid "Some accounts failed to load."
+msgstr "Impossibile caricare alcuni account."
+
+#: src/contents/ui/AccountsOverview.qml:143 src/contents/ui/AddAccount.qml:41
+#, kde-format
+msgid "Add"
+msgstr "Aggiungi"
+
+#: src/contents/ui/AddAccount.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Add new account"
+msgstr "Aggiungi nuovo account"
+
+#: src/contents/ui/AddAccount.qml:29
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Name:"
+msgstr "Nome dell'account:"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:19
+#: src/contents/ui/TOTPAccountEntryView.qml:23
+#, kde-format
+msgctxt "Button for removal of a single account"
+msgid "Delete account"
+msgstr "Elimina account"
+
+#: src/contents/ui/SetupPassword.qml:16 src/contents/ui/UnlockAccounts.qml:16
+#, kde-format
+msgctxt "@title:window"
+msgid "Password"
+msgstr "Password"
+
+#: src/contents/ui/SetupPassword.qml:19
+#, kde-format
+msgid "Get started by choosing a password to protect your accounts"
+msgstr "Inizia scegliendo una password per proteggere i tuoi account"
+
+#: src/contents/ui/SetupPassword.qml:20
+#, kde-format
+msgid "Failed to set up your password"
+msgstr "Impossibile impostare la tua password"
+
+#: src/contents/ui/SetupPassword.qml:37
+#, kde-format
+msgctxt "@label:textbox"
+msgid "New password:"
+msgstr "Nuova password:"
+
+#: src/contents/ui/SetupPassword.qml:43
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Verify password:"
+msgstr "Verifica password:"
+
+#: src/contents/ui/SetupPassword.qml:50
+#, kde-format
+msgid "Apply"
+msgstr "Applica"
+
+#: src/contents/ui/TokenDetailsForm.qml:30
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Account Type:"
+msgstr "Tipi di account:"
+
+#: src/contents/ui/TokenDetailsForm.qml:35
+#, kde-format
+msgctxt "@option:radio"
+msgid "Time-based OTP"
+msgstr "OTP basata sull'orario"
+
+#: src/contents/ui/TokenDetailsForm.qml:40
+#, kde-format
+msgctxt "@option:radio"
+msgid "Hash-based OTP"
+msgstr "OTP basata sull'hash"
+
+#: src/contents/ui/TokenDetailsForm.qml:45
+#, kde-format
+msgid "Token secret"
+msgstr "Segreto del token"
+
+#: src/contents/ui/TokenDetailsForm.qml:47
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Secret key:"
+msgstr "Chiave segreta:"
+
+#: src/contents/ui/TokenDetailsForm.qml:55
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Timer:"
+msgstr "Timer:"
+
+#: src/contents/ui/TokenDetailsForm.qml:66
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Counter:"
+msgstr "Contatore:"
+
+#: src/contents/ui/TokenDetailsForm.qml:82
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Token length:"
+msgstr "Lunghezza del token:"
+
+#: src/contents/ui/TokenEntryViewLabels.qml:40
+#, kde-format
+msgctxt "placeholder text if no token is available"
+msgid "(refresh)"
+msgstr "(aggiorna)"
+
+#: src/contents/ui/UnlockAccounts.qml:19
+#, kde-format
+msgid "Please provide the password to unlock your accounts"
+msgstr "Fornisci la password per sbloccare i tuoi account"
+
+#: src/contents/ui/UnlockAccounts.qml:20
+#, kde-format
+msgid "Failed to unlock your accounts"
+msgstr "Impossibile sbloccare i tuoi account"
+
+#: src/contents/ui/UnlockAccounts.qml:37
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr "Password:"
+
+#: src/contents/ui/UnlockAccounts.qml:44
+#, kde-format
+msgid "Unlock"
+msgstr "Sblocca"
+
+#: src/main.cpp:29
+#, kde-format
+msgctxt "@title"
+msgid "Keysmith"
+msgstr "Keysmith"
