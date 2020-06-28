@@ -6,3 +6,23 @@ Files: android/res/drawable/keysmith.png
 Copyright: 2020 Nicolas Fella <nicolas.fella@gmx.de>
 Copyright: 2020 Carson Black <uhhadd@gmail.com>
 License: CC-BY-SA-4.0
+
+# Currently po files do not use the SPDX format, but they do have some copyright information
+# As general contact, we attribute copyright to Localization team, individual copyright
+# information available in the files itself.
+
+Files: po/*/*.po
+License: GPL-3.0-or-later
+Copyright: 2020 KDE Localization team <kde-i18n-doc@kde.org>
+
+Files: po/po/ca/keysmith.po
+License: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+Copyright: 2020 KDE Localization team <kde-i18n-doc@kde.org>
+
+Files: po/ca@valencia/keysmith.po
+License: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+Copyright: 2020 KDE Localization team <kde-i18n-doc@kde.org>
+
+Files: po/uk/keysmith.po
+License: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+Copyright: 2020 KDE Localization team <kde-i18n-doc@kde.org>
