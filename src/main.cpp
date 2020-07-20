@@ -14,6 +14,7 @@
 
 #include "app/keysmith.h"
 #include "model/accounts.h"
+#include "model/input.h"
 #include "validators/countervalidator.h"
 #include "validators/datetimevalidator.h"
 #include "validators/issuervalidator.h"
@@ -36,6 +37,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel", "Use the Keysmith singleton to obtain an AccountListModel");
     qmlRegisterUncreatableType<model::PasswordRequest>("Keysmith.Models", 1, 0, "PasswordRequestModel", "Use the Keysmith singleton to obtain an PasswordRequestModel");
     qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models", 1, 0, "Account", "Use an AccountListModel from the Keysmith singleton to obtain an Account");
+    qmlRegisterType<model::AccountInput>("Keysmith.Models", 1, 0, "ValidatedAccountInput");
     qmlRegisterType<model::SortedAccountsListModel>("Keysmith.Models", 1, 0, "SortedAccountListModel");
     qmlRegisterType<model::AccountNameValidator>("Keysmith.Validators", 1, 0, "AccountNameValidator");
     qmlRegisterType<validators::EpochValidator>("Keysmith.Validators", 1, 0, "TOTPEpochValidator");

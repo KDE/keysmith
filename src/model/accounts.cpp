@@ -153,19 +153,13 @@ namespace model
         }
     }
 
-    void SimpleAccountListModel::addTotp(const QString &account, const QString &issuer,
-                                         const QString &secret, uint tokenLength,
-                                         uint timeStep, const QDateTime &epoch, TOTPAlgorithms hash)
+    void SimpleAccountListModel::addAccount(AccountInput *input)
     {
-        m_storage->addTotp(account, issuer, secret, tokenLength, timeStep, epoch, toHash(hash));
-    }
-
-    void SimpleAccountListModel::addHotp(const QString &account, const QString &issuer,
-                                         const QString &secret, uint tokenLength,
-                                         quint64 counter, bool fixedTruncation, uint offset, bool checksum)
-    {
-        const auto o = fixedTruncation ? std::optional<uint>(offset) : std::nullopt;
-        m_storage->addHotp(account, issuer, secret, tokenLength, counter, o, checksum);
+        if (!input) {
+            qCDebug(logger) << "Not adding account, no input provided";
+            return;
+        }
+        input->createNewAccount(m_storage);
     }
 
     QHash<int, QByteArray> SimpleAccountListModel::roleNames(void) const

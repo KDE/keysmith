@@ -5,6 +5,7 @@
 #ifndef MODEL_ACCOUNTS_H
 #define MODEL_ACCOUNTS_H
 
+#include "input.h"
 #include "../account/account.h"
 #include "../validators/namevalidator.h"
 
@@ -74,10 +75,7 @@ namespace model
         static accounts::Account::Hash toHash(const TOTPAlgorithms value);
     public:
         explicit SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent = nullptr);
-        Q_INVOKABLE void addTotp(const QString &account, const QString &issuer, const QString &secret, uint tokenLength,
-                                 uint timeStep, const QDateTime &epoch, model::SimpleAccountListModel::TOTPAlgorithms hash);
-        Q_INVOKABLE void addHotp(const QString &account, const QString &issuer, const QString &secret, uint tokenLength,
-                                 quint64 counter, bool fixedTruncation, uint offset, bool checksum);
+        Q_INVOKABLE void addAccount(AccountInput *input);
         Q_INVOKABLE bool isAccountStillAvailable(const QString &name, const QString &issuer) const;
         Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const override;
         Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

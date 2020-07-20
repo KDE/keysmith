@@ -19,6 +19,9 @@ Kirigami.Page {
     property Models.AccountListModel accounts: Keysmith.accountListModel()
     property bool acceptable: accountName.acceptableInput && issuerName.acceptableInput && tokenDetails.acceptable
 
+    property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {
+    }
+
     ColumnLayout {
         anchors {
             horizontalCenter: parent.horizontalCenter
@@ -26,15 +29,22 @@ Kirigami.Page {
         Kirigami.FormLayout {
             Controls.TextField {
                 id: accountName
+                text: validatedInput.name
                 Kirigami.FormData.label: i18nc("@label:textbox", "Account Name:")
                 validator: Validators.AccountNameValidator {
                     id: accountNameValidator
                     accounts: root.accounts
-                    issuer: issuerName.text
+                    issuer: validatedInput.issuer
+                }
+                onTextChanged: {
+                    if (acceptableInput) {
+                        validatedInput.name = text;
+                    }
                 }
             }
             Controls.TextField {
                 id: issuerName
+                text: validatedInput.issuer
                 Kirigami.FormData.label: i18nc("@label:textbox", "Account Issuer:")
                 validator: Validators.AccountIssuerValidator {}
                 /*
@@ -51,11 +61,15 @@ Kirigami.Page {
                      */
                     accountNameValidator.issuer = issuerName.text;
                     accountName.insert(accountName.text.length, "");
+                    if (acceptableInput) {
+                        validatedInput.issuer = text;
+                    }
                 }
             }
         }
         TokenDetailsForm {
             id: tokenDetails
+            validatedInput: root.validatedInput
         }
     }
 
@@ -64,13 +78,7 @@ Kirigami.Page {
         iconName: "answer-correct"
         enabled: acceptable
         onTriggered: {
-            if (tokenDetails.isTotp) {
-                console.log("WTF: ", Models.AccountListModel.Sha1);
-                accounts.addTotp(accountName.text, issuerName.text, tokenDetails.secret, tokenDetails.tokenLength, parseInt(tokenDetails.timeStep), new Date(0), Models.AccountListModel.Sha1);
-            }
-            if (tokenDetails.isHotp) {
-                accounts.addHotp(accountName.text, issuerName.text, tokenDetails.secret, tokenDetails.tokenLength, parseInt(tokenDetails.counter), false, 0, false);
-            }
+            root.accounts.addAccount(root.validatedInput);
             root.dismissed();
         }
     }
