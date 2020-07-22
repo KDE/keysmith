@@ -15,52 +15,10 @@ Kirigami.FormLayout {
     id: root
     property Models.ValidatedAccountInput validatedInput
 
-    property bool secretAcceptable: accountSecret.acceptableInput
-    property bool timeStepAcceptable: timeStepField.acceptableInput || hotpRadio.checked
-    property bool counterAcceptable: counterField.acceptableInput || totpRadio.checked
-    property bool tokenTypeAcceptable: hotpRadio.checked || totpRadio.checked
-    property bool acceptable: counterAcceptable && timeStepAcceptable && secretAcceptable && tokenTypeAcceptable
+    property bool timeStepAcceptable: timeStepField.acceptableInput || validatedInput.type === Models.ValidatedAccountInput.Hotp
+    property bool counterAcceptable: counterField.acceptableInput || validatedInput.type === Models.ValidatedAccountInput.Totp
+    property bool acceptable: counterAcceptable && timeStepAcceptable
 
-    ColumnLayout {
-        Layout.rowSpan: 2
-        Kirigami.FormData.label: i18nc("@label:chooser", "Account Type:")
-        Kirigami.FormData.buddyFor: totpRadio
-        Controls.RadioButton {
-            id: totpRadio
-            checked: validatedInput && validatedInput.type === Models.ValidatedAccountInput.Totp
-            text: i18nc("@option:radio", "Time-based OTP")
-            onCheckedChanged: {
-                if (checked) {
-                    validatedInput.type = Models.ValidatedAccountInput.Totp;
-                }
-            }
-        }
-        Controls.RadioButton {
-            id: hotpRadio
-            checked: validatedInput && validatedInput.type === Models.ValidatedAccountInput.Hotp
-            text: i18nc("@option:radio", "Hash-based OTP")
-            onCheckedChanged: {
-                if (checked) {
-                    validatedInput.type = Models.ValidatedAccountInput.Hotp;
-                }
-            }
-        }
-    }
-    Kirigami.PasswordField {
-        id: accountSecret
-        placeholderText: i18n("Token secret")
-        text: validatedInput ? validatedInput.secret : ""
-        Kirigami.FormData.label: i18nc("@label:textbox", "Secret key:")
-        validator: Validators.Base32SecretValidator {
-            id: secretValidator
-        }
-        inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
-        onTextChanged: {
-            if (acceptableInput) {
-                validatedInput.secret = text;
-            }
-        }
-    }
     Controls.TextField {
         id: timeStepField
         Kirigami.FormData.label: i18nc("@label:textbox", "Timer:")
@@ -80,7 +38,7 @@ Kirigami.FormLayout {
         id: counterField
         text: validatedInput ? validatedInput.counter : ""
         Kirigami.FormData.label: i18nc("@label:textbox", "Counter:")
-        enabled: hotpRadio.checked
+        enabled: validatedInput.type === Models.ValidatedAccountInput.Hotp
         validator: Validators.HOTPCounterValidator {
             id: counterValidator
         }

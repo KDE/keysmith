@@ -17,7 +17,9 @@ Kirigami.Page {
     title: i18nc("@title:window", "Add new account")
     signal dismissed
     property Models.AccountListModel accounts: Keysmith.accountListModel()
-    property bool acceptable: accountName.acceptableInput && issuerName.acceptableInput && tokenDetails.acceptable
+    property bool secretAcceptable: accountSecret.acceptableInput
+    property bool tokenTypeAcceptable: hotpRadio.checked || totpRadio.checked
+    property bool acceptable: accountName.acceptable && secretAcceptable && tokenTypeAcceptable && tokenDetails.acceptable
 
     property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {
     }
@@ -26,43 +28,48 @@ Kirigami.Page {
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
+        AccountNameForm {
+            id: accountName
+            validatedInput: root.validatedInput
+        }
         Kirigami.FormLayout {
-            Controls.TextField {
-                id: accountName
-                text: validatedInput.name
-                Kirigami.FormData.label: i18nc("@label:textbox", "Account Name:")
-                validator: Validators.AccountNameValidator {
-                    id: accountNameValidator
-                    accounts: root.accounts
-                    issuer: validatedInput.issuer
+            ColumnLayout {
+                Layout.rowSpan: 2
+                Kirigami.FormData.label: i18nc("@label:chooser", "Account Type:")
+                Kirigami.FormData.buddyFor: totpRadio
+                Controls.RadioButton {
+                    id: totpRadio
+                    checked: validatedInput.type === Models.ValidatedAccountInput.Totp
+                    text: i18nc("@option:radio", "Time-based OTP")
+                    onCheckedChanged: {
+                        if (checked) {
+                            validatedInput.type = Models.ValidatedAccountInput.Totp;
+                        }
+                    }
                 }
-                onTextChanged: {
-                    if (acceptableInput) {
-                        validatedInput.name = text;
+                Controls.RadioButton {
+                    id: hotpRadio
+                    checked: validatedInput.type === Models.ValidatedAccountInput.Hotp
+                    text: i18nc("@option:radio", "Hash-based OTP")
+                    onCheckedChanged: {
+                        if (checked) {
+                            validatedInput.type = Models.ValidatedAccountInput.Hotp;
+                        }
                     }
                 }
             }
-            Controls.TextField {
-                id: issuerName
-                text: validatedInput.issuer
-                Kirigami.FormData.label: i18nc("@label:textbox", "Account Issuer:")
-                validator: Validators.AccountIssuerValidator {}
-                /*
-                 * When the issuer changes, the account name should be revalidated as well. It may have become eligible or in-eligible depending on
-                 * whether or not other accounts with the same name for the same new issuer value already exist.
-                 *
-                 * Unfortunately because the property binding only affects the validator, there seems to be nothing to explicitly trigger revalidation
-                 * on the text field. Work around is to force revalidation to happen by "editing" the value in the text field directly.
-                 */
+            Kirigami.PasswordField {
+                id: accountSecret
+                placeholderText: i18n("Token secret")
+                text: validatedInput.secret
+                Kirigami.FormData.label: i18nc("@label:textbox", "Secret key:")
+                validator: Validators.Base32SecretValidator {
+                    id: secretValidator
+                }
+                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
                 onTextChanged: {
-                    /*
-                     * This signal handler may run before property bindings have been fully (re-)evaluated.
-                     * First update the account name validator to the correct new issuer value before triggering revalidation.
-                     */
-                    accountNameValidator.issuer = issuerName.text;
-                    accountName.insert(accountName.text.length, "");
                     if (acceptableInput) {
-                        validatedInput.issuer = text;
+                        validatedInput.secret = text;
                     }
                 }
             }
