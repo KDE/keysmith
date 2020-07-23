@@ -17,11 +17,19 @@ Kirigami.Page {
     title: i18nc("@title:window", "Add new account")
     signal dismissed
     property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property bool detailsEnabled: false
+
     property bool secretAcceptable: accountSecret.acceptableInput
     property bool tokenTypeAcceptable: hotpRadio.checked || totpRadio.checked
-    property bool acceptable: accountName.acceptable && secretAcceptable && tokenTypeAcceptable && tokenDetails.acceptable
+    property bool hotpDetailsAcceptable: hotpDetails.acceptable || validatedInput.type === Models.ValidatedAccountInput.Totp
+    property bool totpDetailsAcceptable: totpDetails.acceptable || validatedInput.type === Models.ValidatedAccountInput.Hotp
+    property bool tokenDetailsAcceptable: hotpDetailsAcceptable && totpDetailsAcceptable
+    property bool acceptable: accountName.acceptable && secretAcceptable && tokenTypeAcceptable && tokenDetailsAcceptable
 
     property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {
+        onTypeChanged: {
+            root.detailsEnabled = false;
+        }
     }
 
     ColumnLayout {
@@ -31,8 +39,12 @@ Kirigami.Page {
         AccountNameForm {
             id: accountName
             validatedInput: root.validatedInput
+            twinFormLayouts: [requiredDetails, hotpDetails, totpDetails]
         }
+
         Kirigami.FormLayout {
+            id: requiredDetails
+            twinFormLayouts: [accountName, hotpDetails, totpDetails]
             ColumnLayout {
                 Layout.rowSpan: 2
                 Kirigami.FormData.label: i18nc("@label:chooser", "Account Type:")
@@ -73,10 +85,30 @@ Kirigami.Page {
                     }
                 }
             }
+
+            Controls.Button {
+                id: toggleDetails
+                text: i18nc("Button to reveal form for configuring additional token details", "Details")
+                enabled: !root.detailsEnabled && (hotpRadio.checked || totpRadio.checked)
+                visible: enabled
+                onClicked: {
+                    root.detailsEnabled = true;
+                }
+            }
         }
-        TokenDetailsForm {
-            id: tokenDetails
+        HOTPDetailsForm {
+            visible: enabled
+            id: hotpDetails
             validatedInput: root.validatedInput
+            twinFormLayouts: [accountName, requiredDetails, totpDetails]
+            enabled: root.detailsEnabled && validatedInput.type === Models.ValidatedAccountInput.Hotp
+        }
+        TOTPDetailsForm {
+            visible: enabled
+            id: totpDetails
+            validatedInput: root.validatedInput
+            twinFormLayouts: [accountName, requiredDetails, hotpDetails]
+            enabled: root.detailsEnabled && validatedInput.type === Models.ValidatedAccountInput.Totp
         }
     }
 

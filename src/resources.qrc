@@ -6,10 +6,11 @@
 <RCC>
     <qresource prefix="/">
         <file alias="main.qml">contents/ui/main.qml</file>
-        <file alias="TokenDetailsForm.qml">contents/ui/TokenDetailsForm.qml</file>
         <file alias="AccountsOverview.qml">contents/ui/AccountsOverview.qml</file>
         <file alias="AddAccount.qml">contents/ui/AddAccount.qml</file>
         <file alias="AccountNameForm.qml">contents/ui/AccountNameForm.qml</file>
+        <file alias="HOTPDetailsForm.qml">contents/ui/HOTPDetailsForm.qml</file>
+        <file alias="TOTPDetailsForm.qml">contents/ui/TOTPDetailsForm.qml</file>
         <file alias="UnlockAccounts.qml">contents/ui/UnlockAccounts.qml</file>
         <file alias="SetupPassword.qml">contents/ui/SetupPassword.qml</file>
         <file alias="TokenEntryViewLabels.qml">contents/ui/TokenEntryViewLabels.qml</file>
