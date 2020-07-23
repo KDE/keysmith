@@ -22,7 +22,6 @@ Kirigami.FormLayout {
         text: validatedInput ? validatedInput.counter : ""
         Kirigami.FormData.label: i18nc("@label:textbox", "Counter:")
         validator: Validators.HOTPCounterValidator {
-            id: counterValidator
         }
         inputMethodHints: Qt.ImhDigitsOnly
         onTextChanged: {
@@ -31,6 +30,7 @@ Kirigami.FormLayout {
             }
         }
     }
+
     /*
      * OATH tokens are derived from a 32bit value, base-10 encoded.
      * Meaning tokens should not be longer than 10 digits max.
@@ -47,5 +47,39 @@ Kirigami.FormLayout {
         onValueChanged: {
             validatedInput.tokenLength = value;
         }
+    }
+
+    Controls.CheckBox {
+        id: checksumField
+        checked: validatedInput.checksum
+        text: i18nc("@option:check", "Add check digit")
+        Kirigami.FormData.label: i18nc("@label:check", "Checksum:")
+        onCheckedChanged: {
+            validatedInput.checksum = checked;
+        }
+    }
+
+    Controls.CheckBox {
+        id: truncationTypeField
+        checked: validatedInput && validatedInput.fixedTruncation
+        text: i18nc("@option:check", "Use custom offset")
+        Kirigami.FormData.label: i18nc("@label:check", "Truncation:")
+        onCheckedChanged: {
+            if (!checked) {
+                validatedInput.setDynamicTruncation();
+            }
+        }
+    }
+    Controls.SpinBox {
+        id: truncationValueField
+        enabled: truncationTypeField.checked
+        Kirigami.FormData.label: i18nc("@label:spinbox", "Truncation offset:")
+        from: 0
+        /*
+         * HOTP tokens are based on a HMAC-SHA1 construction yielding 20 bytes of output of which 4 are taken to
+         * compute the token value.
+         */
+        to: 16
+        value: validatedInput ? validatedInput.truncationOffset : 0
     }
 }
