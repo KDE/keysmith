@@ -5,6 +5,7 @@
 
 set(validator_SRCS
     countervalidator.cpp
+    datetimevalidator.cpp
     namevalidator.cpp
     issuervalidator.cpp
     secretvalidator.cpp

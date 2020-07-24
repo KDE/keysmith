@@ -5,6 +5,8 @@
 
 set(validator_lib_test_SRCS
     base32-validator.cpp
+    datetime-parsing.cpp
+    epoch-validator.cpp
     name-validator.cpp
     issuer-validator.cpp
     unsigned-long-validator.cpp
