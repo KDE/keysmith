@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
 #include "validators/countervalidator.h"
@@ -17,16 +17,16 @@ class UnsignedLongParsingSamplesTest: public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
-    void testParsea(void);
-    void testParsea_data(void);
+    void testParseUnsignedInteger(void);
+    void testParseUnsignedInteger_data(void);
 };
 
 
-void UnsignedLongParsingSamplesTest::testParsea(void)
+void UnsignedLongParsingSamplesTest::testParseUnsignedInteger(void)
 {
     QFETCH(QString, input);
     QFETCH(QLocale, locale);
-    QTEST(validators::parse(input, locale), "result");
+    QTEST(validators::parseUnsignedInteger(input, locale), "result");
 }
 
 static void define_test_case(const QString &input, const QLocale &locale, const std::optional<qulonglong> &result)
@@ -34,7 +34,7 @@ static void define_test_case(const QString &input, const QLocale &locale, const 
     QTest::newRow(qPrintable(input)) << input << locale << result;
 }
 
-void UnsignedLongParsingSamplesTest::testParsea_data(void)
+void UnsignedLongParsingSamplesTest::testParseUnsignedInteger_data(void)
 {
     QTest::addColumn<QString>("input");
     QTest::addColumn<QLocale>("locale");

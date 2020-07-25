@@ -9,7 +9,7 @@
 
 namespace validators
 {
-    std::optional<qulonglong> parse(const QString &input, const QLocale &locale)
+    std::optional<qulonglong> parseUnsignedInteger(const QString &input, const QLocale &locale)
     {
         bool ok = false;
 
@@ -54,7 +54,7 @@ namespace validators
          * This may also involve switching from Latin script (C locale) to
          * whatever script the configured locale uses natively.
          */
-        const auto v = parse(fixed, l);
+        const auto v = parseUnsignedInteger(fixed, l);
         if (v) {
             fixed = l.toString(v.value());
         }
@@ -71,7 +71,7 @@ namespace validators
         } else {
 
             const QLocale l = locale();
-            const auto parsed = parse(input, l);
+            const auto parsed = parseUnsignedInteger(input, l);
 
             /*
              * The actual value is a don't care at this point.

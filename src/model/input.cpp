@@ -187,7 +187,7 @@ namespace model
 
         if (m_counter != counter) {
             m_counter = counter;
-            m_counterValue = validators::parse(counter, validator->locale()).value_or(0ULL);
+            m_counterValue = validators::parseUnsignedInteger(counter, validator->locale()).value_or(0ULL);
             Q_EMIT counterChanged();
         }
     }

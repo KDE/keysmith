@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
 #ifndef COUNTER_VALIDATOR_H
@@ -14,7 +14,7 @@
 
 namespace validators
 {
-    std::optional<qulonglong> parse(const QString &input, const QLocale &locale = QLocale::system());
+    std::optional<qulonglong> parseUnsignedInteger(const QString &input, const QLocale &locale = QLocale::system());
 
     class UnsignedLongValidator: public QValidator
     {
