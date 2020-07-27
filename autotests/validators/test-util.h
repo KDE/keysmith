@@ -45,12 +45,11 @@ namespace validators
             {
             };
 
-            void testValidate(void)
+            void testValidate(T &uut)
             {
                 QFETCH(QString, input);
                 QFETCH(QLocale, locale);
 
-                T uut;
                 uut.setLocale(locale);
                 int position = input.size();
                 int copy = position;
@@ -59,12 +58,11 @@ namespace validators
                 QCOMPARE(position, copy);
             };
 
-            void testFixup(void)
+            void testFixup(T &uut)
             {
                 QFETCH(QString, input);
                 QFETCH(QLocale, locale);
 
-                T uut;
                 uut.setLocale(locale);
 
                 uut.fixup(input);
@@ -91,19 +89,21 @@ namespace validators
     }
 }
 
-#define DEFINE_VALIDATOR_TEST(name, type, data_tables) \
+#define DEFINE_VALIDATOR_TEST(name, type, data_tables, ...) \
 class name : public validators::test::ValidatorTestBase<type, data_tables> \
 { \
     Q_OBJECT \
 private Q_SLOTS: \
     void testFixup(void) \
     { \
-        ValidatorTestBase::testFixup(); \
+        type uut{__VA_ARGS__}; \
+        ValidatorTestBase::testFixup(uut); \
     }; \
     \
     void testValidate(void) \
     { \
-        ValidatorTestBase::testValidate(); \
+        type uut{__VA_ARGS__}; \
+        ValidatorTestBase::testValidate(uut); \
     }; \
     \
     void testFixup_data(void) \
