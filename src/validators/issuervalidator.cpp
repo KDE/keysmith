@@ -4,6 +4,7 @@
  */
 
 #include "issuervalidator.h"
+#include "util.h"
 
 #include <QRegularExpression>
 #include <QString>
@@ -33,14 +34,7 @@ namespace validators
 
     void IssuerValidator::fixup(QString &input) const
     {
-        QString fixed = input.simplified().remove(QLatin1Char(':'));
-
-        // make sure the user can type in at least one space
-        if (input.endsWith(QLatin1Char(' ')) && fixed.size() > 0) {
-            fixed += QLatin1Char(' ');
-        }
-
-        input = fixed;
+        input = validators::simplify_spaces(input.remove(QLatin1Char(':')));
     }
 
     QValidator::State IssuerValidator::validate(QString &input, int &cursor) const

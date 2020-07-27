@@ -4,6 +4,7 @@
  */
 
 #include "namevalidator.h"
+#include "util.h"
 
 #include <QRegularExpression>
 #include <QString>
@@ -25,14 +26,7 @@ namespace validators
 
     void NameValidator::fixup(QString &input) const
     {
-        QString fixed = input.simplified();
-
-        // make sure the user can type in at least one space
-        if (input.endsWith(QLatin1Char(' ')) && fixed.size() > 0) {
-            fixed += QLatin1Char(' ');
-        }
-
-        input = fixed;
+        input = validators::simplify_spaces(input);
     }
 
     QValidator::State NameValidator::validate(QString &input, int &cursor) const
