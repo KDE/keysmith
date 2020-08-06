@@ -39,8 +39,8 @@
     <category>Utility</category>
   </categories>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
-  <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mòbil i l'escriptori</summary>
-  <summary xml:lang="ca-valencia">Generador del codi de dos factors per al Plasma Mòbil i l'escriptori</summary>
+  <summary xml:lang="ca">Generador del codi de dos factors per al Plasma mòbil i l'escriptori</summary>
+  <summary xml:lang="ca-valencia">Generador del codi de dos factors per al Plasma mòbil i l'escriptori</summary>
   <summary xml:lang="en-GB">Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="es">Generador de códigos de dos factores para Plasma Mobile y para el escritorio</summary>
   <summary xml:lang="et">Kaheastmelise autentimise koodi genereerimine Plasma Mobile ja Plasma töölaua tarbeks</summary>
