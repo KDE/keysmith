@@ -192,6 +192,15 @@ namespace model
         }
     }
 
+    void AccountInput::setCounter(quint64 counter)
+    {
+        if (m_counterValue != counter) {
+            m_counter.setNum(counter);
+            m_counterValue = counter;
+            Q_EMIT counterChanged();
+        }
+    }
+
     uint AccountInput::truncationOffset(void) const
     {
         return m_truncation.value_or(0U);

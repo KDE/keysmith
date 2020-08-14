@@ -63,6 +63,7 @@ namespace model
         bool checksum(void) const;
         void setChecksum(bool checksum);
         QString counter(void) const;
+        void setCounter(quint64 counter);
         Q_INVOKABLE void setCounter(const QString &counter, validators::UnsignedLongValidator *validator);
         uint truncationOffset(void) const;
         bool fixedTruncation(void) const;
