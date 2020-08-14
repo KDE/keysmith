@@ -7,6 +7,7 @@ include_directories(BEFORE ../src)
 
 add_subdirectory(test-utils)
 add_subdirectory(base32)
+add_subdirectory(uri)
 add_subdirectory(hmac)
 add_subdirectory(oath)
 add_subdirectory(secrets)
