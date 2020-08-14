@@ -19,7 +19,7 @@ set(keysmith_SRCS
     main.cpp
 )
 
-set(keysmith_internal_libs base32_lib validator_lib account_lib model_lib keysmith_lib)
+set(keysmith_internal_libs keysmith_lib)
 
 qt5_add_resources(RESOURCES resources.qrc)
 add_executable(keysmith ${keysmith_SRCS} ${RESOURCES})
