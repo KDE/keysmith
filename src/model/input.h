@@ -51,7 +51,7 @@ namespace model
         QString issuer(void) const;
         void setIssuer(const QString &issuer);
         QString secret(void) const;
-        void setSecret(QString &secret);
+        void setSecret(const QString &secret);
         uint tokenLength(void) const;
         void setTokenLength(uint tokenLength);
         uint timeStep(void) const;

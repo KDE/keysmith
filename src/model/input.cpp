@@ -99,7 +99,7 @@ namespace model
         return m_secret;
     }
 
-    void AccountInput::setSecret(QString &secret)
+    void AccountInput::setSecret(const QString &secret)
     {
         if (m_secret != secret) {
             m_secret = secret;
