@@ -20,6 +20,15 @@
 #include "validators/issuervalidator.h"
 #include "validators/secretvalidator.h"
 
+/*
+ * Integrate QML debugging/profiling support, conditional on building Keysmith in Debug mode.
+ * NDEBUG is defined by the C standard and automatically set by CMake during a Release type build, hence the double negative.
+ */
+#ifndef NDEBUG
+#include <QQmlDebuggingEnabler>
+static QQmlDebuggingEnabler enabler;
+#endif
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
