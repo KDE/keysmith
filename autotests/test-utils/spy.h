@@ -2,8 +2,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
-#ifndef ACCOUNTS_TEST_UTIL_SPY_H
-#define ACCOUNTS_TEST_UTIL_SPY_H
+#ifndef TEST_UTIL_SPY_H
+#define TEST_UTIL_SPY_H
 
 #include <QSignalSpy>
 

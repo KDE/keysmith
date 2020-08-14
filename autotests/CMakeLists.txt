@@ -5,6 +5,7 @@
 #
 include_directories(BEFORE ../src)
 
+add_subdirectory(test-utils)
 add_subdirectory(base32)
 add_subdirectory(hmac)
 add_subdirectory(oath)

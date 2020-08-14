@@ -4,7 +4,7 @@
  */
 #include "account/keys.h"
 
-#include "../test-utils/spy.h"
+#include "../../test-utils/spy.h"
 
 #include <QSignalSpy>
 #include <QTest>

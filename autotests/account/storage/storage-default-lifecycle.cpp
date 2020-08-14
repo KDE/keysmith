@@ -5,7 +5,7 @@
 #include "account/account.h"
 
 #include "../test-utils/output.h"
-#include "../test-utils/spy.h"
+#include "../../test-utils/spy.h"
 
 #include <QDateTime>
 #include <QFile>

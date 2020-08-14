@@ -6,8 +6,7 @@
 
 #include "../test-utils/output.h"
 #include "../test-utils/secret.h"
-#include "../test-utils/spy.h"
-
+#include "../../test-utils/spy.h"
 #include "../../secrets/test-utils/random.h"
 
 #include <QSignalSpy>

@@ -5,7 +5,7 @@
 #include "account/actions_p.h"
 
 #include "../test-utils/output.h"
-#include "../test-utils/spy.h"
+#include "../../test-utils/spy.h"
 
 #include <QSignalSpy>
 #include <QString>

@@ -9,7 +9,7 @@ namespace test
 
     bool signal_eventually_emitted_exactly(QSignalSpy &spy, int times, int timeout)
     {
-        return (spy.count() > (times - 1) || spy.wait(timeout)) && spy.count() == times;
+        return (spy.count() >= times || spy.wait(timeout)) && spy.count() == times;
     }
 
     bool signal_eventually_emitted_once(QSignalSpy &spy, int timeout)
