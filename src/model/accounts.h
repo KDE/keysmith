@@ -92,11 +92,14 @@ namespace model
         void removed(const QString &removed);
         void handleError(void);
     private:
+        AccountView * createView(const QString &name);
+        void populate(const QString &name, AccountView *account);
+    private:
         accounts::AccountStorage * const m_storage;
     private:
         bool m_has_error;
         QVector<QString> m_index;
-        QHash<QString, accounts::Account*> m_accounts;
+        QHash<QString, AccountView*> m_accounts;
     };
 
     class SortedAccountsListModel: public QSortFilterProxyModel

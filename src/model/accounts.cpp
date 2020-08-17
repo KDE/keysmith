@@ -98,17 +98,34 @@ namespace model
 
         beginResetModel();
         for (const QString &name : m_storage->accounts()) {
-            accounts::Account * existingAccount = m_storage->get(name);
-            if (existingAccount) {
-                m_index.append(name);
-                m_accounts[name] = existingAccount;
-                existingAccount->recompute();
-            } else {
-                qCDebug(logger) << "Account storage reported an account (name) but did not yield a valid account object";
-            }
+            populate(name, createView(name));
         }
         m_has_error = storage->hasError();
         endResetModel();
+    }
+
+
+    AccountView * SimpleAccountListModel::createView(const QString &name)
+    {
+        accounts::Account * existingAccount = m_storage->get(name);
+        if (!existingAccount) {
+            qCDebug(logger) << "Account storage did not yield a valid account object for account name";
+            return nullptr;
+        }
+
+        return new AccountView(existingAccount, this);
+    }
+
+    void SimpleAccountListModel::populate(const QString &name, AccountView *account)
+    {
+        if (!account) {
+            qCDebug(logger) << "Not populating account without a valid account view object";
+            return;
+        }
+
+        m_index.append(name);
+        m_accounts[name] = account;
+        account->recompute();
     }
 
     bool SimpleAccountListModel::error(void) const
@@ -189,14 +206,13 @@ namespace model
         }
 
         const QString accountName = m_index.at(accountIndex);
-        accounts::Account * model = m_accounts.value(accountName, nullptr);
+        auto model = m_accounts.value(accountName, nullptr);
         if (!model) {
-            qCDebug(logger) << "Not returning any data, unable to find associated account model for:" << accountIndex;
+            qCDebug(logger) << "Not returning any data, unable to find associated account for:" << accountIndex;
             return QVariant();
         }
 
-        // assume QML ownership: don't worry about object lifecycle
-        return QVariant::fromValue(new AccountView(model));
+        return QVariant::fromValue(model);
     }
 
     int SimpleAccountListModel::rowCount(const QModelIndex &parent) const
@@ -207,9 +223,9 @@ namespace model
 
     void SimpleAccountListModel::added(const QString &account)
     {
-        accounts::Account * newAccount = m_storage->get(account);
+        auto newAccount = createView(account);
         if (!newAccount) {
-            qCDebug(logger) << "Unable to handle added account: underlying storage did not return a valid object";
+            qCDebug(logger) << "Unable to handle added account: unable to construct account view object";
             return;
         }
 
@@ -222,9 +238,7 @@ namespace model
         qCDebug(logger) << "Adding (new) account to the model at position:" << accountIndex;
 
         beginInsertRows(QModelIndex(), accountIndex, accountIndex);
-        m_index.append(account);
-        m_accounts[account] = newAccount;
-        newAccount->recompute();
+        populate(account, newAccount);
         endInsertRows();
     }
 
@@ -236,11 +250,17 @@ namespace model
             return;
         }
 
+        AccountView *v = nullptr;
+
         qCDebug(logger) << "Removing (old) account from the model at position:" << accountIndex;
         beginRemoveRows(QModelIndex(), accountIndex, accountIndex);
         m_index.remove(accountIndex);
-        m_accounts.remove(account);
+        v = m_accounts.take(account);
         endRemoveRows();
+
+        if (v) {
+            v->deleteLater();
+        }
     }
 
     bool SimpleAccountListModel::isAccountStillAvailable(const QString &name, const QString &issuer) const
