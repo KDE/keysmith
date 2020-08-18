@@ -7,7 +7,8 @@ set(model_SRCS
     accounts.cpp
     password.cpp
     input.cpp
+    qr.cpp
 )
 
 add_library(model_lib STATIC ${model_SRCS})
-target_link_libraries(model_lib Qt5::Core Qt5::Qml Qt5::Gui account_lib validator_lib)
+target_link_libraries(model_lib Qt5::Core Qt5::Qml Qt5::Gui account_lib validator_lib uri_lib)

@@ -5,4 +5,9 @@
 
 set(Test_DEP_LIBS Qt5::Core Qt5::Test model_lib)
 
-ecm_add_test(milliseconds-left-for-token.cpp LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME milliseconds-left-for-token NAME_PREFIX model-)
+set(model_test_SRCS
+    milliseconds-left-for-token.cpp
+    qr-input.cpp
+)
+
+ecm_add_tests(${model_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS} NAME_PREFIX model-)
