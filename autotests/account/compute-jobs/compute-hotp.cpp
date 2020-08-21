@@ -49,6 +49,7 @@ void ComputeHotpTest::testDefaults(void)
     QVERIFY2(test::signal_eventually_emitted_once(jobFinished), "job should be finished by now");
 
     QTEST(tokenGenerated.at(0).at(0).toString(), "rfc-test-vector");
+    QCOMPARE(tokenGenerated.at(0).at(2).toULongLong(), counter + 1ULL);
 }
 
 static void define_test_case(int k, const char *expected)

@@ -58,6 +58,7 @@ namespace accounts
     Q_SIGNALS:
         void tokenChanged(const QString otp);
         void removed(void);
+        void updated(void);
     private:
         QScopedPointer<AccountPrivate> m_dptr;
         Q_DECLARE_PRIVATE_D(m_dptr, Account)

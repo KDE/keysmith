@@ -7,6 +7,7 @@ set(Test_DEP_LIBS Qt5::Core Qt5::Test oath_lib)
 set(oath_lib_test_SRCS
     luhn-checksum.cpp
     count-timesteps.cpp
+    convert-timestep-counter.cpp
     encode-token-defaults.cpp
     hotp-algorithm.cpp
     totp-algorithm.cpp

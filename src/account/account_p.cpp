@@ -110,6 +110,7 @@ namespace accounts
 
     void AccountPrivate::acceptCounter(quint64 counter)
     {
+        Q_Q(Account);
         if (!m_is_still_alive) {
             qCDebug(logger)
                 << "Ignoring counter update for account:" << m_id
@@ -131,14 +132,16 @@ namespace accounts
             return;
         }
 
-        qCDebug(logger) << "Counter is updated for account:" << m_id;
-        m_counter = counter;
-        recompute();
+        if (m_counter != counter) {
+            qCDebug(logger) << "Counter is updated for account:" << m_id;
+            m_counter = counter;
+            Q_EMIT q->updated();
+            recompute();
+        }
     }
 
-    void AccountPrivate::acceptToken(QString token)
+    void AccountPrivate::acceptTotpTokens(QString token, QString nextToken, QDateTime validFrom, QDateTime validUntil)
     {
-        Q_Q(Account);
         if (!m_is_still_alive) {
             qCDebug(logger)
                 << "Ignoring token update for account:" << m_id
@@ -153,9 +156,76 @@ namespace accounts
             return;
         }
 
-        qCDebug(logger) << "Token is updated for account:" << m_id;
-        m_token = token;
-        Q_EMIT q->tokenChanged(m_token);
+        m_nextToken = nextToken;
+        m_nextTotpValidFrom = validFrom;
+        m_nextTotpValidUntil = validUntil;
+        setToken(token);
+    }
+
+    void AccountPrivate::acceptHotpTokens(QString token, QString nextToken, quint64 nextCounter)
+    {
+        if (!m_is_still_alive) {
+            qCDebug(logger)
+                << "Ignoring token update for account:" << m_id
+                << "Object marked for death";
+            return;
+        }
+
+        if (!m_storage->isStillOpen()) {
+            qCDebug(logger)
+                << "Ignoring token update for account:" << m_id
+                << "Storage no longer open";
+            return;
+        }
+
+        m_nextToken = nextToken;
+        m_nextCounter = nextCounter;
+        setToken(token);
+    }
+
+    void AccountPrivate::setToken(QString token)
+    {
+        Q_Q(Account);
+        if (m_token != token) {
+            qCDebug(logger) << "Token is updated for account:" << m_id;
+            m_token = token;
+            Q_EMIT q->tokenChanged(m_token);
+        }
+    }
+
+    void AccountPrivate::shiftTokens(void)
+    {
+        if (m_nextToken.isEmpty()) {
+            qCDebug(logger)
+                << "Not shifting to next token for account:" << m_id
+                << "It is not yet available";
+            return;
+        }
+
+        QDateTime now = QDateTime::currentDateTime();
+        switch (m_algorithm) {
+        case Account::Algorithm::Hotp:
+            if (m_counter != m_nextCounter) {
+                qCDebug(logger)
+                    << "Not shifting to next token for account:" << m_id
+                    << "It is not valid anymore";
+                return;
+            }
+            break;
+        case Account::Algorithm::Totp:
+            if (now < m_nextTotpValidFrom || now > m_nextTotpValidUntil) {
+                qCDebug(logger)
+                    << "Not shifting to next token for account:" << m_id
+                    << "It is not valid at this time";
+                return;
+            }
+            break;
+        default:
+            Q_ASSERT_X(false, Q_FUNC_INFO, "unknown algorithm value");
+            return;
+        }
+
+        setToken(m_nextToken);
     }
 
     void AccountPrivate::recompute(void)
@@ -175,7 +245,9 @@ namespace accounts
             return;
         }
 
-        qCDebug(logger) << "Requesting recomputed token for account:" << m_id;
+        shiftTokens();
+
+        qCDebug(logger) << "Requesting recomputed tokens for account:" << m_id;
         ComputeHotp *hotpJob = nullptr;
         ComputeTotp *totpJob = nullptr;
 
@@ -236,7 +308,10 @@ namespace accounts
                                    const secrets::EncryptedSecret &secret, uint tokenLength,
                                    quint64 counter, const std::optional<uint> &offset, bool addChecksum) :
         q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true),
-        m_algorithm(Account::Algorithm::Hotp), m_id(id), m_token(QString()), m_name(name), m_issuer(issuer),
+        m_algorithm(Account::Algorithm::Hotp), m_id(id), m_token(QString()), m_nextToken(QString()),
+        m_nextTotpValidFrom(QDateTime::fromMSecsSinceEpoch(0)), // not a totp token so does not really matter
+        m_nextTotpValidUntil(QDateTime::fromMSecsSinceEpoch(0)), // not a totp token so does not really matter
+        m_nextCounter(1ULL), m_name(name), m_issuer(issuer),
         m_secret(secret), m_tokenLength(tokenLength),
         m_counter(counter), m_offset(offset), m_checksum(addChecksum),
         // not a totp token so these values don't really matter
@@ -250,10 +325,12 @@ namespace accounts
                                    const secrets::EncryptedSecret &secret, uint tokenLength,
                                    const QDateTime &epoch, uint timeStep, Account::Hash hash) :
         q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true),
-        m_algorithm(Account::Algorithm::Totp), m_id(id), m_token(QString()), m_name(name), m_issuer(issuer),
-        m_secret(secret), m_tokenLength(tokenLength),
+        m_algorithm(Account::Algorithm::Totp), m_id(id), m_token(QString()), m_nextToken(QString()),
+        m_nextTotpValidFrom(epoch), m_nextTotpValidUntil(epoch),
+        m_nextCounter(0ULL), // not a hotp token so does not really matter
+        m_name(name), m_issuer(issuer), m_secret(secret), m_tokenLength(tokenLength),
         // not a hotp token so these values don't really matter
-        m_counter(0), m_offset(std::nullopt), m_checksum(false),
+        m_counter(0ULL), m_offset(std::nullopt), m_checksum(false),
         m_epoch(epoch), m_timeStep(timeStep), m_hash(hash)
     {
     }
@@ -685,19 +762,24 @@ namespace accounts
     HandleTokenUpdate::HandleTokenUpdate(AccountPrivate *account, ComputeHotp *job, QObject *parent) :
         QObject(parent), m_account(account)
     {
-        QObject::connect(job, &ComputeHotp::otp, this, &HandleTokenUpdate::token);
+        QObject::connect(job, &ComputeHotp::otp, this, &HandleTokenUpdate::hotp);
         QObject::connect(job, &ComputeHotp::finished, this, &HandleTokenUpdate::deleteLater);
     }
 
     HandleTokenUpdate::HandleTokenUpdate(AccountPrivate *account, ComputeTotp *job, QObject *parent) :
         QObject(parent), m_account(account)
     {
-        QObject::connect(job, &ComputeTotp::otp, this, &HandleTokenUpdate::token);
+        QObject::connect(job, &ComputeTotp::otp, this, &HandleTokenUpdate::totp);
         QObject::connect(job, &ComputeTotp::finished, this, &HandleTokenUpdate::deleteLater);
     }
 
-    void HandleTokenUpdate::token(QString otp)
+    void HandleTokenUpdate::totp(QString otp, QString nextOtp, QDateTime validFrom, QDateTime validUntil)
     {
-        m_account->acceptToken(otp);
+        m_account->acceptTotpTokens(otp, nextOtp, validFrom, validUntil);
+    }
+
+    void HandleTokenUpdate::hotp(QString otp, QString nextOtp, quint64 validUntil)
+    {
+        m_account->acceptHotpTokens(otp, nextOtp, validUntil);
     }
 }

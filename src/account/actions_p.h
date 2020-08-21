@@ -161,7 +161,7 @@ namespace accounts
                              const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
         void run(void) override;
     Q_SIGNALS:
-        void otp(const QString otp);
+        void otp(const QString otp, const QString nextOtp, const QDateTime validFrom, const QDateTime validUntil);
     private:
         const AccountSecret * const m_secret;
         const secrets::EncryptedSecret m_tokenSecret;
@@ -181,7 +181,7 @@ namespace accounts
                              quint64 counter, const std::optional<uint> &offset, bool checksum);
         void run(void) override;
     Q_SIGNALS:
-        void otp(const QString otp);
+        void otp(const QString otp, const QString nextOtp, const quint64 nextCounter);;
     private:
         const AccountSecret * const m_secret;
         const secrets::EncryptedSecret m_tokenSecret;

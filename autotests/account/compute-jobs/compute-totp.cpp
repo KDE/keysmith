@@ -45,6 +45,8 @@ void ComputeTotpTest::testDefaults(void)
         return counter * timeStep * 1000;
     });
 
+
+
     std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, rfcSecret);
     QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
 
@@ -58,6 +60,8 @@ void ComputeTotpTest::testDefaults(void)
     QVERIFY2(test::signal_eventually_emitted_once(jobFinished), "job should be finished by now");
 
     QTEST(tokenGenerated.at(0).at(0).toString(), "rfc-test-vector");
+    QCOMPARE(tokenGenerated.at(0).at(2).toDateTime(), QDateTime::fromMSecsSinceEpoch(timeStep * 1000 * (counter + 1))); // from
+    QCOMPARE(tokenGenerated.at(0).at(3).toDateTime(), QDateTime::fromMSecsSinceEpoch(timeStep * 1000 * (counter + 2))); // until
 }
 
 static void define_test_case(int k, const char *expected)

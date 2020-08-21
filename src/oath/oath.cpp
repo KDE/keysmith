@@ -7,7 +7,11 @@
 #include "../hmac/hmac.h"
 #include "../logging_p.h"
 
+#include <limits>
+
 KEYSMITH_LOGGER(logger, ".oath")
+
+static qint64 maxMSecsOffset = std::numeric_limits<qint64>::max();
 
 static QString encodeDefaults(quint32 value, uint tokenLength)
 {
@@ -231,5 +235,67 @@ namespace oath
         quint64 msecs = ((quint64) (now - epochMillis));
         quint64 stepInMsecs = ((quint64) timeStep) * 1000ULL;
         return std::optional<quint64>(msecs / stepInMsecs);
+    }
+
+    /*
+     * Converts a negative qint64 value to its absolute value equivalent in quint64.
+     */
+    static quint64 flipSign(qint64 value)
+    {
+        static const quint64 max = std::numeric_limits<quint64>::max();
+        // take advantage of two's complement to simplify this
+        return max - ((quint64) value) + 1ULL;
+    }
+
+    std::optional<QDateTime> fromCounter(quint64 count, const QDateTime &epoch, uint timeStep)
+    {
+        qint64 epochMillis = epoch.toMSecsSinceEpoch();
+
+        /*
+         * Calculate the number of milliseconds that would be available for the given token.
+         */
+        quint64 max = epochMillis >= 0
+            ? (quint64) (maxMSecsOffset - epochMillis)
+            : ((quint64) maxMSecsOffset) + flipSign(epochMillis);
+
+        quint64 step = timeStep * 1000ULL;
+
+        // see if the requested count of time steps 'fits' inside the number of available milliseconds
+        if ((max / step) < count) {
+            qCDebug(logger)
+                << "Unable to compute datetime matching the given count of time steps:"
+                << "Storage type not wide enough, not enough milliseconds available";
+            return std::nullopt;
+        }
+
+        quint64 ms = count * step;
+        qint64 offset = epochMillis;
+        if (ms <= ((quint64) maxMSecsOffset)) {
+            offset += (qint64) ms;
+        } else {
+            /*
+             * This is safe to do because:
+             * - it has been verified that the number of requested steps 'fits' within the number of available ms
+             * - therefore the epoch must have been negative
+             */
+            offset += maxMSecsOffset;
+            ms -= (quint64) maxMSecsOffset;
+            offset += (qint64) ms;
+        }
+
+        /*
+         * QDateTime::fromMSecsSinceEpoch() is documented that it cannot handle the full qint64 width, but it is not
+         * documented what exactly the restrictions are. Implement a sanity check to detect and recover from confused
+         * 'nonsense' answers.
+         */
+        auto v = QDateTime::fromMSecsSinceEpoch(offset);
+        if (v.toMSecsSinceEpoch() != offset) {
+            qCDebug(logger)
+                << "Unable to compute datetime matching the given count of time steps:"
+                << "Internal confusion in QDateTime detected, number of milliseconds is probably out of range";
+            return std::nullopt;
+        }
+
+        return std::optional<QDateTime>(v);
     }
 }

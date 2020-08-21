@@ -95,6 +95,7 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     accounts::Account *sampleAccount = uut->get(sampleAccountName);
     QVERIFY2(sampleAccount != nullptr, "get() should return the sample account");
 
+    QSignalSpy sampleAccountUpdated(sampleAccount, &accounts::Account::updated);
     QSignalSpy sampleAccountRemoved(sampleAccount, &accounts::Account::removed);
     QSignalSpy sampleAccountCleaned(sampleAccount, &accounts::Account::destroyed);
     QSignalSpy sampleAccountTokenUpdated(sampleAccount, &accounts::Account::tokenChanged);
@@ -132,8 +133,9 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     // third phase: check that hotp counters can be updated in storage
     sampleAccount->advanceCounter();
 
-    QVERIFY2(test::signal_eventually_emitted_twice(sampleAccountTokenUpdated), "sample account should be updated in storage by now");
-    QCOMPARE(sampleAccountTokenUpdated.at(1).at(0), updatedToken);
+    QVERIFY2(test::signal_eventually_emitted_once(sampleAccountUpdated), "sample account should be updated in storage by now");
+    QVERIFY2(test::signal_eventually_emitted_twice(sampleAccountTokenUpdated), "sample account token should be updated to the new counter by now");
+    QCOMPARE(sampleAccountTokenUpdated.at(1).at(0).toString(), updatedToken);
     QCOMPARE(uut->hasError(), false);
     QCOMPARE(error.count(), 0);
 

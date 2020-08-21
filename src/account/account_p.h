@@ -54,9 +54,13 @@ namespace accounts
         void setCounter(quint64 counter);
         void remove(void);
         void acceptCounter(quint64 counter);
-        void acceptToken(QString token);
+        void acceptTotpTokens(QString token, QString nextToken, QDateTime validFrom, QDateTime validUntil);
+        void acceptHotpTokens(QString token, QString nextToken, quint64 validUntil);
         void markForRemoval(void);
         bool isStillAlive(void) const;
+    private:
+        void setToken(QString token);
+        void shiftTokens(void);
     private:
         Q_DISABLE_COPY(AccountPrivate);
         Q_DECLARE_PUBLIC(Account);
@@ -69,6 +73,11 @@ namespace accounts
         const QUuid m_id;
     private:
         QString m_token;
+        QString m_nextToken;
+        QDateTime m_nextTotpValidFrom;
+        QDateTime m_nextTotpValidUntil;
+        quint64 m_nextCounter;
+    private:
         const QString m_name;
         const QString m_issuer;
         const secrets::EncryptedSecret m_secret;
@@ -166,7 +175,8 @@ namespace accounts
     private:
         AccountPrivate * const m_account;
     private Q_SLOTS:
-        void token(QString otp);
+        void totp(QString otp, QString nextOtp, QDateTime validFrom, QDateTime validUntil);
+        void hotp(QString otp, QString nextOtp, quint64 validUntil);
     };
 }
 

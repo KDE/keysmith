@@ -13,6 +13,8 @@
 #include <QScopedPointer>
 #include <QTimer>
 
+#include <limits>
+
 KEYSMITH_LOGGER(logger, ".accounts.actions")
 KEYSMITH_LOGGER(dispatcherLogger, ".accounts.dispatcher")
 
@@ -20,6 +22,8 @@ static const QMetaEnum hashEnum = QMetaEnum::fromType<accounts::Account::Hash>()
 static const QVariant hashDefault = QVariant::fromValue<accounts::Account::Hash>(accounts::Account::Sha1);
 static const QString trueVariantValue(QLatin1String("true"));
 static const QString falseVariantValue(QLatin1String("false"));
+
+static const quint64 maxCounter = std::numeric_limits<quint64>::max();
 
 namespace accounts
 {
@@ -534,6 +538,21 @@ namespace accounts
         Q_EMIT finished();
     }
 
+    static std::optional<QString> computeToken(const AccountSecret *accountSecret,
+                                               const secrets::EncryptedSecret &tokenSecret,
+                                               const oath::Algorithm &algorithm,
+                                               quint64 counter)
+    {
+        QScopedPointer<secrets::SecureMemory> secret(accountSecret->decrypt(tokenSecret));
+        if (!secret) {
+            qCDebug(logger) << "Unable to compute token: failed to decrypt account secret";
+            return std::nullopt;
+        }
+
+        return algorithm.compute(counter, reinterpret_cast<char*>(secret->data()), secret->size());
+    }
+
+
     ComputeTotp::ComputeTotp(const AccountSecret *secret,
                              const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
                              const QDateTime &epoch, uint timeStep, const Account::Hash &hash,
@@ -602,18 +621,27 @@ namespace accounts
             return;
         }
 
-        QScopedPointer<secrets::SecureMemory> secret(m_secret->decrypt(m_tokenSecret));
-        if (!secret) {
-            qCDebug(logger) << "Unable to compute TOTP token: failed to decrypt secret";
+        const auto counterValue = *counter;
+        const auto validFrom = counterValue < maxCounter
+            ? oath::fromCounter(counterValue + 1ULL, m_epoch, m_timeStep)
+            : std::nullopt;
+        const auto validUntil = counterValue < (maxCounter - 1ULL)
+            ? oath::fromCounter(counterValue + 2ULL, m_epoch, m_timeStep)
+            : std::nullopt;
+        if (!validFrom || !validUntil) {
+            qCDebug(logger) << "Unable to compute TOTP token: failed to determine expiry datetime of tokens";
             Q_EMIT finished();
             return;
         }
 
-        const auto token = algorithm->compute(*counter, reinterpret_cast<char*>(secret->data()), secret->size());
-        if (token) {
-            Q_EMIT otp(*token);
+        const auto token = computeToken(m_secret, m_tokenSecret, *algorithm, counterValue);
+        const auto nextToken = token
+            ? computeToken(m_secret, m_tokenSecret, *algorithm, counterValue + 1ULL)
+            : std::nullopt;
+        if (token && nextToken) {
+            Q_EMIT otp(*token, *nextToken, *validFrom, *validUntil);
         } else {
-            qCDebug(logger) << "Failed to compute TOTP token";
+            qCDebug(logger) << "Failed to compute TOTP tokens";
         }
 
         Q_EMIT finished();
@@ -654,18 +682,20 @@ namespace accounts
             return;
         }
 
-        QScopedPointer<secrets::SecureMemory> secret(m_secret->decrypt(m_tokenSecret));
-        if (!secret) {
-            qCDebug(logger) << "Unable to compute HOTP token: failed to decrypt secret";
+        if (m_counter == maxCounter) {
+            qCDebug(logger) << "Unable to compute HOTP token: counter reached its limit";
             Q_EMIT finished();
             return;
         }
 
-        const auto token = algorithm->compute(m_counter, reinterpret_cast<char*>(secret->data()), secret->size());
-        if (token) {
-            Q_EMIT otp(*token);
+        const auto token = computeToken(m_secret, m_tokenSecret, *algorithm, m_counter);
+        const auto nextToken = token
+            ? computeToken(m_secret, m_tokenSecret, *algorithm, m_counter + 1ULL)
+            : std::nullopt;
+        if (token && nextToken) {
+            Q_EMIT otp(*token, *nextToken, m_counter + 1ULL);
         } else {
-            qCDebug(logger) << "Failed to compute HOTP token";
+            qCDebug(logger) << "Failed to compute HOTP tokens";
         }
 
         Q_EMIT finished();

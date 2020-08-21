@@ -51,6 +51,7 @@ namespace oath
 
     uint luhnChecksum(quint32 value, uint digits);
     std::optional<quint64> count(const QDateTime &epoch, uint timeStep, const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
+    std::optional<QDateTime> fromCounter(quint64 count, const QDateTime &epoch, uint timeStep);
 }
 
 #endif
