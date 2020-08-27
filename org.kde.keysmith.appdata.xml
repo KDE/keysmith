@@ -15,6 +15,7 @@
   <name xml:lang="et">Keysmith</name>
   <name xml:lang="fi">Keysmith</name>
   <name xml:lang="fr">Keysmith</name>
+  <name xml:lang="hi">कीस्मिथ (Keysmith)</name>
   <name xml:lang="id">Keysmith</name>
   <name xml:lang="it">Keysmith</name>
   <name xml:lang="ko">Keysmith</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="et">Kaheastmelise autentimise koodi genereerimine Plasma Mobile ja Plasma töölaua tarbeks</summary>
   <summary xml:lang="fi">Kahden tekijän koodigeneraattori mobiili- ja työpöytä-Plasmaan</summary>
   <summary xml:lang="fr">Générateur de code à deux facteurs pour Plasma mobile et le bureau Plasma </summary>
+  <summary xml:lang="hi">प्लाज्मा मोबाइल व डेस्कटॉप के लिए दोहरे प्रमाणीकरण कोड जनरेटर </summary>
   <summary xml:lang="id">Penghasil kode two-factor untuk Plasma Mobile dan Desktop</summary>
   <summary xml:lang="it">Generatore di codice a due fattori per Plasma Mobile e Desktop</summary>
   <summary xml:lang="ko">Plasma 모바일과 데스크톱용 2단계 인증 코드 생성기</summary>
@@ -67,6 +69,7 @@
   <developer_name xml:lang="et">KDE kogukond</developer_name>
   <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
   <developer_name xml:lang="fr">La communauté KDE</developer_name>
+  <developer_name xml:lang="hi">केडीई समुदाय</developer_name>
   <developer_name xml:lang="id">Komunitas KDE</developer_name>
   <developer_name xml:lang="it">La comunità KDE</developer_name>
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
@@ -89,6 +92,7 @@
     <p xml:lang="es">Keysmith genera elementos para los inicios de sesión de dos factores (2FA)</p>
     <p xml:lang="et">Keysmith genereerib pääsmikke kaheastmelise autentimise (2FA) tarbeks</p>
     <p xml:lang="fr">Keysmith génère des jetons pour vos connexions avec authentification à deux facteurs (2FA)</p>
+    <p xml:lang="hi">कीस्मिथ आपके दोहरे प्रमाणीकरण लॉगिन (2FA) के लिए टोकन बनाता है</p>
     <p xml:lang="id">Keysmith menghasilkan token-token untuk login two-factor kamu (2FA)</p>
     <p xml:lang="it">Keysmith genera token per i tuoi accessi a due fattori (2FA)</p>
     <p xml:lang="ko">Keysmith는 2단계 인증(2FA) 토큰을 생성합니다</p>
@@ -110,6 +114,7 @@
       <li xml:lang="et">Aja- ja räsipõhine OTP</li>
       <li xml:lang="fi">Aika- ja tiivisteperustainen OTP</li>
       <li xml:lang="fr">Temps et OTP (One Time Password) sur code de hachage</li>
+      <li xml:lang="hi">समय व मिश्रण अधारित OTP</li>
       <li xml:lang="id">Waktu dan Hash berbasiskan OTP</li>
       <li xml:lang="it">OTP basato su tempo e hash</li>
       <li xml:lang="ko">시간과 해시 기반 OTP</li>
