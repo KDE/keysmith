@@ -36,6 +36,7 @@ Comment[cs]=Spravujte tokeny OTP pomocí dvoufaktorového ověření (2fa)
 Comment[en_GB]=Manage your OTP tokens for two factor authentication (2fa)
 Comment[es]=Gestión de elementos OTP para autenticación de dos factores (2fa)
 Comment[et]=Kaheastmelise autentimise (2fa) OTP-pääsmike haldamine 
+Comment[fi]=Hallitse kahden tekijän todennuksen (2FA) OTP-merkkejä
 Comment[fr]=Gérez vos jetons OTP pour l'authentification à 2 facteurs (2fa)
 Comment[hi]=आपके दोहरे प्रमाणीकरण (2fa) के लिए OTP टोकन का प्रबंधन
 Comment[it]=Gestisce i token OTP per l'autenticazione a due fattori (2fa)
