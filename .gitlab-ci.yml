@@ -1,11 +1,13 @@
 #
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
-# SPDX-FileCopyrightText: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
 include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-before.yml
+  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-extragear-linux.yml
+  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-extragear-freebsd.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-reuse.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/binary-flatpak.yml
 
