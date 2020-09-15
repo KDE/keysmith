@@ -148,6 +148,7 @@ Kirigami.ScrollablePage {
         id: addAction
         text: i18n("Add")
         iconName: "list-add"
+        enabled: addActionEnabled
         visible: addActionEnabled
         onTriggered: {
             root.accounts.error = false;
