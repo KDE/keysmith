@@ -13,4 +13,4 @@ Some todo items include:
  - QR code scanning
  - Backup and Restore of accounts
 
-Originally this code was based largely on the [authenticator-ng](https://github.com/dobey/authenticator-ng) application by the Rodney Dawes and Michael Zanetti for Ubuntu Touch.
+Originally this code was based largely on the [authenticator-ng](https://github.com/dobey/authenticator-ng) application by Rodney Dawes and Michael Zanetti for Ubuntu Touch.
