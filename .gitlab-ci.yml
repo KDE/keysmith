@@ -9,6 +9,7 @@ include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-extragear-linux.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-extragear-freebsd.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-reuse.yml
+  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-static-analysis.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/binary-flatpak.yml
 
 variables:
@@ -21,3 +22,9 @@ flatpak:
     APP_ID: org.kde.keysmith
     FLATPAK_MODULE: org.kde.keysmith
     CMAKE_ARGS: -DBUILD_TESTING=OFF
+
+static-analysis-linux-merge-request:
+  extends: .static-analysis-linux-merge-request
+
+static-analysis-linux-commit:
+  extends: .static-analysis-linux-commit
