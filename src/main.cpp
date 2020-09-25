@@ -5,6 +5,7 @@
  */
 
 #include <QApplication>
+#include <QCommandLineParser>
 #include <QQmlApplicationEngine>
 #include <QtQml>
 #include <QUrl>
@@ -12,6 +13,7 @@
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
+#include "app/cli.h"
 #include "app/keysmith.h"
 #include "model/accounts.h"
 #include "model/input.h"
@@ -40,6 +42,32 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QStringLiteral("Keysmith"));
     QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
 
+    QCommandLineParser cliParser;
+    // options that will be handled via UI interaction
+    app::CommandLineOptions::addOptions(cliParser);
+
+    // default/boilerplate options handled entirely via command line
+    const auto helpOption = cliParser.addHelpOption();
+    const auto versionOption = cliParser.addVersionOption();
+
+    bool parseOk = cliParser.parse(QCoreApplication::arguments());
+
+    /*
+     * First check for pure command line options and handle these.
+     * If any are found, the application should not bother with an UI.
+     */
+
+    if (cliParser.isSet(helpOption)) {
+        int ret = parseOk ? 0 : 1;
+        cliParser.showHelp(ret);
+        return ret; // just to be explicit: showHelp() is documented to call exit()
+    }
+
+    if (cliParser.isSet(versionOption)) {
+        cliParser.showVersion();
+        return 0; // just to be explicit: showVersion() is documented to call exit()
+    }
+
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
@@ -65,6 +93,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         Q_UNUSED(js);
 
         return new app::Keysmith();
+    });
+    qmlRegisterSingletonType<app::CommandLineOptions>("Keysmith.Application", 1, 0, "CommandLine", [parseOk, &cliParser](QQmlEngine *qml, QJSEngine *js) -> QObject *
+    {
+        Q_UNUSED(qml);
+        Q_UNUSED(js);
+
+        return new app::CommandLineOptions(cliParser, parseOk);
     });
 
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
