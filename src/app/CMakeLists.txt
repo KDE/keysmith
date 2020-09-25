@@ -5,7 +5,8 @@
 
 set(keysmith_SRCS
     keysmith.cpp
+    cli.cpp
 )
 
 add_library(keysmith_lib STATIC ${keysmith_SRCS})
-target_link_libraries(keysmith_lib Qt5::Core Qt5::Gui model_lib account_lib)
+target_link_libraries(keysmith_lib Qt5::Core Qt5::Gui Qt5::Concurrent KF5::I18n model_lib account_lib)

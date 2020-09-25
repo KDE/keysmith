@@ -8,7 +8,7 @@
 #include <QClipboard>
 #include <QGuiApplication>
 
-KEYSMITH_LOGGER(logger, ".app")
+KEYSMITH_LOGGER(logger, ".app.keysmith")
 
 namespace app
 {
