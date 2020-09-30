@@ -17,7 +17,36 @@ Kirigami.FormLayout {
     property Models.AccountListModel accounts: Keysmith.accountListModel()
     property Models.ValidatedAccountInput validatedInput
 
+    onValidatedInputChanged: {
+        revalidate();
+    }
+
     property bool acceptable : accountName.acceptableInput && issuerName.acceptableInput
+
+    /*
+     * When accounts are added/removed from the model, the account name and issuer should be revalidated as well.
+     * It may have become eligible or in-eligible depending on whether or not other accounts with the same name
+     * for the same new issuer value now (still) exist.
+     *
+     * Unfortunately there seems to be nothing to explicitly trigger revalidation on the text field.
+     * Work around is to force revalidation to happen by "editing" the value in the text field(s) directly.
+     */
+    Connections {
+        target: accounts
+        onRowsInserted: {
+            revalidate();
+        }
+        onRowsRemoved: {
+            revalidate();
+        }
+        onModelReset: {
+            revalidate();
+        }
+    }
+    function revalidate() {
+        // because of how issuer revalidation works, this also implicitly covers the account name as well
+        issuerName.insert(issuerName.text.length, "");
+    }
 
     Controls.TextField {
         id: accountName

@@ -26,7 +26,10 @@ Kirigami.Page {
     property bool tokenDetailsAcceptable: hotpDetailsAcceptable && totpDetailsAcceptable
     property bool acceptable: accountName.acceptable && secretAcceptable && tokenTypeAcceptable && tokenDetailsAcceptable
 
-    property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {
+    property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {}
+
+    Connections {
+        target: validatedInput
         onTypeChanged: {
             root.detailsEnabled = false;
         }
