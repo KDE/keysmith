@@ -43,6 +43,7 @@ namespace model
         Q_ENUM(TokenType)
         AccountInput(QObject *parent = nullptr);
         void createNewAccount(accounts::AccountStorage *storage) const;
+        Q_INVOKABLE void reset(void);
     public:
         TokenType type(void) const;
         void setType(model::AccountInput::TokenType type);

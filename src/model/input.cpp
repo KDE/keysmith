@@ -36,6 +36,21 @@ namespace model
     {
     }
 
+    void AccountInput::reset(void)
+    {
+        setType(TokenType::Totp);
+        setName(QString());
+        setIssuer(QString());
+        setSecret(QString());
+        setTokenLength(6U);
+        setTimeStep(30U);
+        setAlgorithm(TOTPAlgorithm::Sha1);
+        setEpoch(DEFAULT_EPOCH);
+        setChecksum(false);
+        setCounter(0ULL);
+        setDynamicTruncation();
+    }
+
     void AccountInput::createNewAccount(accounts::AccountStorage *storage) const
     {
         if (!storage) {
