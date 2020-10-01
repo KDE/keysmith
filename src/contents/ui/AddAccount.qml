@@ -15,8 +15,11 @@ import Keysmith.Validators 1.0 as Validators
 Kirigami.Page {
     id: root
     title: i18nc("@title:window", "Add new account")
-    signal dismissed
+    signal quit
+    signal cancelled
+    signal newAccount(var input)
     property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property bool quitEnabled: false
     property bool detailsEnabled: false
     property bool validateAccountAvailability: true
 
@@ -117,13 +120,28 @@ Kirigami.Page {
         }
     }
 
+    actions.left: Kirigami.Action {
+        text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
+        iconName: "edit-undo"
+        onTriggered: {
+            root.cancelled();
+        }
+    }
+    actions.right: Kirigami.Action {
+        text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
+        iconName: "application-exit"
+        enabled: root.quitEnabled
+        visible: root.quitEnabled
+        onTriggered: {
+            root.quit();
+        }
+    }
     actions.main: Kirigami.Action {
         text: i18n("Add")
         iconName: "answer-correct"
         enabled: acceptable
         onTriggered: {
-            root.accounts.addAccount(root.validatedInput);
-            root.dismissed();
+            root.newAccount(root.validatedInput);
         }
     }
 }

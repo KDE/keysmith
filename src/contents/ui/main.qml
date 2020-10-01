@@ -49,10 +49,21 @@ Kirigami.ApplicationWindow {
         id: addPageComponent
         AddAccount {
             accounts: root.accounts
-            onDismissed: {
-                pageStack.pop();
-                addActionEnabled = true;
+            onCancelled: {
+                popAddAccountPage();
             }
+            onNewAccount: {
+                popAddAccountPage();
+                root.accounts.addAccount(input);
+            }
+        }
+    }
+
+    function popAddAccountPage(next) {
+        pageStack.pop();
+        addActionEnabled = true;
+        if (next) {
+            pageStack.push(next);
         }
     }
 
