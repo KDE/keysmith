@@ -1,0 +1,12 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ */
+#ifndef KEYSMITH_VERSION_H
+#define KEYSMITH_VERSION_H
+
+#include <QString>
+
+#define KEYSMITH_VERSION_STRING (QStringLiteral("@keysmith_VERSION@"))
+
+#endif

@@ -22,6 +22,8 @@
 #include "validators/issuervalidator.h"
 #include "validators/secretvalidator.h"
 
+#include "version.h"
+
 /*
  * Integrate QML debugging/profiling support, conditional on building Keysmith in Debug mode.
  * NDEBUG is defined by the C standard and automatically set by CMake during a Release type build, hence the double negative.
@@ -40,6 +42,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
     QCoreApplication::setApplicationName(QStringLiteral("Keysmith"));
+    QCoreApplication::setApplicationVersion(KEYSMITH_VERSION_STRING);
     QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
 
     QCommandLineParser cliParser;
