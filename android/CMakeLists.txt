@@ -18,4 +18,4 @@ file (
 # As a work-around, the AndroidManifest.xml is gitignore'd and generated (copied) from another file, taking care to
 # preserve a file-level dependency between the 'real' source and the generated file.
 #
-configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml.in" "${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml" COPYONLY)
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml.in" "${CMAKE_CURRENT_SOURCE_DIR}/AndroidManifest.xml")
