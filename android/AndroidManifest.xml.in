@@ -6,7 +6,7 @@
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="org.kde.keysmith"
-          android:versionName="0.0.1"
+          android:versionName="0.2.1"
           android:versionCode="1"
           android:installLocation="auto">
     <application android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="Keysmith" android:icon="@drawable/keysmith">
