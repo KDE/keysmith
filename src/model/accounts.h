@@ -29,13 +29,13 @@ namespace model
     class AccountView : public QObject
     {
         Q_OBJECT
-        Q_PROPERTY(QString name READ name NOTIFY never)
-        Q_PROPERTY(QString issuer READ issuer NOTIFY never)
+        Q_PROPERTY(QString name READ name CONSTANT)
+        Q_PROPERTY(QString issuer READ issuer CONSTANT)
         Q_PROPERTY(QString token READ token NOTIFY tokenChanged)
         Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged);
-        Q_PROPERTY(uint timeStep READ timeStep NOTIFY never);
-        Q_PROPERTY(bool isHotp READ isHotp NOTIFY never);
-        Q_PROPERTY(bool isTotp READ isTotp NOTIFY never);
+        Q_PROPERTY(uint timeStep READ timeStep CONSTANT);
+        Q_PROPERTY(bool isHotp READ isHotp CONSTANT);
+        Q_PROPERTY(bool isTotp READ isTotp CONSTANT);
     public:
         explicit AccountView(accounts::Account *model, QObject *parent = nullptr);
         QString name(void) const;
@@ -47,7 +47,6 @@ namespace model
         bool isTotp(void) const;
         Q_INVOKABLE qint64 millisecondsLeftForToken(void) const;
     Q_SIGNALS:
-        void never(void);
         void tokenChanged(void);
         void remove(void);
         void recompute(void);
