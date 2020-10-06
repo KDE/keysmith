@@ -14,10 +14,15 @@ import org.kde.kirigami 2.8 as Kirigami
 
 Kirigami.FormLayout {
     id: root
+    property bool validateAccountAvailability: true
     property Models.AccountListModel accounts: Keysmith.accountListModel()
     property Models.ValidatedAccountInput validatedInput
 
     onValidatedInputChanged: {
+        revalidate();
+    }
+
+    onValidateAccountAvailabilityChanged: {
         revalidate();
     }
 
@@ -56,6 +61,7 @@ Kirigami.FormLayout {
             id: accountNameValidator
             accounts: root.accounts
             issuer: validatedInput.issuer
+            validateAvailability: validateAccountAvailability
         }
         onTextChanged: {
             if (acceptableInput) {

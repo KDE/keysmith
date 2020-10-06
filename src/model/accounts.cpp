@@ -270,8 +270,21 @@ namespace model
     }
 
     AccountNameValidator::AccountNameValidator(QObject *parent) :
-        QValidator(parent), m_issuer(std::nullopt), m_accounts(nullptr), m_delegate(nullptr)
+        QValidator(parent), m_validateAvailability(true), m_issuer(std::nullopt), m_accounts(nullptr), m_delegate(nullptr)
     {
+    }
+
+    bool AccountNameValidator::validateAvailability(void) const
+    {
+        return m_validateAvailability;
+    }
+
+    void AccountNameValidator::setValidateAvailability(bool enabled)
+    {
+        if (enabled != m_validateAvailability) {
+            m_validateAvailability = enabled;
+            Q_EMIT validateAvailabilityChanged();
+        }
     }
 
     QString AccountNameValidator::issuer(void) const
@@ -294,6 +307,12 @@ namespace model
 
     QValidator::State AccountNameValidator::validate(QString &input, int &pos) const
     {
+        QValidator::State result = m_delegate.validate(input, pos);
+        if (!m_validateAvailability) {
+            qCDebug(logger) << "Not validating account availability: explicitly disabled";
+            return result;
+        }
+
         if (!m_accounts) {
             qCDebug(logger) << "Unable to validat account name: missing accounts model object";
             return QValidator::Invalid;
@@ -304,9 +323,9 @@ namespace model
             return QValidator::Invalid;
         }
 
-        QValidator::State result = m_delegate.validate(input, pos);
-        return result != QValidator::Acceptable
-            ||  m_accounts->isAccountStillAvailable(input, *m_issuer) ? result : QValidator::Intermediate;
+        return result != QValidator::Acceptable || m_accounts->isAccountStillAvailable(input, *m_issuer)
+            ? result
+            : QValidator::Intermediate;
     }
 
     void AccountNameValidator::fixup(QString &input) const

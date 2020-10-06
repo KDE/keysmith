@@ -116,10 +116,18 @@ namespace model
         Q_OBJECT
         Q_PROPERTY(QString issuer READ issuer WRITE setIssuer NOTIFY issuerChanged)
         Q_PROPERTY(model::SimpleAccountListModel * accounts READ accounts WRITE setAccounts NOTIFY accountsChanged);
+        Q_PROPERTY(
+            bool validateAvailability
+            READ validateAvailability
+            WRITE setValidateAvailability
+            NOTIFY validateAvailabilityChanged
+        );
     public:
         explicit AccountNameValidator(QObject *parent = nullptr);
         QValidator::State validate(QString &input, int &pos) const override;
         void fixup(QString &input) const override;
+        bool validateAvailability(void) const;
+        void setValidateAvailability(bool enabled);
         QString issuer(void) const;
         void setIssuer(const QString &issuer);
         SimpleAccountListModel * accounts(void) const;
@@ -127,7 +135,9 @@ namespace model
     Q_SIGNALS:
         void issuerChanged(void);
         void accountsChanged(void);
+        void validateAvailabilityChanged(void);
     private:
+        bool m_validateAvailability;
         std::optional<QString> m_issuer;
         SimpleAccountListModel * m_accounts;
         const validators::NameValidator m_delegate;

@@ -18,6 +18,7 @@ Kirigami.Page {
     signal dismissed
     property Models.AccountListModel accounts: Keysmith.accountListModel()
     property bool detailsEnabled: false
+    property bool validateAccountAvailability: true
 
     property bool secretAcceptable: accountSecret.acceptableInput
     property bool tokenTypeAcceptable: hotpRadio.checked || totpRadio.checked
@@ -41,6 +42,7 @@ Kirigami.Page {
         }
         AccountNameForm {
             id: accountName
+            validateAccountAvailability: root.validateAccountAvailability
             validatedInput: root.validatedInput
             twinFormLayouts: [requiredDetails, hotpDetails, totpDetails]
         }
