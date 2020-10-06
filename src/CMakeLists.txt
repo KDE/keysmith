@@ -32,6 +32,7 @@ target_link_libraries(keysmith
 
 if(ANDROID)
     kirigami_package_breeze_icons(ICONS
+        application-quit
         answer-correct
         edit-delete
         edit-undo
