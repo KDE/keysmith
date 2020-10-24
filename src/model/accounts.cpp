@@ -97,7 +97,8 @@ namespace model
         QObject::connect(storage, &accounts::AccountStorage::loaded, this, &SimpleAccountListModel::loadedChanged);
 
         beginResetModel();
-        for (const QString &name : m_storage->accounts()) {
+        const auto accounts = m_storage->accounts();
+        for (const QString &name : accounts) {
             populate(name, createView(name));
         }
         m_has_error = storage->hasError();
@@ -125,7 +126,7 @@ namespace model
 
         m_index.append(name);
         m_accounts[name] = account;
-        account->recompute();
+        Q_EMIT account->recompute();
     }
 
     bool SimpleAccountListModel::error(void) const
@@ -275,7 +276,9 @@ namespace model
 
     QString AccountNameValidator::issuer(void) const
     {
-        return m_issuer ? *m_issuer : QLatin1String(":: WARNING: dummy invalid issuer; this is meant as a write-only property anyway ::");
+        return m_issuer
+            ? *m_issuer
+            : QStringLiteral(":: WARNING: dummy invalid issuer; this is meant as a write-only property anyway ::");
     }
 
     void AccountNameValidator::setIssuer(const QString &issuer)

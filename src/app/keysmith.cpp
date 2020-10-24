@@ -50,7 +50,7 @@ namespace app
         if (!m_storage) {
             const accounts::SettingsProvider settings([](const accounts::PersistenceAction &action) -> void
             {
-                QSettings data("org.kde.keysmith", "Keysmith");
+                QSettings data(QStringLiteral("org.kde.keysmith"), QStringLiteral("Keysmith"));
                 action(data);
             });
             m_storage = accounts::AccountStorage::open(settings);

@@ -24,9 +24,9 @@ namespace model
         Q_INVOKABLE bool providePassword(QString password);
         Q_INVOKABLE bool provideBothPasswords(QString password, QString other);
     Q_SIGNALS:
-        void passwordExists(void) const;
-        void passwordAccepted(void) const;
-        void derivedKey(void) const;
+        void passwordExists(void);
+        void passwordAccepted(void);
+        void derivedKey(void);
     private Q_SLOTS:
         void setKeyAvailable(void);
         void setPasswordAvailable(void);

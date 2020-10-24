@@ -74,7 +74,7 @@ namespace model
         static accounts::Account::Hash toHash(const TOTPAlgorithms value);
     public:
         explicit SimpleAccountListModel(accounts::AccountStorage *storage, QObject *parent = nullptr);
-        Q_INVOKABLE void addAccount(AccountInput *input);
+        Q_INVOKABLE void addAccount(model::AccountInput *input);
         Q_INVOKABLE bool isAccountStillAvailable(const QString &name, const QString &issuer) const;
         Q_INVOKABLE int rowCount(const QModelIndex &parent = QModelIndex()) const override;
         Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
