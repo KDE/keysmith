@@ -35,17 +35,23 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QApplication app(argc, argv);
     KLocalizedString::setApplicationDomain("keysmith");
 
-    QCoreApplication::setOrganizationName("KDE");
-    QCoreApplication::setOrganizationDomain("kde.org");
-    QCoreApplication::setApplicationName("Keysmith");
+    QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
+    QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
+    QCoreApplication::setApplicationName(QStringLiteral("Keysmith"));
     QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
-    qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel", "Use the Keysmith singleton to obtain an AccountListModel");
-    qmlRegisterUncreatableType<model::PasswordRequest>("Keysmith.Models", 1, 0, "PasswordRequestModel", "Use the Keysmith singleton to obtain an PasswordRequestModel");
-    qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models", 1, 0, "Account", "Use an AccountListModel from the Keysmith singleton to obtain an Account");
+    qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel",
+        QStringLiteral("Use the Keysmith singleton to obtain an AccountListModel")
+    );
+    qmlRegisterUncreatableType<model::PasswordRequest>("Keysmith.Models", 1, 0, "PasswordRequestModel",
+        QStringLiteral("Use the Keysmith singleton to obtain an PasswordRequestModel")
+    );
+    qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models", 1, 0, "Account",
+        QStringLiteral("Use an AccountListModel from the Keysmith singleton to obtain an Account")
+    );
     qmlRegisterType<model::AccountInput>("Keysmith.Models", 1, 0, "ValidatedAccountInput");
     qmlRegisterType<model::SortedAccountsListModel>("Keysmith.Models", 1, 0, "SortedAccountListModel");
     qmlRegisterType<model::AccountNameValidator>("Keysmith.Validators", 1, 0, "AccountNameValidator");
