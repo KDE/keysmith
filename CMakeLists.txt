@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.10)
 project(keysmith VERSION "0.2.1")
 
 set(KF5_MIN_VERSION "5.62.0")
-set(QT_MIN_VERSION "5.14.0")
+set(QT_MIN_VERSION "5.15.0")
 set(SODIUM_MIN_VERSION "1.0.16")
 
 ################# Disallow in-source build #################

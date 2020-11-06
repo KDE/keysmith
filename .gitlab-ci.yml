@@ -7,7 +7,6 @@
 
 include:
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-before.yml
-  - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-extragear-linux.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-extragear-freebsd.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-reuse.yml
   - https://invent.kde.org/sysadmin/ci-tooling/raw/master/invent/ci-static-analysis.yml
@@ -15,6 +14,8 @@ include:
 
 variables:
   BUNDLE: org.kde.keysmith.flatpak
+  BRANCH_GROUP: kf5-qt5
+  PRODUCT: Extragear
 
 flatpak:
   extends: .flatpak
@@ -24,14 +25,44 @@ flatpak:
     FLATPAK_MODULE: org.kde.keysmith
     CMAKE_ARGS: -DBUILD_TESTING=OFF
 
-# needed for the static analysis jobs below
-.linux:
-  artifacts:
-    paths:
-      - build
+#
+# Build jobs for Qt 5.15 which are not provided by CI templates (yet).
+#
 
-static-analysis-linux-merge-request:
+android kf5-qt5 qt5.15:
+  image: "kdeorg/ci-android"
+  extends: .android
+  only:
+    - master
+    - merge_requests
+  variables:
+    PLATFORM: AndroidQt5.15
+
+linux kf5-qt5 qt5.15:
+  image: "kdeorg/ci-suse-qt515"
+  extends: .linux
+  only:
+    - master
+    - merge_requests
+  variables:
+    PLATFORM: SUSEQt5.15
+
+#
+# Add static analysis jobs for Qt 5.15 builds.
+#
+
+static-analysis-linux-merge-request kf5-qt5 qt5.15:
   extends: .static-analysis-linux-merge-request
+  image: "kdeorg/ci-suse-qt515"
+  variables:
+    PLATFORM: SUSEQt5.15
+  dependencies:
+    - linux kf5-qt5 qt5.15
 
-static-analysis-linux-commit:
+static-analysis-linux-commit kf5-qt5 qt5.15:
   extends: .static-analysis-linux-commit
+  image: "kdeorg/ci-suse-qt515"
+  variables:
+    PLATFORM: SUSEQt5.15
+  dependencies:
+    - linux kf5-qt5 qt5.15
