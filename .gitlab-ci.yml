@@ -23,6 +23,12 @@ flatpak:
     FLATPAK_MODULE: org.kde.keysmith
     CMAKE_ARGS: -DBUILD_TESTING=OFF
 
+# needed for the static analysis jobs below
+.linux:
+  artifacts:
+    paths:
+      - build
+
 static-analysis-linux-merge-request:
   extends: .static-analysis-linux-merge-request
 
