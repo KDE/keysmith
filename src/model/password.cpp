@@ -15,11 +15,18 @@ namespace model
         QObject(parent), m_secret(secret), m_previous(false), m_haveKey(false), m_havePassword(false)
     {
         QObject::connect(m_secret, &accounts::AccountSecret::existingPasswordNeeded, this, &PasswordRequest::setPreviouslyDefined);
+        QObject::connect(m_secret, &accounts::AccountSecret::newPasswordNeeded, this, &PasswordRequest::setNewPasswordNeeded);
         QObject::connect(m_secret, &accounts::AccountSecret::passwordAvailable, this, &PasswordRequest::setPasswordAvailable);
         QObject::connect(m_secret, &accounts::AccountSecret::keyAvailable, this, &PasswordRequest::setKeyAvailable);
         m_previous = secret->isExistingPasswordRequested();
+        m_firstRun = secret->isNewPasswordRequested();
         m_haveKey = secret->isKeyAvailable();
         m_havePassword = secret->isPasswordAvailable();
+    }
+
+    bool PasswordRequest::firstRun(void) const
+    {
+        return m_firstRun;
     }
 
     bool PasswordRequest::previouslyDefined(void) const
@@ -109,9 +116,21 @@ namespace model
     {
         if (!m_previous) {
             m_previous = true;
+            Q_EMIT passwordRequestChanged();
             Q_EMIT passwordExists();
         } else {
             qCDebug(logger) << "Ignored signal: already marked password for existing secrets";
+        }
+    }
+
+    void PasswordRequest::setNewPasswordNeeded(void)
+    {
+        if (!m_firstRun) {
+            m_firstRun = true;
+            Q_EMIT passwordRequestChanged();
+            Q_EMIT newPasswordNeeded();
+        } else {
+            qCDebug(logger) << "Ignored signal: already marked password for first run/setup of secrets";
         }
     }
 }

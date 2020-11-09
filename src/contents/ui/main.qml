@@ -23,8 +23,6 @@ Kirigami.ApplicationWindow {
     property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {}
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
-    property Component passwordRequestPage: passwordRequest.previouslyDefined ? unlockAccountsPage : setupPasswordPage
-
     Component {
         id: setupPasswordPage
         SetupPassword {
@@ -63,11 +61,13 @@ Kirigami.ApplicationWindow {
             }
             onCancelled: {
                 root.addAccountConfirmed = false;
-                popAddAccountPage(passwordRequestPage);
+                popAddAccountPage();
+                pushPasswordPage();
             }
             onNewAccount: {
                 root.addAccountConfirmed = true;
-                popAddAccountPage(passwordRequestPage);
+                popAddAccountPage();
+                pushPasswordPage();
             }
         }
     }
@@ -95,7 +95,8 @@ Kirigami.ApplicationWindow {
             title: i18nc("@title:window", "Invalid account")
             error: i18nc("@info:label", "The account you are trying to add is invalid. You can either quit the app, or continue without adding the account.")
             onDismissed: {
-                popAddAccountPage(passwordRequestPage);
+                popAddAccountPage();
+                pushPasswordPage();
             }
             onQuit: {
                 pageStack.pop();
@@ -152,6 +153,17 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    function pushPasswordPage() {
+        /*
+         * Sanity check that the password request has been resolved already.
+         * If it is not yet clear which type of password request is needed, then signals should still
+         * fire once this becomes clear and the request is fully resolved.
+         */
+        if (passwordRequest.previouslyDefined || passwordRequest.firstRun) {
+            pageStack.push(passwordRequest.previouslyDefined ? unlockAccountsPage : setupPasswordPage);
+        }
+    }
+
     /*
      * TODO maybe have a onPasswordProvided handler to push a "progress" page to provide visual feedback for devices
      * where key derivation is slow?
@@ -171,17 +183,22 @@ Kirigami.ApplicationWindow {
                 pageStack.push(accountsOverviewPage);
             }
         }
-        onPreviouslyDefinedChanged: {
+        onPasswordExists: {
             /*
-             * Ignore if there is an account from the commandline to process: in that case password unlocking/setup is
+             * Ignore if there is an account from the commandline to process: in that case password unlocking is
              * deferred until after account confirmation/rejection by the user
              */
             if (!addAccountRequested) {
-                /*
-                 * Cannot rely on passwordRequestPage property binding having been updated already here, work around
-                 * by repeating the passwordRequestPage property binding expression instead.
-                 */
-                pageStack.push(passwordRequest.previouslyDefined ? unlockAccountsPage : setupPasswordPage);
+                pushPasswordPage();
+            }
+        }
+        onNewPasswordNeeded: {
+            /*
+             * Ignore if there is an account from the commandline to process: in that case password setup is deferred
+             * until after account confirmation/rejection by the user
+             */
+            if (!addAccountRequested) {
+                pushPasswordPage();
             }
         }
     }
@@ -220,6 +237,12 @@ Kirigami.ApplicationWindow {
         if (addAccountRequested) {
             root.validatedInput.reset();
             CommandLine.handleNewAccount(root.validatedInput);
+        } else {
+            /*
+             * In case password request resolves more quickly than the UI, make sure to check if it has been resolved
+             * yet and prompt for passwords.
+             */
+            pushPasswordPage();
         }
     }
 }
