@@ -5,43 +5,34 @@
 
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.0 as Controls
+import QtQuick.Controls 2.5 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
 
-Kirigami.Page {
+Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Password")
 
     property bool bannerTextError : false
-    property string bannerText : i18n("Get started by choosing a password to protect your accounts")
-    property string failedToApplyNewPassword : i18n("Failed to set up your password")
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
     ColumnLayout {
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-        }
-        Controls.Label {
-            text: bannerText
-            color: bannerTextError ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.textColor
-            Layout.maximumWidth: root.width - 2 * Kirigami.Units.largeSpacing
-            wrapMode: Text.WordWrap
-        }
         Kirigami.FormLayout {
+            Item {
+                Kirigami.FormData.isSection: true
+                Kirigami.FormData.label: i18n("Get started by choosing a password to protect your accounts")
+            }
             Kirigami.PasswordField {
                 id: newPassword
                 text: ""
                 Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             }
             Kirigami.PasswordField {
                 id: newPasswordCopy
                 text: ""
                 Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
-                inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             }
         }
     }
@@ -54,11 +45,18 @@ Kirigami.Page {
             // TODO convert to C++ helper, have proper logging?
             if (passwordRequest) {
                 if (!passwordRequest.provideBothPasswords(newPassword.text, newPasswordCopy.text)) {
-                    bannerText = failedToApplyNewPassword;
                     bannerTextError = true;
                 }
             }
             // TODO warn if not
         }
+    }
+
+    footer: Kirigami.InlineMessage {
+        id: errorMessage
+        Layout.fillWidth: true
+        text: i18n("Failed to set up your password")
+        visible: bannerTextError
+        showCloseButton: true
     }
 }
