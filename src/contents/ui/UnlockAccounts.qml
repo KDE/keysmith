@@ -11,36 +11,41 @@ import org.kde.kirigami 2.8 as Kirigami
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
 
-Kirigami.Page {
+Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Password")
 
     property bool bannerTextError : false
-    property string bannerText : i18n("Please provide the password to unlock your accounts")
-    property string failedToApplyPassword : i18n("Failed to unlock your accounts")
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
-    ColumnLayout {
-        anchors {
-            horizontalCenter: parent.horizontalCenter
+    header: Kirigami.InlineMessage {
+        id: errorMessage
+        Layout.fillWidth: true
+        text: i18n("Failed to unlock your accounts")
+        visible: bannerTextError
+        showCloseButton: true
+        type: Kirigami.MessageType.Error
+    }
+
+    Kirigami.FormLayout {
+        Item {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Please provide the password to unlock your accounts")
         }
-        Controls.Label {
-            text: bannerText
-            color: bannerTextError ? Kirigami.Theme.negativeTextColor : Kirigami.Theme.textColor
-            Layout.maximumWidth: root.width - 2 * Kirigami.Units.largeSpacing
-            wrapMode: Text.WordWrap
-        }
-        Kirigami.FormLayout {
-            Kirigami.PasswordField {
-                id: existingPassword
-                text: ""
-                Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
-                inputMethodHints:  Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
+        Kirigami.PasswordField {
+            id: existingPassword
+            text: ""
+            Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
+            onAccepted: {
+                if (unlockAction.enabled) {
+                    unlockAction.trigger()
+                }
             }
         }
     }
 
     actions.main : Kirigami.Action {
+        id: unlockAction
         text: i18n("Unlock")
         iconName: "unlock"
         enabled: existingPassword.text && existingPassword.text.length > 0
@@ -48,7 +53,6 @@ Kirigami.Page {
             // TODO convert to C++ helper, have proper logging?
             if (passwordRequest) {
                 if (!passwordRequest.providePassword(existingPassword.text)) {
-                    bannerText = failedToApplyPassword;
                     bannerTextError = true;
                 }
             }
