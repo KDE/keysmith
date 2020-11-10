@@ -40,6 +40,7 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
+        spacing: 0
         AccountNameForm {
             id: accountName
             Layout.fillWidth: true
