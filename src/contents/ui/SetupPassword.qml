@@ -28,16 +28,19 @@ Kirigami.ScrollablePage {
                 id: newPassword
                 text: ""
                 Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
+                onAccepted: newPasswordCopy.forceActiveFocus()
             }
             Kirigami.PasswordField {
                 id: newPasswordCopy
                 text: ""
                 Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
+                onAccepted: applyAction.trigger()
             }
         }
     }
 
     actions.main : Kirigami.Action {
+        id: applyAction
         text: i18n("Apply")
         iconName: "answer-correct"
         enabled: newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
