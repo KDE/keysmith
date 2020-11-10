@@ -12,7 +12,7 @@ import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
 import Keysmith.Validators 1.0 as Validators
 
-Kirigami.Page {
+Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Add new account")
     signal quit
@@ -40,11 +40,9 @@ Kirigami.Page {
     }
 
     ColumnLayout {
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-        }
         AccountNameForm {
             id: accountName
+            Layout.fillWidth: true
             validateAccountAvailability: root.validateAccountAvailability
             validatedInput: root.validatedInput
             twinFormLayouts: [requiredDetails, hotpDetails, totpDetails]
@@ -52,6 +50,7 @@ Kirigami.Page {
 
         Kirigami.FormLayout {
             id: requiredDetails
+            Layout.fillWidth: true
             twinFormLayouts: [accountName, hotpDetails, totpDetails]
             ColumnLayout {
                 Layout.rowSpan: 2
@@ -107,6 +106,7 @@ Kirigami.Page {
         HOTPDetailsForm {
             visible: enabled
             id: hotpDetails
+            Layout.fillWidth: true
             validatedInput: root.validatedInput
             twinFormLayouts: [accountName, requiredDetails, totpDetails]
             enabled: root.detailsEnabled && validatedInput.type === Models.ValidatedAccountInput.Hotp
@@ -114,6 +114,7 @@ Kirigami.Page {
         TOTPDetailsForm {
             visible: enabled
             id: totpDetails
+            Layout.fillWidth: true
             validatedInput: root.validatedInput
             twinFormLayouts: [accountName, requiredDetails, hotpDetails]
             enabled: root.detailsEnabled && validatedInput.type === Models.ValidatedAccountInput.Totp
