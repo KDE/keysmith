@@ -26,8 +26,19 @@ Kirigami.ScrollablePage {
         showCloseButton: true
         type: Kirigami.MessageType.Error
     }
+    // HACK remove when depends on Kirigami 5.77
+    Component.onCompleted: {
+        for (var index in form.children[0].children) {
+            var item = form.children[0].children[index];
+            if (item instanceof Text) {
+                item.wrapMode = item.Text.Wrap
+            }
+            item.Layout.fillWidth = true;
+        }
+    }
 
     Kirigami.FormLayout {
+        id: form
         Item {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Please provide the password to unlock your accounts")
