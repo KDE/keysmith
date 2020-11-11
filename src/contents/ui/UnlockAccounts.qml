@@ -18,14 +18,17 @@ Kirigami.ScrollablePage {
     property bool bannerTextError : false
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
-    header: Kirigami.InlineMessage {
-        id: errorMessage
-        Layout.fillWidth: true
-        text: i18n("Failed to unlock your accounts")
-        visible: bannerTextError
-        showCloseButton: true
-        type: Kirigami.MessageType.Error
+    header: Controls.Control {
+        padding: Kirigami.Units.smallSpacing
+        contentItem: Kirigami.InlineMessage {
+            id: errorMessage
+            text: i18n("Failed to unlock your accounts")
+            visible: bannerTextError
+            showCloseButton: true
+            type: Kirigami.MessageType.Error
+        }
     }
+
     // HACK remove when depends on Kirigami 5.77
     Component.onCompleted: {
         for (var index in form.children[0].children) {
