@@ -18,24 +18,34 @@ Kirigami.ScrollablePage {
     property bool bannerTextError : false
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
-    ColumnLayout {
-        Kirigami.FormLayout {
-            Item {
-                Kirigami.FormData.isSection: true
-                Kirigami.FormData.label: i18n("Get started by choosing a password to protect your accounts")
+    // HACK remove when depends on Kirigami 5.77
+    Component.onCompleted: {
+        for (var index in form.children[0].children) {
+            var item = form.children[0].children[index];
+            if (item instanceof Text) {
+                item.wrapMode = item.Text.Wrap
             }
-            Kirigami.PasswordField {
-                id: newPassword
-                text: ""
-                Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
-                onAccepted: newPasswordCopy.forceActiveFocus()
-            }
-            Kirigami.PasswordField {
-                id: newPasswordCopy
-                text: ""
-                Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
-                onAccepted: applyAction.trigger()
-            }
+            item.Layout.fillWidth = true;
+        }
+    }
+
+    Kirigami.FormLayout {
+        id: form
+        Item {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Get started by choosing a password to protect your accounts")
+        }
+        Kirigami.PasswordField {
+            id: newPassword
+            text: ""
+            Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
+            onAccepted: newPasswordCopy.forceActiveFocus()
+        }
+        Kirigami.PasswordField {
+            id: newPasswordCopy
+            text: ""
+            Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
+            onAccepted: applyAction.trigger()
         }
     }
 
@@ -55,11 +65,14 @@ Kirigami.ScrollablePage {
         }
     }
 
-    footer: Kirigami.InlineMessage {
-        id: errorMessage
-        Layout.fillWidth: true
-        text: i18n("Failed to set up your password")
-        visible: bannerTextError
-        showCloseButton: true
+    footer: Controls.Control {
+        padding: Kirigami.Units.smallSpacing
+        Kirigami.InlineMessage {
+            id: errorMessage
+            Layout.fillWidth: true
+            text: i18n("Failed to set up your password")
+            visible: bannerTextError
+            showCloseButton: true
+        }
     }
 }
