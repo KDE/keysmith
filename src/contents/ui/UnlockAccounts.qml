@@ -1,6 +1,7 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
  */
 
 import QtQuick 2.1
