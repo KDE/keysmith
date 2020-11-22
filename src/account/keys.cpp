@@ -13,7 +13,8 @@ KEYSMITH_LOGGER(logger, ".accounts.keys")
 namespace accounts
 {
     AccountSecret::AccountSecret(const secrets::SecureRandom &random, QObject *parent) :
-        QObject(parent), m_stillAlive(true), m_newPassword(false), m_passwordRequested(false), m_random(random), m_salt(std::nullopt), m_key(nullptr), m_password(nullptr), m_keyParams(std::nullopt)
+        QObject(parent), m_stillAlive(true), m_newPassword(false), m_passwordRequested(false), m_random(random),
+        m_salt(std::nullopt), m_challenge(std::nullopt), m_key(nullptr), m_password(nullptr), m_keyParams(std::nullopt)
     {
     }
 
@@ -47,7 +48,8 @@ namespace accounts
         return true;
     }
 
-    bool AccountSecret::requestExistingPassword(const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams)
+    bool AccountSecret::requestExistingPassword(const secrets::EncryptedSecret &challenge,
+                                                const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams)
     {
         if (!m_stillAlive) {
             qCDebug(logger) << "Ignoring request for 'existing' password: account secret is marked for death";
@@ -74,6 +76,7 @@ namespace accounts
         m_newPassword = false;
         m_keyParams.emplace(keyParams);
         m_salt.emplace(salt);
+        m_challenge.emplace(challenge);
         Q_EMIT existingPasswordNeeded();
         return true;
     }
@@ -93,7 +96,7 @@ namespace accounts
             return false;
         }
 
-        if (m_key || m_password) {
+        if (m_key || (m_password && !m_challenge)) {
             qCDebug(logger) << "Ignoring password: duplicate/conflicting password";
             password.fill(QLatin1Char('*'), -1);
             return false;
@@ -129,7 +132,7 @@ namespace accounts
 
     bool AccountSecret::answerExistingPassword(QString &password)
     {
-        bool result = acceptPassword(password, m_keyParams && m_salt);
+        bool result = acceptPassword(password, m_keyParams && m_salt && m_challenge);
         if (result) {
             Q_EMIT passwordAvailable();
         }
@@ -144,7 +147,7 @@ namespace accounts
             return false;
         }
 
-        bool result = acceptPassword(password, !m_keyParams && !m_salt);
+        bool result = acceptPassword(password, !m_keyParams && !m_salt && !m_challenge);
         if (result) {
             m_keyParams.emplace(keyParams);
             Q_EMIT passwordAvailable();
@@ -177,6 +180,11 @@ namespace accounts
         return m_stillAlive && m_password;
     }
 
+    bool AccountSecret::isChallengeAvailable(void) const
+    {
+        return m_stillAlive && m_challenge;
+    }
+
     secrets::SecureMasterKey * AccountSecret::deriveKey(void)
     {
         if (!m_stillAlive) {
@@ -197,18 +205,50 @@ namespace accounts
             return nullptr;
         }
 
-        m_key.reset(m_salt
+        secrets::SecureMasterKey * derived = m_salt
             ? secrets::SecureMasterKey::derive(m_password.data(), *m_keyParams, *m_salt, m_random)
-            : secrets::SecureMasterKey::derive(m_password.data(), *m_keyParams, m_random)
-        );
+            : secrets::SecureMasterKey::derive(m_password.data(), *m_keyParams, m_random);
 
-        if (!m_key) {
+        if (!derived) {
             qCDebug(logger) << "Failed to derive encryption/decryption key for account secrets";
             m_password.reset(nullptr);
+            Q_EMIT keyFailed();
             return nullptr;
         }
 
+        if (m_challenge) {
+            QScopedPointer<secrets::SecureMemory> result(derived->decrypt(*m_challenge));
+            if (!result) {
+                qCDebug(logger) << "Failed to derive encryption/decryption key for account secrets: challenge failed";
+                m_password.reset(nullptr);
+                delete derived;
+                Q_EMIT keyFailed();
+                return nullptr;
+            }
+
+            bool sizeMismatch = result->size() != m_password->size();
+            const unsigned char * const other = sizeMismatch ? m_password->constData() : result->constData();
+            if (std::memcmp(m_password->constData(), other, m_password->size()) != 0 || sizeMismatch) {
+                qCDebug(logger) << "Failed to derive encryption/decryption key for account secrets: challenge failed";
+                m_password.reset(nullptr);
+                delete derived;
+                Q_EMIT keyFailed();
+                return nullptr;
+            }
+        } else {
+            std::optional<secrets::EncryptedSecret> challenge = derived->encrypt(m_password.data());
+            if (!challenge) {
+                qCDebug(logger) << "Failed to derive encryption/decryption key for account secrets: unable to generate challenge";
+                m_password.reset(nullptr);
+                delete derived;
+                Q_EMIT keyFailed();
+                return nullptr;
+            }
+            m_challenge.emplace(*challenge);
+        }
+
         qCDebug(logger) << "Successfully derived encryption/decryption key for account secrets";
+        m_key.reset(derived);
         m_salt.emplace(m_key->salt());
         m_password.reset(nullptr);
         Q_EMIT keyAvailable();
@@ -217,7 +257,12 @@ namespace accounts
 
     secrets::SecureMasterKey * AccountSecret::key(void) const
     {
-        return m_stillAlive && m_key ? m_key.data() : nullptr;
+        return isKeyAvailable() ? m_key.data() : nullptr;
+    }
+
+    std::optional<secrets::EncryptedSecret> AccountSecret::challenge(void) const
+    {
+        return isChallengeAvailable() ? m_challenge : std::nullopt;
     }
 
     std::optional<secrets::EncryptedSecret> AccountSecret::encrypt(const secrets::SecureMemory *secret) const

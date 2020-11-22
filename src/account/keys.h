@@ -18,6 +18,7 @@ namespace accounts
     Q_SIGNALS:
         void newPasswordNeeded(void);
         void existingPasswordNeeded(void);
+        void keyFailed(void);
         void passwordAvailable(void);
         void keyAvailable(void);
         void requestsCancelled(void);
@@ -25,7 +26,8 @@ namespace accounts
         AccountSecret(const secrets::SecureRandom &random = secrets::defaultSecureRandom, QObject *parent = nullptr);
         void cancelRequests(void);
         bool requestNewPassword(void);
-        bool requestExistingPassword(const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams);
+        bool requestExistingPassword(const secrets::EncryptedSecret &challenge,
+                                     const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams);
 
         bool answerExistingPassword(QString &password);
         bool answerNewPassword(QString &password, const secrets::KeyDerivationParameters &keyParams);
@@ -33,6 +35,7 @@ namespace accounts
         secrets::SecureMasterKey * deriveKey(void);
 
         secrets::SecureMasterKey * key(void) const;
+        std::optional<secrets::EncryptedSecret> challenge(void) const;
         std::optional<secrets::EncryptedSecret> encrypt(const secrets::SecureMemory *secret) const;
         secrets::SecureMemory * decrypt(const secrets::EncryptedSecret &secret) const;
         bool isStillAlive(void) const;
@@ -40,6 +43,7 @@ namespace accounts
         bool isExistingPasswordRequested(void) const;
         bool isKeyAvailable(void) const;
         bool isPasswordAvailable(void) const;
+        bool isChallengeAvailable(void) const;
     private:
         bool acceptPassword(QString &password, bool answerMatchesRequest);
     private:
@@ -48,6 +52,7 @@ namespace accounts
         bool m_passwordRequested;
         const secrets::SecureRandom m_random;
         std::optional<QByteArray> m_salt;
+        std::optional<secrets::EncryptedSecret> m_challenge;
         QScopedPointer<secrets::SecureMasterKey> m_key;
         QScopedPointer<secrets::SecureMemory> m_password;
         std::optional<secrets::KeyDerivationParameters> m_keyParams;

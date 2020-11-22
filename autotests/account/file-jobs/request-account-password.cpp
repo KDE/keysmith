@@ -23,6 +23,7 @@ class RequestAccountPasswordTest: public QObject // clazy:exclude=ctor-missing-p
 private Q_SLOTS:
     void testExistingPassword(void);
     void testExistingPasswordAbort(void);
+    void testExistingPasswordRetry(void);
     void testNewPassword(void);
     void testNewPasswordAbort(void);
     void testAbortBeforeRun(void);
@@ -47,6 +48,7 @@ void RequestAccountPasswordTest::testAbortBeforeRun(void)
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(&secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy keyFailed(&secret, &accounts::AccountSecret::keyFailed);
     QSignalSpy passwordRequestsCancelled(&secret, &accounts::AccountSecret::requestsCancelled);
 
     accounts::RequestAccountPassword uut(settings, &secret);
@@ -67,6 +69,7 @@ void RequestAccountPasswordTest::testAbortBeforeRun(void)
     QCOMPARE(existingPasswordNeeded.count(), 0);
     QCOMPARE(passwordAvailable.count(), 0);
     QCOMPARE(keyAvailable.count(), 0);
+    QCOMPARE(keyFailed.count(), 0);
     QCOMPARE(passwordRequestsCancelled.count(), 1);
     QCOMPARE(failed.count(), 1);
     QCOMPARE(unlocked.count(), 0);
@@ -95,6 +98,7 @@ void RequestAccountPasswordTest::testNewPassword(void)
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(&secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy keyFailed(&secret, &accounts::AccountSecret::keyFailed);
     QSignalSpy passwordRequestsCancelled(&secret, &accounts::AccountSecret::requestsCancelled);
 
     accounts::RequestAccountPassword uut(settings, &secret);
@@ -129,6 +133,7 @@ void RequestAccountPasswordTest::testNewPassword(void)
     QCOMPARE(existingPasswordNeeded.count(), 0);
     QCOMPARE(passwordAvailable.count(), 1);
     QCOMPARE(keyAvailable.count(), 1);
+    QCOMPARE(keyFailed.count(), 0);
     QCOMPARE(passwordRequestsCancelled.count(), 0);
     QCOMPARE(failed.count(), 0);
     QCOMPARE(unlocked.count(), 1);
@@ -157,6 +162,7 @@ void RequestAccountPasswordTest::testNewPasswordAbort(void)
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(&secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy keyFailed(&secret, &accounts::AccountSecret::keyFailed);
     QSignalSpy passwordRequestsCancelled(&secret, &accounts::AccountSecret::requestsCancelled);
 
     accounts::RequestAccountPassword uut(settings, &secret);
@@ -185,6 +191,7 @@ void RequestAccountPasswordTest::testNewPasswordAbort(void)
     QCOMPARE(existingPasswordNeeded.count(), 0);
     QCOMPARE(passwordAvailable.count(), 0);
     QCOMPARE(keyAvailable.count(), 0);
+    QCOMPARE(keyFailed.count(), 0);
     QCOMPARE(passwordRequestsCancelled.count(), 1);
     QCOMPARE(failed.count(), 1);
     QCOMPARE(unlocked.count(), 0);
@@ -213,6 +220,7 @@ void RequestAccountPasswordTest::testExistingPassword(void)
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(&secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy keyFailed(&secret, &accounts::AccountSecret::keyFailed);
     QSignalSpy passwordRequestsCancelled(&secret, &accounts::AccountSecret::requestsCancelled);
 
     accounts::RequestAccountPassword uut(settings, &secret);
@@ -245,6 +253,76 @@ void RequestAccountPasswordTest::testExistingPassword(void)
     QCOMPARE(existingPasswordNeeded.count(), 1);
     QCOMPARE(passwordAvailable.count(), 1);
     QCOMPARE(keyAvailable.count(), 1);
+    QCOMPARE(keyFailed.count(), 0);
+    QCOMPARE(passwordRequestsCancelled.count(), 0);
+    QCOMPARE(failed.count(), 0);
+    QCOMPARE(unlocked.count(), 1);
+
+    QFile result(actualIni);
+    QVERIFY2(result.exists(), "accounts file should still exist");
+    QCOMPARE(test::slurp(actualIni), test::slurp(existingPasswordIniResource));
+}
+
+void RequestAccountPasswordTest::testExistingPasswordRetry(void)
+{
+    const QString isolated(QStringLiteral("supply-existing-password.ini"));
+    QVERIFY2(test::copyResourceAsWritable(existingPasswordIniResource, isolated), "accounts INI resource should be available as file");
+
+    int openCounter = 0;
+    const QString actualIni = test::path(isolated);
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
+    {
+        QSettings data(actualIni, QSettings::IniFormat);
+        openCounter++;
+        action(data);
+    });
+
+    accounts::AccountSecret secret;
+    QSignalSpy existingPasswordNeeded(&secret, &accounts::AccountSecret::existingPasswordNeeded);
+    QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
+    QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
+    QSignalSpy keyAvailable(&secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy keyFailed(&secret, &accounts::AccountSecret::keyFailed);
+    QSignalSpy passwordRequestsCancelled(&secret, &accounts::AccountSecret::requestsCancelled);
+
+    accounts::RequestAccountPassword uut(settings, &secret);
+
+    QSignalSpy failed(&uut, &accounts::RequestAccountPassword::failed);
+    QSignalSpy unlocked(&uut, &accounts::RequestAccountPassword::unlocked);
+    QSignalSpy jobFinished(&uut, &accounts::RequestAccountPassword::finished);
+
+    uut.run();
+
+    QVERIFY2(test::signal_eventually_emitted_once(existingPasswordNeeded), "(existing) password should be asked for");
+    QCOMPARE(openCounter, 1);
+    QCOMPARE(newPasswordNeeded.count(), 0);
+    QCOMPARE(failed.count(), 0);
+    QCOMPARE(unlocked.count(), 0);
+    QCOMPARE(jobFinished.count(), 0);
+
+    QString incorrect(QStringLiteral("incorrect"));
+    QVERIFY2(secret.answerExistingPassword(incorrect), "should be able to answer (existing) password");
+
+    QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "(existing) password attempt should be accepted");
+    QVERIFY2(test::signal_eventually_emitted_once(keyFailed), "should fail to derive key for incorrect password");
+    QCOMPARE(openCounter, 1);
+
+    QString correct(QStringLiteral("hello, world"));
+    QVERIFY2(secret.answerExistingPassword(correct), "should be able to retry (existing) password");
+
+    QVERIFY2(test::signal_eventually_emitted_twice(passwordAvailable), "second attempt for (existing) password should be accepted");
+    QVERIFY2(test::signal_eventually_emitted_once(keyAvailable), "key should be derived");
+    QVERIFY2(test::signal_eventually_emitted_once(unlocked), "accounts should be unlocked");
+    QCOMPARE(openCounter, 2);
+
+    QVERIFY2(test::signal_eventually_emitted_once(jobFinished), "job should be finished");
+
+    QCOMPARE(openCounter, 2);
+    QCOMPARE(newPasswordNeeded.count(), 0);
+    QCOMPARE(existingPasswordNeeded.count(), 1);
+    QCOMPARE(passwordAvailable.count(), 2);
+    QCOMPARE(keyAvailable.count(), 1);
+    QCOMPARE(keyFailed.count(), 1);
     QCOMPARE(passwordRequestsCancelled.count(), 0);
     QCOMPARE(failed.count(), 0);
     QCOMPARE(unlocked.count(), 1);
@@ -273,6 +351,7 @@ void RequestAccountPasswordTest::testExistingPasswordAbort(void)
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
     QSignalSpy keyAvailable(&secret, &accounts::AccountSecret::keyAvailable);
+    QSignalSpy keyFailed(&secret, &accounts::AccountSecret::keyFailed);
     QSignalSpy passwordRequestsCancelled(&secret, &accounts::AccountSecret::requestsCancelled);
 
     accounts::RequestAccountPassword uut(settings, &secret);
@@ -301,6 +380,7 @@ void RequestAccountPasswordTest::testExistingPasswordAbort(void)
     QCOMPARE(existingPasswordNeeded.count(), 1);
     QCOMPARE(passwordAvailable.count(), 0);
     QCOMPARE(keyAvailable.count(), 0);
+    QCOMPARE(keyFailed.count(), 0);
     QCOMPARE(passwordRequestsCancelled.count(), 1);
     QCOMPARE(failed.count(), 1);
     QCOMPARE(unlocked.count(), 0);

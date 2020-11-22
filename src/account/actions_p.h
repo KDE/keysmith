@@ -52,6 +52,7 @@ namespace accounts
     private Q_SLOTS:
         void fail(void);
         void unlock(void);
+        void finish(void);
     Q_SIGNALS:
         void unlocked(void);
         void failed(void);

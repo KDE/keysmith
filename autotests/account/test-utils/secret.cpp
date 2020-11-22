@@ -18,10 +18,18 @@ namespace test
         salt.resize(crypto_pwhash_SALTBYTES);
         salt.fill('\x0', -1);
         QString password(QStringLiteral("password"));
-        return useDummyPassword(secret, password, salt);
+        QByteArray challenge = QByteArray::fromBase64("HG8yZFZRDbtkViPnLQCiRZco3PdjFuvn");
+        QByteArray nonce = QByteArray::fromBase64("QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB");
+
+        std::optional<secrets::EncryptedSecret> verify = secrets::EncryptedSecret::from(challenge, nonce);
+        if (!verify) {
+            qDebug () << "Failed to construct password challenge object";
+            return nullptr;
+        }
+        return useDummyPassword(secret, password, salt, *verify);
     }
 
-    secrets::SecureMasterKey * useDummyPassword(accounts::AccountSecret *secret, QString &password, QByteArray &salt)
+    secrets::SecureMasterKey * useDummyPassword(accounts::AccountSecret *secret, QString &password, QByteArray &salt, const secrets::EncryptedSecret &challenge)
     {
         if (!secret) {
             qDebug () << "No account secret provided...";
@@ -36,7 +44,7 @@ namespace test
             return nullptr;
         }
 
-        if (!secret->requestExistingPassword(salt, *keyParams)) {
+        if (!secret->requestExistingPassword(challenge, salt, *keyParams)) {
             qDebug() << "Failed to simulate password request";
             return nullptr;
         }

@@ -221,11 +221,25 @@ namespace accounts
         m_failed = true;
         QObject::disconnect(m_secret, &AccountSecret::requestsCancelled, this, &RequestAccountPassword::fail);
         QObject::disconnect(m_secret, &AccountSecret::passwordAvailable, this, &RequestAccountPassword::unlock);
+        QObject::disconnect(m_secret, &AccountSecret::keyAvailable, this, &RequestAccountPassword::finish);
         Q_EMIT failed();
         Q_EMIT finished();
     }
 
     void RequestAccountPassword::unlock(void)
+    {
+        secrets::SecureMasterKey * derived = m_secret->deriveKey();
+        std::optional<secrets::EncryptedSecret> challenge = m_secret->challenge();
+        if (derived && challenge) {
+            qCInfo(logger) << "Successfully derived key for storage";
+            return;
+        } else {
+            qCInfo(logger) << "Failed to unlock storage:"
+                << "Unable to derive secret encryption/decryption key or generate its matching challenge";
+        }
+    }
+
+    void RequestAccountPassword::finish(void)
     {
         if (m_succeeded || m_failed) {
             qCDebug(logger) << "Suppressing 'success' in unlocking accounts: already handled";
@@ -234,9 +248,20 @@ namespace accounts
 
         QObject::disconnect(m_secret, &AccountSecret::requestsCancelled, this, &RequestAccountPassword::fail);
         QObject::disconnect(m_secret, &AccountSecret::passwordAvailable, this, &RequestAccountPassword::unlock);
-        secrets::SecureMasterKey * derived = m_secret->deriveKey();
+        QObject::disconnect(m_secret, &AccountSecret::keyAvailable, this, &RequestAccountPassword::finish);
+        std::optional<secrets::EncryptedSecret> challenge = m_secret->challenge();
+        secrets::SecureMasterKey * derived = m_secret->key();
         if (!derived) {
-            qCInfo(logger) << "Failed to unlock storage: unable to derive secret encryption/decryption key";
+            qCInfo(logger) << "Failed to finish unlocking storage: no secret encryption/decryption key";
+            m_failed = true;
+            Q_EMIT failed();
+            Q_EMIT finished();
+            return;
+        }
+
+        // sanity check: challenge should be available once key derivation has completed successfully
+        if (!challenge) {
+            qCInfo(logger) << "Failed to finish unlocking storage: no challenge for encryption/decryption key";
             m_failed = true;
             Q_EMIT failed();
             Q_EMIT finished();
@@ -244,7 +269,7 @@ namespace accounts
         }
 
         bool ok = false;
-        m_settings([derived, &ok](QSettings &settings) -> void
+        m_settings([derived, &challenge, &ok](QSettings &settings) -> void
         {
             if (!settings.isWritable()) {
                 qCWarning(logger) << "Unable to save account secret key parameters: storage not writable";
@@ -254,12 +279,16 @@ namespace accounts
             const secrets::KeyDerivationParameters params = derived->params();
 
             QString encodedSalt = QString::fromUtf8(derived->salt().toBase64(QByteArray::Base64Encoding));
+            QString encodedChallenge = QString::fromUtf8(challenge->cryptText().toBase64(QByteArray::Base64Encoding));
+            QString encodedNonce = QString::fromUtf8(challenge->nonce().toBase64(QByteArray::Base64Encoding));
             settings.beginGroup(QStringLiteral("master-key"));
             settings.setValue(QStringLiteral("salt"), encodedSalt);
             settings.setValue(QStringLiteral("cpu"), params.cpuCost());
             settings.setValue(QStringLiteral("memory"), (quint64) params.memoryCost());
             settings.setValue(QStringLiteral("algorithm"), params.algorithm());
             settings.setValue(QStringLiteral("length"), params.keyLength());
+            settings.setValue(QStringLiteral("nonce"), encodedNonce);
+            settings.setValue(QStringLiteral("challenge"), encodedChallenge);
             settings.endGroup();
             ok = true;
         });
@@ -269,7 +298,7 @@ namespace accounts
             m_succeeded = true;
             Q_EMIT unlocked();
         } else {
-            qCInfo(logger) << "Failed to unlock storage: unable to store parameters";
+            qCInfo(logger) << "Failed to finish unlocking storage: unable to store parameters";
             m_failed = true;
             Q_EMIT failed();
         }
@@ -288,6 +317,7 @@ namespace accounts
 
         QObject::connect(m_secret, &AccountSecret::passwordAvailable, this, &RequestAccountPassword::unlock);
         QObject::connect(m_secret, &AccountSecret::requestsCancelled, this, &RequestAccountPassword::fail);
+        QObject::connect(m_secret, &AccountSecret::keyAvailable, this, &RequestAccountPassword::finish);
 
         if (!m_secret->isStillAlive()) {
             qCDebug(logger) << "Unable to request accounts password: account secret marked for death";
@@ -312,6 +342,8 @@ namespace accounts
 
             settings.beginGroup(QStringLiteral("master-key"));
             QByteArray salt;
+            QByteArray nonce;
+            QByteArray challenge;
             quint64 cpuCost = 0ULL;
             quint64 keyLength = 0ULL;
             size_t memoryCost = 0ULL;
@@ -331,18 +363,29 @@ namespace accounts
             if (ok) {
                 QByteArray encodedSalt = settings.value(QStringLiteral("salt")).toString().toUtf8();
                 salt = QByteArray::fromBase64(encodedSalt, QByteArray::Base64Encoding);
-                ok = secrets::SecureMasterKey::validate(salt);
+                ok = !salt.isEmpty() && secrets::SecureMasterKey::validate(salt);
+            }
+            if (ok) {
+                QByteArray encodedChallenge = settings.value(QStringLiteral("challenge")).toString().toUtf8();
+                challenge = QByteArray::fromBase64(encodedChallenge, QByteArray::Base64Encoding);
+                ok = !challenge.isEmpty();
+            }
+            if (ok) {
+                QByteArray encodedNonce = settings.value(QStringLiteral("nonce")).toString().toUtf8();
+                nonce = QByteArray::fromBase64(encodedNonce, QByteArray::Base64Encoding);
+                ok = !nonce.isEmpty();
             }
             settings.endGroup();
 
             const auto params = secrets::KeyDerivationParameters::create(keyLength, algorithm, memoryCost, cpuCost);
-            if (!ok || !params || !secrets::SecureMasterKey::validate(*params)) {
-                qCDebug(logger) << "Unable to request 'existing' password: invalid salt or key derivation parameters";
+            const auto encryptedChallenge = secrets::EncryptedSecret::from(challenge, nonce);
+            if (!ok || !params || !secrets::SecureMasterKey::validate(*params) || !encryptedChallenge) {
+                qCDebug(logger) << "Unable to request 'existing' password: invalid challenge, nonce, salt or key derivation parameters";
                 return;
             }
 
             qCInfo(logger) << "Requesting 'existing' password for accounts";
-            ok = m_secret->requestExistingPassword(salt, *params);
+            ok = m_secret->requestExistingPassword(*encryptedChallenge, salt, *params);
         });
 
         if (!ok) {
