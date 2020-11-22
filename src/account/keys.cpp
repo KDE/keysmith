@@ -6,7 +6,7 @@
 
 #include "../logging_p.h"
 
-#include <string.h>
+#include <cstring>
 
 KEYSMITH_LOGGER(logger, ".accounts.keys")
 
@@ -114,7 +114,7 @@ namespace accounts
 
         if (m_password) {
             qCDebug(logger) << "Accepted password for account secrets";
-            memcpy(m_password->data(), passwordBytes.constData(), m_password->size());
+            std::memcpy(m_password->data(), passwordBytes.constData(), m_password->size());
         } else {
             qCDebug(logger) << "Failed to accept password for account secrets";
         }

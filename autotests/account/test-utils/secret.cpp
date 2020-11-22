@@ -8,7 +8,7 @@
 #include <QScopedPointer>
 #include <QtDebug>
 
-#include <string.h>
+#include <cstring>
 
 namespace test
 {
@@ -61,7 +61,7 @@ namespace test
             return std::nullopt;
         }
 
-        memcpy(memory->data(), tokenSecret.constData(), memory->size());
+        std::memcpy(memory->data(), tokenSecret.constData(), memory->size());
         std::optional<secrets::EncryptedSecret> s = secret->encrypt(memory.data());
         if (!s) {
             qDebug () << "Failed to encrypt token secret";

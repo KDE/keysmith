@@ -4,13 +4,13 @@
  */
 #include "random.h"
 
-#include <string.h>
+#include <cstring>
 
 namespace test
 {
     bool fakeRandom(void *buf, size_t size)
     {
-        memset(buf, 'A', size);
+        std::memset(buf, 'A', size);
         return true;
     }
 }
