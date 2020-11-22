@@ -5,14 +5,13 @@
 #include "account/actions_p.h"
 
 #include "../test-utils/output.h"
+#include "../../secrets/test-utils/random.h"
 #include "../../test-utils/spy.h"
 
 #include <QSignalSpy>
 #include <QString>
 #include <QTest>
 #include <QtDebug>
-
-#include <string.h>
 
 static QString existingPasswordIniResource(QLatin1String(":/request-account-password/existing-password.ini"));
 static QString newPasswordIniResource(QLatin1String(":/request-account-password/new-password.ini"));
@@ -91,13 +90,7 @@ void RequestAccountPasswordTest::testNewPassword(void)
         action(data);
     });
 
-    const secrets::SecureRandom fakeRandom([](void *buf, size_t amount) -> bool
-    {
-        memset(buf, 'A', amount);
-        return true;
-    });
-
-    accounts::AccountSecret secret(fakeRandom);
+    accounts::AccountSecret secret(&test::fakeRandom);
     QSignalSpy existingPasswordNeeded(&secret, &accounts::AccountSecret::existingPasswordNeeded);
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
@@ -159,13 +152,7 @@ void RequestAccountPasswordTest::testNewPasswordAbort(void)
         action(data);
     });
 
-    const secrets::SecureRandom fakeRandom([](void *buf, size_t amount) -> bool
-    {
-        memset(buf, 'A', amount);
-        return true;
-    });
-
-    accounts::AccountSecret secret(fakeRandom);
+    accounts::AccountSecret secret(&test::fakeRandom);
     QSignalSpy existingPasswordNeeded(&secret, &accounts::AccountSecret::existingPasswordNeeded);
     QSignalSpy newPasswordNeeded(&secret, &accounts::AccountSecret::newPasswordNeeded);
     QSignalSpy passwordAvailable(&secret, &accounts::AccountSecret::passwordAvailable);
