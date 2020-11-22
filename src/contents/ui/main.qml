@@ -170,7 +170,7 @@ Kirigami.ApplicationWindow {
      */
     Connections {
         target: passwordRequest
-        onDerivedKey : {
+        onPasswordAccepted : {
             // TODO convert to C++ helper, have proper logging?
             if (!passwordRequest.keyAvailable) {
                 return; // TODO warn if not

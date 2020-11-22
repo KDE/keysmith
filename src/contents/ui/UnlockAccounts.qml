@@ -51,6 +51,7 @@ Kirigami.ScrollablePage {
             id: existingPassword
             text: ""
             Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
+            enabled: !passwordRequest.passwordProvided
             onAccepted: {
                 if (unlockAction.enabled) {
                     unlockAction.trigger()
@@ -63,15 +64,20 @@ Kirigami.ScrollablePage {
         id: unlockAction
         text: i18n("Unlock")
         iconName: "unlock"
-        enabled: existingPassword.text && existingPassword.text.length > 0
+        enabled: !passwordRequest.passwordProvided && existingPassword.text && existingPassword.text.length > 0
         onTriggered: {
             // TODO convert to C++ helper, have proper logging?
             if (passwordRequest) {
-                if (!passwordRequest.providePassword(existingPassword.text)) {
-                    bannerTextError = true;
-                }
+                bannerTextError = !passwordRequest.providePassword(existingPassword.text);
             }
             // TODO warn if not
+        }
+    }
+
+    Connections {
+        target: passwordRequest
+        onPasswordRejected: {
+            bannerTextError = true
         }
     }
 }

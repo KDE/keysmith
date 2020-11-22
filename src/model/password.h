@@ -14,8 +14,8 @@ namespace model
         Q_OBJECT
         Q_PROPERTY(bool firstRun READ firstRun NOTIFY passwordRequestChanged)
         Q_PROPERTY(bool previouslyDefined READ previouslyDefined NOTIFY passwordRequestChanged)
-        Q_PROPERTY(bool keyAvailable READ keyAvailable NOTIFY derivedKey)
-        Q_PROPERTY(bool passwordProvided READ passwordProvided NOTIFY passwordAccepted)
+        Q_PROPERTY(bool keyAvailable READ keyAvailable NOTIFY passwordAccepted)
+        Q_PROPERTY(bool passwordProvided READ passwordProvided NOTIFY passwordStateChanged)
     public:
         explicit PasswordRequest(accounts::AccountSecret *secret, QObject *parent = nullptr);
         bool firstRun(void) const;
@@ -30,10 +30,12 @@ namespace model
         void passwordExists(void);
         void newPasswordNeeded(void);
         void passwordAccepted(void);
-        void derivedKey(void);
+        void passwordRejected(void);
+        void passwordStateChanged(void);
     private Q_SLOTS:
         void setKeyAvailable(void);
         void setPasswordAvailable(void);
+        void setPasswordRejected(void);
         void setPreviouslyDefined(void);
         void setNewPasswordNeeded(void);
     private:

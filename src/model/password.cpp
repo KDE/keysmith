@@ -18,6 +18,7 @@ namespace model
         QObject::connect(m_secret, &accounts::AccountSecret::newPasswordNeeded, this, &PasswordRequest::setNewPasswordNeeded);
         QObject::connect(m_secret, &accounts::AccountSecret::passwordAvailable, this, &PasswordRequest::setPasswordAvailable);
         QObject::connect(m_secret, &accounts::AccountSecret::keyAvailable, this, &PasswordRequest::setKeyAvailable);
+        QObject::connect(m_secret, &accounts::AccountSecret::keyFailed, this, &PasswordRequest::setPasswordRejected);
         m_previous = secret->isExistingPasswordRequested();
         m_firstRun = secret->isNewPasswordRequested();
         m_haveKey = secret->isKeyAvailable();
@@ -96,7 +97,7 @@ namespace model
     {
         if (!m_haveKey) {
             m_haveKey = true;
-            Q_EMIT derivedKey();
+            Q_EMIT passwordAccepted();
         } else {
             qCDebug(logger) << "Ignored signal: already marked key as available";
         }
@@ -106,9 +107,20 @@ namespace model
     {
         if (!m_havePassword) {
             m_havePassword = true;
-            Q_EMIT passwordAccepted();
+            Q_EMIT passwordStateChanged();
         } else {
             qCDebug(logger) << "Ignored signal: already marked password as available";
+        }
+    }
+
+    void PasswordRequest::setPasswordRejected(void)
+    {
+        if (m_havePassword) {
+            m_havePassword = false;
+            Q_EMIT passwordStateChanged();
+            Q_EMIT passwordRejected();
+        } else {
+            qCDebug(logger) << "Ignored signal: already marked password as rejected";
         }
     }
 

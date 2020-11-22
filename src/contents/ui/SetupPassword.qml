@@ -39,12 +39,14 @@ Kirigami.ScrollablePage {
         Kirigami.PasswordField {
             id: newPassword
             text: ""
+            enabled: !passwordRequest.passwordProvided
             Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
             onAccepted: newPasswordCopy.forceActiveFocus()
         }
         Kirigami.PasswordField {
             id: newPasswordCopy
             text: ""
+            enabled: !passwordRequest.passwordProvided
             Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
             onAccepted: applyAction.trigger()
         }
@@ -54,13 +56,11 @@ Kirigami.ScrollablePage {
         id: applyAction
         text: i18n("Apply")
         iconName: "answer-correct"
-        enabled: newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
+        enabled: !passwordRequest.passwordProvided && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
         onTriggered: {
             // TODO convert to C++ helper, have proper logging?
             if (passwordRequest) {
-                if (!passwordRequest.provideBothPasswords(newPassword.text, newPasswordCopy.text)) {
-                    bannerTextError = true;
-                }
+                bannerTextError = !passwordRequest.provideBothPasswords(newPassword.text, newPasswordCopy.text);
             }
             // TODO warn if not
         }
@@ -74,6 +74,13 @@ Kirigami.ScrollablePage {
             text: i18n("Failed to set up your password")
             visible: bannerTextError
             showCloseButton: true
+        }
+    }
+
+    Connections {
+        target: passwordRequest
+        onPasswordRejected: {
+            bannerTextError = true
         }
     }
 }
