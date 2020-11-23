@@ -91,10 +91,10 @@ namespace oath
         return m_addChecksum;
     }
 
-    bool Algorithm::validate(const Encoder &encoder)
+    bool Algorithm::validate(const Encoder *encoder)
     {
         // HOTP spec mandates a minimum token length of 6 digits
-        return encoder.tokenLength() >= 6;
+        return encoder && encoder->tokenLength() >= 6;
     }
 
     bool Algorithm::validate(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset)
@@ -114,14 +114,14 @@ namespace oath
         return digestSize && *digestSize >= 4U && (*digestSize - 4U) >= truncateAt;
     }
 
-    std::optional<Algorithm> Algorithm::create(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset, const Encoder &encoder, bool requireSaneKeyLength)
+    std::optional<Algorithm> Algorithm::create(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset, const QSharedPointer<const Encoder> &encoder, bool requireSaneKeyLength)
     {
         if(!validate(algorithm, offset)) {
             qCDebug(logger) << "Invalid algorithm:" << algorithm << "or incompatible with truncation offset:" << (offset ? *offset : 16U);
             return std::nullopt;
         }
 
-        if (!validate(encoder)) {
+        if (!encoder || !validate(encoder.data())) {
             qCDebug(logger) << "Invalid token encoder";
             return std::nullopt;
         }
@@ -140,17 +140,17 @@ namespace oath
 
     std::optional<Algorithm> Algorithm::totp(QCryptographicHash::Algorithm algorithm, uint tokenLength, bool requireSaneKeyLength)
     {
-        const Encoder encoder(tokenLength, false);
+        const QSharedPointer<const Encoder> encoder(new Encoder(tokenLength, false));
         return create(algorithm, std::nullopt, encoder, requireSaneKeyLength);
     }
 
     std::optional<Algorithm> Algorithm::hotp(const std::optional<uint> &offset, uint tokenLength, bool checksum, bool requireSaneKeyLength)
     {
-        const Encoder encoder(tokenLength, checksum);
+        const QSharedPointer<const Encoder> encoder(new Encoder(tokenLength, checksum));
         return create(QCryptographicHash::Sha1, offset, encoder, requireSaneKeyLength);
     }
 
-    Algorithm::Algorithm(const Encoder &encoder, const std::function<quint32(QByteArray)> &truncation, QCryptographicHash::Algorithm algorithm, bool requireSaneKeyLength) :
+    Algorithm::Algorithm(const QSharedPointer<const Encoder> &encoder, const std::function<quint32(QByteArray)> &truncation, QCryptographicHash::Algorithm algorithm, bool requireSaneKeyLength) :
         m_encoder(encoder), m_truncation(truncation), m_enforceKeyLength(requireSaneKeyLength), m_algorithm(algorithm)
     {
     }
@@ -178,8 +178,8 @@ namespace oath
         std::optional<QByteArray> digest = hmac::compute(m_algorithm, secretBuffer, length, message, m_enforceKeyLength);
         if (digest) {
             quint32 result = m_truncation(*digest);
-            result = Encoder::reduceMod10(result, m_encoder.tokenLength());
-            return std::optional<QString>(m_encoder.encode(result));
+            result = Encoder::reduceMod10(result, m_encoder->tokenLength());
+            return std::optional<QString>(m_encoder->encode(result));
         }
 
         qCDebug(logger) << "Failed to compute token";
