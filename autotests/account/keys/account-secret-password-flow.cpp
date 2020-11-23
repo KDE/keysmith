@@ -9,7 +9,7 @@
 #include <QSignalSpy>
 #include <QTest>
 
-class PasswordFlowTest : public QObject
+class PasswordFlowTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -67,12 +67,12 @@ void PasswordFlowTest::supplyNewPassword(void)
     QCOMPARE(requestsCancelled.count(), 0);
 
     // advance the state: supply password
-    QString password(QLatin1String("hello, world"));
+    QString password(QStringLiteral("hello, world"));
     QVERIFY2(m_keyParams, "should be able to construct key derivation parameters");
 
     QVERIFY2(uut.answerNewPassword(password, *m_keyParams), "(new) password should be accepted");
     QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "availability of the (new) password should be signalled");
-    QCOMPARE(password, QString(QLatin1String("************")));
+    QCOMPARE(password, QStringLiteral("************"));
 
     // check the state is correctly updated
     QCOMPARE(uut.isStillAlive(), true);
@@ -251,11 +251,11 @@ void PasswordFlowTest::supplyExistingPassword(void)
     QCOMPARE(requestsCancelled.count(), 0);
 
     // advance the state: supply password
-    QString password(QLatin1String("hello, world"));
+    QString password(QStringLiteral("hello, world"));
 
     QVERIFY2(uut.answerExistingPassword(password), "(existing) password should be accepted");
     QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "availability of the (existing) password should be signalled");
-    QCOMPARE(password, QString(QLatin1String("************")));
+    QCOMPARE(password, QStringLiteral("************"));
 
     // check the state is correctly updated
     QCOMPARE(uut.isStillAlive(), true);

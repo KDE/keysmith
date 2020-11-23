@@ -17,7 +17,7 @@ namespace test
         QByteArray salt;
         salt.resize(crypto_pwhash_SALTBYTES);
         salt.fill('\x0', -1);
-        QString password(QLatin1String("password"));
+        QString password(QStringLiteral("password"));
         return useDummyPassword(secret, password, salt);
     }
 

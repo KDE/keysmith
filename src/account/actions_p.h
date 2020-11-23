@@ -23,7 +23,7 @@
 
 namespace accounts
 {
-    class AccountJob: public QObject
+    class AccountJob: public QObject // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
@@ -35,7 +35,7 @@ namespace accounts
         void finished(void);
     };
 
-    class Null: public AccountJob
+    class Null: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
@@ -43,7 +43,7 @@ namespace accounts
         void run(void) override;
     };
 
-    class RequestAccountPassword: public AccountJob
+    class RequestAccountPassword: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
@@ -63,7 +63,7 @@ namespace accounts
         bool m_succeeded;
     };
 
-    class LoadAccounts: public AccountJob
+    class LoadAccounts: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
@@ -84,7 +84,7 @@ namespace accounts
         const std::function<qint64(void)> m_clock;
     };
 
-    class DeleteAccounts: public AccountJob
+    class DeleteAccounts: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
@@ -97,14 +97,14 @@ namespace accounts
         const QSet<QUuid> m_ids;
     };
 
-    class SaveHotp: public AccountJob
+    class SaveHotp: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
         explicit SaveHotp(const SettingsProvider &settings,
-                          const QUuid &id, const QString &accountName, const QString &issuer,
+                          const QUuid id, const QString &accountName, const QString &issuer,
                           const secrets::EncryptedSecret &secret, uint tokenLength,
-                          quint64 counter, const std::optional<uint> &offset, bool checksum);
+                          quint64 counter, const std::optional<uint> offset, bool checksum);
         void run(void) override;
     Q_SIGNALS:
         void invalid(void);
@@ -123,12 +123,12 @@ namespace accounts
         const bool m_checksum;
     };
 
-    class SaveTotp: public AccountJob
+    class SaveTotp: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
         explicit SaveTotp(const SettingsProvider &settings,
-                          const QUuid &id, const QString &accountName, const QString &issuer,
+                          const QUuid id, const QString &accountName, const QString &issuer,
                           const secrets::EncryptedSecret &secret, uint tokenLength,
                           uint timeStep, const QDateTime &epoch, Account::Hash hash,
                           const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
@@ -151,13 +151,13 @@ namespace accounts
         const std::function<qint64(void)> m_clock;
     };
 
-    class ComputeTotp: public AccountJob
+    class ComputeTotp: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
         explicit ComputeTotp(const AccountSecret *secret,
                              const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
-                             const QDateTime &epoch, uint timeStep, const Account::Hash &hash,
+                             const QDateTime &epoch, uint timeStep, const Account::Hash hash,
                              const std::function<qint64(void)> &clock = &QDateTime::currentMSecsSinceEpoch);
         void run(void) override;
     Q_SIGNALS:
@@ -172,13 +172,13 @@ namespace accounts
         const std::function<qint64(void)> m_clock;
     };
 
-    class ComputeHotp: public AccountJob
+    class ComputeHotp: public AccountJob // clazy:exclude=ctor-missing-parent-argument
     {
         Q_OBJECT
     public:
         explicit ComputeHotp(const AccountSecret *secret,
                              const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
-                             quint64 counter, const std::optional<uint> &offset, bool checksum);
+                             quint64 counter, const std::optional<uint> offset, bool checksum);
         void run(void) override;
     Q_SIGNALS:
         void otp(const QString otp, const QString nextOtp, const quint64 nextCounter);;

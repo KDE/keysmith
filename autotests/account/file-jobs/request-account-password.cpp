@@ -13,11 +13,11 @@
 #include <QTest>
 #include <QtDebug>
 
-static QString existingPasswordIniResource(QLatin1String(":/request-account-password/existing-password.ini"));
-static QString newPasswordIniResource(QLatin1String(":/request-account-password/new-password.ini"));
-static QString newPasswordIniResultResource(QLatin1String(":/request-account-password/new-password-result.ini"));
+static QString existingPasswordIniResource(QStringLiteral(":/request-account-password/existing-password.ini"));
+static QString newPasswordIniResource(QStringLiteral(":/request-account-password/new-password.ini"));
+static QString newPasswordIniResultResource(QStringLiteral(":/request-account-password/new-password-result.ini"));
 
-class RequestAccountPasswordTest: public QObject
+class RequestAccountPasswordTest: public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -30,7 +30,7 @@ private Q_SLOTS:
 
 void RequestAccountPasswordTest::testAbortBeforeRun(void)
 {
-    const QString isolated(QLatin1String("abort-before-run.ini"));
+    const QString isolated(QStringLiteral("abort-before-run.ini"));
     QVERIFY2(test::copyResourceAsWritable(newPasswordIniResource, isolated), "accounts INI resource should be available as file");
 
     int openCounter = 0;
@@ -78,7 +78,7 @@ void RequestAccountPasswordTest::testAbortBeforeRun(void)
 
 void RequestAccountPasswordTest::testNewPassword(void)
 {
-    const QString isolated(QLatin1String("supply-new-password.ini"));
+    const QString isolated(QStringLiteral("supply-new-password.ini"));
     QVERIFY2(test::copyResourceAsWritable(newPasswordIniResource, isolated), "accounts INI resource should be available as file");
 
     int openCounter = 0;
@@ -112,7 +112,7 @@ void RequestAccountPasswordTest::testNewPassword(void)
     QCOMPARE(unlocked.count(), 0);
     QCOMPARE(jobFinished.count(), 0);
 
-    QString password(QLatin1String("hello, world"));
+    QString password(QStringLiteral("hello, world"));
     std::optional<secrets::KeyDerivationParameters> defaults = secrets::KeyDerivationParameters::create();
     QVERIFY2(defaults, "should be able to construct default key derivation parameters");
     QVERIFY2(secret.answerNewPassword(password, *defaults), "should be able to answer (new) password");
@@ -140,7 +140,7 @@ void RequestAccountPasswordTest::testNewPassword(void)
 
 void RequestAccountPasswordTest::testNewPasswordAbort(void)
 {
-    const QString isolated(QLatin1String("abort-new-password.ini"));
+    const QString isolated(QStringLiteral("abort-new-password.ini"));
     QVERIFY2(test::copyResourceAsWritable(newPasswordIniResource, isolated), "accounts INI resource should be available as file");
 
     int openCounter = 0;
@@ -196,7 +196,7 @@ void RequestAccountPasswordTest::testNewPasswordAbort(void)
 
 void RequestAccountPasswordTest::testExistingPassword(void)
 {
-    const QString isolated(QLatin1String("supply-existing-password.ini"));
+    const QString isolated(QStringLiteral("supply-existing-password.ini"));
     QVERIFY2(test::copyResourceAsWritable(existingPasswordIniResource, isolated), "accounts INI resource should be available as file");
 
     int openCounter = 0;
@@ -230,7 +230,7 @@ void RequestAccountPasswordTest::testExistingPassword(void)
     QCOMPARE(unlocked.count(), 0);
     QCOMPARE(jobFinished.count(), 0);
 
-    QString password(QLatin1String("hello, world"));
+    QString password(QStringLiteral("hello, world"));
     QVERIFY2(secret.answerExistingPassword(password), "should be able to answer (existing) password");
 
     QVERIFY2(test::signal_eventually_emitted_once(passwordAvailable), "(existing) password should be accepted");
@@ -256,7 +256,7 @@ void RequestAccountPasswordTest::testExistingPassword(void)
 
 void RequestAccountPasswordTest::testExistingPasswordAbort(void)
 {
-    const QString isolated(QLatin1String("abort-existing-password.ini"));
+    const QString isolated(QStringLiteral("abort-existing-password.ini"));
     QVERIFY2(test::copyResourceAsWritable(existingPasswordIniResource, isolated), "accounts INI resource should be available as file");
 
     int openCounter = 0;

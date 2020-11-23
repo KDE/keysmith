@@ -18,12 +18,8 @@
 KEYSMITH_LOGGER(logger, ".accounts.actions")
 KEYSMITH_LOGGER(dispatcherLogger, ".accounts.dispatcher")
 
-static const QMetaEnum hashEnum = QMetaEnum::fromType<accounts::Account::Hash>();
-static const QVariant hashDefault = QVariant::fromValue<accounts::Account::Hash>(accounts::Account::Sha1);
-static const QString trueVariantValue(QLatin1String("true"));
-static const QString falseVariantValue(QLatin1String("false"));
-
 static const quint64 maxCounter = std::numeric_limits<quint64>::max();
+static const int hashTypeId = qRegisterMetaType<accounts::Account::Hash>();
 
 namespace accounts
 {
@@ -68,16 +64,16 @@ namespace accounts
     }
 
     SaveHotp::SaveHotp(const SettingsProvider &settings,
-                       const QUuid &id, const QString &accountName, const QString &issuer,
+                       const QUuid id, const QString &accountName, const QString &issuer,
                        const secrets::EncryptedSecret &secret, uint tokenLength,
-                       quint64 counter, const std::optional<uint> &offset, bool checksum) :
+                       quint64 counter, const std::optional<uint> offset, bool checksum) :
         AccountJob(), m_settings(settings), m_id(id), m_accountName(accountName), m_issuer(issuer),
         m_secret(secret), m_tokenLength(tokenLength), m_counter(counter), m_offset(offset), m_checksum(checksum)
     {
     }
 
     SaveTotp::SaveTotp(const SettingsProvider &settings,
-                       const QUuid &id, const QString &accountName, const QString &issuer,
+                       const QUuid id, const QString &accountName, const QString &issuer,
                        const secrets::EncryptedSecret &secret, uint tokenLength,
                        uint timeStep, const QDateTime &epoch, Account::Hash hash,
                        const std::function<qint64(void)> &clock) :
@@ -113,21 +109,21 @@ namespace accounts
             const QString group = m_id.toString();
             settings.remove(group);
             settings.beginGroup(group);
-            settings.setValue("account", m_accountName);
+            settings.setValue(QStringLiteral("account"), m_accountName);
             if (!m_issuer.isNull()) {
-                settings.setValue("issuer", m_issuer);
+                settings.setValue(QStringLiteral("issuer"), m_issuer);
             }
-            settings.setValue("type", "hotp");
+            settings.setValue(QStringLiteral("type"), QStringLiteral("hotp"));
             QString encodedNonce = QString::fromUtf8(m_secret.nonce().toBase64(QByteArray::Base64Encoding));
             QString encodedSecret = QString::fromUtf8(m_secret.cryptText().toBase64(QByteArray::Base64Encoding));
-            settings.setValue("secret", encodedSecret);
-            settings.setValue("nonce", encodedNonce);
-            settings.setValue("counter", m_counter);
-            settings.setValue("pinLength", m_tokenLength);
+            settings.setValue(QStringLiteral("secret"), encodedSecret);
+            settings.setValue(QStringLiteral("nonce"), encodedNonce);
+            settings.setValue(QStringLiteral("counter"), m_counter);
+            settings.setValue(QStringLiteral("pinLength"), m_tokenLength);
             if (m_offset) {
-                settings.setValue("offset", *m_offset);
+                settings.setValue(QStringLiteral("offset"), *m_offset);
             }
-            settings.setValue("checksum", m_checksum);
+            settings.setValue(QStringLiteral("checksum"), m_checksum);
             settings.endGroup();
 
             // Try to guarantee that data will have been written before claiming the account was actually saved
@@ -168,19 +164,19 @@ namespace accounts
             const QString group = m_id.toString();
             settings.remove(group);
             settings.beginGroup(group);
-            settings.setValue("account", m_accountName);
+            settings.setValue(QStringLiteral("account"), m_accountName);
             if (!m_issuer.isNull()) {
-                settings.setValue("issuer", m_issuer);
+                settings.setValue(QStringLiteral("issuer"), m_issuer);
             }
-            settings.setValue("type", "totp");
+            settings.setValue(QStringLiteral("type"), QStringLiteral("totp"));
             QString encodedNonce = QString::fromUtf8(m_secret.nonce().toBase64(QByteArray::Base64Encoding));
             QString encodedSecret = QString::fromUtf8(m_secret.cryptText().toBase64(QByteArray::Base64Encoding));
-            settings.setValue("secret", encodedSecret);
-            settings.setValue("nonce", encodedNonce);
-            settings.setValue("timeStep", m_timeStep);
-            settings.setValue("pinLength", m_tokenLength);
-            settings.setValue("epoch", m_epoch.toUTC().toString(Qt::ISODateWithMs));
-            settings.setValue("hash", QVariant::fromValue<Account::Hash>(m_hash).toString());
+            settings.setValue(QStringLiteral("secret"), encodedSecret);
+            settings.setValue(QStringLiteral("nonce"), encodedNonce);
+            settings.setValue(QStringLiteral("timeStep"), m_timeStep);
+            settings.setValue(QStringLiteral("pinLength"), m_tokenLength);
+            settings.setValue(QStringLiteral("epoch"), m_epoch.toUTC().toString(Qt::ISODateWithMs));
+            settings.setValue(QStringLiteral("hash"), QVariant::fromValue<Account::Hash>(m_hash).toString());
             settings.endGroup();
 
             // Try to guarantee that data will have been written before claiming the account was actually saved
@@ -248,7 +244,7 @@ namespace accounts
         }
 
         bool ok = false;
-        m_settings([this, derived, &ok](QSettings &settings) -> void
+        m_settings([derived, &ok](QSettings &settings) -> void
         {
             if (!settings.isWritable()) {
                 qCWarning(logger) << "Unable to save account secret key parameters: storage not writable";
@@ -258,12 +254,12 @@ namespace accounts
             const secrets::KeyDerivationParameters params = derived->params();
 
             QString encodedSalt = QString::fromUtf8(derived->salt().toBase64(QByteArray::Base64Encoding));
-            settings.beginGroup("master-key");
-            settings.setValue("salt", encodedSalt);
-            settings.setValue("cpu", params.cpuCost());
-            settings.setValue("memory", (quint64) params.memoryCost());
-            settings.setValue("algorithm", params.algorithm());
-            settings.setValue("length", params.keyLength());
+            settings.beginGroup(QStringLiteral("master-key"));
+            settings.setValue(QStringLiteral("salt"), encodedSalt);
+            settings.setValue(QStringLiteral("cpu"), params.cpuCost());
+            settings.setValue(QStringLiteral("memory"), (quint64) params.memoryCost());
+            settings.setValue(QStringLiteral("algorithm"), params.algorithm());
+            settings.setValue(QStringLiteral("length"), params.keyLength());
             settings.endGroup();
             ok = true;
         });
@@ -308,32 +304,32 @@ namespace accounts
             }
 
             QStringList groups = settings.childGroups();
-            if (!groups.contains(QLatin1String("master-key"))) {
+            if (!groups.contains(QStringLiteral("master-key"))) {
                 qCInfo(logger) << "No key derivation parameters found: requesting 'new' password for accounts";
                 ok = m_secret->requestNewPassword();
                 return;
             }
 
-            settings.beginGroup("master-key");
+            settings.beginGroup(QStringLiteral("master-key"));
             QByteArray salt;
             quint64 cpuCost = 0ULL;
             quint64 keyLength = 0ULL;
             size_t memoryCost = 0ULL;
-            int algorithm = settings.value("algorithm").toInt(&ok);
+            int algorithm = settings.value(QStringLiteral("algorithm")).toInt(&ok);
             if (ok) {
                 ok = false;
-                keyLength = settings.value("length").toULongLong(&ok);
+                keyLength = settings.value(QStringLiteral("length")).toULongLong(&ok);
             }
             if (ok) {
                 ok = false;
-                cpuCost = settings.value("cpu").toULongLong(&ok);
+                cpuCost = settings.value(QStringLiteral("cpu")).toULongLong(&ok);
             }
             if (ok) {
                 ok = false;
-                memoryCost = settings.value("memory").toULongLong(&ok);
+                memoryCost = settings.value(QStringLiteral("memory")).toULongLong(&ok);
             }
             if (ok) {
-                QByteArray encodedSalt = settings.value("salt").toString().toUtf8();
+                QByteArray encodedSalt = settings.value(QStringLiteral("salt")).toString().toUtf8();
                 salt = QByteArray::fromBase64(encodedSalt, QByteArray::Base64Encoding);
                 ok = secrets::SecureMasterKey::validate(salt);
             }
@@ -384,7 +380,7 @@ namespace accounts
 
                 settings.beginGroup(group);
 
-                const QString accountName = settings.value("account").toString();
+                const QString accountName = settings.value(QStringLiteral("account")).toString();
                 if (!checkName(accountName)) {
                     qCWarning(logger)
                         << "Skipping invalid account:" << id
@@ -393,7 +389,7 @@ namespace accounts
                     continue;
                 }
 
-                const QString issuer = settings.value("issuer", QString()).toString();
+                const QString issuer = settings.value(QStringLiteral("issuer"), QString()).toString();
                 if (!checkIssuer(issuer)) {
                     qCWarning(logger)
                         << "Skipping invalid account:" << id
@@ -402,8 +398,8 @@ namespace accounts
                     continue;
                 }
 
-                const QString type = settings.value("type").toString();
-                if (type != QLatin1String("hotp") && type != QLatin1String("totp")) {
+                const QString type = settings.value(QStringLiteral("type")).toString();
+                if (type != QStringLiteral("hotp") && type != QStringLiteral("totp")) {
                     qCWarning(logger)
                         << "Skipping invalid account:" << id
                         << "Invalid account type";
@@ -413,7 +409,7 @@ namespace accounts
                 }
 
                 bool ok = false;
-                const int tokenLength = settings.value("pinLength").toInt(&ok);
+                const int tokenLength = settings.value(QStringLiteral("pinLength")).toInt(&ok);
                 if (!ok || !checkTokenLength(tokenLength)) {
                     qCWarning(logger)
                         << "Skipping invalid account:" << id
@@ -423,8 +419,8 @@ namespace accounts
                     continue;
                 }
 
-                const QByteArray encodedNonce = settings.value("nonce").toString().toUtf8();
-                const QByteArray encodedSecret = settings.value("secret").toString().toUtf8();
+                const QByteArray encodedNonce = settings.value(QStringLiteral("nonce")).toString().toUtf8();
+                const QByteArray encodedSecret = settings.value(QStringLiteral("secret")).toString().toUtf8();
                 const QByteArray nonce = QByteArray::fromBase64(encodedNonce, QByteArray::Base64Encoding);
                 const QByteArray secret = QByteArray::fromBase64(encodedSecret, QByteArray::Base64Encoding);
 
@@ -448,9 +444,9 @@ namespace accounts
                     continue;
                 }
 
-                if (type == QLatin1String("totp")) {
+                if (type == QStringLiteral("totp")) {
                     ok = false;
-                    const uint timeStep = settings.value("timeStep").toUInt(&ok);
+                    const uint timeStep = settings.value(QStringLiteral("timeStep")).toUInt(&ok);
                     if (!ok || !checkTimeStep(timeStep)) {
                         qCWarning(logger)
                             << "Skipping invalid account:" << id
@@ -460,7 +456,8 @@ namespace accounts
                         continue;
                     }
 
-                    const QDateTime epoch = settings.value("epoch", QDateTime::fromMSecsSinceEpoch(0)).toDateTime();
+                    const QDateTime epoch = settings.value(QStringLiteral("epoch"), QDateTime::fromMSecsSinceEpoch(0))
+                        .toDateTime();
                     if (!checkEpoch(epoch, m_clock)) {
                         qCWarning(logger)
                             << "Skipping invalid account:" << id
@@ -471,7 +468,10 @@ namespace accounts
                     }
 
                     ok = false;
-                    const QByteArray hashName = settings.value("hash", hashDefault).toByteArray();
+
+                    const auto hashEnum = QMetaEnum::fromType<accounts::Account::Hash>();
+                    const auto hashDefault = QVariant::fromValue<accounts::Account::Hash>(accounts::Account::Sha1);
+                    const QByteArray hashName = settings.value(QStringLiteral("hash"), hashDefault).toByteArray();
                     int hash = hashEnum.keyToValue(hashName.constData(), &ok);
                     if (!ok) {
                         qCWarning(logger)
@@ -487,9 +487,9 @@ namespace accounts
                                      timeStep, epoch, (Account::Hash) hash);
                 }
 
-                if (type == QLatin1String("hotp")) {
+                if (type == QStringLiteral("hotp")) {
                     ok = false;
-                    const quint64 counter = settings.value("counter").toULongLong(&ok);
+                    const quint64 counter = settings.value(QStringLiteral("counter")).toULongLong(&ok);
                     if (!ok) {
                         qCWarning(logger)
                             << "Skipping invalid account:" << id
@@ -499,7 +499,7 @@ namespace accounts
                         continue;
                     }
 
-                    const QVariant offsetVariant = settings.value("offset");
+                    const QVariant offsetVariant = settings.value(QStringLiteral("offset"));
                     ok = offsetVariant.isNull();
                     std::optional<uint> offset = ok ? std::nullopt : std::optional<uint>(offsetVariant.toUInt(&ok));
 
@@ -512,8 +512,9 @@ namespace accounts
                         continue;
                     }
 
-                    const QString checksum = settings.value("checksum", falseVariantValue).toString();
-                    if (checksum != trueVariantValue && checksum != falseVariantValue) {
+                    const auto checkSumOff = QStringLiteral("false");
+                    const auto checksum = settings.value(QStringLiteral("checksum"), checkSumOff).toString();
+                    if (checksum != QStringLiteral("true") && checksum != checkSumOff) {
                         qCWarning(logger)
                             << "Skipping invalid account:" << id
                             << "Invalid checksum";
@@ -524,7 +525,8 @@ namespace accounts
 
                     qCInfo(logger) << "Found valid HOTP account:" << id;
                     Q_EMIT foundHotp(id, accountName, issuer, secret, nonce, tokenLength,
-                                     counter, offset.has_value(), offset ? *offset : 0U, checksum == trueVariantValue);
+                                     counter, offset.has_value(), offset ? *offset : 0U,
+                                     checksum == QStringLiteral("true"));
                 }
 
                 settings.endGroup();
@@ -555,7 +557,7 @@ namespace accounts
 
     ComputeTotp::ComputeTotp(const AccountSecret *secret,
                              const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
-                             const QDateTime &epoch, uint timeStep, const Account::Hash &hash,
+                             const QDateTime &epoch, uint timeStep, const Account::Hash hash,
                              const std::function<qint64(void)> &clock) :
         AccountJob(), m_secret(secret), m_tokenSecret(tokenSecret), m_tokenLength(tokenLength),
         m_epoch(epoch), m_timeStep(timeStep), m_hash(hash), m_clock(clock)
@@ -649,7 +651,7 @@ namespace accounts
 
     ComputeHotp::ComputeHotp(const AccountSecret *secret,
                              const secrets::EncryptedSecret &tokenSecret, uint tokenLength,
-                             quint64 counter, const std::optional<uint> &offset, bool checksum) :
+                             quint64 counter, const std::optional<uint> offset, bool checksum) :
         AccountJob(), m_secret(secret), m_tokenSecret(tokenSecret), m_tokenLength(tokenLength),
         m_counter(counter), m_offset(offset), m_checksum(checksum)
     {
