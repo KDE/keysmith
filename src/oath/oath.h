@@ -38,16 +38,16 @@ namespace oath
     {
     public:
         static bool validate(const Encoder *encoder);
-        static bool validate(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset);
-        static std::optional<Algorithm> create(QCryptographicHash::Algorithm algorithm, const std::optional<uint> &offset, const QSharedPointer<const Encoder> &encoder, bool requireSaneKeyLength = false);
+        static bool validate(QCryptographicHash::Algorithm algorithm, const std::optional<uint> offset);
+        static std::optional<Algorithm> create(QCryptographicHash::Algorithm algorithm, const std::optional<uint> offset, const QSharedPointer<const Encoder> &encoder, bool requireSaneKeyLength = false);
         static std::optional<Algorithm> totp(QCryptographicHash::Algorithm algorithm, uint tokenLength, bool requireSaneKeyLength = false);
-        static std::optional<Algorithm> hotp(const std::optional<uint> &offset, uint tokenLength, bool checksum, bool requireSaneKeyLength = false);
+        static std::optional<Algorithm> hotp(const std::optional<uint> offset, uint tokenLength, bool checksum, bool requireSaneKeyLength = false);
         std::optional<QString> compute(quint64 counter, char * secretBuffer, int length) const;
     private:
-        Algorithm(const QSharedPointer<const Encoder> &encoder, const std::function<quint32(QByteArray)> &truncation, QCryptographicHash::Algorithm algorithm, bool requireSaneKeyLength);
+        Algorithm(const QSharedPointer<const Encoder> &encoder, const std::function<quint32(const QByteArray &)> &truncation, QCryptographicHash::Algorithm algorithm, bool requireSaneKeyLength);
     private:
         const QSharedPointer<const Encoder> m_encoder;
-        const std::function<quint32(QByteArray)> m_truncation;
+        const std::function<quint32(const QByteArray &)> m_truncation;
         bool m_enforceKeyLength;
         const QCryptographicHash::Algorithm m_algorithm;
     };
