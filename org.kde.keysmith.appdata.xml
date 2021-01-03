@@ -22,6 +22,7 @@
   <name xml:lang="ko">Keysmith</name>
   <name xml:lang="nl">Keysmith</name>
   <name xml:lang="nn">Keysmith</name>
+  <name xml:lang="pa">ਕੀ-ਸਮਿੱਥ</name>
   <name xml:lang="pt">Keysmith</name>
   <name xml:lang="pt-BR">Keysmith</name>
   <name xml:lang="ru">Keysmith</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="ko">Plasma 모바일과 데스크톱용 2단계 인증 코드 생성기</summary>
   <summary xml:lang="nl">Twee-factor codegenerator voor Plasma Mobile en Bureaublad</summary>
   <summary xml:lang="nn">Tofaktors kodegenerator for Plasma Mobile og Desktop</summary>
+  <summary xml:lang="pa">ਪਲਾਜ਼ਮਾ ਮੋਬਾਈਲ ਤੇ ਡੈਸਕਟਾਪ ਲਈ ਦੋ-ਪੜਾਵੀ ਕੋਡ ਤਿਆਰ ਕਰਤਾ</summary>
   <summary xml:lang="pt">Gerador de códigos de duplo-factor para o Plasma Mobile e normal</summary>
   <summary xml:lang="pt-BR">Gerador de código de dois fatores para o Plasma Mobile e Desktop</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
@@ -78,6 +80,7 @@
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
   <developer_name xml:lang="nl">KDE-gemeenschap</developer_name>
   <developer_name xml:lang="nn">KDE-fellesskapet</developer_name>
+  <developer_name xml:lang="pa">ਕੇਡੀਈ ਕਮਿਊਨਟੀ</developer_name>
   <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
   <developer_name xml:lang="pt-BR">Comunidade KDE</developer_name>
   <developer_name xml:lang="ru">Сообщество KDE</developer_name>
@@ -103,6 +106,7 @@
     <p xml:lang="ko">Keysmith는 2단계 인증(2FA) 토큰을 생성합니다</p>
     <p xml:lang="nl">Keysmith genereert tokens voor uw twee-factor aanmeldingen (2FA)</p>
     <p xml:lang="nn">Keysmith lagar pollettar for tofaktor­basert pålogging (2FA)</p>
+    <p xml:lang="pa">Keysmith ਤੁਹਾਡੇ ਦੋ ਪੜਾਵੀਂ ਲਾਗਇਨਾਂ (2FA) ਲਈ ਟੋਕਨ ਤਿਆਰ ਕਰਦੀ ਹੈ</p>
     <p xml:lang="pt">O Keysmith gera códigos para as suas autenticações em dois-factores (2FA)</p>
     <p xml:lang="pt-BR">O Keysmith gera tokens para logins de dois fatores (2FA)</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
@@ -126,6 +130,7 @@
       <li xml:lang="ko">시간과 해시 기반 OTP</li>
       <li xml:lang="nl">Op tijd en hash gebaseerde OTP</li>
       <li xml:lang="nn">Tids- og hash-basert OTP</li>
+      <li xml:lang="pa">ਸਮਾਂ ਤੇ ਹੈਸ਼-ਅਧਾਰਿਤ OTP</li>
       <li xml:lang="pt">OTP baseado em códigos e no tempo</li>
       <li xml:lang="pt-BR">OTP baseados no tempo e hash</li>
       <li xml:lang="sl">Časovno in razsuto osnovana enkratna gesla</li>
