@@ -790,6 +790,7 @@ namespace accounts
         if (job) {
             Q_ASSERT_X(job == m_current, Q_FUNC_INFO, "sender() should match 'current' job!");
             QObject::disconnect(this, &Dispatcher::dispatch, job, &AccountJob::run);
+            // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDeleteLeaks): False positives with QTimer::singleShot
             QTimer::singleShot(0, job, &AccountJob::deleteLater);
             m_current = nullptr;
             dispatchNext();
