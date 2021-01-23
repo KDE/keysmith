@@ -6,6 +6,7 @@
 #
 [Desktop Entry]
 Name=Keysmith
+Name[ast]=Keysmith
 Name[ca]=Keysmith
 Name[ca@valencia]=Keysmith
 Name[cs]=Keysmith
@@ -34,6 +35,7 @@ Name[uk]=Keysmith
 Name[x-test]=xxKeysmithxx
 Name[zh_TW]=Keysmith
 Comment=Manage your OTP tokens for two factor authentication (2fa)
+Comment[ast]=Xestiona pases d'OTP pa l'autenticación en dos pasos
 Comment[ca]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[ca@valencia]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[cs]=Spravujte tokeny OTP pomocí dvoufaktorového ověření (2fa)
