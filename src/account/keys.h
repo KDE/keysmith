@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #ifndef ACCOUNTS_KEYS_H
 #define ACCOUNTS_KEYS_H
@@ -29,6 +29,9 @@ namespace accounts
         bool requestExistingPassword(const secrets::EncryptedSecret &challenge,
                                      const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams);
 
+        // HACK: disables challenge verification, remove at some point!
+        bool requestExistingPassword(const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams);
+
         bool answerExistingPassword(QString &password);
         bool answerNewPassword(QString &password, const secrets::KeyDerivationParameters &keyParams);
 
@@ -50,6 +53,7 @@ namespace accounts
         bool m_stillAlive;
         bool m_newPassword;
         bool m_passwordRequested;
+        bool m_hackWithoutChallenge; // HACK: disables challenge verification, remove at some point!
         const secrets::SecureRandom m_random;
         std::optional<QByteArray> m_salt;
         std::optional<secrets::EncryptedSecret> m_challenge;

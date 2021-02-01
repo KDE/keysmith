@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "keys.h"
 
@@ -13,8 +13,10 @@ KEYSMITH_LOGGER(logger, ".accounts.keys")
 namespace accounts
 {
     AccountSecret::AccountSecret(const secrets::SecureRandom &random, QObject *parent) :
-        QObject(parent), m_stillAlive(true), m_newPassword(false), m_passwordRequested(false), m_random(random),
-        m_salt(std::nullopt), m_challenge(std::nullopt), m_key(nullptr), m_password(nullptr), m_keyParams(std::nullopt)
+        QObject(parent), m_stillAlive(true), m_newPassword(false), m_passwordRequested(false),
+        m_hackWithoutChallenge(false), // HACK: disables challenge verification, remove at some point!
+        m_random(random), m_salt(std::nullopt), m_challenge(std::nullopt), m_key(nullptr), m_password(nullptr),
+        m_keyParams(std::nullopt)
     {
     }
 
@@ -81,6 +83,41 @@ namespace accounts
         return true;
     }
 
+    // HACK: disables challenge verification, remove at some point!
+    bool AccountSecret::requestExistingPassword(const QByteArray& salt, const secrets::KeyDerivationParameters &keyParams)
+    {
+        qCWarning(logger) << "HACK: running a 'silent' migration for legacy account setups without password challenge";
+
+        if (!m_stillAlive) {
+            qCDebug(logger) << "Ignoring request for 'existing' password: account secret is marked for death";
+            return false;
+        }
+
+        if (m_passwordRequested) {
+            qCDebug(logger) << "Ignoring request for 'existing' password: conflicting or duplicate request";
+            return false;
+        }
+
+        if (!secrets::SecureMasterKey::validate(keyParams)) {
+            qCDebug(logger) << "Unable to request 'existing' password: invalid key derivation parameters";
+            return false;
+        }
+
+        if (!secrets::SecureMasterKey::validate(salt)) {
+            qCDebug(logger) << "Unable to request 'existing' password: invalid salt";
+            return false;
+        }
+
+        qCDebug(logger) << "Emitting request for 'existing' password";
+        m_passwordRequested = true;
+        m_newPassword = false;
+        m_keyParams.emplace(keyParams);
+        m_salt.emplace(salt);
+        m_hackWithoutChallenge = true;
+        Q_EMIT existingPasswordNeeded();
+        return true;
+    }
+
     bool AccountSecret::acceptPassword(QString &password, bool answerMatchesRequest)
     {
         QByteArray passwordBytes;
@@ -132,7 +169,9 @@ namespace accounts
 
     bool AccountSecret::answerExistingPassword(QString &password)
     {
-        bool result = acceptPassword(password, m_keyParams && m_salt && m_challenge);
+        // HACK: disables challenge verification, remove at some point!
+        bool challengeOk = (m_challenge || m_hackWithoutChallenge);
+        bool result = acceptPassword(password, m_keyParams && m_salt && challengeOk);
         if (result) {
             Q_EMIT passwordAvailable();
         }

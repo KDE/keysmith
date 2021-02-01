@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "actions_p.h"
 #include "validation.h"
@@ -347,6 +347,8 @@ namespace accounts
             quint64 cpuCost = 0ULL;
             quint64 keyLength = 0ULL;
             size_t memoryCost = 0ULL;
+            // HACK: disables challenge verification, remove at some point!
+            bool challengeAvailable = settings.contains(QStringLiteral("challenge"));
             int algorithm = settings.value(QStringLiteral("algorithm")).toInt(&ok);
             if (ok) {
                 ok = false;
@@ -365,12 +367,15 @@ namespace accounts
                 salt = QByteArray::fromBase64(encodedSalt, QByteArray::Base64Encoding);
                 ok = !salt.isEmpty() && secrets::SecureMasterKey::validate(salt);
             }
-            if (ok) {
+
+            // HACK: disables challenge verification, remove at some point!
+            if (challengeAvailable && ok) {
                 QByteArray encodedChallenge = settings.value(QStringLiteral("challenge")).toString().toUtf8();
                 challenge = QByteArray::fromBase64(encodedChallenge, QByteArray::Base64Encoding);
                 ok = !challenge.isEmpty();
             }
-            if (ok) {
+            // HACK: disables challenge verification, remove at some point!
+            if (challengeAvailable && ok) {
                 QByteArray encodedNonce = settings.value(QStringLiteral("nonce")).toString().toUtf8();
                 nonce = QByteArray::fromBase64(encodedNonce, QByteArray::Base64Encoding);
                 ok = !nonce.isEmpty();
@@ -379,13 +384,17 @@ namespace accounts
 
             const auto params = secrets::KeyDerivationParameters::create(keyLength, algorithm, memoryCost, cpuCost);
             const auto encryptedChallenge = secrets::EncryptedSecret::from(challenge, nonce);
-            if (!ok || !params || !secrets::SecureMasterKey::validate(*params) || !encryptedChallenge) {
+
+            // HACK: disables challenge verification, remove at some point!
+            if (!ok || !params || !secrets::SecureMasterKey::validate(*params) || (challengeAvailable && !encryptedChallenge)) {
                 qCDebug(logger) << "Unable to request 'existing' password: invalid challenge, nonce, salt or key derivation parameters";
                 return;
             }
 
             qCInfo(logger) << "Requesting 'existing' password for accounts";
-            ok = m_secret->requestExistingPassword(*encryptedChallenge, salt, *params);
+            ok = challengeAvailable
+                ? m_secret->requestExistingPassword(*encryptedChallenge, salt, *params)
+                : m_secret->requestExistingPassword(salt, *params); // HACK: disables challenge verification, remove at some point!
         });
 
         if (!ok) {
