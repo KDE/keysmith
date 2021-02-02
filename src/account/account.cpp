@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "account.h"
 #include "account_p.h"
@@ -198,7 +198,7 @@ namespace accounts
     }
 
     void AccountStorage::addHotp(const QString &name, const QString &issuer, const QString &secret, uint tokenLength,
-                                 quint64 counter, const std::optional<uint> &offset, bool addChecksum)
+                                 quint64 counter, const std::optional<uint> offset, bool addChecksum)
     {
         Q_D(AccountStorage);
         const std::function<void(SaveHotp*)> handler([this](SaveHotp *job) -> void
@@ -244,8 +244,8 @@ namespace accounts
         return d->activeAccounts();
     }
 
-    void AccountStorage::handleHotp(const QUuid id, const QString name, const QString issuer,
-                                    const QByteArray secret, const QByteArray nonce, uint tokenLength,
+    void AccountStorage::handleHotp(const QUuid id, const QString &name, const QString &issuer,
+                                    const QByteArray &secret, const QByteArray &nonce, uint tokenLength,
                                     quint64 counter, bool fixedTruncation, uint offset, bool checksum)
     {
         Q_D(AccountStorage);
@@ -279,9 +279,9 @@ namespace accounts
         Q_EMIT added(AccountPrivate::toFullName(name, issuer));
     }
 
-    void AccountStorage::handleTotp(const QUuid id, const QString name, const QString issuer,
-                                    const QByteArray secret, const QByteArray nonce, uint tokenLength,
-                                    uint timeStep, const QDateTime epoch, Account::Hash hash)
+    void AccountStorage::handleTotp(const QUuid id, const QString &name, const QString &issuer,
+                                    const QByteArray &secret, const QByteArray &nonce, uint tokenLength,
+                                    uint timeStep, const QDateTime &epoch, Account::Hash hash)
     {
         Q_D(AccountStorage);
         if (!d->isStillOpen()) {

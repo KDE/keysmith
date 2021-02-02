@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "account/actions_p.h"
 
@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QtDebug>
 
-class TestJob: public accounts::AccountJob
+class TestJob: public accounts::AccountJob // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 public:
@@ -29,7 +29,7 @@ public Q_SLOTS:
     }
 };
 
-class DispatchTest: public QObject
+class DispatchTest: public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:

@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #ifndef ACCOUNTS_ACCOUNT_H
 #define ACCOUNTS_ACCOUNT_H
@@ -56,7 +56,7 @@ namespace accounts
         void setCounter(quint64 counter);
         void advanceCounter(quint64 by = 1ULL);
     Q_SIGNALS:
-        void tokenChanged(const QString otp);
+        void tokenChanged(const QString &otp);
         void removed(void);
         void updated(void);
     private:
@@ -88,7 +88,7 @@ namespace accounts
                      const QString &secret,
                      uint tokenLength = 6U,
                      quint64 counter = 0ULL,
-                     const std::optional<uint> &offset = std::nullopt,
+                     const std::optional<uint> offset = std::nullopt,
                      bool addChecksum = false);
         void addTotp(const QString &name,
                      const QString &issuer,
@@ -101,8 +101,8 @@ namespace accounts
         bool hasError(void) const;
         bool isLoaded(void) const;
     Q_SIGNALS:
-        void added(const QString fullName);
-        void removed(const QString fullName);
+        void added(const QString &fullName);
+        void removed(const QString &fullName);
         void error(void);
         void loaded(void);
         void disposed(void);
@@ -113,12 +113,12 @@ namespace accounts
         void handleDisposal(void);
         void handleError(void);
         void handleLoaded(void);
-        void handleHotp(const QUuid id, const QString name, const QString issuer,
-                        const QByteArray secret, const QByteArray nonce, uint tokenLength,
+        void handleHotp(const QUuid id, const QString &name, const QString &issuer,
+                        const QByteArray &secret, const QByteArray &nonce, uint tokenLength,
                         quint64 counter, bool fixedTruncation, uint offset, bool checksum);
-        void handleTotp(const QUuid id, const QString name, const QString issuer,
-                        const QByteArray secret, const QByteArray nonce, uint tokenLength,
-                        uint timeStep, const QDateTime epoch, Account::Hash hash);
+        void handleTotp(const QUuid id, const QString &name, const QString &issuer,
+                        const QByteArray &secret, const QByteArray &nonce, uint tokenLength,
+                        uint timeStep, const QDateTime &epoch, Account::Hash hash);
     private:
         QScopedPointer<AccountStoragePrivate> m_dptr;
         Q_DECLARE_PRIVATE_D(m_dptr, AccountStorage)

@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "account_p.h"
 #include "validation.h"
@@ -140,7 +140,8 @@ namespace accounts
         }
     }
 
-    void AccountPrivate::acceptTotpTokens(QString token, QString nextToken, QDateTime validFrom, QDateTime validUntil)
+    void AccountPrivate::acceptTotpTokens(const QString &token, const QString &nextToken,
+                                          const QDateTime &validFrom, const QDateTime &validUntil)
     {
         if (!m_is_still_alive) {
             qCDebug(logger)
@@ -162,7 +163,7 @@ namespace accounts
         setToken(token);
     }
 
-    void AccountPrivate::acceptHotpTokens(QString token, QString nextToken, quint64 nextCounter)
+    void AccountPrivate::acceptHotpTokens(const QString &token, const QString &nextToken, quint64 nextCounter)
     {
         if (!m_is_still_alive) {
             qCDebug(logger)
@@ -183,7 +184,7 @@ namespace accounts
         setToken(token);
     }
 
-    void AccountPrivate::setToken(QString token)
+    void AccountPrivate::setToken(const QString &token)
     {
         Q_Q(Account);
         if (m_token != token) {
@@ -304,9 +305,9 @@ namespace accounts
 
     AccountPrivate::AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                    AccountStoragePrivate *storage, Dispatcher *dispatcher,
-                                   const QUuid &id, const QString &name, const QString &issuer,
+                                   const QUuid id, const QString &name, const QString &issuer,
                                    const secrets::EncryptedSecret &secret, uint tokenLength,
-                                   quint64 counter, const std::optional<uint> &offset, bool addChecksum) :
+                                   quint64 counter, const std::optional<uint> offset, bool addChecksum) :
         q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true),
         m_algorithm(Account::Algorithm::Hotp), m_id(id), m_token(QString()), m_nextToken(QString()),
         m_nextTotpValidFrom(QDateTime::fromMSecsSinceEpoch(0)), // not a totp token so does not really matter
@@ -321,7 +322,7 @@ namespace accounts
 
     AccountPrivate::AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                    AccountStoragePrivate *storage, Dispatcher *dispatcher,
-                                   const QUuid &id, const QString &name, const QString &issuer,
+                                   const QUuid id, const QString &name, const QString &issuer,
                                    const secrets::EncryptedSecret &secret, uint tokenLength,
                                    const QDateTime &epoch, uint timeStep, Account::Hash hash) :
         q_ptr(account(this)), m_storage(storage), m_actions(dispatcher), m_is_still_alive(true),
@@ -449,7 +450,7 @@ namespace accounts
         DeleteAccounts *job = new DeleteAccounts(m_settings, ids);
         m_actions->queueAndProceed(job, [&ids, job, this](void) -> void
         {
-            for (const QUuid &id : ids) {
+            for (const QUuid &id : qAsConst(ids)) {
                 Account *account = m_accounts[id];
                 QObject::connect(job, &DeleteAccounts::finished, account, &Account::removed);
             }
@@ -502,7 +503,8 @@ namespace accounts
 
         qCDebug(logger) << "Handling storage disposal";
 
-        for (const QString &accountName : m_names.keys()) {
+        const auto &names = m_names.keys();
+        for (const QString &accountName : names) {
             const QUuid id = m_names[accountName];
             qCDebug(logger) << "Handling account cleanup for account:" << id;
 
@@ -557,7 +559,7 @@ namespace accounts
     bool AccountStoragePrivate::addHotp(const std::function<void(SaveHotp*)> &handler,
                                         const QString &name, const QString &issuer,
                                         const QString &secret, uint tokenLength,
-                                        quint64 counter, const std::optional<uint> &offset, bool checksum)
+                                        quint64 counter, const std::optional<uint> offset, bool checksum)
     {
         if (!m_is_still_open) {
             qCDebug(logger) << "Will not add new HOTP account: storage no longer open";
@@ -653,9 +655,9 @@ namespace accounts
         });
     }
 
-    Account * AccountStoragePrivate::acceptHotpAccount(const QUuid &id, const QString &name, const QString &issuer,
+    Account * AccountStoragePrivate::acceptHotpAccount(const QUuid id, const QString &name, const QString &issuer,
                                                        const secrets::EncryptedSecret &secret, uint tokenLength,
-                                                       quint64 counter, const std::optional<uint> &offset, bool checksum)
+                                                       quint64 counter, const std::optional<uint> offset, bool checksum)
     {
         Q_Q(AccountStorage);
         qCDebug(logger) << "Registering HOTP account:" << id;
@@ -675,7 +677,7 @@ namespace accounts
         return m_accounts[id];
     }
 
-    Account * AccountStoragePrivate::acceptTotpAccount(const QUuid &id, const QString &name, const QString &issuer,
+    Account * AccountStoragePrivate::acceptTotpAccount(const QUuid id, const QString &name, const QString &issuer,
                                                        const secrets::EncryptedSecret &secret, uint tokenLength,
                                                        uint timeStep, const QDateTime &epoch, Account::Hash hash)
     {
@@ -773,12 +775,13 @@ namespace accounts
         QObject::connect(job, &ComputeTotp::finished, this, &HandleTokenUpdate::deleteLater);
     }
 
-    void HandleTokenUpdate::totp(QString otp, QString nextOtp, QDateTime validFrom, QDateTime validUntil)
+    void HandleTokenUpdate::totp(const QString &otp, const QString &nextOtp, const QDateTime &validFrom,
+                                 const QDateTime &validUntil)
     {
         m_account->acceptTotpTokens(otp, nextOtp, validFrom, validUntil);
     }
 
-    void HandleTokenUpdate::hotp(QString otp, QString nextOtp, quint64 validUntil)
+    void HandleTokenUpdate::hotp(const QString &otp, const QString &nextOtp, quint64 validUntil)
     {
         m_account->acceptHotpTokens(otp, nextOtp, validUntil);
     }

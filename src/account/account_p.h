@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #ifndef ACCOUNTS_ACCOUNT_PRIVATE_H
 #define ACCOUNTS_ACCOUNT_PRIVATE_H
@@ -42,24 +42,25 @@ namespace accounts
         static QString toFullName(const QString &name, const QString &issuer);
         explicit AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                 AccountStoragePrivate *storage, Dispatcher *dispatcher,
-                                const QUuid &id, const QString &name, const QString &issuer,
+                                const QUuid id, const QString &name, const QString &issuer,
                                 const secrets::EncryptedSecret &secret, uint tokenLength,
-                                quint64 counter, const std::optional<uint> &offset, bool addChecksum);
+                                quint64 counter, const std::optional<uint> offset, bool addChecksum);
         explicit AccountPrivate(const std::function<Account*(AccountPrivate*)> &account,
                                 AccountStoragePrivate *storage, Dispatcher *dispatcher,
-                                const QUuid &id, const QString &name, const QString &issuer,
+                                const QUuid id, const QString &name, const QString &issuer,
                                 const secrets::EncryptedSecret &secret, uint tokenLength,
                                 const QDateTime &epoch, uint timeStep, Account::Hash hash);
         void recompute(void);
         void setCounter(quint64 counter);
         void remove(void);
         void acceptCounter(quint64 counter);
-        void acceptTotpTokens(QString token, QString nextToken, QDateTime validFrom, QDateTime validUntil);
-        void acceptHotpTokens(QString token, QString nextToken, quint64 validUntil);
+        void acceptTotpTokens(const QString &token, const QString &nextToken, const QDateTime &validFrom,
+                              const QDateTime &validUntil);
+        void acceptHotpTokens(const QString &token, const QString &nextToken, quint64 validUntil);
         void markForRemoval(void);
         bool isStillAlive(void) const;
     private:
-        void setToken(QString token);
+        void setToken(const QString &token);
         void shiftTokens(void);
     private:
         Q_DISABLE_COPY(AccountPrivate);
@@ -108,16 +109,16 @@ namespace accounts
         AccountSecret *secret(void) const;
         void removeAccounts(const QSet<QString> &accountNames);
         void acceptAccountRemoval(const QString &accountName);
-        Account * acceptHotpAccount(const QUuid &id, const QString &name,  const QString &issuer,
+        Account * acceptHotpAccount(const QUuid id, const QString &name,  const QString &issuer,
                                     const secrets::EncryptedSecret &secret, uint tokenLength,
-                                    quint64 counter, const std::optional<uint> &offset, bool checksum);
-        Account * acceptTotpAccount(const QUuid &id, const QString &name, const QString &issuer,
+                                    quint64 counter, const std::optional<uint> offset, bool checksum);
+        Account * acceptTotpAccount(const QUuid id, const QString &name, const QString &issuer,
                                     const secrets::EncryptedSecret &secret, uint tokenLength,
                                     uint timeStep, const QDateTime &epoch, Account::Hash hash);
         bool addHotp(const std::function<void(SaveHotp*)> &handler,
                      const QString &name, const QString &issuer,
                      const QString &secret, uint tokenLength,
-                     quint64 counter, const std::optional<uint> &offset, bool checksum);
+                     quint64 counter, const std::optional<uint> offset, bool checksum);
         bool addTotp(const std::function<void(SaveTotp*)> &handler,
                      const QString &name, const QString &issuer,
                      const QString &secret, uint tokenLength,
@@ -175,8 +176,8 @@ namespace accounts
     private:
         AccountPrivate * const m_account;
     private Q_SLOTS:
-        void totp(QString otp, QString nextOtp, QDateTime validFrom, QDateTime validUntil);
-        void hotp(QString otp, QString nextOtp, quint64 validUntil);
+        void totp(const QString &otp, const QString &nextOtp, const QDateTime &validFrom, const QDateTime &validUntil);
+        void hotp(const QString &otp, const QString &nextOtp, quint64 validUntil);
     };
 }
 
