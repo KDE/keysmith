@@ -23,6 +23,7 @@
 #include "validators/issuervalidator.h"
 #include "validators/secretvalidator.h"
 
+#include "keysmith-features.h"
 #include "version.h"
 
 /*
@@ -32,6 +33,10 @@
 #ifndef NDEBUG
 #include <QQmlDebuggingEnabler>
 static QQmlDebuggingEnabler enabler;
+#endif
+
+#ifdef ENABLE_DBUS_INTERFACE
+#include <KDBusService>
 #endif
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -71,6 +76,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     }
 
     app::Proxy proxy(&app);
+
+#ifdef ENABLE_DBUS_INTERFACE
+    KDBusService service(KDBusService::Unique);
+#endif
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));

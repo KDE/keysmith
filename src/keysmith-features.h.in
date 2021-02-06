@@ -1,0 +1,12 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ */
+#ifndef KEYSMITH_FEATURES_H
+#define KEYSMITH_FEATURES_H
+
+// record support for optional features at configure (cmake) time
+
+#cmakedefine ENABLE_DBUS_INTERFACE true
+
+#endif

@@ -53,6 +53,11 @@ if(NOT BUILD_EXTERNAL AND (NOT ANDROID OR DEFINED BUILD_EXTERNAL))
     find_package(sodium ${SODIUM_MIN_VERSION} REQUIRED)
 endif()
 
+if (BUILD_DBUS_INTERFACE OR (NOT ANDROID AND NOT DEFINED BUILD_DBUS_INTERFACE))
+    find_package(KF5DBusAddons ${KF5_MIN_VERSION} REQUIRED)
+    set(ENABLE_DBUS_INTERFACE ON)
+endif()
+
 ################ Find testing dependencies ##########
 
 if (BUILD_TESTING)

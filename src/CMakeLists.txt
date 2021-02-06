@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
 # SPDX-FileCopyrightText: 2019 Friedrich W. H. Kossebau <kossebau@kde.org>
-# SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2019-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 # SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
 # SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
 #
@@ -19,6 +19,14 @@ add_subdirectory(app)
 
 configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/version.h")
 
+#
+# The features header should be namespaced, or at least it *must not* be called 'features.h'.
+# Reason is that the GNU C++ standard library implementation also refers to a 'features.h'
+# and compilation will blow up very badly inside 'os_defines.h' if it does not get the
+# 'features.h' it was (really) looking for.
+#
+configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/keysmith-features.h.in" "${CMAKE_CURRENT_BINARY_DIR}/keysmith-features.h")
+
 set(keysmith_SRCS
     main.cpp
 )
@@ -32,6 +40,10 @@ target_link_libraries(keysmith
     KF5::I18n
     ${keysmith_internal_libs}
 )
+
+if (ENABLE_DBUS_INTERFACE)
+    target_link_libraries(keysmith KF5::DBusAddons)
+endif()
 
 if(ANDROID)
     kirigami_package_breeze_icons(ICONS
