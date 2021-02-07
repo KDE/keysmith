@@ -79,6 +79,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 #ifdef ENABLE_DBUS_INTERFACE
     KDBusService service(KDBusService::Unique);
+    QObject::connect(&service, &KDBusService::activateRequested, &proxy, &app::Proxy::handleDBusActivation);
 #endif
 
     QQmlApplicationEngine engine;

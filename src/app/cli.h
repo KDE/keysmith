@@ -8,6 +8,8 @@
 #include "keysmith.h"
 #include "../model/input.h"
 
+#include "../keysmith-features.h"
+
 #include <QCommandLineParser>
 #include <QGuiApplication>
 #include <QObject>
@@ -70,6 +72,10 @@ namespace app
         explicit Proxy(QGuiApplication *app, QObject *parent = nullptr);
         bool enable(Keysmith *keysmith);
         bool proxy(const QCommandLineParser &parser, bool parsedOk);
+#ifdef ENABLE_DBUS_INTERFACE
+    public Q_SLOTS:
+        void handleDBusActivation(const QStringList &arguments, const QString &workingDirectory);
+#endif
     private Q_SLOTS:
         void disable(void);
     private:

@@ -12,6 +12,14 @@
 #include <QCommandLineOption>
 #include <QtConcurrent>
 
+#ifdef ENABLE_DBUS_INTERFACE
+#include <QWindow>
+#include <Qt>
+#include <KDBusService>
+#include <kstartupinfo.h>
+#include <kwindowsystem.h>
+#endif
+
 KEYSMITH_LOGGER(logger, ".app.cli")
 
 namespace app
@@ -165,8 +173,62 @@ namespace app
             return false;
         }
 
-        (new InitialFlow(m_keysmith))->run(parser);
+        if (state->initialFlowDone()) {
+            (new ExternalCommandLineFlow(m_keysmith))->run(parser);
+        } else {
+            (new InitialFlow(m_keysmith))->run(parser);
+        }
         return true;
     }
 
+
+#ifdef ENABLE_DBUS_INTERFACE
+
+    static QWindow * getMainWindow(QGuiApplication *app)
+    {
+        if (!app) {
+            qCDebug(logger) << "Cannot find a valid main window without a QGuiApplication";
+            return nullptr;
+        }
+
+        const auto windows = app->topLevelWindows();
+        for (auto *window: windows) {
+            if (window && window->type() == Qt::Window) {
+                return window;
+            }
+        }
+        qCDebug(logger) << "Unable to find main window for QGuiApplication:" << app;
+        return nullptr;
+    }
+
+    void Proxy::handleDBusActivation(const QStringList &arguments, const QString &workingDirectory)
+    {
+        Q_UNUSED(workingDirectory);
+        qCInfo(logger) << "Handling Keysmith activation request";
+
+        auto *s = sender();
+        Q_ASSERT_X(s, Q_FUNC_INFO, "should be triggered with a valid sender()");
+
+        auto *svc = qobject_cast<KDBusService*>(s);
+        Q_ASSERT_X(svc, Q_FUNC_INFO, "should be triggered by a KDBusService instance");
+
+        QCommandLineParser cliParser;
+        bool parseOk = parseCommandLine(cliParser, arguments);
+        if (!proxy(cliParser, parseOk)) {
+            qCDebug(logger) << "Rejected command line arguments";
+            svc->setExitValue(1);
+        }
+
+        const auto mainWindow = getMainWindow(m_app);
+        if (!mainWindow) {
+            qCWarning(logger) << "Unable to activate Keysmith main window: unable to find it";
+            svc->setExitValue(1);
+            return;
+        }
+
+        qCDebug(logger) << "Activating Keysmith main window";
+        KStartupInfo::setNewStartupId(mainWindow, KStartupInfo::startupId());
+        KWindowSystem::activateWindow(mainWindow->winId());
+    }
+#endif
 }

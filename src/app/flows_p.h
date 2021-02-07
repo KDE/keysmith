@@ -51,6 +51,23 @@ namespace app
         Keysmith * const m_app;
         model::AccountInput * const m_input;
     };
+
+    class ExternalCommandLineFlow: public QObject
+    {
+        Q_OBJECT
+    public:
+        explicit ExternalCommandLineFlow(Keysmith *app);
+    public:
+        void run(const QCommandLineParser &parser);
+    private Q_SLOTS:
+        void onNewAccountInvalid(void);
+        void onNewAccountProcessed(void);
+        void back(void);
+        void onAccepted(void);
+    private:
+        Keysmith * const m_app;
+        model::AccountInput * const m_input;
+    };
 }
 
 #endif

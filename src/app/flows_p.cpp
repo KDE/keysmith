@@ -204,4 +204,65 @@ namespace app
         flowStateOf(m_app)->setFlowRunning(false);
         QTimer::singleShot(0, this, &QObject::deleteLater);
     }
+
+    ExternalCommandLineFlow::ExternalCommandLineFlow(Keysmith *app) :
+        QObject(app), m_app(app), m_input(new model::AccountInput(this))
+    {
+        Q_ASSERT_X(app, Q_FUNC_INFO, "should have a Keysmith instance");
+    }
+
+    void ExternalCommandLineFlow::run(const QCommandLineParser &parser)
+    {
+        const auto argv = parser.positionalArguments();
+        if (argv.isEmpty()) {
+            qCDebug(logger) << "No URIs to handle, nothing to do for external commandline:" << this;
+            QTimer::singleShot(0, this, &ExternalCommandLineFlow::deleteLater);
+            return;
+        }
+
+        flowStateOf(m_app)->setFlowRunning(true);
+        overviewStateOf(m_app)->setActionsEnabled(false);
+        qCDebug(logger) << "Will parse given URI(s) from external commandline:" << this;
+
+        auto job = new CommandLineAccountJob(m_input);
+        QObject::connect(job, &CommandLineAccountJob::newAccountProcessed,
+                         this, &ExternalCommandLineFlow::onNewAccountProcessed);
+        QObject::connect(job, &CommandLineAccountJob::newAccountInvalid,
+                         this, &ExternalCommandLineFlow::onNewAccountInvalid);
+        job->run(argv[0]);
+    }
+
+    void ExternalCommandLineFlow::onNewAccountProcessed(void)
+    {
+        auto vm = new AddAccountViewModel(m_input, accountListOf(m_app), false, true);
+        QObject::connect(vm, &AddAccountViewModel::accepted, this, &ExternalCommandLineFlow::onAccepted);
+        QObject::connect(vm, &AddAccountViewModel::cancelled, this, &ExternalCommandLineFlow::back);
+        navigationFor(m_app)->push(Navigation::Page::AddAccount, vm);
+    }
+
+    void ExternalCommandLineFlow::onNewAccountInvalid(void)
+    {
+        auto vm = new ErrorViewModel(
+            i18nc("@title:window", "Invalid account"),
+            i18nc("@info:label", "The account you are trying to add is invalid. Continue without adding the account."),
+            false
+        );
+        QObject::connect(vm, &ErrorViewModel::dismissed, this, &ExternalCommandLineFlow::back);
+        navigationFor(m_app)->navigate(Navigation::Page::Error, vm);
+    }
+
+    void ExternalCommandLineFlow::onAccepted(void)
+    {
+        accountListOf(m_app)->addAccount(m_input);
+        QTimer::singleShot(0, this, &ExternalCommandLineFlow::back);
+    }
+
+    void ExternalCommandLineFlow::back(void)
+    {
+        auto vm = new AccountsOverviewViewModel(m_app);
+        navigationFor(m_app)->navigate(Navigation::Page::AccountsOverview, vm);
+        overviewStateOf(m_app)->setActionsEnabled(true);
+        flowStateOf(m_app)->setFlowRunning(false);
+        QTimer::singleShot(0, this, &QObject::deleteLater);
+    }
 }
