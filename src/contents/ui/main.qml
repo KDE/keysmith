@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
- * SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2019-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
 import Keysmith.Application 1.0
@@ -10,7 +10,7 @@ import Keysmith.Models 1.0 as Models
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
-import org.kde.kirigami 2.4 as Kirigami
+import org.kde.kirigami 2.12 as Kirigami
 
 Kirigami.ApplicationWindow {
     id: root
@@ -23,84 +23,127 @@ Kirigami.ApplicationWindow {
     property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {}
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
-    Component {
-        id: setupPasswordPage
-        SetupPassword {
-        }
-    }
+    Kirigami.PageRouter {
+        id: router
+        initialRoute: "__init__"
+        pageStack: root.pageStack.columnView
 
-    Component {
-        id: unlockAccountsPage
-        UnlockAccounts {
-        }
-    }
+        // FIXME: dummy just to have a valid initialRoute
+        Kirigami.PageRoute {
+            name: "__init__"
+            Component {
+                Kirigami.Page {
 
-    Component {
-        id: accountsOverviewPage
-        AccountsOverview {
-            accounts: root.accounts
-            addActionEnabled: root.addActionEnabled
-            onAccountWanted: {
-                pageStack.push(addPageComponent);
-                root.addActionEnabled = false;
+                }
             }
         }
-    }
 
-    Component {
-        id: addFromCommandLinePageComponent
-        AddAccount {
-            quitEnabled: true
-            id: addAccountFromCommandLinePage
-            validateAccountAvailability: false
-            validatedInput: root.validatedInput
-            accounts: root.accounts
-            onQuit: {
-                pageStack.pop();
-                Qt.quit();
-            }
-            onCancelled: {
-                root.addAccountConfirmed = false;
-                popAddAccountPage();
-                pushPasswordPage();
-            }
-            onNewAccount: {
-                root.addAccountConfirmed = true;
-                popAddAccountPage();
-                pushPasswordPage();
+        Kirigami.PageRoute {
+            name: "setup"
+            Component {
+                SetupPassword {
+                }
             }
         }
-    }
 
-    Component {
-        id: renameFromCommandLinePageComponent
-        RenameAccount {
-            id: renameFromCommandLinePage
-            accounts: root.accounts
-            validatedInput: root.validatedInput
-            onCancelled: {
-                popAddAccountPage(accountsOverviewPage);
-            }
-            onNewAccount: {
-                root.accounts.addAccount(root.validatedInput);
-                popAddAccountPage(accountsOverviewPage);
+        Kirigami.PageRoute {
+            name: "unlock"
+            Component {
+                UnlockAccounts {
+                }
             }
         }
-    }
 
-    Component {
-        id: invalidUriFromCommandLineErrorPage
-        ErrorPage {
-            quitEnabled: true
-            title: i18nc("@title:window", "Invalid account")
-            error: i18nc("@info:label", "The account you are trying to add is invalid. You can either quit the app, or continue without adding the account.")
-            onDismissed: {
-                popAddAccountPage();
-                pushPasswordPage();
+        Kirigami.PageRoute {
+            name: "accounts"
+            Component {
+                AccountsOverview {
+                    accounts: root.accounts
+                    addActionEnabled: root.addActionEnabled
+                    onAccountWanted: {
+                        Kirigami.PageRouter.pushRoute("add-new");
+                        root.addActionEnabled = false;
+                    }
+                }
             }
-            onQuit: {
-                pageStack.pop();
-                Qt.quit();
+        }
+
+        Kirigami.PageRoute {
+            name: "add-new"
+            Component {
+                AddAccount {
+                    accounts: root.accounts
+                    onCancelled: {
+                        root.addActionEnabled = true;
+                        Kirigami.PageRouter.navigateToRoute("accounts");
+                    }
+                    onNewAccount: {
+                        root.addActionEnabled = true;
+                        root.accounts.addAccount(input);
+                        Kirigami.PageRouter.navigateToRoute("accounts");
+                    }
+                }
+            }
+        }
+
+        Kirigami.PageRoute {
+            name: "accept-pushed"
+            Component {
+                AddAccount {
+                    quitEnabled: true
+                    validateAccountAvailability: false
+                    validatedInput: root.validatedInput
+                    accounts: root.accounts
+                    onQuit: {
+                        Qt.quit();
+                    }
+                    onCancelled: {
+                        root.addAccountConfirmed = false;
+                        root.addActionEnabled = true;
+                        pushPasswordPage();
+                    }
+                    onNewAccount: {
+                        root.addAccountConfirmed = true;
+                        root.addActionEnabled = true;
+                        pushPasswordPage();
+                    }
+                }
+            }
+        }
+
+        Kirigami.PageRoute {
+            name: "rename-pushed"
+            Component {
+                RenameAccount {
+                    accounts: root.accounts
+                    validatedInput: root.validatedInput
+                    onCancelled: {
+                        root.addActionEnabled = true;
+                        Kirigami.PageRouter.navigateToRoute("accounts");
+                    }
+                    onNewAccount: {
+                        root.addActionEnabled = true;
+                        root.accounts.addAccount(root.validatedInput);
+                        Kirigami.PageRouter.navigateToRoute("accounts");
+                    }
+                }
+            }
+        }
+
+        Kirigami.PageRoute {
+            name: "invalid-uri"
+            Component {
+                ErrorPage {
+                    quitEnabled: true
+                    title: i18nc("@title:window", "Invalid account")
+                    error: i18nc("@info:label", "The account you are trying to add is invalid. You can either quit the app, or continue without adding the account.")
+                    onDismissed: {
+                        pushPasswordPage();
+                    }
+                    onQuit: {
+                        Qt.quit();
+                    }
+                }
             }
         }
     }
@@ -124,32 +167,10 @@ Kirigami.ApplicationWindow {
         addAccountConfirmed = false;
         if(accounts.isAccountStillAvailable(validatedInput.name, validatedInput.issuer)) {
             accounts.addAccount(validatedInput);
-            pageStack.push(accountsOverviewPage);
+            addActionEnabled = true;
+            router.navigateToRoute("accounts");
         } else {
-            pageStack.push(renameFromCommandLinePageComponent);
-        }
-    }
-
-    Component {
-        id: addPageComponent
-        AddAccount {
-            id: addAccountPage
-            accounts: root.accounts
-            onCancelled: {
-                popAddAccountPage();
-            }
-            onNewAccount: {
-                popAddAccountPage();
-                root.accounts.addAccount(input);
-            }
-        }
-    }
-
-    function popAddAccountPage(next) {
-        pageStack.pop();
-        addActionEnabled = true;
-        if (next) {
-            pageStack.push(next);
+            router.navigateToRoute("rename-pushed");
         }
     }
 
@@ -160,7 +181,7 @@ Kirigami.ApplicationWindow {
          * fire once this becomes clear and the request is fully resolved.
          */
         if (passwordRequest.previouslyDefined || passwordRequest.firstRun) {
-            pageStack.push(passwordRequest.previouslyDefined ? unlockAccountsPage : setupPasswordPage);
+            router.navigateToRoute(passwordRequest.previouslyDefined ? "unlock" : "setup");
         }
     }
 
@@ -176,11 +197,11 @@ Kirigami.ApplicationWindow {
                 return; // TODO warn if not
             }
 
-            pageStack.pop();
             if (root.addAccountConfirmed) {
                 autoAddNewAccountFromCommandLine();
             } else {
-                pageStack.push(accountsOverviewPage);
+                root.addActionEnabled = true;
+                router.navigateToRoute("accounts");
             }
         }
         onPasswordExists: {
@@ -222,14 +243,14 @@ Kirigami.ApplicationWindow {
                 addAccountAvailable = false;
                 addAccountConfirmed = false;
                 addActionEnabled = true;
-                pageStack.push(invalidUriFromCommandLineErrorPage);
+                router.navigateToRoute("invalid-uri");
             }
             // TODO warn if not
         }
 
         onNewAccountProcessed: {
             addAccountAvailable = true;
-            pageStack.push(addFromCommandLinePageComponent);
+            router.navigateToRoute("accept-pushed");
         }
     }
 
