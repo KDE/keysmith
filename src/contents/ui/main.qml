@@ -148,6 +148,16 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    Connections {
+        target: Keysmith.navigation
+        function onRouted (route, data) {
+            root.router.navigateToRoute({route, data});
+        }
+        function onPushed(route, data) {
+            root.router.pushRoute({route, data});
+        }
+    }
+
     function autoAddNewAccountFromCommandLine() {
         // accounts not yet loaded, keep the user waiting...
         if (!accounts.loaded) {

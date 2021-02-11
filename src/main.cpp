@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
 #include <QApplication>
@@ -92,10 +92,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<validators::UnsignedLongValidator>("Keysmith.Validators", 1, 0, "HOTPCounterValidator");
     qmlRegisterSingletonType<app::Keysmith>("Keysmith.Application", 1, 0, "Keysmith", [](QQmlEngine *qml, QJSEngine *js) -> QObject *
     {
-        Q_UNUSED(qml);
         Q_UNUSED(js);
 
-        return new app::Keysmith();
+        return new app::Keysmith(new app::Navigation(qml));
     });
     qmlRegisterSingletonType<app::CommandLineOptions>("Keysmith.Application", 1, 0, "CommandLine", [parseOk, &cliParser](QQmlEngine *qml, QJSEngine *js) -> QObject *
     {
