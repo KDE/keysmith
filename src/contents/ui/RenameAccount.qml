@@ -17,11 +17,10 @@ Kirigami.Page {
     title: i18nc("@title:window", "Rename account to add")
     signal cancelled
     signal newAccount(var input)
-    property bool quitEnabled: false
-    property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property Models.AccountListModel accounts
 
     property bool acceptable: accountName.acceptable
-    property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {}
+    property Models.ValidatedAccountInput validatedInput
 
     Connections {
         target: validatedInput
@@ -42,6 +41,7 @@ Kirigami.Page {
         }
         AccountNameForm {
             id: accountName
+            accounts: root.accounts
             validateAccountAvailability: true
             validatedInput: root.validatedInput
         }

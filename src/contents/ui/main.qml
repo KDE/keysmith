@@ -33,7 +33,6 @@ Kirigami.ApplicationWindow {
             name: "__init__"
             Component {
                 Kirigami.Page {
-
                 }
             }
         }
@@ -42,6 +41,8 @@ Kirigami.ApplicationWindow {
             name: "setup"
             Component {
                 SetupPassword {
+                    bannerTextError : false
+                    passwordRequest: root.passwordRequest
                 }
             }
         }
@@ -50,6 +51,8 @@ Kirigami.ApplicationWindow {
             name: "unlock"
             Component {
                 UnlockAccounts {
+                    bannerTextError : false
+                    passwordRequest: root.passwordRequest
                 }
             }
         }
@@ -72,7 +75,10 @@ Kirigami.ApplicationWindow {
             name: "add-new"
             Component {
                 AddAccount {
+                    quitEnabled: false
+                    validateAccountAvailability: true
                     accounts: root.accounts
+                    validatedInput: Models.ValidatedAccountInput {}
                     onCancelled: {
                         root.addActionEnabled = true;
                         Kirigami.PageRouter.navigateToRoute("accounts");

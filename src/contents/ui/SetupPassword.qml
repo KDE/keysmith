@@ -17,8 +17,8 @@ Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Password")
 
-    property bool bannerTextError : false
-    property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
+    property bool bannerTextError
+    property Models.PasswordRequestModel passwordRequest
 
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing

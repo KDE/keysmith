@@ -19,7 +19,7 @@ Kirigami.ScrollablePage {
     signal quit
     signal cancelled
     signal newAccount(var input)
-    property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property Models.AccountListModel accounts
     property bool quitEnabled: false
     property bool detailsEnabled: false
     property bool validateAccountAvailability: true
@@ -31,7 +31,7 @@ Kirigami.ScrollablePage {
     property bool tokenDetailsAcceptable: hotpDetailsAcceptable && totpDetailsAcceptable
     property bool acceptable: accountName.acceptable && secretAcceptable && tokenTypeAcceptable && tokenDetailsAcceptable
 
-    property Models.ValidatedAccountInput validatedInput: Models.ValidatedAccountInput {}
+    property Models.ValidatedAccountInput validatedInput
 
     Connections {
         target: validatedInput
@@ -45,6 +45,7 @@ Kirigami.ScrollablePage {
         AccountNameForm {
             id: accountName
             Layout.fillWidth: true
+            accounts: root.accounts
             validateAccountAvailability: root.validateAccountAvailability
             validatedInput: root.validatedInput
             twinFormLayouts: [requiredDetails, hotpDetails, totpDetails]

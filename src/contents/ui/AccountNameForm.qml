@@ -14,8 +14,8 @@ import org.kde.kirigami 2.8 as Kirigami
 
 Kirigami.FormLayout {
     id: root
-    property bool validateAccountAvailability: true
-    property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property bool validateAccountAvailability
+    property Models.AccountListModel accounts
     property Models.ValidatedAccountInput validatedInput
 
     onValidatedInputChanged: {

@@ -21,8 +21,8 @@ Kirigami.ScrollablePage {
     title: i18nc("@title:window", "Accounts")
 
     signal accountWanted
-    property bool addActionEnabled : true
-    property Models.AccountListModel accounts: Keysmith.accountListModel()
+    property bool addActionEnabled
+    property Models.AccountListModel accounts
 
     property string accountErrorMessage: i18nc("generic error shown when adding or updating an account failed", "Failed to update accounts")
     property string loadingErrorMessage: i18nc("error message shown when loading accounts from storage failed", "Some accounts failed to load.")
