@@ -5,6 +5,8 @@
 #include "keysmith.h"
 #include "../logging_p.h"
 
+#include "state_p.h"
+
 #include <QClipboard>
 #include <QGuiApplication>
 
@@ -52,22 +54,64 @@ namespace app
         Q_EMIT pushed(route, modelToTransfer);
     }
 
-    Keysmith::Keysmith(Navigation *navigation, QObject *parent): QObject(parent), m_navigation(navigation), m_storage(nullptr)
+    static accounts::AccountStorage * openStorage(void)
+    {
+        qCDebug(logger) << "Initialising Keysmith account storage...";
+        const accounts::SettingsProvider settings([](const accounts::PersistenceAction &action) -> void
+        {
+            QSettings data(QStringLiteral("org.kde.keysmith"), QStringLiteral("Keysmith"));
+            action(data);
+        });
+        return accounts::AccountStorage::open(settings);
+    }
+
+    Store::Store(void) :
+        m_flows(QSharedPointer<FlowState>(new FlowState(), &QObject::deleteLater)),
+        m_overview(QSharedPointer<OverviewState>(new OverviewState(), &QObject::deleteLater)),
+        m_accounts(QSharedPointer<accounts::AccountStorage>(openStorage(), &accounts::AccountStorage::dispose)),
+        m_accountList(QSharedPointer<model::SimpleAccountListModel>(nullptr, &QObject::deleteLater))
+    {
+        m_accountList.reset(new model::SimpleAccountListModel(m_accounts.data()));
+    }
+
+    FlowState * Store::flows(void) const
+    {
+        return m_flows.data();
+    }
+
+    OverviewState * Store::overview(void) const
+    {
+        return m_overview.data();
+    }
+
+    accounts::AccountStorage * Store::accounts(void) const
+    {
+        return m_accounts.data();
+    }
+
+    model::SimpleAccountListModel * Store::accountList(void) const
+    {
+        return m_accountList.data();
+    }
+
+    Keysmith::Keysmith(Navigation *navigation, QObject *parent): QObject(parent), m_store(), m_navigation(navigation)
     {
     }
 
     Keysmith::~Keysmith()
     {
-        qCDebug(logger) << "Tearing down Keysmith application; requesting disposal of account storage";
-        if (m_storage) {
-            m_storage->dispose();
-        }
+        qCDebug(logger) << "Tearing down Keysmith application; disposal of account storage should be requested";
     }
 
     Navigation * Keysmith::navigation(void) const
     {
         return m_navigation;
     }
+
+    const Store & Keysmith::store(void) const
+    {
+        return m_store;
+    };
 
     void Keysmith::copyToClipboard(const QString &text)
     {
@@ -82,25 +126,11 @@ namespace app
 
     model::SimpleAccountListModel * Keysmith::accountListModel(void)
     {
-        return new model::SimpleAccountListModel(storage(), this);
+        return new model::SimpleAccountListModel(m_store.accounts(), this);
     }
 
     model::PasswordRequest * Keysmith::passwordRequest(void)
     {
-        return new model::PasswordRequest(storage()->secret(), this);
-    }
-
-    accounts::AccountStorage * Keysmith::storage(void)
-    {
-        if (!m_storage) {
-            const accounts::SettingsProvider settings([](const accounts::PersistenceAction &action) -> void
-            {
-                QSettings data(QStringLiteral("org.kde.keysmith"), QStringLiteral("Keysmith"));
-                action(data);
-            });
-            m_storage = accounts::AccountStorage::open(settings);
-        }
-
-        return m_storage;
+        return new model::PasswordRequest(m_store.accounts()->secret(), this);
     }
 }

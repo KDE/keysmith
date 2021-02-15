@@ -12,6 +12,7 @@
 #include <QMetaEnum>
 #include <QObject>
 #include <QQmlEngine>
+#include <QSharedPointer>
 
 namespace app
 {
@@ -42,6 +43,24 @@ namespace app
         QQmlEngine * const m_engine;
     };
 
+    class OverviewState;
+    class FlowState;
+
+    class Store
+    {
+    public:
+        explicit Store(void);
+        accounts::AccountStorage * accounts(void) const;
+        model::SimpleAccountListModel * accountList(void) const;
+        OverviewState * overview(void) const;
+        FlowState * flows(void) const;
+    private:
+        QSharedPointer<FlowState> m_flows;
+        QSharedPointer<OverviewState> m_overview;
+        QSharedPointer<accounts::AccountStorage> m_accounts;
+        QSharedPointer<model::SimpleAccountListModel> m_accountList;
+    };
+
     class Keysmith: public QObject
     {
         Q_OBJECT
@@ -49,6 +68,7 @@ namespace app
     public:
         explicit Keysmith(Navigation * const navigation, QObject *parent = nullptr);
         virtual ~Keysmith();
+        const Store & store(void) const;
         Navigation * navigation(void) const;
         Q_INVOKABLE void copyToClipboard(const QString &text);
         Q_INVOKABLE model::SimpleAccountListModel * accountListModel(void);
@@ -56,8 +76,8 @@ namespace app
     private:
         accounts::AccountStorage * storage(void);
     private:
+        Store m_store;
         Navigation * const m_navigation;
-        accounts::AccountStorage *m_storage;
     };
 }
 

@@ -6,6 +6,7 @@
 set(keysmith_SRCS
     keysmith.cpp
     cli.cpp
+    state_p.cpp
 )
 
 add_library(keysmith_lib STATIC ${keysmith_SRCS})
