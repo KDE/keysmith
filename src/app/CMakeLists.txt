@@ -6,7 +6,9 @@
 set(keysmith_SRCS
     keysmith.cpp
     cli.cpp
+    flows_p.cpp
     state_p.cpp
+    vms.cpp
 )
 
 add_library(keysmith_lib STATIC ${keysmith_SRCS})
