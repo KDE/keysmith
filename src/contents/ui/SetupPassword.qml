@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
@@ -10,15 +10,13 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.5 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
-import Keysmith.Application 1.0
-import Keysmith.Models 1.0 as Models
+import Keysmith.Application 1.0 as Application
 
 Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Password")
 
-    property bool bannerTextError
-    property Models.PasswordRequestModel passwordRequest
+    property Application.SetupPasswordViewModel vm
 
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing
@@ -48,39 +46,27 @@ Kirigami.ScrollablePage {
             Kirigami.PasswordField {
                 id: newPassword
                 text: ""
-                enabled: !passwordRequest.passwordProvided
+                enabled: !vm.busy
                 Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
                 onAccepted: newPasswordCopy.forceActiveFocus()
             }
             Kirigami.PasswordField {
                 id: newPasswordCopy
                 text: ""
-                enabled: !passwordRequest.passwordProvided
+                enabled: !vm.busy
                 Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
                 onAccepted: applyAction.trigger()
             }
         }
-        
-        Connections {
-            target: passwordRequest
-            onPasswordRejected: {
-                bannerTextError = true
-            }
-        }
     }
-    
 
     actions.main : Kirigami.Action {
         id: applyAction
         text: i18n("Apply")
         iconName: "answer-correct"
-        enabled: !passwordRequest.passwordProvided && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
+        enabled: !vm.busy && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
         onTriggered: {
-            // TODO convert to C++ helper, have proper logging?
-            if (passwordRequest) {
-                bannerTextError = !passwordRequest.provideBothPasswords(newPassword.text, newPasswordCopy.text);
-            }
-            // TODO warn if not
+            vm.setup(newPassword.text, newPasswordCopy.text);
         }
     }
 
@@ -90,7 +76,7 @@ Kirigami.ScrollablePage {
             id: errorMessage
             Layout.fillWidth: true
             text: i18n("Failed to set up your password")
-            visible: bannerTextError
+            visible: vm.failed
             showCloseButton: true
         }
     }

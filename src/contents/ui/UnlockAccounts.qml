@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
@@ -10,22 +10,20 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
-import Keysmith.Application 1.0
-import Keysmith.Models 1.0 as Models
+import Keysmith.Application 1.0 as Application
 
 Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Password")
 
-    property bool bannerTextError
-    property Models.PasswordRequestModel passwordRequest
+    property Application.UnlockAccountsViewModel vm
 
     header: Controls.Control {
         padding: Kirigami.Units.smallSpacing
         contentItem: Kirigami.InlineMessage {
             id: errorMessage
             text: i18n("Failed to unlock your accounts")
-            visible: bannerTextError
+            visible: vm.failed
             showCloseButton: true
             type: Kirigami.MessageType.Error
         }
@@ -60,19 +58,12 @@ Kirigami.ScrollablePage {
                 id: existingPassword
                 text: ""
                 Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
-                enabled: !passwordRequest.passwordProvided
+                enabled: !vm.busy
                 onAccepted: {
                     if (unlockAction.enabled) {
                         unlockAction.trigger()
                     }
                 }
-            }
-        }
-        
-        Connections {
-            target: passwordRequest
-            onPasswordRejected: {
-                bannerTextError = true
             }
         }
     }
@@ -81,13 +72,9 @@ Kirigami.ScrollablePage {
         id: unlockAction
         text: i18n("Unlock")
         iconName: "unlock"
-        enabled: !passwordRequest.passwordProvided && existingPassword.text && existingPassword.text.length > 0
+        enabled: !vm.busy && existingPassword.text && existingPassword.text.length > 0
         onTriggered: {
-            // TODO convert to C++ helper, have proper logging?
-            if (passwordRequest) {
-                bannerTextError = !passwordRequest.providePassword(existingPassword.text);
-            }
-            // TODO warn if not
+            vm.unlock(existingPassword.text);
         }
     }
 }

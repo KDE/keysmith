@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
  */
 
@@ -9,32 +9,27 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
-import Keysmith.Application 1.0
+import Keysmith.Application 1.0 as Application
 import Keysmith.Models 1.0 as Models
 import Keysmith.Validators 1.0 as Validators
 
 Kirigami.ScrollablePage {
     id: root
     title: i18nc("@title:window", "Add new account")
-    signal quit
-    signal cancelled
-    signal newAccount(var input)
-    property Models.AccountListModel accounts
-    property bool quitEnabled: false
+
+    property Application.AddAccountViewModel vm
+
     property bool detailsEnabled: false
-    property bool validateAccountAvailability: true
 
     property bool secretAcceptable: accountSecret.acceptableInput
     property bool tokenTypeAcceptable: hotpRadio.checked || totpRadio.checked
-    property bool hotpDetailsAcceptable: hotpDetails.acceptable || validatedInput.type === Models.ValidatedAccountInput.Totp
-    property bool totpDetailsAcceptable: totpDetails.acceptable || validatedInput.type === Models.ValidatedAccountInput.Hotp
+    property bool hotpDetailsAcceptable: hotpDetails.acceptable || vm.input.type === Models.ValidatedAccountInput.Totp
+    property bool totpDetailsAcceptable: totpDetails.acceptable || vm.input.type === Models.ValidatedAccountInput.Hotp
     property bool tokenDetailsAcceptable: hotpDetailsAcceptable && totpDetailsAcceptable
     property bool acceptable: accountName.acceptable && secretAcceptable && tokenTypeAcceptable && tokenDetailsAcceptable
 
-    property Models.ValidatedAccountInput validatedInput
-
     Connections {
-        target: validatedInput
+        target: vm.input
         onTypeChanged: {
             root.detailsEnabled = false;
         }
@@ -45,9 +40,9 @@ Kirigami.ScrollablePage {
         AccountNameForm {
             id: accountName
             Layout.fillWidth: true
-            accounts: root.accounts
-            validateAccountAvailability: root.validateAccountAvailability
-            validatedInput: root.validatedInput
+            accounts: vm.accounts
+            validateAccountAvailability: vm.validateAvailability
+            validatedInput: vm.input
             twinFormLayouts: [requiredDetails, hotpDetails, totpDetails]
         }
 
@@ -61,21 +56,21 @@ Kirigami.ScrollablePage {
                 Kirigami.FormData.buddyFor: totpRadio
                 Controls.RadioButton {
                     id: totpRadio
-                    checked: validatedInput.type === Models.ValidatedAccountInput.Totp
+                    checked: vm.input.type === Models.ValidatedAccountInput.Totp
                     text: i18nc("@option:radio", "Time-based OTP")
                     onCheckedChanged: {
                         if (checked) {
-                            validatedInput.type = Models.ValidatedAccountInput.Totp;
+                            vm.input.type = Models.ValidatedAccountInput.Totp;
                         }
                     }
                 }
                 Controls.RadioButton {
                     id: hotpRadio
-                    checked: validatedInput.type === Models.ValidatedAccountInput.Hotp
+                    checked: vm.input.type === Models.ValidatedAccountInput.Hotp
                     text: i18nc("@option:radio", "Hash-based OTP")
                     onCheckedChanged: {
                         if (checked) {
-                            validatedInput.type = Models.ValidatedAccountInput.Hotp;
+                            vm.input.type = Models.ValidatedAccountInput.Hotp;
                         }
                     }
                 }
@@ -83,7 +78,7 @@ Kirigami.ScrollablePage {
             Kirigami.PasswordField {
                 id: accountSecret
                 placeholderText: i18n("Token secret")
-                text: validatedInput.secret
+                text: vm.input.secret
                 Kirigami.FormData.label: i18nc("@label:textbox", "Secret key:")
                 validator: Validators.Base32SecretValidator {
                     id: secretValidator
@@ -91,7 +86,7 @@ Kirigami.ScrollablePage {
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
                 onTextChanged: {
                     if (acceptableInput) {
-                        validatedInput.secret = text;
+                        vm.input.secret = text;
                     }
                 }
             }
@@ -110,17 +105,17 @@ Kirigami.ScrollablePage {
             visible: enabled
             id: hotpDetails
             Layout.fillWidth: true
-            validatedInput: root.validatedInput
+            validatedInput: root.vm.input
             twinFormLayouts: [accountName, requiredDetails, totpDetails]
-            enabled: root.detailsEnabled && validatedInput.type === Models.ValidatedAccountInput.Hotp
+            enabled: root.detailsEnabled && vm.input.type === Models.ValidatedAccountInput.Hotp
         }
         TOTPDetailsForm {
             visible: enabled
             id: totpDetails
             Layout.fillWidth: true
-            validatedInput: root.validatedInput
+            validatedInput: root.vm.input
             twinFormLayouts: [accountName, requiredDetails, hotpDetails]
-            enabled: root.detailsEnabled && validatedInput.type === Models.ValidatedAccountInput.Totp
+            enabled: root.detailsEnabled && vm.input.type === Models.ValidatedAccountInput.Totp
         }
     }
 
@@ -128,16 +123,16 @@ Kirigami.ScrollablePage {
         text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
         iconName: "edit-undo"
         onTriggered: {
-            root.cancelled();
+            vm.cancelled();
         }
     }
     actions.right: Kirigami.Action {
         text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
         iconName: "application-exit"
-        enabled: root.quitEnabled
-        visible: root.quitEnabled
+        enabled: vm.quitEnabled
+        visible: vm.quitEnabled
         onTriggered: {
-            root.quit();
+            Qt.quit();
         }
     }
     actions.main: Kirigami.Action {
@@ -145,7 +140,7 @@ Kirigami.ScrollablePage {
         iconName: "answer-correct"
         enabled: acceptable
         onTriggered: {
-            root.newAccount(root.validatedInput);
+            vm.accepted();
         }
     }
 }

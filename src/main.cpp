@@ -15,6 +15,7 @@
 
 #include "app/cli.h"
 #include "app/keysmith.h"
+#include "app/vms.h"
 #include "model/accounts.h"
 #include "model/input.h"
 #include "validators/countervalidator.h"
@@ -74,6 +75,28 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
+    qmlRegisterUncreatableType<app::AddAccountViewModel>("Keysmith.Application", 1, 0, "AddAccountViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals")
+    );
+    qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application", 1, 0, "RenameAccountViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
+    );
+    qmlRegisterUncreatableType<app::ErrorViewModel>("Keysmith.Application", 1, 0, "ErrorViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
+    );
+    qmlRegisterUncreatableType<app::SetupPasswordViewModel>("Keysmith.Application", 1, 0, "SetupPasswordViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
+    );
+    qmlRegisterUncreatableType<app::UnlockAccountsViewModel>("Keysmith.Application", 1, 0, "UnlockAccountsViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
+    );
+    qmlRegisterUncreatableType<app::AccountsOverviewViewModel>("Keysmith.Application", 1, 0, "AccountsOverviewViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
+    );
+    qmlRegisterUncreatableType<app::Navigation>("Keysmith.Application", 1, 0, "Navigation",
+        QStringLiteral("Use the Keysmith singleton to obtain a Navigation")
+    );
+
     qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel",
         QStringLiteral("Use the Keysmith singleton to obtain an AccountListModel")
     );
@@ -110,6 +133,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }
+    proxy.proxy(cliParser, parseOk);
     int ret = app.exec();
     return ret;
 }

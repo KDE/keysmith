@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
@@ -8,7 +8,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.15 as Kirigami
 
-import Keysmith.Application 1.0
+import Keysmith.Application 1.0 as Application
 import Keysmith.Models 1.0 as Models
 
 Kirigami.ScrollablePage {
@@ -20,9 +20,7 @@ Kirigami.ScrollablePage {
     supportsRefreshing: false
     title: i18nc("@title:window", "Accounts")
 
-    signal accountWanted
-    property bool addActionEnabled
-    property Models.AccountListModel accounts
+    property Application.AccountsOverviewViewModel vm
 
     property string accountErrorMessage: i18nc("generic error shown when adding or updating an account failed", "Failed to update accounts")
     property string loadingErrorMessage: i18nc("error message shown when loading accounts from storage failed", "Some accounts failed to load.")
@@ -34,9 +32,9 @@ Kirigami.ScrollablePage {
         spacing: 0
         Kirigami.InlineMessage {
             id: message
-            visible: root.accounts.error
+            visible: vm.accounts.error // FIXME : should be managed via vm
             type: Kirigami.MessageType.Error
-            text: root.errorMessage
+            text: root.errorMessage // FIXME : should be managed via vm
             Layout.fillWidth: true
             Layout.margins: Kirigami.Units.smallSpacing
             /*
@@ -55,13 +53,14 @@ Kirigami.ScrollablePage {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    root.accounts.error = false;
+                    // FIXME : should be managed via vm
+                    vm.accounts.error = false;
                 }
             }
         }
         Kirigami.Separator {
             Layout.fillWidth: true
-            visible: root.accounts.error
+            visible: vm.accounts.error // FIXME : should be managed via vm
         }
     }
 
@@ -70,7 +69,8 @@ Kirigami.ScrollablePage {
         HOTPAccountEntryView {
             account: value
             onActionTriggered: {
-                root.accounts.error = false;
+                // FIXME : should be managed via vm
+                vm.accounts.error = false;
                 root.errorMessage = root.accountErrorMessage;
             }
         }
@@ -81,7 +81,8 @@ Kirigami.ScrollablePage {
         TOTPAccountEntryView {
             account: value
             onActionTriggered: {
-                root.accounts.error = false;
+                // FIXME : should be managed via vm
+                vm.accounts.error = false;
                 root.errorMessage = root.accountErrorMessage;
             }
         }
@@ -90,13 +91,13 @@ Kirigami.ScrollablePage {
     ListView {
         id: mainList
         model: Models.SortedAccountListModel {
-            sourceModel: accounts
+            sourceModel: vm.accounts
         }
         
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
-            visible: accounts.loaded && mainList.count == 0
+            visible: vm.accounts.loaded && mainList.count == 0
             text: i18n("No accounts added")
             icon.name: "unlock"
             
@@ -104,9 +105,10 @@ Kirigami.ScrollablePage {
                 iconName: "list-add"
                 text: "Add account"
                 onTriggered: {
-                    root.accounts.error = false;
+                    // FIXME : should be managed via vm
+                    vm.accounts.error = false;
                     root.errorMessage = root.accountErrorMessage;
-                    root.accountWanted();
+                    vm.addNewAccount();
                 }
             }
         }
@@ -168,12 +170,13 @@ Kirigami.ScrollablePage {
         id: addAction
         text: i18n("Add")
         iconName: "list-add"
-        enabled: addActionEnabled
-        visible: addActionEnabled
+        enabled: vm.actionsEnabled
+        visible: vm.actionsEnabled
         onTriggered: {
-            root.accounts.error = false;
+            // FIXME : should be managed via vm
+            vm.accounts.error = false;
             root.errorMessage = root.accountErrorMessage;
-            root.accountWanted();
+            vm.addNewAccount();
         }
     }
 }

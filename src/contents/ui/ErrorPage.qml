@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
 import QtQuick 2.1
@@ -8,19 +8,21 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
+import Keysmith.Application 1.0 as Application
+
 Kirigami.Page {
     id: root
-    signal quit
-    signal dismissed
-    property bool quitEnabled: false
-    property string error
+
+    property Application.ErrorViewModel vm
+
+    title: vm.errorTitle
 
     ColumnLayout {
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
         Controls.Label {
-            text: root.error
+            text: vm.errorText
             color: Kirigami.Theme.negativeTextColor
             Layout.maximumWidth: root.width - 2 * Kirigami.Units.largeSpacing
             wrapMode: Text.WordWrap
@@ -31,16 +33,16 @@ Kirigami.Page {
         text: i18nc("@action:button Button to dismiss the error page", "Continue")
         iconName: "answer-correct"
         onTriggered: {
-            root.dismissed();
+            vm.dismissed();
         }
     }
     actions.right: Kirigami.Action {
         text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
         iconName: "application-exit"
-        enabled: root.quitEnabled
-        visible: root.quitEnabled
+        enabled: vm.quitEnabled
+        visible: vm.quitEnabled
         onTriggered: {
-            root.quit();
+            Qt.quit();
         }
     }
 }

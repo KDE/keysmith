@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
 import QtQuick 2.1
@@ -8,22 +8,20 @@ import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.0 as Controls
 import org.kde.kirigami 2.8 as Kirigami
 
-import Keysmith.Application 1.0
+import Keysmith.Application 1.0 as Application
 import Keysmith.Models 1.0 as Models
 import Keysmith.Validators 1.0 as Validators
 
 Kirigami.Page {
     id: root
     title: i18nc("@title:window", "Rename account to add")
-    signal cancelled
-    signal newAccount(var input)
-    property Models.AccountListModel accounts
+
+    property Application.RenameAccountViewModel vm
 
     property bool acceptable: accountName.acceptable
-    property Models.ValidatedAccountInput validatedInput
 
     Connections {
-        target: validatedInput
+        target: vm.input
         onTypeChanged: {
             root.detailsEnabled = false;
         }
@@ -41,9 +39,9 @@ Kirigami.Page {
         }
         AccountNameForm {
             id: accountName
-            accounts: root.accounts
+            accounts: vm.accounts
             validateAccountAvailability: true
-            validatedInput: root.validatedInput
+            validatedInput: root.vm.input
         }
     }
 
@@ -51,7 +49,7 @@ Kirigami.Page {
         text: i18nc("@action:button cancel and dismiss the rename account form", "Cancel")
         iconName: "edit-undo"
         onTriggered: {
-            root.cancelled();
+            vm.cancelled();
         }
     }
     actions.main: Kirigami.Action {
@@ -59,7 +57,7 @@ Kirigami.Page {
         iconName: "answer-correct"
         enabled: acceptable
         onTriggered: {
-            root.newAccount(root.validatedInput);
+            vm.accepted();
         }
     }
 }
