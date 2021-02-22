@@ -314,7 +314,7 @@ namespace model
         }
 
         if (!m_accounts) {
-            qCDebug(logger) << "Unable to validat account name: missing accounts model object";
+            qCDebug(logger) << "Unable to validate account name: missing accounts model object";
             return QValidator::Invalid;
         }
 
