@@ -1,15 +1,18 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #ifndef APP_COMMAND_LINE_H
 #define APP_COMMAND_LINE_H
 
+#include "keysmith.h"
 #include "../model/input.h"
 
 #include <QCommandLineParser>
+#include <QGuiApplication>
 #include <QObject>
 #include <QString>
+#include <QStringList>
 
 namespace app
 {
@@ -55,6 +58,23 @@ namespace app
         const bool m_parseOk;
         const QString m_errorText;
         QCommandLineParser &m_parser;
+    };
+
+    class Proxy: public QObject
+    {
+        Q_OBJECT
+    public:
+        static bool parseCommandLine(QCommandLineParser &parser, const QStringList &argv);
+        static void addOptions(QCommandLineParser &parser);
+    public:
+        explicit Proxy(QGuiApplication *app, QObject *parent = nullptr);
+        bool enable(Keysmith *keysmith);
+        bool proxy(const QCommandLineParser &parser, bool parsedOk);
+    private Q_SLOTS:
+        void disable(void);
+    private:
+        Keysmith * m_keysmith;
+        QGuiApplication *m_app;
     };
 };
 

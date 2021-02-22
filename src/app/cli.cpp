@@ -1,10 +1,12 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "cli.h"
 #include "../logging_p.h"
 #include "../model/qr.h"
+#include "flows_p.h"
+#include "state_p.h"
 
 #include <KLocalizedString>
 #include <QCommandLineOption>
@@ -16,10 +18,7 @@ namespace app
 {
     void CommandLineOptions::addOptions(QCommandLineParser &parser)
     {
-        parser.addPositionalArgument(
-            QStringLiteral("<uri>"),
-            i18nc("@info (<uri> placeholder)", "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)")
-        );
+        Proxy::addOptions(parser);
     }
 
     CommandLineOptions::CommandLineOptions(QCommandLineParser &parser, bool parseOk, QObject *parent) :
@@ -107,4 +106,67 @@ namespace app
             qCDebug(logger) << "Failed to signal result of processing the URI passed on the commandline";
         }
     }
+
+    Proxy::Proxy(QGuiApplication *app, QObject *parent) :
+        QObject(parent), m_keysmith(nullptr), m_app(app)
+    {
+        Q_ASSERT_X(m_app, Q_FUNC_INFO, "Should have a valid QGuiApplication instance");
+    }
+
+    void Proxy::addOptions(QCommandLineParser &parser)
+    {
+        parser.addPositionalArgument(
+            QStringLiteral("<uri>"),
+            i18nc("@info (<uri> placeholder)", "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)")
+        );
+    }
+
+    bool Proxy::parseCommandLine(QCommandLineParser &parser, const QStringList &argv)
+    {
+        // options that will be handled via UI interaction
+        app::Proxy::addOptions(parser);
+        return parser.parse(argv);
+    }
+
+    void Proxy::disable(void)
+    {
+        m_keysmith = nullptr;
+    }
+
+    bool Proxy::enable(Keysmith *keysmith)
+    {
+        Q_ASSERT_X(keysmith, Q_FUNC_INFO, "should be given a valid Keysmith instance");
+        if (m_keysmith) {
+            qCDebug(logger)
+                << "Not (re)initialising proxy with new Keysmith instance:" << keysmith
+                << "Already initialised with:" << m_keysmith;
+            return false;
+        }
+
+        m_keysmith = keysmith;
+        QObject::connect(m_keysmith, &QObject::destroyed, this, &Proxy::disable);
+        return true;
+    }
+
+    bool Proxy::proxy(const QCommandLineParser &parser, bool parsedOk)
+    {
+        if (!parsedOk) {
+            qCDebug(logger) << "Not proxying to Keysmith instance: invalid command line";
+            return false;
+        }
+        if (!m_keysmith) {
+            qCDebug(logger) << "Not proxying command line arguments: not initialised with a Keysmith instance";
+            return false;
+        }
+
+        auto state = flowStateOf(m_keysmith);
+        if (state->flowRunning()) {
+            qCDebug(logger) << "Not proxying command line arguments: a 'competing' flow is already running";
+            return false;
+        }
+
+        (new InitialFlow(m_keysmith))->run(parser);
+        return true;
+    }
+
 }

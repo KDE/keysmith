@@ -1,9 +1,9 @@
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
-set(Test_DEP_LIBS Qt5::Core Qt5::Concurrent Qt5::Test keysmith_lib test_lib)
+set(Test_DEP_LIBS Qt5::Core Qt5::Gui Qt5::Concurrent Qt5::Test keysmith_lib test_lib)
 
 set(app_test_SRCS
     commandline-account-job.cpp
