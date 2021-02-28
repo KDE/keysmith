@@ -4,6 +4,7 @@
 # SPDX-FileCopyrightText: 2019 Friedrich W. H. Kossebau <kossebau@kde.org>
 # SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 # SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
+# SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
 #
 
 add_subdirectory(base32)
@@ -41,6 +42,7 @@ if(ANDROID)
         go-next
         list-add
         unlock
+        lock
     )
 endif()
 

@@ -2,6 +2,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
 import QtQuick 2.1
@@ -30,32 +31,48 @@ Kirigami.ScrollablePage {
         }
     }
 
-    // HACK remove when depends on Kirigami 5.77
-    Component.onCompleted: {
-        for (var index in form.children[0].children) {
-            var item = form.children[0].children[index];
-            if (item instanceof Text) {
-                item.wrapMode = item.Text.Wrap
-            }
-            item.Layout.fillWidth = true;
+    ColumnLayout {
+        spacing: Kirigami.Units.largeSpacing
+        
+        Kirigami.Icon {
+            source: "lock"
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
+            Layout.maximumWidth: Kirigami.Units.gridUnit * 10
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+            Layout.preferredHeight: width
+            Layout.leftMargin: Kirigami.Units.gridUnit * 3
+            Layout.rightMargin: Kirigami.Units.gridUnit * 3
         }
-    }
-
-    Kirigami.FormLayout {
-        id: form
-        Item {
-            Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: i18n("Please provide the password to unlock your accounts")
+        
+        Kirigami.Heading {
+            level: 3
+            text: i18n("Please provide the password to unlock your accounts")
+            wrapMode: Text.Wrap
+            Layout.fillWidth: true
+            horizontalAlignment: form.wideMode ? Qt.AlignHCenter : Qt.AlignLeft
         }
-        Kirigami.PasswordField {
-            id: existingPassword
-            text: ""
-            Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
-            enabled: !passwordRequest.passwordProvided
-            onAccepted: {
-                if (unlockAction.enabled) {
-                    unlockAction.trigger()
+        
+        Kirigami.FormLayout {
+            id: form
+            Layout.fillWidth: true
+            Kirigami.PasswordField {
+                id: existingPassword
+                text: ""
+                Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
+                enabled: !passwordRequest.passwordProvided
+                onAccepted: {
+                    if (unlockAction.enabled) {
+                        unlockAction.trigger()
+                    }
                 }
+            }
+        }
+        
+        Connections {
+            target: passwordRequest
+            onPasswordRejected: {
+                bannerTextError = true
             }
         }
     }
@@ -71,13 +88,6 @@ Kirigami.ScrollablePage {
                 bannerTextError = !passwordRequest.providePassword(existingPassword.text);
             }
             // TODO warn if not
-        }
-    }
-
-    Connections {
-        target: passwordRequest
-        onPasswordRejected: {
-            bannerTextError = true
         }
     }
 }

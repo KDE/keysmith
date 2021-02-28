@@ -3,6 +3,7 @@
 # SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
 # SPDX-FileCopyrightText: 2019 Friedrich W. H. Kossebau <kossebau@kde.org>
 # SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
 #
 
 # Need 3.10.X for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
@@ -10,7 +11,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(keysmith VERSION "0.2.1")
 
-set(KF5_MIN_VERSION "5.62.0")
+set(KF5_MIN_VERSION "5.77.0")
 set(QT_MIN_VERSION "5.15.0")
 set(SODIUM_MIN_VERSION "1.0.16")
 

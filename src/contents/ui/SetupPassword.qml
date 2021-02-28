@@ -2,6 +2,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
 import QtQuick 2.1
@@ -19,38 +20,55 @@ Kirigami.ScrollablePage {
     property bool bannerTextError : false
     property Models.PasswordRequestModel passwordRequest: Keysmith.passwordRequest()
 
-    // HACK remove when depends on Kirigami 5.77
-    Component.onCompleted: {
-        for (var index in form.children[0].children) {
-            var item = form.children[0].children[index];
-            if (item instanceof Text) {
-                item.wrapMode = item.Text.Wrap
+    ColumnLayout {
+        spacing: Kirigami.Units.largeSpacing
+        
+        Kirigami.Icon {
+            source: "lock"
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
+            Layout.maximumWidth: Kirigami.Units.gridUnit * 10
+            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
+            Layout.preferredHeight: width
+            Layout.leftMargin: Kirigami.Units.gridUnit * 3
+            Layout.rightMargin: Kirigami.Units.gridUnit * 3
+        }
+        
+        Kirigami.Heading {
+            level: 3
+            text: i18n("Choose a password to protect your accounts")
+            wrapMode: Text.Wrap
+            Layout.fillWidth: true
+            horizontalAlignment: form.wideMode ? Qt.AlignHCenter : Qt.AlignLeft
+        }
+        
+        Kirigami.FormLayout {
+            id: form
+            Layout.fillWidth: true
+            Kirigami.PasswordField {
+                id: newPassword
+                text: ""
+                enabled: !passwordRequest.passwordProvided
+                Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
+                onAccepted: newPasswordCopy.forceActiveFocus()
             }
-            item.Layout.fillWidth = true;
+            Kirigami.PasswordField {
+                id: newPasswordCopy
+                text: ""
+                enabled: !passwordRequest.passwordProvided
+                Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
+                onAccepted: applyAction.trigger()
+            }
+        }
+        
+        Connections {
+            target: passwordRequest
+            onPasswordRejected: {
+                bannerTextError = true
+            }
         }
     }
-
-    Kirigami.FormLayout {
-        id: form
-        Item {
-            Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: i18n("Get started by choosing a password to protect your accounts")
-        }
-        Kirigami.PasswordField {
-            id: newPassword
-            text: ""
-            enabled: !passwordRequest.passwordProvided
-            Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
-            onAccepted: newPasswordCopy.forceActiveFocus()
-        }
-        Kirigami.PasswordField {
-            id: newPasswordCopy
-            text: ""
-            enabled: !passwordRequest.passwordProvided
-            Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
-            onAccepted: applyAction.trigger()
-        }
-    }
+    
 
     actions.main : Kirigami.Action {
         id: applyAction
@@ -74,13 +92,6 @@ Kirigami.ScrollablePage {
             text: i18n("Failed to set up your password")
             visible: bannerTextError
             showCloseButton: true
-        }
-    }
-
-    Connections {
-        target: passwordRequest
-        onPasswordRejected: {
-            bannerTextError = true
         }
     }
 }
