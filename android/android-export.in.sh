@@ -131,4 +131,4 @@ export PATH="$TOOLCHAIN_BINDIR:$PATH" \
     STRIP="$STRIP" \
     RANLIB="$RANLIB"
 
-$@
+"$@"
