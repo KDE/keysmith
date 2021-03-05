@@ -1,11 +1,12 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
 import QtQuick 2.1
 import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.10 as Kirigami
+import org.kde.kirigami 2.15 as Kirigami
 
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
@@ -91,6 +92,25 @@ Kirigami.ScrollablePage {
         model: Models.SortedAccountListModel {
             sourceModel: accounts
         }
+        
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+            visible: accounts.loaded && mainList.count == 0
+            text: i18n("No accounts added")
+            icon.name: "unlock"
+            
+            helpfulAction: Kirigami.Action {
+                iconName: "list-add"
+                text: "Add account"
+                onTriggered: {
+                    root.accounts.error = false;
+                    root.errorMessage = root.accountErrorMessage;
+                    root.accountWanted();
+                }
+            }
+        }
+        
         /*
          * Use a Loader to get a switch-like statement to select an
          * appropriate delegate based on properties of the account model.
