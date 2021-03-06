@@ -59,11 +59,7 @@ Kirigami.ScrollablePage {
                 text: ""
                 Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
                 enabled: !vm.busy
-                onAccepted: {
-                    if (unlockAction.enabled) {
-                        unlockAction.trigger()
-                    }
-                }
+                onAccepted: unlockAction.trigger()
             }
         }
     }
