@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+# SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
 set -e
