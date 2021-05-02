@@ -153,4 +153,5 @@
       <li xml:lang="zh-TW">基於時間及雜湊值的 OTP</li>
     </ul>
   </description>
+  <url type="bugtracker">https://invent.kde.org/utilities/keysmith/-/issues</url>
 </component>
