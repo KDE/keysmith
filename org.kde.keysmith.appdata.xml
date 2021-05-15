@@ -3,6 +3,7 @@
   - SPDX-License-Identifier: CC0-1.0
   - SPDX-FileCopyrightText: 2019 Bart Ribbers <bribbers@disroot.org>
   - SPDX-FileCopyrightText: 2019 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+  - SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  -->
 <component type="desktop-application">
   <id>org.kde.keysmith</id>
@@ -38,13 +39,20 @@
   <name xml:lang="zh-TW">Keysmith</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
+  <content_rating type="oars-1.1"/>
   <project_group>KDE</project_group>
   <provides>
     <binary>keysmith</binary>
   </provides>
   <categories>
     <category>Utility</category>
+    <category>KDE</category>
   </categories>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mobile i l'escriptori</summary>
   <summary xml:lang="ca-valencia">Generador del codi de dos factors per al Plasma Mobile i l'escriptori</summary>
@@ -154,6 +162,12 @@
       <li xml:lang="zh-TW">基於時間及雜湊值的 OTP</li>
     </ul>
   </description>
+  <screenshots>
+    <screenshot>
+      <caption>Keysmith</caption>
+      <image>https://cdn.kde.org/screenshots/keysmith/keysmith.png</image>
+    </screenshot>
+  </screenshots>
   <url type="bugtracker">https://invent.kde.org/utilities/keysmith/-/issues</url>
   <releases>
     <release version="21.06" date="2021-06-10"/>
