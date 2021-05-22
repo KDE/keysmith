@@ -41,6 +41,7 @@ Comment[ast]=Xestiona pases d'OTP pa l'autenticación en dos pasos
 Comment[ca]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[ca@valencia]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[cs]=Spravujte tokeny OTP pomocí dvoufaktorového ověření (2fa)
+Comment[de]=Verwaltung Ihrer OTP-Token für die Zwei-Faktor-Authentisierung (2FA)
 Comment[en_GB]=Manage your OTP tokens for two factor authentication (2fa)
 Comment[es]=Gestión de elementos OTP para autenticación de dos factores (2fa)
 Comment[et]=Kaheastmelise autentimise (2fa) OTP-pääsmike haldamine 
