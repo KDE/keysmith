@@ -4,11 +4,17 @@
  * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
-#include <QApplication>
 #include <QCommandLineParser>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
 #include <QtQml>
 #include <QUrl>
+
+#ifdef Q_OS_ANDROID
+#include <QGuiApplication>
+#else
+#include <QApplication>
+#endif
 
 #include <KLocalizedContext>
 #include <KLocalizedString>
@@ -42,7 +48,17 @@ static QQmlDebuggingEnabler enabler;
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
+#ifdef Q_OS_ANDROID
+    QGuiApplication app(argc, argv);
+    QQuickStyle::setStyle(QStringLiteral("Material"));
+#else
     QApplication app(argc, argv);
+    if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
+        QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+    }
+#endif
+
     KLocalizedString::setApplicationDomain("keysmith");
 
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
