@@ -155,4 +155,7 @@
     </ul>
   </description>
   <url type="bugtracker">https://invent.kde.org/utilities/keysmith/-/issues</url>
+  <releases>
+    <release version="21.06" date="2021-06-10"/>
+  </releases>
 </component>
