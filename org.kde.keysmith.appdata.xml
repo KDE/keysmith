@@ -170,6 +170,21 @@
   </screenshots>
   <url type="bugtracker">https://invent.kde.org/utilities/keysmith/-/issues</url>
   <releases>
-    <release version="21.06" date="2021-06-10"/>
+    <release version="21.06" date="2021-06-10">
+      <description>
+        <p>Plasma Mobile Gear 21.06 release</p>
+        <ul>
+          <li>Basic support for account issuer property in keysmith</li>
+          <li>Support configuring issuer when adding new account</li>
+          <li>Support for configuring advanced HOTP/TOTP token details</li>
+          <li>Reduce latency when re-computing tokens</li>
+          <li>Add basic support for otpauth:// URI parsing</li>
+          <li>Allow to accept otpauth:// URI from command line</li>
+          <li>Add a page to recover when account turns out to be already used while adding it</li>
+          <li>Add actions to dismiss/cancel an add account form</li>
+          <li>Respond to D-Bus activation, allows to open keysmith when already running</li>
+        </ul>
+      </description>
+    </release>
   </releases>
 </component>
