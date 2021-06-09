@@ -9,7 +9,8 @@
 # Need 3.10.X for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
 cmake_minimum_required(VERSION 3.10)
 
-project(keysmith VERSION "0.2.1")
+project(keysmith)
+set(PROJECT_VERSION "0.2.1")
 
 set(KF5_MIN_VERSION "5.77.0")
 set(QT_MIN_VERSION "5.15.0")
