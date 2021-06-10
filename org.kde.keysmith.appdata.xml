@@ -39,7 +39,7 @@
   <name xml:lang="zh-TW">Keysmith</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-  <content_rating type="oars-1.1"/>
+  <content_rating type="oars-1.1" />
   <project_group>KDE</project_group>
   <provides>
     <binary>keysmith</binary>
@@ -214,6 +214,7 @@
           <li>Respond to D-Bus activation, allows to open keysmith when already running</li>
         </ul>
       </description>
+      <url>https://www.plasma-mobile.org/2021/06/10/plasma-mobile-update-june/</url>
     </release>
   </releases>
 </component>
