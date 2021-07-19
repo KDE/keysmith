@@ -2,6 +2,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
  * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
 #include <QCommandLineParser>
@@ -63,7 +64,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName(QStringLiteral("KDE"));
     QCoreApplication::setOrganizationDomain(QStringLiteral("kde.org"));
-    QCoreApplication::setApplicationName(QStringLiteral("Keysmith"));
+    QCoreApplication::setApplicationName(QStringLiteral("keysmith"));
     QCoreApplication::setApplicationVersion(KEYSMITH_VERSION_STRING);
     QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
 
