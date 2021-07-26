@@ -1,6 +1,6 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
- * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "oath/oath.h"
 
@@ -97,14 +97,7 @@ void TimeStepCountConversionTest::invalidCount_data(void)
     define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64) (max / 1000LL));
     define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64) (max >> 9));
     define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64) (max >> 10) + (max >> 11L));
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff97f7f0ULL / 1000ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff94b7e8ULL / 1000ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff9315f0ULL / 1000ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff9246e8ULL / 1000ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff922b90ULL / 1000ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff9223c0ULL / 1000ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff921fd8ULL / 1000ULL + 1ULL);
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(808LL), 1ULL, 0x7fffffffff921fd8ULL / 1000ULL);
+    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(808LL), 1ULL, 0x7fffffffffffffffULL / 1000ULL);
 }
 
 QTEST_APPLESS_MAIN(TimeStepCountConversionTest)
