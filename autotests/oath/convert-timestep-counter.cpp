@@ -9,7 +9,7 @@
 
 #include <limits>
 
-class TimeStepCountConversionTest: public QObject
+class TimeStepCountConversionTest: public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -22,13 +22,13 @@ private Q_SLOTS:
 
 static void define_valid_test_case(const QDateTime &epoch, uint timeStep, quint64 count, const QDateTime &expected)
 {
-    static const QString testCase(QLatin1String("%1 + %2 * 1000 * %3 ... %4"));
+    static const QString testCase(QStringLiteral("%1 + %2 * 1000 * %3 ... %4"));
     QTest::newRow(qPrintable(testCase.arg(epoch.toMSecsSinceEpoch()).arg(timeStep).arg(count).arg(expected.toMSecsSinceEpoch()))) << epoch << timeStep << count << expected;
 }
 
 static void define_invalid_test_case(const QDateTime &epoch, uint timeStep, quint64 count)
 {
-    static const QString testCase(QLatin1String("%1 + %2 * 1000 * %3"));
+    static const QString testCase(QStringLiteral("%1 + %2 * 1000 * %3"));
     QTest::newRow(qPrintable(testCase.arg(epoch.toMSecsSinceEpoch()).arg(timeStep).arg(count))) << epoch << timeStep << count;
 }
 
