@@ -12,6 +12,9 @@ import Keysmith.Application 1.0 as Application
 Kirigami.ApplicationWindow {
     id: root
 
+    width: Kirigami.Units.gridUnit * 28
+    height: Kirigami.Units.gridUnit * 28
+
     Kirigami.PageRouter {
         id: router
         initialRoute: "__init__"
