@@ -60,6 +60,10 @@ Kirigami.ScrollablePage {
                 Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
                 enabled: !vm.busy
                 onAccepted: unlockAction.trigger()
+
+                Component.onCompleted: {
+                    forceActiveFocus();
+                }
             }
         }
     }
