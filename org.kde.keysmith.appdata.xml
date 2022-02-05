@@ -30,6 +30,7 @@
   <name xml:lang="pl">Keysmith</name>
   <name xml:lang="pt">Keysmith</name>
   <name xml:lang="pt-BR">Keysmith</name>
+  <name xml:lang="ro">Keysmith</name>
   <name xml:lang="ru">Keysmith</name>
   <name xml:lang="sk">Keysmith</name>
   <name xml:lang="sl">Keysmith</name>
@@ -73,6 +74,7 @@
   <summary xml:lang="pl">Dwustopniowy generator kodów dla Plazmy Przenośnej i Biurkowej</summary>
   <summary xml:lang="pt">Gerador de códigos de duplo-factor para o Plasma Mobile e normal</summary>
   <summary xml:lang="pt-BR">Gerador de código de dois fatores para o Plasma Mobile e Desktop</summary>
+  <summary xml:lang="ro">Generator de coduri cu doi factori pentru Plasma Mobile și Desktop</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
   <summary xml:lang="uk">Засіб для створення двофакторних кодів для мобільної і стільничної Плазми</summary>
@@ -100,6 +102,7 @@
   <developer_name xml:lang="pl">Społeczność KDE</developer_name>
   <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
   <developer_name xml:lang="pt-BR">Comunidade KDE</developer_name>
+  <developer_name xml:lang="ro">Comunitatea KDE</developer_name>
   <developer_name xml:lang="ru">Сообщество KDE</developer_name>
   <developer_name xml:lang="sk">KDE komunita</developer_name>
   <developer_name xml:lang="sl">Skupnost KDE</developer_name>
@@ -129,6 +132,7 @@
     <p xml:lang="pl">Keysmith tworzy tokeny do logowania dwustopniowego (2FA)</p>
     <p xml:lang="pt">O Keysmith gera códigos para as suas autenticações em dois-factores (2FA)</p>
     <p xml:lang="pt-BR">O Keysmith gera tokens para logins de dois fatores (2FA)</p>
+    <p xml:lang="ro">Keysmith generează jetoane pentru autentificare cu doi factori (2FA)</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
     <p xml:lang="uk">Keysmith створює ключі для двофакторного входу (2FA)</p>
@@ -155,6 +159,7 @@
       <li xml:lang="pl">OTP oparte na czasie i haszu</li>
       <li xml:lang="pt">OTP baseado em códigos e no tempo</li>
       <li xml:lang="pt-BR">OTP baseados no tempo e hash</li>
+      <li xml:lang="ro">OTP bazat pe oră și hash</li>
       <li xml:lang="sl">Časovno in razsuto osnovana enkratna gesla</li>
       <li xml:lang="sv">Tids- och kondensatbaserad OTP</li>
       <li xml:lang="uk">OTP на основі часових даних і хешів</li>
@@ -187,6 +192,7 @@
       <caption xml:lang="pl">Keysmith</caption>
       <caption xml:lang="pt">Keysmith</caption>
       <caption xml:lang="pt-BR">Keysmith</caption>
+      <caption xml:lang="ro">Keysmith</caption>
       <caption xml:lang="ru">Keysmith</caption>
       <caption xml:lang="sk">Keysmith</caption>
       <caption xml:lang="sl">Keysmith</caption>
