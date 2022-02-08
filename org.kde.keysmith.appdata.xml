@@ -206,6 +206,15 @@
   <url type="homepage">https://apps.kde.org/keysmith/</url>
   <url type="bugtracker">https://invent.kde.org/utilities/keysmith/-/issues</url>
   <releases>
+    <release version="22.02" date="2021-02-09">
+      <url>https://www.plasma-mobile.org/2022/02/09/plasma-mobile-gear-22-02/</url>
+      <description>
+        <ul>
+          <li>Reduce default size of main window</li>
+          <li>Focus password field by default on launch</li>
+        </ul>
+      </description>
+    </release>
     <release version="21.12" date="2021-12-07">
       <url>https://www.plasma-mobile.org/2021/12/07/plasma-mobile-gear-21-12/</url>
     </release>
