@@ -1,0 +1,407 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the keysmith package.
+# Paolo Zamponi <zapaolo@email.it>, 2020, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keysmith\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"PO-Revision-Date: 2021-05-12 08:49+0200\n"
+"Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.04.0\n"
+
+#: src/app/cli.cpp:128
+#, kde-format
+msgctxt "@info (<uri> placeholder)"
+msgid ""
+"Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
+msgstr ""
+"Account facoltativo da aggiungere, formattato come URI otpauth:// (ad es. da "
+"un codice QR)"
+
+#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#, kde-format
+msgctxt "@title:window"
+msgid "Invalid account"
+msgstr "Account non valido"
+
+#: src/app/flows_p.cpp:106
+#, kde-format
+msgctxt "@info:label"
+msgid ""
+"The account you are trying to add is invalid. You can either quit the app, "
+"or continue without adding the account."
+msgstr ""
+"L'account che stai provando ad aggiungere non è valido. Puoi uscire dall'app "
+"oppure continuare senza aggiungerlo."
+
+#: src/app/flows_p.cpp:247
+#, kde-format
+msgctxt "@info:label"
+msgid ""
+"The account you are trying to add is invalid. Continue without adding the "
+"account."
+msgstr ""
+"L'account che stai provando ad aggiungere non è valido. Continua senza "
+"aggiungerlo."
+
+#: src/contents/ui/AccountEntryViewBase.qml:35
+#, kde-format
+msgctxt "Confirm dialog title: %1 is the name of the account to remove"
+msgid "Removing account: %1"
+msgstr "Rimozione dell'account: %1"
+
+#: src/contents/ui/AccountEntryViewBase.qml:42
+#, kde-format
+msgid ""
+"<p>Removing this account from Keysmith will not disable two-factor "
+"authentication (2FA). Make sure you can still access your account without "
+"using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA "
+"app set up for your account, or:</li><li>Make sure you have recovery codes "
+"for your account, or:</li><li>Disable two-factor authentication on your "
+"account</li></ul>"
+msgstr ""
+"<p>La rimozione di questo account da Keysmith non disabiliterà "
+"l'autenticazione a due fattori (2FA). Assicurati di poter ancora accedere al "
+"tuo account senza usare Keysmith prima di procedere:</p><ul><li>Assicurati "
+"di avere un'altra applicazione 2FA impostata per il tuo account, oppure:</"
+"li><li>Assicurati di avere i codici di recupero del tuo account, oppure:</"
+"li><li>Disabilita l'autenticazione a due fattori per il tuo account</li></ul>"
+
+#: src/contents/ui/AccountEntryViewBase.qml:49
+#, kde-format
+msgctxt "Button cancelling account removal"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/contents/ui/AccountEntryViewBase.qml:62
+#, kde-format
+msgctxt "Button confirming account removal"
+msgid "Delete account"
+msgstr "Elimina account"
+
+#: src/contents/ui/AccountNameForm.qml:59
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Name:"
+msgstr "Nome dell'account:"
+
+#: src/contents/ui/AccountNameForm.qml:75
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Issuer:"
+msgstr "Emittente dell'account:"
+
+#: src/contents/ui/AccountsOverview.qml:21
+#, kde-format
+msgctxt "@title:window"
+msgid "Accounts"
+msgstr "Account"
+
+#: src/contents/ui/AccountsOverview.qml:25
+#, kde-format
+msgctxt "generic error shown when adding or updating an account failed"
+msgid "Failed to update accounts"
+msgstr "Impossibile aggiornare gli account"
+
+#: src/contents/ui/AccountsOverview.qml:26
+#, kde-format
+msgctxt "error message shown when loading accounts from storage failed"
+msgid "Some accounts failed to load."
+msgstr "Impossibile caricare alcuni account."
+
+#: src/contents/ui/AccountsOverview.qml:101
+#, kde-format
+msgid "No accounts added"
+msgstr "Nessun account aggiunto"
+
+#: src/contents/ui/AccountsOverview.qml:106
+#, kde-format
+msgctxt ""
+"@action:button add new account, shown instead of overview list when no "
+"accounts have been added yet"
+msgid "Add account"
+msgstr "Aggiungi account"
+
+#: src/contents/ui/AccountsOverview.qml:171
+#, kde-format
+msgctxt "@action:button add new account, shown in toolbar"
+msgid "Add"
+msgstr "Aggiungi"
+
+#: src/contents/ui/AddAccount.qml:18
+#, kde-format
+msgctxt "@title:window"
+msgid "Add new account"
+msgstr "Aggiungi nuovo account"
+
+#: src/contents/ui/AddAccount.qml:55
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Account Type:"
+msgstr "Tipi di account:"
+
+#: src/contents/ui/AddAccount.qml:60
+#, kde-format
+msgctxt "@option:radio"
+msgid "Time-based OTP"
+msgstr "OTP basata sull'orario"
+
+#: src/contents/ui/AddAccount.qml:70
+#, kde-format
+msgctxt "@option:radio"
+msgid "Hash-based OTP"
+msgstr "OTP basata sull'hash"
+
+#: src/contents/ui/AddAccount.qml:80
+#, kde-format
+msgid "Token secret"
+msgstr "Segreto del token"
+
+#: src/contents/ui/AddAccount.qml:82
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Secret key:"
+msgstr "Chiave segreta:"
+
+#: src/contents/ui/AddAccount.qml:96
+#, kde-format
+msgctxt "Button to reveal form for configuring additional token details"
+msgid "Details"
+msgstr "Dettagli"
+
+#: src/contents/ui/AddAccount.qml:123
+#, kde-format
+msgctxt "@action:button cancel and dismiss the add account form"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
+#, kde-format
+msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+msgid "Quit"
+msgstr "Esci"
+
+#: src/contents/ui/AddAccount.qml:139 src/contents/ui/RenameAccount.qml:56
+#, kde-format
+msgid "Add"
+msgstr "Aggiungi"
+
+#: src/contents/ui/ErrorPage.qml:33
+#, kde-format
+msgctxt "@action:button Button to dismiss the error page"
+msgid "Continue"
+msgstr "Continua"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:19
+#: src/contents/ui/TOTPAccountEntryView.qml:23
+#, kde-format
+msgctxt "Button for removal of a single account"
+msgid "Delete account"
+msgstr "Elimina account"
+
+#: src/contents/ui/HOTPDetailsForm.qml:23
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Counter:"
+msgstr "Contatore:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:43
+#: src/contents/ui/TOTPDetailsForm.qml:59
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Token length:"
+msgstr "Lunghezza del token:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:55
+#, kde-format
+msgctxt "@option:check"
+msgid "Add check digit"
+msgstr "Aggiungi cifra di controllo"
+
+#: src/contents/ui/HOTPDetailsForm.qml:56
+#, kde-format
+msgctxt "@label:check"
+msgid "Checksum:"
+msgstr "Codice di controllo:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:65
+#, kde-format
+msgctxt "@option:check"
+msgid "Use custom offset"
+msgstr "Utilizza scostamento personalizzato"
+
+#: src/contents/ui/HOTPDetailsForm.qml:66
+#, kde-format
+msgctxt "@label:check"
+msgid "Truncation:"
+msgstr "Troncamento:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:76
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Truncation offset:"
+msgstr "Scostamento del troncamento:"
+
+#: src/contents/ui/RenameAccount.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Rename account to add"
+msgstr "Rinomina account da aggiungere"
+
+#: src/contents/ui/RenameAccount.qml:35
+#, kde-format
+msgctxt ""
+"@info:label Keysmith received an account to add via URI on e.g. commandline "
+"which is already in use"
+msgid ""
+"Another account with the same name already exists. Please correct the name "
+"or issuer for the new account."
+msgstr ""
+"Esiste già un altro account con lo stesso nome: correggi il nome o "
+"l'emittente del nuovo account."
+
+#: src/contents/ui/RenameAccount.qml:49
+#, kde-format
+msgctxt "@action:button cancel and dismiss the rename account form"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Password"
+msgstr "Password"
+
+#: src/contents/ui/SetupPassword.qml:37
+#, kde-format
+msgid "Choose a password to protect your accounts"
+msgstr "Scegli una password per proteggere i tuoi account"
+
+#: src/contents/ui/SetupPassword.qml:50
+#, kde-format
+msgctxt "@label:textbox"
+msgid "New password:"
+msgstr "Nuova password:"
+
+#: src/contents/ui/SetupPassword.qml:57
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Verify password:"
+msgstr "Verifica password:"
+
+#: src/contents/ui/SetupPassword.qml:65
+#, kde-format
+msgid "Apply"
+msgstr "Applica"
+
+#: src/contents/ui/SetupPassword.qml:78
+#, kde-format
+msgid "Failed to set up your password"
+msgstr "Impossibile impostare la tua password"
+
+#: src/contents/ui/TokenEntryViewLabels.qml:40
+#, kde-format
+msgctxt "placeholder text if no token is available"
+msgid "(refresh)"
+msgstr "(aggiorna)"
+
+#: src/contents/ui/TOTPDetailsForm.qml:24
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Timer:"
+msgstr "Timer:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:39
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Starting at:"
+msgstr "Inizia a:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:70
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Hash algorithm:"
+msgstr "Algoritmo di hash:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:75
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-1"
+msgstr "SHA-1"
+
+#: src/contents/ui/TOTPDetailsForm.qml:85
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: src/contents/ui/TOTPDetailsForm.qml:95
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: src/contents/ui/UnlockAccounts.qml:25
+#, kde-format
+msgid "Failed to unlock your accounts"
+msgstr "Impossibile sbloccare i tuoi account"
+
+#: src/contents/ui/UnlockAccounts.qml:48
+#, kde-format
+msgid "Please provide the password to unlock your accounts"
+msgstr "Fornisci la password per sbloccare i tuoi account"
+
+#: src/contents/ui/UnlockAccounts.qml:60
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr "Password:"
+
+#: src/contents/ui/UnlockAccounts.qml:73
+#, kde-format
+msgid "Unlock"
+msgstr "Sblocca"
+
+#: src/main.cpp:69
+#, kde-format
+msgctxt "@title"
+msgid "Keysmith"
+msgstr "Keysmith"
+
+#~ msgctxt "placeholder text if no account name is available"
+#~ msgid "(untitled)"
+#~ msgstr "(senza titolo)"
+
+#~ msgid "OTP"
+#~ msgstr "OTP"
+
+#~ msgctxt "%1 is current counter numerical value"
+#~ msgid "Refresh (%1)"
+#~ msgstr "Aggiorna (%1)"
+
+#~ msgid "Show"
+#~ msgstr "Mostra"
+
+#~ msgid "Hide"
+#~ msgstr "Nascondi"
+
+#~ msgctxt "@action:button"
+#~ msgid "Generate Token"
+#~ msgstr "Genera token"
+
+#~ msgid "Edit"
+#~ msgstr "Modifica"
+
+#~ msgctxt "Text shown when no accounts are added"
+#~ msgid "No account set up. Use the Add button to add accounts."
+#~ msgstr ""
+#~ "Nessuna configurazione dell'account. Usa il pulsante Aggiungi per "
+#~ "aggiungere gli account."

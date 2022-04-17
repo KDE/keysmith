@@ -1,0 +1,398 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the keysmith package.
+# Shinjo Park <kde@peremen.name>, 2020, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keysmith\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"PO-Revision-Date: 2021-05-16 21:32+0200\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 20.12.3\n"
+
+#: src/app/cli.cpp:128
+#, kde-format
+msgctxt "@info (<uri> placeholder)"
+msgid ""
+"Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
+msgstr "추가할 계정, otpauth:// URI 형식 사용(예: QR 코드)"
+
+#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#, kde-format
+msgctxt "@title:window"
+msgid "Invalid account"
+msgstr "잘못된 계정"
+
+#: src/app/flows_p.cpp:106
+#, kde-format
+msgctxt "@info:label"
+msgid ""
+"The account you are trying to add is invalid. You can either quit the app, "
+"or continue without adding the account."
+msgstr ""
+"추가하려는 계정이 잘못되었습니다. 앱을 끝내거나 계정을 추가하지 않고 계속할 "
+"수 있습니다."
+
+#: src/app/flows_p.cpp:247
+#, kde-format
+msgctxt "@info:label"
+msgid ""
+"The account you are trying to add is invalid. Continue without adding the "
+"account."
+msgstr "추가하려는 계정이 잘못되었습니다. 계정을 추가하지 않고 계속합니다."
+
+#: src/contents/ui/AccountEntryViewBase.qml:35
+#, kde-format
+msgctxt "Confirm dialog title: %1 is the name of the account to remove"
+msgid "Removing account: %1"
+msgstr "계정 삭제 중: %1"
+
+#: src/contents/ui/AccountEntryViewBase.qml:42
+#, kde-format
+msgid ""
+"<p>Removing this account from Keysmith will not disable two-factor "
+"authentication (2FA). Make sure you can still access your account without "
+"using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA "
+"app set up for your account, or:</li><li>Make sure you have recovery codes "
+"for your account, or:</li><li>Disable two-factor authentication on your "
+"account</li></ul>"
+msgstr ""
+"<p>Keysmith에서 이 계정을 삭제해도 2단계 인증(2FA)을 비활성화하지 않습니다. "
+"진행하기 전에 Keysmith를 사용하지 않아도 계정을 사용할 수 있는지 여부를 확인"
+"하십시오:</p><ul><li>다른 2FA 앱을 설정하십시오.</li><li>또는 계정 복구 코드"
+"를 발급받으십시오</li><li>또는 2단계 인증을 해제하십시오</li></ul>"
+
+#: src/contents/ui/AccountEntryViewBase.qml:49
+#, kde-format
+msgctxt "Button cancelling account removal"
+msgid "Cancel"
+msgstr "취소"
+
+#: src/contents/ui/AccountEntryViewBase.qml:62
+#, kde-format
+msgctxt "Button confirming account removal"
+msgid "Delete account"
+msgstr "계정 삭제"
+
+#: src/contents/ui/AccountNameForm.qml:59
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Name:"
+msgstr "계정 이름:"
+
+#: src/contents/ui/AccountNameForm.qml:75
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Issuer:"
+msgstr "계정 발급자:"
+
+#: src/contents/ui/AccountsOverview.qml:21
+#, kde-format
+msgctxt "@title:window"
+msgid "Accounts"
+msgstr "계정"
+
+#: src/contents/ui/AccountsOverview.qml:25
+#, kde-format
+msgctxt "generic error shown when adding or updating an account failed"
+msgid "Failed to update accounts"
+msgstr "계정을 업데이트할 수 없음"
+
+#: src/contents/ui/AccountsOverview.qml:26
+#, kde-format
+msgctxt "error message shown when loading accounts from storage failed"
+msgid "Some accounts failed to load."
+msgstr "일부 계정을 불러올 수 없습니다."
+
+#: src/contents/ui/AccountsOverview.qml:101
+#, kde-format
+msgid "No accounts added"
+msgstr "추가한 계정 없음"
+
+#: src/contents/ui/AccountsOverview.qml:106
+#, kde-format
+msgctxt ""
+"@action:button add new account, shown instead of overview list when no "
+"accounts have been added yet"
+msgid "Add account"
+msgstr "계정 추가"
+
+#: src/contents/ui/AccountsOverview.qml:171
+#, kde-format
+msgctxt "@action:button add new account, shown in toolbar"
+msgid "Add"
+msgstr "추가"
+
+#: src/contents/ui/AddAccount.qml:18
+#, kde-format
+msgctxt "@title:window"
+msgid "Add new account"
+msgstr "새 계정 추가"
+
+#: src/contents/ui/AddAccount.qml:55
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Account Type:"
+msgstr "계정 종류:"
+
+#: src/contents/ui/AddAccount.qml:60
+#, kde-format
+msgctxt "@option:radio"
+msgid "Time-based OTP"
+msgstr "시간 기반 OTP"
+
+#: src/contents/ui/AddAccount.qml:70
+#, kde-format
+msgctxt "@option:radio"
+msgid "Hash-based OTP"
+msgstr "해시 기반 OTP"
+
+#: src/contents/ui/AddAccount.qml:80
+#, kde-format
+msgid "Token secret"
+msgstr "토큰 비밀 정보"
+
+#: src/contents/ui/AddAccount.qml:82
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Secret key:"
+msgstr "비밀 키:"
+
+#: src/contents/ui/AddAccount.qml:96
+#, kde-format
+msgctxt "Button to reveal form for configuring additional token details"
+msgid "Details"
+msgstr "자세한 정보"
+
+#: src/contents/ui/AddAccount.qml:123
+#, kde-format
+msgctxt "@action:button cancel and dismiss the add account form"
+msgid "Cancel"
+msgstr "취소"
+
+#: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
+#, kde-format
+msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+msgid "Quit"
+msgstr "끝내기"
+
+#: src/contents/ui/AddAccount.qml:139 src/contents/ui/RenameAccount.qml:56
+#, kde-format
+msgid "Add"
+msgstr "추가"
+
+#: src/contents/ui/ErrorPage.qml:33
+#, kde-format
+msgctxt "@action:button Button to dismiss the error page"
+msgid "Continue"
+msgstr "계속"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:19
+#: src/contents/ui/TOTPAccountEntryView.qml:23
+#, kde-format
+msgctxt "Button for removal of a single account"
+msgid "Delete account"
+msgstr "계정 삭제"
+
+#: src/contents/ui/HOTPDetailsForm.qml:23
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Counter:"
+msgstr "카운터:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:43
+#: src/contents/ui/TOTPDetailsForm.qml:59
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Token length:"
+msgstr "토큰 길이:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:55
+#, kde-format
+msgctxt "@option:check"
+msgid "Add check digit"
+msgstr "체크 자리 추가"
+
+#: src/contents/ui/HOTPDetailsForm.qml:56
+#, kde-format
+msgctxt "@label:check"
+msgid "Checksum:"
+msgstr "체크섬:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:65
+#, kde-format
+msgctxt "@option:check"
+msgid "Use custom offset"
+msgstr "사용자 정의 위치 사용"
+
+#: src/contents/ui/HOTPDetailsForm.qml:66
+#, kde-format
+msgctxt "@label:check"
+msgid "Truncation:"
+msgstr "절단:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:76
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Truncation offset:"
+msgstr "절단 위치:"
+
+#: src/contents/ui/RenameAccount.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Rename account to add"
+msgstr "추가할 계정 이름 바꾸기"
+
+#: src/contents/ui/RenameAccount.qml:35
+#, kde-format
+msgctxt ""
+"@info:label Keysmith received an account to add via URI on e.g. commandline "
+"which is already in use"
+msgid ""
+"Another account with the same name already exists. Please correct the name "
+"or issuer for the new account."
+msgstr ""
+"이름이 같은 계정이 이미 존재합니다. 새 계정의 이름이나 발급자를 변경하십시오."
+
+#: src/contents/ui/RenameAccount.qml:49
+#, kde-format
+msgctxt "@action:button cancel and dismiss the rename account form"
+msgid "Cancel"
+msgstr "취소"
+
+#: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Password"
+msgstr "암호"
+
+#: src/contents/ui/SetupPassword.qml:37
+#, kde-format
+msgid "Choose a password to protect your accounts"
+msgstr "계정을 보호할 암호를 설정하십시오"
+
+#: src/contents/ui/SetupPassword.qml:50
+#, kde-format
+msgctxt "@label:textbox"
+msgid "New password:"
+msgstr "새 암호:"
+
+#: src/contents/ui/SetupPassword.qml:57
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Verify password:"
+msgstr "암호를 다시 입력하십시오:"
+
+#: src/contents/ui/SetupPassword.qml:65
+#, kde-format
+msgid "Apply"
+msgstr "적용"
+
+#: src/contents/ui/SetupPassword.qml:78
+#, kde-format
+msgid "Failed to set up your password"
+msgstr "암호를 설정할 수 없음"
+
+#: src/contents/ui/TokenEntryViewLabels.qml:40
+#, kde-format
+msgctxt "placeholder text if no token is available"
+msgid "(refresh)"
+msgstr "(새로 고침)"
+
+#: src/contents/ui/TOTPDetailsForm.qml:24
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Timer:"
+msgstr "타이머:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:39
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Starting at:"
+msgstr "시작 위치:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:70
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Hash algorithm:"
+msgstr "해시 알고리즘:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:75
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-1"
+msgstr "SHA-1"
+
+#: src/contents/ui/TOTPDetailsForm.qml:85
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: src/contents/ui/TOTPDetailsForm.qml:95
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: src/contents/ui/UnlockAccounts.qml:25
+#, kde-format
+msgid "Failed to unlock your accounts"
+msgstr "계정 잠금을 해제할 수 없음"
+
+#: src/contents/ui/UnlockAccounts.qml:48
+#, kde-format
+msgid "Please provide the password to unlock your accounts"
+msgstr "계정 잠금 해제 암호를 입력하십시오"
+
+#: src/contents/ui/UnlockAccounts.qml:60
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr "암호:"
+
+#: src/contents/ui/UnlockAccounts.qml:73
+#, kde-format
+msgid "Unlock"
+msgstr "잠금 해제"
+
+#: src/main.cpp:69
+#, kde-format
+msgctxt "@title"
+msgid "Keysmith"
+msgstr "Keysmith"
+
+#~ msgctxt "placeholder text if no account name is available"
+#~ msgid "(untitled)"
+#~ msgstr "(제목 없음)"
+
+#~ msgid "OTP"
+#~ msgstr "OTP"
+
+#~ msgctxt "%1 is current counter numerical value"
+#~ msgid "Refresh (%1)"
+#~ msgstr "새로 고침(%1)"
+
+#~ msgid "Show"
+#~ msgstr "표시"
+
+#~ msgid "Hide"
+#~ msgstr "숨기기"
+
+#~ msgctxt "@action:button"
+#~ msgid "Generate Token"
+#~ msgstr "토큰 생성"
+
+#~ msgid "Edit"
+#~ msgstr "편집"
+
+#~ msgctxt "Text shown when no accounts are added"
+#~ msgid "No account set up. Use the Add button to add accounts."
+#~ msgstr "계정이 없습니다. 추가 단추로 계정을 추가하십시오."

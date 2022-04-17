@@ -1,0 +1,377 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the keysmith package.
+# Sergiu Bivol <sergiu@cip.md>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: keysmith\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"PO-Revision-Date: 2022-02-04 12:55+0000\n"
+"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.2\n"
+
+#: src/app/cli.cpp:128
+#, kde-format
+msgctxt "@info (<uri> placeholder)"
+msgid ""
+"Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
+msgstr ""
+"Cont opțional de adăugat, formatat ca otpauth:// URI (de ex. dintr-un cod QR)"
+
+#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#, kde-format
+msgctxt "@title:window"
+msgid "Invalid account"
+msgstr "Cont nevalid"
+
+#: src/app/flows_p.cpp:106
+#, kde-format
+msgctxt "@info:label"
+msgid ""
+"The account you are trying to add is invalid. You can either quit the app, "
+"or continue without adding the account."
+msgstr ""
+"Contul pe care încercați să-l adăugați nu e valid. Puteți fie să închideți "
+"aplicația, fie să continuați fără adăugarea contului."
+
+#: src/app/flows_p.cpp:247
+#, kde-format
+msgctxt "@info:label"
+msgid ""
+"The account you are trying to add is invalid. Continue without adding the "
+"account."
+msgstr ""
+"Contul pe care încercați să-l adăugați nu e valid. Continuați fără adăugarea "
+"contului."
+
+#: src/contents/ui/AccountEntryViewBase.qml:35
+#, kde-format
+msgctxt "Confirm dialog title: %1 is the name of the account to remove"
+msgid "Removing account: %1"
+msgstr "Se elimină contul: %1"
+
+#: src/contents/ui/AccountEntryViewBase.qml:42
+#, kde-format
+msgid ""
+"<p>Removing this account from Keysmith will not disable two-factor "
+"authentication (2FA). Make sure you can still access your account without "
+"using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA "
+"app set up for your account, or:</li><li>Make sure you have recovery codes "
+"for your account, or:</li><li>Disable two-factor authentication on your "
+"account</li></ul>"
+msgstr ""
+"<p>Eliminarea acestui cont din Keysmith nu va dezactiva autentificarea cu "
+"doi factori (2FA). Asigurați-vă că vă puteți accesa contul fără a folosi "
+"Keysmith înainte de a continua:</p><ul><li>Asigurați-vă că aveți altă "
+"aplicație 2FA configurată pentru cont, sau:</li><li>Asigurați-vă că aveți "
+"coduri de recuperare pentru cont, sau:</li><li>Dezactivați autentificarea cu "
+"doi factori din contul dumneavoastră</li></ul>"
+
+#: src/contents/ui/AccountEntryViewBase.qml:49
+#, kde-format
+msgctxt "Button cancelling account removal"
+msgid "Cancel"
+msgstr "Renunță"
+
+#: src/contents/ui/AccountEntryViewBase.qml:62
+#, kde-format
+msgctxt "Button confirming account removal"
+msgid "Delete account"
+msgstr "Șterge contul"
+
+#: src/contents/ui/AccountNameForm.qml:59
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Name:"
+msgstr "Denumirea contului:"
+
+#: src/contents/ui/AccountNameForm.qml:75
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Account Issuer:"
+msgstr "Emitentul contului:"
+
+#: src/contents/ui/AccountsOverview.qml:21
+#, kde-format
+msgctxt "@title:window"
+msgid "Accounts"
+msgstr "Conturi"
+
+#: src/contents/ui/AccountsOverview.qml:25
+#, kde-format
+msgctxt "generic error shown when adding or updating an account failed"
+msgid "Failed to update accounts"
+msgstr "Actualizarea conturilor a eșuat"
+
+#: src/contents/ui/AccountsOverview.qml:26
+#, kde-format
+msgctxt "error message shown when loading accounts from storage failed"
+msgid "Some accounts failed to load."
+msgstr "Încărcarea unor conturi a eșuat"
+
+#: src/contents/ui/AccountsOverview.qml:101
+#, kde-format
+msgid "No accounts added"
+msgstr "Niciun cont adăugat"
+
+#: src/contents/ui/AccountsOverview.qml:106
+#, kde-format
+msgctxt ""
+"@action:button add new account, shown instead of overview list when no "
+"accounts have been added yet"
+msgid "Add account"
+msgstr "Adaugă cont"
+
+#: src/contents/ui/AccountsOverview.qml:171
+#, kde-format
+msgctxt "@action:button add new account, shown in toolbar"
+msgid "Add"
+msgstr "Adaugă"
+
+#: src/contents/ui/AddAccount.qml:18
+#, kde-format
+msgctxt "@title:window"
+msgid "Add new account"
+msgstr "Adaugă cont nou"
+
+#: src/contents/ui/AddAccount.qml:55
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Account Type:"
+msgstr "Tipul contului:"
+
+#: src/contents/ui/AddAccount.qml:60
+#, kde-format
+msgctxt "@option:radio"
+msgid "Time-based OTP"
+msgstr "OTP bazat pe oră"
+
+#: src/contents/ui/AddAccount.qml:70
+#, kde-format
+msgctxt "@option:radio"
+msgid "Hash-based OTP"
+msgstr "OTP bazat pe hash"
+
+#: src/contents/ui/AddAccount.qml:80
+#, kde-format
+msgid "Token secret"
+msgstr "Secret jeton"
+
+#: src/contents/ui/AddAccount.qml:82
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Secret key:"
+msgstr "Cheie secretă:"
+
+#: src/contents/ui/AddAccount.qml:96
+#, kde-format
+msgctxt "Button to reveal form for configuring additional token details"
+msgid "Details"
+msgstr "Detalii"
+
+#: src/contents/ui/AddAccount.qml:123
+#, kde-format
+msgctxt "@action:button cancel and dismiss the add account form"
+msgid "Cancel"
+msgstr "Renunță"
+
+#: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
+#, kde-format
+msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+msgid "Quit"
+msgstr "Termină"
+
+#: src/contents/ui/AddAccount.qml:139 src/contents/ui/RenameAccount.qml:56
+#, kde-format
+msgid "Add"
+msgstr "Adaugă"
+
+#: src/contents/ui/ErrorPage.qml:33
+#, kde-format
+msgctxt "@action:button Button to dismiss the error page"
+msgid "Continue"
+msgstr "Continuă"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:19
+#: src/contents/ui/TOTPAccountEntryView.qml:23
+#, kde-format
+msgctxt "Button for removal of a single account"
+msgid "Delete account"
+msgstr "Șterge contul"
+
+#: src/contents/ui/HOTPDetailsForm.qml:23
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Counter:"
+msgstr "Contor:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:43
+#: src/contents/ui/TOTPDetailsForm.qml:59
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Token length:"
+msgstr "Lungime jeton:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:55
+#, kde-format
+msgctxt "@option:check"
+msgid "Add check digit"
+msgstr "Adaugă cifră de verificare"
+
+#: src/contents/ui/HOTPDetailsForm.qml:56
+#, kde-format
+msgctxt "@label:check"
+msgid "Checksum:"
+msgstr "Sumă de control:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:65
+#, kde-format
+msgctxt "@option:check"
+msgid "Use custom offset"
+msgstr "Folosește decalaj personalizat"
+
+#: src/contents/ui/HOTPDetailsForm.qml:66
+#, kde-format
+msgctxt "@label:check"
+msgid "Truncation:"
+msgstr "Trunchiere:"
+
+#: src/contents/ui/HOTPDetailsForm.qml:76
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Truncation offset:"
+msgstr "Decalaj trunchiere:"
+
+#: src/contents/ui/RenameAccount.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Rename account to add"
+msgstr "Redenumește contul de adăugat"
+
+#: src/contents/ui/RenameAccount.qml:35
+#, kde-format
+msgctxt ""
+"@info:label Keysmith received an account to add via URI on e.g. commandline "
+"which is already in use"
+msgid ""
+"Another account with the same name already exists. Please correct the name "
+"or issuer for the new account."
+msgstr ""
+"Alt cont cu aceeași denumire există deja. Corectați denumirea sau emitentul "
+"noului cont."
+
+#: src/contents/ui/RenameAccount.qml:49
+#, kde-format
+msgctxt "@action:button cancel and dismiss the rename account form"
+msgid "Cancel"
+msgstr "Renunță"
+
+#: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
+#, kde-format
+msgctxt "@title:window"
+msgid "Password"
+msgstr "Parolă"
+
+#: src/contents/ui/SetupPassword.qml:37
+#, kde-format
+msgid "Choose a password to protect your accounts"
+msgstr "Alegeți o parolă pentru a vă proteja conturile"
+
+#: src/contents/ui/SetupPassword.qml:50
+#, kde-format
+msgctxt "@label:textbox"
+msgid "New password:"
+msgstr "Parola nouă:"
+
+#: src/contents/ui/SetupPassword.qml:57
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Verify password:"
+msgstr "Verificați parola:"
+
+#: src/contents/ui/SetupPassword.qml:65
+#, kde-format
+msgid "Apply"
+msgstr "Aplică"
+
+#: src/contents/ui/SetupPassword.qml:78
+#, kde-format
+msgid "Failed to set up your password"
+msgstr "Parola nu a putut fi configurată"
+
+#: src/contents/ui/TokenEntryViewLabels.qml:40
+#, kde-format
+msgctxt "placeholder text if no token is available"
+msgid "(refresh)"
+msgstr "(reîmprospătează)"
+
+#: src/contents/ui/TOTPDetailsForm.qml:24
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Timer:"
+msgstr "Temporizator:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:39
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Starting at:"
+msgstr "Începe la:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:70
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Hash algorithm:"
+msgstr "Algoritm hash:"
+
+#: src/contents/ui/TOTPDetailsForm.qml:75
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-1"
+msgstr "SHA-1"
+
+#: src/contents/ui/TOTPDetailsForm.qml:85
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-256"
+msgstr "SHA-256"
+
+#: src/contents/ui/TOTPDetailsForm.qml:95
+#, kde-format
+msgctxt "@option:radio"
+msgid "SHA-512"
+msgstr "SHA-512"
+
+#: src/contents/ui/UnlockAccounts.qml:25
+#, kde-format
+msgid "Failed to unlock your accounts"
+msgstr "Deblocarea conturilor a eșuat"
+
+#: src/contents/ui/UnlockAccounts.qml:48
+#, kde-format
+msgid "Please provide the password to unlock your accounts"
+msgstr "Furnizați parola pentru deblocarea conturilor"
+
+#: src/contents/ui/UnlockAccounts.qml:60
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr "Parolă:"
+
+#: src/contents/ui/UnlockAccounts.qml:73
+#, kde-format
+msgid "Unlock"
+msgstr "Deblochează"
+
+#: src/main.cpp:69
+#, kde-format
+msgctxt "@title"
+msgid "Keysmith"
+msgstr "Keysmith"
