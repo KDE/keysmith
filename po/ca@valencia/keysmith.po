@@ -112,7 +112,7 @@ msgstr "Comptes"
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr "No s'ha pogut actualitzar els comptes"
+msgstr "No s'han pogut actualitzar els comptes"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
@@ -355,7 +355,7 @@ msgstr "SHA-512"
 #: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
 msgid "Failed to unlock your accounts"
-msgstr "No s'ha pogut desblocar els comptes"
+msgstr "No s'han pogut desblocar els comptes"
 
 #: src/contents/ui/UnlockAccounts.qml:48
 #, kde-format
