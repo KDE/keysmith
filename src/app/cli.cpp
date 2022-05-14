@@ -227,8 +227,8 @@ namespace app
         }
 
         qCDebug(logger) << "Activating Keysmith main window";
-        KStartupInfo::setNewStartupId(mainWindow, KStartupInfo::startupId());
-        KWindowSystem::activateWindow(mainWindow->winId());
+        KWindowSystem::updateStartupId(mainWindow);
+        KWindowSystem::activateWindow(mainWindow);
     }
 #endif
 }

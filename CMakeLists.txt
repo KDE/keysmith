@@ -12,9 +12,10 @@ cmake_minimum_required(VERSION 3.10)
 project(keysmith)
 set(PROJECT_VERSION "22.04")
 
-set(KF5_MIN_VERSION "5.77.0")
+set(KF5_MIN_VERSION "5.91.0")
 set(QT_MIN_VERSION "5.15.0")
 set(SODIUM_MIN_VERSION "1.0.16")
+set(KDE_COMPILERSETTINGS_LEVEL "5.82.0")
 
 ################# Disallow in-source build #################
 
