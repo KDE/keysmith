@@ -73,22 +73,22 @@ msgid ""
 msgstr ""
 "<p>En eliminar este compte de Keysmith no es desactivarà l'autenticació de "
 "dos factors (2FA). Comproveu que encara podeu accedir al compte sense "
-"utilitzar Keysmith abans de continuar:</p><ul><li>Assegureu-vos que hi ha "
-"una atra aplicació de 2FA configurada per al compte, o:</li><li>Assegureu-"
-"vos que teniu els codis de recuperació del compte, o:</li><li>Desactiveu "
+"utilisar Keysmith abans de continuar:</p><ul><li>Assegureu-vos que hi ha una "
+"atra aplicació de 2FA configurada per al compte, o:</li><li>Assegureu-vos "
+"que teniu els codis de recuperació del compte, o:</li><li>Desactiveu "
 "l'autenticació de dos factors el compte</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancela"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete account"
-msgstr "Suprimeix el compte"
+msgstr "Suprimix el compte"
 
 #: src/contents/ui/AccountNameForm.qml:59
 #, kde-format
@@ -184,7 +184,7 @@ msgstr "Detalls"
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancela"
 
 #: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
 #, kde-format
@@ -208,7 +208,7 @@ msgstr "Continua"
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
-msgstr "Suprimeix el compte"
+msgstr "Suprimix el compte"
 
 #: src/contents/ui/HOTPDetailsForm.qml:23
 #, kde-format
@@ -239,7 +239,7 @@ msgstr "Suma de verificació:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom offset"
-msgstr "Utilitza un desplaçament personalitzat"
+msgstr "Utilisa un desplaçament personalitzat"
 
 #: src/contents/ui/HOTPDetailsForm.qml:66
 #, kde-format
@@ -268,14 +268,14 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
-"Ja existeix un atre compte amb el mateix nom. Corregiu el nom o l'emissor "
-"del compte nou."
+"Ya existix un atre compte amb el mateix nom. Corregiu el nom o l'emissor del "
+"compte nou."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
 msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancela"
 
 #: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
 #, kde-format
