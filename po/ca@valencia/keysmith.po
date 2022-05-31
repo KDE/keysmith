@@ -112,7 +112,7 @@ msgstr "Comptes"
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr "No s'han pogut actualitzar els comptes"
+msgstr "No s'ha pogut actualisar els comptes"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
@@ -239,7 +239,7 @@ msgstr "Suma de verificació:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom offset"
-msgstr "Utilisa un desplaçament personalitzat"
+msgstr "Utilisa un desplaçament personalisat"
 
 #: src/contents/ui/HOTPDetailsForm.qml:66
 #, kde-format
@@ -320,7 +320,7 @@ msgstr "(refresca)"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
-msgstr "Temporitzador:"
+msgstr "Temporisador:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:39
 #, kde-format
