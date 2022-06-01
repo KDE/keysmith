@@ -112,7 +112,7 @@ msgstr "Comptes"
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr "No s'ha pogut actualisar els comptes"
+msgstr "No s'han pogut actualisar els comptes"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
