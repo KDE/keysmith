@@ -6,7 +6,6 @@
 
 .flatpak-builder/*
 /build*/
-AndroidManifest.xml
 /src/version.h
 
 # LSP & IDE

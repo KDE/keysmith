@@ -7,8 +7,8 @@
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="org.kde.keysmith"
-          android:versionName="@keysmith_VERSION@"
-          android:versionCode="1"
+          android:versionName="${versionName}"
+          android:versionCode="${versionCode}"
           android:installLocation="auto">
     <application android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="Keysmith" android:icon="@drawable/keysmith">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
