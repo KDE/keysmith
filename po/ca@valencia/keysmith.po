@@ -34,7 +34,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
-msgstr "Compte no vàlid"
+msgstr "Compte no vàlit"
 
 #: src/app/flows_p.cpp:106
 #, kde-format
@@ -43,7 +43,7 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
-"El compte que s'intenta afegir no és vàlid. Podeu eixir de l'aplicació, o "
+"El compte que s'intenta afegir no és vàlit. Podeu eixir de l'aplicació, o "
 "continuar sense afegir el compte."
 
 #: src/app/flows_p.cpp:247
@@ -53,7 +53,7 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
-"El compte que s'intenta afegir no és vàlid. Continueu sense afegir el compte."
+"El compte que s'intenta afegir no és vàlit. Continueu sense afegir el compte."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
