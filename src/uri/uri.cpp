@@ -136,7 +136,7 @@ namespace uri
             QByteArray nameField = issuerNameField;
 
             if (colonOffset >= 0 || encodedColonOffset >= 0) {
-                if (colonOffset < encodedColonOffset || encodedColonOffset < 0) {
+                if (colonOffset >= 0 && (colonOffset < encodedColonOffset || encodedColonOffset < 0)) {
                     issuerField = issuerNameField.mid(0, colonOffset);
                     nameField = issuerNameField.mid(colonOffset + 1);
                 } else {

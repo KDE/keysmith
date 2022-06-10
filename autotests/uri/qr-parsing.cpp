@@ -125,6 +125,10 @@ void UriParsingTest::testValid_data(void)
                            QStringLiteral("otpauth://totp?secret=VALUE===&period=30"),
                            uri::QrParts::Type::Totp, QString(), QString(), QStringLiteral("VALUE==="),
                            QStringLiteral("30"), QString(), QString(), QString());
+    define_valid_test_case("totp (Microsoft organization account)",
+                           QStringLiteral("otpauth://totp/Mega%20Corporation%20A.B.%20%26%20Co.%20Kg%3Auser%40domain?secret=abcdef&issuer=Microsoft"),
+                           uri::QrParts::Type::Totp, QStringLiteral("user@domain"), QStringLiteral("Mega Corporation A.B. & Co. Kg"), QStringLiteral("abcdef"),
+                           QString(), QString(), QString(), QString());
 }
 
 void UriParsingTest::testInvalid(void)
