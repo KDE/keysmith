@@ -1,12 +1,12 @@
 # Translation of keysmith to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021.
+# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-12-20 00:46+0000\n"
-"PO-Revision-Date: 2021-03-21 17:51+0100\n"
+"PO-Revision-Date: 2022-06-19 13:57+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 22.04.2\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -51,6 +51,8 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
+"Kontoen du prøver å leggja til, er ugyldig. Hald fram utan å leggja til "
+"kontoen."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
@@ -128,13 +130,13 @@ msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
 msgid "Add account"
-msgstr ""
+msgstr "Legg til konto"
 
 #: src/contents/ui/AccountsOverview.qml:171
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
-msgstr ""
+msgstr "Legg til"
 
 #: src/contents/ui/AddAccount.qml:18
 #, kde-format
