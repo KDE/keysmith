@@ -51,6 +51,7 @@
     <category>Utility</category>
     <category>KDE</category>
   </categories>
+  <launchable type="desktop-id">org.kde.keysmith.desktop</launchable>
   <recommends>
     <control>pointing</control>
     <control>keyboard</control>
