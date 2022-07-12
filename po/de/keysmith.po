@@ -1,20 +1,22 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-#
 # Burkhard Lück <lueck@hube-lueck.de>, 2021.
+# Frederik Schwarzer <schwarzer@kde.org>, 2022.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-12-20 00:46+0000\n"
-"PO-Revision-Date: 2021-06-14 14:00+0200\n"
-"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"PO-Revision-Date: 2022-07-11 23:27+0200\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.04.1\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -152,13 +154,13 @@ msgstr "Kontentyp:"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr ""
+msgstr "Zeitbasiertes Einmalpasswort"
 
 #: src/contents/ui/AddAccount.qml:70
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr ""
+msgstr "Hash-basiertes Einmalpasswort"
 
 #: src/contents/ui/AddAccount.qml:80
 #, kde-format
@@ -211,7 +213,7 @@ msgstr "Konto löschen"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
-msgstr ""
+msgstr "Zähler:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:43
 #: src/contents/ui/TOTPDetailsForm.qml:59
@@ -224,7 +226,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "Add check digit"
-msgstr ""
+msgstr "Prüfziffer hinzufügen"
 
 #: src/contents/ui/HOTPDetailsForm.qml:56
 #, kde-format
@@ -236,19 +238,19 @@ msgstr "Prüfsumme:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom offset"
-msgstr ""
+msgstr "Eigenen Versatz verwenden"
 
 #: src/contents/ui/HOTPDetailsForm.qml:66
 #, kde-format
 msgctxt "@label:check"
 msgid "Truncation:"
-msgstr ""
+msgstr "Rundung:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:76
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "Rundungsversatz:"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -317,13 +319,13 @@ msgstr "(Aktualisieren)"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
-msgstr ""
+msgstr "Zeitmesser:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:39
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr ""
+msgstr "Starten um:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:70
 #, kde-format
