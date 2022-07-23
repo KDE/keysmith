@@ -25,7 +25,7 @@ list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "DEFINE_VALIDATOR_TEST")
 ecm_add_tests(
     ${validator_lib_test_SRCS}
     LINK_LIBRARIES
-        Qt5::Core Qt5::Gui Qt5::Test
+        Qt::Core Qt::Gui Qt::Test
         validator_lib
     NAME_PREFIX validators-
 )

@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
-set(Test_DEP_LIBS Qt5::Core Qt5::Test base32_lib)
+set(Test_DEP_LIBS Qt::Core Qt::Test base32_lib)
 set(base32_lib_test_SRCS
     base32-decode.cpp
     base32-coding-decoding.cpp

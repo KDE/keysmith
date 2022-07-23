@@ -10,4 +10,4 @@ set(account_test_lib_SRCS
 )
 
 add_library(account_test_lib STATIC ${account_test_lib_SRCS})
-target_link_libraries(account_test_lib Qt5::Core Qt5::Test account_lib)
+target_link_libraries(account_test_lib Qt::Core Qt::Test account_lib)

@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
-set(Test_DEP_LIBS Qt5::Core Qt5::Test model_lib)
+set(Test_DEP_LIBS Qt::Core Qt::Test model_lib)
 
 set(model_test_SRCS
     milliseconds-left-for-token.cpp

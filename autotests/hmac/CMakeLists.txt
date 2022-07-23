@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
-set(Test_DEP_LIBS Qt5::Core Qt5::Test hmac_lib)
+set(Test_DEP_LIBS Qt::Core Qt::Test hmac_lib)
 
 set(hmac_test_SRCS
     hmac-samples.cpp

@@ -13,4 +13,4 @@ set(validator_SRCS
 )
 
 add_library(validator_lib STATIC ${validator_SRCS})
-target_link_libraries(validator_lib Qt5::Core Qt5::Gui base32_lib)
+target_link_libraries(validator_lib Qt::Core Qt::Gui base32_lib)

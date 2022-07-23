@@ -4,7 +4,7 @@
 #
 add_subdirectory(test-utils)
 
-set(Test_DEP_LIBS Qt5::Core Qt5::Test secrets_lib secrets_test_lib)
+set(Test_DEP_LIBS Qt::Core Qt::Test secrets_lib secrets_test_lib)
 set(secrets_lib_test_SRCS
     encrypt-decrypt-rt.cpp
     key-derivation.cpp

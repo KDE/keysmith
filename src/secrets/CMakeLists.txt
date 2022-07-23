@@ -117,4 +117,4 @@ if (BUILD_EXTERNAL OR (NOT DEFINED BUILD_EXTERNAL AND ANDROID))
     install(FILES "${INSTALL_DIR}/${sodium_LIBRARY_PATH}" TYPE LIB)
 endif()
 
-target_link_libraries(secrets_lib Qt5::Core sodium base32_lib)
+target_link_libraries(secrets_lib Qt::Core sodium base32_lib)

@@ -3,8 +3,8 @@
 # SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 #
 
-set(Test_DEP_LIBS Qt5::Core Qt5::Test account_lib account_test_lib secrets_test_lib test_lib)
-qt5_add_resources(RCC_SOURCES resources/resources.qrc)
+set(Test_DEP_LIBS Qt::Core Qt::Test account_lib account_test_lib secrets_test_lib test_lib)
+qt_add_resources(RCC_SOURCES resources/resources.qrc)
 
 ecm_add_test(load-accounts.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME load-accounts NAME_PREFIX account-jobs-)
 ecm_add_test(delete-accounts.cpp ${RCC_SOURCES} LINK_LIBRARIES ${Test_DEP_LIBS} TEST_NAME delete-accounts NAME_PREFIX account-jobs-)

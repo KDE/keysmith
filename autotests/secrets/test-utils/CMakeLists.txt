@@ -8,5 +8,5 @@ set(secrets_test_lib_SRCS
 )
 
 add_library(secrets_test_lib STATIC ${secrets_test_lib_SRCS})
-target_link_libraries(secrets_test_lib Qt5::Core Qt5::Test)
+target_link_libraries(secrets_test_lib Qt::Core Qt::Test)
 
