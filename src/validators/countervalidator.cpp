@@ -42,7 +42,7 @@ namespace validators
          * at some point which would be invalid.
          */
         const QLocale l = locale();
-        const QChar c = l.groupSeparator();
+        const auto c = l.groupSeparator();
         QString fixed = input.replace(c, QLatin1String(""));
         fixed = validators::strip_spaces(fixed);
 
