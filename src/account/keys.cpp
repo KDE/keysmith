@@ -164,7 +164,7 @@ namespace accounts
          */
         passwordBytes.fill('\0', -1);
         password.fill(QLatin1Char('*'), -1);
-        return m_password;
+        return !m_password.isNull();
     }
 
     bool AccountSecret::answerExistingPassword(QString &password)
