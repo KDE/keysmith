@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-12-20 00:46+0000\n"
-"PO-Revision-Date: 2022-07-11 23:27+0200\n"
+"PO-Revision-Date: 2022-07-23 22:23+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 22.07.70\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "Hash-basiertes Einmalpasswort"
 #: src/contents/ui/AddAccount.qml:80
 #, kde-format
 msgid "Token secret"
-msgstr ""
+msgstr "Token-Passwort"
 
 #: src/contents/ui/AddAccount.qml:82
 #, kde-format
@@ -220,7 +220,7 @@ msgstr "Zähler:"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr ""
+msgstr "Token-Länge:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:55
 #, kde-format
