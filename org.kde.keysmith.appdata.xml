@@ -145,7 +145,7 @@
     <p xml:lang="tr">Keysmith, iki aşamalı girişleriniz (2FA) için jetonlar oluşturur</p>
     <p xml:lang="uk">Keysmith створює ключі для двофакторного входу (2FA)</p>
     <p xml:lang="x-test">xxKeysmith generates tokens for your two-factor logins (2FA)xx</p>
-    <p xml:lang="zh-CN">Keysmith 用于为您的双重验证 (2FA) 登陆生成令牌</p>
+    <p xml:lang="zh-CN">Keysmith 用于为您的双因验证 (2FA) 登录生成令牌</p>
     <p xml:lang="zh-TW">Keysmith 會產生用於兩步驟登入 (2FA) 的憑證</p>
     <ul>
       <li>Time and Hash-based OTP</li>
