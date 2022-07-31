@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2021-12-20 00:46+0000\n"
-"PO-Revision-Date: 2022-07-16 05:19\n"
+"PO-Revision-Date: 2022-07-30 15:54\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -248,7 +248,7 @@ msgstr "截断偏移量："
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr "重命名帐户以添加"
+msgstr "重命名账户以添加"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
