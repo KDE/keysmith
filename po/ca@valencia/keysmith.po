@@ -286,7 +286,7 @@ msgstr "Contrasenya"
 #: src/contents/ui/SetupPassword.qml:37
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr "Trieu una contrasenya per a protegir els comptes"
+msgstr "Seleccioneu una contrasenya per a protegir els comptes"
 
 #: src/contents/ui/SetupPassword.qml:50
 #, kde-format
