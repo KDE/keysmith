@@ -10,7 +10,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(keysmith)
-set(PROJECT_VERSION "22.06")
+set(PROJECT_VERSION "22.09")
 
 set(KF5_MIN_VERSION "5.91.0")
 set(QT_MIN_VERSION "5.15.2")
