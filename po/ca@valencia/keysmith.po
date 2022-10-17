@@ -27,8 +27,8 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
-"Compte opcional a afegir, amb format «otpauth:// URI» (p. ex. a partir d'un "
-"codi QR)"
+"Compte opcional que s'afegirà, amb format «otpauth:// URI» (p. ex. a partir "
+"d'un codi QR)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
 #, kde-format
@@ -257,7 +257,7 @@ msgstr "Desplaçament del truncament:"
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr "Canvia el nom el compte a afegir"
+msgstr "Canvia el nom del compte que s'ha d'afegir"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
