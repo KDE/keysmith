@@ -8,7 +8,6 @@
 <component type="desktop-application">
   <id>org.kde.keysmith</id>
   <name>Keysmith</name>
-  <name xml:lang="ast">Keysmith</name>
   <name xml:lang="ca">Keysmith</name>
   <name xml:lang="ca-valencia">Keysmith</name>
   <name xml:lang="cs">Keysmith</name>
@@ -186,7 +185,6 @@
   <screenshots>
     <screenshot>
       <caption>Keysmith</caption>
-      <caption xml:lang="ast">Keysmith</caption>
       <caption xml:lang="ca">Keysmith</caption>
       <caption xml:lang="ca-valencia">Keysmith</caption>
       <caption xml:lang="cs">Keysmith</caption>
