@@ -26,7 +26,7 @@ namespace uri
 
         int index = 0;
         for(index = decoded.indexOf('%', index); index >= 0; index = decoded.indexOf('%', index + 1)) {
-            if (decoded.size() < (index + 2) || !isHexDigit(decoded[index + 1]) || !isHexDigit(decoded[index + 2])) {
+            if (decoded.size() <= (index + 2) || !isHexDigit(decoded[index + 1]) || !isHexDigit(decoded[index + 2])) {
                 return std::nullopt;
             }
 

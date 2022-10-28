@@ -15,3 +15,6 @@ Dependencies:
   'require':
     'frameworks/kdbusaddons': '@stable'
     'frameworks/kwindowsystem': '@stable'
+
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD' ]
