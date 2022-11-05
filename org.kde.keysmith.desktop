@@ -74,6 +74,7 @@ Version=1.0
 Exec=keysmith %u
 Icon=keysmith
 Type=Application
+SingleMainWindow=true
 Terminal=false
 Categories=Qt;KDE;Utility
 MimeType=x-scheme-handler/otpauth;
