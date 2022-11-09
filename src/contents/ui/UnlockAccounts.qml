@@ -68,6 +68,9 @@ Kirigami.ScrollablePage {
         }
     }
 
+    // ensure the password entry field has focus
+    Component.onCompleted: contentItem.focus = true
+
     actions.main : Kirigami.Action {
         id: unlockAction
         text: i18n("Unlock")
