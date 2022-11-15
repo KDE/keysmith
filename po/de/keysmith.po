@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"POT-Creation-Date: 2022-11-15 00:49+0000\n"
 "PO-Revision-Date: 2022-07-23 22:23+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -367,7 +367,7 @@ msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Passwort:"
 
-#: src/contents/ui/UnlockAccounts.qml:73
+#: src/contents/ui/UnlockAccounts.qml:76
 #, kde-format
 msgid "Unlock"
 msgstr "Entsperren"

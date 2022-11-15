@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"POT-Creation-Date: 2022-11-15 00:49+0000\n"
 "PO-Revision-Date: 2022-10-07 07:11+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -352,7 +352,7 @@ msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "პაროლი:"
 
-#: src/contents/ui/UnlockAccounts.qml:73
+#: src/contents/ui/UnlockAccounts.qml:76
 #, kde-format
 msgid "Unlock"
 msgstr "განბლოკვა"

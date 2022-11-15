@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"POT-Creation-Date: 2022-11-15 00:49+0000\n"
 "PO-Revision-Date: 2021-05-05 08:39+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -362,7 +362,7 @@ msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Mot de passe :"
 
-#: src/contents/ui/UnlockAccounts.qml:73
+#: src/contents/ui/UnlockAccounts.qml:76
 #, kde-format
 msgid "Unlock"
 msgstr "Déverrouiller"
