@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2021-12-20 00:46+0000\n"
+"POT-Creation-Date: 2022-11-15 00:49+0000\n"
 "PO-Revision-Date: 2022-06-19 13:57+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -367,7 +367,7 @@ msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Passord:"
 
-#: src/contents/ui/UnlockAccounts.qml:73
+#: src/contents/ui/UnlockAccounts.qml:76
 #, kde-format
 msgid "Unlock"
 msgstr "Lås opp"
