@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-15 00:49+0000\n"
-"PO-Revision-Date: 2022-10-07 07:11+0200\n"
+"PO-Revision-Date: 2022-11-27 11:20+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -24,6 +24,8 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
+"არასავალდებულო ანგარიშის დამატება. ფორმატით otpauth:// (მაგალითად, QR "
+"კოდიდან)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
 #, kde-format
@@ -38,6 +40,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
+"ანგარიში, რომლის დამატებასაც აპირებთ, არასწორია. შეგიძლიათ გახვიდეთ აპიდან "
+"ან გააგრძელოთ ანგარიშის დამატების გარეშე."
 
 #: src/app/flows_p.cpp:247
 #, kde-format
@@ -46,6 +50,8 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
+"ანგარიში, რომლის დამატებასაც აპირებთ, არასწორია. გააგრძელეთ ანგარიშის "
+"დამატების გარეშე."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
@@ -63,6 +69,11 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
+"<p>ამ ანგარიშის Keysmith-დან წაშლა არ 2FA-ს არ გამორთავს. დარწმუნდით, რომ "
+"ჯერ კიდევ გაქვთ წვდომა თქვენს ანგარიშთან Keysmith-ის გარეშე, სანამ "
+"გააგრძელებთ:</p><ul><li>დარწმუნდით, რომ გაქვთ სხვა 2FA აპი ან:</"
+"li><li>დარწმუნდით, რომ გაქვთ აღდგენის კოდების თქვენი ანგარიშისთვის, ან:</"
+"li><li>გამორთეთ 2FA თქვენი ანგარიშისთვის</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
@@ -254,6 +265,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
+"სხვა ანგარიში იგივე სახელით უკვე არსებობს. ანგარიშის შესაქმნელად ჩაასწორეთ "
+"სახელი ან გამომცემელი."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
