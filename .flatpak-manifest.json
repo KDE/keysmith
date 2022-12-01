@@ -1,7 +1,7 @@
 {
     "id": "org.kde.keysmith",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15",
+    "runtime-version": "5.15-21.08",
     "sdk": "org.kde.Sdk",
     "command": "keysmith",
     "rename-icon": "keysmith",
@@ -23,9 +23,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/jedisct1/libsodium.git",
-                    "tag": "1.0.18",
-                    "commit": "4f5e89fa84ce1d178a6765b8b46f2b6f91216677"
+                    "url": "https://github.com/jedisct1/libsodium/archive/refs/tags/1.0.18-RELEASE.tar.gz",
+                    "sha256": "b7292dd1da67a049c8e78415cd498ec138d194cfdb302e716b08d26b80fecc10"
                 }
             ]
         },
