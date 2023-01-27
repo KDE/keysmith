@@ -6,11 +6,9 @@
 # SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
 #
 
-# Need 3.10.X for C++17 support enabled via CMake: https://cmake.org/cmake/help/v3.10/prop_tgt/CXX_STANDARD.html#prop_tgt:CXX_STANDARD
-cmake_minimum_required(VERSION 3.10)
-
-project(keysmith)
-set(PROJECT_VERSION "22.11")
+cmake_minimum_required(VERSION 3.16)
+set(PROJECT_VERSION "23.01")
+project(keysmith VERSION ${PROJECT_VERSION})
 
 set(KF5_MIN_VERSION "5.91.0")
 set(QT_MIN_VERSION "5.15.2")

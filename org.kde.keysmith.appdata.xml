@@ -184,7 +184,7 @@
     </ul>
   </description>
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <caption>Keysmith</caption>
       <caption xml:lang="ca">Keysmith</caption>
       <caption xml:lang="ca-valencia">Keysmith</caption>
