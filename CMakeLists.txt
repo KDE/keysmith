@@ -1,14 +1,18 @@
-#
-# SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
 # SPDX-FileCopyrightText: 2019 Friedrich W. H. Kossebau <kossebau@kde.org>
 # SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 # SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
-#
+# SPDX-License-Identifier: BSD-2-Clause
 
 cmake_minimum_required(VERSION 3.16)
-set(PROJECT_VERSION "23.01")
-project(keysmith VERSION ${PROJECT_VERSION})
+
+# KDE Applications version, managed by release script.
+set(RELEASE_SERVICE_VERSION_MAJOR "23")
+set(RELEASE_SERVICE_VERSION_MINOR "03")
+set(RELEASE_SERVICE_VERSION_MICRO "70")
+set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
+
+project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
 set(KF5_MIN_VERSION "5.91.0")
 set(QT_MIN_VERSION "5.15.2")
