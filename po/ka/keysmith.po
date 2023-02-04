@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-15 00:49+0000\n"
-"PO-Revision-Date: 2022-11-27 11:20+0100\n"
+"PO-Revision-Date: 2023-02-03 16:02+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -79,7 +79,7 @@ msgstr ""
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
-msgstr "_გაუქმება"
+msgstr "გაუქმება"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
@@ -181,7 +181,7 @@ msgstr "დეტალები"
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
-msgstr "_გაუქმება"
+msgstr "გაუქმება"
 
 #: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
 #, kde-format
@@ -272,7 +272,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
-msgstr "_გაუქმება"
+msgstr "გაუქმება"
 
 #: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
 #, kde-format
