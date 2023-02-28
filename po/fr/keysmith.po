@@ -67,12 +67,12 @@ msgid ""
 "account</li></ul>"
 msgstr ""
 "<p>La suppression de ce compte de Keysmith ne désactivera pas "
-"l’authentification à deux facteurs (2FA). Veuillez-vous assurer que vous "
+"l'authentification à deux facteurs (2FA). Veuillez-vous assurer que vous "
 "pouvez toujours accéder à votre compte sans utiliser Keysmith avant de "
-"continuer :</p><ul><li>Veuillez-vous assurer d’avoir une autre application "
+"continuer :</p><ul><li>Veuillez-vous assurer d'avoir une autre application "
 "« 2FA » configurée pour votre compte, ou :</li><li>Veuillez-vous assurer "
-"d’avoir des codes de récupération pour votre compte ou :</li><li>Désactiver "
-"l’authentification à deux facteurs sur votre compte.</li></ul>"
+"d'avoir des codes de récupération pour votre compte ou :</li><li>Désactiver "
+"l'authentification à deux facteurs sur votre compte.</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
