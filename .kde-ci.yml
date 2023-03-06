@@ -17,4 +17,4 @@ Dependencies:
     'frameworks/kwindowsystem': '@stable'
 
 Options:
-  require-passing-tests-on: [ 'Linux', 'FreeBSD' ]
+  require-passing-tests-on: [ 'Linux', 'FreeBSD/Qt5' ]
