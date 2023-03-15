@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-15 00:49+0000\n"
-"PO-Revision-Date: 2022-04-01 14:08+0300\n"
+"PO-Revision-Date: 2023-03-14 18:17+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -70,7 +70,7 @@ msgstr ""
 "devre dışı bırakmayacaktır. Sürdürmeden önce, hesabınıza Keysmith olmadan "
 "erişebildiğinizden emin olun:</p><ul><li>Hesabınız için başka bir 2FA "
 "uygulamanız olduğundan emin olun veya:</li><li>Hesabınız için kurtarma "
-"kodlarınız olup olmadığına bakın ve mein olun veya:</li><li>Hesabınızda iki "
+"kodlarınız olup olmadığına bakıp emin olun veya:</li><li>Hesabınızda iki "
 "aşamalı kimlik doğrulamayı devre dışı bırakın.</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
@@ -83,19 +83,19 @@ msgstr "İptal"
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete account"
-msgstr "Hesabı sil"
+msgstr "Hesabı Sil"
 
 #: src/contents/ui/AccountNameForm.qml:59
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account Name:"
-msgstr "Hesap Adı:"
+msgstr "Hesap adı:"
 
 #: src/contents/ui/AccountNameForm.qml:75
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account Issuer:"
-msgstr "Hesabı Oluşturan:"
+msgstr "Hesabı oluşturan:"
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
@@ -118,7 +118,7 @@ msgstr "Bazı hesaplar yüklenemedi."
 #: src/contents/ui/AccountsOverview.qml:101
 #, kde-format
 msgid "No accounts added"
-msgstr "Hesap eklenmedi"
+msgstr "Eklenmiş hesap yok"
 
 #: src/contents/ui/AccountsOverview.qml:106
 #, kde-format
@@ -126,7 +126,7 @@ msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
 msgid "Add account"
-msgstr "Hesap ekle"
+msgstr "Hesap Ekle"
 
 #: src/contents/ui/AccountsOverview.qml:171
 #, kde-format
