@@ -35,7 +35,7 @@
   <name xml:lang="sk">Keysmith</name>
   <name xml:lang="sl">Keysmith</name>
   <name xml:lang="sv">Keysmith</name>
-  <name xml:lang="tr">Keysmith</name>
+  <name xml:lang="tr">Çilingir</name>
   <name xml:lang="uk">Keysmith</name>
   <name xml:lang="x-test">xxKeysmithxx</name>
   <name xml:lang="zh-CN">Keysmith</name>
@@ -146,7 +146,7 @@
     <p xml:lang="ro">Keysmith generează jetoane pentru autentificare cu doi factori (2FA)</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
-    <p xml:lang="tr">Keysmith, iki aşamalı oturum açmalar (2FA) için jetonlar oluşturur</p>
+    <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar oluşturur</p>
     <p xml:lang="uk">Keysmith створює ключі для двофакторного входу (2FA)</p>
     <p xml:lang="x-test">xxKeysmith generates tokens for your two-factor logins (2FA)xx</p>
     <p xml:lang="zh-CN">Keysmith 用于为您的双因验证 (2FA) 登录生成令牌</p>
@@ -214,7 +214,7 @@
       <caption xml:lang="sk">Keysmith</caption>
       <caption xml:lang="sl">Keysmith</caption>
       <caption xml:lang="sv">Keysmith</caption>
-      <caption xml:lang="tr">Keysmith</caption>
+      <caption xml:lang="tr">Çilingir</caption>
       <caption xml:lang="uk">Keysmith</caption>
       <caption xml:lang="x-test">xxKeysmithxx</caption>
       <caption xml:lang="zh-CN">Keysmith</caption>
