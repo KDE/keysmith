@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
             twinFormLayouts: [accountName, hotpDetails, totpDetails]
             ColumnLayout {
                 Layout.rowSpan: 2
-                Kirigami.FormData.label: i18nc("@label:chooser", "Account Type:")
+                Kirigami.FormData.label: i18nc("@label:chooser", "Account type:")
                 Kirigami.FormData.buddyFor: totpRadio
                 Controls.RadioButton {
                     id: totpRadio

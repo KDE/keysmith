@@ -59,7 +59,7 @@ Kirigami.SwipeListItem {
             Controls.Button {
                 action: Kirigami.Action {
                     iconName: "edit-delete"
-                    text: i18nc("Button confirming account removal", "Delete account")
+                    text: i18nc("Button confirming account removal", "Delete Account")
                     enabled: alive
                     onTriggered: {
                         alive = false;

@@ -103,7 +103,7 @@ Kirigami.ScrollablePage {
             
             helpfulAction: Kirigami.Action {
                 iconName: "list-add"
-                text: i18nc("@action:button add new account, shown instead of overview list when no accounts have been added yet", "Add account")
+                text: i18nc("@action:button add new account, shown instead of overview list when no accounts have been added yet", "Add Account")
                 onTriggered: {
                     // FIXME : should be managed via vm
                     vm.accounts.error = false;

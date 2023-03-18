@@ -56,7 +56,7 @@ Kirigami.FormLayout {
     Controls.TextField {
         id: accountName
         text: validatedInput.name
-        Kirigami.FormData.label: i18nc("@label:textbox", "Account Name:")
+        Kirigami.FormData.label: i18nc("@label:textbox", "Account name:")
         validator: Validators.AccountNameValidator {
             id: accountNameValidator
             accounts: root.accounts
@@ -72,7 +72,7 @@ Kirigami.FormLayout {
     Controls.TextField {
         id: issuerName
         text: validatedInput.issuer
-        Kirigami.FormData.label: i18nc("@label:textbox", "Account Issuer:")
+        Kirigami.FormData.label: i18nc("@label:textbox", "Account issuer:")
         validator: Validators.AccountIssuerValidator {}
         /*
          * When the issuer changes, the account name should be revalidated as well.
