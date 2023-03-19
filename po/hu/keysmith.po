@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
 "PO-Revision-Date: 2021-01-10 15:05+0100\n"
 "Last-Translator: Kristóf Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -86,21 +86,27 @@ msgid "Cancel"
 msgstr "Mégsem"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Button confirming account removal"
+#| msgid "Delete account"
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr "Fiók törlése"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr "Fióknév:"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Issuer:"
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr "Fiók kibocsátó:"
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -135,7 +141,7 @@ msgstr "A hozzáadni kívánt fiók átnevezése"
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr "Új fiók hozzáadása"
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -152,9 +158,11 @@ msgid "Add new account"
 msgstr "Új fiók hozzáadása"
 
 #: src/contents/ui/AddAccount.qml:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:chooser"
+#| msgid "Account Type:"
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr "Fióktípus:"
 
 #: src/contents/ui/AddAccount.qml:60

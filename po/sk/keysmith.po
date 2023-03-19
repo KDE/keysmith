@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
 "PO-Revision-Date: 2021-11-15 18:40+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -68,15 +68,19 @@ msgid "Cancel"
 msgstr "Zrušiť"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Button confirming account removal"
+#| msgid "Delete account"
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr "Odstrániť účet"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr "Názov účt&u:"
 
 #: src/contents/ui/AccountNameForm.qml:75
@@ -84,7 +88,7 @@ msgstr "Názov účt&u:"
 #| msgctxt "@label:textbox"
 #| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr "Názov účt&u:"
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -111,11 +115,15 @@ msgid "No accounts added"
 msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@action:button add new account, shown instead of overview list when no "
+#| "accounts have been added yet"
+#| msgid "Add account"
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr "Pridať účet"
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -131,9 +139,11 @@ msgid "Add new account"
 msgstr "Pridať nový účet"
 
 #: src/contents/ui/AddAccount.qml:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:chooser"
+#| msgid "Account Type:"
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr "Typ účtu:"
 
 #: src/contents/ui/AddAccount.qml:60

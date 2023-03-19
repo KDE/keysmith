@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
 "PO-Revision-Date: 2020-08-20 02:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -73,19 +73,19 @@ msgstr ""
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr ""
 
 #: src/contents/ui/AccountNameForm.qml:59
 #, kde-format
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr ""
 
 #: src/contents/ui/AccountNameForm.qml:75
 #, kde-format
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -116,7 +116,7 @@ msgstr ""
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -134,7 +134,7 @@ msgstr ""
 #: src/contents/ui/AddAccount.qml:55
 #, kde-format
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr ""
 
 #: src/contents/ui/AddAccount.qml:60

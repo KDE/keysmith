@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
 "PO-Revision-Date: 2020-01-01 16:44+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -79,13 +79,15 @@ msgstr ""
 #| msgctxt "@title:window"
 #| msgid "Add new account"
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr "新增帳戶"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr "帳戶名稱："
 
 #: src/contents/ui/AccountNameForm.qml:75
@@ -93,7 +95,7 @@ msgstr "帳戶名稱："
 #| msgctxt "@label:textbox"
 #| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr "帳戶名稱："
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -130,7 +132,7 @@ msgstr ""
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr "新增帳戶"
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -147,9 +149,11 @@ msgid "Add new account"
 msgstr "新增帳戶"
 
 #: src/contents/ui/AddAccount.qml:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:chooser"
+#| msgid "Account Type:"
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr "帳戶類型："
 
 #: src/contents/ui/AddAccount.qml:60

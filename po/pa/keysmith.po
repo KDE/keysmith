@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
 "PO-Revision-Date: 2021-01-20 21:44-0800\n"
 "Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -78,21 +78,27 @@ msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Button confirming account removal"
+#| msgid "Delete account"
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr "ਖਾਤਾ ਹਟਾਓ"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr "ਖਾਤੇ ਦਾ ਨਾਂ"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Issuer:"
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr "ਖਾਤਾ ਜਾਰੀਕਰਤਾ:"
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -127,7 +133,7 @@ msgstr "ਜੋੜਨ ਲਈ ਖਾਤੇ ਦਾ ਨਾਂ ਬਦਲੋ"
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr "ਨਵਾਂ ਖਾਤਾ ਜੋੜੋ"
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -144,9 +150,11 @@ msgid "Add new account"
 msgstr "ਨਵਾਂ ਖਾਤਾ ਜੋੜੋ"
 
 #: src/contents/ui/AddAccount.qml:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:chooser"
+#| msgid "Account Type:"
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr "ਖਾਤੇ ਦੀ ਕਿਸਮ:"
 
 #: src/contents/ui/AddAccount.qml:60

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
 "PO-Revision-Date: 2021-06-12 14:23+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
@@ -81,21 +81,27 @@ msgid "Cancel"
 msgstr "Cancel"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Button confirming account removal"
+#| msgid "Delete account"
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr "Delete account"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Name:"
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr "Account Name:"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Account Issuer:"
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr "Account Issuer:"
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -122,11 +128,15 @@ msgid "No accounts added"
 msgstr "No accounts added"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt ""
+#| "@action:button add new account, shown instead of overview list when no "
+#| "accounts have been added yet"
+#| msgid "Add account"
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr "Add account"
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -142,9 +152,11 @@ msgid "Add new account"
 msgstr "Add new account"
 
 #: src/contents/ui/AddAccount.qml:55
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:chooser"
+#| msgid "Account Type:"
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr "Account Type:"
 
 #: src/contents/ui/AddAccount.qml:60
