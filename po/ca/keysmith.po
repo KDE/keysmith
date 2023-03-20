@@ -1,16 +1,16 @@
 # Translation of keysmith.po to Catalan
-# Copyright (C) 2020-2022 This_file_is_part_of_KDE
+# Copyright (C) 2020-2023 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022.
+# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-19 00:50+0000\n"
-"PO-Revision-Date: 2022-07-08 15:14+0200\n"
+"PO-Revision-Date: 2023-03-19 09:41+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -85,25 +85,19 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Button confirming account removal"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Suprimeix el compte"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Nom del compte:"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Issuer:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Emissor del compte:"
@@ -132,11 +126,7 @@ msgid "No accounts added"
 msgstr "No s'ha afegit cap compte"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button add new account, shown instead of overview list when no "
-#| "accounts have been added yet"
-#| msgid "Add account"
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
@@ -156,9 +146,7 @@ msgid "Add new account"
 msgstr "Afegeix un compte nou"
 
 #: src/contents/ui/AddAccount.qml:55
-#, fuzzy, kde-format
-#| msgctxt "@label:chooser"
-#| msgid "Account Type:"
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Tipus de compte:"

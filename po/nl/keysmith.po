@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-19 00:50+0000\n"
-"PO-Revision-Date: 2021-05-04 13:34+0200\n"
+"PO-Revision-Date: 2023-03-19 13:35+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -82,25 +82,19 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Button confirming account removal"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Account verwijderen"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Accountnaam:"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Issuer:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Uitgever van account:"
@@ -129,11 +123,7 @@ msgid "No accounts added"
 msgstr "Geen accounts toegevoegd"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button add new account, shown instead of overview list when no "
-#| "accounts have been added yet"
-#| msgid "Add account"
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
@@ -153,12 +143,10 @@ msgid "Add new account"
 msgstr "Nieuw account toevoegen"
 
 #: src/contents/ui/AddAccount.qml:55
-#, fuzzy, kde-format
-#| msgctxt "@label:chooser"
-#| msgid "Account Type:"
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
-msgstr "Rekeningtype:"
+msgstr "Accounttype:"
 
 #: src/contents/ui/AddAccount.qml:60
 #, kde-format

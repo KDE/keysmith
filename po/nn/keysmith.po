@@ -1,12 +1,12 @@
 # Translation of keysmith to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022.
+# Karl Ove Hufthammer <karl@huftis.org>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-15 00:49+0000\n"
-"PO-Revision-Date: 2022-06-19 13:57+0200\n"
+"POT-Creation-Date: 2023-03-19 00:50+0000\n"
+"PO-Revision-Date: 2023-03-19 14:46+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -86,19 +86,19 @@ msgstr "Avbryt"
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgctxt "Button confirming account removal"
-msgid "Delete account"
+msgid "Delete Account"
 msgstr "Slett konto"
 
 #: src/contents/ui/AccountNameForm.qml:59
 #, kde-format
 msgctxt "@label:textbox"
-msgid "Account Name:"
+msgid "Account name:"
 msgstr "Kontonamn:"
 
 #: src/contents/ui/AccountNameForm.qml:75
 #, kde-format
 msgctxt "@label:textbox"
-msgid "Account Issuer:"
+msgid "Account issuer:"
 msgstr "Kontoutferdar:"
 
 #: src/contents/ui/AccountsOverview.qml:21
@@ -129,7 +129,7 @@ msgstr "Ingen kontoar er lagde til"
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
-msgid "Add account"
+msgid "Add Account"
 msgstr "Legg til konto"
 
 #: src/contents/ui/AccountsOverview.qml:171
@@ -147,7 +147,7 @@ msgstr "Legg til konto …"
 #: src/contents/ui/AddAccount.qml:55
 #, kde-format
 msgctxt "@label:chooser"
-msgid "Account Type:"
+msgid "Account type:"
 msgstr "Kontotype:"
 
 #: src/contents/ui/AddAccount.qml:60
