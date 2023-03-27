@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2020, 2021.
+# Steve Allewell <steve.allewell@gmail.com>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-19 00:50+0000\n"
-"PO-Revision-Date: 2021-06-12 14:23+0100\n"
+"PO-Revision-Date: 2023-03-26 14:32+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
-"Language-Team: British English <kde-l10n-en_gb@kde.org>\n"
+"Language-Team: British English\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.04.1\n"
+"X-Generator: Lokalize 23.03.70\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -81,28 +81,22 @@ msgid "Cancel"
 msgstr "Cancel"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Button confirming account removal"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
-msgstr "Delete account"
+msgstr "Delete Account"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
-msgstr "Account Name:"
+msgstr "Account name:"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Issuer:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
-msgstr "Account Issuer:"
+msgstr "Account issuer:"
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
@@ -128,16 +122,12 @@ msgid "No accounts added"
 msgstr "No accounts added"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button add new account, shown instead of overview list when no "
-#| "accounts have been added yet"
-#| msgid "Add account"
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
 msgid "Add Account"
-msgstr "Add account"
+msgstr "Add Account"
 
 #: src/contents/ui/AccountsOverview.qml:171
 #, kde-format
@@ -152,12 +142,10 @@ msgid "Add new account"
 msgstr "Add new account"
 
 #: src/contents/ui/AddAccount.qml:55
-#, fuzzy, kde-format
-#| msgctxt "@label:chooser"
-#| msgid "Account Type:"
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
-msgstr "Account Type:"
+msgstr "Account type:"
 
 #: src/contents/ui/AddAccount.qml:60
 #, kde-format
