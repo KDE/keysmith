@@ -49,7 +49,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ################# Find dependencies #################
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui QuickControls2 Concurrent)
 find_package(KF5Kirigami2 ${KF5_MIN_VERSION} REQUIRED)
 find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
 

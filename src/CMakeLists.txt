@@ -36,7 +36,7 @@ set(keysmith_internal_libs keysmith_lib)
 qt_add_resources(RESOURCES resources.qrc)
 add_executable(keysmith ${keysmith_SRCS} ${RESOURCES})
 target_link_libraries(keysmith
-    Qt::Core Qt::Gui Qt::Qml Qt::Quick Qt::Svg Qt::QuickControls2
+    Qt::Core Qt::Gui Qt::Qml Qt::Quick Qt::QuickControls2
     KF5::I18n
     ${keysmith_internal_libs}
 )
