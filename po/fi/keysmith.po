@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# Tommi Nieminen <translator@legisign.org>, 2020, 2021.
+# Tommi Nieminen <translator@legisign.org>, 2020, 2021, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-03-19 00:50+0000\n"
-"PO-Revision-Date: 2021-05-07 12:08+0300\n"
+"PO-Revision-Date: 2023-03-29 23:19+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -78,25 +78,19 @@ msgid "Cancel"
 msgstr "Peru"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Button confirming account removal"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Poista tili"
 
 #: src/contents/ui/AccountNameForm.qml:59
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Tilin nimi:"
 
 #: src/contents/ui/AccountNameForm.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Issuer:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Tilin myöntäjä:"
@@ -125,11 +119,7 @@ msgid "No accounts added"
 msgstr "Tilejä ei lisätty"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button add new account, shown instead of overview list when no "
-#| "accounts have been added yet"
-#| msgid "Add account"
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
@@ -149,9 +139,7 @@ msgid "Add new account"
 msgstr "Lisää uusi tili"
 
 #: src/contents/ui/AddAccount.qml:55
-#, fuzzy, kde-format
-#| msgctxt "@label:chooser"
-#| msgid "Account Type:"
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Tilin tyyppi:"
