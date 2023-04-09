@@ -37,12 +37,12 @@ qt_add_resources(RESOURCES resources.qrc)
 add_executable(keysmith ${keysmith_SRCS} ${RESOURCES})
 target_link_libraries(keysmith
     Qt::Core Qt::Gui Qt::Qml Qt::Quick Qt::Svg Qt::QuickControls2
-    KF5::I18n
+    KF${QT_MAJOR_VERSION}::I18n
     ${keysmith_internal_libs}
 )
 
 if (ENABLE_DBUS_INTERFACE)
-    target_link_libraries(keysmith KF5::DBusAddons)
+    target_link_libraries(keysmith KF${QT_MAJOR_VERSION}::DBusAddons)
 endif()
 
 if(ANDROID)
@@ -56,6 +56,8 @@ if(ANDROID)
         unlock
         lock
     )
+else()
+    target_link_libraries(keysmith Qt::Widgets)
 endif()
 
 install(TARGETS keysmith ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

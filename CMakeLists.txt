@@ -14,7 +14,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
-set(KF5_MIN_VERSION "5.91.0")
+set(KF_MIN_VERSION "5.91.0")
 set(QT_MIN_VERSION "5.15.2")
 if (ANDROID)
     set(QT_MIN_VERSION "5.15.8")
@@ -32,7 +32,7 @@ include(FeatureSummary)
 
 ################# set KDE specific information #################
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 
 # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -50,8 +50,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ################# Find dependencies #################
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
-find_package(KF5Kirigami2 ${KF5_MIN_VERSION} REQUIRED)
-find_package(KF5I18n ${KF5_MIN_VERSION} REQUIRED)
+find_package(KF${QT_MAJOR_VERSION}Kirigami2 ${KF_MIN_VERSION} REQUIRED)
+find_package(KF${QT_MAJOR_VERSION}I18n ${KF_MIN_VERSION} REQUIRED)
+
+if(NOT ANDROID)
+    find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
+endif()
 
 if (QT_MAJOR_VERSION EQUAL "6")
     find_package(Qt6Core5Compat REQUIRED)
@@ -65,8 +69,8 @@ if(NOT BUILD_EXTERNAL AND (NOT ANDROID OR DEFINED BUILD_EXTERNAL))
 endif()
 
 if (BUILD_DBUS_INTERFACE OR (NOT ANDROID AND NOT DEFINED BUILD_DBUS_INTERFACE))
-    find_package(KF5DBusAddons ${KF5_MIN_VERSION} REQUIRED)
-    find_package(KF5WindowSystem ${KF5_MIN_VERSION} REQUIRED)
+    find_package(KF${QT_MAJOR_VERSION}DBusAddons ${KF_MIN_VERSION} REQUIRED)
+    find_package(KF${QT_MAJOR_VERSION}WindowSystem ${KF_MIN_VERSION} REQUIRED)
     set(ENABLE_DBUS_INTERFACE ON)
 endif()
 
