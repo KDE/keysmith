@@ -52,6 +52,9 @@ Kirigami.FormLayout {
         // because of how issuer revalidation works, this also implicitly covers the account name as well
         issuerName.insert(issuerName.text.length, "");
     }
+    function clicked() {
+        accountName.forceActiveFocus()
+    }
 
     Controls.TextField {
         id: accountName

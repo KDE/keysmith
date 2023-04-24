@@ -35,6 +35,8 @@ Kirigami.ScrollablePage {
         }
     }
 
+    Component.onCompleted: accountName.clicked()
+
     ColumnLayout {
         spacing: 0
         AccountNameForm {
