@@ -76,6 +76,7 @@ Kirigami.SwipeListItem {
         actionTriggered();
         if (tokenAvailable) {
             Keysmith.copyToClipboard(account.token);
+            applicationWindow().showPassiveNotification(i18nc("Notification shown in a passive notification", "Token copied to clipboard!"))
         }
         // TODO warn if not
     }
