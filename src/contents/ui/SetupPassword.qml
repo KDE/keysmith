@@ -25,13 +25,8 @@ Kirigami.ScrollablePage {
         
         Kirigami.Icon {
             source: "lock"
-            Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
-            Layout.maximumWidth: Kirigami.Units.gridUnit * 10
-            Layout.preferredWidth: Kirigami.Units.gridUnit * 10
-            Layout.preferredHeight: width
-            Layout.leftMargin: Kirigami.Units.gridUnit * 3
-            Layout.rightMargin: Kirigami.Units.gridUnit * 3
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 10
         }
         
         Kirigami.Heading {
