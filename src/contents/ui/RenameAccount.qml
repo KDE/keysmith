@@ -22,7 +22,7 @@ Kirigami.Page {
 
     Connections {
         target: vm.input
-        onTypeChanged: {
+        function onTypeChanged() {
             root.detailsEnabled = false;
         }
     }

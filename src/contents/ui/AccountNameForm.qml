@@ -38,13 +38,13 @@ Kirigami.FormLayout {
      */
     Connections {
         target: accounts
-        onRowsInserted: {
+        function onRowsInserted() {
             revalidate();
         }
-        onRowsRemoved: {
+        function onRowsRemoved() {
             revalidate();
         }
-        onModelReset: {
+        function onModelReset() {
             revalidate();
         }
     }
