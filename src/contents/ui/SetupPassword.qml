@@ -18,6 +18,8 @@ Kirigami.ScrollablePage {
 
     property Application.SetupPasswordViewModel vm
 
+    Component.onCompleted: newPassword.forceActiveFocus()
+
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing
         
