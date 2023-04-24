@@ -38,6 +38,7 @@ Kirigami.ScrollablePage {
             wrapMode: Text.Wrap
             Layout.fillWidth: true
             horizontalAlignment: form.wideMode ? Qt.AlignHCenter : Qt.AlignLeft
+            verticalAlignment: Qt.AlignTop
         }
         
         Kirigami.FormLayout {
