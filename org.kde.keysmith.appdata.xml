@@ -80,6 +80,7 @@
   <summary xml:lang="pt">Gerador de códigos de duplo-factor para o Plasma Mobile e normal</summary>
   <summary xml:lang="pt-BR">Gerador de código de dois fatores para o Plasma Mobile e Desktop</summary>
   <summary xml:lang="ro">Generator de coduri cu doi factori pentru Plasma Mobile și Desktop</summary>
+  <summary xml:lang="ru">Средство создания двухфакторных кодов для Plasma для мобильных устройств и настольных компьютеров</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
   <summary xml:lang="tr">İki Aşamalı Kod Oluşturucu</summary>
@@ -144,6 +145,7 @@
     <p xml:lang="pt">O Keysmith gera códigos para as suas autenticações em dois-factores (2FA)</p>
     <p xml:lang="pt-BR">O Keysmith gera tokens para logins de dois fatores (2FA)</p>
     <p xml:lang="ro">Keysmith generează jetoane pentru autentificare cu doi factori (2FA)</p>
+    <p xml:lang="ru">Keysmith создаёт маркеры для входа с использованием двухфакторной аутентификации (2FA)</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
     <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar oluşturur</p>
@@ -175,6 +177,7 @@
       <li xml:lang="pt">OTP baseado em códigos e no tempo</li>
       <li xml:lang="pt-BR">OTP baseados no tempo e hash</li>
       <li xml:lang="ro">OTP bazat pe oră și hash</li>
+      <li xml:lang="ru">OTP на основе данных времени и хеша</li>
       <li xml:lang="sl">Časovno in razsuto osnovana enkratna gesla</li>
       <li xml:lang="sv">Tids- och kondensatbaserad OTP</li>
       <li xml:lang="tr">Zaman ve Sağlama tabanlı tek kerelik parola</li>
