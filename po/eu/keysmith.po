@@ -1,34 +1,39 @@
+# Translation for keysmith.po to Euskara/Basque (eu)
+# Copyright (C) 2023 This file is copyright:
+# This file is distributed under the same license as the keysmith package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+#
+# Translators:
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: kdeorg\n"
+"Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-15 00:49+0000\n"
-"PO-Revision-Date: 2023-04-29 08:36\n"
-"Last-Translator: \n"
-"Language-Team: Chinese Simplified\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2023-04-30 01:59+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: kdeorg\n"
-"X-Crowdin-Project-ID: 269464\n"
-"X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-stable/messages/keysmith/keysmith.pot\n"
-"X-Crowdin-File-ID: 42001\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
-msgstr "要添加的可选账户，格式为 otpauth:// URI (例如来自二维码)"
+msgstr ""
+"Gehitu beharreko aukerako kontua, «otpauth://» URI gisa eratua (adib. QR "
+"kode batetik)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
-msgstr "无效账户"
+msgstr "Kontu baliogabea"
 
 #: src/app/flows_p.cpp:106
 #, kde-format
@@ -37,8 +42,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
-"您正在尝试添加的账户无效。您可以退出本应用程序，也可以在不添加账户的情况下继"
-"续操作。"
+"Gehitzen saiatzen ari zaren kontua baliogabea da. Aplikaziotik irten, edo "
+"kontua gehitu gabe jarrai dezakezu."
 
 #: src/app/flows_p.cpp:247
 #, kde-format
@@ -46,13 +51,15 @@ msgctxt "@info:label"
 msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
-msgstr "您正在尝试添加的账户无效。将在不添加账户的情况下继续操作。"
+msgstr ""
+"Gehitzen saiatzen ari zaren kontua baliogabea da. Jarraitu kontua gehitu "
+"gabe."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
-msgstr "移除账户：%1"
+msgstr "Kontua kentzea: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
@@ -64,57 +71,59 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>从 Keysmith 中移除此账户将不会禁用双重身份验证 (2FA)。请在继续操作之前确保"
-"在不使用 Keysmith 的前提下依然能够访问您的账户：</p><ul><li>确保您的账号已经"
-"设置了另一款双重身份验证应用，或者：</li><li>确保您拥有您的账号的恢复码，或"
-"者：</li><li>禁用您的账户的双重身份验证功能。</li></ul>"
+"<p>«Keysmith»etik kontu hau kentzeak ez du bi faktoreko autentifikazioa "
+"(2FA)ezgaituko. Jarraitu aurretik, ziurtatu «Keysmith» erabili gabe, "
+"oraindik zure kontuan sar zaitezkeela:</p><ul><li>Ziurtatu zure konturako "
+"beste 2FA aplikazio bat ezarrita duzula, edo:</li><li>Ziurtatu zure kontua "
+"berreskuratzeko kodeak dituzula, edo:</li><li>Ezgaitu bi faktoreko "
+"autentifikazioa zure kontuan</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Utzi"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete account"
-msgstr "删除账户"
+msgstr "Ezabatu kontua"
 
 #: src/contents/ui/AccountNameForm.qml:59
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account Name:"
-msgstr "账户名称："
+msgstr "Kontuaren izena:"
 
 #: src/contents/ui/AccountNameForm.qml:75
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account Issuer:"
-msgstr "账户发行者："
+msgstr "Kontu-jaulkitzailea:"
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
 msgctxt "@title:window"
 msgid "Accounts"
-msgstr "账户"
+msgstr "Kontuak"
 
 #: src/contents/ui/AccountsOverview.qml:25
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr "更新账户失败"
+msgstr "Kontuak eguneratzea huts egin du"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr "某些账户加载失败。"
+msgstr "Kontu batzuk zamatzea huts egin du."
 
 #: src/contents/ui/AccountsOverview.qml:101
 #, kde-format
 msgid "No accounts added"
-msgstr "尚未添加任何账户"
+msgstr "Ez da konturik gehitu"
 
 #: src/contents/ui/AccountsOverview.qml:106
 #, kde-format
@@ -122,133 +131,133 @@ msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
 msgid "Add account"
-msgstr "添加账户"
+msgstr "Gehitu kontua"
 
 #: src/contents/ui/AccountsOverview.qml:171
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
-msgstr "添加"
+msgstr "Gehitu"
 
 #: src/contents/ui/AddAccount.qml:18
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
-msgstr "添加新账户"
+msgstr "Gehitu kontu berria"
 
 #: src/contents/ui/AddAccount.qml:55
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account Type:"
-msgstr "账户类型："
+msgstr "Kontu mota:"
 
 #: src/contents/ui/AddAccount.qml:60
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr "基于时间的 OTP"
+msgstr "Orduan oinarriko OTP"
 
 #: src/contents/ui/AddAccount.qml:70
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr "基于哈希的 OTP"
+msgstr "«Hash» oinarriko OTP"
 
 #: src/contents/ui/AddAccount.qml:80
 #, kde-format
 msgid "Token secret"
-msgstr "令牌密钥"
+msgstr "Tokenaren sekretua"
 
 #: src/contents/ui/AddAccount.qml:82
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
-msgstr "密钥："
+msgstr "Gako sekretua:"
 
 #: src/contents/ui/AddAccount.qml:96
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
-msgstr "详细信息"
+msgstr "Xehetasunak"
 
 #: src/contents/ui/AddAccount.qml:123
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Utzi"
 
 #: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
-msgstr "退出"
+msgstr "Irten"
 
 #: src/contents/ui/AddAccount.qml:139 src/contents/ui/RenameAccount.qml:56
 #, kde-format
 msgid "Add"
-msgstr "添加"
+msgstr "Gehitu"
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
-msgstr "继续"
+msgstr "Jarraitu"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
-msgstr "删除账户"
+msgstr "Ezabatu kontua"
 
 #: src/contents/ui/HOTPDetailsForm.qml:23
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
-msgstr "计数器："
+msgstr "Zenbatzailea:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:43
 #: src/contents/ui/TOTPDetailsForm.qml:59
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr "令牌长度："
+msgstr "Tokenaren luzera:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:55
 #, kde-format
 msgctxt "@option:check"
 msgid "Add check digit"
-msgstr "添加检查数字"
+msgstr "Gehitu egiaztapen digitua"
 
 #: src/contents/ui/HOTPDetailsForm.qml:56
 #, kde-format
 msgctxt "@label:check"
 msgid "Checksum:"
-msgstr "校验和："
+msgstr "Egiaztapen-batura:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:65
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom offset"
-msgstr "使用自定义偏移量"
+msgstr "Erabili neurrira ipinitako jatorri aldaketa"
 
 #: src/contents/ui/HOTPDetailsForm.qml:66
 #, kde-format
 msgctxt "@label:check"
 msgid "Truncation:"
-msgstr "截断："
+msgstr "Trunkatzea:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:76
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr "截断偏移量："
+msgstr "Trunkatzearen jatorri aldaketa:"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr "重命名账户以添加"
+msgstr "Berrizendatu gehitu beharreko kontua"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -258,70 +267,72 @@ msgctxt ""
 msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
-msgstr "已存在具有相同名称的另一个账户。请更改新账户的名称或者发行者。"
+msgstr ""
+"Izen bera duen beste kontu bat dago. Mesedez, zuzendu kontu berriaren izena "
+"edo jaulkitzailea."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
 msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Utzi"
 
 #: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
-msgstr "密码"
+msgstr "Pasahitza"
 
 #: src/contents/ui/SetupPassword.qml:37
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr "输入用于保护您的账户的密码"
+msgstr "Aukeratu zure kontuak babesteko pasahitz bat"
 
 #: src/contents/ui/SetupPassword.qml:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New password:"
-msgstr "新密码："
+msgstr "Pasahitz berria:"
 
 #: src/contents/ui/SetupPassword.qml:57
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
-msgstr "验证密码："
+msgstr "Egiaztatu pasahitza:"
 
 #: src/contents/ui/SetupPassword.qml:65
 #, kde-format
 msgid "Apply"
-msgstr "应用"
+msgstr "Aplikatu"
 
 #: src/contents/ui/SetupPassword.qml:78
 #, kde-format
 msgid "Failed to set up your password"
-msgstr "设置密码失败"
+msgstr "Zure pasahitza ezartzea huts egin du"
 
 #: src/contents/ui/TokenEntryViewLabels.qml:40
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr "(刷新)"
+msgstr "(berritu)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:24
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
-msgstr "计时器："
+msgstr "Tenporizadorea:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:39
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr "开始时间："
+msgstr "Abiapuntua:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:70
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
-msgstr "哈希算法："
+msgstr "«Hash» algoritmoa:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:75
 #, kde-format
@@ -344,26 +355,26 @@ msgstr "SHA-512"
 #: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
 msgid "Failed to unlock your accounts"
-msgstr "无法解锁您的账户"
+msgstr "Zure kontuak giltzaz irekitzea huts egin du"
 
 #: src/contents/ui/UnlockAccounts.qml:48
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
-msgstr "请提供密码以解锁您的账户"
+msgstr "Mesedez, eman zure kontuak irekitzeko pasahitza"
 
 #: src/contents/ui/UnlockAccounts.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr "密码："
+msgstr "Pasahitza:"
 
 #: src/contents/ui/UnlockAccounts.qml:76
 #, kde-format
 msgid "Unlock"
-msgstr "解锁"
+msgstr "Giltzaz ireki"
 
 #: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
-msgstr "Keysmith"
+msgstr "Keysmith (giltza-arotza)"
