@@ -35,7 +35,7 @@ Kirigami.ScrollablePage {
         }
     }
 
-    Component.onCompleted: accountName.clicked()
+    Component.onCompleted: accountName.forceActiveFocus()
 
     ColumnLayout {
         spacing: 0
