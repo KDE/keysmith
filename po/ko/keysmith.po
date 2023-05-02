@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 00:50+0000\n"
+"POT-Creation-Date: 2023-05-02 00:51+0000\n"
 "PO-Revision-Date: 2023-04-22 00:51+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -81,13 +81,19 @@ msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "계정 삭제"
 
-#: src/contents/ui/AccountNameForm.qml:59
+#: src/contents/ui/AccountEntryViewBase.qml:79
+#, kde-format
+msgctxt "Notification shown in a passive notification"
+msgid "Token copied to clipboard!"
+msgstr ""
+
+#: src/contents/ui/AccountNameForm.qml:62
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "계정 이름:"
 
-#: src/contents/ui/AccountNameForm.qml:75
+#: src/contents/ui/AccountNameForm.qml:78
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -136,54 +142,54 @@ msgctxt "@title:window"
 msgid "Add new account"
 msgstr "새 계정 추가"
 
-#: src/contents/ui/AddAccount.qml:55
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "계정 종류:"
 
-#: src/contents/ui/AddAccount.qml:60
+#: src/contents/ui/AddAccount.qml:62
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "시간 기반 OTP"
 
-#: src/contents/ui/AddAccount.qml:70
+#: src/contents/ui/AddAccount.qml:72
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "해시 기반 OTP"
 
-#: src/contents/ui/AddAccount.qml:80
+#: src/contents/ui/AddAccount.qml:82
 #, kde-format
 msgid "Token secret"
 msgstr "토큰 비밀 정보"
 
-#: src/contents/ui/AddAccount.qml:82
+#: src/contents/ui/AddAccount.qml:84
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "비밀 키:"
 
-#: src/contents/ui/AddAccount.qml:96
+#: src/contents/ui/AddAccount.qml:98
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "자세한 정보"
 
-#: src/contents/ui/AddAccount.qml:123
+#: src/contents/ui/AddAccount.qml:125
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "취소"
 
-#: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
+#: src/contents/ui/AddAccount.qml:132 src/contents/ui/ErrorPage.qml:40
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
 msgstr "끝내기"
 
-#: src/contents/ui/AddAccount.qml:139 src/contents/ui/RenameAccount.qml:56
+#: src/contents/ui/AddAccount.qml:141 src/contents/ui/RenameAccount.qml:56
 #, kde-format
 msgid "Add"
 msgstr "추가"
@@ -273,29 +279,29 @@ msgctxt "@title:window"
 msgid "Password"
 msgstr "암호"
 
-#: src/contents/ui/SetupPassword.qml:37
+#: src/contents/ui/SetupPassword.qml:34
 #, kde-format
 msgid "Choose a password to protect your accounts"
 msgstr "계정을 보호할 암호를 설정하십시오"
 
-#: src/contents/ui/SetupPassword.qml:50
+#: src/contents/ui/SetupPassword.qml:48
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New password:"
 msgstr "새 암호:"
 
-#: src/contents/ui/SetupPassword.qml:57
+#: src/contents/ui/SetupPassword.qml:55
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "암호를 다시 입력하십시오:"
 
-#: src/contents/ui/SetupPassword.qml:65
+#: src/contents/ui/SetupPassword.qml:63
 #, kde-format
 msgid "Apply"
 msgstr "적용"
 
-#: src/contents/ui/SetupPassword.qml:78
+#: src/contents/ui/SetupPassword.qml:76
 #, kde-format
 msgid "Failed to set up your password"
 msgstr "암호를 설정할 수 없음"
@@ -347,18 +353,18 @@ msgstr "SHA-512"
 msgid "Failed to unlock your accounts"
 msgstr "계정 잠금을 해제할 수 없음"
 
-#: src/contents/ui/UnlockAccounts.qml:48
+#: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr "계정 잠금 해제 암호를 입력하십시오"
 
-#: src/contents/ui/UnlockAccounts.qml:60
+#: src/contents/ui/UnlockAccounts.qml:56
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "암호:"
 
-#: src/contents/ui/UnlockAccounts.qml:76
+#: src/contents/ui/UnlockAccounts.qml:68
 #, kde-format
 msgid "Unlock"
 msgstr "잠금 해제"

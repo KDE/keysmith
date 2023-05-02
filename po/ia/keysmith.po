@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-03-19 00:50+0000\n"
+"POT-Creation-Date: 2023-05-02 00:51+0000\n"
 "PO-Revision-Date: 2023-03-30 12:10+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -75,13 +75,19 @@ msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Dele conto"
 
-#: src/contents/ui/AccountNameForm.qml:59
+#: src/contents/ui/AccountEntryViewBase.qml:79
+#, kde-format
+msgctxt "Notification shown in a passive notification"
+msgid "Token copied to clipboard!"
+msgstr ""
+
+#: src/contents/ui/AccountNameForm.qml:62
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Nomine de conto:"
 
-#: src/contents/ui/AccountNameForm.qml:75
+#: src/contents/ui/AccountNameForm.qml:78
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -130,54 +136,54 @@ msgctxt "@title:window"
 msgid "Add new account"
 msgstr "Adde un nove conto"
 
-#: src/contents/ui/AddAccount.qml:55
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Typo de conto:"
 
-#: src/contents/ui/AddAccount.qml:60
+#: src/contents/ui/AddAccount.qml:62
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:70
+#: src/contents/ui/AddAccount.qml:72
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:80
+#: src/contents/ui/AddAccount.qml:82
 #, kde-format
 msgid "Token secret"
 msgstr "Secreto de token :"
 
-#: src/contents/ui/AddAccount.qml:82
+#: src/contents/ui/AddAccount.qml:84
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Clave secrete:"
 
-#: src/contents/ui/AddAccount.qml:96
+#: src/contents/ui/AddAccount.qml:98
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Detalios"
 
-#: src/contents/ui/AddAccount.qml:123
+#: src/contents/ui/AddAccount.qml:125
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "Cancella"
 
-#: src/contents/ui/AddAccount.qml:130 src/contents/ui/ErrorPage.qml:40
+#: src/contents/ui/AddAccount.qml:132 src/contents/ui/ErrorPage.qml:40
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
 msgstr "Quita"
 
-#: src/contents/ui/AddAccount.qml:139 src/contents/ui/RenameAccount.qml:56
+#: src/contents/ui/AddAccount.qml:141 src/contents/ui/RenameAccount.qml:56
 #, kde-format
 msgid "Add"
 msgstr "Adde"
@@ -266,29 +272,29 @@ msgctxt "@title:window"
 msgid "Password"
 msgstr "Contrasigno"
 
-#: src/contents/ui/SetupPassword.qml:37
+#: src/contents/ui/SetupPassword.qml:34
 #, kde-format
 msgid "Choose a password to protect your accounts"
 msgstr "Selige un contrsigno per proteger tu contos"
 
-#: src/contents/ui/SetupPassword.qml:50
+#: src/contents/ui/SetupPassword.qml:48
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New password:"
 msgstr "Nove contrasigno:"
 
-#: src/contents/ui/SetupPassword.qml:57
+#: src/contents/ui/SetupPassword.qml:55
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Verifica contrasigno:"
 
-#: src/contents/ui/SetupPassword.qml:65
+#: src/contents/ui/SetupPassword.qml:63
 #, kde-format
 msgid "Apply"
 msgstr "Applica"
 
-#: src/contents/ui/SetupPassword.qml:78
+#: src/contents/ui/SetupPassword.qml:76
 #, kde-format
 msgid "Failed to set up your password"
 msgstr ""
@@ -340,18 +346,18 @@ msgstr "Sha-512"
 msgid "Failed to unlock your accounts"
 msgstr "Il falleva a disblocar tu contos"
 
-#: src/contents/ui/UnlockAccounts.qml:48
+#: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:60
+#: src/contents/ui/UnlockAccounts.qml:56
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Contrasigno:"
 
-#: src/contents/ui/UnlockAccounts.qml:76
+#: src/contents/ui/UnlockAccounts.qml:68
 #, kde-format
 msgid "Unlock"
 msgstr "Disbloca"
