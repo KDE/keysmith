@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-02 00:51+0000\n"
-"PO-Revision-Date: 2023-03-19 13:35+0100\n"
+"PO-Revision-Date: 2023-05-02 10:52+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -91,7 +91,7 @@ msgstr "Account verwijderen"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Token gekopieerd naar klembord!"
 
 #: src/contents/ui/AccountNameForm.qml:62
 #, kde-format
