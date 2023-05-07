@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-05-02 00:51+0000\n"
-"PO-Revision-Date: 2023-03-20 19:29+0100\n"
+"PO-Revision-Date: 2023-05-05 16:13+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -90,7 +90,7 @@ msgstr "Supprimer un compte"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Jeton copié dans le presse-papier !"
 
 #: src/contents/ui/AccountNameForm.qml:62
 #, kde-format
