@@ -40,7 +40,7 @@ namespace app
         }
 
         qCDebug(logger) << "Requesting switch to route:" << route << "using (view) model:" << modelToTransfer;
-        Q_EMIT routed(route, modelToTransfer);
+        Q_EMIT routed(page, modelToTransfer);
     }
 
     void Navigation::push(Navigation::Page page, QObject *modelToTransfer)
@@ -51,7 +51,7 @@ namespace app
         }
 
         qCDebug(logger) << "Requesting to push route:" << route << "using (view) model:" << modelToTransfer;
-        Q_EMIT pushed(route, modelToTransfer);
+        Q_EMIT pushed(page, modelToTransfer);
     }
 
     static accounts::AccountStorage * openStorage(void)

@@ -4,8 +4,8 @@
  * SPDX-FileCopyrightText: 2019-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
-import org.kde.kirigami 2.12 as Kirigami
 import QtQml 2.15
+import org.kde.kirigami 2.20 as Kirigami
 
 import Keysmith.Application 1.0 as Application
 
@@ -15,82 +15,49 @@ Kirigami.ApplicationWindow {
     width: Kirigami.Units.gridUnit * 28
     height: Kirigami.Units.gridUnit * 28
 
-    Kirigami.PageRouter {
-        id: router
-        initialRoute: "__init__"
-        pageStack: root.pageStack.columnView
-
-        // FIXME: dummy just to have a valid initialRoute
-        Kirigami.PageRoute {
-            name: "__init__"
-            Component {
-                Kirigami.Page {
-                }
-            }
+    function routeToUrl(route) {
+        switch (route) {
+        case Application.Navigation.Error:
+            return "qrc:/ErrorPage.qml"
+        case Application.Navigation.UnlockAccounts:
+            return "qrc:/UnlockAccounts.qml"
+        case Application.Navigation.RenameAccount:
+            return "qrc:/RenameAccount.qml"
+        case Application.Navigation.AccountsOverview:
+            return "qrc:/AccountsOverview.qml"
+        case Application.Navigation.AddAccount:
+            return "qrc:/AddAccount.qml"
+        case Application.Navigation.SetupPassword:
+            return "qrc:/SetupPassword.qml"
         }
-
-        Kirigami.PageRoute {
-            name: Application.Keysmith.navigation.name(Application.Navigation.SetupPassword)
-            Component {
-                SetupPassword {
-                    vm: Kirigami.PageRouter.data
-                }
-            }
-        }
-
-        Kirigami.PageRoute {
-            name: Application.Keysmith.navigation.name(Application.Navigation.UnlockAccounts)
-            Component {
-                UnlockAccounts {
-                    vm: Kirigami.PageRouter.data
-                }
-            }
-        }
-
-        Kirigami.PageRoute {
-            name: Application.Keysmith.navigation.name(Application.Navigation.AccountsOverview)
-            Component {
-                AccountsOverview {
-                    vm: Kirigami.PageRouter.data
-                }
-            }
-        }
-
-        Kirigami.PageRoute {
-            name: Application.Keysmith.navigation.name(Application.Navigation.AddAccount)
-            Component {
-                AddAccount {
-                    vm: Kirigami.PageRouter.data
-                }
-            }
-        }
-
-        Kirigami.PageRoute {
-            name: Application.Keysmith.navigation.name(Application.Navigation.RenameAccount)
-            Component {
-                RenameAccount {
-                    vm: Kirigami.PageRouter.data
-                }
-            }
-        }
-
-        Kirigami.PageRoute {
-            name: Application.Keysmith.navigation.name(Application.Navigation.ErrorPage)
-            Component {
-                ErrorPage {
-                    vm: Kirigami.PageRouter.data
-                }
-            }
-        }
+        return 'bug';
     }
 
     Connections {
         target: Application.Keysmith.navigation
-        function onRouted (route, data) {
-            router.navigateToRoute({route, data});
+
+        function onRouted(route, data) {
+            console.log(route, data)
+            const pageUrl = routeToUrl(route);
+            while (root.pageStack.depth > 1) {
+                root.pageStack.pop();
+            }
+            if (root.pageStack.depth === 0) {
+                root.pageStack.push(pageUrl, {
+                    vm: data,
+                });
+            } else {
+                root.pageStack.replace(pageUrl, {
+                    vm: data,
+                });
+            }
         }
+
         function onPushed(route, data) {
-            router.pushRoute({route, data});
+            const pageUrl = routeToUrl(route);
+            root.pageStack.push(pageUrl, {
+                vm: data,
+            });
         }
     }
 }

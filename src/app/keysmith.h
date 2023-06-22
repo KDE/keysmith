@@ -37,8 +37,8 @@ namespace app
         void push(app::Navigation::Page page, QObject *modelToTransfer);
         void navigate(app::Navigation::Page page, QObject *modelToTransfer);
     Q_SIGNALS:
-        void routed(const QString &route, QObject *transferred);
-        void pushed(const QString &route, QObject *transferred);
+        void routed(app::Navigation::Page route, QObject *transferred);
+        void pushed(app::Navigation::Page route, QObject *transferred);
     private:
         QQmlEngine * const m_engine;
     };
