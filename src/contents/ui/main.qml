@@ -12,8 +12,8 @@ import Keysmith.Application 1.0 as Application
 Kirigami.ApplicationWindow {
     id: root
 
-    width: Kirigami.Units.gridUnit * 28
-    height: Kirigami.Units.gridUnit * 28
+    width: Kirigami.Units.gridUnit * 20
+    height: Kirigami.Units.gridUnit * 30
 
     function routeToUrl(route) {
         switch (route) {
