@@ -7,13 +7,15 @@ import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
 import Keysmith.Validators 1.0 as Validators
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.0 as Controls
-import org.kde.kirigami 2.8 as Kirigami
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15 as QQC2
+import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigamiaddons.labs.mobileform 0.1 as MobileForm
 
-Kirigami.FormLayout {
+MobileForm.FormCard {
     id: root
+
     property bool validateAccountAvailability
     property Models.AccountListModel accounts
     property Models.ValidatedAccountInput validatedInput
@@ -56,45 +58,52 @@ Kirigami.FormLayout {
         accountName.forceActiveFocus()
     }
 
-    Controls.TextField {
-        id: accountName
-        text: validatedInput.name
-        Kirigami.FormData.label: i18nc("@label:textbox", "Account name:")
-        validator: Validators.AccountNameValidator {
-            id: accountNameValidator
-            accounts: root.accounts
-            issuer: validatedInput.issuer
-            validateAvailability: validateAccountAvailability
-        }
-        onTextChanged: {
-            if (acceptableInput) {
-                validatedInput.name = text;
+    contentItem: ColumnLayout {
+        spacing: 0
+
+        MobileForm.FormTextFieldDelegate {
+            id: accountName
+            text: validatedInput.name
+            label: i18nc("@label:textbox", "Account name:")
+            validator: Validators.AccountNameValidator {
+                id: accountNameValidator
+                accounts: root.accounts
+                issuer: validatedInput.issuer
+                validateAvailability: validateAccountAvailability
+            }
+            onTextChanged: {
+                if (acceptableInput) {
+                    validatedInput.name = text;
+                }
             }
         }
-    }
-    Controls.TextField {
-        id: issuerName
-        text: validatedInput.issuer
-        Kirigami.FormData.label: i18nc("@label:textbox", "Account issuer:")
-        validator: Validators.AccountIssuerValidator {}
-        /*
-         * When the issuer changes, the account name should be revalidated as well.
-         * It may have become eligible or in-eligible depending on whether or not other accounts with the same name
-         * for the same new issuer value already exist.
-         *
-         * Unfortunately because the property binding only affects the validator, there seems to be nothing to
-         * explicitly trigger revalidation on the text field. Work around is to force revalidation to happen by
-         * "editing" the value in the text field directly.
-         */
-        onTextChanged: {
+
+        MobileForm.FormDelegateSeparator {}
+
+        MobileForm.FormTextFieldDelegate {
+            id: issuerName
+            text: validatedInput.issuer
+            label: i18nc("@label:textbox", "Account issuer:")
+            validator: Validators.AccountIssuerValidator {}
             /*
-             * This signal handler may run before property bindings have been fully (re-)evaluated.
-             * First update the account name validator to the correct new issuer value before triggering revalidation.
+             * When the issuer changes, the account name should be revalidated as well.
+             * It may have become eligible or in-eligible depending on whether or not other accounts with the same name
+             * for the same new issuer value already exist.
+             *
+             * Unfortunately because the property binding only affects the validator, there seems to be nothing to
+             * explicitly trigger revalidation on the text field. Work around is to force revalidation to happen by
+             * "editing" the value in the text field directly.
              */
-            accountNameValidator.issuer = issuerName.text;
-            accountName.insert(accountName.text.length, "");
-            if (acceptableInput) {
-                validatedInput.issuer = text;
+            onTextChanged: {
+                /*
+                 * This signal handler may run before property bindings have been fully (re-)evaluated.
+                 * First update the account name validator to the correct new issuer value before triggering revalidation.
+                 */
+                accountNameValidator.issuer = issuerName.text;
+                accountName.insert(accountName.text.length, "");
+                if (acceptableInput) {
+                    validatedInput.issuer = text;
+                }
             }
         }
     }

@@ -5,20 +5,25 @@
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.0 as Controls
-import org.kde.kirigami 2.8 as Kirigami
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15 as QQC2
+import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigamiaddons.labs.mobileform 0.1 as MobileForm
 
 import Keysmith.Application 1.0 as Application
 
 Kirigami.ScrollablePage {
     id: root
+
+    required property Application.UnlockAccountsViewModel vm
+
+    leftPadding: 0
+    rightPadding: 0
+
     title: i18nc("@title:window", "Password")
 
-    property Application.UnlockAccountsViewModel vm
-
-    header: Controls.Control {
+    header: QQC2.Control {
         padding: Kirigami.Units.smallSpacing
         contentItem: Kirigami.InlineMessage {
             id: errorMessage
@@ -29,47 +34,49 @@ Kirigami.ScrollablePage {
         }
     }
 
+    Component.onCompleted: existingPassword.forceActiveFocus()
+
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing
-        
+
         Kirigami.Icon {
             source: "lock"
             Layout.fillWidth: true
-            Layout.preferredHeight: Kirigami.Units.gridUnit * 10
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 8
         }
-        
-        Kirigami.Heading {
-            level: 3
-            text: i18n("Please provide the password to unlock your accounts")
-            wrapMode: Text.Wrap
+
+        MobileForm.FormCard {
             Layout.fillWidth: true
-            horizontalAlignment: form.wideMode ? Qt.AlignHCenter : Qt.AlignLeft
-            verticalAlignment: Qt.AlignTop
-        }
-        
-        Kirigami.FormLayout {
-            id: form
-            Layout.fillWidth: true
-            Kirigami.PasswordField {
-                id: existingPassword
-                text: ""
-                Kirigami.FormData.label: i18nc("@label:textbox", "Password:")
-                enabled: !vm.busy
-                onAccepted: unlockAction.trigger()
+
+            contentItem: ColumnLayout {
+                spacing: 0
+
+                MobileForm.FormCardHeader {
+                    title: i18n("Please provide the password to unlock your accounts")
+                }
+
+                MobileForm.FormTextFieldDelegate {
+                    id: existingPassword
+                    echoMode: TextInput.Password
+                    label: i18nc("@label:textbox", "Password:")
+                    enabled: !vm.busy
+                    onAccepted: unlockAction.trigger()
+                }
+
+                MobileForm.FormDelegateSeparator { above: unlockButton }
+
+                MobileForm.FormButtonDelegate {
+                    id: unlockButton
+                    action: Kirigami.Action {
+                        id: unlockAction
+                        text: i18n("Unlock")
+                        iconName: "unlock"
+                        enabled: !vm.busy && existingPassword.text && existingPassword.text.length > 0
+                        visible: !Kirigami.Settings.isMobile
+                        onTriggered: vm.unlock(existingPassword.text);
+                    }
+                }
             }
-        }
-    }
-
-    // ensure the password entry field has focus
-    Component.onCompleted: existingPassword.forceActiveFocus()
-
-    actions.main : Kirigami.Action {
-        id: unlockAction
-        text: i18n("Unlock")
-        iconName: "unlock"
-        enabled: !vm.busy && existingPassword.text && existingPassword.text.length > 0
-        onTriggered: {
-            vm.unlock(existingPassword.text);
         }
     }
 }

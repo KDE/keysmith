@@ -5,66 +5,73 @@
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.5 as Controls
-import org.kde.kirigami 2.8 as Kirigami
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15 as Controls
+import org.kde.kirigami 2.20 as Kirigami
+import org.kde.kirigamiaddons.labs.mobileform 0.1 as MobileForm
 
 import Keysmith.Application 1.0 as Application
 
 Kirigami.ScrollablePage {
     id: root
+
+    required property Application.SetupPasswordViewModel vm
+
     title: i18nc("@title:window", "Password")
 
-    property Application.SetupPasswordViewModel vm
+    leftPadding: 0
+    rightPadding: 0
 
     Component.onCompleted: newPassword.forceActiveFocus()
 
     ColumnLayout {
         spacing: Kirigami.Units.largeSpacing
-        
+
         Kirigami.Icon {
             source: "lock"
             Layout.fillWidth: true
-            Layout.preferredHeight: Kirigami.Units.gridUnit * 10
+            Layout.preferredHeight: Kirigami.Units.gridUnit * 8
         }
-        
-        Kirigami.Heading {
-            level: 3
-            text: i18n("Choose a password to protect your accounts")
-            wrapMode: Text.Wrap
-            Layout.fillWidth: true
-            horizontalAlignment: form.wideMode ? Qt.AlignHCenter : Qt.AlignLeft
-            verticalAlignment: Qt.AlignTop
-        }
-        
-        Kirigami.FormLayout {
-            id: form
-            Layout.fillWidth: true
-            Kirigami.PasswordField {
-                id: newPassword
-                text: ""
-                enabled: !vm.busy
-                Kirigami.FormData.label: i18nc("@label:textbox", "New password:")
-                onAccepted: newPasswordCopy.forceActiveFocus()
-            }
-            Kirigami.PasswordField {
-                id: newPasswordCopy
-                text: ""
-                enabled: !vm.busy
-                Kirigami.FormData.label: i18nc("@label:textbox", "Verify password:")
-                onAccepted: applyAction.trigger()
-            }
-        }
-    }
 
-    actions.main : Kirigami.Action {
-        id: applyAction
-        text: i18n("Apply")
-        iconName: "answer-correct"
-        enabled: !vm.busy && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
-        onTriggered: {
-            vm.setup(newPassword.text, newPasswordCopy.text);
+        MobileForm.FormCard {
+            Layout.fillWidth: true
+
+            contentItem: ColumnLayout {
+                MobileForm.FormCardHeader {
+                    title: i18n("Choose a password to protect your accounts")
+                }
+
+                MobileForm.FormTextFieldDelegate {
+                    id: newPassword
+                    echoMode: TextInput.Password
+                    label: i18nc("@label:textbox", "New Password:")
+                    enabled: !vm.busy
+                    onAccepted: newPasswordCopy.trigger()
+                }
+
+                MobileForm.FormDelegateSeparator {}
+
+                MobileForm.FormTextFieldDelegate {
+                    id: newPasswordCopy
+                    enabled: !vm.busy
+                    label: i18nc("@label:textbox", "Verify password:")
+                    onAccepted: applyAction.trigger()
+                }
+
+                MobileForm.FormDelegateSeparator { above: applyButton }
+
+                MobileForm.FormButtonDelegate {
+                    id: applyButton
+                    action: Kirigami.Action {
+                        id: applyAction
+                        text: i18n("Apply")
+                        iconName: "answer-correct"
+                        enabled: !vm.busy && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
+                        onTriggered: vm.setup(newPassword.text, newPasswordCopy.text);
+                    }
+                }
+            }
         }
     }
 
