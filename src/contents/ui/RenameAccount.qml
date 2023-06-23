@@ -47,14 +47,14 @@ Kirigami.Page {
 
     actions.left: Kirigami.Action {
         text: i18nc("@action:button cancel and dismiss the rename account form", "Cancel")
-        iconName: "edit-undo"
+        icon.name: "edit-undo"
         onTriggered: {
             vm.cancelled();
         }
     }
     actions.main: Kirigami.Action {
         text: i18n("Add")
-        iconName: "answer-correct"
+        icon.name: "answer-correct"
         enabled: acceptable
         onTriggered: {
             vm.accepted();

@@ -15,7 +15,7 @@ AccountEntryViewBase {
 
     actions: [
         Kirigami.Action {
-            iconName: "edit-delete"
+            icon.name: "edit-delete"
             text: i18nc("Button for removal of a single account", "Delete account")
             enabled: listItem.alive
             onTriggered: {
@@ -24,7 +24,7 @@ AccountEntryViewBase {
             }
         },
         Kirigami.Action {
-            iconName: "go-next" // "view-refresh"
+            icon.name: "go-next" // "view-refresh"
             text: "Next token"
             enabled: listItem.alive
             onTriggered: {

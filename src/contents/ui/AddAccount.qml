@@ -121,28 +121,31 @@ Kirigami.ScrollablePage {
         }
     }
 
-    actions.left: Kirigami.Action {
-        text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
-        iconName: "edit-undo"
-        onTriggered: {
-            vm.cancelled();
+    actions: [
+        Kirigami.Action {
+            text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
+            icon.name: "edit-undo"
+            onTriggered: {
+                vm.cancelled();
+            }
+        },
+        Kirigami.Action {
+            text: i18n("Add")
+            icon.name: "answer-correct"
+            enabled: acceptable
+            onTriggered: {
+                vm.accepted();
+            }
+        },
+        Kirigami.Action {
+            text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
+            icon.name: "application-exit"
+            enabled: vm.quitEnabled
+            visible: vm.quitEnabled
+            onTriggered: {
+                Qt.quit();
+            }
         }
-    }
-    actions.right: Kirigami.Action {
-        text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
-        iconName: "application-exit"
-        enabled: vm.quitEnabled
-        visible: vm.quitEnabled
-        onTriggered: {
-            Qt.quit();
-        }
-    }
-    actions.main: Kirigami.Action {
-        text: i18n("Add")
-        iconName: "answer-correct"
-        enabled: acceptable
-        onTriggered: {
-            vm.accepted();
-        }
-    }
+    ]
+
 }

@@ -63,10 +63,10 @@ Kirigami.ScrollablePage {
     // ensure the password entry field has focus
     Component.onCompleted: existingPassword.forceActiveFocus()
 
-    actions.main : Kirigami.Action {
+    actions : Kirigami.Action {
         id: unlockAction
         text: i18n("Unlock")
-        iconName: "unlock"
+        icon.name: "unlock"
         enabled: !vm.busy && existingPassword.text && existingPassword.text.length > 0
         onTriggered: {
             vm.unlock(existingPassword.text);

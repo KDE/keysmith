@@ -31,14 +31,14 @@ Kirigami.Page {
 
     actions.main: Kirigami.Action {
         text: i18nc("@action:button Button to dismiss the error page", "Continue")
-        iconName: "answer-correct"
+        icon.name: "answer-correct"
         onTriggered: {
             vm.dismissed();
         }
     }
     actions.right: Kirigami.Action {
         text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
-        iconName: "application-exit"
+        icon.name: "application-exit"
         enabled: vm.quitEnabled
         visible: vm.quitEnabled
         onTriggered: {

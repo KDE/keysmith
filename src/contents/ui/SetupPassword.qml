@@ -58,10 +58,10 @@ Kirigami.ScrollablePage {
         }
     }
 
-    actions.main : Kirigami.Action {
+    actions : Kirigami.Action {
         id: applyAction
         text: i18n("Apply")
-        iconName: "answer-correct"
+        icon.name: "answer-correct"
         enabled: !vm.busy && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
         onTriggered: {
             vm.setup(newPassword.text, newPasswordCopy.text);

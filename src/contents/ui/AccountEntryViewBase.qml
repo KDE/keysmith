@@ -30,7 +30,6 @@ Kirigami.SwipeListItem {
     enabled: alive
 
     readonly property Kirigami.OverlaySheet sheet: Kirigami.OverlaySheet {
-        sheetOpen: false
         header: Kirigami.Heading {
             text: i18nc("Confirm dialog title: %1 is the name of the account to remove", "Removing account: %1", account.name)
         }
@@ -45,7 +44,7 @@ Kirigami.SwipeListItem {
         footer: RowLayout {
             Controls.Button {
                 action: Kirigami.Action {
-                    iconName: "edit-undo"
+                    icon.name: "edit-undo"
                     text: i18nc("Button cancelling account removal", "Cancel")
                     onTriggered: {
                         sheet.close();
@@ -58,7 +57,7 @@ Kirigami.SwipeListItem {
             }
             Controls.Button {
                 action: Kirigami.Action {
-                    iconName: "edit-delete"
+                    icon.name: "edit-delete"
                     text: i18nc("Button confirming account removal", "Delete Account")
                     enabled: alive
                     onTriggered: {
