@@ -13,7 +13,6 @@
   <name xml:lang="cs">Keysmith</name>
   <name xml:lang="de">Keysmith</name>
   <name xml:lang="en-GB">Keysmith</name>
-  <name xml:lang="eo">Keysmith</name>
   <name xml:lang="es">Keysmith</name>
   <name xml:lang="et">Keysmith</name>
   <name xml:lang="eu">Keysmith (giltza-arotza)</name>
@@ -65,7 +64,6 @@
   <summary xml:lang="ca-valencia">Generador del codi de dos factors per a Plasma Mobile i l'escriptori</summary>
   <summary xml:lang="de">Zwei-Faktor-Code-Generator für Plasma Mobile und die Plasma-Arbeitsfläche</summary>
   <summary xml:lang="en-GB">Two-factor code generator for Plasma Mobile and Desktop</summary>
-  <summary xml:lang="eo">Dufaktora kodgenerilo por Plasma Mobile kaj Desktop</summary>
   <summary xml:lang="es">Generador de códigos de dos factores para Plasma Mobile y para el escritorio</summary>
   <summary xml:lang="et">Kaheastmelise autentimise koodi genereerimine Plasma Mobile ja Plasma töölaua tarbeks</summary>
   <summary xml:lang="eu">Bi faktoreko kode sortzailea Plasma Mugikorrerako eta Mahaigainerako</summary>
@@ -100,7 +98,6 @@
   <developer_name xml:lang="cs">Komunita KDE</developer_name>
   <developer_name xml:lang="de">KDE-Gemeinschaft</developer_name>
   <developer_name xml:lang="en-GB">KDE Community</developer_name>
-  <developer_name xml:lang="eo">KDE-Komunumo</developer_name>
   <developer_name xml:lang="es">Comunidad KDE</developer_name>
   <developer_name xml:lang="et">KDE kogukond</developer_name>
   <developer_name xml:lang="eu">KDE komunitatea</developer_name>
@@ -136,7 +133,6 @@
     <p xml:lang="ca-valencia">Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="de">Keysmith generiert Token für die Zwei-Faktor-Authentisierung (FA)</p>
     <p xml:lang="en-GB">Keysmith generates tokens for your two-factor logins (2FA)</p>
-    <p xml:lang="eo">Keysmith generas ĵetonojn por viaj dufaktoraj ensalutoj (2FA)</p>
     <p xml:lang="es">Keysmith genera elementos para los inicios de sesión de dos factores (2FA)</p>
     <p xml:lang="et">Keysmith genereerib pääsmikke kaheastmelise autentimise (2FA) tarbeks</p>
     <p xml:lang="eu">«Keysmith»ek zure bi faktoreko saio-hasieratarako tokenak sortzen ditu  (2FA)</p>
@@ -171,7 +167,6 @@
       <li xml:lang="ca-valencia">OTP basat en l'hora i en el resum</li>
       <li xml:lang="de">Zeit- und Hashbasiertes Einmalpasswort</li>
       <li xml:lang="en-GB">Time and Hash-based OTP</li>
-      <li xml:lang="eo">Temp- kaj Haket-bazita OTP</li>
       <li xml:lang="es">OTP basada en el tiempo y en resúmenes criptográficos</li>
       <li xml:lang="et">Aja- ja räsipõhine OTP</li>
       <li xml:lang="eu">Orduan eta «Hash»ean oinarritutako OTP</li>
@@ -210,7 +205,6 @@
       <caption xml:lang="cs">Keysmith</caption>
       <caption xml:lang="de">Keysmith</caption>
       <caption xml:lang="en-GB">Keysmith</caption>
-      <caption xml:lang="eo">Keysmith</caption>
       <caption xml:lang="es">Keysmith</caption>
       <caption xml:lang="et">Keysmith</caption>
       <caption xml:lang="eu">Keysmith (giltza-arotza)</caption>
