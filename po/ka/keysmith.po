@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-05-02 00:51+0000\n"
+"POT-Creation-Date: 2023-07-24 07:39+0000\n"
 "PO-Revision-Date: 2023-05-03 06:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -93,13 +93,13 @@ msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr "კოდი დაკოპირდა ბაფერში!"
 
-#: src/contents/ui/AccountNameForm.qml:62
+#: src/contents/ui/AccountNameForm.qml:67
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "ანგარიშის სახელი:"
 
-#: src/contents/ui/AccountNameForm.qml:78
+#: src/contents/ui/AccountNameForm.qml:86
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -142,60 +142,60 @@ msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
 msgstr "დამატება"
 
-#: src/contents/ui/AddAccount.qml:18
+#: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
 msgstr "ახალი ანგარიშის დამატება"
 
-#: src/contents/ui/AddAccount.qml:57
+#: src/contents/ui/AddAccount.qml:64
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "ანგარიშის ტიპი:"
 
-#: src/contents/ui/AddAccount.qml:62
+#: src/contents/ui/AddAccount.qml:70
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "დროით-გენერირებული OTP"
 
-#: src/contents/ui/AddAccount.qml:72
+#: src/contents/ui/AddAccount.qml:81
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "ჰეშით-გენერირებული OTP"
 
-#: src/contents/ui/AddAccount.qml:82
+#: src/contents/ui/AddAccount.qml:93
 #, kde-format
 msgid "Token secret"
 msgstr "კოდის პაროლი"
 
-#: src/contents/ui/AddAccount.qml:84
+#: src/contents/ui/AddAccount.qml:96
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "სადუმლო გასაღებ:"
 
-#: src/contents/ui/AddAccount.qml:98
+#: src/contents/ui/AddAccount.qml:112
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "დეტალები"
 
-#: src/contents/ui/AddAccount.qml:125
+#: src/contents/ui/AddAccount.qml:144
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: src/contents/ui/AddAccount.qml:132 src/contents/ui/ErrorPage.qml:40
+#: src/contents/ui/AddAccount.qml:151 src/contents/ui/ErrorPage.qml:40
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
 msgstr "გასვლა"
 
-#: src/contents/ui/AddAccount.qml:141 src/contents/ui/RenameAccount.qml:56
+#: src/contents/ui/AddAccount.qml:160 src/contents/ui/RenameAccount.qml:56
 #, kde-format
 msgid "Add"
 msgstr "დამატება"
@@ -213,44 +213,44 @@ msgctxt "Button for removal of a single account"
 msgid "Delete account"
 msgstr "ანგარიშის წაშლა"
 
-#: src/contents/ui/HOTPDetailsForm.qml:23
+#: src/contents/ui/HOTPDetailsForm.qml:27
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "@label"
+msgid "HOTP Details:"
+msgstr "დეტალები"
+
+#: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
 msgstr "მთვლელი:"
 
-#: src/contents/ui/HOTPDetailsForm.qml:43
-#: src/contents/ui/TOTPDetailsForm.qml:59
+#: src/contents/ui/HOTPDetailsForm.qml:55
+#: src/contents/ui/TOTPDetailsForm.qml:74
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
 msgstr "კოდის სიგრძე:"
 
-#: src/contents/ui/HOTPDetailsForm.qml:55
-#, kde-format
+#: src/contents/ui/HOTPDetailsForm.qml:70
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Add check digit"
 msgctxt "@option:check"
-msgid "Add check digit"
+msgid "Add checksum digit"
 msgstr "შემოწმების ციფრის დამატება"
 
-#: src/contents/ui/HOTPDetailsForm.qml:56
-#, kde-format
-msgctxt "@label:check"
-msgid "Checksum:"
-msgstr "საკონტროლო ჯამი:"
-
-#: src/contents/ui/HOTPDetailsForm.qml:65
-#, kde-format
+#: src/contents/ui/HOTPDetailsForm.qml:82
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Use custom offset"
 msgctxt "@option:check"
-msgid "Use custom offset"
+msgid "Use custom truncation offset"
 msgstr "წანაცვლების ხელით მითითება"
 
-#: src/contents/ui/HOTPDetailsForm.qml:66
-#, kde-format
-msgctxt "@label:check"
-msgid "Truncation:"
-msgstr "წაკვეთა:"
-
-#: src/contents/ui/HOTPDetailsForm.qml:76
+#: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
@@ -280,35 +280,37 @@ msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: src/contents/ui/SetupPassword.qml:17 src/contents/ui/UnlockAccounts.qml:17
+#: src/contents/ui/SetupPassword.qml:21 src/contents/ui/UnlockAccounts.qml:24
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
 msgstr "პაროლი"
 
-#: src/contents/ui/SetupPassword.qml:34
+#: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
 msgstr "ანგარიშების დასაცავად შეიყვანეთ პაროლი"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "New password:"
 msgctxt "@label:textbox"
-msgid "New password:"
+msgid "New Password:"
 msgstr "ახალი პაროლი:"
 
-#: src/contents/ui/SetupPassword.qml:55
+#: src/contents/ui/SetupPassword.qml:58
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "პაროლის გადამოწმება:"
 
-#: src/contents/ui/SetupPassword.qml:63
+#: src/contents/ui/SetupPassword.qml:68
 #, kde-format
 msgid "Apply"
 msgstr "გამოყენება"
 
-#: src/contents/ui/SetupPassword.qml:76
+#: src/contents/ui/SetupPassword.qml:83
 #, kde-format
 msgid "Failed to set up your password"
 msgstr "პაროლის დაყენების შეცდომა"
@@ -319,59 +321,67 @@ msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
 msgstr "(განახლება)"
 
-#: src/contents/ui/TOTPDetailsForm.qml:24
+#: src/contents/ui/TOTPDetailsForm.qml:28
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "@label"
+msgid "TOTP Details:"
+msgstr "დეტალები"
+
+#: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
 msgstr "ტაიმერი:"
 
-#: src/contents/ui/TOTPDetailsForm.qml:39
+#: src/contents/ui/TOTPDetailsForm.qml:52
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
 msgstr "დაწყების დრო:"
 
-#: src/contents/ui/TOTPDetailsForm.qml:70
+#: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
 msgstr "ჰეშის ალგორითმი:"
 
-#: src/contents/ui/TOTPDetailsForm.qml:75
+#: src/contents/ui/TOTPDetailsForm.qml:93
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-1"
 msgstr "SHA-1"
 
-#: src/contents/ui/TOTPDetailsForm.qml:85
+#: src/contents/ui/TOTPDetailsForm.qml:105
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-256"
 msgstr "SHA-256"
 
-#: src/contents/ui/TOTPDetailsForm.qml:95
+#: src/contents/ui/TOTPDetailsForm.qml:117
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-512"
 msgstr "SHA-512"
 
-#: src/contents/ui/UnlockAccounts.qml:25
+#: src/contents/ui/UnlockAccounts.qml:30
 #, kde-format
 msgid "Failed to unlock your accounts"
 msgstr "თქვენი ანგარიშების განბლოკვის შეცდომა"
 
-#: src/contents/ui/UnlockAccounts.qml:43
+#: src/contents/ui/UnlockAccounts.qml:55
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr "ანგარიშების განსაბლოკად საჭიროა პაროლის მითითება"
 
-#: src/contents/ui/UnlockAccounts.qml:56
+#: src/contents/ui/UnlockAccounts.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "პაროლი:"
 
-#: src/contents/ui/UnlockAccounts.qml:68
+#: src/contents/ui/UnlockAccounts.qml:72
 #, kde-format
 msgid "Unlock"
 msgstr "განბლოკვა"
@@ -381,3 +391,11 @@ msgstr "განბლოკვა"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
+
+#~ msgctxt "@label:check"
+#~ msgid "Checksum:"
+#~ msgstr "საკონტროლო ჯამი:"
+
+#~ msgctxt "@label:check"
+#~ msgid "Truncation:"
+#~ msgstr "წაკვეთა:"
