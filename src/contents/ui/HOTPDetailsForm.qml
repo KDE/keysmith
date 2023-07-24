@@ -24,7 +24,7 @@ MobileForm.FormCard {
         spacing: 0
 
         MobileForm.FormCardHeader {
-            title: i18nc("@label", "HOTP Details:")
+            title: i18nc("@title:group", "HOTP Details:")
         }
 
         MobileForm.FormTextFieldDelegate {
