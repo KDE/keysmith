@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:11+0000\n"
-"PO-Revision-Date: 2023-05-02 08:34+0300\n"
+"POT-Creation-Date: 2023-07-25 02:35+0000\n"
+"PO-Revision-Date: 2023-07-24 17:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -219,11 +219,11 @@ msgstr "Вилучити обліковий запис"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
-msgctxt "@label"
+#| msgctxt "@label"
+#| msgid "HOTP Details:"
+msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Подробиці"
+msgstr "Подробиці щодо HOTP:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -239,20 +239,16 @@ msgid "Token length:"
 msgstr "Довжина ключа:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Додати цифру для перевірки"
+msgstr "Додати цифру контрольної суми"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Нетиповий відступ"
+msgstr "Додати нетиповий відступ обрізання"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -296,9 +292,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Виберіть пароль для захисту ваших облікових записів"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Новий пароль:"
@@ -326,12 +320,10 @@ msgid "(refresh)"
 msgstr "(оновити)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Подробиці"
+msgstr "Подробиці щодо TOTP:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format

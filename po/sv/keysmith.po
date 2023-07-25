@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020, 2021.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:11+0000\n"
-"PO-Revision-Date: 2021-05-04 08:24+0200\n"
+"POT-Creation-Date: 2023-07-25 02:35+0000\n"
+"PO-Revision-Date: 2023-07-24 15:58+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -82,9 +82,7 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, fuzzy, kde-format
-#| msgctxt "Button confirming account removal"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Ta bort konto"
@@ -93,20 +91,16 @@ msgstr "Ta bort konto"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Symbol kopierad till klippbordet."
 
 #: src/contents/ui/AccountNameForm.qml:67
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Kontonamn:"
 
 #: src/contents/ui/AccountNameForm.qml:86
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Issuer:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Kontoutfärdare:"
@@ -135,11 +129,7 @@ msgid "No accounts added"
 msgstr "Inga konton tillagda"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button add new account, shown instead of overview list when no "
-#| "accounts have been added yet"
-#| msgid "Add account"
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
@@ -159,9 +149,7 @@ msgid "Add new account"
 msgstr "Lägg till nytt konto"
 
 #: src/contents/ui/AddAccount.qml:64
-#, fuzzy, kde-format
-#| msgctxt "@label:chooser"
-#| msgid "Account Type:"
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Kontotyp:"
@@ -227,11 +215,11 @@ msgstr "Ta bort konto"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
-msgctxt "@label"
+#| msgctxt "@label"
+#| msgid "HOTP Details:"
+msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Detaljinformation"
+msgstr "HOTP-information:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -247,20 +235,16 @@ msgid "Token length:"
 msgstr "Symbollängd"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
 msgstr "Lägg till kontrollsiffra"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Använd egen position"
+msgstr "Använd egen avkortningsposition"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -304,9 +288,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Välj ett lösenord för att skydda dina konton"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Nytt lösenord:"
@@ -334,12 +316,10 @@ msgid "(refresh)"
 msgstr "(uppdatera)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Detaljinformation"
+msgstr "TOTP-information:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 10:11+0000\n"
+"POT-Creation-Date: 2023-07-25 02:35+0000\n"
 "PO-Revision-Date: 2020-08-20 02:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, kde-format
-msgctxt "@label"
+msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr ""
 
