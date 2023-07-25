@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 07:39+0000\n"
+"POT-Creation-Date: 2023-07-25 00:48+0000\n"
 "PO-Revision-Date: 2020-01-01 16:44+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
@@ -227,7 +227,7 @@ msgstr "新增帳戶"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, kde-format
-msgctxt "@label"
+msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr ""
 

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-24 07:39+0000\n"
-"PO-Revision-Date: 2023-05-02 11:21+0200\n"
+"POT-Creation-Date: 2023-07-25 00:48+0000\n"
+"PO-Revision-Date: 2023-07-24 19:22+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -216,11 +216,11 @@ msgstr "Zbriši račun"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
-msgctxt "@label"
+#| msgctxt "@label"
+#| msgid "HOTP Details:"
+msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Podrobnosti"
+msgstr "Podrobnosti HOTP:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -236,20 +236,16 @@ msgid "Token length:"
 msgstr "Dolžina žetona:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Dodaj kontrolno številko"
+msgstr "Dodaj kontrolno števko"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Uporabi odmik po meri"
+msgstr "Uporabi odmik rezanja po meri"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -293,9 +289,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Izberite geslo za zaščito vaših računov"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Novo geslo:"
@@ -323,12 +317,10 @@ msgid "(refresh)"
 msgstr "(osveži)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Podrobnosti"
+msgstr "Podrobnosti TOPT:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
