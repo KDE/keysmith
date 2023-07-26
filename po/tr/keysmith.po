@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 00:48+0000\n"
-"PO-Revision-Date: 2023-07-24 13:18+0300\n"
+"PO-Revision-Date: 2023-07-25 11:41+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -212,9 +212,7 @@ msgid "Delete account"
 msgstr "Hesabı sil"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "HOTP Details:"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP ayrıntıları:"

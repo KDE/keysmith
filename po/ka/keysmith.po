@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 00:48+0000\n"
-"PO-Revision-Date: 2023-05-03 06:43+0200\n"
+"PO-Revision-Date: 2023-07-25 04:54+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -214,12 +214,10 @@ msgid "Delete account"
 msgstr "ანგარიშის წაშლა"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "დეტალები"
+msgstr "HOTP-ის დეტალები:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -235,20 +233,16 @@ msgid "Token length:"
 msgstr "კოდის სიგრძე:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "შემოწმების ციფრის დამატება"
+msgstr "საკონტროლო ჯამის ციფრის დამატება"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "წანაცვლების ხელით მითითება"
+msgstr "წაკვეთის წანაცვლების ხელით მითითება"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -292,9 +286,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "ანგარიშების დასაცავად შეიყვანეთ პაროლი"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "ახალი პაროლი:"
@@ -322,12 +314,10 @@ msgid "(refresh)"
 msgstr "(განახლება)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "დეტალები"
+msgstr "TOTP-ის დეტალები:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
