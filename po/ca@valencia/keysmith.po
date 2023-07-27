@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-05-02 09:27+0200\n"
+"PO-Revision-Date: 2023-07-26 15:57+0300\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -217,12 +217,10 @@ msgid "Delete account"
 msgstr "Suprimix el compte"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Detalls"
+msgstr "Detalls d'HOTP:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -238,26 +236,22 @@ msgid "Token length:"
 msgstr "Llargària del testimoni:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Afig un dígit de comprovació"
+msgstr "Afig un dígit de suma de verificació"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Utilitza un desplaçament personalitzat"
+msgstr "Utilitza un desplaçament personalitzat de truncament"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr "Desplaçament del truncament:"
+msgstr "Desplaçament de truncament:"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -295,9 +289,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Seleccioneu una contrasenya per a protegir els comptes"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Contrasenya nova:"
@@ -325,12 +317,10 @@ msgid "(refresh)"
 msgstr "(actualitza)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Detalls"
+msgstr "Detalls de TOTP:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
@@ -394,11 +384,3 @@ msgstr "Desbloca"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
-
-#~ msgctxt "@label:check"
-#~ msgid "Checksum:"
-#~ msgstr "Suma de verificació:"
-
-#~ msgctxt "@label:check"
-#~ msgid "Truncation:"
-#~ msgstr "Truncament:"
