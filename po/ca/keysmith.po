@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 00:48+0000\n"
-"PO-Revision-Date: 2023-07-25 08:37+0300\n"
+"PO-Revision-Date: 2023-07-26 15:57+0300\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -239,7 +239,7 @@ msgstr "Longitud del testimoni:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Afegeix un dígit de suma de comprovació"
+msgstr "Afegeix un dígit de suma de verificació"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
 #, kde-format
