@@ -202,12 +202,10 @@ msgid "Delete account"
 msgstr "Smazat účet"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Podrobnosti"
+msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -274,12 +272,10 @@ msgid "Choose a password to protect your accounts"
 msgstr "Vyberte si heslo pro ochranu vašich účtů"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
-msgstr "Nové heslo:"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:58
 #, kde-format
@@ -304,12 +300,10 @@ msgid "(refresh)"
 msgstr "(obnovit)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Podrobnosti"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
@@ -373,11 +367,3 @@ msgstr "Odemknout"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
-
-#~ msgctxt "@label:check"
-#~ msgid "Checksum:"
-#~ msgstr "Kontrolní součet:"
-
-#~ msgctxt "@label:check"
-#~ msgid "Truncation:"
-#~ msgstr "Zkrácení:"
