@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-03-19 14:46+0100\n"
+"PO-Revision-Date: 2023-07-29 12:26+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -93,7 +93,7 @@ msgstr "Slett konto"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Pollett kopiert til utklippstavla"
 
 #: src/contents/ui/AccountNameForm.qml:67
 #, kde-format
@@ -219,7 +219,7 @@ msgstr "Slett konto"
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr ""
+msgstr "HOTP-detaljar:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -238,13 +238,13 @@ msgstr "Tilgangspolett-lengd:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "Legg til kontrollsiffer"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "Bruk sjølvvald trunkeringsforskyving"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -291,7 +291,7 @@ msgstr "Vel eit passord for å verna kontoane dine"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
-msgstr ""
+msgstr "Nytt passord:"
 
 #: src/contents/ui/SetupPassword.qml:58
 #, kde-format
@@ -319,7 +319,7 @@ msgstr "(oppdater)"
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr ""
+msgstr "TOTP-detaljar:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
