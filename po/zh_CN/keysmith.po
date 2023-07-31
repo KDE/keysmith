@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-07-23 12:30\n"
+"PO-Revision-Date: 2023-07-30 07:13\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -208,12 +208,10 @@ msgid "Delete account"
 msgstr "删除账户"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "详细信息"
+msgstr "HOTP 详情："
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -229,20 +227,16 @@ msgid "Token length:"
 msgstr "令牌长度："
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "添加检查数字"
+msgstr "添加校验和数字"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "使用自定义偏移量"
+msgstr "使用自定义截断偏移量"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -284,9 +278,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "输入用于保护您的账户的密码"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "新密码："
@@ -314,12 +306,10 @@ msgid "(refresh)"
 msgstr "(刷新)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "详细信息"
+msgstr "TOTP 详情："
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
@@ -383,11 +373,3 @@ msgstr "解锁"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
-
-#~ msgctxt "@label:check"
-#~ msgid "Checksum:"
-#~ msgstr "校验和："
-
-#~ msgctxt "@label:check"
-#~ msgid "Truncation:"
-#~ msgstr "截断："
