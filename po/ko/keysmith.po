@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 00:48+0000\n"
-"PO-Revision-Date: 2023-07-23 00:50+0200\n"
+"PO-Revision-Date: 2023-08-06 20:50+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -208,12 +208,10 @@ msgid "Delete account"
 msgstr "계정 삭제"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "자세한 정보"
+msgstr "HOTP 정보:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -229,20 +227,16 @@ msgid "Token length:"
 msgstr "토큰 길이:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "체크 자리 추가"
+msgstr "체크섬 자리수 추가"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "사용자 정의 위치 사용"
+msgstr "사용자 정의 절취 위치 사용"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -285,9 +279,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "계정을 보호할 암호를 설정하십시오"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "새 암호:"
@@ -315,12 +307,10 @@ msgid "(refresh)"
 msgstr "(새로 고침)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "자세한 정보"
+msgstr "TOTP 정보:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
