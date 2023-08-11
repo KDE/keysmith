@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-07-29 12:26+0200\n"
+"PO-Revision-Date: 2023-08-10 20:05+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
@@ -232,7 +232,7 @@ msgstr "Teljar:"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr "Tilgangspolett-lengd:"
+msgstr "Tilgangspollett-lengd:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
 #, kde-format
