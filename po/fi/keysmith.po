@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-05-28 16:44+0300\n"
+"PO-Revision-Date: 2023-07-27 11:28+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -177,7 +177,7 @@ msgstr "Salainen avain:"
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
-msgstr "Yksityiskohdat"
+msgstr "Tiedot"
 
 #: src/contents/ui/AddAccount.qml:144
 #, kde-format
@@ -210,12 +210,10 @@ msgid "Delete account"
 msgstr "Poista tili"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Yksityiskohdat"
+msgstr "HOTP-tiedot:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -231,20 +229,16 @@ msgid "Token length:"
 msgstr "Merkin pituus:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
 msgstr "Lisää tarkistusluku"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Mukauta siirtymää"
+msgstr "Mukauta katkaisun siirtymää"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -288,9 +282,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Aloita valitsemalla tiliesi suojaksi salasana"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Uusi salasana:"
@@ -318,12 +310,10 @@ msgid "(refresh)"
 msgstr "(virkistä)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Yksityiskohdat"
+msgstr "TOTP-tiedot:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
