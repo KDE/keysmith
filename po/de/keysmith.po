@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-05-02 22:58+0200\n"
+"PO-Revision-Date: 2023-08-13 16:17+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -237,12 +237,10 @@ msgid "Token length:"
 msgstr "Token-Länge:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Prüfziffer hinzufügen"
+msgstr "Prüfsummenziffer hinzufügen"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
 #, fuzzy, kde-format
@@ -294,9 +292,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Wählen Sie ein Passwort zum Schutz Ihrer Konten"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Neues Passwort:"
