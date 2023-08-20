@@ -19,6 +19,15 @@ AccountEntryViewBase {
 
     actions: [
         Kirigami.Action {
+            iconName: "documentinfo"
+            text: i18nc("Button to show details of a single account", "Show details")
+            enabled: listItem.alive
+            onTriggered: {
+                listItem.actionTriggered();
+                listItem.details.open();
+            }
+        },
+        Kirigami.Action {
             iconName: "edit-delete"
             text: i18nc("Button for removal of a single account", "Delete account")
             enabled: listItem.alive

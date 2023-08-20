@@ -29,6 +29,63 @@ Kirigami.SwipeListItem {
     visible: alive
     enabled: alive
 
+    readonly property Kirigami.OverlaySheet details: Kirigami.OverlaySheet {
+        sheetOpen: false
+        header: Kirigami.Heading {
+            text: i18nc("Details dialog title: %1 is the name of the account", "Details of account: %1", account.name)
+        }
+
+        Kirigami.FormLayout {
+            Layout.fillWidth: true
+
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Name:")
+                text: account.name
+            }
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Issuer:")
+                text: account.issuer
+            }
+            Controls.RadioButton {
+                enabled: false
+                Kirigami.FormData.label: i18n("HOTP:")
+                checked: account.isHotp
+            }
+            Controls.RadioButton {
+                enabled: false
+                Kirigami.FormData.label: i18n("TOTP:")
+                checked: account.isTotp
+            }
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Epoch:")
+                text: account.epoch
+            }
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Time Step:")
+                text: account.timeStep
+            }
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Offset:")
+                text: account.offset
+            }
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Token Length:")
+                text: account.tokenLength
+            }
+            Controls.TextField {
+                enabled: false
+                Kirigami.FormData.label: i18n("Hash:")
+                text: account.hash
+            }
+        }
+    }
+
     readonly property Kirigami.OverlaySheet sheet: Kirigami.OverlaySheet {
         sheetOpen: false
         header: Kirigami.Heading {

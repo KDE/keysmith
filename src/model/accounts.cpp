@@ -58,14 +58,14 @@ namespace model
         return m_model->name();
     }
 
-    QString AccountView::issuer(void) const
-    {
-        return m_model->issuer();
-    }
-
     QString AccountView::token(void) const
     {
         return m_model->token();
+    }
+
+    QString AccountView::issuer(void) const
+    {
+        return m_model->issuer();
     }
 
     quint64 AccountView::counter(void) const
@@ -73,9 +73,34 @@ namespace model
         return m_model->counter();
     }
 
+    QDateTime AccountView::epoch(void) const
+    {
+        return m_model->epoch();
+    }
+
     uint AccountView::timeStep(void) const
     {
         return m_model->timeStep();
+    }
+
+    uint AccountView::offset(void) const
+    {
+        return m_model->offset().value_or(0);
+    }
+
+    int AccountView::tokenLength(void) const
+    {
+        return m_model->tokenLength();
+    }
+
+    QString AccountView::hash(void) const
+    {
+        switch (m_model->hash()) {
+            case accounts::Account::Sha1: return "SHA1";
+            case accounts::Account::Sha256: return "SHA256";
+            case accounts::Account::Sha512: return "SHA512";
+        }
+        return "";
     }
 
     qint64 AccountView::millisecondsLeftForToken(void) const

@@ -29,22 +29,30 @@ namespace model
     class AccountView : public QObject
     {
         Q_OBJECT
-        Q_PROPERTY(QString name READ name CONSTANT)
-        Q_PROPERTY(QString issuer READ issuer CONSTANT)
-        Q_PROPERTY(QString token READ token NOTIFY tokenChanged)
-        Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged);
-        Q_PROPERTY(uint timeStep READ timeStep CONSTANT);
         Q_PROPERTY(bool isHotp READ isHotp CONSTANT);
         Q_PROPERTY(bool isTotp READ isTotp CONSTANT);
+        Q_PROPERTY(QString name READ name CONSTANT);
+        Q_PROPERTY(QString token READ token NOTIFY tokenChanged);
+        Q_PROPERTY(QString issuer READ issuer CONSTANT);
+        Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged);
+        Q_PROPERTY(QDateTime epoch READ epoch CONSTANT);
+        Q_PROPERTY(uint timeStep READ timeStep CONSTANT);
+        Q_PROPERTY(uint offset READ offset CONSTANT);
+        Q_PROPERTY(int tokenLength READ tokenLength CONSTANT);
+        Q_PROPERTY(QString hash READ hash CONSTANT);
     public:
         explicit AccountView(accounts::Account *model, QObject *parent = nullptr);
-        QString name(void) const;
-        QString issuer(void) const;
-        QString token(void) const;
-        uint timeStep(void) const;
-        quint64 counter(void) const;
         bool isHotp(void) const;
         bool isTotp(void) const;
+        QString name(void) const;
+        QString token(void) const;
+        QString issuer(void) const;
+        quint64 counter(void) const;
+        QDateTime epoch(void) const;
+        uint timeStep(void) const;
+        uint offset(void) const;
+        int tokenLength(void) const;
+        QString hash(void) const;
         Q_INVOKABLE qint64 millisecondsLeftForToken(void) const;
     Q_SIGNALS:
         void tokenChanged(void);
