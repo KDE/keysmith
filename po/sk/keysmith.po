@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 00:48+0000\n"
+"POT-Creation-Date: 2023-08-21 00:49+0000\n"
 "PO-Revision-Date: 2021-11-15 18:40+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -45,12 +45,68 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
+#, fuzzy, kde-format
+#| msgctxt "Button for removal of a single account"
+#| msgid "Delete account"
+msgctxt "Details dialog title: %1 is the name of the account"
+msgid "Details of account: %1"
+msgstr "Odstrániť účet"
+
+#: src/contents/ui/AccountEntryViewBase.qml:43
+#, kde-format
+msgid "Name:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:48
+#, kde-format
+msgid "Issuer:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:53
+#, kde-format
+msgid "HOTP:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:58
+#, kde-format
+msgid "TOTP:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:63
+#, kde-format
+msgid "Epoch:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:68
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Timer:"
+msgid "Time Step:"
+msgstr "Časovač:"
+
+#: src/contents/ui/AccountEntryViewBase.qml:73
+#, kde-format
+msgid "Offset:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:78
+#, fuzzy, kde-format
+#| msgid "Token secret"
+msgid "Token Length:"
+msgstr "Tajomstvo tokenu"
+
+#: src/contents/ui/AccountEntryViewBase.qml:83
+#, kde-format
+msgid "Hash:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:42
+#: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgid ""
 "<p>Removing this account from Keysmith will not disable two-factor "
@@ -61,13 +117,13 @@ msgid ""
 "account</li></ul>"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:49
+#: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/contents/ui/AccountEntryViewBase.qml:62
+#: src/contents/ui/AccountEntryViewBase.qml:119
 #, fuzzy, kde-format
 #| msgctxt "Button confirming account removal"
 #| msgid "Delete account"
@@ -75,7 +131,7 @@ msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Odstrániť účet"
 
-#: src/contents/ui/AccountEntryViewBase.qml:79
+#: src/contents/ui/AccountEntryViewBase.qml:136
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
@@ -206,6 +262,15 @@ msgstr "Pokračovať"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "Button to show details of a single account"
+msgid "Show details"
+msgstr "Podrobnosti"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:28
+#: src/contents/ui/TOTPAccountEntryView.qml:32
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"

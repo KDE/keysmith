@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 00:48+0000\n"
-"PO-Revision-Date: 2023-05-13 08:52+0200\n"
+"POT-Creation-Date: 2023-08-21 00:49+0000\n"
+"PO-Revision-Date: 2023-08-20 10:47+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -53,12 +53,69 @@ msgstr ""
 "konta."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
+#, fuzzy, kde-format
+#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
+#| msgid "Removing account: %1"
+msgctxt "Details dialog title: %1 is the name of the account"
+msgid "Details of account: %1"
+msgstr "Usuwanie konta: %1"
+
+#: src/contents/ui/AccountEntryViewBase.qml:43
+#, kde-format
+msgid "Name:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:48
+#, kde-format
+msgid "Issuer:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:53
+#, kde-format
+msgid "HOTP:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:58
+#, kde-format
+msgid "TOTP:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:63
+#, kde-format
+msgid "Epoch:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:68
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Timer:"
+msgid "Time Step:"
+msgstr "Czasomierz:"
+
+#: src/contents/ui/AccountEntryViewBase.qml:73
+#, kde-format
+msgid "Offset:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:78
+#, fuzzy, kde-format
+#| msgctxt "@label:spinbox"
+#| msgid "Token length:"
+msgid "Token Length:"
+msgstr "Długość tokenu:"
+
+#: src/contents/ui/AccountEntryViewBase.qml:83
+#, kde-format
+msgid "Hash:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr "Usuwanie konta: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:42
+#: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgid ""
 "<p>Removing this account from Keysmith will not disable two-factor "
@@ -75,19 +132,19 @@ msgstr ""
 "li><li>Upewnij się, że masz kody przywracające dla swojego konta lub:</"
 "li><li>Wyłącz dwustopniowe uwierzytelnianie na swoim koncie</li></ul>"
 
-#: src/contents/ui/AccountEntryViewBase.qml:49
+#: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/contents/ui/AccountEntryViewBase.qml:62
+#: src/contents/ui/AccountEntryViewBase.qml:119
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Usuń konto"
 
-#: src/contents/ui/AccountEntryViewBase.qml:79
+#: src/contents/ui/AccountEntryViewBase.qml:136
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
@@ -208,18 +265,25 @@ msgstr "Kontynuuj"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "Button to show details of a single account"
+msgid "Show details"
+msgstr "Szczegóły"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:28
+#: src/contents/ui/TOTPAccountEntryView.qml:32
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
 msgstr "Usuń konto"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Szczegóły"
+msgstr "Szczegóły HOTP:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -235,20 +299,16 @@ msgid "Token length:"
 msgstr "Długość tokenu:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Dodaj cyfrę sprawdzającą"
+msgstr "Dodaj cyfrę sumy sprawdzającej"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Przytnij na długości"
+msgstr "Użyj własnego przesunięcia przycięcia"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -292,9 +352,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Wpisz hasło, które będzie chronić twoje konta"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Nowe hasło:"
@@ -322,12 +380,10 @@ msgid "(refresh)"
 msgstr "(odśwież)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Szczegóły"
+msgstr "Szczegóły TOTP:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format

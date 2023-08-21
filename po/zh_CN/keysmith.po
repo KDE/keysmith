@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-07-25 00:48+0000\n"
+"POT-Creation-Date: 2023-08-21 00:49+0000\n"
 "PO-Revision-Date: 2023-08-02 12:40\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -49,12 +49,69 @@ msgid ""
 msgstr "您正在尝试添加的账户无效。将在不添加账户的情况下继续操作。"
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
+#, fuzzy, kde-format
+#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
+#| msgid "Removing account: %1"
+msgctxt "Details dialog title: %1 is the name of the account"
+msgid "Details of account: %1"
+msgstr "移除账户：%1"
+
+#: src/contents/ui/AccountEntryViewBase.qml:43
+#, kde-format
+msgid "Name:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:48
+#, kde-format
+msgid "Issuer:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:53
+#, kde-format
+msgid "HOTP:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:58
+#, kde-format
+msgid "TOTP:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:63
+#, kde-format
+msgid "Epoch:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:68
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Timer:"
+msgid "Time Step:"
+msgstr "计时器："
+
+#: src/contents/ui/AccountEntryViewBase.qml:73
+#, kde-format
+msgid "Offset:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:78
+#, fuzzy, kde-format
+#| msgctxt "@label:spinbox"
+#| msgid "Token length:"
+msgid "Token Length:"
+msgstr "令牌长度："
+
+#: src/contents/ui/AccountEntryViewBase.qml:83
+#, kde-format
+msgid "Hash:"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr "移除账户：%1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:42
+#: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgid ""
 "<p>Removing this account from Keysmith will not disable two-factor "
@@ -69,19 +126,19 @@ msgstr ""
 "设置了另一款双重身份验证应用，或者：</li><li>确保您拥有您的账号的恢复码，或"
 "者：</li><li>禁用您的账户的双重身份验证功能。</li></ul>"
 
-#: src/contents/ui/AccountEntryViewBase.qml:49
+#: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
 msgstr "取消"
 
-#: src/contents/ui/AccountEntryViewBase.qml:62
+#: src/contents/ui/AccountEntryViewBase.qml:119
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "删除账户"
 
-#: src/contents/ui/AccountEntryViewBase.qml:79
+#: src/contents/ui/AccountEntryViewBase.qml:136
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
@@ -202,6 +259,15 @@ msgstr "继续"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "Button to show details of a single account"
+msgid "Show details"
+msgstr "详细信息"
+
+#: src/contents/ui/HOTPAccountEntryView.qml:28
+#: src/contents/ui/TOTPAccountEntryView.qml:32
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
