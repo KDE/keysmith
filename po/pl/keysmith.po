@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-05-13 08:52+0200\n"
+"PO-Revision-Date: 2023-08-20 10:47+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -214,12 +214,10 @@ msgid "Delete account"
 msgstr "Usuń konto"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Szczegóły"
+msgstr "Szczegóły HOTP:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -235,20 +233,16 @@ msgid "Token length:"
 msgstr "Długość tokenu:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Dodaj cyfrę sprawdzającą"
+msgstr "Dodaj cyfrę sumy sprawdzającej"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Przytnij na długości"
+msgstr "Użyj własnego przesunięcia przycięcia"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -292,9 +286,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Wpisz hasło, które będzie chronić twoje konta"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Nowe hasło:"
@@ -322,12 +314,10 @@ msgid "(refresh)"
 msgstr "(odśwież)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Szczegóły"
+msgstr "Szczegóły TOTP:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
