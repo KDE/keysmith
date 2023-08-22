@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-21 00:49+0000\n"
-"PO-Revision-Date: 2023-07-25 13:54+0200\n"
+"PO-Revision-Date: 2023-08-21 10:45+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -53,61 +53,55 @@ msgstr ""
 "het account toe te voegen."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
-#| msgid "Removing account: %1"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Account wordt verwijderd: %1"
+msgstr "Details van account: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Naam:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "Uitgever:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:53
 #, kde-format
 msgid "HOTP:"
-msgstr ""
+msgstr "HOTP:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:58
 #, kde-format
 msgid "TOTP:"
-msgstr ""
+msgstr "TOTP:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Epoche:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
-msgstr "Timer:"
+msgstr "Tijdstap:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:73
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "Offset:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:78
-#, fuzzy, kde-format
-#| msgctxt "@label:spinbox"
-#| msgid "Token length:"
+#, kde-format
 msgid "Token Length:"
 msgstr "Lengte van token:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "Hash:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
@@ -265,12 +259,10 @@ msgstr "Doorgaan"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "Details"
+msgstr "Details tonen"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:32

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-21 00:49+0000\n"
-"PO-Revision-Date: 2023-07-25 11:41+0300\n"
+"PO-Revision-Date: 2023-08-21 12:55+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -51,61 +51,55 @@ msgid ""
 msgstr "Eklemeye çalıştığınız hesap geçersiz. Hesap eklemeden sürdürün."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
-#| msgid "Removing account: %1"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Hesap kaldırılıyor: %1"
+msgstr "Hesabın ayrıntıları: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Ad:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "Veren:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:53
 #, kde-format
 msgid "HOTP:"
-msgstr ""
+msgstr "HOTP:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:58
 #, kde-format
 msgid "TOTP:"
-msgstr ""
+msgstr "TOTP:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Çığır:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
-msgstr "Sayaç:"
+msgstr "Zaman adımı:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:73
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "Ofset:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:78
-#, fuzzy, kde-format
-#| msgctxt "@label:spinbox"
-#| msgid "Token length:"
+#, kde-format
 msgid "Token Length:"
 msgstr "Jeton uzunluğu:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "Sağlama:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
@@ -263,12 +257,10 @@ msgstr "Sürdür"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "Ayrıntılar"
+msgstr "Ayrıntıları göster"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:32
