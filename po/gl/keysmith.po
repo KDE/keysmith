@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-21 00:49+0000\n"
-"PO-Revision-Date: 2023-07-29 08:06+0200\n"
+"PO-Revision-Date: 2023-08-26 04:18+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -52,61 +52,55 @@ msgstr ""
 "A conta que intenta engadir non é correcta. Continúe sen engadir a conta."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
-#| msgid "Removing account: %1"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Retirando a conta: %1"
+msgstr "Detalles da conta «%1»"
 
 #: src/contents/ui/AccountEntryViewBase.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Nome:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "Expedidor:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:53
 #, kde-format
 msgid "HOTP:"
-msgstr ""
+msgstr "HOTP:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:58
 #, kde-format
 msgid "TOTP:"
-msgstr ""
+msgstr "TOTP:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Época:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
-msgstr "Temporizador:"
+msgstr "Unidade de tempo:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:73
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "Diferenza de fuso horario:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:78
-#, fuzzy, kde-format
-#| msgctxt "@label:spinbox"
-#| msgid "Token length:"
+#, kde-format
 msgid "Token Length:"
 msgstr "Lonxitude do código:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "Hash:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
@@ -159,7 +153,7 @@ msgstr "Nome da conta:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
-msgstr "Emisor da conta:"
+msgstr "Expedidor da conta:"
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
@@ -264,12 +258,10 @@ msgstr "Continuar"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "Detalles"
+msgstr "Amosar os detalles"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:32
@@ -330,7 +322,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
-"Xa existe unha conta co mesmo nome. Corrixa o nome ou o emisor da nova conta."
+"Xa existe unha conta co mesmo nome. Corrixa o nome ou o expedidor da nova "
+"conta."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
