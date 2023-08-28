@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-07-29 08:06+0200\n"
+"PO-Revision-Date: 2023-08-26 04:18+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -102,7 +102,7 @@ msgstr "Nome da conta:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
-msgstr "Emisor da conta:"
+msgstr "Expedidor da conta:"
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
@@ -264,7 +264,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
-"Xa existe unha conta co mesmo nome. Corrixa o nome ou o emisor da nova conta."
+"Xa existe unha conta co mesmo nome. Corrixa o nome ou o expedidor da nova "
+"conta."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
