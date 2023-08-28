@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-21 00:49+0000\n"
-"PO-Revision-Date: 2023-08-02 12:40\n"
+"PO-Revision-Date: 2023-08-27 03:40\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -49,61 +49,55 @@ msgid ""
 msgstr "您正在尝试添加的账户无效。将在不添加账户的情况下继续操作。"
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
-#| msgid "Removing account: %1"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "移除账户：%1"
+msgstr "账号详情：%1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "名称："
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "颁发者："
 
 #: src/contents/ui/AccountEntryViewBase.qml:53
 #, kde-format
 msgid "HOTP:"
-msgstr ""
+msgstr "HOTP："
 
 #: src/contents/ui/AccountEntryViewBase.qml:58
 #, kde-format
 msgid "TOTP:"
-msgstr ""
+msgstr "TOTP："
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Epoch："
 
 #: src/contents/ui/AccountEntryViewBase.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
-msgstr "计时器："
+msgstr "时间步："
 
 #: src/contents/ui/AccountEntryViewBase.qml:73
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "偏移："
 
 #: src/contents/ui/AccountEntryViewBase.qml:78
-#, fuzzy, kde-format
-#| msgctxt "@label:spinbox"
-#| msgid "Token length:"
+#, kde-format
 msgid "Token Length:"
 msgstr "令牌长度："
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "哈希值："
 
 #: src/contents/ui/AccountEntryViewBase.qml:92
 #, kde-format
@@ -259,12 +253,10 @@ msgstr "继续"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "详细信息"
+msgstr "显示详情"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:32
