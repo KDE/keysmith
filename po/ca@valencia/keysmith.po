@@ -27,7 +27,7 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
-"Compte opcional que s'afegirà, amb format «otpauth:// URI» (p. ex. a partir "
+"Compte opcional que s'afegirà, amb format «otpauth:// URI» (p. ex., a partir "
 "d'un codi QR)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
