@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# giovanni <g.sora@tiscali.it>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2023 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-21 00:49+0000\n"
-"PO-Revision-Date: 2023-07-26 18:18+0200\n"
+"PO-Revision-Date: 2023-09-14 23:08+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -47,17 +47,15 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Button for removal of a single account"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Dele conto"
+msgstr "Detalio de conto: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:43
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Nomine:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
@@ -80,11 +78,9 @@ msgid "Epoch:"
 msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
-msgstr "Temporisator:"
+msgstr "Passo de Tempore:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:73
 #, kde-format
@@ -92,10 +88,9 @@ msgid "Offset:"
 msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:78
-#, fuzzy, kde-format
-#| msgid "Token secret"
+#, kde-format
 msgid "Token Length:"
-msgstr "Secreto de token :"
+msgstr "Longitude de token :"
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
@@ -252,12 +247,10 @@ msgstr "Continua"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "Detalios"
+msgstr "Monstra Detalios"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:32
