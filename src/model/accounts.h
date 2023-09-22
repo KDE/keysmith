@@ -29,17 +29,17 @@ namespace model
     class AccountView : public QObject
     {
         Q_OBJECT
-        Q_PROPERTY(bool isHotp READ isHotp CONSTANT);
-        Q_PROPERTY(bool isTotp READ isTotp CONSTANT);
-        Q_PROPERTY(QString name READ name CONSTANT);
-        Q_PROPERTY(QString token READ token NOTIFY tokenChanged);
-        Q_PROPERTY(QString issuer READ issuer CONSTANT);
-        Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged);
-        Q_PROPERTY(QDateTime epoch READ epoch CONSTANT);
-        Q_PROPERTY(uint timeStep READ timeStep CONSTANT);
-        Q_PROPERTY(uint offset READ offset CONSTANT);
-        Q_PROPERTY(int tokenLength READ tokenLength CONSTANT);
-        Q_PROPERTY(QString hash READ hash CONSTANT);
+        Q_PROPERTY(bool isHotp READ isHotp CONSTANT)
+        Q_PROPERTY(bool isTotp READ isTotp CONSTANT)
+        Q_PROPERTY(QString name READ name CONSTANT)
+        Q_PROPERTY(QString token READ token NOTIFY tokenChanged)
+        Q_PROPERTY(QString issuer READ issuer CONSTANT)
+        Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged)
+        Q_PROPERTY(QDateTime epoch READ epoch CONSTANT)
+        Q_PROPERTY(uint timeStep READ timeStep CONSTANT)
+        Q_PROPERTY(uint offset READ offset CONSTANT)
+        Q_PROPERTY(int tokenLength READ tokenLength CONSTANT)
+        Q_PROPERTY(QString hash READ hash CONSTANT)
     public:
         explicit AccountView(accounts::Account *model, QObject *parent = nullptr);
         bool isHotp(void) const;
@@ -67,8 +67,8 @@ namespace model
     class SimpleAccountListModel: public QAbstractListModel
     {
         Q_OBJECT
-        Q_PROPERTY(bool loaded READ loaded NOTIFY loadedChanged);
-        Q_PROPERTY(bool error READ error WRITE setError NOTIFY errorChanged);
+        Q_PROPERTY(bool loaded READ loaded NOTIFY loadedChanged)
+        Q_PROPERTY(bool error READ error WRITE setError NOTIFY errorChanged)
     public:
         enum NonStandardRoles {
             AccountRole = Qt::ItemDataRole::UserRole
@@ -123,13 +123,13 @@ namespace model
     {
         Q_OBJECT
         Q_PROPERTY(QString issuer READ issuer WRITE setIssuer NOTIFY issuerChanged)
-        Q_PROPERTY(model::SimpleAccountListModel * accounts READ accounts WRITE setAccounts NOTIFY accountsChanged);
+        Q_PROPERTY(model::SimpleAccountListModel * accounts READ accounts WRITE setAccounts NOTIFY accountsChanged)
         Q_PROPERTY(
             bool validateAvailability
             READ validateAvailability
             WRITE setValidateAvailability
             NOTIFY validateAvailabilityChanged
-        );
+        )
     public:
         explicit AccountNameValidator(QObject *parent = nullptr);
         QValidator::State validate(QString &input, int &pos) const override;

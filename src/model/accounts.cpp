@@ -96,11 +96,14 @@ namespace model
     QString AccountView::hash(void) const
     {
         switch (m_model->hash()) {
-            case accounts::Account::Sha1: return "SHA1";
-            case accounts::Account::Sha256: return "SHA256";
-            case accounts::Account::Sha512: return "SHA512";
+        case accounts::Account::Sha1:
+            return QStringLiteral("SHA1");
+        case accounts::Account::Sha256:
+            return QStringLiteral("SHA256");
+        case accounts::Account::Sha512:
+            return QStringLiteral("SHA512");
         }
-        return "";
+        return QString();
     }
 
     qint64 AccountView::millisecondsLeftForToken(void) const
@@ -243,8 +246,7 @@ namespace model
 
     int SimpleAccountListModel::rowCount(const QModelIndex &parent) const
     {
-        Q_UNUSED(parent)
-        return m_index.size();
+        return parent.isValid() ? 0 : m_index.size();
     }
 
     void SimpleAccountListModel::added(const QString &account)

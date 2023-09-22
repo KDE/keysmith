@@ -9,7 +9,7 @@
 
 QRegularExpression spaces_pattern(void)
 {
-    static const QRegularExpression re("\\s*");
+    static const QRegularExpression re(QStringLiteral("\\s*"));
     re.optimize();
     return re;
 }
@@ -32,6 +32,6 @@ namespace validators
     QString strip_spaces(QString &input)
     {
         static const QRegularExpression re = spaces_pattern();
-        return input.replace(re, QLatin1String(""));
+        return input.replace(re, QString());
     }
 }

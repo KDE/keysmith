@@ -211,7 +211,7 @@ namespace uri
         }
 
         if (secret.isEmpty()) {
-            qCDebug(logger) << "No token secret found: expected to find:" << *secretParam << "parameter";
+            qCDebug(logger) << "No token secret found: expected to find:" << secretParam << "parameter";
             return std::nullopt;
         }
 

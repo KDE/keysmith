@@ -1,7 +1,5 @@
-#
 # SPDX-License-Identifier: BSD-2-Clause
 # SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
-#
 
 set(Test_DEP_LIBS Qt::Core Qt::Gui Qt::Concurrent Qt::Test keysmith_lib test_lib)
 

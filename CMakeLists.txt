@@ -14,13 +14,10 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
-set(KF_MIN_VERSION "5.91.0")
-set(QT_MIN_VERSION "5.15.2")
-if (ANDROID)
-    set(QT_MIN_VERSION "5.15.10")
-endif()
+set(KF_MIN_VERSION "5.240.0")
+set(QT_MIN_VERSION "6.5.0")
 set(SODIUM_MIN_VERSION "1.0.16")
-set(KDE_COMPILERSETTINGS_LEVEL "5.82.0")
+set(KDE_COMPILERSETTINGS_LEVEL "5.240.0")
 
 ################# Disallow in-source build #################
 
@@ -49,17 +46,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ################# Find dependencies #################
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
-find_package(KF${QT_MAJOR_VERSION}Kirigami2 ${KF_MIN_VERSION} REQUIRED)
-find_package(KF${QT_MAJOR_VERSION}I18n ${KF_MIN_VERSION} REQUIRED)
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
+find_package(KF6Kirigami2 ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
 
 if(NOT ANDROID)
-    find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 endif()
 
-if (QT_MAJOR_VERSION EQUAL "6")
-    find_package(Qt6Core5Compat REQUIRED)
-endif()
+find_package(Qt6Core5Compat REQUIRED)
 
 if(NOT BUILD_EXTERNAL AND (NOT ANDROID OR DEFINED BUILD_EXTERNAL))
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
@@ -69,15 +64,15 @@ if(NOT BUILD_EXTERNAL AND (NOT ANDROID OR DEFINED BUILD_EXTERNAL))
 endif()
 
 if (BUILD_DBUS_INTERFACE OR (NOT ANDROID AND NOT DEFINED BUILD_DBUS_INTERFACE))
-    find_package(KF${QT_MAJOR_VERSION}DBusAddons ${KF_MIN_VERSION} REQUIRED)
-    find_package(KF${QT_MAJOR_VERSION}WindowSystem ${KF_MIN_VERSION} REQUIRED)
+    find_package(KF6DBusAddons ${KF_MIN_VERSION} REQUIRED)
+    find_package(KF6WindowSystem ${KF_MIN_VERSION} REQUIRED)
     set(ENABLE_DBUS_INTERFACE ON)
 endif()
 
 ################ Find testing dependencies ##########
 
 if (BUILD_TESTING)
-    find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} CONFIG REQUIRED Test)
+    find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Test)
 endif()
 
 ################# build and install #################

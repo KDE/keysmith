@@ -14,10 +14,9 @@
 
 #ifdef ENABLE_DBUS_INTERFACE
 #include <QWindow>
-#include <Qt>
 #include <KDBusService>
-#include <kstartupinfo.h>
-#include <kwindowsystem.h>
+#include <KStartupInfo>
+#include <KWindowSystem>
 #endif
 
 KEYSMITH_LOGGER(logger, ".app.cli")

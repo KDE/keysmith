@@ -38,7 +38,7 @@ void PercentEncodingTest::testValidString_data(void)
     QStringList validStringOutputs = QStringList() << QStringLiteral(":");
     int i = 0;
     for (const auto &input : qAsConst(validStringInputs)) {
-        QTest::newRow(qPrintable(input)) << input << validStringOutputs[i];
+        QTest::newRow(input.constData()) << input << validStringOutputs[i];
         i++;
     }
 }
@@ -93,8 +93,8 @@ void PercentEncodingTest::testInvalidString_data(void)
         << QByteArray("%cf broken multibyte (next char not marked)")
         << QByteArray("%c0%7f broken multibyte (over long)")
         << QByteArray("truncated multibyte %c0");
-    for (const auto &input : qAsConst(invalidStringInputs)) {
-        QTest::newRow(qPrintable(input)) << input;
+    for (const auto &input : std::as_const(invalidStringInputs)) {
+        QTest::newRow(input.constData()) << input;
     }
 }
 

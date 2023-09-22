@@ -30,7 +30,7 @@ private Q_SLOTS:
 void HotpCounterUpdateTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
-    QVERIFY2(test::copyResourceAsWritable(":/counter-update/starting.ini", testIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/counter-update/starting.ini"), testIniResource), "test corpus INI resource should be available as file");
 }
 
 void HotpCounterUpdateTest::testCounterUpdate(void)

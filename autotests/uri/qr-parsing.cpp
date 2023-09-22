@@ -37,7 +37,7 @@ static void define_valid_test_case(const char *testCase, const QString &input, u
                                    const QString &timeStep, const QString &tokenLength, const QString &algorithm,
                                    const QString &counter)
 {
-    QTest::newRow(qPrintable(testCase)) << input
+    QTest::newRow(testCase) << input
         << type << name << issuer << secret << timeStep << tokenLength << algorithm << counter;
 }
 

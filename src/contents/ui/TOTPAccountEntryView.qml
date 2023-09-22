@@ -3,8 +3,8 @@
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
-import QtQuick 2.1
-import org.kde.kirigami 2.4 as Kirigami
+import QtQuick
+import org.kde.kirigami as Kirigami
 
 AccountEntryViewBase {
     /*
@@ -19,16 +19,18 @@ AccountEntryViewBase {
 
     actions: [
         Kirigami.Action {
-            iconName: "documentinfo"
+            icon.name: "documentinfo"
             text: i18nc("Button to show details of a single account", "Show details")
             enabled: listItem.alive
             onTriggered: {
                 listItem.actionTriggered();
-                listItem.details.open();
+                applicationWindow().pageStack.pushDialogLayer(listItem.details, {}, {
+                    width: Kirigami.Units.gridUnit * 20,
+                });
             }
         },
         Kirigami.Action {
-            iconName: "edit-delete"
+            icon.name: "edit-delete"
             text: i18nc("Button for removal of a single account", "Delete account")
             enabled: listItem.alive
             onTriggered: {

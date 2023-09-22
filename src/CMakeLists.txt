@@ -31,18 +31,22 @@ set(keysmith_SRCS
     main.cpp
 )
 
-set(keysmith_internal_libs keysmith_lib)
-
 qt_add_resources(RESOURCES resources.qrc)
 add_executable(keysmith ${keysmith_SRCS} ${RESOURCES})
 target_link_libraries(keysmith
-    Qt::Core Qt::Gui Qt::Qml Qt::Quick Qt::Svg Qt::QuickControls2
-    KF${QT_MAJOR_VERSION}::I18n
-    ${keysmith_internal_libs}
+    PUBLIC
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Qml
+        Qt6::Quick
+        Qt6::Svg
+        Qt6::QuickControls2
+        KF6::I18n
+        keysmith_lib
 )
 
 if (ENABLE_DBUS_INTERFACE)
-    target_link_libraries(keysmith KF${QT_MAJOR_VERSION}::DBusAddons)
+    target_link_libraries(keysmith PUBLIC KF6::DBusAddons)
 endif()
 
 if(ANDROID)
@@ -57,7 +61,7 @@ if(ANDROID)
         lock
     )
 else()
-    target_link_libraries(keysmith Qt::Widgets)
+    target_link_libraries(keysmith PUBLIC Qt6::Widgets)
 endif()
 
 install(TARGETS keysmith ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

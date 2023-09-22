@@ -79,7 +79,7 @@ void TimeStepCounterTest::invalidCount_data(void)
     define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1500LL, 0UL);
 }
 
-static void define_rfc_test_case(const char *datetime, quint64 expected)
+static void define_rfc_test_case(const QString &datetime, quint64 expected)
 {
     static QString testCase(QLatin1String("%1 ... 0x%2"));
     const QDateTime dt = QDateTime::fromString(datetime, Qt::ISODate);
@@ -111,12 +111,12 @@ void TimeStepCounterTest::rfcTestVector_data(void)
     QTest::addColumn<QDateTime>("now");
     QTest::addColumn<quint64>("rfc-test-vector");
 
-    define_rfc_test_case("1970-01-01 00:00:59Z", 0x1ULL);
-    define_rfc_test_case("2005-03-18 01:58:29Z", 0x23523ECULL);
-    define_rfc_test_case("2005-03-18 01:58:31Z", 0x23523EDULL);
-    define_rfc_test_case("2009-02-13 23:31:30Z", 0x273EF07ULL);
-    define_rfc_test_case("2033-05-18 03:33:20Z", 0x3F940AAULL);
-    define_rfc_test_case("2603-10-11 11:33:20Z", 0x27BC86AAULL);
+    define_rfc_test_case(QStringLiteral("1970-01-01 00:00:59Z"), 0x1ULL);
+    define_rfc_test_case(QStringLiteral("2005-03-18 01:58:29Z"), 0x23523ECULL);
+    define_rfc_test_case(QStringLiteral("2005-03-18 01:58:31Z"), 0x23523EDULL);
+    define_rfc_test_case(QStringLiteral("2009-02-13 23:31:30Z"), 0x273EF07ULL);
+    define_rfc_test_case(QStringLiteral("2033-05-18 03:33:20Z"), 0x3F940AAULL);
+    define_rfc_test_case(QStringLiteral("2603-10-11 11:33:20Z"), 0x27BC86AAULL);
 }
 
 QTEST_APPLESS_MAIN(TimeStepCounterTest)

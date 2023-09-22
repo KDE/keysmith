@@ -4,12 +4,12 @@
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
  */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.2
-import org.kde.kirigami 2.15 as Kirigami
+import QtQuick
+import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
 
-import Keysmith.Application 1.0 as Application
-import Keysmith.Models 1.0 as Models
+import Keysmith.Application as Application
+import Keysmith.Models as Models
 
 Kirigami.ScrollablePage {
     id: root
@@ -93,16 +93,16 @@ Kirigami.ScrollablePage {
         model: Models.SortedAccountListModel {
             sourceModel: vm.accounts
         }
-        
+
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             visible: vm.accounts.loaded && mainList.count == 0
             text: i18n("No accounts added")
             icon.name: "unlock"
-            
+
             helpfulAction: Kirigami.Action {
-                iconName: "list-add"
+                icon.name: "list-add"
                 text: i18nc("@action:button add new account, shown instead of overview list when no accounts have been added yet", "Add Account")
                 onTriggered: {
                     // FIXME : should be managed via vm
@@ -112,7 +112,7 @@ Kirigami.ScrollablePage {
                 }
             }
         }
-        
+
         /*
          * Use a Loader to get a switch-like statement to select an
          * appropriate delegate based on properties of the account model.
@@ -166,10 +166,10 @@ Kirigami.ScrollablePage {
         }
     }
 
-    actions.main: Kirigami.Action {
+    actions: Kirigami.Action {
         id: addAction
         text: i18nc("@action:button add new account, shown in toolbar", "Add")
-        iconName: "list-add"
+        icon.name: "list-add"
         enabled: vm.actionsEnabled
         visible: vm.actionsEnabled
         onTriggered: {

@@ -3,10 +3,11 @@
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
-import QtQuick 2.1
-import QtQuick.Layouts 1.2
-import QtQuick.Controls 2.0 as Controls
-import org.kde.kirigami 2.4 as Kirigami
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls as Controls
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
@@ -29,65 +30,71 @@ Kirigami.SwipeListItem {
     visible: alive
     enabled: alive
 
-    readonly property Kirigami.OverlaySheet details: Kirigami.OverlaySheet {
-        sheetOpen: false
-        header: Kirigami.Heading {
-            text: i18nc("Details dialog title: %1 is the name of the account", "Details of account: %1", account.name)
-        }
+    readonly property Component details: FormCard.FormCardPage {
+        title: i18nc("Details dialog title: %1 is the name of the account", "Details of account: %1", account.name)
 
-        Kirigami.FormLayout {
-            Layout.fillWidth: true
+        topPadding: Kirigami.Units.gridUnit
+        bottomPadding: Kirigami.Units.gridUnit
 
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Name:")
-                text: account.name
+        FormCard.FormCard {
+            FormCard.FormTextDelegate {
+                text: i18n("Name:")
+                description: account.name
             }
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Issuer:")
-                text: account.issuer
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Issuer:")
+                description: account.issuer
             }
-            Controls.RadioButton {
-                enabled: false
-                Kirigami.FormData.label: i18n("HOTP:")
-                checked: account.isHotp
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Mode:")
+                description: account.isHotp ? i18nc("Mode of 2fa", "HOTP") : i18nc("Mode of 2fa", "TOTP")
             }
-            Controls.RadioButton {
-                enabled: false
-                Kirigami.FormData.label: i18n("TOTP:")
-                checked: account.isTotp
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Epoch:")
+                description: account.epoch
             }
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Epoch:")
-                text: account.epoch
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Time Step:")
+                description: account.timeStep
             }
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Time Step:")
-                text: account.timeStep
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Offset:")
+                description: account.offset
             }
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Offset:")
-                text: account.offset
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Token Length:")
+                description: account.tokenLength
             }
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Token Length:")
-                text: account.tokenLength
-            }
-            Controls.TextField {
-                enabled: false
-                Kirigami.FormData.label: i18n("Hash:")
-                text: account.hash
+
+            FormCard.FormDelegateSeparator {}
+
+            FormCard.FormTextDelegate {
+                text: i18n("Hash:")
+                description: account.hash
             }
         }
     }
 
     readonly property Kirigami.OverlaySheet sheet: Kirigami.OverlaySheet {
-        sheetOpen: false
+        visible: false
         header: Kirigami.Heading {
             text: i18nc("Confirm dialog title: %1 is the name of the account to remove", "Removing account: %1", account.name)
         }
@@ -101,28 +108,22 @@ Kirigami.SwipeListItem {
         }
         footer: RowLayout {
             Controls.Button {
-                action: Kirigami.Action {
-                    iconName: "edit-undo"
-                    text: i18nc("Button cancelling account removal", "Cancel")
-                    onTriggered: {
-                        sheet.close();
-                    }
-                }
+                icon.name: "edit-undo"
+                text: i18nc("Button cancelling account removal", "Cancel")
+                onClicked: sheet.close();
             }
             Rectangle {
                 color: "transparent"
                 Layout.fillWidth: true
             }
             Controls.Button {
-                action: Kirigami.Action {
-                    iconName: "edit-delete"
-                    text: i18nc("Button confirming account removal", "Delete Account")
-                    enabled: alive
-                    onTriggered: {
-                        alive = false;
-                        account.remove();
-                        sheet.close();
-                    }
+                icon.name: "edit-delete"
+                text: i18nc("Button confirming account removal", "Delete Account")
+                enabled: alive
+                onClicked: {
+                    alive = false;
+                    account.remove();
+                    sheet.close();
                 }
             }
         }

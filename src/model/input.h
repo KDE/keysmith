@@ -24,14 +24,14 @@ namespace model
         Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
         Q_PROPERTY(QString issuer READ issuer WRITE setIssuer NOTIFY issuerChanged)
         Q_PROPERTY(QString secret READ secret WRITE setSecret NOTIFY secretChanged)
-        Q_PROPERTY(uint tokenLength READ tokenLength WRITE setTokenLength NOTIFY tokenLengthChanged);
+        Q_PROPERTY(uint tokenLength READ tokenLength WRITE setTokenLength NOTIFY tokenLengthChanged)
         Q_PROPERTY(uint timeStep READ timeStep WRITE setTimeStep NOTIFY timeStepChanged)
         Q_PROPERTY(model::AccountInput::TOTPAlgorithm algorithm READ algorithm WRITE setAlgorithm NOTIFY algorithmChanged)
         Q_PROPERTY(QString epoch READ epoch WRITE setEpoch NOTIFY epochChanged)
         Q_PROPERTY(bool checksum READ checksum WRITE setChecksum NOTIFY checksumChanged)
         Q_PROPERTY(QString counter READ counter NOTIFY counterChanged)
-        Q_PROPERTY(uint truncationOffset READ truncationOffset NOTIFY truncationChanged);
-        Q_PROPERTY(bool fixedTruncation READ fixedTruncation NOTIFY truncationChanged);
+        Q_PROPERTY(uint truncationOffset READ truncationOffset NOTIFY truncationChanged)
+        Q_PROPERTY(bool fixedTruncation READ fixedTruncation NOTIFY truncationChanged)
     public:
         enum TOTPAlgorithm {
             Sha1, Sha256, Sha512

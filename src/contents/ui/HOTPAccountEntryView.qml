@@ -3,7 +3,7 @@
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 
-import org.kde.kirigami 2.4 as Kirigami
+import org.kde.kirigami as Kirigami
 
 AccountEntryViewBase {
     /*
@@ -15,16 +15,16 @@ AccountEntryViewBase {
 
     actions: [
         Kirigami.Action {
-            iconName: "documentinfo"
+            icon.name: "documentinfo"
             text: i18nc("Button to show details of a single account", "Show details")
             enabled: listItem.alive
             onTriggered: {
                 listItem.actionTriggered();
-                listItem.details.open();
+                applicationWindow().pageStack.pushDialogLayer(listItem.details);
             }
         },
         Kirigami.Action {
-            iconName: "edit-delete"
+            icon.name: "edit-delete"
             text: i18nc("Button for removal of a single account", "Delete account")
             enabled: listItem.alive
             onTriggered: {
@@ -33,7 +33,7 @@ AccountEntryViewBase {
             }
         },
         Kirigami.Action {
-            iconName: "go-next" // "view-refresh"
+            icon.name: "go-next" // "view-refresh"
             text: "Next token"
             enabled: listItem.alive
             onTriggered: {

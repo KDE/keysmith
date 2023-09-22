@@ -48,8 +48,6 @@ static QQmlDebuggingEnabler enabler;
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
 #ifdef Q_OS_ANDROID
     QGuiApplication app(argc, argv);
     QQuickStyle::setStyle(QStringLiteral("Material"));
@@ -161,6 +159,5 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         return -1;
     }
     proxy.proxy(cliParser, parseOk);
-    int ret = app.exec();
-    return ret;
+    return app.exec();
 }

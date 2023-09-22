@@ -42,9 +42,9 @@ static qint64 dummyClock(void)
 void LoadAccountsTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
-    QVERIFY2(test::copyResource(":/load-accounts/empty-accounts.ini", emptyIniResource), "empty INI resource should be available as file");
-    QVERIFY2(test::copyResource(":/load-accounts/sample-accounts.ini", corpusIniResource), "test corpus INI resource should be available as file");
-    QVERIFY2(test::copyResource(":/load-accounts/invalid-accounts.ini", invalidIniResource), "invalid INI resource should be available as file");
+    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/empty-accounts.ini"), emptyIniResource), "empty INI resource should be available as file");
+    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/sample-accounts.ini"), corpusIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/invalid-accounts.ini"), invalidIniResource), "invalid INI resource should be available as file");
     QVERIFY2(test::useDummyPassword(&m_secret), "should be able to set up the master key");
 }
 

@@ -28,7 +28,7 @@ namespace app
         const char *cname = pagesEnum.valueToKey(page);
         Q_ASSERT_X(cname, Q_FUNC_INFO, "must be able to lookup pages enum constant's name");
         QString result;
-        result.append(cname);
+        result.append(QLatin1String(cname));
         return result;
     }
 

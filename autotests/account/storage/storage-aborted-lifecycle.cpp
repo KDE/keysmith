@@ -25,7 +25,7 @@ private Q_SLOTS:
 void StorageAbortLifeCycleTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
-    QVERIFY2(test::copyResourceAsWritable(":/storage-lifecycles/starting.ini", testIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/storage-lifecycles/starting.ini"), testIniResource), "test corpus INI resource should be available as file");
 }
 
 void StorageAbortLifeCycleTest::testLifecycle(void)

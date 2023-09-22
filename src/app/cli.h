@@ -40,9 +40,9 @@ namespace app
     class CommandLineOptions: public QObject
     {
         Q_OBJECT
-        Q_PROPERTY(bool optionsOk READ optionsOk CONSTANT);
-        Q_PROPERTY(QString errorText READ errorText CONSTANT);
-        Q_PROPERTY(bool newAccountRequested READ newAccountRequested CONSTANT);
+        Q_PROPERTY(bool optionsOk READ optionsOk CONSTANT)
+        Q_PROPERTY(QString errorText READ errorText CONSTANT)
+        Q_PROPERTY(bool newAccountRequested READ newAccountRequested CONSTANT)
     public:
         static void addOptions(QCommandLineParser &parser);
         explicit CommandLineOptions(QCommandLineParser &parser, bool parseOk, QObject *parent = nullptr);
