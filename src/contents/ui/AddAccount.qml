@@ -49,7 +49,7 @@ FormCard.FormCardPage {
             }
         },
         Kirigami.Action {
-            text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
+            text: i18nc("@action:button Dismiss the error page and quit Keysmith", "Quit")
             icon.name: "application-exit"
             enabled: vm.quitEnabled
             visible: vm.quitEnabled
