@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-21 00:49+0000\n"
+"POT-Creation-Date: 2023-09-28 01:41+0000\n"
 "PO-Revision-Date: 2020-08-20 02:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
-#: src/app/cli.cpp:128
+#: src/app/cli.cpp:127
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
@@ -47,13 +47,13 @@ msgid ""
 "account."
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:35
+#: src/contents/ui/AccountEntryViewBase.qml:34
 #, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:43
+#: src/contents/ui/AccountEntryViewBase.qml:41
 #, kde-format
 msgid "Name:"
 msgstr ""
@@ -63,48 +63,55 @@ msgstr ""
 msgid "Issuer:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:53
+#: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
-msgid "HOTP:"
+msgid "Mode:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:58
+#: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
-msgid "TOTP:"
+msgctxt "Mode of 2fa"
+msgid "HOTP"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:63
+#: src/contents/ui/AccountEntryViewBase.qml:56
+#, kde-format
+msgctxt "Mode of 2fa"
+msgid "TOTP"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgid "Epoch:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:68
+#: src/contents/ui/AccountEntryViewBase.qml:69
 #, kde-format
 msgid "Time Step:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:73
+#: src/contents/ui/AccountEntryViewBase.qml:76
 #, kde-format
 msgid "Offset:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:78
+#: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Token Length:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:83
+#: src/contents/ui/AccountEntryViewBase.qml:90
 #, kde-format
 msgid "Hash:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:92
+#: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:99
+#: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
 msgid ""
 "<p>Removing this account from Keysmith will not disable two-factor "
@@ -115,31 +122,31 @@ msgid ""
 "account</li></ul>"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:106
+#: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:119
+#: src/contents/ui/AccountEntryViewBase.qml:121
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:136
+#: src/contents/ui/AccountEntryViewBase.qml:137
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr ""
 
-#: src/contents/ui/AccountNameForm.qml:67
+#: src/contents/ui/AccountNameForm.qml:64
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr ""
 
-#: src/contents/ui/AccountNameForm.qml:86
+#: src/contents/ui/AccountNameForm.qml:83
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -188,62 +195,81 @@ msgctxt "@title:window"
 msgid "Add new account"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:64
-#, kde-format
-msgctxt "@label:chooser"
-msgid "Account type:"
-msgstr ""
-
-#: src/contents/ui/AddAccount.qml:70
-#, kde-format
-msgctxt "@option:radio"
-msgid "Time-based OTP"
-msgstr ""
-
-#: src/contents/ui/AddAccount.qml:81
-#, kde-format
-msgctxt "@option:radio"
-msgid "Hash-based OTP"
-msgstr ""
-
-#: src/contents/ui/AddAccount.qml:93
-#, kde-format
-msgid "Token secret"
-msgstr ""
-
-#: src/contents/ui/AddAccount.qml:96
-#, kde-format
-msgctxt "@label:textbox"
-msgid "Secret key:"
-msgstr ""
-
-#: src/contents/ui/AddAccount.qml:112
-#, kde-format
-msgctxt "Button to reveal form for configuring additional token details"
-msgid "Details"
-msgstr ""
-
-#: src/contents/ui/AddAccount.qml:144
+#: src/contents/ui/AddAccount.qml:45
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:151 src/contents/ui/ErrorPage.qml:40
+#: src/contents/ui/AddAccount.qml:52
 #, kde-format
-msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:160 src/contents/ui/RenameAccount.qml:56
+#: src/contents/ui/AddAccount.qml:61
 #, kde-format
+msgctxt "@action:button"
 msgid "Add"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:81
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Account type:"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:90
+#, kde-format
+msgctxt "@option:radio"
+msgid "Time-based OTP"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:101
+#, kde-format
+msgctxt "@option:radio"
+msgid "Hash-based OTP"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:113
+#, kde-format
+msgid "Token secret"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:116
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Secret key:"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:132
+#, kde-format
+msgctxt "Button to reveal form for configuring additional token details"
+msgid "Details"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:140
+#, kde-format
+msgctxt "@title:group"
+msgid "HOTP Details:"
+msgstr ""
+
+#: src/contents/ui/AddAccount.qml:153
+#, kde-format
+msgctxt "@label"
+msgid "TOTP Details:"
 msgstr ""
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
+msgstr ""
+
+#: src/contents/ui/ErrorPage.qml:40
+#, kde-format
+msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+msgid "Quit"
 msgstr ""
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
@@ -254,7 +280,7 @@ msgid "Show details"
 msgstr ""
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
-#: src/contents/ui/TOTPAccountEntryView.qml:32
+#: src/contents/ui/TOTPAccountEntryView.qml:34
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
@@ -262,36 +288,30 @@ msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, kde-format
-msgctxt "@title:group"
-msgid "HOTP Details:"
-msgstr ""
-
-#: src/contents/ui/HOTPDetailsForm.qml:34
-#, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
 msgstr ""
 
-#: src/contents/ui/HOTPDetailsForm.qml:55
-#: src/contents/ui/TOTPDetailsForm.qml:74
+#: src/contents/ui/HOTPDetailsForm.qml:48
+#: src/contents/ui/TOTPDetailsForm.qml:67
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
 msgstr ""
 
-#: src/contents/ui/HOTPDetailsForm.qml:70
+#: src/contents/ui/HOTPDetailsForm.qml:63
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
 msgstr ""
 
-#: src/contents/ui/HOTPDetailsForm.qml:82
+#: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
 msgstr ""
 
-#: src/contents/ui/HOTPDetailsForm.qml:96
+#: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
@@ -319,10 +339,20 @@ msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:21 src/contents/ui/UnlockAccounts.qml:24
+#: src/contents/ui/RenameAccount.qml:56
+#, kde-format
+msgid "Add"
+msgstr ""
+
+#: src/contents/ui/SetupPassword.qml:22 src/contents/ui/UnlockAccounts.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
+msgstr ""
+
+#: src/contents/ui/SetupPassword.qml:28
+#, kde-format
+msgid "Failed to set up your password"
 msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:42
@@ -330,26 +360,22 @@ msgstr ""
 msgid "Choose a password to protect your accounts"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:48
+#: src/contents/ui/SetupPassword.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:58
+#: src/contents/ui/SetupPassword.qml:59
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:67
 #, kde-format
+msgctxt "@action:button"
 msgid "Apply"
-msgstr ""
-
-#: src/contents/ui/SetupPassword.qml:83
-#, kde-format
-msgid "Failed to set up your password"
 msgstr ""
 
 #: src/contents/ui/TokenEntryViewLabels.qml:40
@@ -358,70 +384,65 @@ msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
 msgstr ""
 
-#: src/contents/ui/TOTPDetailsForm.qml:28
-#, kde-format
-msgctxt "@label"
-msgid "TOTP Details:"
-msgstr ""
-
-#: src/contents/ui/TOTPDetailsForm.qml:34
+#: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
 msgstr ""
 
-#: src/contents/ui/TOTPDetailsForm.qml:52
+#: src/contents/ui/TOTPDetailsForm.qml:45
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
 msgstr ""
 
-#: src/contents/ui/TOTPDetailsForm.qml:86
+#: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
 msgstr ""
 
-#: src/contents/ui/TOTPDetailsForm.qml:93
+#: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-1"
 msgstr ""
 
-#: src/contents/ui/TOTPDetailsForm.qml:105
+#: src/contents/ui/TOTPDetailsForm.qml:98
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-256"
 msgstr ""
 
-#: src/contents/ui/TOTPDetailsForm.qml:117
+#: src/contents/ui/TOTPDetailsForm.qml:110
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-512"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:30
+#: src/contents/ui/UnlockAccounts.qml:26
 #, kde-format
 msgid "Failed to unlock your accounts"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:55
+#: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:61
+#: src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:72
+#: src/contents/ui/UnlockAccounts.qml:59
 #, kde-format
+msgctxt "@action:button"
 msgid "Unlock"
 msgstr ""
 
-#: src/main.cpp:69
+#: src/main.cpp:67
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-21 00:49+0000\n"
+"POT-Creation-Date: 2023-09-28 01:41+0000\n"
 "PO-Revision-Date: 2021-01-10 15:05+0100\n"
 "Last-Translator: Kristóf Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 21.03.70\n"
 
-#: src/app/cli.cpp:128
+#: src/app/cli.cpp:127
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
@@ -56,7 +56,7 @@ msgstr ""
 "A hozzáadni kívánt fiók érvénytelen. Kiléphet az alkalmazásból, vagy "
 "folytathatja a fiók hozzáadása nélkül."
 
-#: src/contents/ui/AccountEntryViewBase.qml:35
+#: src/contents/ui/AccountEntryViewBase.qml:34
 #, fuzzy, kde-format
 #| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 #| msgid "Removing account: %1"
@@ -64,7 +64,7 @@ msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
 msgstr "Fiók eltávolítása: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:43
+#: src/contents/ui/AccountEntryViewBase.qml:41
 #, kde-format
 msgid "Name:"
 msgstr ""
@@ -74,52 +74,59 @@ msgstr ""
 msgid "Issuer:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:53
+#: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
-msgid "HOTP:"
+msgid "Mode:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:58
+#: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
-msgid "TOTP:"
+msgctxt "Mode of 2fa"
+msgid "HOTP"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:63
+#: src/contents/ui/AccountEntryViewBase.qml:56
+#, kde-format
+msgctxt "Mode of 2fa"
+msgid "TOTP"
+msgstr ""
+
+#: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgid "Epoch:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:68
+#: src/contents/ui/AccountEntryViewBase.qml:69
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "Timer:"
 msgid "Time Step:"
 msgstr "Időzítő:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:73
+#: src/contents/ui/AccountEntryViewBase.qml:76
 #, kde-format
 msgid "Offset:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:78
+#: src/contents/ui/AccountEntryViewBase.qml:83
 #, fuzzy, kde-format
 #| msgctxt "@label:spinbox"
 #| msgid "Token length:"
 msgid "Token Length:"
 msgstr "Tokenhossz:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:83
+#: src/contents/ui/AccountEntryViewBase.qml:90
 #, kde-format
 msgid "Hash:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:92
+#: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr "Fiók eltávolítása: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:99
+#: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
 msgid ""
 "<p>Removing this account from Keysmith will not disable two-factor "
@@ -136,13 +143,13 @@ msgstr ""
 "li><li>Megvannak-e a fiók visszaállítási kódjai:</li><li>Kikapcsolta a "
 "kétfaktoros hitelesítést a fiókban</li></ul>"
 
-#: src/contents/ui/AccountEntryViewBase.qml:106
+#: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/contents/ui/AccountEntryViewBase.qml:119
+#: src/contents/ui/AccountEntryViewBase.qml:121
 #, fuzzy, kde-format
 #| msgctxt "Button confirming account removal"
 #| msgid "Delete account"
@@ -150,13 +157,13 @@ msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Fiók törlése"
 
-#: src/contents/ui/AccountEntryViewBase.qml:136
+#: src/contents/ui/AccountEntryViewBase.qml:137
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr ""
 
-#: src/contents/ui/AccountNameForm.qml:67
+#: src/contents/ui/AccountNameForm.qml:64
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "Account Name:"
@@ -164,7 +171,7 @@ msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Fióknév:"
 
-#: src/contents/ui/AccountNameForm.qml:86
+#: src/contents/ui/AccountNameForm.qml:83
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "Account Issuer:"
@@ -220,7 +227,28 @@ msgctxt "@title:window"
 msgid "Add new account"
 msgstr "Új fiók hozzáadása"
 
-#: src/contents/ui/AddAccount.qml:64
+#: src/contents/ui/AddAccount.qml:45
+#, kde-format
+msgctxt "@action:button cancel and dismiss the add account form"
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: src/contents/ui/AddAccount.qml:52
+#, fuzzy, kde-format
+#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+#| msgid "Quit"
+msgctxt "@action:button Dismiss the error page and quit Keysmith"
+msgid "Quit"
+msgstr "Kilépés"
+
+#: src/contents/ui/AddAccount.qml:61
+#, fuzzy, kde-format
+#| msgid "Add"
+msgctxt "@action:button"
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: src/contents/ui/AddAccount.qml:81
 #, fuzzy, kde-format
 #| msgctxt "@label:chooser"
 #| msgid "Account Type:"
@@ -228,57 +256,62 @@ msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Fióktípus:"
 
-#: src/contents/ui/AddAccount.qml:70
+#: src/contents/ui/AddAccount.qml:90
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "Időalapú OTP"
 
-#: src/contents/ui/AddAccount.qml:81
+#: src/contents/ui/AddAccount.qml:101
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "Ellenőrzőösszeg-alapú OTP"
 
-#: src/contents/ui/AddAccount.qml:93
+#: src/contents/ui/AddAccount.qml:113
 #, kde-format
 msgid "Token secret"
 msgstr "Token titkos kulcsa"
 
-#: src/contents/ui/AddAccount.qml:96
+#: src/contents/ui/AddAccount.qml:116
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Titkos kulcs:"
 
-#: src/contents/ui/AddAccount.qml:112
+#: src/contents/ui/AddAccount.qml:132
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Részletek"
 
-#: src/contents/ui/AddAccount.qml:144
-#, kde-format
-msgctxt "@action:button cancel and dismiss the add account form"
-msgid "Cancel"
-msgstr "Mégsem"
+#: src/contents/ui/AddAccount.qml:140
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "@title:group"
+msgid "HOTP Details:"
+msgstr "Részletek"
 
-#: src/contents/ui/AddAccount.qml:151 src/contents/ui/ErrorPage.qml:40
-#, kde-format
-msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-msgid "Quit"
-msgstr "Kilépés"
-
-#: src/contents/ui/AddAccount.qml:160 src/contents/ui/RenameAccount.qml:56
-#, kde-format
-msgid "Add"
-msgstr "Hozzáadás"
+#: src/contents/ui/AddAccount.qml:153
+#, fuzzy, kde-format
+#| msgctxt "Button to reveal form for configuring additional token details"
+#| msgid "Details"
+msgctxt "@label"
+msgid "TOTP Details:"
+msgstr "Részletek"
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
 msgstr "Folytatás"
+
+#: src/contents/ui/ErrorPage.qml:40
+#, kde-format
+msgctxt "@action:button Dismiss the error page and quit Keysmtih"
+msgid "Quit"
+msgstr "Kilépés"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
@@ -290,34 +323,26 @@ msgid "Show details"
 msgstr "Részletek"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
-#: src/contents/ui/TOTPAccountEntryView.qml:32
+#: src/contents/ui/TOTPAccountEntryView.qml:34
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
 msgstr "Fiók törlése"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
-msgctxt "@title:group"
-msgid "HOTP Details:"
-msgstr "Részletek"
-
-#: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
 msgstr "Számláló:"
 
-#: src/contents/ui/HOTPDetailsForm.qml:55
-#: src/contents/ui/TOTPDetailsForm.qml:74
+#: src/contents/ui/HOTPDetailsForm.qml:48
+#: src/contents/ui/TOTPDetailsForm.qml:67
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
 msgstr "Tokenhossz:"
 
-#: src/contents/ui/HOTPDetailsForm.qml:70
+#: src/contents/ui/HOTPDetailsForm.qml:63
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Add check digit"
@@ -325,7 +350,7 @@ msgctxt "@option:check"
 msgid "Add checksum digit"
 msgstr "Ellenőrző számjegy hozzáadása"
 
-#: src/contents/ui/HOTPDetailsForm.qml:82
+#: src/contents/ui/HOTPDetailsForm.qml:75
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Use custom offset"
@@ -333,7 +358,7 @@ msgctxt "@option:check"
 msgid "Use custom truncation offset"
 msgstr "Egyéni eltolás használata"
 
-#: src/contents/ui/HOTPDetailsForm.qml:96
+#: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
@@ -363,11 +388,21 @@ msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/contents/ui/SetupPassword.qml:21 src/contents/ui/UnlockAccounts.qml:24
+#: src/contents/ui/RenameAccount.qml:56
+#, kde-format
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: src/contents/ui/SetupPassword.qml:22 src/contents/ui/UnlockAccounts.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
 msgstr "Jelszó"
+
+#: src/contents/ui/SetupPassword.qml:28
+#, kde-format
+msgid "Failed to set up your password"
+msgstr "A jelszó beállítása sikertelen"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, fuzzy, kde-format
@@ -375,7 +410,7 @@ msgstr "Jelszó"
 msgid "Choose a password to protect your accounts"
 msgstr "Kezdjen egy jelszó választásával fiókjai védelméhez"
 
-#: src/contents/ui/SetupPassword.qml:48
+#: src/contents/ui/SetupPassword.qml:49
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "New password:"
@@ -383,21 +418,18 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Új jelszó:"
 
-#: src/contents/ui/SetupPassword.qml:58
+#: src/contents/ui/SetupPassword.qml:59
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Jelszó megerősítése:"
 
-#: src/contents/ui/SetupPassword.qml:68
-#, kde-format
+#: src/contents/ui/SetupPassword.qml:67
+#, fuzzy, kde-format
+#| msgid "Apply"
+msgctxt "@action:button"
 msgid "Apply"
 msgstr "Alkalmazás"
-
-#: src/contents/ui/SetupPassword.qml:83
-#, kde-format
-msgid "Failed to set up your password"
-msgstr "A jelszó beállítása sikertelen"
 
 #: src/contents/ui/TokenEntryViewLabels.qml:40
 #, kde-format
@@ -405,72 +437,66 @@ msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
 msgstr "(frissítés)"
 
-#: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
-msgctxt "@label"
-msgid "TOTP Details:"
-msgstr "Részletek"
-
-#: src/contents/ui/TOTPDetailsForm.qml:34
+#: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
 msgstr "Időzítő:"
 
-#: src/contents/ui/TOTPDetailsForm.qml:52
+#: src/contents/ui/TOTPDetailsForm.qml:45
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
 msgstr "Indítás ekkor:"
 
-#: src/contents/ui/TOTPDetailsForm.qml:86
+#: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
 msgstr "Hash algoritmus:"
 
-#: src/contents/ui/TOTPDetailsForm.qml:93
+#: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-1"
 msgstr "SHA-1"
 
-#: src/contents/ui/TOTPDetailsForm.qml:105
+#: src/contents/ui/TOTPDetailsForm.qml:98
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-256"
 msgstr "SHA-256"
 
-#: src/contents/ui/TOTPDetailsForm.qml:117
+#: src/contents/ui/TOTPDetailsForm.qml:110
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-512"
 msgstr "SHA-512"
 
-#: src/contents/ui/UnlockAccounts.qml:30
+#: src/contents/ui/UnlockAccounts.qml:26
 #, kde-format
 msgid "Failed to unlock your accounts"
 msgstr "A fiókok feloldása sikertelen"
 
-#: src/contents/ui/UnlockAccounts.qml:55
+#: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr "Adja meg a jelszót a fiókok feloldásához"
 
-#: src/contents/ui/UnlockAccounts.qml:61
+#: src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: src/contents/ui/UnlockAccounts.qml:72
-#, kde-format
+#: src/contents/ui/UnlockAccounts.qml:59
+#, fuzzy, kde-format
+#| msgid "Unlock"
+msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Feloldás"
 
-#: src/main.cpp:69
+#: src/main.cpp:67
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
