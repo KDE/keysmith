@@ -65,7 +65,7 @@ FormCard.FormCardPage {
         FormCard.FormButtonDelegate {
             id: applyButton
             text: i18nc("@action:button", "Apply")
-            iconName: "answer-correct"
+            icon.name: "answer-correct"
             enabled: !vm.busy && newPassword.text === newPasswordCopy.text && newPassword.text && newPassword.text.length > 0
             onClicked: vm.setup(newPassword.text, newPasswordCopy.text);
         }
