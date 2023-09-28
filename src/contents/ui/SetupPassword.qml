@@ -55,6 +55,7 @@ FormCard.FormCardPage {
 
         FormCard.FormTextFieldDelegate {
             id: newPasswordCopy
+            echoMode: TextInput.Password
             enabled: !vm.busy
             label: i18nc("@label:textbox", "Verify password:")
             onAccepted: applyButton.clicked()
