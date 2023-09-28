@@ -23,7 +23,7 @@ FormCard.FormCardPage {
 
     Component.onCompleted: newPassword.forceActiveFocus()
 
-    header: Component.Banner {
+    header: Components.Banner {
         id: errorMessage
         text: i18n("Failed to set up your password")
         visible: vm.failed
