@@ -63,8 +63,8 @@ namespace accounts
         void setToken(const QString &token);
         void shiftTokens(void);
     private:
-        Q_DISABLE_COPY(AccountPrivate);
-        Q_DECLARE_PUBLIC(Account);
+        Q_DISABLE_COPY(AccountPrivate)
+        Q_DECLARE_PUBLIC(Account)
         Account * const q_ptr;
     private:
         AccountStoragePrivate *m_storage;
@@ -134,8 +134,8 @@ namespace accounts
         std::optional<secrets::EncryptedSecret> encrypt(const QString &secret) const;
         QUuid generateId(const QString &name) const;
     private:
-        Q_DECLARE_PUBLIC(AccountStorage);
-        Q_DISABLE_COPY(AccountStoragePrivate);
+        Q_DECLARE_PUBLIC(AccountStorage)
+        Q_DISABLE_COPY(AccountStoragePrivate)
         AccountStorage * const q_ptr;
     private:
         bool m_is_loaded;
