@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:41+0000\n"
+"POT-Creation-Date: 2023-09-29 01:41+0000\n"
 "PO-Revision-Date: 2020-01-02 12:19-0800\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -362,13 +362,13 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:59
+#: src/contents/ui/SetupPassword.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:67
+#: src/contents/ui/SetupPassword.qml:68
 #, kde-format
 msgctxt "@action:button"
 msgid "Apply"

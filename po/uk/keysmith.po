@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:41+0000\n"
-"PO-Revision-Date: 2023-08-21 09:55+0300\n"
+"POT-Creation-Date: 2023-09-29 01:41+0000\n"
+"PO-Revision-Date: 2023-09-28 09:12+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -74,21 +74,19 @@ msgstr "Джерело:"
 #: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "Режим:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
-#, fuzzy, kde-format
-#| msgid "HOTP:"
+#, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr "HOTP:"
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
-#, fuzzy, kde-format
-#| msgid "TOTP:"
+#, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr "TOTP:"
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
@@ -219,16 +217,13 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/contents/ui/AddAccount.qml:52
-#, fuzzy, kde-format
-#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-#| msgid "Quit"
+#, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Вийти"
 
 #: src/contents/ui/AddAccount.qml:61
-#, fuzzy, kde-format
-#| msgid "Add"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Додати"
@@ -388,15 +383,14 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Новий пароль:"
 
-#: src/contents/ui/SetupPassword.qml:59
+#: src/contents/ui/SetupPassword.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Перевірте пароль:"
 
-#: src/contents/ui/SetupPassword.qml:67
-#, fuzzy, kde-format
-#| msgid "Apply"
+#: src/contents/ui/SetupPassword.qml:68
+#, kde-format
 msgctxt "@action:button"
 msgid "Apply"
 msgstr "Застосувати"
@@ -460,8 +454,7 @@ msgid "Password:"
 msgstr "Пароль:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
-#, fuzzy, kde-format
-#| msgid "Unlock"
+#, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Розблокувати"

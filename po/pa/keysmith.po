@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:41+0000\n"
+"POT-Creation-Date: 2023-09-29 01:41+0000\n"
 "PO-Revision-Date: 2021-01-20 21:44-0800\n"
 "Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -409,13 +409,13 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "ਨਵਾਂ ਪਾਸਵਰਡ:"
 
-#: src/contents/ui/SetupPassword.qml:59
+#: src/contents/ui/SetupPassword.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "ਪਾਸਵਰਡ ਤਸਦੀਕ ਕਰੋ:"
 
-#: src/contents/ui/SetupPassword.qml:67
+#: src/contents/ui/SetupPassword.qml:68
 #, fuzzy, kde-format
 #| msgid "Apply"
 msgctxt "@action:button"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-28 01:41+0000\n"
+"POT-Creation-Date: 2023-09-29 01:41+0000\n"
 "PO-Revision-Date: 2021-01-10 15:05+0100\n"
 "Last-Translator: Kristóf Kiszel <kiszel.kristof@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -418,13 +418,13 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Új jelszó:"
 
-#: src/contents/ui/SetupPassword.qml:59
+#: src/contents/ui/SetupPassword.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Jelszó megerősítése:"
 
-#: src/contents/ui/SetupPassword.qml:67
+#: src/contents/ui/SetupPassword.qml:68
 #, fuzzy, kde-format
 #| msgid "Apply"
 msgctxt "@action:button"
