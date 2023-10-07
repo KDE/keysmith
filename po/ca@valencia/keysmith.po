@@ -94,7 +94,7 @@ msgstr "Suprimix el compte"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr "El testimoni s'ha copiat al porta-retalls!"
+msgstr "El testimoni s'ha copiat a dins del porta-retalls!"
 
 #: src/contents/ui/AccountNameForm.qml:67
 #, kde-format
