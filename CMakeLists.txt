@@ -56,7 +56,7 @@ endif()
 
 find_package(Qt6Core5Compat REQUIRED)
 
-if(NOT BUILD_EXTERNAL AND (ANDROID OR DEFINED BUILD_EXTERNAL))
+if(NOT BUILD_EXTERNAL)
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
     message(STATUS "Will build against system version of: libsodium")

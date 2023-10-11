@@ -7,7 +7,7 @@ set(secret_SRCS secrets.cpp)
 
 add_library(secrets_lib STATIC ${secret_SRCS})
 
-if (BUILD_EXTERNAL OR (NOT DEFINED BUILD_EXTERNAL AND NOT ANDROID))
+if (BUILD_EXTERNAL)
     message(STATUS "Will build external project: libsodium")
     include(ExternalProject)
 
