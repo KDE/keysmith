@@ -65,7 +65,7 @@ msgstr "Vydavatel:"
 #: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "Režim:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
@@ -201,16 +201,13 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 #: src/contents/ui/AddAccount.qml:52
-#, fuzzy, kde-format
-#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-#| msgid "Quit"
+#, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
-msgstr "Ukončit"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:61
-#, fuzzy, kde-format
-#| msgid "Add"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Přidat"
@@ -375,8 +372,7 @@ msgid "Verify password:"
 msgstr "Ověřit heslo:"
 
 #: src/contents/ui/SetupPassword.qml:68
-#, fuzzy, kde-format
-#| msgid "Apply"
+#, kde-format
 msgctxt "@action:button"
 msgid "Apply"
 msgstr "Použít"
@@ -440,11 +436,10 @@ msgid "Password:"
 msgstr "Heslo:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
-#, fuzzy, kde-format
-#| msgid "Unlock"
+#, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
-msgstr "Odemknout"
+msgstr ""
 
 #: src/main.cpp:67
 #, kde-format
