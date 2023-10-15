@@ -176,7 +176,7 @@
       <li xml:lang="et">Aja- ja räsipõhine OTP</li>
       <li xml:lang="eu">Orduan eta «Hash»ean oinarritutako OTP</li>
       <li xml:lang="fi">Aika- ja tiivisteperustainen OTP</li>
-      <li xml:lang="fr">Temps et OTP (One Time Password) sur code de hachage</li>
+      <li xml:lang="fr">Temps et mot de passe à usage unique (OTP) sur code de hachage</li>
       <li xml:lang="gl">Contrasinais dun uso (OTP) baseadas en tempo ou código aleatorio.</li>
       <li xml:lang="hi">समय व मिश्रण अधारित OTP</li>
       <li xml:lang="hu">Idő- és ellenőrzőösszeg-alapú OTP</li>
