@@ -1,21 +1,21 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# Tommi Nieminen <translator@legisign.org>, 2020, 2021, 2023.
 #
+# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-29 01:41+0000\n"
-"PO-Revision-Date: 2023-09-26 10:48+0300\n"
-"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
-"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
-"Language: fi\n"
+"PO-Revision-Date: 2023-11-07 01:08+0100\n"
+"Last-Translator: Enol P. <enolp@softastur.org>\n"
+"Language-Team: \n"
+"Language: ast_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -23,13 +23,12 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
-"Valinnainen lisättävä tili otpauth://-URIn muodossa (esim. QR-koodista)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
-msgstr "Virheellinen tili"
+msgstr ""
 
 #: src/app/flows_p.cpp:106
 #, kde-format
@@ -38,8 +37,6 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
-"Tili, jota yrität lisätä, on virheellinen. Voit joko lopettaa sovelluksen "
-"tai jatkaa lisäämättä tiliä."
 
 #: src/app/flows_p.cpp:247
 #, kde-format
@@ -47,23 +44,23 @@ msgctxt "@info:label"
 msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
-msgstr "Tili, jota yrität lisätä, on virheellinen. Jatka lisäämättä tiliä."
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:34
 #, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Tilin tiedot: %1"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:41
 #, kde-format
 msgid "Name:"
-msgstr "Nimi:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
 msgid "Issuer:"
-msgstr "Myöntäjä:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
@@ -74,44 +71,44 @@ msgstr ""
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgid "Epoch:"
-msgstr "Aikakausi:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:69
 #, kde-format
 msgid "Time Step:"
-msgstr "Aika-askel:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:76
 #, kde-format
 msgid "Offset:"
-msgstr "Siirtymä:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Token Length:"
-msgstr "Merkin pituus:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:90
 #, kde-format
 msgid "Hash:"
-msgstr "Tiiviste:"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
-msgstr "Poistetaan tili: %1"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
@@ -123,64 +120,59 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>Tämän tilin poistaminen KeySmithistä ei poista käytöstä kahden tekijän "
-"todennusta (2FA). Varmista, että pääset yhä tilillesi KeySmithiä käyttämättä "
-"ennen kuin jatkat:</p><ul><li>Varmista, että tilillesi on asetettu toinen "
-"2FA-sovellus, tai:</li><li>Varmista, että tililläsi on palautuskoodi, tai:</"
-"li><li>Poista kahden tekijän todennus tililtäsi</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
-msgstr "Peru"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:121
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
-msgstr "Poista tili"
+msgstr ""
 
 #: src/contents/ui/AccountEntryViewBase.qml:137
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr "Merkki kopioitu leikepöydälle!"
+msgstr ""
 
 #: src/contents/ui/AccountNameForm.qml:64
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
-msgstr "Tilin nimi:"
+msgstr ""
 
 #: src/contents/ui/AccountNameForm.qml:83
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
-msgstr "Tilin myöntäjä:"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
 msgctxt "@title:window"
 msgid "Accounts"
-msgstr "Tilit"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:25
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr "Tilien päivitys epäonnistui"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr "Joidenkin tilien lataus epäonnistui."
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:101
 #, kde-format
 msgid "No accounts added"
-msgstr "Tilejä ei lisätty"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:106
 #, kde-format
@@ -188,150 +180,147 @@ msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
 msgid "Add Account"
-msgstr "Lisää tili"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:171
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
-msgstr "Lisää"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
-msgstr "Lisää uusi tili"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:45
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
-msgstr "Peru"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:52
-#, fuzzy, kde-format
-#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-#| msgid "Quit"
+#, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
-msgstr "Lopeta"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:61
-#, fuzzy, kde-format
-#| msgid "Add"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add"
-msgstr "Lisää"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:81
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
-msgstr "Tilin tyyppi:"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:90
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr "Aikaperustainen OTP"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:101
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr "Tiivisteperustainen OTP"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:113
 #, kde-format
 msgid "Token secret"
-msgstr "Merkin salaisuus"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:116
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
-msgstr "Salainen avain:"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:132
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
-msgstr "Tiedot"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:140
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "HOTP-tiedot:"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:153
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "TOTP-tiedot:"
+msgstr ""
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
-msgstr "Jatka"
+msgstr ""
 
 #: src/contents/ui/ErrorPage.qml:40
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
-msgstr "Lopeta"
+msgstr ""
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
 #, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "Näytä tiedot"
+msgstr ""
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:34
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
-msgstr "Poista tili"
+msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
-msgstr "Laskuri:"
+msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:48
 #: src/contents/ui/TOTPDetailsForm.qml:67
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr "Merkin pituus:"
+msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:63
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Lisää tarkistusluku"
+msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Mukauta katkaisun siirtymää"
+msgstr ""
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr "Katkaisun siirtymä:"
+msgstr ""
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr "Muuta lisättävän tilin nimeä"
+msgstr ""
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -342,147 +331,118 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
-"Toinen saman niminen tili on jo olemassa. Korvaa uuden tilin nimi tai "
-"myöntäjä."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
 msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
-msgstr "Peru"
+msgstr ""
 
 #: src/contents/ui/RenameAccount.qml:56
 #, kde-format
 msgid "Add"
-msgstr "Lisää"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:22 src/contents/ui/UnlockAccounts.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
-msgstr "Salasana"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:28
 #, kde-format
 msgid "Failed to set up your password"
-msgstr "Salasanasi asetus epäonnistui"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr "Aloita valitsemalla tiliesi suojaksi salasana"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
-msgstr "Uusi salasana:"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
-msgstr "Vahvista salasana:"
+msgstr ""
 
 #: src/contents/ui/SetupPassword.qml:68
-#, fuzzy, kde-format
-#| msgid "Apply"
+#, kde-format
 msgctxt "@action:button"
 msgid "Apply"
-msgstr "Käytä"
+msgstr ""
 
 #: src/contents/ui/TokenEntryViewLabels.qml:40
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr "(virkistä)"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
-msgstr "Ajastin:"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr "Alkaen:"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
-msgstr "Tiivistealgoritmi:"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-1"
-msgstr "SHA-1"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:98
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-256"
-msgstr "SHA-256"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:110
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-512"
-msgstr "SHA-512"
+msgstr ""
 
 #: src/contents/ui/UnlockAccounts.qml:26
 #, kde-format
 msgid "Failed to unlock your accounts"
-msgstr "Tilien lukitusten avaaminen epäonnistui"
+msgstr ""
 
 #: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
-msgstr "Anna salasana tiliesi lukituksen avaamiseksi"
+msgstr ""
 
 #: src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr "Salasana:"
+msgstr ""
 
 #: src/contents/ui/UnlockAccounts.qml:59
-#, fuzzy, kde-format
-#| msgid "Unlock"
+#, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
-msgstr "Avaa lukitus"
+msgstr ""
 
 #: src/main.cpp:67
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
-msgstr "Keysmith"
-
-#~ msgctxt "@label:check"
-#~ msgid "Checksum:"
-#~ msgstr "Tarkistussumma:"
-
-#~ msgctxt "@label:check"
-#~ msgid "Truncation:"
-#~ msgstr "Katkaisu:"
-
-#~ msgctxt "%1 is current counter numerical value"
-#~ msgid "Refresh (%1)"
-#~ msgstr "Virkistä (%1)"
-
-#~ msgid "Show"
-#~ msgstr "Näytä"
-
-#~ msgid "Hide"
-#~ msgstr "Piilota"
-
-#~ msgid "Edit"
-#~ msgstr "Muokkaa"
-
-#~ msgctxt "Text shown when no accounts are added"
-#~ msgid "No account set up. Use the Add button to add accounts."
-#~ msgstr "Tilejä ei ole asetettu. Luo tili Lisää-painikkeella."
+msgstr ""
