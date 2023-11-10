@@ -64,7 +64,7 @@ AccountEntryViewBase {
         }
     }
 
-    TokenEntryViewLabels {
+    contentItem: TokenEntryViewLabels {
         id: mainLayout
         accountName: account.name
         tokenValue: account.token

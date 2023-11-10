@@ -43,7 +43,7 @@ AccountEntryViewBase {
         }
     ]
 
-    TokenEntryViewLabels {
+    contentItem: TokenEntryViewLabels {
         accountName: account.name
         tokenValue: account.token
         labelColor: listItem.labelColor
