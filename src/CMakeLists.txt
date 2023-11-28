@@ -60,6 +60,8 @@ if(ANDROID)
         unlock
         lock
     )
+
+    ecm_add_android_apk(keysmith ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
 else()
     target_link_libraries(keysmith PUBLIC Qt6::Widgets)
 endif()
