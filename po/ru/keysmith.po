@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-07-25 02:35+0000\n"
-"PO-Revision-Date: 2023-04-26 15:22+0300\n"
+"PO-Revision-Date: 2023-11-29 11:41+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: src/app/cli.cpp:128
 #, kde-format
@@ -85,7 +85,7 @@ msgid "Cancel"
 msgstr "Отмена"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Удалить учётную запись"
@@ -94,16 +94,16 @@ msgstr "Удалить учётную запись"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Маркер скопирован в буфер обмена!"
 
 #: src/contents/ui/AccountNameForm.qml:67
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Имя учётной записи:"
 
 #: src/contents/ui/AccountNameForm.qml:86
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Издатель учётной записи:"
@@ -132,7 +132,7 @@ msgid "No accounts added"
 msgstr "Не добавлено ни одной учётной записи"
 
 #: src/contents/ui/AccountsOverview.qml:106
-#, fuzzy, kde-format
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
@@ -152,7 +152,7 @@ msgid "Add new account"
 msgstr "Добавление учётной записи"
 
 #: src/contents/ui/AddAccount.qml:64
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Тип учётной записи:"
@@ -217,12 +217,10 @@ msgid "Delete account"
 msgstr "Удалить учётную запись"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Подробности"
+msgstr "Сведения о HOTP:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:34
 #, kde-format
@@ -238,20 +236,16 @@ msgid "Token length:"
 msgstr "Длина маркера:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Добавить контрольную цифру"
+msgstr "Добавить цифру контрольной суммы"
 
 #: src/contents/ui/HOTPDetailsForm.qml:82
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Использовать нестандартное смещение"
+msgstr "Использовать нестандартное смещение усечения"
 
 #: src/contents/ui/HOTPDetailsForm.qml:96
 #, kde-format
@@ -295,9 +289,7 @@ msgid "Choose a password to protect your accounts"
 msgstr "Выберите пароль для защиты учётных записей"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Новый пароль:"
@@ -325,12 +317,10 @@ msgid "(refresh)"
 msgstr "(обновить)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:28
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Подробности"
+msgstr "Сведения о TOTP:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:34
 #, kde-format
