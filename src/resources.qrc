@@ -1,0 +1,24 @@
+<!--
+  - SPDX-License-Identifier: BSD-2-Clause
+  - SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
+  - SPDX-FileCopyrightText: 2019-2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ -->
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">contents/ui/main.qml</file>
+        <file alias="AccountsOverview.qml">contents/ui/AccountsOverview.qml</file>
+        <file alias="AddAccount.qml">contents/ui/AddAccount.qml</file>
+        <file alias="ImportAccount.qml">contents/ui/ImportAccount.qml</file>
+        <file alias="ErrorPage.qml">contents/ui/ErrorPage.qml</file>
+        <file alias="RenameAccount.qml">contents/ui/RenameAccount.qml</file>
+        <file alias="AccountNameForm.qml">contents/ui/AccountNameForm.qml</file>
+        <file alias="HOTPDetailsForm.qml">contents/ui/HOTPDetailsForm.qml</file>
+        <file alias="TOTPDetailsForm.qml">contents/ui/TOTPDetailsForm.qml</file>
+        <file alias="UnlockAccounts.qml">contents/ui/UnlockAccounts.qml</file>
+        <file alias="SetupPassword.qml">contents/ui/SetupPassword.qml</file>
+        <file alias="TokenEntryViewLabels.qml">contents/ui/TokenEntryViewLabels.qml</file>
+        <file alias="AccountEntryViewBase.qml">contents/ui/AccountEntryViewBase.qml</file>
+        <file alias="HOTPAccountEntryView.qml">contents/ui/HOTPAccountEntryView.qml</file>
+        <file alias="TOTPAccountEntryView.qml">contents/ui/TOTPAccountEntryView.qml</file>
+    </qresource>
+</RCC>

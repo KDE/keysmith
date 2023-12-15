@@ -41,6 +41,33 @@ bool AddAccountViewModel::quitEnabled(void) const
     return m_quitEnabled;
 }
 
+ImportAccountViewModel::ImportAccountViewModel(model::ImportInput *input, model::SimpleAccountListModel *accounts,
+                                               bool quitEnabled, bool validateAvailability, QObject *parent) :
+    QObject(parent), m_input(input), m_accounts(accounts), m_quitEnabled(quitEnabled),
+    m_validateAvailability(validateAvailability)
+{
+}
+
+model::ImportInput * ImportAccountViewModel::input(void) const
+{
+    return m_input;
+}
+
+model::SimpleAccountListModel * ImportAccountViewModel::accounts(void) const
+{
+    return m_accounts;
+}
+
+bool ImportAccountViewModel::validateAvailability(void) const
+{
+    return m_validateAvailability;
+}
+
+bool ImportAccountViewModel::quitEnabled(void) const
+{
+    return m_quitEnabled;
+}
+
 RenameAccountViewModel::RenameAccountViewModel(model::AccountInput *input, model::SimpleAccountListModel *accounts, QObject *parent)
     : QObject(parent)
     , m_input(input)
@@ -126,6 +153,12 @@ bool AccountsOverviewViewModel::actionsEnabled(void) const
 void AccountsOverviewViewModel::addNewAccount(void)
 {
     auto flow = new ManualAddAccountFlow(m_app);
+    flow->run();
+}
+
+void AccountsOverviewViewModel::importAccount(void)
+{
+    auto flow = new ManualImportAccountFlow(m_app);
     flow->run();
 }
 

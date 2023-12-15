@@ -12,6 +12,7 @@ add_subdirectory(uri)
 add_subdirectory(hmac)
 add_subdirectory(oath)
 add_subdirectory(secrets)
+add_subdirectory(backups)
 add_subdirectory(account)
 add_subdirectory(model)
 add_subdirectory(validators)
@@ -59,6 +60,7 @@ target_link_libraries(keysmith
         Qt6::QuickControls2
         KF6::CoreAddons
         KF6::I18n
+        ${Qca_LIBRARY}
         keysmith_lib
 )
 

@@ -102,6 +102,39 @@ private:
     quint64 m_counterValue;
     std::optional<uint> m_truncation;
 };
+
+class ImportInput : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString file READ file WRITE setFile NOTIFY fileChanged)
+    Q_PROPERTY(model::ImportInput::ImportFormat format READ format WRITE setFormat NOTIFY formatChanged)
+    Q_PROPERTY(QString password READ password WRITE setPassword NOTIFY passwordChanged)
+public:
+    enum ImportFormat {
+        FreeOTPURIs,
+        AndOTPPlainJSON, AndOTPEncryptedJSON,
+        AegisPlainJSON, AegisEncryptedJSON,
+    };
+    Q_ENUM(ImportFormat)
+    ImportInput(QObject *parent = nullptr);
+    Q_INVOKABLE void reset(void);
+public:
+    QString file(void) const;
+    void setFile(const QString &file);
+    ImportFormat format(void) const;
+    void setFormat(model::ImportInput::ImportFormat format);
+    QString password(void) const;
+    void setPassword(const QString &password);
+    QVector<AccountInput *> importAccounts() const;
+Q_SIGNALS:
+    void fileChanged(void);
+    void formatChanged(void);
+    void passwordChanged(void);
+private:
+    QString m_file;
+    QString m_password;
+    ImportFormat m_format;
+};
 }
 
 #endif

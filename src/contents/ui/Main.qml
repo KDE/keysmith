@@ -29,6 +29,8 @@ Kirigami.ApplicationWindow {
             return Qt.resolvedUrl("AccountsOverview.qml")
         case Application.Navigation.AddAccount:
             return Qt.resolvedUrl("AddAccount.qml")
+        case Application.Navigation.ImportAccount:
+            return Qt.resolvedUrl("ImportAccount.qml")
         case Application.Navigation.SetupPassword:
             return Qt.resolvedUrl("SetupPassword.qml")
         }

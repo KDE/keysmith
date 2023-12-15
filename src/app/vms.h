@@ -82,6 +82,31 @@ private:
     const bool m_quitEnabled;
 };
 
+class ImportAccountViewModel: public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(model::ImportInput * input READ input CONSTANT)
+    Q_PROPERTY(model::SimpleAccountListModel * accounts READ accounts CONSTANT)
+    Q_PROPERTY(bool validateAvailability READ validateAvailability CONSTANT)
+    Q_PROPERTY(bool quitEnabled READ quitEnabled CONSTANT)
+public:
+    explicit ImportAccountViewModel(model::ImportInput *input, model::SimpleAccountListModel *accounts,
+                                    bool quitEnabled, bool validateAvailability,
+                                    QObject *parent = nullptr);
+    model::ImportInput * input(void) const;
+    model::SimpleAccountListModel * accounts(void) const;
+    bool validateAvailability(void) const;
+    bool quitEnabled(void) const;
+Q_SIGNALS:
+    void cancelled(void);
+    void accepted(void);
+private:
+    model::ImportInput * const m_input;
+    model::SimpleAccountListModel * const m_accounts;
+    const bool m_quitEnabled;
+    const bool m_validateAvailability;
+};
+
 class PasswordViewModel : public QObject
 {
     Q_OBJECT
@@ -132,6 +157,7 @@ public:
     bool actionsEnabled(void) const;
 public Q_SLOTS:
     void addNewAccount(void);
+    void importAccount(void);
 Q_SIGNALS:
     void actionsEnabledChanged(void);
 

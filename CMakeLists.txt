@@ -16,6 +16,7 @@ project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
 set(KF_MIN_VERSION "6.0.0")
 set(QT_MIN_VERSION "6.5.0")
+set(QCA_MIN_VERSION "2.3.1")
 set(SODIUM_MIN_VERSION "1.0.16")
 
 include(FeatureSummary)
@@ -44,6 +45,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui 
 find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
+find_package(Qca-qt6 ${QCA_MIN_VERSION} REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0
     KF 6.7

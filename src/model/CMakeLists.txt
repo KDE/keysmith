@@ -11,4 +11,4 @@ set(model_SRCS
 )
 
 add_library(model_lib STATIC ${model_SRCS})
-target_link_libraries(model_lib Qt::Core Qt::Qml Qt::Gui account_lib validator_lib uri_lib)
+target_link_libraries(model_lib Qt::Core Qt::Qml Qt::Gui account_lib backups_lib validator_lib uri_lib)
