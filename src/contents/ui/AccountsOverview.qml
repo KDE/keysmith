@@ -167,17 +167,32 @@ Kirigami.ScrollablePage {
         }
     }
 
-    actions: Kirigami.Action {
-        id: addAction
-        text: i18nc("@action:button add new account, shown in toolbar", "Add")
-        icon.name: "list-add"
-        enabled: vm.actionsEnabled
-        visible: vm.actionsEnabled
-        onTriggered: {
-            // FIXME : should be managed via vm
-            vm.accounts.error = false;
-            root.errorMessage = root.accountErrorMessage;
-            vm.addNewAccount();
+    actions: [
+        Kirigami.Action {
+            id: addAction
+            text: i18nc("@action:button add new account, shown in toolbar", "Add")
+            icon.name: "list-add"
+            enabled: vm.actionsEnabled
+            visible: vm.actionsEnabled
+            onTriggered: {
+                // FIXME : should be managed via vm
+                vm.accounts.error = false;
+                root.errorMessage = root.accountErrorMessage;
+                vm.addNewAccount();
+            }
+        },
+        Kirigami.Action {
+            id: importAction
+            text: i18nc("@action:button import accounts, shown in toolbar", "Import")
+            icon.name: "document-import"
+            enabled: vm.actionsEnabled
+            visible: vm.actionsEnabled
+            onTriggered: {
+                // FIXME : should be managed via vm
+                vm.accounts.error = false;
+                root.errorMessage = root.accountErrorMessage;
+                vm.importAccount();
+            }
         }
-    }
+    ]
 }

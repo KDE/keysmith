@@ -74,6 +74,20 @@ private:
     Keysmith *const m_app;
     model::AccountInput *const m_input;
 };
+
+class ManualImportAccountFlow: public QObject
+{
+    Q_OBJECT
+public:
+    explicit ManualImportAccountFlow(Keysmith *app);
+    void run(void);
+private Q_SLOTS:
+    void back(void);
+    void onAccepted(void);
+private:
+    Keysmith * const m_app;
+    model::ImportInput * const m_input;
+};
 }
 
 #endif

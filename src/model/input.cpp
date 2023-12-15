@@ -3,8 +3,18 @@
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
 #include "input.h"
+#include "qr.h"
 
+#include "../backups/backups.h"
+
+#include <QBuffer>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QLocale>
+
+using namespace Qt::Literals::StringLiterals;
 
 static QDateTime DEFAULT_EPOCH_VALUE = QDateTime::fromMSecsSinceEpoch(0, Qt::UTC);
 static QString DEFAULT_EPOCH = DEFAULT_EPOCH_VALUE.toString(Qt::ISODate);
@@ -250,6 +260,211 @@ void AccountInput::setDynamicTruncation(void)
         m_truncation = std::nullopt;
         Q_EMIT truncationChanged();
     }
+}
+
+ImportInput::ImportInput(QObject *parent) :
+    QObject(parent),
+    m_file(QString())
+{
+}
+
+void ImportInput::reset(void)
+{
+    setFile(QString());
+    setFormat(ImportFormat::FreeOTPURIs);
+}
+
+QString ImportInput::file(void) const
+{
+    return m_file;
+}
+
+void ImportInput::setFile(const QString &file)
+{
+    QUrl url(file);
+    if ((url.isLocalFile() && m_file != url.toLocalFile()) || m_file != file) {
+        m_file = url.isLocalFile() ? url.toLocalFile() : file;
+        Q_EMIT fileChanged();
+    }
+}
+
+ImportInput::ImportFormat ImportInput::format(void) const
+{
+    return m_format;
+}
+
+void ImportInput::setFormat(model::ImportInput::ImportFormat format)
+{
+    if (m_format != format) {
+        m_format = format;
+        Q_EMIT formatChanged();
+    }
+}
+
+QString ImportInput::password(void) const
+{
+    return m_password;
+}
+
+void ImportInput::setPassword(const QString &password)
+{
+    if (m_password != password) {
+        m_password = password;
+        Q_EMIT passwordChanged();
+    }
+}
+
+static void readUris(QVector<AccountInput *> &ret, QByteArray &data)
+{
+    QBuffer buf(&data);
+    buf.open(QIODevice::ReadOnly);
+    while (!buf.atEnd()) {
+        AccountInput *account = new AccountInput;
+        std::optional<QrParameters> params(QrParameters::parse(buf.readLine()));
+        params->populate(account);
+        ret.push_back(account);
+    }
+}
+
+static void readAndOTP(QVector<AccountInput *> &ret, const QByteArray &data)
+{
+    QJsonDocument json = QJsonDocument::fromJson(data);
+    QJsonArray array(json.array());
+    ret.reserve(array.size());
+    for (const auto& obj : array) {
+        const QJsonObject& otp(obj.toObject());
+        AccountInput *account = new AccountInput;
+
+        QString secret(otp["secret"_L1].toString());
+        if (secret.size() % 8 != 0) {
+            secret.resize((secret.size() + 7) & -8, '='_L1);
+        }
+        account->setSecret(secret);
+
+        QString issuer(otp["issuer"_L1].toString());
+        if (issuer.size()) {
+            account->setIssuer(issuer);
+        }
+
+        QStringList tokens(otp["label"_L1].toString().split(':'_L1));
+        if (tokens.size() >= 2) {
+            if (!issuer.size() || QString::compare(issuer, tokens[0], Qt::CaseInsensitive)) {
+                account->setIssuer(tokens[0]);
+            }
+            account->setName(tokens[1]);
+        } else {
+            account->setName(tokens[0]);
+        }
+
+        account->setTokenLength(otp["digits"_L1].toInt());
+
+        QString type(otp["type"_L1].toString());
+        if (type == "TOPT"_L1) {
+            account->setType(AccountInput::Totp);
+            account->setTimeStep(otp["period"_L1].toInt());
+        } else if (type == "HOPT"_L1) {
+            account->setType(AccountInput::Hotp);
+            account->setCounter(otp["counter"_L1].toInt());
+        } else if (type == "Steam"_L1) {
+            account->setType(AccountInput::Totp);
+            account->setTimeStep(otp["period"_L1].toInt());
+            if (account->timeStep() == 0) {
+                account->setTimeStep(30);
+            }
+            account->setIssuer("Steam"_L1);
+        }
+
+        QString algo(otp["algorithm"_L1].toString());
+        if (algo == "SHA1"_L1) {
+            account->setAlgorithm(AccountInput::Sha1);
+        } else if (algo == "SHA256"_L1) {
+            account->setAlgorithm(AccountInput::Sha256);
+        } else if (algo == "SHA512"_L1) {
+            account->setAlgorithm(AccountInput::Sha512);
+        }
+
+        ret.push_back(account);
+    }
+}
+
+static void readAegis(QVector<AccountInput *> &ret, const QByteArray &data)
+{
+    QJsonDocument json = QJsonDocument::fromJson(data);
+    QJsonArray array(json.object()["db"_L1].toObject()["entries"_L1].toArray());
+    ret.reserve(array.size());
+    for (const auto& obj : array) {
+        const QJsonObject& otp(obj.toObject());
+        AccountInput *account = new AccountInput;
+
+        account->setIssuer(otp["issuer"_L1].toString());
+        account->setName(otp["name"_L1].toString());
+
+        const QJsonObject& info(otp["info"_L1].toObject());
+
+        QString secret(info["secret"_L1].toString());
+        if (secret.size() % 8 != 0) {
+            secret.resize((secret.size() + 7) & -8, '='_L1);
+        }
+        account->setSecret(secret);
+
+        account->setTokenLength(info["digits"_L1].toInt());
+
+        QString type(otp["type"_L1].toString());
+        if (type == "TOPT"_L1) {
+            account->setType(AccountInput::Totp);
+            account->setTimeStep(info["period"_L1].toInt());
+        } else if (type == "HOPT"_L1) {
+            account->setType(AccountInput::Hotp);
+            account->setCounter(info["counter"_L1].toInt());
+        } else if (type == "Steam"_L1) {
+            account->setType(AccountInput::Totp);
+            account->setTimeStep(info["period"_L1].toInt());
+            if (account->timeStep() == 0) {
+                account->setTimeStep(30);
+            }
+            account->setIssuer("Steam"_L1);
+        }
+
+        QString algo(otp["algorithm"_L1].toString());
+        if (algo == "SHA1"_L1) {
+            account->setAlgorithm(AccountInput::Sha1);
+        } else if (algo == "SHA256"_L1) {
+            account->setAlgorithm(AccountInput::Sha256);
+        } else if (algo == "SHA512"_L1) {
+            account->setAlgorithm(AccountInput::Sha512);
+        }
+
+        ret.push_back(account);
+    }
+}
+
+QVector<AccountInput *> ImportInput::importAccounts() const
+{
+    // TODO(yakoyoku): Find a way to propagate import errors back to the app flow
+    QFile file(m_file);
+    if (!file.open(QIODevice::ReadOnly)) return {};
+    QByteArray data(file.readAll());
+    QVector<AccountInput *> ret;
+    switch (m_format) {
+    case FreeOTPURIs:
+        readUris(ret, data);
+        break;
+    case AndOTPEncryptedJSON:
+        {
+            backups::AndOTPVault vault(data);
+            data = vault.decrypt(m_password.toUtf8());
+        }
+        Q_FALLTHROUGH();
+    case AndOTPPlainJSON:
+        readAndOTP(ret, data);
+        break;
+    case AegisPlainJSON:
+        readAegis(ret, data);
+        break;
+    default:
+        break;
+    }
+    return ret;
 }
 }
 

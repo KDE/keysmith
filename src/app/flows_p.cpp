@@ -208,6 +208,40 @@ void ManualAddAccountFlow::back(void)
     QTimer::singleShot(0, this, &QObject::deleteLater);
 }
 
+ManualImportAccountFlow::ManualImportAccountFlow(Keysmith *app) :
+    QObject(app), m_app(app), m_input(new model::ImportInput(this))
+{
+    Q_ASSERT_X(app, Q_FUNC_INFO, "should have a Keysmith instance");
+}
+
+void ManualImportAccountFlow::run(void)
+{
+    flowStateOf(m_app)->setFlowRunning(true);
+    overviewStateOf(m_app)->setActionsEnabled(false);
+
+    auto vm = new ImportAccountViewModel(m_input, accountListOf(m_app), false, true);
+    QObject::connect(vm, &ImportAccountViewModel::accepted, this, &ManualImportAccountFlow::onAccepted);
+    QObject::connect(vm, &ImportAccountViewModel::cancelled, this, &ManualImportAccountFlow::back);
+    navigationFor(m_app)->push(Navigation::Page::ImportAccount, vm);
+}
+
+void ManualImportAccountFlow::onAccepted(void)
+{
+    for (model::AccountInput *input : m_input->importAccounts()) {
+        accountListOf(m_app)->addAccount(input);
+    }
+    QTimer::singleShot(0, this, &ManualImportAccountFlow::back);
+}
+
+void ManualImportAccountFlow::back(void)
+{
+    auto vm = new AccountsOverviewViewModel(m_app);
+    navigationFor(m_app)->navigate(Navigation::Page::AccountsOverview, vm);
+    overviewStateOf(m_app)->setActionsEnabled(true);
+    flowStateOf(m_app)->setFlowRunning(false);
+    QTimer::singleShot(0, this, &QObject::deleteLater);
+}
+
 ExternalCommandLineFlow::ExternalCommandLineFlow(Keysmith *app)
     : QObject(app)
     , m_app(app)

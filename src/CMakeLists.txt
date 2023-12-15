@@ -12,6 +12,7 @@ add_subdirectory(uri)
 add_subdirectory(hmac)
 add_subdirectory(oath)
 add_subdirectory(secrets)
+add_subdirectory(backups)
 add_subdirectory(account)
 add_subdirectory(model)
 add_subdirectory(validators)
@@ -35,6 +36,7 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/Main.qml
     contents/ui/AccountsOverview.qml
     contents/ui/AddAccount.qml
+    contents/ui/ImportAccount.qml
     contents/ui/ErrorPage.qml
     contents/ui/RenameAccount.qml
     contents/ui/AccountNameForm.qml
@@ -59,6 +61,7 @@ target_link_libraries(keysmith
         Qt6::QuickControls2
         KF6::CoreAddons
         KF6::I18n
+        ${Qca_LIBRARY}
         keysmith_lib
 )
 

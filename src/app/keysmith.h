@@ -23,6 +23,7 @@ public:
     enum Page {
         Error,
         AddAccount,
+        ImportAccount,
         RenameAccount,
         AccountsOverview,
         SetupPassword,

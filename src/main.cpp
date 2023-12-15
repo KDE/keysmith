@@ -47,6 +47,8 @@ static QQmlDebuggingEnabler enabler;
 #include <KDBusService>
 #endif
 
+#include <QtCrypto>
+
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #ifdef Q_OS_ANDROID
@@ -112,6 +114,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QObject::connect(&service, &KDBusService::activateRequested, &proxy, &app::Proxy::handleDBusActivation);
 #endif
 
+    QCA::Initializer init;
+
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
@@ -120,6 +124,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                          0,
                                                          "AddAccountViewModel",
                                                          QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals"));
+
+    qmlRegisterUncreatableType<app::ImportAccountViewModel>("Keysmith.Application", 1, 0, "ImportAccountViewModel",
+        QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals")
+    );
+
     qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application",
                                                             1,
                                                             0,
@@ -167,6 +176,8 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                    "Account",
                                                    QStringLiteral("Use an AccountListModel from the Keysmith singleton to obtain an Account"));
     qmlRegisterType<model::AccountInput>("Keysmith.Models", 1, 0, "ValidatedAccountInput");
+    qmlRegisterType<model::ImportInput>("Keysmith.Models", 1, 0, "ValidatedImportInput");
+    qmlRegisterType<model::ImportInput>("Keysmith.Models", 1, 0, "ValidatedImportInput");
     qmlRegisterType<model::SortedAccountsListModel>("Keysmith.Models", 1, 0, "SortedAccountListModel");
     qmlRegisterType<model::AccountNameValidator>("Keysmith.Validators", 1, 0, "AccountNameValidator");
     qmlRegisterType<validators::EpochValidator>("Keysmith.Validators", 1, 0, "TOTPEpochValidator");
