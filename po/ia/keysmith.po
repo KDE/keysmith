@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-29 01:41+0000\n"
-"PO-Revision-Date: 2023-09-28 10:34+0200\n"
+"PO-Revision-Date: 2023-12-28 19:43+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -297,7 +297,7 @@ msgstr "Contator:"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr ""
+msgstr "Longitude de token :"
 
 #: src/contents/ui/HOTPDetailsForm.qml:63
 #, kde-format
