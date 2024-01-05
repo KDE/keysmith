@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2020.
 # pan93412 <pan93412@gmail.com>, 2020.
-# Kisaragi Hiu <mail@kisaragi-hiu.com>, 2023.
+# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-29 01:41+0000\n"
-"PO-Revision-Date: 2023-12-15 21:45+0900\n"
+"PO-Revision-Date: 2024-01-05 04:02+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.80\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -88,7 +88,7 @@ msgstr "TOTP"
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "參照時間點："
 
 #: src/contents/ui/AccountEntryViewBase.qml:69
 #, kde-format
@@ -100,10 +100,12 @@ msgstr "間隔長度："
 msgid "Offset:"
 msgstr "偏移："
 
+# 這個 token 是指生成出來的一次性密碼，一般稱作驗證碼。如果翻作「權杖」的話感覺比較像是 access token 的 token（一個通常非常長、使用者不會看到的驗證用權杖）。
+# -- Kisaragi
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Token Length:"
-msgstr "權杖長度："
+msgstr "驗證碼長度："
 
 #: src/contents/ui/AccountEntryViewBase.qml:90
 #, kde-format
@@ -127,9 +129,9 @@ msgid ""
 "account</li></ul>"
 msgstr ""
 "<p>從 Keysmith 移除這個帳號並不會停用兩步驟驗證 (2FA)。請確定您不使用 "
-"Keysmith 也仍然能夠存取您的帳號之後再繼續：</p><ul><li>確保您有為您的帳號設定"
-"另一個兩步驟驗證應用程式，或是；</li><li>確保您的帳號有可以使用的復原碼，或"
-"是；</li><li>為您的帳號停用兩步驟驗證</li></ul>"
+"Keysmith 也仍然能夠存取您的帳號之後再繼續：</p><ul><li>確保您的帳號已設定好另"
+"一個兩步驟驗證應用程式，或是；</li><li>確保您的帳號有可以使用的復原碼，或是；"
+"</li><li>為您的帳號停用兩步驟驗證</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
@@ -147,7 +149,7 @@ msgstr "刪除帳號"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr "權杖已複製到剪貼簿！"
+msgstr "驗證碼已複製到剪貼簿！"
 
 #: src/contents/ui/AccountNameForm.qml:64
 #, kde-format
@@ -159,7 +161,7 @@ msgstr "帳號名稱："
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
-msgstr "帳號發行人："
+msgstr "帳號發行者："
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
@@ -232,30 +234,30 @@ msgstr "帳號類型："
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr "基於時間的 OTP"
+msgstr "基於時間的一次性密碼 (TOTP)"
 
 #: src/contents/ui/AddAccount.qml:101
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr "基於雜湊值的 OTP"
+msgstr "基於雜湊值的一次性密碼 (HOTP)"
 
 #: src/contents/ui/AddAccount.qml:113
 #, kde-format
 msgid "Token secret"
-msgstr "權杖秘密"
+msgstr "驗證碼秘密"
 
 #: src/contents/ui/AddAccount.qml:116
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
-msgstr "金鑰："
+msgstr "密鑰："
 
 #: src/contents/ui/AddAccount.qml:132
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
-msgstr "詳細資料"
+msgstr "詳細資料設定"
 
 #: src/contents/ui/AddAccount.qml:140
 #, kde-format
@@ -306,25 +308,25 @@ msgstr "計數器："
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr "權杖長度："
+msgstr "驗證碼長度："
 
 #: src/contents/ui/HOTPDetailsForm.qml:63
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "加入檢查碼數字"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "使用自訂截斷位移"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "截斷位移："
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -367,7 +369,7 @@ msgstr "設定密碼失敗"
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr "選擇一個密碼來保護您的帳號"
+msgstr "選擇一個密碼來保護您的各個帳號"
 
 #: src/contents/ui/SetupPassword.qml:49
 #, kde-format
@@ -403,7 +405,7 @@ msgstr "計時器："
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr ""
+msgstr "從何時開始："
 
 #: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
