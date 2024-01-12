@@ -103,7 +103,7 @@ Kirigami.SwipeListItem {
             Controls.Label {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
-                text: i18n("<p>Removing this account from Keysmith will not disable two-factor authentication (2FA). Make sure you can still access your account without using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA app set up for your account, or:</li><li>Make sure you have recovery codes for your account, or:</li><li>Disable two-factor authentication on your account</li></ul>")
+                text: i18n("<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></p><p>Removing this account from Keysmith will not disable two-factor authentication (2FA). Make sure you can still access your account without using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA app set up for your account, or:</li><li>Make sure you have recovery codes for your account, or:</li><li>Disable two-factor authentication on your account</li></ul>", account.name, account.issuer)
             }
         }
         footer: RowLayout {
