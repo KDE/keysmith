@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2023-09-28 13:01+0200\n"
+"PO-Revision-Date: 2024-01-13 13:13+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -117,14 +117,7 @@ msgid "Removing account: %1"
 msgstr "Account wordt verwijderd: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -134,8 +127,9 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>Dit account uit Keysmith verwijderen zal twee-factor-authenticatie (2FA) "
-"niet uitschakelen. Ga na dat u nog steeds toegang hebt tot uw account zonder "
+"<p><ul><li>Accountnaam: %1</li><li>Accountuitgever: %2</li></ul></p><p>Dit "
+"account uit Keysmith verwijderen zal twee-factor-authenticatie (2FA) niet "
+"uitschakelen. Ga na dat u nog steeds toegang hebt tot uw account zonder "
 "gebruik van Keysmith alvorens door te gaan:</p><ul><li>Ga na dat u een "
 "andere 2FA-app ingesteld hebt voor uw account of:</li><li>Ga na dat u "
 "herstelcodes voor uw account hebt of:</li><li>Schakel twee-factor-"

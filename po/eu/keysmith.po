@@ -1,16 +1,16 @@
 # Translation for keysmith.po to Euskara/Basque (eu)
-# Copyright (C) 2023 This file is copyright:
+# Copyright (C) 2023-2024 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2023-09-28 19:13+0200\n"
+"PO-Revision-Date: 2024-01-13 10:15+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -120,14 +120,7 @@ msgid "Removing account: %1"
 msgstr "Kontua kentzea: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -137,8 +130,9 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>«Keysmith»etik kontu hau kentzeak ez du bi faktoreko autentifikazioa "
-"(2FA)ezgaituko. Jarraitu aurretik, ziurtatu «Keysmith» erabili gabe, "
+"<p><ul><li>Kontu-izena: %1</li><li>Kontu-jaulkitzailea: %2</li></ul></"
+"p><p>«Keysmith»etik kontu hau kentzeak ez du bi faktoreko autentifikazioa "
+"(2FA) ezgaituko. Jarraitu aurretik, ziurtatu «Keysmith» erabili gabe, "
 "oraindik zure kontuan sar zaitezkeela:</p><ul><li>Ziurtatu zure konturako "
 "beste 2FA aplikazio bat ezarrita duzula, edo:</li><li>Ziurtatu zure kontua "
 "berreskuratzeko kodeak dituzula, edo:</li><li>Ezgaitu bi faktoreko "
