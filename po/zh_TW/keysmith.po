@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2024-01-05 04:02+0900\n"
+"PO-Revision-Date: 2024-01-14 23:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.01.90\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -119,14 +119,7 @@ msgid "Removing account: %1"
 msgstr "移除帳號：%1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -136,10 +129,11 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>從 Keysmith 移除這個帳號並不會停用兩步驟驗證 (2FA)。請確定您不使用 "
-"Keysmith 也仍然能夠存取您的帳號之後再繼續：</p><ul><li>確保您的帳號已設定好另"
-"一個兩步驟驗證應用程式，或是；</li><li>確保您的帳號有可以使用的復原碼，或是；"
-"</li><li>為您的帳號停用兩步驟驗證</li></ul>"
+"<p><ul><li>帳號名稱：%1</li><li>帳號發行者：%2</li></ul></p><p>從 Keysmith 移"
+"除這個帳號並不會停用兩步驟驗證 (2FA)。請確定您不使用 Keysmith 也仍然能夠存取"
+"您的帳號之後再繼續：</p><ul><li>確保您的帳號已設定好另一個兩步驟驗證應用程"
+"式，或是；</li><li>確保您的帳號有可以使用的復原碼，或是；</li><li>為您的帳號"
+"停用兩步驟驗證</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format

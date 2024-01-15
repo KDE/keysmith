@@ -1,16 +1,16 @@
 # Translation of keysmith.po to Catalan (Valencian)
-# Copyright (C) 2020-2023 This_file_is_part_of_KDE
+# Copyright (C) 2020-2024 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2020, 2022, 2023, 2024.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2023-09-28 12:33+0200\n"
+"PO-Revision-Date: 2024-01-13 15:57+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -120,14 +120,7 @@ msgid "Removing account: %1"
 msgstr "S'elimina el compte: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -137,7 +130,8 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>En eliminar este compte de Keysmith no es desactivarà l'autenticació de "
+"<p><ul><li>Nom de compte: %1</li><li>Emissor del compte: %2</li></ul></"
+"p><p>En eliminar este compte de Keysmith no es desactivarà l'autenticació de "
 "dos factors (2FA). Comproveu que encara podeu accedir al compte sense "
 "utilitzar Keysmith abans de continuar:</p><ul><li>Assegureu-vos que hi ha "
 "una altra aplicació de 2FA configurada per al compte, o:</li><li>Assegureu-"
