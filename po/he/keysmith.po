@@ -1,21 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2023-11-16 13:54+0200\n"
+"PO-Revision-Date: 2024-01-19 08:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -114,14 +113,7 @@ msgid "Removing account: %1"
 msgstr "החשבון נמחק: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -131,11 +123,12 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>הסרת החשבון הזה מ־Keysmith לא תשבית את האימות הדו־שלבי (2FA). נא לוודא "
-"שעדיין יש לך גישה לחשבון שלך מבלי להשתמש ב־Keysmith לפני המשך התהליך:</"
-"p><ul><li>נא לודא שיש לך עוד יישום אימות דו־שלבי מותקן לחשבון שלך או:</"
-"li><li>או לוודא שיש לך קודים לגיבוי לחשבון שלך או:</li><li>להשבית אימות דו־"
-"שלבי בחשבון שלך</li></ul>"
+"<p><ul><li>שם החשבון: %1</li><li>מנפיק החשבון: %2</li></ul></p><p>הסרת "
+"החשבון הזה מ־Keysmith לא תשבית את האימות הדו־שלבי (2FA). נא לוודא שעדיין יש "
+"לך גישה לחשבון שלך מבלי להשתמש ב־Keysmith לפני המשך התהליך:</p><ul><li>נא "
+"לוודא שיש לך עוד יישום אימות דו־שלבי מותקן לחשבון שלך או:</li><li>או לוודא "
+"שיש לך קודים לגיבוי לחשבון שלך או:</li><li>להשבית אימות דו־שלבי בחשבון שלך</"
+"li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
