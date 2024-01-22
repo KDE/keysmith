@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2024-01-13 05:59\n"
+"PO-Revision-Date: 2024-01-21 14:11\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -67,19 +67,19 @@ msgstr "颁发者："
 #: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "模式："
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
@@ -113,14 +113,7 @@ msgid "Removing account: %1"
 msgstr "移除账户：%1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -130,10 +123,11 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>从 Keysmith 中移除此账户将不会禁用双重身份验证 (2FA)。请在继续操作之前确保"
-"在不使用 Keysmith 的前提下依然能够访问您的账户：</p><ul><li>确保您的账号已经"
-"设置了另一款双重身份验证应用，或者：</li><li>确保您拥有您的账号的恢复码，或"
-"者：</li><li>禁用您的账户的双重身份验证功能。</li></ul>"
+"<p><ul><li>账户名：%1</li><li>账户发行者：%2</li></ul></p><p>从 Keysmith 中移"
+"除此账户将不会禁用双重身份验证 (2FA)。请在继续操作之前确保在不使用 Keysmith "
+"的前提下依然能够访问您的账户：</p><ul><li>确保您的账号已经设置了另一款双重身"
+"份验证应用，或者：</li><li>确保您拥有您的账号的恢复码，或者：</li><li>禁用您"
+"的账户的双重身份验证功能。</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
