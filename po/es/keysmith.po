@@ -5,13 +5,13 @@
 # Sofia Priego <spriego@darksylvania.net>, %Y.
 # Sofía Priego <spriego@darksylvania.net>, %Y.
 # Automatically generated, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-13 00:40+0000\n"
-"PO-Revision-Date: 2023-09-28 18:40+0100\n"
+"PO-Revision-Date: 2024-01-26 01:52+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -121,14 +121,7 @@ msgid "Removing account: %1"
 msgstr "Eliminar cuenta: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -138,12 +131,13 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>Si borra esta cuenta de Keysmith no se desactivará la autenticación de "
-"dos factores (2FA). Asegúrese de que puede acceder a la cuenta sin usar "
-"Keysmith antes de continuar:</p><ul><li>asegúrese se que tiene otra "
-"aplicación con 2FA configurada para usar la cuenta, o</li><li>asegúrese de "
-"que dispone de códigos de recuperación para la cuenta, o</li><li>desactive "
-"la autenticación de dos factores para la cuenta</li></ul>"
+"<p><ul><li>Nombre de la cuenta: %1</li><li>Emisor de la cuenta: %2</li></"
+"ul></p><p>Si borra esta cuenta de Keysmith no se desactivará la "
+"autenticación de dos factores (2FA). Asegúrese de que puede acceder a la "
+"cuenta sin usar Keysmith antes de continuar:</p><ul><li>asegúrese se que "
+"tiene otra aplicación con 2FA configurada para usar la cuenta, o</"
+"li><li>asegúrese de que dispone de códigos de recuperación para la cuenta, "
+"o</li><li>desactive la autenticación de dos factores para la cuenta</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
