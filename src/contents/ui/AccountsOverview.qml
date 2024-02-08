@@ -161,6 +161,7 @@ Kirigami.ScrollablePage {
         section {
             property: "account.issuer"
             delegate: Kirigami.ListSectionHeader {
+                width: parent.width
                 text: section
             }
         }
