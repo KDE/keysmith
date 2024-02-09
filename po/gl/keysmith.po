@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-29 01:41+0000\n"
+"POT-Creation-Date: 2024-02-09 02:35+0000\n"
 "PO-Revision-Date: 2023-09-30 12:11+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -193,7 +193,7 @@ msgctxt ""
 msgid "Add Account"
 msgstr "Engadir unha conta"
 
-#: src/contents/ui/AccountsOverview.qml:171
+#: src/contents/ui/AccountsOverview.qml:172
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"

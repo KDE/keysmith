@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-29 01:41+0000\n"
+"POT-Creation-Date: 2024-02-09 02:35+0000\n"
 "PO-Revision-Date: 2023-10-01 23:30+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -193,7 +193,7 @@ msgctxt ""
 msgid "Add Account"
 msgstr "Aldoni Konton"
 
-#: src/contents/ui/AccountsOverview.qml:171
+#: src/contents/ui/AccountsOverview.qml:172
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
