@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# Shinjo Park <kde@peremen.name>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 00:40+0000\n"
-"PO-Revision-Date: 2023-10-08 23:15+0200\n"
+"PO-Revision-Date: 2024-02-09 23:39+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -113,14 +113,7 @@ msgid "Removing account: %1"
 msgstr "계정 삭제 중: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -130,10 +123,11 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>Keysmith에서 이 계정을 삭제해도 2단계 인증(2FA)을 비활성화하지 않습니다. "
-"진행하기 전에 Keysmith를 사용하지 않아도 계정을 사용할 수 있는지 여부를 확인"
-"하십시오:</p><ul><li>다른 2FA 앱을 설정하십시오.</li><li>또는 계정 복구 코드"
-"를 발급받으십시오</li><li>또는 2단계 인증을 해제하십시오</li></ul>"
+"<p><ul><li>계정 이름: %1</li><li>계정 발급자: %2</li></ul></p><p>Keysmith에"
+"서 이 계정을 삭제해도 2단계 인증(2FA)을 비활성화하지 않습니다. 진행하기 전에 "
+"Keysmith를 사용하지 않아도 계정을 사용할 수 있는지 여부를 확인하십시오:</"
+"p><ul><li>다른 2FA 앱을 설정하십시오.</li><li>또는 계정 복구 코드를 발급받으"
+"십시오</li><li>또는 2단계 인증을 해제하십시오</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
