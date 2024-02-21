@@ -7,4 +7,4 @@ set(uri_SRCS
 )
 
 add_library(uri_lib STATIC ${uri_SRCS})
-target_link_libraries(uri_lib Qt::Core Qt6::Core5Compat)
+target_link_libraries(uri_lib Qt::Core)

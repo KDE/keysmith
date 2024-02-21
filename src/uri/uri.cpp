@@ -9,7 +9,7 @@
 
 #include <QGlobalStatic>
 #include <QScopedPointer>
-#include <QTextCodec>
+#include <QStringDecoder>
 
 KEYSMITH_LOGGER(logger, ".uri")
 
@@ -39,15 +39,9 @@ namespace uri
 
     static std::optional<QString> convertUtf8(const QByteArray &data)
     {
-        static QTextCodec *codec = QTextCodec::codecForName("UTF-8");
-        if (!codec) {
-            qCDebug(logger) << "Unable to decode data: unable to retrieve codec for UTF-8";
-            return std::nullopt;
-        }
-
-        QTextCodec::ConverterState state;
-        QString result = codec->toUnicode(data.constData(), data.size(), &state);
-        return state.invalidChars == 0 && state.remainingChars == 0 ? std::optional<QString>(result) : std::nullopt;
+        QStringDecoder codec(QStringDecoder::Utf8);
+        QString result = codec.decode(data);
+        return !codec.hasError() ? std::optional<QString>(result) : std::nullopt;
     }
 
     std::optional<QString> decodePercentEncoding(const QByteArray &utf8Data)

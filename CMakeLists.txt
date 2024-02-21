@@ -55,8 +55,6 @@ if(NOT ANDROID)
     find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 endif()
 
-find_package(Qt6Core5Compat REQUIRED)
-
 if(NOT BUILD_EXTERNAL)
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
