@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 00:40+0000\n"
-"PO-Revision-Date: 2020-08-20 02:29+0200\n"
+"PO-Revision-Date: 2024-02-26 18:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -24,12 +25,13 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
+"Nebūtina pridedama paskyra, formatuota kaip otpauth:// URI (pvz., iš QR kodo)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
-msgstr ""
+msgstr "Netinkama paskyra"
 
 #: src/app/flows_p.cpp:106
 #, kde-format
@@ -38,6 +40,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
+"Paskyra, kurią bandote pridėti yra netinkama. Galite išeiti iš programos "
+"arba tęsti nepridėję paskyros."
 
 #: src/app/flows_p.cpp:247
 #, kde-format
@@ -46,70 +50,71 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
+"Paskyra, kurią bandote pridėti yra netinkama. Tęskite nepridėję paskyros."
 
 #: src/contents/ui/AccountEntryViewBase.qml:34
 #, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr ""
+msgstr "Išsamiau apie paskyrą: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:41
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Pavadinimas:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:48
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "Leidėjas:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "Veiksena:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Epocha:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:69
 #, kde-format
 msgid "Time Step:"
-msgstr ""
+msgstr "Laiko žingsnis:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:76
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "Poslinkis:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:83
 #, kde-format
 msgid "Token Length:"
-msgstr ""
+msgstr "Prieigos rakto ilgis:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:90
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "Maiša:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:99
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
-msgstr ""
+msgstr "Šalinama paskyra: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
@@ -122,59 +127,66 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
+"<p><ul><li>Paskyros pavadinimas: %1</li><li>Paskyros leidėjas: %2</li></ul></"
+"p><p>Pašalinus šią paskyrą iš Keysmith, dviejų faktorių tapatybės nustatymas "
+"(2FA) nebus išjungtas. Prieš tęsdami, įsitikinkite, kad galėsite pasiekti "
+"paskyrą nesinaudodami Keysmith:</p><ul><li>Įsitikinkite, kad savo paskyrai "
+"esate nusistatę kitą 2FA programą, ar:</li><li>Įsitikinkite, kad turite "
+"paskyros atkūrimo kodus, ar:</li><li>Išjunkite paskyroje dviejų faktorių "
+"tapatybės nustatymą</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
 msgctxt "Button cancelling account removal"
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: src/contents/ui/AccountEntryViewBase.qml:121
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
-msgstr ""
+msgstr "Ištrinti paskyrą"
 
 #: src/contents/ui/AccountEntryViewBase.qml:137
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Prieigos raktas nukopijuotas į iškarpinę!"
 
 #: src/contents/ui/AccountNameForm.qml:64
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
-msgstr ""
+msgstr "Paskyros pavadinimas:"
 
 #: src/contents/ui/AccountNameForm.qml:83
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
-msgstr ""
+msgstr "Paskyros leidėjas:"
 
 #: src/contents/ui/AccountsOverview.qml:21
 #, kde-format
 msgctxt "@title:window"
 msgid "Accounts"
-msgstr ""
+msgstr "Paskyros"
 
 #: src/contents/ui/AccountsOverview.qml:25
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr ""
+msgstr "Nepavyko atnaujinti paskyrų"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr ""
+msgstr "Nepavyko įkelti tam tikrų paskyrų."
 
 #: src/contents/ui/AccountsOverview.qml:101
 #, kde-format
 msgid "No accounts added"
-msgstr ""
+msgstr "Nepridėta jokių paskyrų"
 
 #: src/contents/ui/AccountsOverview.qml:106
 #, kde-format
@@ -182,147 +194,147 @@ msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
 msgid "Add Account"
-msgstr ""
+msgstr "Pridėti paskyrą"
 
 #: src/contents/ui/AccountsOverview.qml:172
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
-msgstr ""
+msgstr "Pridėti"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
-msgstr ""
+msgstr "Pridėti naują paskyrą"
 
 #: src/contents/ui/AddAccount.qml:45
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: src/contents/ui/AddAccount.qml:52
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
-msgstr ""
+msgstr "Išeiti"
 
 #: src/contents/ui/AddAccount.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Add"
-msgstr ""
+msgstr "Pridėti"
 
 #: src/contents/ui/AddAccount.qml:81
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
-msgstr ""
+msgstr "Paskyros tipas:"
 
 #: src/contents/ui/AddAccount.qml:90
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr ""
+msgstr "Laiku grįstas vienkartinis slaptažodis (TOTP)"
 
 #: src/contents/ui/AddAccount.qml:101
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr ""
+msgstr "Maiša grįstas vienkartinis slaptažodis (HOTP)"
 
 #: src/contents/ui/AddAccount.qml:113
 #, kde-format
 msgid "Token secret"
-msgstr ""
+msgstr "Prieigos rakto paslaptis"
 
 #: src/contents/ui/AddAccount.qml:116
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
-msgstr ""
+msgstr "Slaptas raktas:"
 
 #: src/contents/ui/AddAccount.qml:132
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
-msgstr ""
+msgstr "Išsamiau"
 
 #: src/contents/ui/AddAccount.qml:140
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr ""
+msgstr "Išsamiau apie HOTP:"
 
 #: src/contents/ui/AddAccount.qml:153
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr ""
+msgstr "Išsamiau apie TOTP:"
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
-msgstr ""
+msgstr "Tęsti"
 
 #: src/contents/ui/ErrorPage.qml:40
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
-msgstr ""
+msgstr "Išeiti"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
 #, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr ""
+msgstr "Rodyti išsamiau"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:34
 #, kde-format
 msgctxt "Button for removal of a single account"
 msgid "Delete account"
-msgstr ""
+msgstr "Ištrinti paskyrą"
 
 #: src/contents/ui/HOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Counter:"
-msgstr ""
+msgstr "Skaitiklis:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:48
 #: src/contents/ui/TOTPDetailsForm.qml:67
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr ""
+msgstr "Prieigos rakto ilgis:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:63
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "Pridėti kontrolinės sumos skaitmenį"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "Naudoti tinkintą apkirpimo poslinkį"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "Apkirpimo poslinkis:"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr ""
+msgstr "Pervadinti pridedamą paskyrą"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -333,118 +345,120 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
+"Jau yra kita paskyra tokiu pačiu pavadinimu. Pataisykite naujos paskyros "
+"pavadinimą ar leidėją."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
 msgctxt "@action:button cancel and dismiss the rename account form"
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 #: src/contents/ui/RenameAccount.qml:56
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Pridėti"
 
 #: src/contents/ui/SetupPassword.qml:22 src/contents/ui/UnlockAccounts.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
-msgstr ""
+msgstr "Slaptažodis"
 
 #: src/contents/ui/SetupPassword.qml:28
 #, kde-format
 msgid "Failed to set up your password"
-msgstr ""
+msgstr "Nepavyko nustatyti slaptažodžio"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr ""
+msgstr "Pasirinkite slaptažodį, skirtą apsaugoti paskyras"
 
 #: src/contents/ui/SetupPassword.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
-msgstr ""
+msgstr "Naujas slaptažodis:"
 
 #: src/contents/ui/SetupPassword.qml:60
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
-msgstr ""
+msgstr "Pakartokite slaptažodį:"
 
 #: src/contents/ui/SetupPassword.qml:68
 #, kde-format
 msgctxt "@action:button"
 msgid "Apply"
-msgstr ""
+msgstr "Taikyti"
 
 #: src/contents/ui/TokenEntryViewLabels.qml:40
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr ""
+msgstr "(įkelti iš naujo)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
-msgstr ""
+msgstr "Laikmatis:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr ""
+msgstr "Prasideda ties:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
-msgstr ""
+msgstr "Maišos algoritmas:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-1"
-msgstr ""
+msgstr "SHA-1"
 
 #: src/contents/ui/TOTPDetailsForm.qml:98
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-256"
-msgstr ""
+msgstr "SHA-256"
 
 #: src/contents/ui/TOTPDetailsForm.qml:110
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-512"
-msgstr ""
+msgstr "SHA-512"
 
 #: src/contents/ui/UnlockAccounts.qml:26
 #, kde-format
 msgid "Failed to unlock your accounts"
-msgstr ""
+msgstr "Nepavyko atrakinti paskyrų"
 
 #: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
-msgstr ""
+msgstr "Įveskite slaptažodį, kad atrakintumėte paskyras"
 
 #: src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
-msgstr ""
+msgstr "Slaptažodis:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
 #, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
-msgstr ""
+msgstr "Atrakinti"
 
 #: src/main.cpp:67
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
-msgstr ""
+msgstr "Keysmith"
