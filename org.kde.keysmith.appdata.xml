@@ -29,6 +29,7 @@
   <name xml:lang="it">Keysmith</name>
   <name xml:lang="ka">Keysmith</name>
   <name xml:lang="ko">Keysmith</name>
+  <name xml:lang="lt">Keysmith</name>
   <name xml:lang="nl">Keysmith</name>
   <name xml:lang="nn">Keysmith</name>
   <name xml:lang="pa">ਕੀ-ਸਮਿੱਥ</name>
@@ -82,6 +83,7 @@
   <summary xml:lang="it">Generatore di codice a due fattori per Plasma Mobile e Desktop</summary>
   <summary xml:lang="ka">2FA კოდის გენერატორი Plasma-ის მობილური და კომპიუტერის ვერსიებისთვის</summary>
   <summary xml:lang="ko">Plasma 모바일과 데스크톱용 2단계 인증 코드 생성기</summary>
+  <summary xml:lang="lt">Dviejų faktorių kodų generatorius, skirtas Plasma mobiliesiems ir darbalaukiams</summary>
   <summary xml:lang="nl">Twee-factor codegenerator voor Plasma Mobile en Bureaublad</summary>
   <summary xml:lang="nn">Tofaktors kodegenerator for Plasma Mobile og Desktop</summary>
   <summary xml:lang="pa">ਪਲਾਜ਼ਮਾ ਮੋਬਾਈਲ ਤੇ ਡੈਸਕਟਾਪ ਲਈ ਦੋ-ਪੜਾਵੀ ਕੋਡ ਤਿਆਰ ਕਰਤਾ</summary>
@@ -119,6 +121,7 @@
   <developer_name xml:lang="it">La comunità KDE</developer_name>
   <developer_name xml:lang="ka">KDE-ის საზოგადოება</developer_name>
   <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
+  <developer_name xml:lang="lt">KDE bendruomenė</developer_name>
   <developer_name xml:lang="nl">KDE-gemeenschap</developer_name>
   <developer_name xml:lang="nn">KDE-fellesskapet</developer_name>
   <developer_name xml:lang="pa">ਕੇਡੀਈ ਕਮਿਊਨਟੀ</developer_name>
@@ -156,6 +159,7 @@
     <p xml:lang="it">Keysmith genera token per i tuoi accessi a due fattori (2FA)</p>
     <p xml:lang="ka">Keysmith-ი თქვენი 2FA -სთვის კოდებს აგენერირებს</p>
     <p xml:lang="ko">Keysmith는 2단계 인증(2FA) 토큰을 생성합니다</p>
+    <p xml:lang="lt">Keysmith generuoja prieigos raktus, skirtus dviejų faktorių (2FA) prisijungimams</p>
     <p xml:lang="nl">Keysmith genereert tokens voor uw twee-factor aanmeldingen (2FA)</p>
     <p xml:lang="nn">Keysmith lagar pollettar for tofaktor­basert pålogging (2FA)</p>
     <p xml:lang="pa">Keysmith ਤੁਹਾਡੇ ਦੋ ਪੜਾਵੀਂ ਲਾਗਇਨਾਂ (2FA) ਲਈ ਟੋਕਨ ਤਿਆਰ ਕਰਦੀ ਹੈ</p>
@@ -192,6 +196,7 @@
       <li xml:lang="it">OTP basato su tempo e hash</li>
       <li xml:lang="ka">დროით და ჰეშით გენერირებული OTP</li>
       <li xml:lang="ko">시간과 해시 기반 OTP</li>
+      <li xml:lang="lt">Laiku ir maiša grįsti vienkartiniai slaptažodžiai</li>
       <li xml:lang="nl">Op tijd en hash gebaseerde OTP</li>
       <li xml:lang="nn">Tids- og hash-basert OTP</li>
       <li xml:lang="pa">ਸਮਾਂ ਤੇ ਹੈਸ਼-ਅਧਾਰਿਤ OTP</li>
@@ -233,6 +238,7 @@
       <caption xml:lang="it">Keysmith</caption>
       <caption xml:lang="ka">Keysmith</caption>
       <caption xml:lang="ko">Keysmith</caption>
+      <caption xml:lang="lt">Keysmith</caption>
       <caption xml:lang="nl">Keysmith</caption>
       <caption xml:lang="nn">Keysmith</caption>
       <caption xml:lang="pa">ਕੀ-ਸਮਿੱਥ</caption>
