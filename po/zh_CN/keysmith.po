@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 02:35+0000\n"
-"PO-Revision-Date: 2024-01-06 03:32\n"
+"PO-Revision-Date: 2024-03-30 19:38\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/keysmith/keysmith.pot\n"
-"X-Crowdin-File-ID: 46321\n"
+"X-Crowdin-File: /kf6-stable/messages/keysmith/keysmith.pot\n"
+"X-Crowdin-File-ID: 50008\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -67,19 +67,19 @@ msgstr "颁发者："
 #: src/contents/ui/AccountEntryViewBase.qml:55
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "模式："
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
