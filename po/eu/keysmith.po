@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 00:40+0000\n"
-"PO-Revision-Date: 2024-01-13 10:15+0100\n"
+"PO-Revision-Date: 2024-04-03 14:26+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -458,7 +458,7 @@ msgstr "Pasahitza:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
-msgstr "Giltzaz ireki"
+msgstr "Giltzapetik askatu"
 
 #: src/main.cpp:67
 #, kde-format
