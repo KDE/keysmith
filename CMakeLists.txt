@@ -68,6 +68,13 @@ if (BUILD_DBUS_INTERFACE OR (NOT ANDROID AND NOT DEFINED BUILD_DBUS_INTERFACE))
     set(ENABLE_DBUS_INTERFACE ON)
 endif()
 
+if (NOT ANDROID)
+    find_package(KF6QQC2DesktopStyle ${KF_MIN_VERSION} REQUIRED)
+    set_package_properties(KF6QQC2DesktopStyle PROPERTIES
+        TYPE RUNTIME
+    )
+endif()
+
 ################ Find testing dependencies ##########
 
 if (BUILD_TESTING)
