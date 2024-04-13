@@ -231,3 +231,5 @@ namespace app
     }
 #endif
 }
+
+#include "moc_cli.cpp"

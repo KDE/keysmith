@@ -806,3 +806,5 @@ namespace accounts
         }
     }
 }
+
+#include "moc_actions_p.cpp"

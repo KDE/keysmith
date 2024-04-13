@@ -455,3 +455,5 @@ namespace model
         return issuer == 0 ? leftAccount->name().localeAwareCompare(rightAccount->name()) < 0 : issuer < 0;
     }
 }
+
+#include "moc_accounts.cpp"

@@ -47,3 +47,5 @@ namespace validators
         return parsed->toMSecsSinceEpoch() <= m_clock() ? QValidator::Acceptable : QValidator::Invalid;
     }
 }
+
+#include "moc_datetimevalidator.cpp"

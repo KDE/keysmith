@@ -81,3 +81,5 @@ namespace validators
         }
     }
 }
+
+#include "moc_countervalidator.cpp"

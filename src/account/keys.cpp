@@ -326,3 +326,5 @@ namespace accounts
         return k->decrypt(secret);
     }
 }
+
+#include "moc_keys.cpp"

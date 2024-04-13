@@ -20,3 +20,5 @@ namespace test
     {
     }
 }
+
+#include "moc_job.cpp"

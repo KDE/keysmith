@@ -786,3 +786,5 @@ namespace accounts
         m_account->acceptHotpTokens(otp, nextOtp, validUntil);
     }
 }
+
+#include "moc_account_p.cpp"

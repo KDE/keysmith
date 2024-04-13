@@ -57,3 +57,5 @@ namespace app
         }
     }
 }
+
+#include "moc_state_p.cpp"

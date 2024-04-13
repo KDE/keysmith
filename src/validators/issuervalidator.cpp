@@ -42,3 +42,5 @@ namespace validators
         return input.isEmpty() ? QValidator::Acceptable : m_pattern.validate(input, cursor);
     }
 }
+
+#include "moc_issuervalidator.cpp"

@@ -242,3 +242,5 @@ namespace model
         }
     }
 }
+
+#include "moc_input.cpp"

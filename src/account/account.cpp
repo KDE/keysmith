@@ -362,3 +362,5 @@ namespace accounts
         return d->isLoaded();
     }
 }
+
+#include "moc_account.cpp"

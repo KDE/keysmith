@@ -266,3 +266,5 @@ namespace app
         QTimer::singleShot(0, this, &QObject::deleteLater);
     }
 }
+
+#include "moc_flows_p.cpp"

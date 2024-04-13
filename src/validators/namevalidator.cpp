@@ -34,3 +34,5 @@ namespace validators
         return m_pattern.validate(input, cursor);
     }
 }
+
+#include "moc_namevalidator.cpp"

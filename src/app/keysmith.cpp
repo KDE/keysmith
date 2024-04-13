@@ -134,3 +134,5 @@ namespace app
         return new model::PasswordRequest(m_store.accounts()->secret(), this);
     }
 }
+
+#include "moc_keysmith.cpp"

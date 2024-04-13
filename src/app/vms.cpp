@@ -178,3 +178,5 @@ namespace app
         }
     }
 }
+
+#include "moc_vms.cpp"

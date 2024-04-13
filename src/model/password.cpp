@@ -146,3 +146,5 @@ namespace model
         }
     }
 }
+
+#include "moc_password.cpp"
