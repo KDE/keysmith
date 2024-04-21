@@ -11,7 +11,7 @@
 #include <QThreadPool>
 #include <QtDebug>
 
-class CommandLineAccountJobTest: public QObject // clazy:exclude=ctor-missing-parent-argument
+class CommandLineAccountJobTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:

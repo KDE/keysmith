@@ -4,8 +4,8 @@
  */
 #include "account/account.h"
 
-#include "../test-utils/output.h"
 #include "../../test-utils/spy.h"
+#include "../test-utils/output.h"
 
 #include <QSignalSpy>
 #include <QString>
@@ -14,7 +14,7 @@
 
 static QString testIniResource(QLatin1String("test.ini"));
 
-class StorageAbortLifeCycleTest: public QObject
+class StorageAbortLifeCycleTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -25,15 +25,15 @@ private Q_SLOTS:
 void StorageAbortLifeCycleTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
-    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/storage-lifecycles/starting.ini"), testIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/storage-lifecycles/starting.ini"), testIniResource),
+             "test corpus INI resource should be available as file");
 }
 
 void StorageAbortLifeCycleTest::testLifecycle(void)
 {
     const QString iniResource = test::path(testIniResource);
 
-    const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void {
         QSettings data(iniResource, QSettings::IniFormat);
         action(data);
     });

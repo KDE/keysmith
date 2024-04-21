@@ -11,7 +11,7 @@
 #include <QTimer>
 #include <QtDebug>
 
-class TestJob: public accounts::AccountJob // clazy:exclude=ctor-missing-parent-argument
+class TestJob : public accounts::AccountJob // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 public:
@@ -29,7 +29,7 @@ public Q_SLOTS:
     }
 };
 
-class DispatchTest: public QObject // clazy:exclude=ctor-missing-parent-argument
+class DispatchTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -43,7 +43,6 @@ private Q_SLOTS:
  */
 void DispatchTest::coldDispatch(void)
 {
-
     QThread *thread = new QThread(this);
     QObject::connect(thread, &QThread::finished, thread, &QThread::deleteLater);
 
@@ -60,8 +59,7 @@ void DispatchTest::coldDispatch(void)
     QSignalSpy jobCleaned(job, &TestJob::destroyed);
 
     bool jobCallBackCalled = false;
-    uut->queueAndProceed(job, [job, thread, &jobCallBackCalled](void) -> void
-    {
+    uut->queueAndProceed(job, [job, thread, &jobCallBackCalled](void) -> void {
         QCOMPARE(job->thread(), thread);
         jobCallBackCalled = true;
     });
@@ -106,12 +104,11 @@ void DispatchTest::liveDispatch(void)
 
     TestJob *job = new TestJob();
     QSignalSpy jobFinished(job, &TestJob::finished);
-    QSignalSpy jobCleaned(job, &TestJob::destroyed);\
+    QSignalSpy jobCleaned(job, &TestJob::destroyed);
 
     bool jobCallBackCalled = false;
 
-    uut->queueAndProceed(job, [job, thread, &jobCallBackCalled](void) -> void
-    {
+    uut->queueAndProceed(job, [job, thread, &jobCallBackCalled](void) -> void {
         QCOMPARE(job->thread(), thread);
         jobCallBackCalled = true;
     });

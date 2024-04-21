@@ -4,19 +4,20 @@
  */
 #include "account/actions_p.h"
 
-#include "../test-utils/secret.h"
 #include "../../test-utils/spy.h"
+#include "../test-utils/secret.h"
 
 #include <QSignalSpy>
 #include <QTest>
 
-class ComputeTotpTest: public QObject
+class ComputeTotpTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase(void);
     void testDefaults(void);
     void testDefaults_data(void);
+
 private:
     accounts::AccountSecret m_secret;
 };
@@ -45,8 +46,6 @@ void ComputeTotpTest::testDefaults(void)
         return counter * timeStep * 1000;
     });
 
-
-
     std::optional<secrets::EncryptedSecret> tokenSecret = test::encrypt(&m_secret, rfcSecret);
     QVERIFY2(tokenSecret, "should be able to encrypt the token secret");
 
@@ -66,25 +65,13 @@ void ComputeTotpTest::testDefaults(void)
 
 static void define_test_case(int k, const char *expected)
 {
-
     QByteArray output(expected, tokenLength);
-    QTest::newRow(qPrintable(QStringLiteral("RFC 4226 test vector, # time steps = %1").arg(k))) << (qint64) k << QString::fromLocal8Bit(output);
+    QTest::newRow(qPrintable(QStringLiteral("RFC 4226 test vector, # time steps = %1").arg(k))) << (qint64)k << QString::fromLocal8Bit(output);
 }
 
 void ComputeTotpTest::testDefaults_data(void)
 {
-    static const char * corpus[10] {
-        "755224",
-        "287082",
-        "359152",
-        "969429",
-        "338314",
-        "254676",
-        "287922",
-        "162583",
-        "399871",
-        "520489"
-    };
+    static const char *corpus[10]{"755224", "287082", "359152", "969429", "338314", "254676", "287922", "162583", "399871", "520489"};
 
     QTest::addColumn<qint64>("counter");
     QTest::addColumn<QString>("rfc-test-vector");

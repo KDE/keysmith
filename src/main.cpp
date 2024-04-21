@@ -8,8 +8,8 @@
 #include <QCommandLineParser>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
-#include <QtQml>
 #include <QUrl>
+#include <QtQml>
 
 #ifdef Q_OS_ANDROID
 #include <QGuiApplication>
@@ -100,37 +100,57 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
 
-    qmlRegisterUncreatableType<app::AddAccountViewModel>("Keysmith.Application", 1, 0, "AddAccountViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals")
-    );
-    qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application", 1, 0, "RenameAccountViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
-    );
-    qmlRegisterUncreatableType<app::ErrorViewModel>("Keysmith.Application", 1, 0, "ErrorViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
-    );
-    qmlRegisterUncreatableType<app::SetupPasswordViewModel>("Keysmith.Application", 1, 0, "SetupPasswordViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
-    );
-    qmlRegisterUncreatableType<app::UnlockAccountsViewModel>("Keysmith.Application", 1, 0, "UnlockAccountsViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
-    );
-    qmlRegisterUncreatableType<app::AccountsOverviewViewModel>("Keysmith.Application", 1, 0, "AccountsOverviewViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Navigation signals")
-    );
-    qmlRegisterUncreatableType<app::Navigation>("Keysmith.Application", 1, 0, "Navigation",
-        QStringLiteral("Use the Keysmith singleton to obtain a Navigation")
-    );
+    qmlRegisterUncreatableType<app::AddAccountViewModel>("Keysmith.Application",
+                                                         1,
+                                                         0,
+                                                         "AddAccountViewModel",
+                                                         QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals"));
+    qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application",
+                                                            1,
+                                                            0,
+                                                            "RenameAccountViewModel",
+                                                            QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::ErrorViewModel>("Keysmith.Application",
+                                                    1,
+                                                    0,
+                                                    "ErrorViewModel",
+                                                    QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::SetupPasswordViewModel>("Keysmith.Application",
+                                                            1,
+                                                            0,
+                                                            "SetupPasswordViewModel",
+                                                            QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::UnlockAccountsViewModel>("Keysmith.Application",
+                                                             1,
+                                                             0,
+                                                             "UnlockAccountsViewModel",
+                                                             QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::AccountsOverviewViewModel>("Keysmith.Application",
+                                                               1,
+                                                               0,
+                                                               "AccountsOverviewViewModel",
+                                                               QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::Navigation>("Keysmith.Application",
+                                                1,
+                                                0,
+                                                "Navigation",
+                                                QStringLiteral("Use the Keysmith singleton to obtain a Navigation"));
 
-    qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models", 1, 0, "AccountListModel",
-        QStringLiteral("Use the Keysmith singleton to obtain an AccountListModel")
-    );
-    qmlRegisterUncreatableType<model::PasswordRequest>("Keysmith.Models", 1, 0, "PasswordRequestModel",
-        QStringLiteral("Use the Keysmith singleton to obtain an PasswordRequestModel")
-    );
-    qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models", 1, 0, "Account",
-        QStringLiteral("Use an AccountListModel from the Keysmith singleton to obtain an Account")
-    );
+    qmlRegisterUncreatableType<model::SimpleAccountListModel>("Keysmith.Models",
+                                                              1,
+                                                              0,
+                                                              "AccountListModel",
+                                                              QStringLiteral("Use the Keysmith singleton to obtain an AccountListModel"));
+    qmlRegisterUncreatableType<model::PasswordRequest>("Keysmith.Models",
+                                                       1,
+                                                       0,
+                                                       "PasswordRequestModel",
+                                                       QStringLiteral("Use the Keysmith singleton to obtain an PasswordRequestModel"));
+    qmlRegisterUncreatableType<model::AccountView>("Keysmith.Models",
+                                                   1,
+                                                   0,
+                                                   "Account",
+                                                   QStringLiteral("Use an AccountListModel from the Keysmith singleton to obtain an Account"));
     qmlRegisterType<model::AccountInput>("Keysmith.Models", 1, 0, "ValidatedAccountInput");
     qmlRegisterType<model::SortedAccountsListModel>("Keysmith.Models", 1, 0, "SortedAccountListModel");
     qmlRegisterType<model::AccountNameValidator>("Keysmith.Validators", 1, 0, "AccountNameValidator");
@@ -138,21 +158,23 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     qmlRegisterType<validators::IssuerValidator>("Keysmith.Validators", 1, 0, "AccountIssuerValidator");
     qmlRegisterType<validators::Base32Validator>("Keysmith.Validators", 1, 0, "Base32SecretValidator");
     qmlRegisterType<validators::UnsignedLongValidator>("Keysmith.Validators", 1, 0, "HOTPCounterValidator");
-    qmlRegisterSingletonType<app::Keysmith>("Keysmith.Application", 1, 0, "Keysmith", [&proxy](QQmlEngine *qml, QJSEngine *js) -> QObject *
-    {
+    qmlRegisterSingletonType<app::Keysmith>("Keysmith.Application", 1, 0, "Keysmith", [&proxy](QQmlEngine *qml, QJSEngine *js) -> QObject * {
         Q_UNUSED(js);
 
         auto app = new app::Keysmith(new app::Navigation(qml));
         proxy.enable(app);
         return app;
     });
-    qmlRegisterSingletonType<app::CommandLineOptions>("Keysmith.Application", 1, 0, "CommandLine", [parseOk, &cliParser](QQmlEngine *qml, QJSEngine *js) -> QObject *
-    {
-        Q_UNUSED(qml);
-        Q_UNUSED(js);
+    qmlRegisterSingletonType<app::CommandLineOptions>("Keysmith.Application",
+                                                      1,
+                                                      0,
+                                                      "CommandLine",
+                                                      [parseOk, &cliParser](QQmlEngine *qml, QJSEngine *js) -> QObject * {
+                                                          Q_UNUSED(qml);
+                                                          Q_UNUSED(js);
 
-        return new app::CommandLineOptions(cliParser, parseOk);
-    });
+                                                          return new app::CommandLineOptions(cliParser, parseOk);
+                                                      });
 
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
     if (engine.rootObjects().isEmpty()) {

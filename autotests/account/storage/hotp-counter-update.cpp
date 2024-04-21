@@ -4,9 +4,9 @@
  */
 #include "account/account.h"
 
-#include "../test-utils/output.h"
-#include "../../test-utils/spy.h"
 #include "../../secrets/test-utils/random.h"
+#include "../../test-utils/spy.h"
+#include "../test-utils/output.h"
 
 #include <QDateTime>
 #include <QFile>
@@ -19,7 +19,7 @@
 static QString testIniResource(QLatin1String("test.ini"));
 static QString testIniLockFile(QLatin1String("test.ini.lock"));
 
-class HotpCounterUpdateTest: public QObject
+class HotpCounterUpdateTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -30,7 +30,8 @@ private Q_SLOTS:
 void HotpCounterUpdateTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
-    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/counter-update/starting.ini"), testIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/counter-update/starting.ini"), testIniResource),
+             "test corpus INI resource should be available as file");
 }
 
 void HotpCounterUpdateTest::testCounterUpdate(void)
@@ -40,8 +41,7 @@ void HotpCounterUpdateTest::testCounterUpdate(void)
     const QString originalToken(QLatin1String("755224"));
     const QString updatedToken(QLatin1String("287082"));
 
-    const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void {
         QSettings data(iniResource, QSettings::IniFormat);
         action(data);
     });

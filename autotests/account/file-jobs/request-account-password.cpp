@@ -4,9 +4,9 @@
  */
 #include "account/actions_p.h"
 
-#include "../test-utils/output.h"
 #include "../../secrets/test-utils/random.h"
 #include "../../test-utils/spy.h"
+#include "../test-utils/output.h"
 
 #include <QSignalSpy>
 #include <QString>
@@ -17,7 +17,7 @@ static QString existingPasswordIniResource(QStringLiteral(":/request-account-pas
 static QString newPasswordIniResource(QStringLiteral(":/request-account-password/new-password.ini"));
 static QString newPasswordIniResultResource(QStringLiteral(":/request-account-password/new-password-result.ini"));
 
-class RequestAccountPasswordTest: public QObject // clazy:exclude=ctor-missing-parent-argument
+class RequestAccountPasswordTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -36,8 +36,7 @@ void RequestAccountPasswordTest::testAbortBeforeRun(void)
 
     int openCounter = 0;
     const QString actualIni = test::path(isolated);
-    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void {
         QSettings data(actualIni, QSettings::IniFormat);
         openCounter++;
         action(data);
@@ -86,8 +85,7 @@ void RequestAccountPasswordTest::testNewPassword(void)
 
     int openCounter = 0;
     const QString actualIni = test::path(isolated);
-    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void {
         QSettings data(actualIni, QSettings::IniFormat);
         openCounter++;
         action(data);
@@ -150,8 +148,7 @@ void RequestAccountPasswordTest::testNewPasswordAbort(void)
 
     int openCounter = 0;
     const QString actualIni = test::path(isolated);
-    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void {
         QSettings data(actualIni, QSettings::IniFormat);
         openCounter++;
         action(data);
@@ -180,7 +177,7 @@ void RequestAccountPasswordTest::testNewPasswordAbort(void)
     QCOMPARE(unlocked.count(), 0);
     QCOMPARE(jobFinished.count(), 0);
 
-     secret.cancelRequests();
+    secret.cancelRequests();
 
     QVERIFY2(test::signal_eventually_emitted_once(passwordRequestsCancelled), "account secret should have signalled cancellation by now");
     QVERIFY2(test::signal_eventually_emitted_once(failed), "job should signal it failed to unlock the accounts");
@@ -208,8 +205,7 @@ void RequestAccountPasswordTest::testExistingPassword(void)
 
     int openCounter = 0;
     const QString actualIni = test::path(isolated);
-    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void {
         QSettings data(actualIni, QSettings::IniFormat);
         openCounter++;
         action(data);
@@ -270,8 +266,7 @@ void RequestAccountPasswordTest::testExistingPasswordRetry(void)
 
     int openCounter = 0;
     const QString actualIni = test::path(isolated);
-    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void {
         QSettings data(actualIni, QSettings::IniFormat);
         openCounter++;
         action(data);
@@ -339,8 +334,7 @@ void RequestAccountPasswordTest::testExistingPasswordAbort(void)
 
     int openCounter = 0;
     const QString actualIni = test::path(isolated);
-    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&openCounter, &actualIni](const accounts::PersistenceAction &action) -> void {
         QSettings data(actualIni, QSettings::IniFormat);
         openCounter++;
         action(data);

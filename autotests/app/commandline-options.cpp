@@ -12,7 +12,7 @@
 #include <QThreadPool>
 #include <QtDebug>
 
-class CommandLineOptionsTest: public QObject // clazy:exclude=ctor-missing-parent-argument
+class CommandLineOptionsTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -39,9 +39,8 @@ void CommandLineOptionsTest::testValidAccountUri(void)
 {
     QCommandLineParser parser;
     model::AccountInput recipient;
-    const auto argv = QStringList()
-        << QStringLiteral("<dummy app>")
-        << QStringLiteral("otpauth://hotp/issuer:valid?secret=VALUE&digits=8&period=60&issuer=issuer&counter=42&algorithm=sha512");
+    const auto argv = QStringList() << QStringLiteral("<dummy app>")
+                                    << QStringLiteral("otpauth://hotp/issuer:valid?secret=VALUE&digits=8&period=60&issuer=issuer&counter=42&algorithm=sha512");
 
     app::CommandLineOptions uut(parser, prime(parser, argv));
     QSignalSpy invalid(&uut, &app::CommandLineOptions::newAccountInvalid);
@@ -71,9 +70,7 @@ void CommandLineOptionsTest::testInvalidAccountUri(void)
 {
     QCommandLineParser parser;
     model::AccountInput recipient;
-    const auto argv = QStringList()
-        << QStringLiteral("<dummy app>")
-        << QStringLiteral("not a valid otpauth:// URI");
+    const auto argv = QStringList() << QStringLiteral("<dummy app>") << QStringLiteral("not a valid otpauth:// URI");
 
     app::CommandLineOptions uut(parser, prime(parser, argv));
     QSignalSpy invalid(&uut, &app::CommandLineOptions::newAccountInvalid);
@@ -102,9 +99,7 @@ void CommandLineOptionsTest::testInvalidAccountUri(void)
 void CommandLineOptionsTest::testInvalidCommandLine(void)
 {
     QCommandLineParser parser;
-    const auto argv = QStringList()
-        << QStringLiteral("<dummy app>")
-        << QStringLiteral("--invalid-option");
+    const auto argv = QStringList() << QStringLiteral("<dummy app>") << QStringLiteral("--invalid-option");
 
     app::CommandLineOptions uut(parser, prime(parser, argv));
     QSignalSpy invalid(&uut, &app::CommandLineOptions::newAccountInvalid);

@@ -4,10 +4,10 @@
  */
 #include "account/actions_p.h"
 
+#include "../../secrets/test-utils/random.h"
+#include "../../test-utils/spy.h"
 #include "../test-utils/output.h"
 #include "../test-utils/secret.h"
-#include "../../test-utils/spy.h"
-#include "../../secrets/test-utils/random.h"
 
 #include <QSignalSpy>
 #include <QString>
@@ -19,7 +19,7 @@ static QString emptyIniResource(QLatin1String("empty-accounts.ini"));
 static QString corpusIniResource(QLatin1String("sample-accounts.ini"));
 static QString invalidIniResource(QLatin1String("invalid-accounts.ini"));
 
-class LoadAccountsTest: public QObject
+class LoadAccountsTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -27,8 +27,9 @@ private Q_SLOTS:
     void emptyAccountsFile(void);
     void sampleAccountsFile(void);
     void invalidSampleAccountsFile(void);
+
 private:
-    accounts::AccountSecret m_secret {&test::fakeRandom};
+    accounts::AccountSecret m_secret{&test::fakeRandom};
 };
 
 static QByteArray rawSecret = QByteArray::fromBase64(QByteArray("8juE9gJFLp3OgL4CxJ5v5q8sw+h7Vbn06+NY4uc="), QByteArray::Base64Encoding);
@@ -43,16 +44,17 @@ void LoadAccountsTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
     QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/empty-accounts.ini"), emptyIniResource), "empty INI resource should be available as file");
-    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/sample-accounts.ini"), corpusIniResource), "test corpus INI resource should be available as file");
-    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/invalid-accounts.ini"), invalidIniResource), "invalid INI resource should be available as file");
+    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/sample-accounts.ini"), corpusIniResource),
+             "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResource(QStringLiteral(":/load-accounts/invalid-accounts.ini"), invalidIniResource),
+             "invalid INI resource should be available as file");
     QVERIFY2(test::useDummyPassword(&m_secret), "should be able to set up the master key");
 }
 
 void LoadAccountsTest::emptyAccountsFile(void)
 {
     bool actionRun = false;
-    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void {
         QSettings data(test::path(emptyIniResource), QSettings::IniFormat);
         actionRun = true;
         action(data);
@@ -77,8 +79,7 @@ void LoadAccountsTest::emptyAccountsFile(void)
 void LoadAccountsTest::sampleAccountsFile(void)
 {
     bool actionRun = false;
-    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void {
         QSettings data(test::path(corpusIniResource), QSettings::IniFormat);
         actionRun = true;
         action(data);
@@ -149,8 +150,7 @@ void LoadAccountsTest::sampleAccountsFile(void)
 void LoadAccountsTest::invalidSampleAccountsFile(void)
 {
     bool actionRun = false;
-    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&actionRun](const accounts::PersistenceAction &action) -> void {
         QSettings data(test::path(invalidIniResource), QSettings::IniFormat);
         actionRun = true;
         action(data);

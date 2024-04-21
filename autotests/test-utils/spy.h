@@ -9,9 +9,9 @@
 
 namespace test
 {
-    bool signal_eventually_emitted_exactly(QSignalSpy &spy, int times, int timeout = 500);
-    bool signal_eventually_emitted_once(QSignalSpy &spy, int timeout = 500);
-    bool signal_eventually_emitted_twice(QSignalSpy &spy, int timeout = 500);
+bool signal_eventually_emitted_exactly(QSignalSpy &spy, int times, int timeout = 500);
+bool signal_eventually_emitted_once(QSignalSpy &spy, int timeout = 500);
+bool signal_eventually_emitted_twice(QSignalSpy &spy, int timeout = 500);
 }
 
 #endif

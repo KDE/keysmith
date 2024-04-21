@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class DefaultEncoderTest: public QObject
+class DefaultEncoderTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -18,7 +18,8 @@ private Q_SLOTS:
 static void define_test_case(quint32 value, uint tokenLength, bool checksum, const QString &expected)
 {
     static const QString testCase(QLatin1String("%1 (%2, %3) ... %4"));
-    QTest::newRow(qPrintable(testCase.arg(value).arg(tokenLength).arg(checksum ? QLatin1String("with checksum") : QLatin1String("without checksum")).arg(expected)))
+    QTest::newRow(
+        qPrintable(testCase.arg(value).arg(tokenLength).arg(checksum ? QLatin1String("with checksum") : QLatin1String("without checksum")).arg(expected)))
         << value << checksum << tokenLength << expected;
 }
 

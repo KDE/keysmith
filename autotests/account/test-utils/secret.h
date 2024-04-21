@@ -15,13 +15,10 @@
 
 namespace test
 {
-    secrets::SecureMasterKey * useDummyPassword(accounts::AccountSecret *secret);
-    secrets::SecureMasterKey * useDummyPassword(accounts::AccountSecret *secret,
-                                                QString &password, QByteArray &salt,
-                                                const secrets::EncryptedSecret &challenge);
+secrets::SecureMasterKey *useDummyPassword(accounts::AccountSecret *secret);
+secrets::SecureMasterKey *useDummyPassword(accounts::AccountSecret *secret, QString &password, QByteArray &salt, const secrets::EncryptedSecret &challenge);
 
-    std::optional<secrets::EncryptedSecret> encrypt(const accounts::AccountSecret *secret,
-                                                    const QByteArray &tokenSecret);
+std::optional<secrets::EncryptedSecret> encrypt(const accounts::AccountSecret *secret, const QByteArray &tokenSecret);
 }
 
 #endif

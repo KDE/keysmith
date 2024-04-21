@@ -2,12 +2,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  */
-#include "model/qr.h"
 #include "model/input.h"
+#include "model/qr.h"
 
 #include <QTest>
 
-class QrInputTest: public QObject // clazy:exclude=ctor-missing-parent-argument
+class QrInputTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -17,14 +17,18 @@ private Q_SLOTS:
     void testInvalidUri_data(void);
 };
 
-
-static void define_valid_test_case(const char *testCase, const QString &uri, const QString &name,
-                                   const QString &issuer, const QString &secret, const QString &counter,
-                                   uint tokenLength, uint timeStep, model::AccountInput::TokenType type,
+static void define_valid_test_case(const char *testCase,
+                                   const QString &uri,
+                                   const QString &name,
+                                   const QString &issuer,
+                                   const QString &secret,
+                                   const QString &counter,
+                                   uint tokenLength,
+                                   uint timeStep,
+                                   model::AccountInput::TokenType type,
                                    model::AccountInput::TOTPAlgorithm algorithm)
 {
-    QTest::newRow(testCase) << uri << name << issuer << secret << counter << tokenLength << timeStep << type
-        << algorithm;
+    QTest::newRow(testCase) << uri << name << issuer << secret << counter << tokenLength << timeStep << type << algorithm;
 }
 
 static void define_invalid_test_case(const char *testCase, const QString &uri)
@@ -66,10 +70,15 @@ void QrInputTest::testValidUri_data(void)
     QTest::addColumn<model::AccountInput::TOTPAlgorithm>("algorithm");
 
     define_valid_test_case("hotp (all fields set)",
-        QStringLiteral("otpauth://hotp/issuer:valid?secret=VALUE&digits=8&period=60&issuer=issuer&counter=42&algorithm=sha512"),
-        QStringLiteral("valid"), QStringLiteral("issuer"), QStringLiteral("VALUE==="), QStringLiteral("42"), 8U, 60U,
-        model::AccountInput::TokenType::Hotp, model::AccountInput::TOTPAlgorithm::Sha512
-    );
+                           QStringLiteral("otpauth://hotp/issuer:valid?secret=VALUE&digits=8&period=60&issuer=issuer&counter=42&algorithm=sha512"),
+                           QStringLiteral("valid"),
+                           QStringLiteral("issuer"),
+                           QStringLiteral("VALUE==="),
+                           QStringLiteral("42"),
+                           8U,
+                           60U,
+                           model::AccountInput::TokenType::Hotp,
+                           model::AccountInput::TOTPAlgorithm::Sha512);
 }
 
 void QrInputTest::testInvalidUri(void)

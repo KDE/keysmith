@@ -36,10 +36,10 @@ static QByteArray masterPassword(void)
     return MASTER_PASSWORD;
 }
 
-static secrets::SecureMemory * secret(void)
+static secrets::SecureMemory *secret(void)
 {
     const auto master = masterPassword();
-    size_t size = (size_t) master.size();
+    size_t size = (size_t)master.size();
     auto memory = secrets::SecureMemory::allocate(size);
     if (memory) {
         std::memcpy(memory->data(), master.constData(), size);
@@ -47,11 +47,10 @@ static secrets::SecureMemory * secret(void)
     return memory;
 }
 
-static std::optional<secrets::KeyDerivationParameters> keyParams = secrets::KeyDerivationParameters::create(
-    crypto_secretbox_KEYBYTES, crypto_pwhash_ALG_DEFAULT, crypto_pwhash_MEMLIMIT_MIN, crypto_pwhash_OPSLIMIT_MIN
-);
+static std::optional<secrets::KeyDerivationParameters> keyParams =
+    secrets::KeyDerivationParameters::create(crypto_secretbox_KEYBYTES, crypto_pwhash_ALG_DEFAULT, crypto_pwhash_MEMLIMIT_MIN, crypto_pwhash_OPSLIMIT_MIN);
 
-static secrets::SecureMasterKey * key(secrets::SecureMemory *password)
+static secrets::SecureMasterKey *key(secrets::SecureMemory *password)
 {
     if (!keyParams) {
         qDebug() << "Unable to setup() dummy master key to generate test data with";
@@ -86,6 +85,7 @@ private Q_SLOTS:
     void supplyNewPassword(void);
     void cancelNewPassword(void);
     void retryExistingPassword(void);
+
 private:
     QByteArray m_salt = salt();
     std::optional<secrets::EncryptedSecret> m_challenge = challenge();

@@ -10,8 +10,8 @@
 
 namespace validators
 {
-    QString simplify_spaces(QString &input);
-    QString strip_spaces(QString &input);
+QString simplify_spaces(QString &input);
+QString strip_spaces(QString &input);
 }
 
 #endif

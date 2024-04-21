@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class Base32DecodingTest: public QObject
+class Base32DecodingTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -58,25 +58,22 @@ void Base32DecodingTest::testInvalidSample(void)
 
 void Base32DecodingTest::testValidSample_data(void)
 {
-    static const char ok_corpus[13][5] = {
-        { 'A', 'B', 'C', 'D', '\xA' },
-        { '?', 'A', 'B', 'C', 'D' },
-        { '2', '0', '1', '6' },
-        { '=', '=' },
-        { '?' },
-        { '8' },
+    static const char ok_corpus[13][5] = {{'A', 'B', 'C', 'D', '\xA'},
+                                          {'?', 'A', 'B', 'C', 'D'},
+                                          {'2', '0', '1', '6'},
+                                          {'=', '='},
+                                          {'?'},
+                                          {'8'},
 
-        { '\x0', '\x1', '\x2' },
-        { '\x1', '\x0', '\x2' },
-        { '\x1', '\x2', '\x0' },
+                                          {'\x0', '\x1', '\x2'},
+                                          {'\x1', '\x0', '\x2'},
+                                          {'\x1', '\x2', '\x0'},
 
+                                          {'\x0', 'A', 'B', '\x1', '\x2'},
+                                          {'\x1', 'A', 'B', '\x0', '\x2'},
+                                          {'\x1', 'A', 'B', '\x2', '\x0'},
 
-        { '\x0', 'A', 'B', '\x1', '\x2' },
-        { '\x1', 'A', 'B', '\x0', '\x2' },
-        { '\x1', 'A', 'B', '\x2', '\x0' },
-
-        {}
-    };
+                                          {}};
 
     QTest::addColumn<QString>("base32");
     QTest::addColumn<QByteArray>("expected");

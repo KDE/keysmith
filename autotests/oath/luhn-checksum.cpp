@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class LuhnChecksumTest: public QObject
+class LuhnChecksumTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:

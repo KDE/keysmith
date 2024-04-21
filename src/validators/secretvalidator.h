@@ -11,16 +11,17 @@
 
 namespace validators
 {
-    class Base32Validator: public QValidator
-    {
-        Q_OBJECT
-    public:
-        explicit Base32Validator(QObject *parent = nullptr);
-        QValidator::State validate(QString &input, int &pos) const override;
-        void fixup(QString &input) const override;
-    private:
-        const QRegularExpressionValidator m_pattern;
-    };
+class Base32Validator : public QValidator
+{
+    Q_OBJECT
+public:
+    explicit Base32Validator(QObject *parent = nullptr);
+    QValidator::State validate(QString &input, int &pos) const override;
+    void fixup(QString &input) const override;
+
+private:
+    const QRegularExpressionValidator m_pattern;
+};
 }
 
 #endif

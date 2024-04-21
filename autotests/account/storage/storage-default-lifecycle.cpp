@@ -4,8 +4,8 @@
  */
 #include "account/account.h"
 
-#include "../test-utils/output.h"
 #include "../../test-utils/spy.h"
+#include "../test-utils/output.h"
 
 #include <QDateTime>
 #include <QFile>
@@ -17,7 +17,7 @@
 
 static QString testIniResource(QLatin1String("test.ini"));
 
-class StorageDefaultLifeCycleTest: public QObject
+class StorageDefaultLifeCycleTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -28,7 +28,8 @@ private Q_SLOTS:
 void StorageDefaultLifeCycleTest::initTestCase(void)
 {
     QVERIFY2(test::ensureOutputDirectory(), "output directory should be available");
-    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/storage-lifecycles/starting.ini"), testIniResource), "test corpus INI resource should be available as file");
+    QVERIFY2(test::copyResourceAsWritable(QStringLiteral(":/storage-lifecycles/starting.ini"), testIniResource),
+             "test corpus INI resource should be available as file");
 }
 
 void StorageDefaultLifeCycleTest::testLifecycle(void)
@@ -36,8 +37,7 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     const QString iniResource = test::path(testIniResource);
     const QString samleAccountFullName(QLatin1String("autotests:valid-hotp-sample-1"));
 
-    const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&iniResource](const accounts::PersistenceAction &action) -> void {
         QSettings data(iniResource, QSettings::IniFormat);
         action(data);
     });
@@ -77,7 +77,7 @@ void StorageDefaultLifeCycleTest::testLifecycle(void)
     QVERIFY2(test::signal_eventually_emitted_once(loaded), "sample account should be loaded by now");
     QCOMPARE(uut->isLoaded(), true);
     QCOMPARE(uut->hasError(), false);
-    QCOMPARE(error.count(),  0);
+    QCOMPARE(error.count(), 0);
     QCOMPARE(accountAdded.count(), 1);
     QCOMPARE(accountAdded.at(0).at(0), samleAccountFullName);
 

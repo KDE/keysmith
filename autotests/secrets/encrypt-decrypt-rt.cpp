@@ -9,7 +9,7 @@
 
 #include <string.h>
 
-class EncryptionDecryptionRoundTripTest: public QObject
+class EncryptionDecryptionRoundTripTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -70,7 +70,7 @@ void EncryptionDecryptionRoundTripTest::testDecryptionOfCorruptInputs(void)
     QVERIFY2(encrypted, "encryption of the payload should succeed");
 
     QByteArray brokenTag(encrypted->cryptText());
-    brokenTag[0] = brokenTag[0] ^ ((char) 0xFF);
+    brokenTag[0] = brokenTag[0] ^ ((char)0xFF);
 
     std::optional<secrets::EncryptedSecret> fakedTag = secrets::EncryptedSecret::from(brokenTag, encrypted->nonce());
     QVERIFY2(fakedTag, "should be able to construct the 'fake' encrypted input (tag)");
@@ -79,7 +79,7 @@ void EncryptionDecryptionRoundTripTest::testDecryptionOfCorruptInputs(void)
     QVERIFY2(!decryptedUsingFakeTag, "decryption should fail when the authentication tag has been tampered with");
 
     QByteArray brokenPayload(encrypted->cryptText());
-    brokenPayload[brokenPayload.size() - 1] = brokenPayload[brokenPayload.size() - 1] ^ ((char) 0xFF);
+    brokenPayload[brokenPayload.size() - 1] = brokenPayload[brokenPayload.size() - 1] ^ ((char)0xFF);
 
     std::optional<secrets::EncryptedSecret> fakedPayload = secrets::EncryptedSecret::from(brokenPayload, encrypted->nonce());
     QVERIFY2(fakedPayload, "should be able to construct the 'fake' encrypted input (payload)");
@@ -88,7 +88,7 @@ void EncryptionDecryptionRoundTripTest::testDecryptionOfCorruptInputs(void)
     QVERIFY2(!decryptedUsingFakePayload, "decryption should fail when the payload has been tampered with");
 
     QByteArray brokenNonce(encrypted->nonce());
-    brokenNonce[0] = brokenNonce[0] ^ ((char) 0xFF);
+    brokenNonce[0] = brokenNonce[0] ^ ((char)0xFF);
 
     std::optional<secrets::EncryptedSecret> fakedNonce = secrets::EncryptedSecret::from(encrypted->cryptText(), brokenNonce);
     QVERIFY2(fakedNonce, "should be able to construct the 'fake' encrypted input (nonce)");

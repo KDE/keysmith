@@ -15,18 +15,19 @@
 
 namespace validators
 {
-    std::optional<QDateTime> parseDateTime(const QString &input);
+std::optional<QDateTime> parseDateTime(const QString &input);
 
-    class EpochValidator: public QValidator
-    {
-        Q_OBJECT
-    public:
-        explicit EpochValidator(const std::function<qint64(void)> clock = &QDateTime::currentMSecsSinceEpoch, QObject *parent = nullptr);
-        void fixup(QString &input) const override;
-        QValidator::State validate(QString &input, int &pos) const override;
-    private:
-        const std::function<qint64(void)> m_clock;
-    };
+class EpochValidator : public QValidator
+{
+    Q_OBJECT
+public:
+    explicit EpochValidator(const std::function<qint64(void)> clock = &QDateTime::currentMSecsSinceEpoch, QObject *parent = nullptr);
+    void fixup(QString &input) const override;
+    QValidator::State validate(QString &input, int &pos) const override;
+
+private:
+    const std::function<qint64(void)> m_clock;
+};
 }
 
 #endif

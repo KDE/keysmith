@@ -13,14 +13,13 @@
 Q_DECLARE_METATYPE(std::optional<qulonglong>);
 Q_DECLARE_METATYPE(QLocale);
 
-class UnsignedLongParsingSamplesTest: public QObject
+class UnsignedLongParsingSamplesTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
     void testParseUnsignedInteger(void);
     void testParseUnsignedInteger_data(void);
 };
-
 
 void UnsignedLongParsingSamplesTest::testParseUnsignedInteger(void)
 {

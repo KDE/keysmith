@@ -9,7 +9,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class KeyDerivationTest: public QObject
+class KeyDerivationTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:

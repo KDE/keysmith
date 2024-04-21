@@ -9,14 +9,14 @@
 
 namespace test
 {
-    bool ensureOutputDirectory(void);
-    bool ensureWritable(const QString &outputRelPath);
-    bool copyResource(const QString &resource, const QString &outputRelPath);
-    bool copyResourceAsWritable(const QString &resource, const QString &outputRelPath);
+bool ensureOutputDirectory(void);
+bool ensureWritable(const QString &outputRelPath);
+bool copyResource(const QString &resource, const QString &outputRelPath);
+bool copyResourceAsWritable(const QString &resource, const QString &outputRelPath);
 
-    QString slurp(const QString &path);
+QString slurp(const QString &path);
 
-    QString path(const QString &relPath);
+QString path(const QString &relPath);
 }
 
 #endif

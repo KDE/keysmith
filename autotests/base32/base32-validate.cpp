@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class Base32ValidationTest: public QObject
+class Base32ValidationTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:

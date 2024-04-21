@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class TotpAlgorithmTest: public QObject
+class TotpAlgorithmTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -18,22 +18,30 @@ private Q_SLOTS:
 void define_test_case(const QString &testCase, const QString &datetime, const QByteArray &secret, QCryptographicHash::Algorithm algorithm, const char *expected)
 {
     const QDateTime dt = QDateTime::fromString(datetime, Qt::ISODate);
-    QTest::newRow(qPrintable(testCase.arg(datetime).arg(QLatin1String(expected)))) << dt << ((int) algorithm) << secret << QString(QLatin1String(expected));
+    QTest::newRow(qPrintable(testCase.arg(datetime).arg(QLatin1String(expected)))) << dt << ((int)algorithm) << secret << QString(QLatin1String(expected));
 }
 
-void define_sha1_test_case(const char * datetime, const char *expected)
+void define_sha1_test_case(const char *datetime, const char *expected)
 {
     define_test_case(QLatin1String("%1 (SHA1) ... %2"), QLatin1String(datetime), QByteArray("12345678901234567890"), QCryptographicHash::Sha1, expected);
 }
 
-void define_sha256_test_case(const char * datetime, const char *expected)
+void define_sha256_test_case(const char *datetime, const char *expected)
 {
-    define_test_case(QLatin1String("%1 (SHA256) ... %2"), QLatin1String(datetime), QByteArray("12345678901234567890123456789012"), QCryptographicHash::Sha256, expected);
+    define_test_case(QLatin1String("%1 (SHA256) ... %2"),
+                     QLatin1String(datetime),
+                     QByteArray("12345678901234567890123456789012"),
+                     QCryptographicHash::Sha256,
+                     expected);
 }
 
-void define_sha512_test_case(const char * datetime, const char *expected)
+void define_sha512_test_case(const char *datetime, const char *expected)
 {
-    define_test_case(QLatin1String("%1 (SHA512) ... %2"), QLatin1String(datetime), QByteArray("1234567890123456789012345678901234567890123456789012345678901234"), QCryptographicHash::Sha512, expected);
+    define_test_case(QLatin1String("%1 (SHA512) ... %2"),
+                     QLatin1String(datetime),
+                     QByteArray("1234567890123456789012345678901234567890123456789012345678901234"),
+                     QCryptographicHash::Sha512,
+                     expected);
 }
 
 /*
@@ -50,14 +58,13 @@ void TotpAlgorithmTest::rfcTestVector(void)
     QFETCH(int, hash);
     QFETCH(QByteArray, secret);
 
-    std::optional<quint64> counter = oath::count(epoch, timeStep, [now](void) -> qint64
-    {
+    std::optional<quint64> counter = oath::count(epoch, timeStep, [now](void) -> qint64 {
         return now.toMSecsSinceEpoch();
     });
 
     QVERIFY2(counter, "should be able to count timesteps using the settings of the RFC test vector");
 
-    std::optional<oath::Algorithm> uut = oath::Algorithm::totp((QCryptographicHash::Algorithm) hash, tokenLength);
+    std::optional<oath::Algorithm> uut = oath::Algorithm::totp((QCryptographicHash::Algorithm)hash, tokenLength);
     QVERIFY2(uut, "should be able to construct the algorithm using settings of the RFC test vector");
 
     QByteArray copy(secret);

@@ -10,7 +10,7 @@
 
 #include <functional>
 
-class MillisecondsLeftForTokenTest: public QObject
+class MillisecondsLeftForTokenTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -29,8 +29,7 @@ void MillisecondsLeftForTokenTest::testMillisecondsLeftForToken(void)
     QFETCH(uint, timeStep);
     QFETCH(qint64, now);
 
-    const std::function<qint64(void)> clock([now](void) -> qint64
-    {
+    const std::function<qint64(void)> clock([now](void) -> qint64 {
         return now;
     });
 

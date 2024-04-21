@@ -63,7 +63,7 @@ static std::optional<quint64> decode(const QString &encoded, int index)
     return std::optional<quint64>(result);
 }
 
-static std::optional<size_t> decode(const QString &encoded, int index, int end, int padding, size_t offset, size_t capacity, char * const output)
+static std::optional<size_t> decode(const QString &encoded, int index, int end, int padding, size_t offset, size_t capacity, char *const output)
 {
     Q_ASSERT_X(offset <= capacity, Q_FUNC_INFO, "invalid offset into output buffer");
     Q_ASSERT_X(end >= 0 && end <= encoded.size(), Q_FUNC_INFO, "end of encoded data should be valid");
@@ -72,28 +72,27 @@ static std::optional<size_t> decode(const QString &encoded, int index, int end, 
 
     size_t group;
 
-    switch ((index + 8) - padding)
-    {
-        case 2:
-        case 5:
-        case 7:
-            Q_ASSERT_X(false, Q_FUNC_INFO, "invalid amount of padding should have been caught by previous validation");
-            return std::nullopt;
-        case 1:
-            group = 4;
-            break;
-        case 3:
-            group = 3;
-            break;
-        case 4:
-            group = 2;
-            break;
-        case 6:
-            group = 1;
-            break;
-        default: // no padding (yet) for the group at the given index: there are 8 or more bytes left
-            group = 5;
-            break;
+    switch ((index + 8) - padding) {
+    case 2:
+    case 5:
+    case 7:
+        Q_ASSERT_X(false, Q_FUNC_INFO, "invalid amount of padding should have been caught by previous validation");
+        return std::nullopt;
+    case 1:
+        group = 4;
+        break;
+    case 3:
+        group = 3;
+        break;
+    case 4:
+        group = 2;
+        break;
+    case 6:
+        group = 1;
+        break;
+    default: // no padding (yet) for the group at the given index: there are 8 or more bytes left
+        group = 5;
+        break;
     }
 
     Q_ASSERT_X((capacity - offset) >= group, Q_FUNC_INFO, "offset/output group too big for output buffer size");
@@ -104,7 +103,7 @@ static std::optional<size_t> decode(const QString &encoded, int index, int end, 
 
     quint64 value = *bits;
     for (size_t i = 0; i < group; ++i) {
-        output[offset + i] = (char) ((value >> (32ULL - i * 8ULL)) & 0xFFULL);
+        output[offset + i] = (char)((value >> (32ULL - i * 8ULL)) & 0xFFULL);
     }
 
     return std::optional<size_t>(group);
@@ -124,7 +123,7 @@ static bool isPaddingValid(const QString &encoded, int paddingIndex, int amount)
         0xF, // 8 - 4 padding -> 4 * 5 - 16 bits -> 4 trailing bits: mask 0xF
         0x0, // 8 - 5 padding -> invalid
         0x3, // 8 - 6 padding -> 2 * 5 -  8 bits -> 2 trailing bits: mask 0x3
-        0x0  // 8 - 7 padding -> invalid
+        0x0 // 8 - 7 padding -> invalid
     };
 
     if (amount == 0) {
@@ -157,7 +156,6 @@ static bool isPaddingValid(const QString &encoded, int paddingIndex, int amount)
      * i.e. the last character before padding does not encode bits that are not whitelisted by the mask
      */
     return ((*d) & p) == 0;
-
 }
 
 static std::optional<int> isBase32(const QString &encoded, int from, int until)
@@ -192,7 +190,7 @@ static std::optional<int> isBase32(const QString &encoded, int from, int until)
 
 static inline size_t determineCapacity(size_t encodedBytes, size_t accountFor, size_t lastBytes)
 {
-    return 5 * (encodedBytes - accountFor) / 8  + lastBytes;
+    return 5 * (encodedBytes - accountFor) / 8 + lastBytes;
 }
 
 static size_t requiredCapacity(int paddingIndex, int from, int until)
@@ -218,70 +216,70 @@ static size_t requiredCapacity(int paddingIndex, int from, int until)
 
 namespace base32
 {
-    std::optional<size_t> validate(const QString &encoded, int from, int until)
-    {
-        int max = until == -1 ? encoded.size() : until;
-        if (!checkInputRange(encoded, from, max)) {
-            return std::nullopt;
-        }
-
-        std::optional<int> padding = isBase32(encoded, from, max);
-        return padding ? std::optional<size_t>(requiredCapacity(*padding, from, max)) : std::nullopt;
+std::optional<size_t> validate(const QString &encoded, int from, int until)
+{
+    int max = until == -1 ? encoded.size() : until;
+    if (!checkInputRange(encoded, from, max)) {
+        return std::nullopt;
     }
 
-    std::optional<size_t> decode(const QString &encoded, char * const out, size_t outlen, int from, int until)
-    {
-        int max = until == -1 ? encoded.size() : until;
-        if (!checkInputRange(encoded, from, max)) {
-            qCDebug(logger) << "Invalid input range from:" << from << "until:" << until << "implied limit:" << max;
-            return std::nullopt;
-        }
+    std::optional<int> padding = isBase32(encoded, from, max);
+    return padding ? std::optional<size_t>(requiredCapacity(*padding, from, max)) : std::nullopt;
+}
 
-        std::optional<int> padding = isBase32(encoded, from, max);
-        if (!padding) {
-            qCDebug(logger) << "Unable to decode: input range is not valid base32";
-            return std::nullopt;
-        }
-
-        size_t needed = requiredCapacity(*padding, from, max);
-        if (outlen < needed) {
-            qCDebug(logger) << "Unable to decode: required capacity:" << needed << "exceeds allocated output buffer size:" << outlen;
-            return std::nullopt;
-        }
-
-        int index;
-        size_t decoded = 0;
-        for(index = from; index < max && decoded < needed; index += 8) {
-            std::optional<size_t> group = decode(encoded, index, max, *padding, decoded, needed, out);
-            Q_ASSERT_X(group, Q_FUNC_INFO, "input should have been fully validated; decoding should succeed");
-            decoded += *group;
-        }
-
-        Q_ASSERT_X(decoded == needed, Q_FUNC_INFO, "number of bytes decoded should match expected output capacity required");
-        Q_ASSERT_X(index == max, Q_FUNC_INFO, "number of characters decoded should match end of the input range exactly");
-
-        return std::optional<size_t>(decoded);
+std::optional<size_t> decode(const QString &encoded, char *const out, size_t outlen, int from, int until)
+{
+    int max = until == -1 ? encoded.size() : until;
+    if (!checkInputRange(encoded, from, max)) {
+        qCDebug(logger) << "Invalid input range from:" << from << "until:" << until << "implied limit:" << max;
+        return std::nullopt;
     }
 
-    std::optional<QByteArray> decode(const QString &encoded)
-    {
-        std::optional<QByteArray> result = std::nullopt;
-        std::optional<size_t> capacity = validate(encoded);
-
-        if (!capacity) {
-            qCDebug(logger) << "Unable to decode input: invalid base32";
-            return std::nullopt;
-        }
-
-        QByteArray decoded;
-        decoded.reserve((int) *capacity);
-        decoded.resize((int) *capacity);
-        if (decode(encoded, decoded.data(), *capacity)) {
-            result.emplace(decoded);
-        } else {
-            qCDebug(logger) << "Failed to decode base32";
-        }
-
-        return result;
+    std::optional<int> padding = isBase32(encoded, from, max);
+    if (!padding) {
+        qCDebug(logger) << "Unable to decode: input range is not valid base32";
+        return std::nullopt;
     }
+
+    size_t needed = requiredCapacity(*padding, from, max);
+    if (outlen < needed) {
+        qCDebug(logger) << "Unable to decode: required capacity:" << needed << "exceeds allocated output buffer size:" << outlen;
+        return std::nullopt;
+    }
+
+    int index;
+    size_t decoded = 0;
+    for (index = from; index < max && decoded < needed; index += 8) {
+        std::optional<size_t> group = decode(encoded, index, max, *padding, decoded, needed, out);
+        Q_ASSERT_X(group, Q_FUNC_INFO, "input should have been fully validated; decoding should succeed");
+        decoded += *group;
+    }
+
+    Q_ASSERT_X(decoded == needed, Q_FUNC_INFO, "number of bytes decoded should match expected output capacity required");
+    Q_ASSERT_X(index == max, Q_FUNC_INFO, "number of characters decoded should match end of the input range exactly");
+
+    return std::optional<size_t>(decoded);
+}
+
+std::optional<QByteArray> decode(const QString &encoded)
+{
+    std::optional<QByteArray> result = std::nullopt;
+    std::optional<size_t> capacity = validate(encoded);
+
+    if (!capacity) {
+        qCDebug(logger) << "Unable to decode input: invalid base32";
+        return std::nullopt;
+    }
+
+    QByteArray decoded;
+    decoded.reserve((int)*capacity);
+    decoded.resize((int)*capacity);
+    if (decode(encoded, decoded.data(), *capacity)) {
+        result.emplace(decoded);
+    } else {
+        qCDebug(logger) << "Failed to decode base32";
+    }
+
+    return result;
+}
 }

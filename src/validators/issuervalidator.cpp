@@ -9,7 +9,7 @@
 #include <QRegularExpression>
 #include <QString>
 
-static const QRegularExpression& match_pattern(void)
+static const QRegularExpression &match_pattern(void)
 {
     /*
      * Pattern to check that issuer names:
@@ -26,21 +26,21 @@ static const QRegularExpression& match_pattern(void)
 
 namespace validators
 {
-    IssuerValidator::IssuerValidator(QObject *parent):
-        QValidator(parent),
-        m_pattern(match_pattern())
-    {
-    }
+IssuerValidator::IssuerValidator(QObject *parent)
+    : QValidator(parent)
+    , m_pattern(match_pattern())
+{
+}
 
-    void IssuerValidator::fixup(QString &input) const
-    {
-        input = validators::simplify_spaces(input.remove(QLatin1Char(':')));
-    }
+void IssuerValidator::fixup(QString &input) const
+{
+    input = validators::simplify_spaces(input.remove(QLatin1Char(':')));
+}
 
-    QValidator::State IssuerValidator::validate(QString &input, int &cursor) const
-    {
-        return input.isEmpty() ? QValidator::Acceptable : m_pattern.validate(input, cursor);
-    }
+QValidator::State IssuerValidator::validate(QString &input, int &cursor) const
+{
+    return input.isEmpty() ? QValidator::Acceptable : m_pattern.validate(input, cursor);
+}
 }
 
 #include "moc_issuervalidator.cpp"

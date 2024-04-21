@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class HotpAlgorithmTest: public QObject
+class HotpAlgorithmTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -15,14 +15,14 @@ private Q_SLOTS:
     void rfcTestVector_data(void);
 };
 
-void define_test_case(quint64 counter, bool checksum, const char * expected)
+void define_test_case(quint64 counter, bool checksum, const char *expected)
 {
     static const QString testCase(QLatin1String("%1 (%2) ... %3"));
 
-    QTest::newRow(qPrintable(testCase.arg(counter).arg(checksum ? QLatin1String("with checksum") : QLatin1String("without checksum")).arg(QLatin1String(expected))))
+    QTest::newRow(
+        qPrintable(testCase.arg(counter).arg(checksum ? QLatin1String("with checksum") : QLatin1String("without checksum")).arg(QLatin1String(expected))))
         << counter << checksum << QString(QLatin1String(expected));
 }
-
 
 /*
  * (Static) test vector params obtained from RFC-4226
@@ -48,32 +48,30 @@ void HotpAlgorithmTest::rfcTestVector(void)
 
 void HotpAlgorithmTest::rfcTestVector_data(void)
 {
-    static const char * corpus[20] {
-        "755224",
-        "287082",
-        "359152",
-        "969429",
-        "338314",
-        "254676",
-        "287922",
-        "162583",
-        "399871",
-        "520489",
+    static const char *corpus[20]{"755224",
+                                  "287082",
+                                  "359152",
+                                  "969429",
+                                  "338314",
+                                  "254676",
+                                  "287922",
+                                  "162583",
+                                  "399871",
+                                  "520489",
 
-        /*
-         * same as the first batch (from RFC test samples), but with manually added Luhn checksum:
-         */
-        "7552243",
-        "2870822",
-        "3591526",
-        "9694290",
-        "3383148",
-        "2546760",
-        "2879229",
-        "1625839",
-        "3998713",
-        "5204896"
-    };
+                                  /*
+                                   * same as the first batch (from RFC test samples), but with manually added Luhn checksum:
+                                   */
+                                  "7552243",
+                                  "2870822",
+                                  "3591526",
+                                  "9694290",
+                                  "3383148",
+                                  "2546760",
+                                  "2879229",
+                                  "1625839",
+                                  "3998713",
+                                  "5204896"};
 
     QTest::addColumn<quint64>("counter");
     QTest::addColumn<bool>("checksum");
@@ -87,4 +85,3 @@ void HotpAlgorithmTest::rfcTestVector_data(void)
 QTEST_APPLESS_MAIN(HotpAlgorithmTest)
 
 #include "hotp-algorithm.moc"
-

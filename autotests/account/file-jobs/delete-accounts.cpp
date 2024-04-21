@@ -4,8 +4,8 @@
  */
 #include "account/actions_p.h"
 
-#include "../test-utils/output.h"
 #include "../../test-utils/spy.h"
+#include "../test-utils/output.h"
 
 #include <QFile>
 #include <QSet>
@@ -18,7 +18,7 @@
 static QString existingAccountsIni(QLatin1String("existing-accounts.ini"));
 static QString emptyAccountsIni(QLatin1String("empty-accounts.ini"));
 
-class DeleteAccountsTest: public QObject
+class DeleteAccountsTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -50,8 +50,7 @@ void DeleteAccountsTest::removeAccounts(void)
 
     bool actionRun = false;
     const QString actual = test::path(isolated);
-    const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void {
         QSettings data(actual, QSettings::IniFormat);
         actionRun = true;
         action(data);
@@ -80,13 +79,43 @@ void DeleteAccountsTest::removeAccounts_data(void)
     static const QString totp(QLatin1String(":/delete-accounts/only-totp-left.ini"));
 
     define_test_data();
-    define_test_case("remove hotp from sample accounts", existing, QLatin1String("remove-hotp-from-sample.ini"), totp, QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")) );
-    define_test_case("remove totp from sample accounts", existing, QLatin1String("remove-totp-from-sample.ini"), hotp, QSet<QUuid>() << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
-    define_test_case("remove both from sample accounts", existing, QLatin1String("remove-both-from-sample.ini"), empty, QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")) << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
-    define_test_case("remove hotp from totp only account", totp, QLatin1String("remove-hotp-from-totp.ini"), totp, QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")));
-    define_test_case("remove totp from hotp only account", hotp, QLatin1String("remove-totp-from-hotp.ini"), hotp, QSet<QUuid>() << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
-    define_test_case("remove both from empty accounts", empty, QLatin1String("remove-both-from-empty.ini"), empty, QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")) << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
-    define_test_case("remove bogus accounts from sample accounts", existing, QLatin1String("remove-bogus-from-sample.ini"), existing, QSet<QUuid>() << QUuid(QLatin1String("1885b51f-c4cf-448d-8cad-53306a1f558e")));
+    define_test_case("remove hotp from sample accounts",
+                     existing,
+                     QLatin1String("remove-hotp-from-sample.ini"),
+                     totp,
+                     QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")));
+    define_test_case("remove totp from sample accounts",
+                     existing,
+                     QLatin1String("remove-totp-from-sample.ini"),
+                     hotp,
+                     QSet<QUuid>() << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
+    define_test_case("remove both from sample accounts",
+                     existing,
+                     QLatin1String("remove-both-from-sample.ini"),
+                     empty,
+                     QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2"))
+                                   << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
+    define_test_case("remove hotp from totp only account",
+                     totp,
+                     QLatin1String("remove-hotp-from-totp.ini"),
+                     totp,
+                     QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2")));
+    define_test_case("remove totp from hotp only account",
+                     hotp,
+                     QLatin1String("remove-totp-from-hotp.ini"),
+                     hotp,
+                     QSet<QUuid>() << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
+    define_test_case("remove both from empty accounts",
+                     empty,
+                     QLatin1String("remove-both-from-empty.ini"),
+                     empty,
+                     QSet<QUuid>() << QUuid(QLatin1String("072a645d-6c26-57cc-81eb-d9ef3b9b39e2"))
+                                   << QUuid(QLatin1String("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc")));
+    define_test_case("remove bogus accounts from sample accounts",
+                     existing,
+                     QLatin1String("remove-bogus-from-sample.ini"),
+                     existing,
+                     QSet<QUuid>() << QUuid(QLatin1String("1885b51f-c4cf-448d-8cad-53306a1f558e")));
     define_test_case("remove nothing from sample accounts", existing, QLatin1String("remove-nothing-from-sample.ini"), existing, QSet<QUuid>());
 }
 

@@ -4,10 +4,10 @@
  */
 #include "account/actions_p.h"
 
+#include "../../secrets/test-utils/random.h"
+#include "../../test-utils/spy.h"
 #include "../test-utils/output.h"
 #include "../test-utils/secret.h"
-#include "../../test-utils/spy.h"
-#include "../../secrets/test-utils/random.h"
 
 #include <QFile>
 #include <QSignalSpy>
@@ -16,7 +16,7 @@
 #include <QUuid>
 #include <QtDebug>
 
-class SaveTotpTest: public QObject
+class SaveTotpTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -25,8 +25,9 @@ private Q_SLOTS:
     void validTotp_data(void);
     void invalidTotp(void);
     void invalidTotp_data(void);
+
 private:
-    accounts::AccountSecret m_secret {&test::fakeRandom};
+    accounts::AccountSecret m_secret{&test::fakeRandom};
 };
 
 static void define_test_data(void)
@@ -43,7 +44,17 @@ static void define_test_data(void)
     QTest::addColumn<QString>("expectedAccountsIni");
 }
 
-static void define_test_case(const char * label, const QUuid &id, const QString &accountName, const QString &issuer, uint timeStep, int tokenLength, const QDateTime &epoch, accounts::Account::Hash hash, qint64 now, const QString &actualIni, const QString &expectedIni)
+static void define_test_case(const char *label,
+                             const QUuid &id,
+                             const QString &accountName,
+                             const QString &issuer,
+                             uint timeStep,
+                             int tokenLength,
+                             const QDateTime &epoch,
+                             accounts::Account::Hash hash,
+                             qint64 now,
+                             const QString &actualIni,
+                             const QString &expectedIni)
 {
     QTest::newRow(label) << id << accountName << issuer << timeStep << tokenLength << epoch << hash << now << actualIni << expectedIni;
 }
@@ -61,8 +72,7 @@ void SaveTotpTest::validTotp(void)
     QFETCH(QString, actualAccountsIni);
     QFETCH(QString, expectedAccountsIni);
 
-    const std::function<qint64(void)> clock([now](void) -> qint64
-    {
+    const std::function<qint64(void)> clock([now](void) -> qint64 {
         return now;
     });
 
@@ -70,8 +80,7 @@ void SaveTotpTest::validTotp(void)
     const QString lock = test::path(actualAccountsIni + QLatin1String(".lock"));
     bool actionRun = false;
 
-    const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void {
         QSettings data(actual, QSettings::IniFormat);
         actionRun = true;
         action(data);
@@ -115,8 +124,7 @@ void SaveTotpTest::invalidTotp(void)
     QFETCH(QString, actualAccountsIni);
     QFETCH(QString, expectedAccountsIni);
 
-    const std::function<qint64(void)> clock([now](void) -> qint64
-    {
+    const std::function<qint64(void)> clock([now](void) -> qint64 {
         return now;
     });
 
@@ -124,8 +132,7 @@ void SaveTotpTest::invalidTotp(void)
     const QString lock = test::path(actualAccountsIni + QLatin1String(".lock"));
     bool actionRun = false;
 
-    const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void
-    {
+    const accounts::SettingsProvider settings([&actual, &actionRun](const accounts::PersistenceAction &action) -> void {
         QSettings data(actual, QSettings::IniFormat);
         actionRun = true;
         action(data);
@@ -156,47 +163,143 @@ void SaveTotpTest::invalidTotp(void)
 void SaveTotpTest::validTotp_data(void)
 {
     define_test_data();
-    define_test_case("valid-totp-sample-1", QUuid("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc"), QLatin1String("valid-totp-sample-1"), QString(), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-valid-totp-accounts-1.ini"), QLatin1String(":/save-totp/expected-accounts-1.ini"));
-    define_test_case("valid-totp-sample-2", QUuid("6537d6a5-005e-5a92-b560-b09df3c2e676"), QLatin1String("valid-totp-sample-2"), QLatin1String("autotests"), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(1'234'567'890LL), accounts::Account::Hash::Sha512,
-                     2'000'000'000LL, QLatin1String("save-valid-totp-accounts-2.ini"), QLatin1String(":/save-totp/expected-accounts-2.ini"));
+    define_test_case("valid-totp-sample-1",
+                     QUuid("534cc72e-e9ec-5e39-a1ff-9f017c9be8cc"),
+                     QLatin1String("valid-totp-sample-1"),
+                     QString(),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-valid-totp-accounts-1.ini"),
+                     QLatin1String(":/save-totp/expected-accounts-1.ini"));
+    define_test_case("valid-totp-sample-2",
+                     QUuid("6537d6a5-005e-5a92-b560-b09df3c2e676"),
+                     QLatin1String("valid-totp-sample-2"),
+                     QLatin1String("autotests"),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(1'234'567'890LL),
+                     accounts::Account::Hash::Sha512,
+                     2'000'000'000LL,
+                     QLatin1String("save-valid-totp-accounts-2.ini"),
+                     QLatin1String(":/save-totp/expected-accounts-2.ini"));
 }
 
 void SaveTotpTest::invalidTotp_data(void)
 {
     define_test_data();
-    define_test_case("null UUID", QUuid(), QLatin1String("null UUID"), QString(), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-1.ini"), QString());
-    define_test_case("null account name", QUuid("00611bbf-5e0b-5c6a-9847-ad865315ce86"), QString(), QString(), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-2.ini"), QString());
-    define_test_case("empty account name", QUuid("1e42b907-99d8-5da3-a59b-89b257e49c83"), QLatin1String(""), QString(), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-3.ini"), QString());
-    define_test_case("empty issuer name", QUuid("533b406b-ad04-5203-a26f-5deb0afeba22"), QLatin1String("empty issuer name"), QLatin1String(""), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-4.ini"), QString());
-    define_test_case("empty issuer name", QUuid("1c1ffa42-bb9f-5413-a8a7-6c5b0eb8a36f"), QLatin1String("invalid issuer name"), QLatin1String(":"), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-5.ini"), QString());
-    define_test_case("timeStep too small", QUuid("5ab8749b-f973-5f48-a70e-c261ebd0521a"), QLatin1String("timeStep too small"), QString(), 6U,
-                     0U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-6.ini"), QString());
-    define_test_case("tokenLength too small", QUuid("bca12e13-4b5b-5e4e-b162-3b86a6284dea"), QLatin1String("tokenLength too small"), QString(), 5U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-7.ini"), QString());
-    define_test_case("tokenLength too large", QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"), QLatin1String("tokenLength too large"), QString(), 11U,
-                     30U, QDateTime::fromMSecsSinceEpoch(0LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-8.ini"), QString());
-    define_test_case("null/invalid epoch datetime", QUuid("e719ed90-e0c0-5510-81c1-ccfd7a5e962c"), QLatin1String("null/invalid epoch datetime"), QString(), 6U,
-                     30U, QDateTime(), accounts::Account::Hash::Sha1,
-                     2'000'000'000LL, QLatin1String("save-totp-dummy-accounts-9.ini"), QString());
-    define_test_case("future epoch datetime", QUuid("0e03a2ed-8e49-54ac-8e46-20536078e5a1"), QLatin1String("future epoch datetime"), QString(), 6U,
-                     30U, QDateTime::fromMSecsSinceEpoch(1'234'567'890LL), accounts::Account::Hash::Sha1,
-                     0LL, QLatin1String("save-totp-dummy-accounts-10.ini"), QString());
+    define_test_case("null UUID",
+                     QUuid(),
+                     QLatin1String("null UUID"),
+                     QString(),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-1.ini"),
+                     QString());
+    define_test_case("null account name",
+                     QUuid("00611bbf-5e0b-5c6a-9847-ad865315ce86"),
+                     QString(),
+                     QString(),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-2.ini"),
+                     QString());
+    define_test_case("empty account name",
+                     QUuid("1e42b907-99d8-5da3-a59b-89b257e49c83"),
+                     QLatin1String(""),
+                     QString(),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-3.ini"),
+                     QString());
+    define_test_case("empty issuer name",
+                     QUuid("533b406b-ad04-5203-a26f-5deb0afeba22"),
+                     QLatin1String("empty issuer name"),
+                     QLatin1String(""),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-4.ini"),
+                     QString());
+    define_test_case("empty issuer name",
+                     QUuid("1c1ffa42-bb9f-5413-a8a7-6c5b0eb8a36f"),
+                     QLatin1String("invalid issuer name"),
+                     QLatin1String(":"),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-5.ini"),
+                     QString());
+    define_test_case("timeStep too small",
+                     QUuid("5ab8749b-f973-5f48-a70e-c261ebd0521a"),
+                     QLatin1String("timeStep too small"),
+                     QString(),
+                     6U,
+                     0U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-6.ini"),
+                     QString());
+    define_test_case("tokenLength too small",
+                     QUuid("bca12e13-4b5b-5e4e-b162-3b86a6284dea"),
+                     QLatin1String("tokenLength too small"),
+                     QString(),
+                     5U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-7.ini"),
+                     QString());
+    define_test_case("tokenLength too large",
+                     QUuid("5c10d530-fb22-5438-848d-3d4d1f738610"),
+                     QLatin1String("tokenLength too large"),
+                     QString(),
+                     11U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(0LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-8.ini"),
+                     QString());
+    define_test_case("null/invalid epoch datetime",
+                     QUuid("e719ed90-e0c0-5510-81c1-ccfd7a5e962c"),
+                     QLatin1String("null/invalid epoch datetime"),
+                     QString(),
+                     6U,
+                     30U,
+                     QDateTime(),
+                     accounts::Account::Hash::Sha1,
+                     2'000'000'000LL,
+                     QLatin1String("save-totp-dummy-accounts-9.ini"),
+                     QString());
+    define_test_case("future epoch datetime",
+                     QUuid("0e03a2ed-8e49-54ac-8e46-20536078e5a1"),
+                     QLatin1String("future epoch datetime"),
+                     QString(),
+                     6U,
+                     30U,
+                     QDateTime::fromMSecsSinceEpoch(1'234'567'890LL),
+                     accounts::Account::Hash::Sha1,
+                     0LL,
+                     QLatin1String("save-totp-dummy-accounts-10.ini"),
+                     QString());
 }
 
 void SaveTotpTest::initTestCase(void)

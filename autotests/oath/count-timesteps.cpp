@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class TimeStepCounterTest: public QObject
+class TimeStepCounterTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -37,8 +37,7 @@ void TimeStepCounterTest::validCount(void)
     QFETCH(qint64, now);
     QFETCH(uint, timeStep);
     QFETCH(quint64, expected);
-    const std::function<qint64(void)> clock([now](void) -> qint64
-    {
+    const std::function<qint64(void)> clock([now](void) -> qint64 {
         return now;
     });
     QCOMPARE(oath::count(epoch, timeStep, clock), std::optional<quint64>(expected));
@@ -61,8 +60,7 @@ void TimeStepCounterTest::invalidCount(void)
     QFETCH(QDateTime, epoch);
     QFETCH(qint64, now);
     QFETCH(uint, timeStep);
-    const std::function<qint64(void)> clock([now](void) -> qint64
-    {
+    const std::function<qint64(void)> clock([now](void) -> qint64 {
         return now;
     });
     QVERIFY2(!oath::count(epoch, timeStep, clock), "counting timesteps should fail (invalid inputs)");
@@ -97,8 +95,7 @@ void TimeStepCounterTest::rfcTestVector(void)
     const QDateTime epoch = QDateTime::fromMSecsSinceEpoch(0);
     const uint timeStep = 30U;
 
-    std::optional<quint64> counter = oath::count(epoch, timeStep, [now](void) -> qint64
-    {
+    std::optional<quint64> counter = oath::count(epoch, timeStep, [now](void) -> qint64 {
         return now.toMSecsSinceEpoch();
     });
 

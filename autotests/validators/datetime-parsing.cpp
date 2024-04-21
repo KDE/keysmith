@@ -13,14 +13,13 @@
 
 Q_DECLARE_METATYPE(std::optional<QDateTime>);
 
-class DateTimeParsingSamplesTest: public QObject
+class DateTimeParsingSamplesTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
     void testParseDateTime(void);
     void testParseDateTime_data(void);
 };
-
 
 void DateTimeParsingSamplesTest::testParseDateTime(void)
 {
@@ -37,7 +36,6 @@ void DateTimeParsingSamplesTest::testParseDateTime_data(void)
 {
     QTest::addColumn<QString>("input");
     QTest::addColumn<std::optional<QDateTime>>("result");
-
 
     define_test_case(QLatin1String("1970-01-01T00:00:00Z"), std::optional<QDateTime>(QDateTime::fromMSecsSinceEpoch(0)));
     define_test_case(QLatin1String("1970-01-01T00:00:00.500Z"), std::optional<QDateTime>(QDateTime::fromMSecsSinceEpoch(500LL)));

@@ -11,7 +11,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class NextTest: public QObject
+class NextTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -38,8 +38,7 @@ void NextTest::coldNext(void)
     QSignalSpy firstJobFinished(firstJob, &test::TestJob::finished);
     QSignalSpy firstJobCleaned(firstJob, &test::TestJob::destroyed);
 
-    uut->queueAndProceed(firstJob, [firstJob, thread, jobSignals](void) -> void
-    {
+    uut->queueAndProceed(firstJob, [firstJob, thread, jobSignals](void) -> void {
         QCOMPARE(firstJob->thread(), thread);
         QObject::connect(jobSignals, &test::JobSignals::first, firstJob, &test::TestJob::finish);
     });
@@ -49,8 +48,7 @@ void NextTest::coldNext(void)
     QSignalSpy secondJobFinished(secondJob, &test::TestJob::finished);
     QSignalSpy secondJobCleaned(secondJob, &test::TestJob::destroyed);
 
-    uut->queueAndProceed(secondJob, [secondJob, thread, jobSignals](void) -> void
-    {
+    uut->queueAndProceed(secondJob, [secondJob, thread, jobSignals](void) -> void {
         QCOMPARE(secondJob->thread(), thread);
         QObject::connect(jobSignals, &test::JobSignals::second, secondJob, &test::TestJob::finish);
     });

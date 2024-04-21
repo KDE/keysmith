@@ -9,7 +9,7 @@
 
 namespace test
 {
-    bool fakeRandom(void *buf, size_t size);
+bool fakeRandom(void *buf, size_t size);
 }
 
 #endif

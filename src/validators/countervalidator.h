@@ -14,16 +14,16 @@
 
 namespace validators
 {
-    std::optional<qulonglong> parseUnsignedInteger(const QString &input, const QLocale &locale = QLocale::system());
+std::optional<qulonglong> parseUnsignedInteger(const QString &input, const QLocale &locale = QLocale::system());
 
-    class UnsignedLongValidator: public QValidator
-    {
-        Q_OBJECT
-    public:
-        explicit UnsignedLongValidator(QObject *parent = nullptr);
-        QValidator::State validate(QString &input, int &pos) const override;
-        void fixup(QString &input) const override;
-    };
+class UnsignedLongValidator : public QValidator
+{
+    Q_OBJECT
+public:
+    explicit UnsignedLongValidator(QObject *parent = nullptr);
+    QValidator::State validate(QString &input, int &pos) const override;
+    void fixup(QString &input) const override;
+};
 }
 
 #endif

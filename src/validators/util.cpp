@@ -17,21 +17,21 @@ QRegularExpression spaces_pattern(void)
 namespace validators
 {
 
-    QString simplify_spaces(QString &input)
-    {
-        QString fixed = input.simplified();
+QString simplify_spaces(QString &input)
+{
+    QString fixed = input.simplified();
 
-        // make sure the user can type in at least one space
-        if (input.endsWith(QLatin1Char(' ')) && fixed.size() > 0) {
-            fixed += QLatin1Char(' ');
-        }
-
-        return fixed;
+    // make sure the user can type in at least one space
+    if (input.endsWith(QLatin1Char(' ')) && fixed.size() > 0) {
+        fixed += QLatin1Char(' ');
     }
 
-    QString strip_spaces(QString &input)
-    {
-        static const QRegularExpression re = spaces_pattern();
-        return input.replace(re, QString());
-    }
+    return fixed;
+}
+
+QString strip_spaces(QString &input)
+{
+    static const QRegularExpression re = spaces_pattern();
+    return input.replace(re, QString());
+}
 }

@@ -7,7 +7,7 @@
 #include <QTest>
 #include <QtDebug>
 
-class Base32CodingDecodingTest: public QObject
+class Base32CodingDecodingTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -80,7 +80,7 @@ static void define_test_case(int len)
     QString prefix;
     QByteArray output;
     int padBits = lastPadBits(len);
-    for(int i = 3; i < len; ++i) {
+    for (int i = 3; i < len; ++i) {
         prefix += QLatin1Char('A');
     }
 
@@ -96,7 +96,7 @@ static void define_test_case(int len)
         input += pick(i2);
         input += pick(i3);
 
-        while(input.size() < 8) {
+        while (input.size() < 8) {
             input += QLatin1Char('=');
         }
         define_test_case(input, len, b);

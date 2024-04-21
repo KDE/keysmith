@@ -9,7 +9,7 @@
 
 #include <limits>
 
-class TimeStepCountConversionTest: public QObject // clazy:exclude=ctor-missing-parent-argument
+class TimeStepCountConversionTest : public QObject // clazy:exclude=ctor-missing-parent-argument
 {
     Q_OBJECT
 private Q_SLOTS:
@@ -19,11 +19,11 @@ private Q_SLOTS:
     void validCount_data(void);
 };
 
-
 static void define_valid_test_case(const QDateTime &epoch, uint timeStep, quint64 count, const QDateTime &expected)
 {
     static const QString testCase(QStringLiteral("%1 + %2 * 1000 * %3 ... %4"));
-    QTest::newRow(qPrintable(testCase.arg(epoch.toMSecsSinceEpoch()).arg(timeStep).arg(count).arg(expected.toMSecsSinceEpoch()))) << epoch << timeStep << count << expected;
+    QTest::newRow(qPrintable(testCase.arg(epoch.toMSecsSinceEpoch()).arg(timeStep).arg(count).arg(expected.toMSecsSinceEpoch())))
+        << epoch << timeStep << count << expected;
 }
 
 static void define_invalid_test_case(const QDateTime &epoch, uint timeStep, quint64 count)
@@ -59,13 +59,19 @@ void TimeStepCountConversionTest::validCount_data(void)
     define_valid_test_case(QDateTime::fromMSecsSinceEpoch(-30'000LL), 30UL, 1ULL, QDateTime::fromMSecsSinceEpoch(0LL));
 
     // checking max 'classic' 32bit unix time for counting utc seconds
-    define_valid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 30UL, s2038/ 30LL, QDateTime::fromMSecsSinceEpoch(30'000LL * (s2038 / 30LL)));
+    define_valid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 30UL, s2038 / 30LL, QDateTime::fromMSecsSinceEpoch(30'000LL * (s2038 / 30LL)));
     define_valid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1UL, s2038, QDateTime::fromMSecsSinceEpoch(1'000LL * s2038));
 
     // finding the actual upper limit(s) which QDateTime can cope with
     define_valid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, 0x7fffffffff921fd8ULL / 1000ULL, QDateTime::fromMSecsSinceEpoch(0x7fffffffff921fd8LL));
-    define_valid_test_case(QDateTime::fromMSecsSinceEpoch(808LL), 1ULL, 0x7fffffffff921fd8ULL / 1000ULL - 1ULL, QDateTime::fromMSecsSinceEpoch(0x7fffffffff921fd8LL - 192LL));
-    define_valid_test_case(QDateTime::fromMSecsSinceEpoch(807LL), 1ULL, 0x7fffffffff921fd8ULL / 1000ULL, QDateTime::fromMSecsSinceEpoch(0x7fffffffff921fd8LL + 807LL));
+    define_valid_test_case(QDateTime::fromMSecsSinceEpoch(808LL),
+                           1ULL,
+                           0x7fffffffff921fd8ULL / 1000ULL - 1ULL,
+                           QDateTime::fromMSecsSinceEpoch(0x7fffffffff921fd8LL - 192LL));
+    define_valid_test_case(QDateTime::fromMSecsSinceEpoch(807LL),
+                           1ULL,
+                           0x7fffffffff921fd8ULL / 1000ULL,
+                           QDateTime::fromMSecsSinceEpoch(0x7fffffffff921fd8LL + 807LL));
 
     // finding the lower limit(s) which QDateTime can cope with
     define_valid_test_case(QDateTime::fromMSecsSinceEpoch(min), 1UL, 0ULL, QDateTime::fromMSecsSinceEpoch(min));
@@ -94,9 +100,9 @@ void TimeStepCountConversionTest::invalidCount_data(void)
     define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(std::numeric_limits<qint64>::min()), 1UL, max / 1000ULL + 1ULL);
 
     // fits within qint64 ultimately but QDateTime gets confused about it
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64) (max / 1000LL));
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64) (max >> 9));
-    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64) (max >> 10) + (max >> 11L));
+    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64)(max / 1000LL));
+    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64)(max >> 9));
+    define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(0LL), 1ULL, (quint64)(max >> 10) + (max >> 11L));
     define_invalid_test_case(QDateTime::fromMSecsSinceEpoch(808LL), 1ULL, 0x7fffffffffffffffULL / 1000ULL);
 }
 

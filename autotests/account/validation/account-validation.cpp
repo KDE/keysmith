@@ -7,7 +7,7 @@
 #include <QObject>
 #include <QTest>
 
-class AccountValidationTest: public QObject
+class AccountValidationTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:

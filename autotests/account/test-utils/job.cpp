@@ -6,19 +6,20 @@
 
 namespace test
 {
-    void TestJob::finish(void)
-    {
-        Q_EMIT finished();
-    }
+void TestJob::finish(void)
+{
+    Q_EMIT finished();
+}
 
-    void TestJob::run(void)
-    {
-        Q_EMIT running();
-    }
+void TestJob::run(void)
+{
+    Q_EMIT running();
+}
 
-    JobSignals::JobSignals(QObject *parent): QObject(parent)
-    {
-    }
+JobSignals::JobSignals(QObject *parent)
+    : QObject(parent)
+{
+}
 }
 
 #include "moc_job.cpp"

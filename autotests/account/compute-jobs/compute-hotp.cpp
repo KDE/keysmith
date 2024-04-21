@@ -4,19 +4,20 @@
  */
 #include "account/actions_p.h"
 
-#include "../test-utils/secret.h"
 #include "../../test-utils/spy.h"
+#include "../test-utils/secret.h"
 
 #include <QSignalSpy>
 #include <QTest>
 
-class ComputeHotpTest: public QObject
+class ComputeHotpTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
     void initTestCase(void);
     void testDefaults(void);
     void testDefaults_data(void);
+
 private:
     accounts::AccountSecret m_secret;
 };
@@ -54,25 +55,13 @@ void ComputeHotpTest::testDefaults(void)
 
 static void define_test_case(int k, const char *expected)
 {
-
     QByteArray output(expected, tokenLength);
-    QTest::newRow(qPrintable(QStringLiteral("RFC 4226 test vector, counter value = %1").arg(k))) << (quint64) k << QString::fromLocal8Bit(output);
+    QTest::newRow(qPrintable(QStringLiteral("RFC 4226 test vector, counter value = %1").arg(k))) << (quint64)k << QString::fromLocal8Bit(output);
 }
 
 void ComputeHotpTest::testDefaults_data(void)
 {
-    static const char * corpus[10] {
-        "755224",
-        "287082",
-        "359152",
-        "969429",
-        "338314",
-        "254676",
-        "287922",
-        "162583",
-        "399871",
-        "520489"
-    };
+    static const char *corpus[10]{"755224", "287082", "359152", "969429", "338314", "254676", "287922", "162583", "399871", "520489"};
 
     QTest::addColumn<quint64>("counter");
     QTest::addColumn<QString>("rfc-test-vector");
@@ -85,4 +74,3 @@ void ComputeHotpTest::testDefaults_data(void)
 QTEST_MAIN(ComputeHotpTest)
 
 #include "compute-hotp.moc"
-
