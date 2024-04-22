@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 00:40+0000\n"
+"POT-Creation-Date: 2024-04-22 00:40+0000\n"
 "PO-Revision-Date: 2021-01-20 21:44-0800\n"
 "Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.08.1\n"
 
-#: src/app/cli.cpp:127
+#: src/app/cli.cpp:133
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
 
-#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "ਅਢੁੱਕਵਾਂ ਖਾਤਾ"
 
-#: src/app/flows_p.cpp:106
+#: src/app/flows_p.cpp:109
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 "ਤੁਹਾਡੇ ਵਲੋਂ ਜੋੜਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤਾ ਜਾ ਰਿਹਾ ਖਾਤਾ ਅਢੁੱਕਵਾਂ ਹੈ। ਤੁਸੀਂ ਜਾਂ ਐਪ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ ਜਾਂ ਬਿਨਾਂ "
 "ਖਾਤਾ ਜੋੜੇ ਐਪ ਨਾਲ ਜਾਰੀ ਰੱਖ ਸਕਦੇ ਹੋ।"
 
-#: src/app/flows_p.cpp:247
+#: src/app/flows_p.cpp:249
 #, fuzzy, kde-format
 #| msgctxt "@info:label"
 #| msgid ""

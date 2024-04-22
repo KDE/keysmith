@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 00:40+0000\n"
+"POT-Creation-Date: 2024-04-22 00:40+0000\n"
 "PO-Revision-Date: 2024-01-14 23:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.01.90\n"
 
-#: src/app/cli.cpp:127
+#: src/app/cli.cpp:133
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
@@ -29,13 +29,13 @@ msgid ""
 msgstr ""
 "要新增的帳號（選擇性的），格式為 otpauth:// 的 URI（像是從 QR 碼掃來的）"
 
-#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "無效帳號"
 
-#: src/app/flows_p.cpp:106
+#: src/app/flows_p.cpp:109
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -44,7 +44,7 @@ msgid ""
 msgstr ""
 "您正嘗試加入的帳號是無效的。您可以離開應用程式，或是繼續使用而不加入帳號。"
 
-#: src/app/flows_p.cpp:247
+#: src/app/flows_p.cpp:249
 #, kde-format
 msgctxt "@info:label"
 msgid ""

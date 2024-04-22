@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 00:40+0000\n"
+"POT-Creation-Date: 2024-04-22 00:40+0000\n"
 "PO-Revision-Date: 2023-08-24 21:38+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
-#: src/app/cli.cpp:127
+#: src/app/cli.cpp:133
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
@@ -28,13 +28,13 @@ msgstr ""
 "Valfri konto å leggja til, skriven som otpauth://URI (for eksempel frå ein "
 "QR-kode)"
 
-#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "Ugyldig konto"
 
-#: src/app/flows_p.cpp:106
+#: src/app/flows_p.cpp:109
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -44,7 +44,7 @@ msgstr ""
 "Kontoen du prøver å leggja til, er ugyldig. Du kan anten avslutta appen "
 "eller halda fram utan å leggja til kontoen."
 
-#: src/app/flows_p.cpp:247
+#: src/app/flows_p.cpp:249
 #, kde-format
 msgctxt "@info:label"
 msgid ""

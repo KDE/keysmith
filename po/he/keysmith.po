@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 00:40+0000\n"
+"POT-Creation-Date: 2024-04-22 00:40+0000\n"
 "PO-Revision-Date: 2024-01-19 08:29+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -18,20 +18,20 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
-#: src/app/cli.cpp:127
+#: src/app/cli.cpp:133
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr "חשבון להוספה כרשות, בתבנית הכתובת המלאה otpauth://‎ (למשל: מקוד QR)"
 
-#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "חשבון שגוי"
 
-#: src/app/flows_p.cpp:106
+#: src/app/flows_p.cpp:109
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 "החשבון שניסית להוסיף שגוי. אפשר לצאת מהיישום או להמשיך בלי להוסיף את החשבון."
 
-#: src/app/flows_p.cpp:247
+#: src/app/flows_p.cpp:249
 #, kde-format
 msgctxt "@info:label"
 msgid ""

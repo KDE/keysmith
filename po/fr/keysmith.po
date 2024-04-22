@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-09 00:40+0000\n"
+"POT-Creation-Date: 2024-04-22 00:40+0000\n"
 "PO-Revision-Date: 2024-01-23 10:23+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: src/app/cli.cpp:127
+#: src/app/cli.cpp:133
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
@@ -24,13 +24,13 @@ msgstr ""
 "Compte optionnel à ajouter, sous un format d'une « URI » de type "
 "« otpauth:// » (venant par exemple d'un code « QR »)"
 
-#: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "Compte non valable"
 
-#: src/app/flows_p.cpp:106
+#: src/app/flows_p.cpp:109
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 "Le compte que vous tentez d'ajouter est non valable. Vous pouvez, soit "
 "quitter l'application, soit continuer dans l'ajouter."
 
-#: src/app/flows_p.cpp:247
+#: src/app/flows_p.cpp:249
 #, kde-format
 msgctxt "@info:label"
 msgid ""
