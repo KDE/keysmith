@@ -176,7 +176,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                           return new app::CommandLineOptions(cliParser, parseOk);
                                                       });
 
-    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
+    engine.loadFromModule("org.kde.keysmith", "Main");
     if (engine.rootObjects().isEmpty()) {
         return -1;
     }

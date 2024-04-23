@@ -43,6 +43,7 @@ include(ECMPoQmTools)
 include(ECMAddAndroidApk)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
+include(ECMQmlModule)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

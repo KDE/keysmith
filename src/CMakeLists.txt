@@ -27,12 +27,27 @@ configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/version.h.in" "${CMAKE_CURRENT_BINA
 #
 configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/keysmith-features.h.in" "${CMAKE_CURRENT_BINARY_DIR}/keysmith-features.h")
 
-set(keysmith_SRCS
-    main.cpp
+add_executable(keysmith main.cpp)
+
+ecm_add_qml_module(keysmith URI "org.kde.keysmith" VERSION 1.0)
+
+ecm_target_qml_sources(keysmith SOURCES
+    contents/ui/Main.qml
+    contents/ui/AccountsOverview.qml
+    contents/ui/AddAccount.qml
+    contents/ui/ErrorPage.qml
+    contents/ui/RenameAccount.qml
+    contents/ui/AccountNameForm.qml
+    contents/ui/HOTPDetailsForm.qml
+    contents/ui/TOTPDetailsForm.qml
+    contents/ui/UnlockAccounts.qml
+    contents/ui/SetupPassword.qml
+    contents/ui/TokenEntryViewLabels.qml
+    contents/ui/AccountEntryViewBase.qml
+    contents/ui/HOTPAccountEntryView.qml
+    contents/ui/TOTPAccountEntryView.qml
 )
 
-qt_add_resources(RESOURCES resources.qrc)
-add_executable(keysmith ${keysmith_SRCS} ${RESOURCES})
 target_link_libraries(keysmith
     PUBLIC
         Qt6::Core

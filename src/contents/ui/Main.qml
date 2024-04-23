@@ -18,17 +18,17 @@ Kirigami.ApplicationWindow {
     function routeToUrl(route) {
         switch (route) {
         case Application.Navigation.Error:
-            return "qrc:/ErrorPage.qml"
+            return Qt.resolvedUrl("ErrorPage.qml")
         case Application.Navigation.UnlockAccounts:
-            return "qrc:/UnlockAccounts.qml"
+            return Qt.resolvedUrl("UnlockAccounts.qml")
         case Application.Navigation.RenameAccount:
-            return "qrc:/RenameAccount.qml"
+            return Qt.resolvedUrl("RenameAccount.qml")
         case Application.Navigation.AccountsOverview:
-            return "qrc:/AccountsOverview.qml"
+            return Qt.resolvedUrl("AccountsOverview.qml")
         case Application.Navigation.AddAccount:
-            return "qrc:/AddAccount.qml"
+            return Qt.resolvedUrl("AddAccount.qml")
         case Application.Navigation.SetupPassword:
-            return "qrc:/SetupPassword.qml"
+            return Qt.resolvedUrl("SetupPassword.qml")
         }
         return 'bug';
     }
