@@ -14,20 +14,11 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
-set(KF_MIN_VERSION "5.240.0")
+set(KF_MIN_VERSION "6.0.0")
 set(QT_MIN_VERSION "6.5.0")
 set(SODIUM_MIN_VERSION "1.0.16")
-set(KDE_COMPILERSETTINGS_LEVEL "5.240.0")
-
-################# Disallow in-source build #################
-
-if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-   message(FATAL_ERROR "This application requires an out of source build. Please create a separate build directory.")
-endif()
 
 include(FeatureSummary)
-
-################# set KDE specific information #################
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 
@@ -47,8 +38,6 @@ include(ECMQmlModule)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-################# Find dependencies #################
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
 find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
@@ -78,13 +67,6 @@ if (NOT ANDROID)
     )
 endif()
 
-################ Find testing dependencies ##########
-
-if (BUILD_TESTING)
-    find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Test)
-endif()
-
-################# build and install #################
 add_subdirectory(src)
 
 if (ANDROID)
@@ -92,16 +74,16 @@ if (ANDROID)
 endif()
 
 if (BUILD_TESTING)
+    find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Test)
     add_subdirectory(autotests)
 endif()
 
-install(PROGRAMS org.kde.keysmith.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.keysmith.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES keysmith.svg DESTINATION ${KDE_INSTALL_FULL_ICONDIR}/hicolor/scalable/apps/)
 install(FILES org.kde.keysmith.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
-feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
-################# install translations #################
 ki18n_install(po)
 
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
