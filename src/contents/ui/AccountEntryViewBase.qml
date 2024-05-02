@@ -8,6 +8,7 @@ import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
+import org.kde.kirigamiaddons.components as Components
 
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
@@ -93,29 +94,23 @@ Kirigami.SwipeListItem {
         }
     }
 
-    readonly property Kirigami.OverlaySheet sheet: Kirigami.OverlaySheet {
-        visible: false
-        header: Kirigami.Heading {
-            text: i18nc("Confirm dialog title: %1 is the name of the account to remove", "Removing account: %1", account.name)
+    readonly property Components.MessageDialog sheet: Components.MessageDialog {
+        dialogType: Components.MessageDialog.Warning
+
+        title: i18nc("Confirm dialog title: %1 is the name of the account to remove", "Removing account: %1", account.name)
+
+        Controls.Label {
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+            text: i18n("<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></p><p>Removing this account from Keysmith will not disable two-factor authentication (2FA). Make sure you can still access your account without using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA app set up for your account, or:</li><li>Make sure you have recovery codes for your account, or:</li><li>Disable two-factor authentication on your account</li></ul>", account.name, account.issuer)
         }
-        ColumnLayout {
-            spacing: Kirigami.Units.largeSpacing * 5
-            Controls.Label {
-                Layout.fillWidth: true
-                wrapMode: Text.WordWrap
-                text: i18n("<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></p><p>Removing this account from Keysmith will not disable two-factor authentication (2FA). Make sure you can still access your account without using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA app set up for your account, or:</li><li>Make sure you have recovery codes for your account, or:</li><li>Disable two-factor authentication on your account</li></ul>", account.name, account.issuer)
-            }
-        }
-        footer: RowLayout {
-            Controls.Button {
-                icon.name: "edit-undo"
-                text: i18nc("Button cancelling account removal", "Cancel")
-                onClicked: sheet.close();
-            }
-            Rectangle {
-                color: "transparent"
-                Layout.fillWidth: true
-            }
+
+        footer: Controls.DialogButtonBox {
+            padding: Kirigami.Units.largeSpacing * 2
+            standardButtons: Controls.Dialog.Cancel
+
+            onRejected: sheet.close();
+
             Controls.Button {
                 icon.name: "edit-delete"
                 text: i18nc("Button confirming account removal", "Delete Account")
@@ -125,6 +120,8 @@ Kirigami.SwipeListItem {
                     account.remove();
                     sheet.close();
                 }
+
+                Controls.DialogButtonBox.buttonRole: Controls.DialogButtonBox.AcceptRole
             }
         }
     }
