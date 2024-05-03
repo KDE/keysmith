@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-22 00:40+0000\n"
+"POT-Creation-Date: 2024-05-03 00:40+0000\n"
 "PO-Revision-Date: 2023-05-02 19:19+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -51,7 +51,7 @@ msgstr ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 
-#: src/contents/ui/AccountEntryViewBase.qml:34
+#: src/contents/ui/AccountEntryViewBase.qml:35
 #, fuzzy, kde-format
 #| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 #| msgid "Removing account: %1"
@@ -59,69 +59,69 @@ msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
 msgstr "Removing account: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:41
+#: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
 msgid "Name:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:48
+#: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgid "Issuer:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:55
+#: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgid "Mode:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:56
+#: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:56
+#: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:62
+#: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:69
+#: src/contents/ui/AccountEntryViewBase.qml:70
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "Timer:"
 msgid "Time Step:"
 msgstr "Timer:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:76
+#: src/contents/ui/AccountEntryViewBase.qml:77
 #, kde-format
 msgid "Offset:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:83
+#: src/contents/ui/AccountEntryViewBase.qml:84
 #, fuzzy, kde-format
 #| msgctxt "@label:spinbox"
 #| msgid "Token length:"
 msgid "Token Length:"
 msgstr "Token length:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:90
+#: src/contents/ui/AccountEntryViewBase.qml:91
 #, kde-format
 msgid "Hash:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:99
+#: src/contents/ui/AccountEntryViewBase.qml:100
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr "Removing account: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:106
+#: src/contents/ui/AccountEntryViewBase.qml:105
 #, fuzzy, kde-format
 #| msgid ""
 #| "<p>Removing this account from Keysmith will not disable two-factor "
@@ -146,19 +146,13 @@ msgstr ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 
-#: src/contents/ui/AccountEntryViewBase.qml:112
-#, kde-format
-msgctxt "Button cancelling account removal"
-msgid "Cancel"
-msgstr "Cancel"
-
-#: src/contents/ui/AccountEntryViewBase.qml:121
+#: src/contents/ui/AccountEntryViewBase.qml:116
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Delete Account"
 
-#: src/contents/ui/AccountEntryViewBase.qml:137
+#: src/contents/ui/AccountEntryViewBase.qml:134
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
@@ -490,6 +484,10 @@ msgstr "Unlock"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
+
+#~ msgctxt "Button cancelling account removal"
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
 
 #~ msgctxt "@label:check"
 #~ msgid "Checksum:"

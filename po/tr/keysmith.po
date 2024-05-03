@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-22 00:40+0000\n"
+"POT-Creation-Date: 2024-05-03 00:40+0000\n"
 "PO-Revision-Date: 2024-03-12 13:37+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -50,71 +50,71 @@ msgid ""
 "account."
 msgstr "Eklemeye çalıştığınız hesap geçersiz. Hesap eklemeden sürdürün."
 
-#: src/contents/ui/AccountEntryViewBase.qml:34
+#: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
 msgstr "Hesabın ayrıntıları: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:41
+#: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
 msgid "Name:"
 msgstr "Ad:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:48
+#: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgid "Issuer:"
 msgstr "Veren:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:55
+#: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgid "Mode:"
 msgstr "Kip:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:56
+#: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
 msgstr "HOTP"
 
-#: src/contents/ui/AccountEntryViewBase.qml:56
+#: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
 msgstr "TOTP"
 
-#: src/contents/ui/AccountEntryViewBase.qml:62
+#: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
 msgstr "Çığır:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:69
+#: src/contents/ui/AccountEntryViewBase.qml:70
 #, kde-format
 msgid "Time Step:"
 msgstr "Zaman adımı:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:76
+#: src/contents/ui/AccountEntryViewBase.qml:77
 #, kde-format
 msgid "Offset:"
 msgstr "Ofset:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:83
+#: src/contents/ui/AccountEntryViewBase.qml:84
 #, kde-format
 msgid "Token Length:"
 msgstr "Jeton uzunluğu:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:90
+#: src/contents/ui/AccountEntryViewBase.qml:91
 #, kde-format
 msgid "Hash:"
 msgstr "Sağlama:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:99
+#: src/contents/ui/AccountEntryViewBase.qml:100
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr "Hesap kaldırılıyor: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:106
+#: src/contents/ui/AccountEntryViewBase.qml:105
 #, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
@@ -133,19 +133,13 @@ msgstr ""
 "kodlarınız olup olmadığına bakıp emin olun veya:</li><li>Hesabınızda iki "
 "aşamalı kimlik doğrulamayı devre dışı bırakın.</li></ul>"
 
-#: src/contents/ui/AccountEntryViewBase.qml:112
-#, kde-format
-msgctxt "Button cancelling account removal"
-msgid "Cancel"
-msgstr "İptal"
-
-#: src/contents/ui/AccountEntryViewBase.qml:121
+#: src/contents/ui/AccountEntryViewBase.qml:116
 #, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Hesabı Sil"
 
-#: src/contents/ui/AccountEntryViewBase.qml:137
+#: src/contents/ui/AccountEntryViewBase.qml:134
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
@@ -460,6 +454,10 @@ msgstr "Kilidi Aç"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Çilingir"
+
+#~ msgctxt "Button cancelling account removal"
+#~ msgid "Cancel"
+#~ msgstr "İptal"
 
 #~ msgctxt "@label:check"
 #~ msgid "Checksum:"

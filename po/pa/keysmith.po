@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-22 00:40+0000\n"
+"POT-Creation-Date: 2024-05-03 00:40+0000\n"
 "PO-Revision-Date: 2021-01-20 21:44-0800\n"
 "Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -54,7 +54,7 @@ msgstr ""
 "ਤੁਹਾਡੇ ਵਲੋਂ ਜੋੜਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤਾ ਜਾ ਰਿਹਾ ਖਾਤਾ ਅਢੁੱਕਵਾਂ ਹੈ। ਤੁਸੀਂ ਜਾਂ ਐਪ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ ਜਾਂ ਬਿਨਾਂ "
 "ਖਾਤਾ ਜੋੜੇ ਐਪ ਨਾਲ ਜਾਰੀ ਰੱਖ ਸਕਦੇ ਹੋ।"
 
-#: src/contents/ui/AccountEntryViewBase.qml:34
+#: src/contents/ui/AccountEntryViewBase.qml:35
 #, fuzzy, kde-format
 #| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 #| msgid "Removing account: %1"
@@ -62,69 +62,69 @@ msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
 msgstr "ਖਾਤਾ ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:41
+#: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
 msgid "Name:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:48
+#: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgid "Issuer:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:55
+#: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgid "Mode:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:56
+#: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:56
+#: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:62
+#: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:69
+#: src/contents/ui/AccountEntryViewBase.qml:70
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "Timer:"
 msgid "Time Step:"
 msgstr "ਟਾਈਮਰ:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:76
+#: src/contents/ui/AccountEntryViewBase.qml:77
 #, kde-format
 msgid "Offset:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:83
+#: src/contents/ui/AccountEntryViewBase.qml:84
 #, fuzzy, kde-format
 #| msgctxt "@label:spinbox"
 #| msgid "Token length:"
 msgid "Token Length:"
 msgstr "ਟੋਕਨ ਦੀ ਲੰਬਾਈ:"
 
-#: src/contents/ui/AccountEntryViewBase.qml:90
+#: src/contents/ui/AccountEntryViewBase.qml:91
 #, kde-format
 msgid "Hash:"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:99
+#: src/contents/ui/AccountEntryViewBase.qml:100
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
 msgstr "ਖਾਤਾ ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ: %1"
 
-#: src/contents/ui/AccountEntryViewBase.qml:106
+#: src/contents/ui/AccountEntryViewBase.qml:105
 #, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
@@ -136,13 +136,7 @@ msgid ""
 "account</li></ul>"
 msgstr ""
 
-#: src/contents/ui/AccountEntryViewBase.qml:112
-#, kde-format
-msgctxt "Button cancelling account removal"
-msgid "Cancel"
-msgstr "ਰੱਦ ਕਰੋ"
-
-#: src/contents/ui/AccountEntryViewBase.qml:121
+#: src/contents/ui/AccountEntryViewBase.qml:116
 #, fuzzy, kde-format
 #| msgctxt "Button confirming account removal"
 #| msgid "Delete account"
@@ -150,7 +144,7 @@ msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "ਖਾਤਾ ਹਟਾਓ"
 
-#: src/contents/ui/AccountEntryViewBase.qml:137
+#: src/contents/ui/AccountEntryViewBase.qml:134
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
@@ -493,6 +487,10 @@ msgstr "ਅਣ-ਲਾਕ ਕਰੋ"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "ਕੀ-ਸਮਿੱਥ"
+
+#~ msgctxt "Button cancelling account removal"
+#~ msgid "Cancel"
+#~ msgstr "ਰੱਦ ਕਰੋ"
 
 #~ msgctxt "@label:check"
 #~ msgid "Checksum:"
