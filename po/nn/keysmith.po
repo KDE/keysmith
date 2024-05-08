@@ -471,7 +471,3 @@ msgstr "Lås opp"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
-
-#~ msgctxt "Button cancelling account removal"
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"

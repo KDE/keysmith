@@ -448,7 +448,3 @@ msgstr "解锁"
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
-
-#~ msgctxt "Button cancelling account removal"
-#~ msgid "Cancel"
-#~ msgstr "取消"
