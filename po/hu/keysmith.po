@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 00:40+0000\n"
-"PO-Revision-Date: 2024-01-18 11:14+0100\n"
+"PO-Revision-Date: 2024-05-18 14:21+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.01.90\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -117,14 +117,7 @@ msgid "Removing account: %1"
 msgstr "Fiók eltávolítása: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -134,12 +127,13 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>A fiók eltávolítása a Keysmithből nem kapcsolja ki a kétfaktoros "
-"hitelesítést (2FA). Bizonyosodjon meg arról, hogy a Keysmith használata "
-"nélkül is hozzáfér a fiókhoz, mielőtt folytatja:</p><ul><li>Ellenőrizze, "
-"hogy be van-e állítva másik 2FA alkalmazás a fiókhoz, vagy:</"
-"li><li>Megvannak-e a fiók visszaállítási kódjai:</li><li>Kikapcsolta a "
-"kétfaktoros hitelesítést a fiókban</li></ul>"
+"<p><ul><li>Fióknév: %1</li><li>Fiók kibocsátója: %2</li></ul></p><p>A fiók "
+"eltávolítása a Keysmithből nem kapcsolja ki a kétfaktoros hitelesítést "
+"(2FA). Bizonyosodjon meg arról, hogy a Keysmith használata nélkül is "
+"hozzáfér a fiókhoz, mielőtt folytatja:</p><ul><li>Ellenőrizze, hogy be van-e "
+"állítva másik 2FA alkalmazás a fiókhoz, vagy:</li><li>Megvannak-e a fiók "
+"visszaállítási kódjai:</li><li>Kikapcsolta a kétfaktoros hitelesítést a "
+"fiókban</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
