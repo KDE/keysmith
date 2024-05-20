@@ -94,7 +94,7 @@
   <summary xml:lang="ru">Средство создания двухфакторных кодов для Plasma для мобильных устройств и настольных компьютеров</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
-  <summary xml:lang="tr">İki Aşamalı Kod Oluşturucu</summary>
+  <summary xml:lang="tr">İki Aşamalı Kod Üreteci</summary>
   <summary xml:lang="uk">Засіб для створення двофакторних кодів для мобільної і стільничної Плазми</summary>
   <summary xml:lang="x-test">xxTwo-factor code generator for Plasma Mobile and Desktopxx</summary>
   <summary xml:lang="zh-CN">Plasma 移动和桌面环境的双重验证码生成器</summary>
@@ -170,7 +170,7 @@
     <p xml:lang="ru">Keysmith создаёт маркеры для входа с использованием двухфакторной аутентификации (2FA)</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
-    <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar oluşturur</p>
+    <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar üretir</p>
     <p xml:lang="uk">Keysmith створює ключі для двофакторного входу (2FA)</p>
     <p xml:lang="x-test">xxKeysmith generates tokens for your two-factor logins (2FA)xx</p>
     <p xml:lang="zh-CN">Keysmith 用于为您的双因验证 (2FA) 登录生成令牌</p>
