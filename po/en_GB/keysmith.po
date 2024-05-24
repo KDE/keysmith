@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# Steve Allewell <steve.allewell@gmail.com>, 2020, 2021, 2023.
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Steve Allewell <steve.allewell@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:40+0000\n"
-"PO-Revision-Date: 2023-05-02 19:19+0100\n"
+"PO-Revision-Date: 2024-05-23 19:31+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
 "Language: en_GB\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.70\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -52,68 +52,62 @@ msgstr ""
 "account."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Confirm dialog title: %1 is the name of the account to remove"
-#| msgid "Removing account: %1"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Removing account: %1"
+msgstr "Details of account: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Name:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "Issuer:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "Mode:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Epoch:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
-msgstr "Timer:"
+msgstr "Time Step:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:77
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "Offset:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:84
-#, fuzzy, kde-format
-#| msgctxt "@label:spinbox"
-#| msgid "Token length:"
+#, kde-format
 msgid "Token Length:"
-msgstr "Token length:"
+msgstr "Token Length:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:91
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "Hash:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:100
 #, kde-format
@@ -122,14 +116,7 @@ msgid "Removing account: %1"
 msgstr "Removing account: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:105
-#, fuzzy, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
+#, kde-format
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -139,7 +126,8 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p>Removing this account from Keysmith will not disable two-factor "
+"<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
+"p><p>Removing this account from Keysmith will not disable two-factor "
 "authentication (2FA). Make sure you can still access your account without "
 "using Keysmith before proceeding:</p><ul><li>Make sure you have another 2FA "
 "app set up for your account, or:</li><li>Make sure you have recovery codes "
@@ -220,16 +208,13 @@ msgid "Cancel"
 msgstr "Cancel"
 
 #: src/contents/ui/AddAccount.qml:52
-#, fuzzy, kde-format
-#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-#| msgid "Quit"
+#, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Quit"
 
 #: src/contents/ui/AddAccount.qml:61
-#, fuzzy, kde-format
-#| msgid "Add"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Add"
@@ -270,20 +255,16 @@ msgid "Details"
 msgstr "Details"
 
 #: src/contents/ui/AddAccount.qml:140
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "Details"
+msgstr "HOTP Details:"
 
 #: src/contents/ui/AddAccount.qml:153
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Details"
+msgstr "TOTP Details:"
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
@@ -299,12 +280,10 @@ msgstr "Quit"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
-msgstr "Details"
+msgstr "Show details"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:28
 #: src/contents/ui/TOTPAccountEntryView.qml:34
@@ -327,20 +306,16 @@ msgid "Token length:"
 msgstr "Token length:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:63
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Add check digit"
+#, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr "Add check digit"
+msgstr "Add checksum digit"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Use custom offset"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr "Use custom offset"
+msgstr "Use custom truncation offset"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
@@ -394,12 +369,10 @@ msgid "Choose a password to protect your accounts"
 msgstr "Choose a password to protect your accounts"
 
 #: src/contents/ui/SetupPassword.qml:49
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
-msgstr "New password:"
+msgstr "New Password:"
 
 #: src/contents/ui/SetupPassword.qml:60
 #, kde-format
@@ -408,8 +381,7 @@ msgid "Verify password:"
 msgstr "Verify password:"
 
 #: src/contents/ui/SetupPassword.qml:68
-#, fuzzy, kde-format
-#| msgid "Apply"
+#, kde-format
 msgctxt "@action:button"
 msgid "Apply"
 msgstr "Apply"
@@ -473,8 +445,7 @@ msgid "Password:"
 msgstr "Password:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
-#, fuzzy, kde-format
-#| msgid "Unlock"
+#, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Unlock"
