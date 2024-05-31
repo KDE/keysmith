@@ -14,5 +14,6 @@
 .clangd
 .cache
 .idea
+.vscode
 /cmake-build*
 /CMakeLists.txt.user
