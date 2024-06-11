@@ -120,7 +120,7 @@ AccountEntryViewBase {
              * an overwhelming UI with many accounts (and therefore many running animations). Opacity is increased when
              * highlighted to get better contrast.
              */
-            height: Kirigami.Units.devicePixelRatio * 6
+            height: 6
             opacity: timeoutIndicatorAnimation.running ? listItem.highlightActive ? 0.6 : 0.4 : 0
             color: listItem.highlightActive ? listItem.labelColor : Kirigami.Theme.positiveTextColor
             NumberAnimation {
