@@ -9,10 +9,10 @@ Kirigami.GlobalDrawer {
     isMenu: true
     actions: [
         Kirigami.Action {
-            text: i18n("About")
-            icon.name: "help-about-symbolic"
+            text: i18n("About Keysmith")
+            icon.name: "keysmith"
             onTriggered: pageStack.layers.push(Qt.createComponent('org.kde.kirigamiaddons.formcard', 'AboutPage'))
-            enabled: pageStack.layers.currentItem.title !== i18n("About")
+            enabled: pageStack.layers.currentItem.title !== i18n("About Keysmith")
         }
     ]
 }
