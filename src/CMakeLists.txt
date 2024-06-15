@@ -57,6 +57,7 @@ target_link_libraries(keysmith
         Qt6::Quick
         Qt6::Svg
         Qt6::QuickControls2
+        KF6::CoreAddons
         KF6::I18n
         keysmith_lib
 )

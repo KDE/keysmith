@@ -17,6 +17,7 @@
 #include <QApplication>
 #endif
 
+#include <KAboutData>
 #include <KLocalizedContext>
 #include <KLocalizedString>
 
@@ -65,6 +66,20 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QStringLiteral("keysmith"));
     QCoreApplication::setApplicationVersion(KEYSMITH_VERSION_STRING);
     QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
+    
+    // about
+    const QString applicationDescription = i18n("generate two-factor authentication (2FA) tokens");
+
+    KAboutData about(QStringLiteral("keysmith"),
+                     i18n("Keysmith"),
+                     KEYSMITH_VERSION_STRING,
+                     applicationDescription,
+                     KAboutLicense::GPL_V3,
+                     i18n("© 2019 KDE Community"));
+    about.addAuthor(QStringLiteral("Bhushan Shah"), QString(), QStringLiteral("bshah@kde.org"));
+    about.addAuthor(QStringLiteral("Johan Ouwerkerk"), QString(), QStringLiteral("jm.ouwerkerk@gmail.com"));
+    about.addAuthor(QStringLiteral("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"));
+    KAboutData::setApplicationData(about);
 
     QCommandLineParser cliParser;
 
