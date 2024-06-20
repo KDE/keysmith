@@ -75,14 +75,12 @@ msgstr "Läge:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
-#| msgid "HOTP:"
 msgctxt "Mode of 2fa"
 msgid "HOTP"
 msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
-#| msgid "TOTP:"
 msgctxt "Mode of 2fa"
 msgid "TOTP"
 msgstr "TOTP"
@@ -120,13 +118,6 @@ msgstr "Tar bort: konto: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:105
 #, kde-format
-#| msgid ""
-#| "<p>Removing this account from Keysmith will not disable two-factor "
-#| "authentication (2FA). Make sure you can still access your account without "
-#| "using Keysmith before proceeding:</p><ul><li>Make sure you have another "
-#| "2FA app set up for your account, or:</li><li>Make sure you have recovery "
-#| "codes for your account, or:</li><li>Disable two-factor authentication on "
-#| "your account</li></ul>"
 msgid ""
 "<p><ul><li>Account name: %1</li><li>Account issuer: %2</li></ul></"
 "p><p>Removing this account from Keysmith will not disable two-factor "
@@ -136,12 +127,12 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p><ul><li>Kontonamn: %1</li><li>Kontokälla: %2</li></ul></p><p>Att ta bort"
-" kontot från Keysmith inaktiverar inte tvåfaktorsbehörighet (2FA). Säkerställ"
-" att du fortfarande kan komma åt kontot utan att använda Keysmith innan du"
-" fortsätter.</p><ul><li>Säkerställ att du har ett annat 2FA-program inställt"
-" för kontot, eller,</li><li>Säkerställ att du har återhämtningskoder för"
-" kontot, eller,</li><li>Inaktivera tvåfaktorsbehörighet för kontot.</li></ul>"
+"<p><ul><li>Kontonamn: %1</li><li>Kontokälla: %2</li></ul></p><p>Att ta bort "
+"kontot från Keysmith inaktiverar inte tvåfaktorsbehörighet (2FA). Säkerställ "
+"att du fortfarande kan komma åt kontot utan att använda Keysmith innan du "
+"fortsätter.</p><ul><li>Säkerställ att du har ett annat 2FA-program inställt "
+"för kontot, eller,</li><li>Säkerställ att du har återhämtningskoder för "
+"kontot, eller,</li><li>Inaktivera tvåfaktorsbehörighet för kontot.</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:116
 #, kde-format
@@ -218,15 +209,12 @@ msgstr "Avbryt"
 
 #: src/contents/ui/AddAccount.qml:52
 #, kde-format
-#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-#| msgid "Quit"
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Avsluta"
 
 #: src/contents/ui/AddAccount.qml:61
 #, kde-format
-#| msgid "Add"
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Lägg till"
@@ -394,7 +382,6 @@ msgstr "Verifiera lösenord:"
 
 #: src/contents/ui/SetupPassword.qml:68
 #, kde-format
-#| msgid "Apply"
 msgctxt "@action:button"
 msgid "Apply"
 msgstr "Verkställ"
@@ -459,7 +446,6 @@ msgstr "Lösenord:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
 #, kde-format
-#| msgid "Unlock"
 msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Lås upp"
@@ -510,4 +496,3 @@ msgstr "Keysmith"
 #~ msgid "No account set up. Use the Add button to add accounts."
 #~ msgstr ""
 #~ "Inget konto inställt. Använd knappen Lägg till för att lägga till konton."
-
