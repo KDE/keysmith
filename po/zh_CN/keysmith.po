@@ -52,7 +52,7 @@ msgstr "您正在尝试添加的账户无效。将在不添加账户的情况下
 #, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "账号详情：%1"
+msgstr "账户详情：%1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
@@ -126,7 +126,7 @@ msgstr ""
 "<p><ul><li>账户名：%1</li><li>账户发行者：%2</li></ul></p><p>从 Keysmith 中移"
 "除此账户将不会禁用双重身份验证 (2FA)。请在继续操作之前确保在不使用 Keysmith "
 "的前提下依然能够访问您的账户：</p><ul><li>确保您的账号已经设置了另一款双重身"
-"份验证应用，或者：</li><li>确保您拥有您的账号的恢复码，或者：</li><li>禁用您"
+"份验证应用，或者：</li><li>确保您拥有您的账户的恢复码，或者：</li><li>禁用您"
 "的账户的双重身份验证功能。</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:116
