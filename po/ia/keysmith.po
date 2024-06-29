@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2023 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 giovanni <g.sora@tiscali.it>
 # giovanni <g.sora@tiscali.it>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-09 00:40+0000\n"
-"PO-Revision-Date: 2023-12-28 19:43+0100\n"
+"PO-Revision-Date: 2024-06-28 11:38+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/app/cli.cpp:127
 #, kde-format
@@ -24,6 +24,8 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
+"Conto Optional a adder, formattate como otpauth:// URI (p.ex. ab un codice a "
+"QR)"
 
 #: src/app/flows_p.cpp:105 src/app/flows_p.cpp:246
 #, kde-format
@@ -38,6 +40,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
+"Le conto que tu es essayante a adder es invalide. Tu pote o abandonar le app "
+"o continuar sin adder le conto."
 
 #: src/app/flows_p.cpp:247
 #, kde-format
@@ -46,6 +50,8 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
+"Le conto que tu es essayante a adder es invalide. Continua sin adder le "
+"conto."
 
 #: src/contents/ui/AccountEntryViewBase.qml:34
 #, kde-format
@@ -83,7 +89,7 @@ msgstr "TOTP"
 #: src/contents/ui/AccountEntryViewBase.qml:62
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Epoch (Epocha)a:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:69
 #, kde-format
@@ -109,7 +115,7 @@ msgstr "Hash:"
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
-msgstr ""
+msgstr "Removente conto: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:106
 #, kde-format
@@ -122,6 +128,13 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
+"<p><ul><li>Nomine de conto: %1</li><li>Emissor de conto: %2</li></ul></"
+"p><p>Remover iste conto ex Keysmith non dishabilitara le authentication a "
+"duo factores  (2FA). Assecura te que tu pote ancora acceder a tu conto sin "
+"usar Keysmith ante proceder:</p><ul><li>Assecura te que tu ha un altere app "
+"de 2FA configurate per tu conto, o:</li><li>Assecura te que tu ha codices de "
+"recuperation per tu conto, o:</li><li>Dishabilita authentication de duo "
+"factores sur tu conto</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:112
 #, kde-format
@@ -139,7 +152,7 @@ msgstr "Dele conto"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Token (indicio)  copiate a area de transferentia!"
 
 #: src/contents/ui/AccountNameForm.qml:64
 #, kde-format
@@ -169,12 +182,12 @@ msgstr "Il falleva a actualisar conto"
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr ""
+msgstr "Alcun contos falleva a cargar."
 
 #: src/contents/ui/AccountsOverview.qml:101
 #, kde-format
 msgid "No accounts added"
-msgstr ""
+msgstr "Necun contos addite"
 
 #: src/contents/ui/AccountsOverview.qml:106
 #, kde-format
@@ -224,13 +237,13 @@ msgstr "Typo de conto:"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr ""
+msgstr "OTP basate sur tempore"
 
 #: src/contents/ui/AddAccount.qml:101
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr ""
+msgstr "OTP basate sur Hash"
 
 #: src/contents/ui/AddAccount.qml:113
 #, kde-format
@@ -304,25 +317,25 @@ msgstr "Longitude de token :"
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "Adde digito de checksum"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "Usa displaciamento de truncation personalisate"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "Displaciamento de truncation:"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr ""
+msgstr "Renomina conto a adder"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -333,6 +346,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
+"Un altere conto con le mesme nomine ja existe. Pro favor tu corrige le "
+"nomine o le emissor per un nove conto."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
@@ -354,7 +369,7 @@ msgstr "Contrasigno"
 #: src/contents/ui/SetupPassword.qml:28
 #, kde-format
 msgid "Failed to set up your password"
-msgstr ""
+msgstr "Il falleva a configurar tu contrasigno"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
@@ -401,7 +416,7 @@ msgstr "Initiante a:"
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
-msgstr ""
+msgstr "Algorithmo de Hash:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
@@ -429,7 +444,7 @@ msgstr "Il falleva a disblocar tu contos"
 #: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
-msgstr ""
+msgstr "Pro favor tu forni le contrasigno per disblocar tu contos"
 
 #: src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
