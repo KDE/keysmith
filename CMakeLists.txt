@@ -45,7 +45,7 @@ find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0
-    KF 6.4.0
+    KF 6.5.0
     )
 
 
