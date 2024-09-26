@@ -33,6 +33,7 @@ class AccountView : public QObject
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString token READ token NOTIFY tokenChanged)
     Q_PROPERTY(QString issuer READ issuer CONSTANT)
+    Q_PROPERTY(QString secret READ secret CONSTANT)
     Q_PROPERTY(quint64 counter READ counter NOTIFY tokenChanged)
     Q_PROPERTY(QDateTime epoch READ epoch CONSTANT)
     Q_PROPERTY(uint timeStep READ timeStep CONSTANT)
@@ -46,6 +47,7 @@ public:
     QString name(void) const;
     QString token(void) const;
     QString issuer(void) const;
+    QString secret(void) const;
     quint64 counter(void) const;
     QDateTime epoch(void) const;
     uint timeStep(void) const;

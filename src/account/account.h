@@ -37,6 +37,7 @@ public:
     QString name(void) const;
     QString token(void) const;
     QString issuer(void) const;
+    QString secret(void) const;
     quint64 counter(void) const;
     QDateTime epoch(void) const;
     uint timeStep(void) const;

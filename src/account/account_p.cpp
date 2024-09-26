@@ -34,6 +34,17 @@ QString AccountPrivate::issuer(void) const
     return m_issuer;
 }
 
+QString AccountPrivate::secret(void) const
+{
+    QScopedPointer<secrets::SecureMemory> secret(m_storage->secret()->decrypt(m_secret));
+    if (!secret) {
+        qCDebug(logger) << "Unable to provide secret: failed to decrypt";
+        return QStringLiteral("");
+    }
+
+    return QString::fromLatin1(secret->data());
+}
+
 QString AccountPrivate::token(void) const
 {
     return m_token;

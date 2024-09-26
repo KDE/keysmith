@@ -69,6 +69,11 @@ QString AccountView::issuer(void) const
     return m_model->issuer();
 }
 
+QString AccountView::secret(void) const
+{
+    return m_model->secret();
+}
+
 quint64 AccountView::counter(void) const
 {
     return m_model->counter();

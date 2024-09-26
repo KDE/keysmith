@@ -32,6 +32,12 @@ QString Account::issuer(void) const
     return d->issuer();
 }
 
+QString Account::secret(void) const
+{
+    Q_D(const Account);
+    return d->secret();
+}
+
 QString Account::token(void) const
 {
     Q_D(const Account);

@@ -50,6 +50,11 @@ Kirigami.SwipeListItem {
                 description: account.issuer
             }
 
+            FormCard.FormTextDelegate {
+                text: i18n("Secret:")
+                description: account.secret
+            }
+
             FormCard.FormDelegateSeparator {}
 
             FormCard.FormTextDelegate {
