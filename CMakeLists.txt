@@ -42,6 +42,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
 find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0

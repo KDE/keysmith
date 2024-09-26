@@ -46,6 +46,7 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/AccountEntryViewBase.qml
     contents/ui/HOTPAccountEntryView.qml
     contents/ui/TOTPAccountEntryView.qml
+    contents/ui/KeysmithGlobalDrawer.qml
 )
 
 target_link_libraries(keysmith
@@ -56,6 +57,7 @@ target_link_libraries(keysmith
         Qt6::Quick
         Qt6::Svg
         Qt6::QuickControls2
+        KF6::CoreAddons
         KF6::I18n
         keysmith_lib
 )

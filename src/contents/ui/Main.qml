@@ -15,6 +15,8 @@ Kirigami.ApplicationWindow {
     width: Kirigami.Units.gridUnit * 20
     height: Kirigami.Units.gridUnit * 30
 
+    globalDrawer: KeysmithGlobalDrawer {}
+
     function routeToUrl(route) {
         switch (route) {
         case Application.Navigation.Error:
