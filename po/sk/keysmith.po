@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:40+0000\n"
+"POT-Creation-Date: 2024-09-27 00:42+0000\n"
 "PO-Revision-Date: 2021-11-15 18:40+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -335,6 +335,14 @@ msgctxt "@label:spinbox"
 msgid "Truncation offset:"
 msgstr ""
 
+#: src/contents/ui/KeysmithGlobalDrawer.qml:12
+#: src/contents/ui/KeysmithGlobalDrawer.qml:15
+#, fuzzy, kde-format
+#| msgctxt "@title"
+#| msgid "Keysmith"
+msgid "About Keysmith"
+msgstr "Keysmith"
+
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
@@ -464,11 +472,28 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Odomknúť"
 
-#: src/main.cpp:67
+#: src/main.cpp:68
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
+
+#: src/main.cpp:71
+#, kde-format
+msgid "generate two-factor authentication (2FA) tokens"
+msgstr ""
+
+#: src/main.cpp:74
+#, fuzzy, kde-format
+#| msgctxt "@title"
+#| msgid "Keysmith"
+msgid "Keysmith"
+msgstr "Keysmith"
+
+#: src/main.cpp:78
+#, kde-format
+msgid "© 2019 KDE Community"
+msgstr ""
 
 #~ msgctxt "Button cancelling account removal"
 #~ msgid "Cancel"
