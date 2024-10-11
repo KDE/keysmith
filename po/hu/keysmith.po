@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 00:42+0000\n"
-"PO-Revision-Date: 2024-05-18 14:21+0200\n"
+"PO-Revision-Date: 2024-10-10 21:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -326,11 +326,9 @@ msgstr "Levágás eltolása:"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "About Keysmith"
-msgstr "Keysmith"
+msgstr "A Keysmith névjegye"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -468,19 +466,17 @@ msgstr "Keysmith"
 #: src/main.cpp:71
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "kétfaktoros hitelesítési (2FA) tokenek előállítása"
 
 #: src/main.cpp:74
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
 #: src/main.cpp:78
 #, kde-format
 msgid "© 2019 KDE Community"
-msgstr ""
+msgstr "© A KDE Közösség, 2019."
 
 #~ msgctxt "Button cancelling account removal"
 #~ msgid "Cancel"
