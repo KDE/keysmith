@@ -99,45 +99,9 @@
   <summary xml:lang="x-test">xxTwo-factor code generator for Plasma Mobile and Desktopxx</summary>
   <summary xml:lang="zh-CN">Plasma 移动和桌面环境的双重验证码生成器</summary>
   <summary xml:lang="zh-TW">適用於 Plasma 行動版及桌面版的兩步驟驗證碼產生器</summary>
-  <developer_name>KDE Community</developer_name>
-  <developer_name xml:lang="ast">La comunidá KDE</developer_name>
-  <developer_name xml:lang="ca">La comunitat KDE</developer_name>
-  <developer_name xml:lang="ca-valencia">La comunitat KDE</developer_name>
-  <developer_name xml:lang="cs">Komunita KDE</developer_name>
-  <developer_name xml:lang="de">KDE-Gemeinschaft</developer_name>
-  <developer_name xml:lang="en-GB">KDE Community</developer_name>
-  <developer_name xml:lang="eo">KDE-Komunumo</developer_name>
-  <developer_name xml:lang="es">Comunidad KDE</developer_name>
-  <developer_name xml:lang="et">KDE kogukond</developer_name>
-  <developer_name xml:lang="eu">KDE komunitatea</developer_name>
-  <developer_name xml:lang="fi">KDE-yhteisö</developer_name>
-  <developer_name xml:lang="fr">La communauté KDE</developer_name>
-  <developer_name xml:lang="gl">Comunidade KDE</developer_name>
-  <developer_name xml:lang="he">קהילת KDE</developer_name>
-  <developer_name xml:lang="hi">केडीई समुदाय</developer_name>
-  <developer_name xml:lang="hu">A KDE Közösség</developer_name>
-  <developer_name xml:lang="ia">Communitate de KDE</developer_name>
-  <developer_name xml:lang="id">Komunitas KDE</developer_name>
-  <developer_name xml:lang="it">La comunità KDE</developer_name>
-  <developer_name xml:lang="ka">KDE-ის საზოგადოება</developer_name>
-  <developer_name xml:lang="ko">KDE 커뮤니티</developer_name>
-  <developer_name xml:lang="lt">KDE bendruomenė</developer_name>
-  <developer_name xml:lang="nl">KDE-gemeenschap</developer_name>
-  <developer_name xml:lang="nn">KDE-fellesskapet</developer_name>
-  <developer_name xml:lang="pa">ਕੇਡੀਈ ਕਮਿਊਨਟੀ</developer_name>
-  <developer_name xml:lang="pl">Społeczność KDE</developer_name>
-  <developer_name xml:lang="pt">Comunidade do KDE</developer_name>
-  <developer_name xml:lang="pt-BR">Comunidade KDE</developer_name>
-  <developer_name xml:lang="ro">Comunitatea KDE</developer_name>
-  <developer_name xml:lang="ru">Сообщество KDE</developer_name>
-  <developer_name xml:lang="sk">KDE komunita</developer_name>
-  <developer_name xml:lang="sl">Skupnost KDE</developer_name>
-  <developer_name xml:lang="sv">KDE-gemenskapen</developer_name>
-  <developer_name xml:lang="tr">KDE Topluluğu</developer_name>
-  <developer_name xml:lang="uk">Спільнота KDE</developer_name>
-  <developer_name xml:lang="x-test">xxKDE Communityxx</developer_name>
-  <developer_name xml:lang="zh-CN">KDE 社区</developer_name>
-  <developer_name xml:lang="zh-TW">KDE 社群</developer_name>
+  <developer id="kde.org">
+    <name translate="no">KDE</name>
+  </developer>
   <description>
     <p>Keysmith generates tokens for your two-factor logins (2FA)</p>
     <p xml:lang="ca">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
