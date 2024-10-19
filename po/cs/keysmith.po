@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 00:42+0000\n"
-"PO-Revision-Date: 2024-09-27 11:45+0200\n"
+"PO-Revision-Date: 2024-10-01 16:41+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -451,7 +451,7 @@ msgstr "Keysmith"
 #: src/main.cpp:71
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "generujte tokeny pro dvoufaktorové ověření (2FA)"
 
 #: src/main.cpp:74
 #, kde-format
