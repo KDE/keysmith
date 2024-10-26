@@ -33,9 +33,16 @@ class AccountInput : public QObject
     Q_PROPERTY(uint truncationOffset READ truncationOffset NOTIFY truncationChanged)
     Q_PROPERTY(bool fixedTruncation READ fixedTruncation NOTIFY truncationChanged)
 public:
-    enum TOTPAlgorithm { Sha1, Sha256, Sha512 };
+    enum TOTPAlgorithm {
+        Sha1,
+        Sha256,
+        Sha512
+    };
     Q_ENUM(TOTPAlgorithm)
-    enum TokenType { Hotp, Totp };
+    enum TokenType {
+        Hotp,
+        Totp
+    };
     Q_ENUM(TokenType)
     AccountInput(QObject *parent = nullptr);
     void createNewAccount(accounts::AccountStorage *storage) const;

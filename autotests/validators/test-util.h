@@ -37,7 +37,7 @@ template<class T, auto f_data>
 class ValidatorTestBase : public QObject
 {
 public:
-    virtual ~ValidatorTestBase(){};
+    virtual ~ValidatorTestBase() {};
 
     void testValidate(T &uut)
     {

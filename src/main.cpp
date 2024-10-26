@@ -66,7 +66,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(QStringLiteral("keysmith"));
     QCoreApplication::setApplicationVersion(KEYSMITH_VERSION_STRING);
     QGuiApplication::setApplicationDisplayName(i18nc("@title", "Keysmith"));
-    
+
     // about
     const QString applicationDescription = i18n("generate two-factor authentication (2FA) tokens");
 

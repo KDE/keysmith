@@ -23,7 +23,10 @@ std::optional<QString> decodePercentEncoding(const QByteArray &utf8Data);
 class QrParts
 {
 public:
-    enum Type { Totp, Hotp };
+    enum Type {
+        Totp,
+        Hotp
+    };
     static std::optional<QrParts> parse(const QByteArray &qrCode);
     static std::optional<QrParts> parse(const QString &qrCode);
 

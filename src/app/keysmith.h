@@ -20,7 +20,14 @@ class Navigation : public QObject
 {
     Q_OBJECT
 public:
-    enum Page { Error, AddAccount, RenameAccount, AccountsOverview, SetupPassword, UnlockAccounts };
+    enum Page {
+        Error,
+        AddAccount,
+        RenameAccount,
+        AccountsOverview,
+        SetupPassword,
+        UnlockAccounts
+    };
     Q_ENUM(Page)
 public:
     explicit Navigation(QQmlEngine *const engine);

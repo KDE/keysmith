@@ -29,9 +29,16 @@ class Account : public QObject
 {
     Q_OBJECT
 public:
-    enum Algorithm { Totp, Hotp };
+    enum Algorithm {
+        Totp,
+        Hotp
+    };
     Q_ENUM(Algorithm)
-    enum Hash { Sha1, Sha256, Sha512 };
+    enum Hash {
+        Sha1,
+        Sha256,
+        Sha512
+    };
     Q_ENUM(Hash)
     explicit Account(AccountPrivate *d, QObject *parent = nullptr);
     QString name(void) const;

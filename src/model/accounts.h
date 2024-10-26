@@ -70,9 +70,15 @@ class SimpleAccountListModel : public QAbstractListModel
     Q_PROPERTY(bool loaded READ loaded NOTIFY loadedChanged)
     Q_PROPERTY(bool error READ error WRITE setError NOTIFY errorChanged)
 public:
-    enum NonStandardRoles { AccountRole = Qt::ItemDataRole::UserRole };
+    enum NonStandardRoles {
+        AccountRole = Qt::ItemDataRole::UserRole
+    };
     Q_ENUM(NonStandardRoles)
-    enum TOTPAlgorithms { Sha1, Sha256, Sha512 };
+    enum TOTPAlgorithms {
+        Sha1,
+        Sha256,
+        Sha512
+    };
     Q_ENUM(TOTPAlgorithms)
 private:
     static accounts::Account::Hash toHash(const TOTPAlgorithms value);
