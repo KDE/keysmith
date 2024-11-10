@@ -12,12 +12,12 @@
 #include <QAbstractListModel>
 #include <QByteArray>
 #include <QHash>
+#include <QList>
 #include <QModelIndex>
 #include <QObject>
 #include <QSortFilterProxyModel>
 #include <QString>
 #include <QValidator>
-#include <QVector>
 
 #include <optional>
 
@@ -112,7 +112,7 @@ private:
 
 private:
     bool m_has_error;
-    QVector<QString> m_index;
+    QList<QString> m_index;
     QHash<QString, AccountView *> m_accounts;
 };
 

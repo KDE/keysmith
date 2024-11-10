@@ -241,7 +241,7 @@ void AccountStorage::accountRemoved(void)
     Q_EMIT removed(fullName);
 }
 
-QVector<QString> AccountStorage::accounts(void) const
+QList<QString> AccountStorage::accounts(void) const
 {
     Q_D(const AccountStorage);
     return d->activeAccounts();

@@ -4,8 +4,8 @@
  */
 #include "uri/uri.h"
 
+#include <QList>
 #include <QTest>
-#include <QVector>
 #include <QtDebug>
 
 class PercentEncodingTest : public QObject // clazy:exclude=ctor-missing-parent-argument
@@ -34,7 +34,7 @@ void PercentEncodingTest::testValidString_data(void)
 {
     QTest::addColumn<QByteArray>("input");
     QTest::addColumn<QString>("expected");
-    QVector<QByteArray> validStringInputs = QVector<QByteArray>() << QByteArray("%3A");
+    QList<QByteArray> validStringInputs = QList<QByteArray>() << QByteArray("%3A");
     QStringList validStringOutputs = QStringList() << QStringLiteral(":");
     int i = 0;
     for (const auto &input : qAsConst(validStringInputs)) {
@@ -56,10 +56,10 @@ void PercentEncodingTest::testValidByteArray_data(void)
     QTest::addColumn<QByteArray>("input");
     QTest::addColumn<QByteArray>("expected");
 
-    QVector<QByteArray> validByteArrayInputs = QVector<QByteArray>() << QByteArray("%01") << QByteArray("%3A") << QByteArray("%00")
-                                                                     << QByteArray("a%20valid%20sample") << QByteArray("%2f") << QByteArray("embedded%00works");
+    QList<QByteArray> validByteArrayInputs = QList<QByteArray>() << QByteArray("%01") << QByteArray("%3A") << QByteArray("%00")
+                                                                 << QByteArray("a%20valid%20sample") << QByteArray("%2f") << QByteArray("embedded%00works");
 
-    QVector<QByteArray> validByteArrayOutputs = QVector<QByteArray>()
+    QList<QByteArray> validByteArrayOutputs = QList<QByteArray>()
         << QByteArray("\x1") << QByteArray(":") << QByteArray("Z").replace('Z', '\0') << QByteArray("a valid sample") << QByteArray("/")
         << QByteArray("embeddedZworks").replace('Z', '\0');
 
@@ -79,7 +79,7 @@ void PercentEncodingTest::testInvalidString(void)
 void PercentEncodingTest::testInvalidString_data(void)
 {
     QTest::addColumn<QByteArray>("input");
-    QVector<QByteArray> invalidStringInputs = QVector<QByteArray>()
+    QList<QByteArray> invalidStringInputs = QList<QByteArray>()
         << QByteArray("%ff broken multibyte (no 0 in leading char)") << QByteArray("%cf broken multibyte (next char not marked)")
         << QByteArray("%c0%7f broken multibyte (over long)") << QByteArray("truncated multibyte %c0");
     for (const auto &input : std::as_const(invalidStringInputs)) {
@@ -96,7 +96,7 @@ void PercentEncodingTest::testInvalidByteArray(void)
 void PercentEncodingTest::testInvalidByteArray_data(void)
 {
     QTest::addColumn<QByteArray>("input");
-    QVector<QByteArray> invalidByteArrayInputs = QVector<QByteArray>() << QByteArray("%") << QByteArray("invalid%") << QByteArray("%G5") << QByteArray("%5");
+    QList<QByteArray> invalidByteArrayInputs = QList<QByteArray>() << QByteArray("%") << QByteArray("invalid%") << QByteArray("%G5") << QByteArray("%5");
     for (const auto &input : qAsConst(invalidByteArrayInputs)) {
         QTest::newRow(input.constData()) << input;
     }

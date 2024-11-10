@@ -6,13 +6,13 @@
 #define ACCOUNTS_ACCOUNT_H
 
 #include <QDateTime>
+#include <QList>
 #include <QObject>
 #include <QScopedPointer>
 #include <QSettings>
 #include <QString>
 #include <QThread>
 #include <QUuid>
-#include <QVector>
 
 #include <functional>
 #include <optional>
@@ -82,7 +82,7 @@ public:
     Account *get(const QString &fullName) const;
     Account *get(const QString &name, const QString &issuer) const;
     AccountSecret *secret(void) const;
-    QVector<QString> accounts(void) const;
+    QList<QString> accounts(void) const;
     void dispose(void);
     void addHotp(const QString &name,
                  const QString &issuer,

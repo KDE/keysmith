@@ -11,11 +11,11 @@
 
 #include <QDateTime>
 #include <QHash>
+#include <QList>
 #include <QObject>
 #include <QSet>
 #include <QString>
 #include <QUuid>
-#include <QVector>
 
 #include <functional>
 #include <optional>
@@ -116,7 +116,7 @@ public:
     void acceptDisposal(void);
     void unlock(const std::function<void(RequestAccountPassword *)> &handler);
     void load(const std::function<void(LoadAccounts *)> &handler);
-    QVector<QString> activeAccounts(void) const;
+    QList<QString> activeAccounts(void) const;
     bool isStillOpen(void) const;
     bool contains(const QString &account) const;
     SettingsProvider settings(void) const;

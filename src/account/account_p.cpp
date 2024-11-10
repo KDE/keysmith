@@ -341,9 +341,9 @@ AccountPrivate::AccountPrivate(const std::function<Account *(AccountPrivate *)> 
 {
 }
 
-QVector<QString> AccountStoragePrivate::activeAccounts(void) const
+QList<QString> AccountStoragePrivate::activeAccounts(void) const
 {
-    QVector<QString> active;
+    QList<QString> active;
     if (!m_is_still_open) {
         qCDebug(logger) << "Not returning accounts: account storage no longer open";
         return active;

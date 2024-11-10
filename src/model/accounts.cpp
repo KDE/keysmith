@@ -121,7 +121,7 @@ SimpleAccountListModel::SimpleAccountListModel(accounts::AccountStorage *storage
     : QAbstractListModel(parent)
     , m_storage(storage)
     , m_has_error(false)
-    , m_index(QVector<QString>())
+    , m_index(QList<QString>())
 {
     QObject::connect(storage, &accounts::AccountStorage::added, this, &SimpleAccountListModel::added);
     QObject::connect(storage, &accounts::AccountStorage::removed, this, &SimpleAccountListModel::removed);

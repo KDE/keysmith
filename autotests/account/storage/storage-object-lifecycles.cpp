@@ -10,10 +10,10 @@
 
 #include <QDateTime>
 #include <QFile>
+#include <QList>
 #include <QSignalSpy>
 #include <QString>
 #include <QTest>
-#include <QVector>
 #include <QtDebug>
 
 #include <string.h>
@@ -84,7 +84,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(uut->isAccountStillAvailable(initialAccountFullName), "sample account (full name) should still be available");
     QVERIFY2(uut->isAccountStillAvailable(addedAccountName, accountIssuer), "new account, issuer should still be available");
     QVERIFY2(uut->isAccountStillAvailable(addedAccountFullName), "new account (full name) should still be available");
-    QCOMPARE(uut->accounts(), QVector<QString>());
+    QCOMPARE(uut->accounts(), QList<QString>());
 
     // expect that unlocking is scheduled automatically, so advancing the event loop should trigger the signal
     QVERIFY2(test::signal_eventually_emitted_once(existingPasswordNeeded), "(existing) password should be asked by now");
@@ -110,7 +110,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(!uut->isAccountStillAvailable(initialAccountFullName), "sample account (full name) should no longer be available");
     QVERIFY2(uut->isAccountStillAvailable(addedAccountName, accountIssuer), "new account, issuer should still be available");
     QVERIFY2(uut->isAccountStillAvailable(addedAccountFullName), "new account (full name) should still be available");
-    QCOMPARE(uut->accounts(), QVector<QString>() << initialAccountFullName);
+    QCOMPARE(uut->accounts(), QList<QString>() << initialAccountFullName);
 
     QVERIFY2(uut->contains(initialAccountName, accountIssuer), "contains(name, issuer) should report the sample account");
     QVERIFY2(uut->contains(initialAccountFullName), "contains(full name) should report the sample account");
@@ -151,7 +151,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(uut->isAccountStillAvailable(initialAccountFullName), "sample account (full name) should again be available");
     QVERIFY2(uut->isAccountStillAvailable(addedAccountName, accountIssuer), "new account, issuer should still be available");
     QVERIFY2(uut->isAccountStillAvailable(addedAccountFullName), "new account (full name) should still be available");
-    QCOMPARE(uut->accounts(), QVector<QString>());
+    QCOMPARE(uut->accounts(), QList<QString>());
 
     QVERIFY2(!uut->contains(initialAccountName, accountIssuer), "contains(name, issuer) should no longer report the sample account");
     QVERIFY2(!uut->contains(initialAccountFullName), "contains(full name) should no longer report the sample account");
@@ -179,7 +179,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(uut->isAccountStillAvailable(initialAccountFullName), "sample account (full name) should again still be available");
     QVERIFY2(!uut->isAccountStillAvailable(addedAccountName, accountIssuer), "new account, issuer should no longer be available");
     QVERIFY2(!uut->isAccountStillAvailable(addedAccountFullName), "new account (full name) should no longer be available");
-    QCOMPARE(uut->accounts(), QVector<QString>() << addedAccountFullName);
+    QCOMPARE(uut->accounts(), QList<QString>() << addedAccountFullName);
 
     QVERIFY2(uut->contains(addedAccountName, accountIssuer), "contains(name, issuer) should report the new account");
     QVERIFY2(uut->contains(addedAccountFullName), "contains(full name) should report the new account");
@@ -215,7 +215,7 @@ void StorageLifeCyclesTest::testLifecycle(void)
     QVERIFY2(!uut->isAccountStillAvailable(initialAccountFullName), "sample account (full name) should again no longer be available");
     QVERIFY2(!uut->isAccountStillAvailable(addedAccountName, accountIssuer), "new account, issuer should no longer be available still");
     QVERIFY2(!uut->isAccountStillAvailable(addedAccountFullName), "new account (full name) should no longer be available still");
-    QCOMPARE(uut->accounts(), QVector<QString>());
+    QCOMPARE(uut->accounts(), QList<QString>());
 
     QVERIFY2(!uut->contains(addedAccountName, accountIssuer), "contains(name, issuer) should no longer report the new account");
     QVERIFY2(!uut->contains(addedAccountFullName), "contains(full name) should no longer report the new account");

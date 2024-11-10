@@ -8,12 +8,12 @@
 #include "account.h"
 
 #include <QDateTime>
+#include <QList>
 #include <QObject>
 #include <QSet>
 #include <QSettings>
 #include <QString>
 #include <QUuid>
-#include <QVector>
 
 #include <functional>
 #include <optional>
@@ -263,7 +263,7 @@ private:
 
 private:
     AccountJob *m_current;
-    QVector<AccountJob *> m_pending;
+    QList<AccountJob *> m_pending;
 };
 }
 

@@ -9,10 +9,10 @@
 
 #include <QDateTime>
 #include <QFile>
+#include <QList>
 #include <QSignalSpy>
 #include <QString>
 #include <QTest>
-#include <QVector>
 #include <QtDebug>
 
 static QString testIniResource(QLatin1String("test.ini"));
