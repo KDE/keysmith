@@ -448,7 +448,7 @@ void AccountStoragePrivate::removeAccounts(const QSet<QString> &accountNames)
 
     DeleteAccounts *job = new DeleteAccounts(m_settings, ids);
     m_actions->queueAndProceed(job, [&ids, job, this](void) -> void {
-        for (const QUuid &id : qAsConst(ids)) {
+        for (const QUuid &id : std::as_const(ids)) {
             Account *account = m_accounts[id];
             QObject::connect(job, &DeleteAccounts::finished, account, &Account::removed);
         }

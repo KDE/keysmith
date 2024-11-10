@@ -37,7 +37,7 @@ void PercentEncodingTest::testValidString_data(void)
     QList<QByteArray> validStringInputs = QList<QByteArray>() << QByteArray("%3A");
     QStringList validStringOutputs = QStringList() << QStringLiteral(":");
     int i = 0;
-    for (const auto &input : qAsConst(validStringInputs)) {
+    for (const auto &input : std::as_const(validStringInputs)) {
         QTest::newRow(input.constData()) << input << validStringOutputs[i];
         i++;
     }
@@ -64,7 +64,7 @@ void PercentEncodingTest::testValidByteArray_data(void)
         << QByteArray("embeddedZworks").replace('Z', '\0');
 
     int i = 0;
-    for (const auto &input : qAsConst(validByteArrayInputs)) {
+    for (const auto &input : std::as_const(validByteArrayInputs)) {
         QTest::newRow(input.constData()) << input << validByteArrayOutputs[i];
         i++;
     }
@@ -97,7 +97,7 @@ void PercentEncodingTest::testInvalidByteArray_data(void)
 {
     QTest::addColumn<QByteArray>("input");
     QList<QByteArray> invalidByteArrayInputs = QList<QByteArray>() << QByteArray("%") << QByteArray("invalid%") << QByteArray("%G5") << QByteArray("%5");
-    for (const auto &input : qAsConst(invalidByteArrayInputs)) {
+    for (const auto &input : std::as_const(invalidByteArrayInputs)) {
         QTest::newRow(input.constData()) << input;
     }
 }
