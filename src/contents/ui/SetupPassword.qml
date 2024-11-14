@@ -10,7 +10,6 @@ import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
-import org.kde.kirigamiaddons.components 1.0 as Components
 
 import Keysmith.Application as Application
 
@@ -23,11 +22,12 @@ FormCard.FormCardPage {
 
     Component.onCompleted: newPassword.forceActiveFocus()
 
-    header: Components.Banner {
+    header: Kirigami.InlineMessage {
         id: errorMessage
         text: i18n("Failed to set up your password")
         visible: vm.failed
         showCloseButton: true
+        position: Kirigami.InlineMessage.Position.Header
     }
 
     Kirigami.Icon {

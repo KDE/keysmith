@@ -10,7 +10,6 @@ import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1 as FormCard
-import org.kde.kirigamiaddons.components 1 as Components
 
 import Keysmith.Application as Application
 
@@ -21,12 +20,13 @@ FormCard.FormCardPage {
 
     title: i18nc("@title:window", "Password")
 
-    header: Components.Banner {
+    header: Kirigami.InlineMessage {
         id: errorMessage
         text: i18n("Failed to unlock your accounts")
         visible: vm.failed
         showCloseButton: true
         type: Kirigami.MessageType.Error
+        position: Kirigami.InlineMessage.Position.Header
     }
 
     Component.onCompleted: existingPassword.forceActiveFocus()
