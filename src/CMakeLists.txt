@@ -36,6 +36,7 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/Main.qml
     contents/ui/AccountsOverview.qml
     contents/ui/AddAccount.qml
+    contents/ui/ImportAccount.qml
     contents/ui/ErrorPage.qml
     contents/ui/RenameAccount.qml
     contents/ui/AccountNameForm.qml

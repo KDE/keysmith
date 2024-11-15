@@ -25,7 +25,7 @@ FormCard.FormCardPage {
     property bool passwordRequired: false
 
     property bool formatComboboxAcceptable: formatCombobox.currentIndex !== -1
-    property bool accountsFileAcceptable: accountsFile.fileUrl.toString() !== ""
+    property bool accountsFileAcceptable: accountsFile.selectedFile.toString() !== ""
     property bool passwordAcceptable: !passwordRequired || password.text !== ""
     property bool acceptable: formatComboboxAcceptable && accountsFileAcceptable && passwordAcceptable
 
@@ -58,14 +58,6 @@ FormCard.FormCardPage {
             onTriggered: {
                 Qt.quit();
             }
-        },
-        Kirigami.Action {
-            text: i18nc("@action:button", "Add")
-            icon.name: "answer-correct"
-            enabled: acceptable
-            onTriggered: {
-                vm.accepted();
-            }
         }
     ]
 
@@ -81,11 +73,11 @@ FormCard.FormCardPage {
             model: ListModel {
                 Component.onCompleted: {
                     // ListModel doesn't support i18n strings
-                    append({"name": i18nc("@item:inlistbox", "FreeOTP URIs"), "value": Models.ValidatedImportInput.FreeOTPURIs});
-                    append({"name": i18nc("@item:inlistbox", "andOTP Plain JSON"), "value": Models.ValidatedImportInput.AndOTPPlainJSON});
-                    append({"name": i18nc("@item:inlistbox", "andOTP Encrypted JSON"), "value": Models.ValidatedImportInput.AndOTPEncryptedJSON});
-                    append({"name": i18nc("@item:inlistbox", "Aegis Plain JSON"), "value": Models.ValidatedImportInput.AegisPlainJSON});
-                    append({"name": i18nc("@item:inlistbox", "Aegis Encrypted JSON"), "value": Models.ValidatedImportInput.AegisEncryptedJSON});
+                    append({name: i18nc("@item:inlistbox", "FreeOTP URIs"), value: Models.ValidatedImportInput.FreeOTPURIs});
+                    append({name: i18nc("@item:inlistbox", "andOTP Plain JSON"), value: Models.ValidatedImportInput.AndOTPPlainJSON});
+                    append({name: i18nc("@item:inlistbox", "andOTP Encrypted JSON"), value: Models.ValidatedImportInput.AndOTPEncryptedJSON});
+                    append({name: i18nc("@item:inlistbox", "Aegis Plain JSON"), value: Models.ValidatedImportInput.AegisPlainJSON});
+                    append({name: i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 
                     formatCombobox.currentIndex = formatCombobox.indexOfValue(Models.ValidatedImportInput.format);
                 }
@@ -102,11 +94,14 @@ FormCard.FormCardPage {
             text: i18nc("Button to choose file", "Open")
             enabled: formatComboboxAcceptable
             onClicked: accountsFile.open();
+            description: vm.input.file.toString()
 
             Dialogs.FileDialog {
                 id: accountsFile
                 title: i18nc("@title:window", "Select file")
-                onAccepted: vm.input.file = accountsFile.fileUrl;
+                onAccepted: {
+                    vm.input.file = accountsFile.selectedFile;
+                }
             }
         }
 
@@ -120,6 +115,19 @@ FormCard.FormCardPage {
             label: i18nc("@label:textbox", "Password")
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             onTextChanged: vm.input.password = text;
+        }
+    }
+
+    FormCard.FormCard {
+        Layout.topMargin: Kirigami.Units.gridUnit
+
+        FormCard.FormButtonDelegate {
+            text: i18nc("@action:button", "Add")
+            icon.name: "answer-correct-symbolic"
+            enabled: acceptable
+            onClicked: {
+                vm.accepted();
+            }
         }
     }
 }
