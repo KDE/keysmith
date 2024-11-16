@@ -17,6 +17,16 @@ Kirigami.ApplicationWindow {
 
     globalDrawer: KeysmithGlobalDrawer {}
 
+    pageStack. globalToolBar {
+        style: Kirigami.ApplicationHeaderStyle.ToolBar
+        showNavigationButtons: if (root.pageStack.currentIndex > 0
+            || root.pageStack.currentIndex > 0) {
+            Kirigami.ApplicationHeaderStyle.ShowBackButton
+        } else {
+            0
+        }
+    }
+
     function routeToUrl(route) {
         switch (route) {
         case Application.Navigation.Error:

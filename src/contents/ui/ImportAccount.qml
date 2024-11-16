@@ -42,25 +42,6 @@ FormCard.FormCardPage {
         }
     }
 
-    actions: [
-        Kirigami.Action {
-            text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
-            icon.name: "edit-undo-symbolic"
-            onTriggered: {
-                vm.cancelled();
-            }
-        },
-        Kirigami.Action {
-            text: i18nc("@action:button Dismiss the error page and quit Keysmith", "Quit")
-            icon.name: "application-exit-symbolic"
-            enabled: vm.quitEnabled
-            visible: vm.quitEnabled
-            onTriggered: {
-                Qt.quit();
-            }
-        }
-    ]
-
     Component.onCompleted: formatCombobox.forceActiveFocus()
 
     FormCard.FormCard {
