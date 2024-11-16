@@ -51,6 +51,7 @@ FormCard.FormCardPage {
             id: formatCombobox
             text: i18n("Import format")
 
+            currentIndex: -1
             model: ListModel {
                 Component.onCompleted: {
                     // ListModel doesn't support i18n strings
@@ -67,7 +68,7 @@ FormCard.FormCardPage {
             textRole: "name"
             valueRole: "value"
 
-            onCurrentValueChanged: vm.input.format = currentIndex;
+            onCurrentValueChanged: vm.input.format = currentValue;
         }
 
         FormCard.FormDelegateSeparator {}
