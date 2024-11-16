@@ -26,41 +26,31 @@ Kirigami.ScrollablePage {
     property string loadingErrorMessage: i18nc("error message shown when loading accounts from storage failed", "Some accounts failed to load.")
     property string errorMessage: loadingErrorMessage
 
-    header: ColumnLayout {
-        id: column
-        Layout.margins: 0
-        spacing: 0
-        Kirigami.InlineMessage {
-            id: message
-            visible: vm.accounts.error // FIXME : should be managed via vm
-            type: Kirigami.MessageType.Error
-            text: root.errorMessage // FIXME : should be managed via vm
-            Layout.fillWidth: true
-            Layout.margins: Kirigami.Units.smallSpacing
-            /*
-             * There is supposed to be a more Kirigami-way to allow the user to dismiss the error message: showCloseButton
-             * Unfortunately:
-             *
-             *  - Kirigami doesn't really offer a direct API for detecting when the close button is clicked.
-             *    Observing the close button's effect via the visible property works just as well, but it is a bit of a hack.
-             *  - It results in a rather unattractive vertical sizing problem: the close button is rather big for inline text
-             *    This makes the internal horizontal spacing look completely out of proportion with the vertical spacing.
-             *  - The actual click/tap target is only a small fraction of the entire message (banner).
-             *    In this case, making the entire message click/tap target would be much better.
-             *
-             * Solution: add a MouseArea for dismissing the message via click/tap.
-             */
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    // FIXME : should be managed via vm
-                    vm.accounts.error = false;
-                }
+    header: Kirigami.InlineMessage {
+        id: message
+        visible: vm.accounts.error // FIXME : should be managed via vm
+        type: Kirigami.MessageType.Error
+        position: Kirigami.InlineMessage.Header
+        text: root.errorMessage // FIXME : should be managed via vm
+        /*
+         * There is supposed to be a more Kirigami-way to allow the user to dismiss the error message: showCloseButton
+         * Unfortunately:
+         *
+         *  - Kirigami doesn't really offer a direct API for detecting when the close button is clicked.
+         *    Observing the close button's effect via the visible property works just as well, but it is a bit of a hack.
+         *  - It results in a rather unattractive vertical sizing problem: the close button is rather big for inline text
+         *    This makes the internal horizontal spacing look completely out of proportion with the vertical spacing.
+         *  - The actual click/tap target is only a small fraction of the entire message (banner).
+         *    In this case, making the entire message click/tap target would be much better.
+         *
+         * Solution: add a MouseArea for dismissing the message via click/tap.
+         */
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                // FIXME : should be managed via vm
+                vm.accounts.error = false;
             }
-        }
-        Kirigami.Separator {
-            Layout.fillWidth: true
-            visible: vm.accounts.error // FIXME : should be managed via vm
         }
     }
 
