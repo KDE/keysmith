@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:42+0000\n"
+"POT-Creation-Date: 2024-11-16 00:43+0000\n"
 "PO-Revision-Date: 2023-11-07 01:08+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -344,13 +344,13 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:22 src/contents/ui/UnlockAccounts.qml:22
+#: src/contents/ui/SetupPassword.qml:21 src/contents/ui/UnlockAccounts.qml:21
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:28
+#: src/contents/ui/SetupPassword.qml:27
 #, kde-format
 msgid "Failed to set up your password"
 msgstr ""
@@ -420,7 +420,7 @@ msgctxt "@option:radio"
 msgid "SHA-512"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:26
+#: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
 msgid "Failed to unlock your accounts"
 msgstr ""

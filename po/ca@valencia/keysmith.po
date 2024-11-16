@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:42+0000\n"
+"POT-Creation-Date: 2024-11-16 00:43+0000\n"
 "PO-Revision-Date: 2024-09-27 10:34+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -362,13 +362,13 @@ msgstr "Cancel·la"
 msgid "Add"
 msgstr "Afig"
 
-#: src/contents/ui/SetupPassword.qml:22 src/contents/ui/UnlockAccounts.qml:22
+#: src/contents/ui/SetupPassword.qml:21 src/contents/ui/UnlockAccounts.qml:21
 #, kde-format
 msgctxt "@title:window"
 msgid "Password"
 msgstr "Contrasenya"
 
-#: src/contents/ui/SetupPassword.qml:28
+#: src/contents/ui/SetupPassword.qml:27
 #, kde-format
 msgid "Failed to set up your password"
 msgstr "No s'ha pogut establir la contrasenya"
@@ -438,7 +438,7 @@ msgctxt "@option:radio"
 msgid "SHA-512"
 msgstr "SHA-512"
 
-#: src/contents/ui/UnlockAccounts.qml:26
+#: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
 msgid "Failed to unlock your accounts"
 msgstr "No s'han pogut desblocar els comptes"
