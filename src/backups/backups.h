@@ -9,15 +9,10 @@
 
 namespace backups
 {
-    class AndOTPVault
-    {
-    public:
-        AndOTPVault(QByteArray data);
-        QByteArray encrypt(const QByteArray& password);
-        QByteArray decrypt(const QByteArray& password);
-    private:
-        QByteArray m_data;
-    };
+namespace AndOTPVault
+{
+QByteArray decrypt(QByteArrayView data, QByteArrayView password);
+}
 }
 
 #endif

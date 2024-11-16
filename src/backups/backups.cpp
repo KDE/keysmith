@@ -6,20 +6,19 @@
 
 #include "../logging_p.h"
 
-#include <QtCrypto>
+#include <openssl/evp.h>
+#include <openssl/rand.h>
 
 #include <QDataStream>
 #include <QRandomGenerator>
 
-#define ANDOTP_ITER_LEN 4
-#define ANDOTP_SALT_LEN 12
-#define ANDOTP_IV_LEN 12
-#define ANDOTP_KEY_LEN 32
-#define ANDOTP_TAG_LEN 16
-#define ANDOTP_SALT_POS (ANDOTP_SALT_LEN + ANDOTP_ITER_LEN)
-#define ANDOTP_IV_POS (ANDOTP_IV_LEN + ANDOTP_SALT_POS)
-#define ANDOTP_MIN_BACKUP_ITERATIONS 140000
-#define ANDOTP_MAX_BACKUP_ITERATIONS 160000
+constexpr auto ANDOTP_ITER_LEN = 4;
+constexpr auto ANDOTP_SALT_LEN = 12;
+constexpr auto ANDOTP_IV_LEN = 12;
+constexpr auto ANDOTP_KEY_LEN = 32;
+constexpr auto ANDOTP_TAG_LEN = 16;
+constexpr auto ANDOTP_SALT_POS = (ANDOTP_SALT_LEN + ANDOTP_ITER_LEN);
+constexpr auto ANDOTP_IV_POS = (ANDOTP_IV_LEN + ANDOTP_SALT_POS);
 
 using namespace Qt::Literals::StringLiterals;
 
@@ -27,52 +26,82 @@ KEYSMITH_LOGGER(logger, ".backups")
 
 namespace backups
 {
-
-    AndOTPVault::AndOTPVault(QByteArray data) :
-        m_data(data)
-    {
+namespace AndOTPVault
+{
+QByteArray decrypt(QByteArrayView data, QByteArrayView password)
+{
+    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+    if (!ctx) {
+        return {};
     }
 
-    QByteArray AndOTPVault::encrypt(const QByteArray& password)
-    {
-        QRandomGenerator rng;
-        rng.bounded(ANDOTP_MIN_BACKUP_ITERATIONS, ANDOTP_MAX_BACKUP_ITERATIONS + 1);
-        quint32 iterationCount = rng.generate();
-        QCA::InitializationVector salt(ANDOTP_SALT_LEN);
-        QCA::InitializationVector iv(ANDOTP_IV_LEN);
-        QCA::PBKDF2 deriv;
-        QCA::SymmetricKey key(deriv.makeKey(password, salt, ANDOTP_KEY_LEN, iterationCount));
-        QCA::Cipher block("aes128"_L1, QCA::Cipher::GCM, QCA::Cipher::Padding::NoPadding);
-        block.setup(QCA::Decode, key, iv);
-        QCA::MemoryRegion cipher(block.process(m_data));
-        QCA::AuthTag tag(block.tag());
+    quint32 iterationCount;
+    QDataStream in(data.left(ANDOTP_ITER_LEN).toByteArray());
+    in.setByteOrder(QDataStream::BigEndian);
+    in >> iterationCount;
 
-        QByteArray ret;
-        QDataStream out(&ret, QIODevice::WriteOnly);
-        out.setByteOrder(QDataStream::BigEndian);
-        out << iterationCount;
-        out.writeRawData(salt.constData(), ANDOTP_SALT_LEN);
-        out.writeRawData(iv.constData(), ANDOTP_IV_LEN);
-        out.writeRawData(key.constData(), ANDOTP_KEY_LEN);
-        out.writeRawData(cipher.constData(), cipher.size());
-        out.writeRawData(tag.constData(), ANDOTP_TAG_LEN);
+    const auto salt = data.mid(ANDOTP_ITER_LEN, ANDOTP_SALT_LEN);
+    const auto iv = data.mid(ANDOTP_SALT_POS, ANDOTP_IV_LEN);
+    const auto ciphertext = data.mid(ANDOTP_IV_POS, data.size() - ANDOTP_IV_POS - ANDOTP_TAG_LEN);
+    const auto tag = data.right(ANDOTP_TAG_LEN);
 
-        return ret;
+    QByteArray key;
+    key.resize(ANDOTP_KEY_LEN);
+    if (!PKCS5_PBKDF2_HMAC_SHA1((char *)password.data(),
+                                password.size(),
+                                (unsigned char *)salt.data(),
+                                ANDOTP_SALT_LEN,
+                                iterationCount,
+                                ANDOTP_KEY_LEN,
+                                (unsigned char *)key.data())) {
+        qCWarning(logger) << "Key derivation failed.";
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
     }
 
-    QByteArray AndOTPVault::decrypt(const QByteArray& password)
-    {
-        quint32 iterationCount;
-        QDataStream in(m_data.left(ANDOTP_ITER_LEN));
-        in.setByteOrder(QDataStream::BigEndian);
-        in >> iterationCount;
-        QCA::InitializationVector salt(m_data.mid(ANDOTP_ITER_LEN, ANDOTP_SALT_LEN));
-        QCA::InitializationVector iv(m_data.mid(ANDOTP_SALT_POS, ANDOTP_IV_LEN));
-        QCA::AuthTag tag(m_data.right(ANDOTP_TAG_LEN));
-        QCA::PBKDF2 deriv;
-        QCA::SymmetricKey key(deriv.makeKey(password, salt, ANDOTP_KEY_LEN, iterationCount));
-        QCA::Cipher block("aes256"_L1, QCA::Cipher::GCM, QCA::Cipher::Padding::NoPadding);
-        block.setup(QCA::Decode, key, iv, tag);
-        return block.process(m_data.mid(ANDOTP_IV_POS, m_data.size() - ANDOTP_IV_POS - ANDOTP_TAG_LEN)).toByteArray();
+    if (!EVP_DecryptInit_ex(ctx, EVP_aes_256_gcm(), nullptr, nullptr, nullptr)) {
+        qCWarning(logger) << "decrypt init failed.";
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
     }
+
+    EVP_CIPHER_CTX_set_key_length(ctx, key.size());
+    EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_IVLEN, iv.size(), nullptr);
+    if (!EVP_DecryptInit_ex(ctx, nullptr, nullptr, (const unsigned char *)(key.data()), (const unsigned char *)(iv.data()))) {
+        EVP_CIPHER_CTX_free(ctx);
+        qCWarning(logger) << "decrypt init failed.";
+        return {};
+    }
+    EVP_CIPHER_CTX_set_padding(ctx, 0);
+
+    int resultLength;
+    QByteArray outUpdate;
+    outUpdate.resize(ciphertext.size() + EVP_CIPHER_CTX_block_size(ctx));
+
+    if (!EVP_DecryptUpdate(ctx, (unsigned char *)outUpdate.data(), &resultLength, (unsigned char *)ciphertext.data(), ciphertext.size())) {
+        EVP_CIPHER_CTX_free(ctx);
+        qCWarning(logger) << "decrypt update failed.";
+        return {};
+    }
+    outUpdate.resize(resultLength);
+
+    if (!EVP_CIPHER_CTX_ctrl(ctx, EVP_CTRL_GCM_SET_TAG, tag.size(), (unsigned char *)tag.data())) {
+        qCWarning(logger) << "decrypt ctrl failed.";
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+
+    QByteArray outFinal;
+    outFinal.resize(EVP_CIPHER_CTX_block_size(ctx));
+    if (!EVP_DecryptFinal_ex(ctx, (unsigned char *)outFinal.data(), &resultLength)) {
+        qCWarning(logger) << "decrypt final failed.";
+        EVP_CIPHER_CTX_free(ctx);
+        return {};
+    }
+    outFinal.resize(resultLength);
+
+    EVP_CIPHER_CTX_free(ctx);
+    return outUpdate + outFinal;
+}
+}
 }

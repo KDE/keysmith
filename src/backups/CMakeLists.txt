@@ -7,4 +7,4 @@ set(backup_SRCS backups.cpp)
 
 add_library(backups_lib STATIC ${backup_SRCS})
 
-target_link_libraries(backups_lib Qt::Core ${Qca_LIBRARY})
+target_link_libraries(backups_lib Qt::Core OpenSSL::SSL)

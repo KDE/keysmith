@@ -450,10 +450,7 @@ QVector<AccountInput *> ImportInput::importAccounts() const
         readUris(ret, data);
         break;
     case AndOTPEncryptedJSON:
-        {
-            backups::AndOTPVault vault(data);
-            data = vault.decrypt(m_password.toUtf8());
-        }
+        data = backups::AndOTPVault::decrypt(data, m_password.toUtf8());
         Q_FALLTHROUGH();
     case AndOTPPlainJSON:
         readAndOTP(ret, data);

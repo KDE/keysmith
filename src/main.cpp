@@ -47,8 +47,6 @@ static QQmlDebuggingEnabler enabler;
 #include <KDBusService>
 #endif
 
-#include <QtCrypto>
-
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
 #ifdef Q_OS_ANDROID
@@ -113,8 +111,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KDBusService service(KDBusService::Unique);
     QObject::connect(&service, &KDBusService::activateRequested, &proxy, &app::Proxy::handleDBusActivation);
 #endif
-
-    QCA::Initializer init;
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
