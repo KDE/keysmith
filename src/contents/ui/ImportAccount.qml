@@ -18,16 +18,16 @@ import Keysmith.Validators as Validators
 FormCard.FormCardPage {
     id: root
 
-    required property Application.ImportAccountViewModel vm
+    title: i18nc("@title:window", "Import Accounts")
 
-    title: i18nc("@title:window", "Import accounts")
+    required property Application.ImportAccountViewModel vm
 
     property bool passwordRequired: false
 
-    property bool formatComboboxAcceptable: formatCombobox.currentIndex !== -1
-    property bool accountsFileAcceptable: accountsFile.selectedFile.toString() !== ""
-    property bool passwordAcceptable: !passwordRequired || password.text !== ""
-    property bool acceptable: formatComboboxAcceptable && accountsFileAcceptable && passwordAcceptable
+    readonly property bool formatComboboxAcceptable: formatCombobox.currentIndex !== -1
+    readonly property bool accountsFileAcceptable: accountsFile.selectedFile.toString() !== ""
+    readonly property bool passwordAcceptable: !passwordRequired || password.text !== ""
+    readonly property bool acceptable: formatComboboxAcceptable && accountsFileAcceptable && passwordAcceptable
 
     topPadding: Kirigami.Units.gridUnit
     bottomPadding: Kirigami.Units.gridUnit
@@ -38,21 +38,21 @@ FormCard.FormCardPage {
             root.passwordRequired = [
                 Models.ValidatedImportInput.AndOTPEncryptedJSON,
                 Models.ValidatedImportInput.AegisEncryptedJSON
-            ].includes(formatCombobox.currentIndex);
+            ].includes(formatCombobox.currentValue);
         }
     }
 
     actions: [
         Kirigami.Action {
             text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
-            icon.name: "edit-undo"
+            icon.name: "edit-undo-symbolic"
             onTriggered: {
                 vm.cancelled();
             }
         },
         Kirigami.Action {
             text: i18nc("@action:button Dismiss the error page and quit Keysmith", "Quit")
-            icon.name: "application-exit"
+            icon.name: "application-exit-symbolic"
             enabled: vm.quitEnabled
             visible: vm.quitEnabled
             onTriggered: {
@@ -73,13 +73,13 @@ FormCard.FormCardPage {
             model: ListModel {
                 Component.onCompleted: {
                     // ListModel doesn't support i18n strings
-                    append({name: i18nc("@item:inlistbox", "FreeOTP URIs"), value: Models.ValidatedImportInput.FreeOTPURIs});
-                    append({name: i18nc("@item:inlistbox", "andOTP Plain JSON"), value: Models.ValidatedImportInput.AndOTPPlainJSON});
                     append({name: i18nc("@item:inlistbox", "andOTP Encrypted JSON"), value: Models.ValidatedImportInput.AndOTPEncryptedJSON});
-                    append({name: i18nc("@item:inlistbox", "Aegis Plain JSON"), value: Models.ValidatedImportInput.AegisPlainJSON});
+                    append({name: i18nc("@item:inlistbox", "andOTP Plain JSON"), value: Models.ValidatedImportInput.AndOTPPlainJSON});
                     //append({name: i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
+                    append({name: i18nc("@item:inlistbox", "Aegis Plain JSON"), value: Models.ValidatedImportInput.AegisPlainJSON});
+                    append({name: i18nc("@item:inlistbox", "FreeOTP URIs"), value: Models.ValidatedImportInput.FreeOTPURIs});
 
-                    formatCombobox.currentIndex = formatCombobox.indexOfValue(Models.ValidatedImportInput.format);
+                    formatCombobox.currentIndex = 0;
                 }
             }
 
@@ -89,12 +89,14 @@ FormCard.FormCardPage {
             onCurrentValueChanged: vm.input.format = currentIndex;
         }
 
+        FormCard.FormDelegateSeparator {}
+
         FormCard.FormButtonDelegate {
             id: openFileDialog
-            text: i18nc("Button to choose file", "Open")
+            text: i18nc("@label:chooser", "Backup file:")
             enabled: formatComboboxAcceptable
             onClicked: accountsFile.open();
-            description: vm.input.file.toString()
+            description: vm.input.file.toString().length > 0 ? vm.input.file.toString().substring(7) : i18nc("@info:placeholder", "No file selected")
 
             Dialogs.FileDialog {
                 id: accountsFile
@@ -105,16 +107,20 @@ FormCard.FormCardPage {
             }
         }
 
+        FormCard.FormDelegateSeparator {
+            visible: root.passwordRequired
+        }
+
         FormCard.FormTextFieldDelegate {
             id: password
-            visible: enabled
-            enabled: root.passwordRequired
-            placeholderText: i18n("Decryption password")
+            visible: root.passwordRequired
+            placeholderText: i18nc("@info:placeholder", "Decryption password")
             text: vm.input.password
             echoMode: TextInput.Password
-            label: i18nc("@label:textbox", "Password")
+            label: i18nc("@label:textbox", "Password:")
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             onTextChanged: vm.input.password = text;
+            onAccepted: vm.accepted();
         }
     }
 
@@ -122,7 +128,7 @@ FormCard.FormCardPage {
         Layout.topMargin: Kirigami.Units.gridUnit
 
         FormCard.FormButtonDelegate {
-            text: i18nc("@action:button", "Add")
+            text: i18nc("@action:button", "Import")
             icon.name: "answer-correct-symbolic"
             enabled: acceptable
             onClicked: {
