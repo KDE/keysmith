@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-16 00:43+0000\n"
+"POT-Creation-Date: 2024-11-18 00:43+0000\n"
 "PO-Revision-Date: 2023-11-14 13:36-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Conta opcional a adicionar, formatada como URI otpauth://  (ex.: de um "
 "código QR)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
@@ -45,7 +45,7 @@ msgstr ""
 "A conta que você está tentando adicionar é inválida. Você pode ou sair do "
 "aplicativo ou continuar sem adicionar a conta."
 
-#: src/app/flows_p.cpp:249
+#: src/app/flows_p.cpp:283
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -187,12 +187,12 @@ msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
 msgstr "Algumas contas falharam ao carregar."
 
-#: src/contents/ui/AccountsOverview.qml:101
+#: src/contents/ui/AccountsOverview.qml:91
 #, kde-format
 msgid "No accounts added"
 msgstr "Nenhuma conta adicionada"
 
-#: src/contents/ui/AccountsOverview.qml:106
+#: src/contents/ui/AccountsOverview.qml:96
 #, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
@@ -200,11 +200,17 @@ msgctxt ""
 msgid "Add Account"
 msgstr "Adicionar conta"
 
-#: src/contents/ui/AccountsOverview.qml:172
+#: src/contents/ui/AccountsOverview.qml:163
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
 msgstr "Adicionar"
+
+#: src/contents/ui/AccountsOverview.qml:176
+#, kde-format
+msgctxt "@action:button import accounts, shown in toolbar"
+msgid "Import"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -334,6 +340,83 @@ msgctxt "@label:spinbox"
 msgid "Truncation offset:"
 msgstr "Deslocamento do truncamento:"
 
+#: src/contents/ui/ImportAccount.qml:21
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Accounts"
+msgctxt "@title:window"
+msgid "Import Accounts"
+msgstr "Contas"
+
+#: src/contents/ui/ImportAccount.qml:52
+#, kde-format
+msgid "Import format"
+msgstr ""
+
+#. i18n strings
+#: src/contents/ui/ImportAccount.qml:58
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "andOTP Encrypted JSON"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:59
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "andOTP Plain JSON"
+msgstr ""
+
+#. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
+#: src/contents/ui/ImportAccount.qml:61
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Aegis Plain JSON"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:62
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "FreeOTP URIs"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:78
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Backup file:"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:81
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "No file selected"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:85
+#, kde-format
+msgctxt "@title:window"
+msgid "Select file"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:99
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Verify password:"
+msgctxt "@info:placeholder"
+msgid "Decryption password"
+msgstr "Verificar senha:"
+
+#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr "Senha:"
+
+#: src/contents/ui/ImportAccount.qml:113
+#, kde-format
+msgctxt "@action:button"
+msgid "Import"
+msgstr ""
+
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
 #, fuzzy, kde-format
@@ -456,12 +539,6 @@ msgstr "Falha ao desbloquear suas contas"
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr "Forneça a senha para desbloquear suas contas"
-
-#: src/contents/ui/UnlockAccounts.qml:50
-#, kde-format
-msgctxt "@label:textbox"
-msgid "Password:"
-msgstr "Senha:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
 #, kde-format

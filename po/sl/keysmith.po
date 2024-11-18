@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-16 00:43+0000\n"
+"POT-Creation-Date: 2024-11-18 00:43+0000\n"
 "PO-Revision-Date: 2024-09-27 06:54+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -26,7 +26,7 @@ msgid ""
 msgstr ""
 "Dodan neobvezen račun oblikovan kot otpauth:// URI (npr. prebran iz kode QR)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
+#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
@@ -42,7 +42,7 @@ msgstr ""
 "Račun, ki ga poskušate dodati, ni veljaven. Lahko zapustite aplikacijo ali "
 "pa nadaljujete ne da bi dodali račun."
 
-#: src/app/flows_p.cpp:249
+#: src/app/flows_p.cpp:283
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -177,12 +177,12 @@ msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
 msgstr "Nekaj računov se ni uspelo naložiti."
 
-#: src/contents/ui/AccountsOverview.qml:101
+#: src/contents/ui/AccountsOverview.qml:91
 #, kde-format
 msgid "No accounts added"
 msgstr "Ni dodanih računov"
 
-#: src/contents/ui/AccountsOverview.qml:106
+#: src/contents/ui/AccountsOverview.qml:96
 #, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
@@ -190,11 +190,17 @@ msgctxt ""
 msgid "Add Account"
 msgstr "Dodaj račun"
 
-#: src/contents/ui/AccountsOverview.qml:172
+#: src/contents/ui/AccountsOverview.qml:163
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
 msgstr "Dodaj"
+
+#: src/contents/ui/AccountsOverview.qml:176
+#, kde-format
+msgctxt "@action:button import accounts, shown in toolbar"
+msgid "Import"
+msgstr ""
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -324,6 +330,83 @@ msgctxt "@label:spinbox"
 msgid "Truncation offset:"
 msgstr "Odmik obrezovanja:"
 
+#: src/contents/ui/ImportAccount.qml:21
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Accounts"
+msgctxt "@title:window"
+msgid "Import Accounts"
+msgstr "Računi"
+
+#: src/contents/ui/ImportAccount.qml:52
+#, kde-format
+msgid "Import format"
+msgstr ""
+
+#. i18n strings
+#: src/contents/ui/ImportAccount.qml:58
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "andOTP Encrypted JSON"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:59
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "andOTP Plain JSON"
+msgstr ""
+
+#. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
+#: src/contents/ui/ImportAccount.qml:61
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "Aegis Plain JSON"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:62
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "FreeOTP URIs"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:78
+#, kde-format
+msgctxt "@label:chooser"
+msgid "Backup file:"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:81
+#, kde-format
+msgctxt "@info:placeholder"
+msgid "No file selected"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:85
+#, kde-format
+msgctxt "@title:window"
+msgid "Select file"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:99
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Verify password:"
+msgctxt "@info:placeholder"
+msgid "Decryption password"
+msgstr "Potrdi geslo:"
+
+#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Password:"
+msgstr "Geslo:"
+
+#: src/contents/ui/ImportAccount.qml:113
+#, kde-format
+msgctxt "@action:button"
+msgid "Import"
+msgstr ""
+
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
 #, kde-format
@@ -444,12 +527,6 @@ msgstr "Odklepanje vaših računov ni uspelo"
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
 msgstr "Prosimo vnesite geslo, da odklenemo vaše račune"
-
-#: src/contents/ui/UnlockAccounts.qml:50
-#, kde-format
-msgctxt "@label:textbox"
-msgid "Password:"
-msgstr "Geslo:"
 
 #: src/contents/ui/UnlockAccounts.qml:59
 #, kde-format
