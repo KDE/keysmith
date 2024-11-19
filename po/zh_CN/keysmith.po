@@ -325,12 +325,10 @@ msgid "Truncation offset:"
 msgstr "截断偏移量："
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "账户"
+msgstr ""
 
 #: src/contents/ui/ImportAccount.qml:52
 #, kde-format
@@ -382,12 +380,10 @@ msgid "Select file"
 msgstr ""
 
 #: src/contents/ui/ImportAccount.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "验证密码："
+msgstr ""
 
 #: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
