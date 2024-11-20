@@ -194,7 +194,7 @@ msgstr "添加"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "导入"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -328,62 +328,62 @@ msgstr "截断偏移量："
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr ""
+msgstr "导入账号"
 
 #: src/contents/ui/ImportAccount.qml:52
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "导入格式"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:58
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP 加密 JSON"
 
 #: src/contents/ui/ImportAccount.qml:59
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP 明文 JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:61
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis 明文 JSON"
 
 #: src/contents/ui/ImportAccount.qml:62
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP URI"
 
 #: src/contents/ui/ImportAccount.qml:78
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "备份文件："
 
 #: src/contents/ui/ImportAccount.qml:81
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "没有选择文件"
 
 #: src/contents/ui/ImportAccount.qml:85
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "选择文件"
 
 #: src/contents/ui/ImportAccount.qml:99
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr ""
+msgstr "解密密码"
 
 #: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
@@ -395,7 +395,7 @@ msgstr "密码："
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "导入"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
