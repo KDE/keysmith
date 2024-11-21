@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-18 00:43+0000\n"
-"PO-Revision-Date: 2024-09-28 09:24+0200\n"
+"PO-Revision-Date: 2024-11-19 09:31+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -199,7 +199,7 @@ msgstr "Ajouter"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -330,69 +330,65 @@ msgid "Truncation offset:"
 msgstr "Décalage de troncature :"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Comptes"
+msgstr "Importer des comptes"
 
 #: src/contents/ui/ImportAccount.qml:52
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Format d'importation"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:58
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "jSON chiffré avec andOTP"
 
 #: src/contents/ui/ImportAccount.qml:59
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP Plain JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:61
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis Plain JSON"
 
 #: src/contents/ui/ImportAccount.qml:62
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "URI FreeOTP"
 
 #: src/contents/ui/ImportAccount.qml:78
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Dossier de sauvegarde :"
 
 #: src/contents/ui/ImportAccount.qml:81
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Aucun fichier sélectionné"
 
 #: src/contents/ui/ImportAccount.qml:85
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Sélectionner le fichier"
 
 #: src/contents/ui/ImportAccount.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Vérifier un mot de passe :"
+msgstr "Mot de passe de déchiffrement"
 
 #: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
@@ -404,7 +400,7 @@ msgstr "Mot de passe :"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
