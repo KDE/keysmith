@@ -38,6 +38,7 @@
   <name xml:lang="pt-BR">Keysmith</name>
   <name xml:lang="ro">Keysmith</name>
   <name xml:lang="ru">Keysmith</name>
+  <name xml:lang="sa">कीलकारः</name>
   <name xml:lang="sk">Keysmith</name>
   <name xml:lang="sl">Keysmith</name>
   <name xml:lang="sv">Keysmith</name>
@@ -92,6 +93,7 @@
   <summary xml:lang="pt-BR">Gerador de código de dois fatores para o Plasma Mobile e Desktop</summary>
   <summary xml:lang="ro">Generator de coduri cu doi factori pentru Plasma Mobile și Desktop</summary>
   <summary xml:lang="ru">Средство создания двухфакторных кодов для Plasma для мобильных устройств и настольных компьютеров</summary>
+  <summary xml:lang="sa">प्लाज्मा मोबाईल् तथा डेस्कटॉप् इत्येतयोः कृते द्वि-कारक-सङ्केत-जनरेटरः</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
   <summary xml:lang="tr">İki Aşamalı Kod Üreteci</summary>
@@ -132,6 +134,7 @@
     <p xml:lang="pt-BR">O Keysmith gera tokens para logins de dois fatores (2FA)</p>
     <p xml:lang="ro">Keysmith generează jetoane pentru autentificare cu doi factori (2FA)</p>
     <p xml:lang="ru">Keysmith создаёт маркеры для входа с использованием двухфакторной аутентификации (2FA)</p>
+    <p xml:lang="sa">कीस्मिथः भवतः द्वि-कारक-प्रवेशानां कृते टोकन-जनयति (2FA) ।</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
     <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar üretir</p>
@@ -169,6 +172,7 @@
       <li xml:lang="pt-BR">OTP baseados no tempo e hash</li>
       <li xml:lang="ro">OTP bazat pe oră și hash</li>
       <li xml:lang="ru">OTP на основе данных времени и хеша</li>
+      <li xml:lang="sa">समयः तथा हैश-आधारितः ओटीपी</li>
       <li xml:lang="sl">Časovno in razsuto osnovana enkratna gesla</li>
       <li xml:lang="sv">Tids- och kondensatbaserad OTP</li>
       <li xml:lang="tr">Zaman ve Sağlama tabanlı tek kerelik parola</li>
@@ -211,6 +215,7 @@
       <caption xml:lang="pt-BR">Keysmith</caption>
       <caption xml:lang="ro">Keysmith</caption>
       <caption xml:lang="ru">Keysmith</caption>
+      <caption xml:lang="sa">कीलकारः</caption>
       <caption xml:lang="sk">Keysmith</caption>
       <caption xml:lang="sl">Keysmith</caption>
       <caption xml:lang="sv">Keysmith</caption>
