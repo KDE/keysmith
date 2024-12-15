@@ -8,6 +8,7 @@
 <component type="desktop-application">
   <id>org.kde.keysmith</id>
   <name>Keysmith</name>
+  <name xml:lang="ar">صانع المفاتيح</name>
   <name xml:lang="ast">Keysmith</name>
   <name xml:lang="ca">Keysmith</name>
   <name xml:lang="ca-valencia">Keysmith</name>
@@ -65,6 +66,7 @@
     <control>touch</control>
   </recommends>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
+  <summary xml:lang="ar">مولد رمز ثنائي العوامل للأجهزة المحمولة وأجهزة سطح المكتب</summary>
   <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mobile i l'escriptori</summary>
   <summary xml:lang="ca-valencia">Generador del codi de dos factors per a Plasma Mobile i l'escriptori</summary>
   <summary xml:lang="de">Zwei-Faktor-Code-Generator für Plasma Mobile und die Plasma-Arbeitsfläche</summary>
@@ -106,6 +108,7 @@
   </developer>
   <description>
     <p>Keysmith generates tokens for your two-factor logins (2FA)</p>
+    <p xml:lang="ar">يقوم صانع المفاتيح بإنشاء رموز الولوج ثنائي العوامل (2FA)</p>
     <p xml:lang="ca">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="ca-valencia">Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="de">Keysmith generiert Token für die Zwei-Faktor-Authentisierung (FA)</p>
@@ -144,6 +147,7 @@
     <p xml:lang="zh-TW">Keysmith 會產生用於兩步驟登入 (2FA) 的憑證</p>
     <ul>
       <li>Time and Hash-based OTP</li>
+      <li xml:lang="ar">الوقت وكلمة المرور لمرة واحدة (OTP) القائمة على التجزئة</li>
       <li xml:lang="ca">OTP basat en l'hora i en el resum</li>
       <li xml:lang="ca-valencia">OTP basat en l'hora i en el resum</li>
       <li xml:lang="de">Zeit- und Hashbasiertes Einmalpasswort</li>
@@ -185,6 +189,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Keysmith</caption>
+      <caption xml:lang="ar">صانع المفاتيح</caption>
       <caption xml:lang="ast">Keysmith</caption>
       <caption xml:lang="ca">Keysmith</caption>
       <caption xml:lang="ca-valencia">Keysmith</caption>
