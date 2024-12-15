@@ -6,6 +6,7 @@
 #
 [Desktop Entry]
 Name=Keysmith
+Name[ar]=صانع المفاتيح
 Name[ast]=Keysmith
 Name[ca]=Keysmith
 Name[ca@valencia]=Keysmith
@@ -35,6 +36,7 @@ Name[pt]=Keysmith
 Name[pt_BR]=Keysmith
 Name[ro]=Keysmith
 Name[ru]=Keysmith
+Name[sa]=कीलकारः
 Name[sk]=Keysmith
 Name[sl]=Keysmith
 Name[sv]=Keysmith
@@ -45,6 +47,7 @@ Name[x-test]=xxKeysmithxx
 Name[zh_CN]=Keysmith
 Name[zh_TW]=Keysmith
 Comment=Manage your OTP tokens for two factor authentication (2fa)
+Comment[ar]=أدر الرموز المرور لمرة واحدة (OTP) الخاصة بك للمصادقة الثنائية (2fa)
 Comment[ca]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[ca@valencia]=Gestiona els vostres símbols OTP per a una autenticació de dos factors (2fa)
 Comment[cs]=Spravujte tokeny OTP pomocí dvoufaktorového ověření (2fa)
@@ -73,6 +76,7 @@ Comment[pt]=Faça a gestão dos seus códigos OTP para a autenticação em dois-
 Comment[pt_BR]=Gerencie seus tokens OTP para a autenticação de dois fatores (2fa)
 Comment[ro]=Gestionați-vă jetoanele OTP pentru autentificarea în doi factori (2fa)
 Comment[ru]=Управление маркерами OTP для двухфакторной аутентификации (2fa)
+Comment[sa]=द्वयोः कारकप्रमाणीकरणार्थं (2fa) स्वस्य OTP टोकनं प्रबन्धयन्तु ।
 Comment[sk]=Spravujte svoje OTP tokeny pre dvojfaktorové overenie (2fa)
 Comment[sl]=Upravljajte vaših enkratnih gesel žetonov za dvo-faktorsko overjanje (2fa)
 Comment[sv]=Hantera OTP-symboler för tvåfaktorsbehörighetskontroll (2fa)
