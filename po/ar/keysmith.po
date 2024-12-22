@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 11:57+0400\n"
+"PO-Revision-Date: 2024-12-19 07:19+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -24,12 +24,14 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
+"حساب اختياري للإضافة، بتنسيق otpauth://URI (على سبيل المثال من رمز الاستجابة "
+"السريعة)"
 
 #: src/app/flows_p.cpp:108 src/app/flows_p.cpp:248
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
-msgstr ""
+msgstr "حساب غير صالح"
 
 #: src/app/flows_p.cpp:109
 #, kde-format
@@ -38,6 +40,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
+"الحساب الذي تحاول إضافته غير صالح. يمكنك إما الخروج من التطبيق أو الاستمرار "
+"دون إضافة الحساب."
 
 #: src/app/flows_p.cpp:249
 #, kde-format
@@ -45,13 +49,13 @@ msgctxt "@info:label"
 msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
-msgstr ""
+msgstr "الحساب الذي تحاول إضافته غير صالح. تابع دون إضافة الحساب."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr ""
+msgstr "تفاصيل الحساب: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
@@ -109,7 +113,7 @@ msgstr "التلبيدة:"
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
-msgstr ""
+msgstr "إزالة الحساب: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:105
 #, kde-format
@@ -122,6 +126,12 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
+"460 / 5,000<p><ul><li>اسم الحساب: %1</li><li>جهة إصدار الحساب: %2</li></ul></"
+"p><p>لن يؤدي إزالة هذا الحساب من صانع المفاتيح إلى تعطيل المصادقة الثنائية "
+"(2FA). تأكد من أنه لا يزال بإمكانك الوصول إلى حسابك دون استخدام صانع "
+"المفاتيح قبل المتابعة:</p><ul><li>تأكد من إعداد تطبيق مصادقة ثنائية آخر "
+"لحسابك، أو:</li><li>تأكد من وجود رموز استرداد لحسابك، أو:</li><li>تعطيل "
+"المصادقة الثنائية على حسابك</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:116
 #, kde-format
@@ -133,7 +143,7 @@ msgstr "احذف الحساب"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "نُسخ الرمز إلى الحافظة!"
 
 #: src/contents/ui/AccountNameForm.qml:64
 #, kde-format
@@ -157,18 +167,18 @@ msgstr "الحسابات"
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr ""
+msgstr "فشل في تحديث الحسابات"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr ""
+msgstr "فشلت بعض الحسابات في التحميل."
 
 #: src/contents/ui/AccountsOverview.qml:101
 #, kde-format
 msgid "No accounts added"
-msgstr ""
+msgstr "لم تضف أي حساب"
 
 #: src/contents/ui/AccountsOverview.qml:106
 #, kde-format
@@ -298,19 +308,19 @@ msgstr "طول الرمز:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "أضف رقم المجموع الاختباري"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "استخدم إزاحة قطع مخصصة"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "إزاحة القطع:"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
@@ -322,7 +332,7 @@ msgstr "عن صانع المفاتيح"
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr ""
+msgstr "إعادة تسمية الحساب لإضافته"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -333,6 +343,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
+"وجد حساب آخر بنفس الاسم بالفعل. يرجى تصحيح الاسم أو الجهة المصدرة للحساب "
+"الجديد."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
@@ -354,12 +366,12 @@ msgstr "كلمة السّر"
 #: src/contents/ui/SetupPassword.qml:28
 #, kde-format
 msgid "Failed to set up your password"
-msgstr ""
+msgstr "فشل في إعداد كلمة سرك"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr ""
+msgstr "اختر كلمة سر لحماية حساباتك"
 
 #: src/contents/ui/SetupPassword.qml:49
 #, kde-format
