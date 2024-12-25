@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-18 00:43+0000\n"
-"PO-Revision-Date: 2024-02-09 23:39+0100\n"
+"PO-Revision-Date: 2024-12-24 16:56+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -194,7 +194,7 @@ msgstr "추가"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "가져오기"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -325,69 +325,65 @@ msgid "Truncation offset:"
 msgstr "절단 위치:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "계정"
+msgstr "계정 가져오기"
 
 #: src/contents/ui/ImportAccount.qml:52
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "가져오기 형식"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:58
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP 암호화된 JSON"
 
 #: src/contents/ui/ImportAccount.qml:59
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP 평문 JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:61
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis 평문 JSON"
 
 #: src/contents/ui/ImportAccount.qml:62
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP URI"
 
 #: src/contents/ui/ImportAccount.qml:78
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "백업 파일:"
 
 #: src/contents/ui/ImportAccount.qml:81
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "선택한 파일 없음"
 
 #: src/contents/ui/ImportAccount.qml:85
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "파일 선택"
 
 #: src/contents/ui/ImportAccount.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "암호를 다시 입력하십시오:"
+msgstr "복호화 암호"
 
 #: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
 #, kde-format
@@ -399,15 +395,13 @@ msgstr "암호:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "가져오기"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "About Keysmith"
-msgstr "Keysmith"
+msgstr "Keysmith 정보"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -538,19 +532,17 @@ msgstr "Keysmith"
 #: src/main.cpp:71
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "2단계 인증(2FA) 토큰 생성"
 
 #: src/main.cpp:74
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
 #: src/main.cpp:78
 #, kde-format
 msgid "© 2019 KDE Community"
-msgstr ""
+msgstr "© 2019 KDE Community"
 
 #~ msgctxt "Button cancelling account removal"
 #~ msgid "Cancel"
