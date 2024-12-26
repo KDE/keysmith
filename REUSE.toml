@@ -31,3 +31,9 @@ path = "po/uk/keysmith.po"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2020 KDE Localization team <kde-i18n-doc@kde.org>"
 SPDX-License-Identifier = "LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL"
+
+[[annotations]]
+path = "android/keysmith-playstore.png"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Alois Spitzbart <spitz234@hotmail.com>"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
