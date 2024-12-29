@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-18 00:43+0000\n"
-"PO-Revision-Date: 2024-12-27 17:40+0100\n"
+"PO-Revision-Date: 2024-12-28 17:41+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -199,7 +199,7 @@ msgstr "Aldoni"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Enporti"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -538,7 +538,7 @@ msgstr "Keysmith"
 #: src/main.cpp:71
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "generi dufaktorajn aŭtentigajn (2FA) ĵetonojn"
 
 #: src/main.cpp:74
 #, kde-format
