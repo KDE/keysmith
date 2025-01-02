@@ -235,6 +235,7 @@
   <url type="homepage">https://apps.kde.org/keysmith/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=Keysmith</url>
   <releases>
+    <release version="24.12.1" date="2025-01-09"/>
     <release version="24.12.0" date="2024-12-12"/>
     <release version="24.08.3" date="2024-11-07"/>
     <release version="24.08.2" date="2024-10-10"/>
