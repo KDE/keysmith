@@ -333,8 +333,6 @@ msgstr "Trunkerings­forskyving:"
 
 #: src/contents/ui/ImportAccount.qml:21
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
 msgctxt "@title:window"
 msgid "Import Accounts"
 msgstr "Kontoar"
@@ -390,8 +388,6 @@ msgstr ""
 
 #: src/contents/ui/ImportAccount.qml:99
 #, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
 msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Stadfest passordet:"
