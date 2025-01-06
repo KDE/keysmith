@@ -162,6 +162,12 @@ void AccountsOverviewViewModel::importAccount(void)
     flow->run();
 }
 
+void AccountsOverviewViewModel::scanQRCode(void)
+{
+    auto flow = new AddAccountFromQRFlow(m_app);
+    flow->run();
+}
+
 PasswordViewModel::PasswordViewModel(model::PasswordRequest *request, QObject *parent)
     : QObject(parent)
     , m_failed(false)
@@ -219,6 +225,24 @@ void UnlockAccountsViewModel::unlock(const QString &password)
     if (result != m_failed) {
         m_failed = result;
         Q_EMIT failedChanged();
+    }
+}
+
+ScanQRViewModel::ScanQRViewModel(QObject *parent)
+    : QObject{parent}
+{
+}
+
+bool ScanQRViewModel::active(void) const
+{
+    return m_active;
+}
+
+void ScanQRViewModel::setActive(bool active_)
+{
+    if (m_active != active_) {
+        m_active = active_;
+        Q_EMIT activeChanged();
     }
 }
 }

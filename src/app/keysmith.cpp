@@ -55,6 +55,11 @@ void Navigation::push(Navigation::Page page, QObject *modelToTransfer)
     Q_EMIT pushed(page, modelToTransfer);
 }
 
+void Navigation::pop()
+{
+    Q_EMIT popped();
+}
+
 static accounts::AccountStorage *openStorage(void)
 {
     qCDebug(logger) << "Initialising Keysmith account storage...";

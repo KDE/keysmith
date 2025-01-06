@@ -49,6 +49,7 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/HOTPAccountEntryView.qml
     contents/ui/TOTPAccountEntryView.qml
     contents/ui/KeysmithGlobalDrawer.qml
+    contents/ui/QRScanPage.qml
 )
 
 target_link_libraries(keysmith
@@ -79,6 +80,7 @@ if(ANDROID)
         list-add
         unlock
         lock
+        view-barcode-qr-symbolic
     )
 
     ecm_add_android_apk(keysmith ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)

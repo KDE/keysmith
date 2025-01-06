@@ -33,6 +33,11 @@ FormCard.FormCardPage {
     topPadding: Kirigami.Units.gridUnit
     bottomPadding: Kirigami.Units.gridUnit
 
+    onBackRequested: event => {
+        event.accepted = true;
+        vm.cancelled();
+    }
+
     data: Connections {
         target: vm.input
         function onTypeChanged() {

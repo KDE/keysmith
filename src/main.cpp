@@ -150,6 +150,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                                0,
                                                                "AccountsOverviewViewModel",
                                                                QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::ScanQRViewModel>("Keysmith.Application",
+                                                     1,
+                                                     0,
+                                                     "ScanQRViewModel",
+                                                     QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
     qmlRegisterUncreatableType<app::Navigation>("Keysmith.Application",
                                                 1,
                                                 0,

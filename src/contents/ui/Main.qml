@@ -43,6 +43,8 @@ Kirigami.ApplicationWindow {
             return Qt.resolvedUrl("ImportAccount.qml")
         case Application.Navigation.SetupPassword:
             return Qt.resolvedUrl("SetupPassword.qml")
+        case Application.Navigation.ScanQR:
+            return Qt.resolvedUrl("QRScanPage.qml")
         }
         return 'bug';
     }
@@ -51,7 +53,6 @@ Kirigami.ApplicationWindow {
         target: Application.Keysmith.navigation
 
         function onRouted(route, data) {
-            console.log(route, data)
             const pageUrl = routeToUrl(route);
             while (root.pageStack.depth > 1) {
                 root.pageStack.pop();
@@ -72,6 +73,10 @@ Kirigami.ApplicationWindow {
             root.pageStack.push(pageUrl, {
                 vm: data,
             });
+        }
+
+        function onPopped() {
+            root.pageStack.pop();
         }
     }
 }

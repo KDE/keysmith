@@ -183,6 +183,19 @@ Kirigami.ScrollablePage {
                 root.errorMessage = root.accountErrorMessage;
                 vm.importAccount();
             }
+        },
+        Kirigami.Action {
+            id: scanQRCodeAction
+            text: i18nc("@action:button import an account by scanning a QR code, shown in toolbar", "Scan QR Code")
+            icon.name: "view-barcode-qr-symbolic"
+            enabled: vm.actionsEnabled
+            visible: vm.actionsEnabled
+            onTriggered: {
+                // FIXME : should be managed via vm
+                vm.accounts.error = false;
+                root.errorMessage = root.accountErrorMessage;
+                vm.scanQRCode();
+            }
         }
     ]
 }

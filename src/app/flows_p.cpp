@@ -1,9 +1,12 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2025 Jack Hill <jackhill3103@gmail.com>
  */
 
 #include "flows_p.h"
+
+#include "../model/qr.h"
 #include "cli.h"
 #include "state_p.h"
 #include "vms.h"
@@ -293,6 +296,89 @@ void ExternalCommandLineFlow::onAccepted(void)
 }
 
 void ExternalCommandLineFlow::back(void)
+{
+    auto vm = new AccountsOverviewViewModel(m_app);
+    navigationFor(m_app)->navigate(Navigation::Page::AccountsOverview, vm);
+    overviewStateOf(m_app)->setActionsEnabled(true);
+    flowStateOf(m_app)->setFlowRunning(false);
+    QTimer::singleShot(0, this, &QObject::deleteLater);
+}
+
+AddAccountFromQRFlow::AddAccountFromQRFlow(Keysmith *app)
+    : QObject(app)
+    , m_app(app)
+    , m_input(new model::AccountInput(this))
+    , m_scan_vm(new ScanQRViewModel(this))
+{
+    Q_ASSERT_X(app, Q_FUNC_INFO, "should have a Keysmith instance");
+}
+
+void AddAccountFromQRFlow::run(void)
+{
+    flowStateOf(m_app)->setFlowRunning(true);
+    overviewStateOf(m_app)->setActionsEnabled(false);
+
+    QObject::connect(m_scan_vm, &ScanQRViewModel::scanComplete, this, &AddAccountFromQRFlow::scanComplete);
+    QObject::connect(m_scan_vm, &ScanQRViewModel::scanCompleteText, this, &AddAccountFromQRFlow::scanCompleteText);
+    QObject::connect(m_scan_vm, &ScanQRViewModel::cancelled, this, &AddAccountFromQRFlow::back);
+    m_scan_vm->setActive(true);
+    navigationFor(m_app)->push(Navigation::Page::ScanQR, m_scan_vm);
+}
+
+void AddAccountFromQRFlow::scanComplete(const QByteArray &uri)
+{
+    const auto result = model::QrParameters::parse(uri);
+
+    if (!result) {
+        m_scan_vm->setActive(true);
+        return;
+    }
+
+    m_scanned = true;
+    result->populate(m_input);
+    parseComplete();
+}
+
+void AddAccountFromQRFlow::scanCompleteText(const QString &uri)
+{
+    const auto result = model::QrParameters::parse(uri);
+
+    if (!result) {
+        m_scan_vm->setActive(true);
+        return;
+    }
+
+    m_scanned = true;
+    result->populate(m_input);
+    parseComplete();
+}
+
+void AddAccountFromQRFlow::parseComplete(void)
+{
+    auto vm = new AddAccountViewModel(m_input, accountListOf(m_app), false, true);
+    QObject::connect(vm, &AddAccountViewModel::accepted, this, &AddAccountFromQRFlow::onAccepted);
+    QObject::connect(vm, &AddAccountViewModel::cancelled, this, &AddAccountFromQRFlow::back);
+    navigationFor(m_app)->push(Navigation::Page::AddAccount, vm);
+}
+
+void AddAccountFromQRFlow::onAccepted(void)
+{
+    accountListOf(m_app)->addAccount(m_input);
+    QTimer::singleShot(0, this, &AddAccountFromQRFlow::exit);
+}
+
+void AddAccountFromQRFlow::back(void)
+{
+    if (m_scanned) {
+        m_scanned = false;
+        m_scan_vm->setActive(true);
+        navigationFor(m_app)->pop();
+    } else {
+        exit();
+    }
+}
+
+void AddAccountFromQRFlow::exit(void)
 {
     auto vm = new AccountsOverviewViewModel(m_app);
     navigationFor(m_app)->navigate(Navigation::Page::AccountsOverview, vm);
