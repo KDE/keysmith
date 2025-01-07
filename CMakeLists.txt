@@ -40,10 +40,11 @@ include(ECMDeprecationSettings)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent)
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui Svg QuickControls2 Concurrent Multimedia)
 find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6Prison ${KF_MIN_VERSION} REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0
     KF 6.7

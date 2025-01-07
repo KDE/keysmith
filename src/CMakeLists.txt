@@ -17,6 +17,7 @@ add_subdirectory(account)
 add_subdirectory(model)
 add_subdirectory(validators)
 add_subdirectory(app)
+add_subdirectory(scanner)
 
 configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/version.h")
 
@@ -49,6 +50,7 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/HOTPAccountEntryView.qml
     contents/ui/TOTPAccountEntryView.qml
     contents/ui/KeysmithGlobalDrawer.qml
+    contents/ui/QrCodeScanner.qml
 )
 
 target_link_libraries(keysmith
@@ -63,6 +65,7 @@ target_link_libraries(keysmith
         KF6::I18n
         ${Qca_LIBRARY}
         keysmith_lib
+		scanner_lib
 )
 
 if (ENABLE_DBUS_INTERFACE)

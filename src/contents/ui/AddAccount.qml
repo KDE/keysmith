@@ -14,6 +14,7 @@ import Keysmith.Application as Application
 import Keysmith.Models as Models
 import Keysmith.Validators as Validators
 
+
 FormCard.FormCardPage {
     id: root
 
@@ -40,6 +41,13 @@ FormCard.FormCardPage {
         }
     }
 
+    QrCodeScanner {
+        id: scanner
+
+        onAccepted: {
+        }
+    }
+
     actions: [
         Kirigami.Action {
             text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
@@ -55,6 +63,13 @@ FormCard.FormCardPage {
             visible: vm.quitEnabled
             onTriggered: {
                 Qt.quit();
+            }
+        },
+        Kirigami.Action {
+            text: i18nc("@action:button", "Scan from camera")
+            icon.name: "view-barcode-qr"
+            onTriggered: {
+                scanner.open();
             }
         },
         Kirigami.Action {
@@ -75,6 +90,10 @@ FormCard.FormCardPage {
         accounts: vm.accounts
         validateAccountAvailability: vm.validateAvailability
         validatedInput: vm.input
+    }
+
+    FormCard.FormCard {
+        id: qrSelector
     }
 
     FormCard.FormHeader {

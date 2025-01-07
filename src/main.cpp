@@ -26,6 +26,7 @@
 #include "app/vms.h"
 #include "model/accounts.h"
 #include "model/input.h"
+#include "scanner/qrcode.h"
 #include "validators/countervalidator.h"
 #include "validators/datetimevalidator.h"
 #include "validators/issuervalidator.h"
@@ -128,6 +129,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals")
     );
 
+    qmlRegisterType<Scanner::QRCode>("Keysmith.Scanner", 1, 0, "QRCodeVideo");
     qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application",
                                                             1,
                                                             0,
