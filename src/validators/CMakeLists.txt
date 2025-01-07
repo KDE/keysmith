@@ -10,6 +10,7 @@ set(validator_SRCS
     issuervalidator.cpp
     secretvalidator.cpp
     util.cpp
+	otpuri.cpp
 )
 
 add_library(validator_lib STATIC ${validator_SRCS})

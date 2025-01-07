@@ -7,9 +7,6 @@
 
 #include <QObject>
 
-class QCamera;
-class QCaptureSession;
-class QMediaCaptureSession;
 class QVideoSink;
 
 namespace Prison

@@ -9,6 +9,7 @@ import org.kde.kirigami as Kirigami
 import Keysmith.Application as Application
 import Keysmith.Models as Models
 import Keysmith.Scanner
+import Keysmith.Validator
 
 
 Kirigami.PromptDialog {
@@ -20,7 +21,7 @@ Kirigami.PromptDialog {
     showCloseButton: true
     standardButtons: QQC2.DialogButtonBox.Close
 
-    property alias decodedText: scanner.decodedText
+    property alias value: ou
 
     contentItem: ColumnLayout {
         spacing: Kirigami.Units.largeSpacing
@@ -60,10 +61,17 @@ Kirigami.PromptDialog {
        }
     }
 
+    OtpUri {
+        id: ou
+    }
+
     QRCodeVideo {
         id: scanner
         onDecodedTextChanged: {
-            root.accept();
+            ou.uri = scanner.decodedText;
+            if (ou.valid) {
+                root.accept();
+            }
         }
     }
 
@@ -77,7 +85,7 @@ Kirigami.PromptDialog {
     }
 
     onOpened: {
-        scanner.setCapture(videoOutput.videoSink);
+        //scanner.setCapture(videoOutput.videoSink);
         camera.start();
     }
     onClosed: {

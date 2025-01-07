@@ -22,6 +22,8 @@ FormCard.FormCardPage {
 
     title: i18nc("@title:window", "Add new account")
 
+    property Models.ValidatedAccountInput validatedInput
+
     property bool detailsEnabled: false
 
     property bool secretAcceptable: accountSecret.acceptableInput
@@ -45,6 +47,33 @@ FormCard.FormCardPage {
         id: scanner
 
         onAccepted: {
+            // Then scanner.ou (OptUri) is valid and we can use it to fill in the data.
+            if (!scanner.value.valid) {
+                return;
+            }
+
+            vm.input.type = scanner.value.isHOtp ? Models.ValidatedAccountInput.Hotp
+                                                 : Models.ValidatedAccountInput.Totp;
+
+            // Otherwise it will not work, due to validation stuff.
+            accountSecret.clear();
+            accountSecret.insert(0, scanner.value.secret);
+
+            accountName.validatedInput.name = scanner.value.account;
+            accountName.issuer = scanner.value.issuer;
+
+            validatedInput.timer = scanner.value.period;
+            validatedInput.counter = scanner.value.counter;
+            validatedInput.epoch = "1970-01-01T00:00:00Z"; // Because is standard.
+            validatedInput.tokenLength = scanner.value.digits;
+
+            if (scanner.value.algorithm == "SHA1") {
+                validatedInput.algorithm = Models.ValidatedAccountInput.Sha1;
+            } else if (scanner.value.algorithm == "SHA256") {
+                validatedInput.algorithm = Models.ValidatedAccountInput.Sha256;
+            } else if (scanner.value.algorithm == "SHA512") {
+                validatedInput.algorithm = Models.ValidatedAccountInput.Sha512;
+            }
         }
     }
 

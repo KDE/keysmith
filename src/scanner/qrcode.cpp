@@ -5,8 +5,6 @@
 
 #include <Prison/VideoScanner>
 
-#include <iostream>
-
 namespace Scanner
 {
 
@@ -22,7 +20,6 @@ QRCode::QRCode(QObject *parent)
         }
 
         m_decodedText = result.content().toString();
-        std::cout << m_decodedText.toStdString() << std::endl;
         Q_EMIT decodedTextChanged();
     });
 }
