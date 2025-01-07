@@ -23,7 +23,7 @@ static void define_valid_test_case(const QString &base32, size_t expected)
     QTest::newRow(qPrintable(testCase.arg(base32))) << base32 << expected;
 }
 
-static void define_invalid_test_case(char *testCase, const QString &input)
+static void define_invalid_test_case(const char *testCase, const QString &input)
 {
     QTest::newRow(testCase) << input;
 }

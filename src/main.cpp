@@ -40,7 +40,6 @@
  */
 #ifndef NDEBUG
 #include <QQmlDebuggingEnabler>
-static QQmlDebuggingEnabler enabler;
 #endif
 
 #ifdef ENABLE_DBUS_INTERFACE
@@ -49,6 +48,10 @@ static QQmlDebuggingEnabler enabler;
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
+#ifndef NDEBUG
+    QQmlDebuggingEnabler::enableDebugging(true);
+#endif
+
 #ifdef Q_OS_ANDROID
     QGuiApplication app(argc, argv);
     QQuickStyle::setStyle(QStringLiteral("org.kde.breeze"));

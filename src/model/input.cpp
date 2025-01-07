@@ -13,10 +13,11 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QLocale>
+#include <qtimezone.h>
 
 using namespace Qt::Literals::StringLiterals;
 
-static QDateTime DEFAULT_EPOCH_VALUE = QDateTime::fromMSecsSinceEpoch(0, Qt::UTC);
+static QDateTime DEFAULT_EPOCH_VALUE = QDateTime::fromMSecsSinceEpoch(0, QTimeZone::UTC);
 static QString DEFAULT_EPOCH = DEFAULT_EPOCH_VALUE.toString(Qt::ISODate);
 static QString DEFAULT_COUNTER = QLocale::c().toString(0ULL);
 

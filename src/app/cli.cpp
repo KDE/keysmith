@@ -10,6 +10,7 @@
 
 #include <KLocalizedString>
 #include <QCommandLineOption>
+#include <QThreadPool>
 #include <QtConcurrent>
 
 #ifdef ENABLE_DBUS_INTERFACE
@@ -81,7 +82,12 @@ void CommandLineAccountJob::expired(void)
 
 void CommandLineAccountJob::run(const QString &uri)
 {
-    QtConcurrent::run(&CommandLineAccountJob::processNewAccount, this, uri);
+    QThreadPool::globalInstance()->start([this, uri]() {
+        processNewAccount(this, uri);
+    });
+
+    // QThreadPool::globalInstance()->start(&CommandLineAccountJob::processNewAccount, this, uri);
+    // QtConcurrent::run(&CommandLineAccountJob::processNewAccount, this, uri);
 }
 
 void CommandLineAccountJob::processNewAccount(CommandLineAccountJob *target, const QString &uri)
