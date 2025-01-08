@@ -17,14 +17,14 @@ class VideoScanner;
 namespace Scanner
 {
 
-class QRCode : public QObject
+class QRCodeVideo : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString decodedText READ decodedText NOTIFY decodedTextChanged)
 
 public:
-    explicit QRCode(QObject *parent = nullptr);
-    ~QRCode();
+    explicit QRCodeVideo(QObject *parent = nullptr);
+    ~QRCodeVideo();
 
     QString decodedText() const;
 

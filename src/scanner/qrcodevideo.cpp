@@ -1,4 +1,4 @@
-#include "qrcode.h"
+#include "qrcodevideo.h"
 
 #include <QCamera>
 #include <QMediaCaptureSession>
@@ -8,7 +8,7 @@
 namespace Scanner
 {
 
-QRCode::QRCode(QObject *parent)
+QRCodeVideo::QRCodeVideo(QObject *parent)
     : QObject(parent)
     , m_scanner(new Prison::VideoScanner(this))
 {
@@ -24,16 +24,16 @@ QRCode::QRCode(QObject *parent)
     });
 }
 
-QRCode::~QRCode()
+QRCodeVideo::~QRCodeVideo()
 {
 }
 
-QString QRCode::decodedText() const
+QString QRCodeVideo::decodedText() const
 {
     return m_decodedText;
 }
 
-void QRCode::setCapture(QVideoSink *sink)
+void QRCodeVideo::setCapture(QVideoSink *sink)
 {
     const auto s = m_scanner->videoSink();
 

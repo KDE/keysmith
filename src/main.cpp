@@ -130,7 +130,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals")
     );
     qmlRegisterType<OtpUri>("Keysmith.Validator", 1, 0, "OtpUri");
-    qmlRegisterType<Scanner::QRCode>("Keysmith.Scanner", 1, 0, "QRCodeVideo");
+    qmlRegisterType<Scanner::QRCodeVideo>("Keysmith.Scanner", 1, 0, "QRCodeVideo");
     qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application",
                                                             1,
                                                             0,
