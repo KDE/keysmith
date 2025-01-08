@@ -108,14 +108,14 @@ FormCard.FormCardPage {
         },
         Kirigami.Action {
             text: i18nc("@action:button", "Scan from camera")
-            icon.name: "view-barcode-qr"
+            icon.name: "view-barcode-qr-symbolic"
             onTriggered: {
                 videoScanner.open();
             }
         },
         Kirigami.Action {
             text: i18nc("@action:button", "Scan from image")
-            icon.name: "insert-image"
+            icon.name: "insert-image-symbolic"
             onTriggered: {
                 imageScanner.open();
             }

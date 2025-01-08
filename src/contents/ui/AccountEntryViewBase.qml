@@ -12,6 +12,7 @@ import org.kde.kirigamiaddons.components as Components
 
 import Keysmith.Application 1.0
 import Keysmith.Models 1.0 as Models
+import Keysmith
 
 Kirigami.SwipeListItem {
     /*
@@ -36,6 +37,10 @@ Kirigami.SwipeListItem {
 
         topPadding: Kirigami.Units.gridUnit
         bottomPadding: Kirigami.Units.gridUnit
+
+        FormCard.FormHeader {
+            title: i18n("General information")
+        }
 
         FormCard.FormCard {
             FormCard.FormTextDelegate {
@@ -91,6 +96,60 @@ Kirigami.SwipeListItem {
                 text: i18n("Hash:")
                 description: account.hash
             }
+        }
+
+        QRCodeGenerator {
+            id: generator
+
+            onUriChanged: {
+                generator.size = Qt.size(qrImage.width, qrImage.height);
+                qrImage.source = generator.barcode();
+            }
+        }
+
+        FormCard.FormHeader {
+            id: qrHeading
+            title: i18n("QR Code of the entry")
+        }
+
+        FormCard.FormCard {
+            id: qrCard
+
+            FormCard.FormSectionText {
+                text: i18n("Scan the QR Code to transfer the entry.")
+            }
+
+            Image {
+                id: qrImage
+                fillMode: Image.PreserveAspectFit
+
+                Layout.fillWidth: true
+                Layout.maximumWidth: qrCard.Layout.maximumWidth
+                Layout.minimumHeight: qrImage.width
+
+                property int previousLevel: 0
+
+                onWidthChanged: {
+                    const l = Math.floor(qrImage.width / 20);
+                    if (l != qrImage.previousLevel) {
+                        qrImage.previousLevel = l;
+                        generator.size = Qt.size(qrImage.width, qrImage.width);
+                        qrImage.source = generator.barcode();
+                    }
+                }
+            }
+        }
+
+        Component.onCompleted: {
+            // Epoch does not exist for URIs.
+            period: listItem.account.timeStep;
+            counter: listItem.account.offset;
+            digits: listItem.account.tokenLength;
+            isHOtp: listItem.account.isHotp;
+            issuer: listItem.account.issuer;
+            account: listItem.account.name;
+            algorithm: listItem.account.hash;
+            secret: listItem.account.token;
         }
     }
 
