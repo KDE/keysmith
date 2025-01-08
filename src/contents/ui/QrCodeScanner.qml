@@ -17,7 +17,7 @@ Kirigami.PromptDialog {
     title: "QR Code Scanner"
     width: parent.width * 0.9
     height: parent.height * 0.7
-    iconName: "view-barcode-qr"
+    iconName: "view-barcode-qr-symbolic"
     showCloseButton: true
     standardButtons: QQC2.DialogButtonBox.Close
 

@@ -19,7 +19,7 @@ Kirigami.PromptDialog {
     title: "QR Code Area"
     width: parent.width * 0.9
     height: parent.height * 0.7
-    iconName: "view-barcode-qr"
+    iconName: "insert-image-symbolic"
     showCloseButton: true
     standardButtons: QQC2.DialogButtonBox.Close
 
