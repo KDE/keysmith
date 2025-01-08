@@ -84,6 +84,9 @@ if(ANDROID)
         list-add
         unlock
         lock
+		image-missing-symbolic
+		view-barcode-qr-symbolic
+		insert-image-symbolic
     )
 
     ecm_add_android_apk(keysmith ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
