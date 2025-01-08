@@ -19,7 +19,8 @@ FormCard.FormCard {
     property bool validateAccountAvailability
     property Models.AccountListModel accounts
     property Models.ValidatedAccountInput validatedInput
-    property alias issuer: issuerName.text
+    property alias issuer: issuerName
+    property alias account: accountName
 
     onValidatedInputChanged: {
         revalidate();

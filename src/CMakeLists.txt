@@ -29,7 +29,8 @@ configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/version.h.in" "${CMAKE_CURRENT_BINA
 #
 configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/keysmith-features.h.in" "${CMAKE_CURRENT_BINARY_DIR}/keysmith-features.h")
 
-add_executable(keysmith main.cpp)
+add_executable(keysmith main.cpp
+	contents/ui/QrCodeImageScanner.qml)
 
 ecm_add_qml_module(keysmith URI "org.kde.keysmith" VERSION 1.0)
 
@@ -50,7 +51,8 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/HOTPAccountEntryView.qml
     contents/ui/TOTPAccountEntryView.qml
     contents/ui/KeysmithGlobalDrawer.qml
-    contents/ui/QrCodeScanner.qml
+	contents/ui/QrCodeScanner.qml
+	contents/ui/QrCodeImageScanner.qml
 )
 
 target_link_libraries(keysmith

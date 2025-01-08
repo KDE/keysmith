@@ -67,6 +67,7 @@ Kirigami.PromptDialog {
 
     QRCodeVideo {
         id: scanner
+
         onDecodedTextChanged: {
             ou.uri = scanner.decodedText;
             if (ou.valid) {

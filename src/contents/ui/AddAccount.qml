@@ -37,43 +37,55 @@ FormCard.FormCardPage {
     bottomPadding: Kirigami.Units.gridUnit
 
     data: Connections {
-        target: vm.input
+        target: root.vm.input
         function onTypeChanged() {
             root.detailsEnabled = false;
         }
     }
 
-    QrCodeScanner {
-        id: scanner
+    function fillInput(value) {
+        root.vm.input.type = value.isHOtp ? Models.ValidatedAccountInput.Hotp
+                                          : Models.ValidatedAccountInput.Totp;
+
+        // Otherwise it will not work, due to validation stuff.
+        accountSecret.clear();
+        accountSecret.insert(0, value.secret);
+
+        accountName.issuer.clear();
+        accountName.issuer.insert(0, value.issuer);
+        accountName.account.clear();
+        accountName.account.insert(0, value.account);
+
+        validatedInput.timer = value.period;
+        validatedInput.counter = value.counter;
+        validatedInput.epoch = "1970-01-01T00:00:00Z"; // Because is standard.
+        validatedInput.tokenLength = value.digits;
+
+        const algo = value.algorithm;
+        if (algo == "SHA1") {
+            validatedInput.algorithm = Models.ValidatedAccountInput.Sha1;
+        } else if (algo == "SHA256") {
+            validatedInput.algorithm = Models.ValidatedAccountInput.Sha256;
+        } else if (algo == "SHA512") {
+            validatedInput.algorithm = Models.ValidatedAccountInput.Sha512;
+        }
+    }
+
+    QrCodeImageScanner {
+        id: imageScanner
 
         onAccepted: {
             // Then scanner.ou (OptUri) is valid and we can use it to fill in the data.
-            if (!scanner.value.valid) {
-                return;
-            }
+            fillInput(imageScanner.value);
+        }
+    }
 
-            vm.input.type = scanner.value.isHOtp ? Models.ValidatedAccountInput.Hotp
-                                                 : Models.ValidatedAccountInput.Totp;
+    QrCodeScanner {
+        id: videoScanner
 
-            // Otherwise it will not work, due to validation stuff.
-            accountSecret.clear();
-            accountSecret.insert(0, scanner.value.secret);
-
-            accountName.validatedInput.name = scanner.value.account;
-            accountName.issuer = scanner.value.issuer;
-
-            validatedInput.timer = scanner.value.period;
-            validatedInput.counter = scanner.value.counter;
-            validatedInput.epoch = "1970-01-01T00:00:00Z"; // Because is standard.
-            validatedInput.tokenLength = scanner.value.digits;
-
-            if (scanner.value.algorithm == "SHA1") {
-                validatedInput.algorithm = Models.ValidatedAccountInput.Sha1;
-            } else if (scanner.value.algorithm == "SHA256") {
-                validatedInput.algorithm = Models.ValidatedAccountInput.Sha256;
-            } else if (scanner.value.algorithm == "SHA512") {
-                validatedInput.algorithm = Models.ValidatedAccountInput.Sha512;
-            }
+        onAccepted: {
+            // Then scanner.ou (OptUri) is valid and we can use it to fill in the data.
+            fillInput(videoScanner.value);
         }
     }
 
@@ -82,14 +94,14 @@ FormCard.FormCardPage {
             text: i18nc("@action:button cancel and dismiss the add account form", "Cancel")
             icon.name: "edit-undo"
             onTriggered: {
-                vm.cancelled();
+                root.vm.cancelled();
             }
         },
         Kirigami.Action {
             text: i18nc("@action:button Dismiss the error page and quit Keysmith", "Quit")
             icon.name: "application-exit"
-            enabled: vm.quitEnabled
-            visible: vm.quitEnabled
+            enabled: root.vm.quitEnabled
+            visible: root.vm.quitEnabled
             onTriggered: {
                 Qt.quit();
             }
@@ -98,15 +110,22 @@ FormCard.FormCardPage {
             text: i18nc("@action:button", "Scan from camera")
             icon.name: "view-barcode-qr"
             onTriggered: {
-                scanner.open();
+                videoScanner.open();
+            }
+        },
+        Kirigami.Action {
+            text: i18nc("@action:button", "Scan from image")
+            icon.name: "insert-image"
+            onTriggered: {
+                imageScanner.open();
             }
         },
         Kirigami.Action {
             text: i18nc("@action:button", "Add")
             icon.name: "answer-correct"
-            enabled: acceptable
+            enabled: root.acceptable
             onTriggered: {
-                vm.accepted();
+                root.vm.accepted();
             }
         }
     ]
@@ -116,9 +135,9 @@ FormCard.FormCardPage {
     AccountNameForm {
         id: accountName
         Layout.fillWidth: true
-        accounts: vm.accounts
-        validateAccountAvailability: vm.validateAvailability
-        validatedInput: vm.input
+        accounts: root.vm.accounts
+        validateAccountAvailability: root.vm.validateAvailability
+        validatedInput: root.vm.input
     }
 
     FormCard.FormCard {
@@ -134,22 +153,22 @@ FormCard.FormCardPage {
 
         FormCard.FormRadioDelegate {
             id: totpRadio
-            checked: vm.input.type === Models.ValidatedAccountInput.Totp
+            checked: root.vm.input.type === Models.ValidatedAccountInput.Totp
             text: i18nc("@option:radio", "Time-based OTP")
             onCheckedChanged: {
                 if (checked) {
-                    vm.input.type = Models.ValidatedAccountInput.Totp;
+                    root.vm.input.type = Models.ValidatedAccountInput.Totp;
                 }
             }
         }
 
         FormCard.FormRadioDelegate {
             id: hotpRadio
-            checked: vm.input.type === Models.ValidatedAccountInput.Hotp
+            checked: root.vm.input.type === Models.ValidatedAccountInput.Hotp
             text: i18nc("@option:radio", "Hash-based OTP")
             onCheckedChanged: {
                 if (checked) {
-                    vm.input.type = Models.ValidatedAccountInput.Hotp;
+                    root.vm.input.type = Models.ValidatedAccountInput.Hotp;
                 }
             }
         }
@@ -159,7 +178,7 @@ FormCard.FormCardPage {
         FormCard.FormTextFieldDelegate {
             id: accountSecret
             placeholderText: i18n("Token secret")
-            text: vm.input.secret
+            text: root.vm.input.secret
             echoMode: TextInput.Password
             label: i18nc("@label:textbox", "Secret key:")
             validator: Validators.Base32SecretValidator {
@@ -168,7 +187,7 @@ FormCard.FormCardPage {
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             onTextChanged: {
                 if (acceptableInput) {
-                    vm.input.secret = text;
+                    root.vm.input.secret = text;
                 }
             }
         }
@@ -194,7 +213,7 @@ FormCard.FormCardPage {
 
         visible: enabled
         validatedInput: root.vm.input
-        enabled: root.detailsEnabled && vm.input.type === Models.ValidatedAccountInput.Hotp
+        enabled: root.detailsEnabled && root.vm.input.type === Models.ValidatedAccountInput.Hotp
     }
 
     FormCard.FormHeader {
@@ -207,6 +226,6 @@ FormCard.FormCardPage {
 
         visible: enabled
         validatedInput: root.vm.input
-        enabled: root.detailsEnabled && vm.input.type === Models.ValidatedAccountInput.Totp
+        enabled: root.detailsEnabled && root.vm.input.type === Models.ValidatedAccountInput.Totp
     }
 }

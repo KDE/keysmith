@@ -26,7 +26,8 @@
 #include "app/vms.h"
 #include "model/accounts.h"
 #include "model/input.h"
-#include "scanner/qrcode.h"
+#include "scanner/qrcodeimage.h"
+#include "scanner/qrcodevideo.h"
 #include "validators/countervalidator.h"
 #include "validators/datetimevalidator.h"
 #include "validators/issuervalidator.h"
@@ -131,6 +132,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     );
     qmlRegisterType<OtpUri>("Keysmith.Validator", 1, 0, "OtpUri");
     qmlRegisterType<Scanner::QRCodeVideo>("Keysmith.Scanner", 1, 0, "QRCodeVideo");
+    qmlRegisterType<Scanner::QRCodeImage>("Keysmith.Scanner", 1, 0, "QRCodeImage");
     qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application",
                                                             1,
                                                             0,

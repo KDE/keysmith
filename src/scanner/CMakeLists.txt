@@ -4,8 +4,9 @@
 #
 
 set(scanner_SRCS
-    qrcode.cpp
+	qrcodevideo.cpp
+	qrcodeimage.cpp
 )
 
 add_library(scanner_lib STATIC ${scanner_SRCS})
-target_link_libraries(scanner_lib Qt::Core Qt::Qml Qt::Multimedia KF6::PrisonScanner account_lib validator_lib uri_lib)
+target_link_libraries(scanner_lib Qt::Core Qt::Gui Qt::Concurrent Qt::Multimedia KF6::PrisonScanner)
