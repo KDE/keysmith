@@ -15,6 +15,7 @@ class OtpUri : public QObject
     Q_PROPERTY(QString issuer READ issuer)
     Q_PROPERTY(QString account READ account)
     Q_PROPERTY(QString secret READ secret)
+    Q_PROPERTY(QString algorithm READ algorithm)
 
 public:
     explicit OtpUri(QObject *parent = nullptr);
@@ -53,6 +54,10 @@ public:
     inline QString account() const
     {
         return m_account;
+    }
+    inline QString algorithm() const
+    {
+        return m_algorithm;
     }
     inline QString secret() const
     {
