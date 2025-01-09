@@ -18,7 +18,6 @@ target_link_libraries(keysmith_lib
         Qt::Core
         Qt::Gui
         Qt::Qml
-        Qt::Concurrent
         KF6::I18n
         model_lib
         account_lib
