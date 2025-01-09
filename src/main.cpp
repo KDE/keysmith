@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2019 Bhushan Shah <bshah@kde.org>
  * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2025 Nicolas Badin <n1coc4cola@gmail.com>
  */
 
 #include <QCommandLineParser>

@@ -1,6 +1,6 @@
 #
 # SPDX-License-Identifier: BSD-2-Clause
-# SPDX-FileCopyrightText: 2024 Badin Nicolas <n1coc4cola@gmail.com>
+# SPDX-FileCopyrightText: 2025 Nicolas Badin <n1coc4cola@gmail.com>
 #
 
 set(qrcode_SRCS

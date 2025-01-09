@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2025 Nicolas Badin <n1coc4cola@gmail.com>
+ */
 #include "qrcodegenerator.h"
 
 #include <QBuffer>

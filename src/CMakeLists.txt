@@ -5,6 +5,7 @@
 # SPDX-FileCopyrightText: 2019-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
 # SPDX-FileCopyrightText: 2020 Nicolas Fella <nicolas.fella@gmx.de>
 # SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
+# SPDX-FileCopyrightText: 2025 Nicolas Badin <n1coc4cola@gmail.com>
 #
 
 add_subdirectory(base32)
