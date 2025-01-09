@@ -40,7 +40,7 @@ Kirigami.SwipeListItem {
         bottomPadding: Kirigami.Units.gridUnit
 
         FormCard.FormHeader {
-            title: i18n("General information")
+            title: i18nc("In info page about information about the OTP", "General information")
         }
 
         FormCard.FormCard {
@@ -110,7 +110,7 @@ Kirigami.SwipeListItem {
 
         FormCard.FormHeader {
             id: qrHeading
-            title: i18n("QR Code of the entry")
+            title: i18nc("In info page about the OTP entry", "QR Code of the entry")
         }
 
         FormCard.FormCard {

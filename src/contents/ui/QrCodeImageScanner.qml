@@ -48,7 +48,7 @@ Kirigami.PromptDialog {
 
     FileDialog {
         id: fileDialog
-        title: qsTr("Select an Image")
+        title: i18n("Select an Image")
         nameFilters: [scanner.supportedFileTypes]
         options: FileDialog.ReadOnly
         currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
