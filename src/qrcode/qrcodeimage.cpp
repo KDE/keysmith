@@ -7,8 +7,6 @@
 #include <Prison/ImageScanner>
 #include <Prison/ScanResult>
 
-#include <iostream>
-
 namespace Scanner
 {
 

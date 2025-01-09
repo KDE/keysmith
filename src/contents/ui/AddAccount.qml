@@ -80,7 +80,7 @@ FormCard.FormCardPage {
         }
     }
 
-    QrCodeScanner {
+    QrCodeVideoScanner {
         id: videoScanner
 
         onAccepted: {

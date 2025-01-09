@@ -17,7 +17,7 @@ add_subdirectory(account)
 add_subdirectory(model)
 add_subdirectory(validators)
 add_subdirectory(app)
-add_subdirectory(scanner)
+add_subdirectory(qrcode)
 
 configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/version.h")
 
@@ -29,8 +29,7 @@ configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/version.h.in" "${CMAKE_CURRENT_BINA
 #
 configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/keysmith-features.h.in" "${CMAKE_CURRENT_BINARY_DIR}/keysmith-features.h")
 
-add_executable(keysmith main.cpp
-	contents/ui/QrCodeImageScanner.qml)
+add_executable(keysmith main.cpp)
 
 ecm_add_qml_module(keysmith URI "org.kde.keysmith" VERSION 1.0)
 
@@ -51,8 +50,8 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/HOTPAccountEntryView.qml
     contents/ui/TOTPAccountEntryView.qml
     contents/ui/KeysmithGlobalDrawer.qml
-	contents/ui/QrCodeScanner.qml
-	contents/ui/QrCodeImageScanner.qml
+    contents/ui/QrCodeVideoScanner.qml
+    contents/ui/QrCodeImageScanner.qml
 )
 
 target_link_libraries(keysmith
@@ -67,7 +66,7 @@ target_link_libraries(keysmith
         KF6::I18n
         ${Qca_LIBRARY}
         keysmith_lib
-		scanner_lib
+        qrcode_lib
 )
 
 if (ENABLE_DBUS_INTERFACE)
@@ -84,9 +83,9 @@ if(ANDROID)
         list-add
         unlock
         lock
-		image-missing-symbolic
-		view-barcode-qr-symbolic
-		insert-image-symbolic
+        image-missing-symbolic
+        view-barcode-qr-symbolic
+        insert-image-symbolic
     )
 
     ecm_add_android_apk(keysmith ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
