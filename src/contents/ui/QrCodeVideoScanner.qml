@@ -19,7 +19,7 @@ import Keysmith.Validator
 
 Kirigami.PromptDialog {
     id: root
-    title: "QR Code Scanner"
+    title: i18nc("User must scan the QR Code with his cam", "Scan the QR Code")
     width: parent.width * 0.9
     height: parent.height * 0.7
     iconName: "view-barcode-qr-symbolic"

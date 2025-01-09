@@ -21,7 +21,7 @@ import Keysmith.Validator
 
 Kirigami.PromptDialog {
     id: root
-    title: "QR Code Area"
+    title: i18nc("User has to select the area in which the QR Code is", "Select the QR Code's area")
     width: parent.width * 0.9
     height: parent.height * 0.7
     iconName: "insert-image-symbolic"
