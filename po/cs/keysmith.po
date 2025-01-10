@@ -318,12 +318,10 @@ msgid "Truncation offset:"
 msgstr ""
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Účty"
+msgstr "Importovat účty"
 
 #: src/contents/ui/ImportAccount.qml:52
 #, kde-format
@@ -372,7 +370,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Vybrat soubor"
 
 #: src/contents/ui/ImportAccount.qml:99
 #, fuzzy, kde-format
@@ -392,7 +390,7 @@ msgstr "Heslo:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importovat"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
