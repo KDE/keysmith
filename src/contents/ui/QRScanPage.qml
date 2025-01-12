@@ -18,7 +18,7 @@ import Keysmith.Application as Application
 Kirigami.Page {
     id: root
 
-    title: "Scan a QR code"
+    title: i18nc("@title", "Scan a QR code")
 
     required property Application.ScanQRViewModel vm
 
