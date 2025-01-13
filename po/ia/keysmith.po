@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
+"POT-Creation-Date: 2025-01-13 00:44+0000\n"
 "PO-Revision-Date: 2024-11-19 10:44+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -27,13 +27,13 @@ msgstr ""
 "Conto Optional a adder, formattate como otpauth:// URI (p.ex. ab un codice a "
 "QR)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
+#: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "Conto invalide"
 
-#: src/app/flows_p.cpp:109
+#: src/app/flows_p.cpp:112
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -43,7 +43,7 @@ msgstr ""
 "Le conto que tu es essayante a adder es invalide. Tu pote o abandonar le app "
 "o continuar sin adder le conto."
 
-#: src/app/flows_p.cpp:283
+#: src/app/flows_p.cpp:286
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -148,13 +148,13 @@ msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr "Token (indicio)  copiate a area de transferentia!"
 
-#: src/contents/ui/AccountNameForm.qml:64
+#: src/contents/ui/AccountNameForm.qml:81
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Nomine de conto:"
 
-#: src/contents/ui/AccountNameForm.qml:83
+#: src/contents/ui/AccountNameForm.qml:100
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -203,72 +203,79 @@ msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr "Importa"
 
+#: src/contents/ui/AccountsOverview.qml:189
+#, kde-format
+msgctxt ""
+"@action:button import an account by scanning a QR code, shown in toolbar"
+msgid "Scan QR Code"
+msgstr ""
+
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
 msgstr "Adde un nove conto"
 
-#: src/contents/ui/AddAccount.qml:45
+#: src/contents/ui/AddAccount.qml:50
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "Cancella"
 
-#: src/contents/ui/AddAccount.qml:52
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Quita"
 
-#: src/contents/ui/AddAccount.qml:61
+#: src/contents/ui/AddAccount.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Adde"
 
-#: src/contents/ui/AddAccount.qml:81
+#: src/contents/ui/AddAccount.qml:86
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Typo de conto:"
 
-#: src/contents/ui/AddAccount.qml:90
+#: src/contents/ui/AddAccount.qml:95
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "OTP basate sur tempore"
 
-#: src/contents/ui/AddAccount.qml:101
+#: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "OTP basate sur Hash"
 
-#: src/contents/ui/AddAccount.qml:113
+#: src/contents/ui/AddAccount.qml:118
 #, kde-format
 msgid "Token secret"
 msgstr "Secreto de token :"
 
-#: src/contents/ui/AddAccount.qml:116
+#: src/contents/ui/AddAccount.qml:121
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Clave secrete:"
 
-#: src/contents/ui/AddAccount.qml:132
+#: src/contents/ui/AddAccount.qml:137
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Detalios"
 
-#: src/contents/ui/AddAccount.qml:140
+#: src/contents/ui/AddAccount.qml:145
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "Detalios de HOTP:"
 
-#: src/contents/ui/AddAccount.qml:153
+#: src/contents/ui/AddAccount.qml:158
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -409,6 +416,28 @@ msgstr "Importa"
 #, kde-format
 msgid "About Keysmith"
 msgstr "A proposito de Keysmith"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Select file"
+msgctxt "@action:intoolbar"
+msgid "Select Camera"
+msgstr "Selige File"
+
+#: src/contents/ui/QRScanPage.qml:42
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Select file"
+msgctxt "@title:dialog"
+msgid "Select Camera"
+msgstr "Selige File"
+
+#: src/contents/ui/QRScanPage.qml:61
+#, kde-format
+msgctxt "@action:button"
+msgid "Close"
+msgstr ""
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
+"POT-Creation-Date: 2025-01-13 00:44+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -24,13 +24,13 @@ msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr "要添加的可选账户，格式为 otpauth:// URI (例如来自二维码)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
+#: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "无效账户"
 
-#: src/app/flows_p.cpp:109
+#: src/app/flows_p.cpp:112
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 "您正在尝试添加的账户无效。您可以退出本应用程序，也可以在不添加账户的情况下继"
 "续操作。"
 
-#: src/app/flows_p.cpp:283
+#: src/app/flows_p.cpp:286
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -141,13 +141,13 @@ msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr "令牌已复制到剪贴板"
 
-#: src/contents/ui/AccountNameForm.qml:64
+#: src/contents/ui/AccountNameForm.qml:81
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "账户名称："
 
-#: src/contents/ui/AccountNameForm.qml:83
+#: src/contents/ui/AccountNameForm.qml:100
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -196,72 +196,79 @@ msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr "导入"
 
+#: src/contents/ui/AccountsOverview.qml:189
+#, kde-format
+msgctxt ""
+"@action:button import an account by scanning a QR code, shown in toolbar"
+msgid "Scan QR Code"
+msgstr ""
+
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
 msgstr "添加新账户"
 
-#: src/contents/ui/AddAccount.qml:45
+#: src/contents/ui/AddAccount.qml:50
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "取消"
 
-#: src/contents/ui/AddAccount.qml:52
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "退出"
 
-#: src/contents/ui/AddAccount.qml:61
+#: src/contents/ui/AddAccount.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "添加"
 
-#: src/contents/ui/AddAccount.qml:81
+#: src/contents/ui/AddAccount.qml:86
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "账户类型："
 
-#: src/contents/ui/AddAccount.qml:90
+#: src/contents/ui/AddAccount.qml:95
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "基于时间的 OTP"
 
-#: src/contents/ui/AddAccount.qml:101
+#: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "基于哈希的 OTP"
 
-#: src/contents/ui/AddAccount.qml:113
+#: src/contents/ui/AddAccount.qml:118
 #, kde-format
 msgid "Token secret"
 msgstr "令牌密钥"
 
-#: src/contents/ui/AddAccount.qml:116
+#: src/contents/ui/AddAccount.qml:121
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "密钥："
 
-#: src/contents/ui/AddAccount.qml:132
+#: src/contents/ui/AddAccount.qml:137
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "详细信息"
 
-#: src/contents/ui/AddAccount.qml:140
+#: src/contents/ui/AddAccount.qml:145
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP 详情："
 
-#: src/contents/ui/AddAccount.qml:153
+#: src/contents/ui/AddAccount.qml:158
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -402,6 +409,28 @@ msgstr "导入"
 #, kde-format
 msgid "About Keysmith"
 msgstr "关于 Keysmith"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Select file"
+msgctxt "@action:intoolbar"
+msgid "Select Camera"
+msgstr "选择文件"
+
+#: src/contents/ui/QRScanPage.qml:42
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Select file"
+msgctxt "@title:dialog"
+msgid "Select Camera"
+msgstr "选择文件"
+
+#: src/contents/ui/QRScanPage.qml:61
+#, kde-format
+msgctxt "@action:button"
+msgid "Close"
+msgstr ""
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
