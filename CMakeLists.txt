@@ -45,6 +45,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui 
 find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6Config ${KF_MIN_VERSION} REQUIRED)
 
 ecm_find_qmlmodule(org.kde.prison.scanner REQUIRED)
 

@@ -87,6 +87,8 @@ Kirigami.Page {
                         camera.cameraDevice = modelData;
                         camera.start();
                         cameraSelectorSheet.close();
+                        Application.StateConfig.lastCameraId = modelData.id;
+                        Application.StateConfig.save();
                     }
                 }
             }
@@ -95,6 +97,23 @@ Kirigami.Page {
 
     MediaDevices {
         id: devices
+
+        Component.onCompleted: setCamera()
+        onVideoInputsChanged: setCamera()
+
+        function setCamera(): void {
+            if (Application.StateConfig.lastCameraId.length === 0) {
+                return;
+            }
+
+            for (let cameraDevice of videoInputs) {
+                // note strict checking doesn't work
+                if (cameraDevice.id == Application.StateConfig.lastCameraId) {
+                    camera.cameraDevice = cameraDevice;
+                    camera.start();
+                }
+            }
+        }
     }
 
     CaptureSession {
@@ -102,6 +121,7 @@ Kirigami.Page {
         camera: Camera {
             id: camera
             active: vm.active
+            cameraDevice: devices.defaultVideoInput
         }
     }
 

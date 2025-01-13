@@ -32,6 +32,7 @@
 #include "validators/secretvalidator.h"
 
 #include "keysmith-features.h"
+#include "stateconfig.h"
 #include "version.h"
 
 /*
@@ -202,6 +203,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
                                                           return new app::CommandLineOptions(cliParser, parseOk);
                                                       });
+
+    qmlRegisterSingletonType<StateConfig>("Keysmith.Application", 1, 0, "StateConfig", [](QQmlEngine *qml, QJSEngine *js) -> QObject * {
+        Q_UNUSED(js);
+
+        return StateConfig::self();
+    });
 
     engine.loadFromModule("org.kde.keysmith", "Main");
     if (engine.rootObjects().isEmpty()) {
