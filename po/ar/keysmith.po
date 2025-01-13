@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# SPDX-FileCopyrightText: 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-27 00:42+0000\n"
-"PO-Revision-Date: 2024-12-19 07:19+0400\n"
+"PO-Revision-Date: 2025-01-12 14:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -76,13 +76,13 @@ msgstr "الوضع:"
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "كلمة المرور المستندة على التلبيدة HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "كلمة المرور المستندة على الوقت TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
@@ -228,13 +228,13 @@ msgstr "نوع الحساب:"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr "كلمة مرور واحد معتمدة على الوقت"
+msgstr "كلمة مرور المستندة على الوقت"
 
 #: src/contents/ui/AddAccount.qml:101
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr "كلمة مرور واحدة معتمدة على التلبيدة"
+msgstr "كلمة مرور معتمدة على التلبيدة"
 
 #: src/contents/ui/AddAccount.qml:113
 #, kde-format
@@ -257,13 +257,13 @@ msgstr "التفاصيل"
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr ""
+msgstr "تفاصيل كلمة المرور المستندة على التلبيدة HOTP"
 
 #: src/contents/ui/AddAccount.qml:153
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr ""
+msgstr "تفاصيل كلمة المرور المستندة على الوقت TOTP"
 
 #: src/contents/ui/ErrorPage.qml:33
 #, kde-format
