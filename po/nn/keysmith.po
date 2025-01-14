@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
 "PO-Revision-Date: 2024-10-06 14:07+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -417,6 +417,12 @@ msgstr ""
 msgid "About Keysmith"
 msgstr "Om Keysmith"
 
+#: src/contents/ui/QRScanPage.qml:21
+#, kde-format
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr ""
+
 #: src/contents/ui/QRScanPage.qml:31
 #, kde-format
 msgctxt "@action:intoolbar"
@@ -556,23 +562,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Lås opp"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr ""
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE-fellesskapet"

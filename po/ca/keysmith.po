@@ -1,16 +1,16 @@
 # Translation of keysmith.po to Catalan
-# Copyright (C) 2020-2024 This_file_is_part_of_KDE
+# Copyright (C) 2020-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2020, 2022, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2020, 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
-"PO-Revision-Date: 2024-11-18 09:09+0100\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
+"PO-Revision-Date: 2025-01-13 10:02+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -210,7 +210,7 @@ msgstr "Importa"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Escaneja un codi QR"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -419,27 +419,32 @@ msgstr "Importa"
 msgid "About Keysmith"
 msgstr "Quant al Keysmith"
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:21
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#| msgctxt ""
+#| "@action:button import an account by scanning a QR code, shown in toolbar"
+#| msgid "Scan QR Code"
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "Escaneja un codi QR"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "Selecció de fitxer"
+msgstr "Selecciona una càmera"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "Selecció de fitxer"
+msgstr "Selecció de càmera"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Tanca"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -562,23 +567,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Desbloca"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "genera testimonis d'autenticació de 2 factors (2FA)"
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE Community"

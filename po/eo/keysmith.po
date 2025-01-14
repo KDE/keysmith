@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
-"PO-Revision-Date: 2024-12-28 17:41+0100\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
+"PO-Revision-Date: 2025-01-13 22:15+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -206,7 +206,7 @@ msgstr "Enporti"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Skani QR-kodon"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -415,27 +415,32 @@ msgstr "Enporti"
 msgid "About Keysmith"
 msgstr "Pri Keysmith"
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:21
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#| msgctxt ""
+#| "@action:button import an account by scanning a QR code, shown in toolbar"
+#| msgid "Scan QR Code"
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "Skani QR-kodon"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "Elekti dosieron"
+msgstr "Elektu Fotilon"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "Elekti dosieron"
+msgstr "Elekti Fotilon"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Fermi"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -558,23 +563,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Malŝlosi"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "generi dufaktorajn aŭtentigajn (2FA) ĵetonojn"
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE-Komunumo"

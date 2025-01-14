@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024, 2025 giovanni <g.sora@tiscali.it>
 # giovanni <g.sora@tiscali.it>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
-"PO-Revision-Date: 2024-11-19 10:44+0100\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
+"PO-Revision-Date: 2025-01-13 12:13+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -208,7 +208,7 @@ msgstr "Importa"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Scande codice QR"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -417,27 +417,32 @@ msgstr "Importa"
 msgid "About Keysmith"
 msgstr "A proposito de Keysmith"
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:21
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#| msgctxt ""
+#| "@action:button import an account by scanning a QR code, shown in toolbar"
+#| msgid "Scan QR Code"
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "Scande codice QR"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "Selige File"
+msgstr "Selige camera"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "Selige File"
+msgstr "Selige camera"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Claude"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -560,23 +565,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Disbloca"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "genera indicios de authentication a duo factores (2FA)"
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 Communitate de KDE"

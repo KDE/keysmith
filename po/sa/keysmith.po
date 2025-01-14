@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
 "PO-Revision-Date: 2024-12-20 21:52+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -414,6 +414,12 @@ msgstr "आयात"
 msgid "About Keysmith"
 msgstr "कीस्मिथस्य विषये"
 
+#: src/contents/ui/QRScanPage.qml:21
+#, kde-format
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr ""
+
 #: src/contents/ui/QRScanPage.qml:31
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
@@ -556,23 +562,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "अनलॉक"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "कीलकारः"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "द्वि-कारकप्रमाणीकरण (2FA) टोकन जनयति"
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "कीलकारः"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE समुदाय"

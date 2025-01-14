@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
-"PO-Revision-Date: 2025-01-12 14:55+0400\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
+"PO-Revision-Date: 2025-01-13 19:04+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -205,7 +205,7 @@ msgstr "استورد"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "امسح رمز الاستجابة السريعة"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -414,27 +414,32 @@ msgstr "استورد"
 msgid "About Keysmith"
 msgstr "عن صانع المفاتيح"
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:21
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#| msgctxt ""
+#| "@action:button import an account by scanning a QR code, shown in toolbar"
+#| msgid "Scan QR Code"
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "امسح رمز الاستجابة السريعة"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "اختر ملفّا"
+msgstr "اختر كاميرا"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "اختر ملفّا"
+msgstr "اختر كاميرا"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "إغلاق"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -557,23 +562,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "فك القفل"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "صانع المفاتيح"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "إنشاء رموز المصادقة الثنائية (2FA)"
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "صانع المفاتيح"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 مجتمع كِيدِي"

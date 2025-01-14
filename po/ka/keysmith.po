@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-13 00:44+0000\n"
-"PO-Revision-Date: 2024-11-18 03:55+0100\n"
+"POT-Creation-Date: 2025-01-14 00:44+0000\n"
+"PO-Revision-Date: 2025-01-13 05:13+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -207,7 +207,7 @@ msgstr "შემოტანა"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "QR კოდის სკანირება"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -416,27 +416,32 @@ msgstr "შემოტანა"
 msgid "About Keysmith"
 msgstr "Keysmith-ის შესახებ"
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:21
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#| msgctxt ""
+#| "@action:button import an account by scanning a QR code, shown in toolbar"
+#| msgid "Scan QR Code"
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "QR კოდის სკანირება"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "აირჩიეთ ფაილი"
+msgstr "აირჩიეთ კამერა"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "აირჩიეთ ფაილი"
+msgstr "აირჩიეთ კამერა"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "დახურვა"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -559,23 +564,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "განბლოკვა"
 
-#: src/main.cpp:68
+#: src/main.cpp:69
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:72
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "2-ფაქტორიანი ავთენტიკაციის(2FA) ტოკენების გენერაცია"
 
-#: src/main.cpp:74
+#: src/main.cpp:75
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:79
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE-ის საზოგადოება"
