@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-14 00:44+0000\n"
-"PO-Revision-Date: 2025-01-13 16:01+0100\n"
+"PO-Revision-Date: 2025-01-14 06:43+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -420,13 +420,10 @@ msgid "About Keysmith"
 msgstr "Keysmith-eri buru"
 
 #: src/contents/ui/QRScanPage.qml:21
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button import an account by scanning a QR code, shown in toolbar"
-#| msgid "Scan QR Code"
+#, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr "Eskaneatu QR kodea"
+msgstr "QR kode bat eskaneatu"
 
 #: src/contents/ui/QRScanPage.qml:31
 #, kde-format
