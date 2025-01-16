@@ -414,7 +414,7 @@ msgstr "关于 Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "扫描二维码"
 
 #: src/contents/ui/QRScanPage.qml:31
 #, kde-format
