@@ -89,8 +89,8 @@ void OtpUri::setUri(const QString &uri)
     }
 
     if (!digits.isEmpty()) {
-        // Spec says from 6 to 8.
-        if (m_digits < 6 || m_digits > 8) {
+        // Spec says it must be at least 6, but does not limit the upper bound.
+        if (m_digits < 6) {
             m_valid = false;
         }
     }
