@@ -37,6 +37,14 @@ QString QRCodeGenerator::uri() const
         text += QStringLiteral("&counter=");
         text += QString::number(m_counter);
     }
+    if (!m_image.isEmpty()) {
+        text += QStringLiteral("&image=");
+        text += m_image.toString();
+    }
+    if (!m_website.isEmpty()) {
+        text += QStringLiteral("&website=");
+        text += m_website.toString();
+    }
 
     text += QStringLiteral("&digits=");
     text += QString::number(m_digits);
@@ -132,6 +140,22 @@ void QRCodeGenerator::setCounter(int c)
 {
     if (m_counter != c) {
         m_counter = c;
+        Q_EMIT uriChanged();
+    }
+}
+
+void QRCodeGenerator::setWebsite(const QUrl &url)
+{
+    if (m_website != url) {
+        m_website = url;
+        Q_EMIT uriChanged();
+    }
+}
+
+void QRCodeGenerator::setImage(const QUrl &url)
+{
+    if (m_image != url) {
+        m_image = url;
         Q_EMIT uriChanged();
     }
 }

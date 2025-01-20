@@ -2,6 +2,7 @@
 #define OTPURI_H
 
 #include <QObject>
+#include <QUrl>
 
 class OtpUri : public QObject
 {
@@ -16,6 +17,8 @@ class OtpUri : public QObject
     Q_PROPERTY(QString account READ account)
     Q_PROPERTY(QString secret READ secret)
     Q_PROPERTY(QString algorithm READ algorithm)
+    Q_PROPERTY(QUrl website READ website)
+    Q_PROPERTY(QUrl image READ image)
 
 public:
     explicit OtpUri(QObject *parent = nullptr);
@@ -63,10 +66,20 @@ public:
     {
         return m_secret;
     }
+    inline QUrl image() const
+    {
+        return m_image;
+    }
+    inline QUrl website() const
+    {
+        return m_website;
+    }
 
 private:
     bool m_valid = false;
 
+    QUrl m_image;
+    QUrl m_website;
     QString m_uri;
     bool m_isHOtp;
     QString m_issuer;

@@ -19,6 +19,8 @@ class QRCodeGenerator : public QObject
     Q_PROPERTY(QString issuer READ issuer WRITE setIssuer)
     Q_PROPERTY(QString account READ account WRITE setAccount)
     Q_PROPERTY(QString secret READ secret WRITE setSecret)
+    Q_PROPERTY(QUrl website READ website WRITE setWebsite)
+    Q_PROPERTY(QUrl image READ image WRITE setImage)
     Q_PROPERTY(QString algorithm READ algorithm WRITE setAlgorithm)
     Q_PROPERTY(QString uri READ uri NOTIFY uriChanged)
     Q_PROPERTY(QSize size READ size WRITE setSize)
@@ -28,6 +30,16 @@ public:
 
     QString uri() const;
     Q_INVOKABLE QUrl barcode() const;
+
+    inline QUrl image() const
+    {
+        return m_image;
+    }
+
+    inline QUrl website() const
+    {
+        return m_website;
+    }
 
     inline int period() const
     {
@@ -74,6 +86,8 @@ public:
     void setDigits(int);
     void setPeriod(int);
     void setCounter(int);
+    void setWebsite(const QUrl &);
+    void setImage(const QUrl &);
 
     inline void setSize(const QSize &s)
     {
@@ -93,6 +107,8 @@ private:
     int m_digits;
     int m_period;
     int m_counter;
+    QUrl m_website;
+    QUrl m_image;
 };
 
 #endif // QRCODEGENERATOR_H

@@ -38,6 +38,9 @@ void OtpUri::setUri(const QString &uri)
     const QString digits = query.queryItemValue(QStringLiteral("digits"));
     const QString period = query.queryItemValue(QStringLiteral("period"));
     const QString counter = query.queryItemValue(QStringLiteral("counter"));
+    const QUrl image(query.queryItemValue(QStringLiteral("image")));
+    const QUrl website(query.queryItemValue(QStringLiteral("website")));
+
     m_algorithm = query.queryItemValue(QStringLiteral("algorithm"));
     m_issuer = query.queryItemValue(QStringLiteral("issuer"));
     m_secret = query.queryItemValue(QStringLiteral("secret"));
@@ -106,5 +109,14 @@ void OtpUri::setUri(const QString &uri)
         }
     } else if (label.length() == 2) {
         m_issuer = label[0];
+    }
+
+    // As these fields are not mandatory, and not official,
+    // if there is an issue, just ignore it and skip it.
+    if (image.isValid()) {
+        m_image = image;
+    }
+    if (website.isValid()) {
+        m_website = website;
     }
 }
