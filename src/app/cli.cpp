@@ -11,6 +11,7 @@
 #include <KLocalizedString>
 #include <QCommandLineOption>
 #include <QThreadPool>
+#include <QTimer>
 
 #ifdef ENABLE_DBUS_INTERFACE
 #include <KDBusService>
