@@ -14,7 +14,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
-set(KF_MIN_VERSION "6.0.0")
+set(KF_MIN_VERSION "6.8.0")
 set(QT_MIN_VERSION "6.5.0")
 set(SODIUM_MIN_VERSION "1.0.16")
 
@@ -50,7 +50,7 @@ find_package(KF6Config ${KF_MIN_VERSION} REQUIRED)
 ecm_find_qmlmodule(org.kde.prison.scanner REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0
-    KF 6.7
+    KF 6.10
 )
 
 

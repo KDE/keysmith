@@ -19,6 +19,7 @@
 
 #include <KAboutData>
 #include <KLocalizedContext>
+#include <KLocalizedQmlContext>
 #include <KLocalizedString>
 
 #include "app/cli.h"
@@ -114,8 +115,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-
+    KLocalization::setupLocalizedContext(&engine);
     qmlRegisterUncreatableType<app::AddAccountViewModel>("Keysmith.Application",
                                                          1,
                                                          0,
