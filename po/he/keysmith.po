@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-23 00:43+0000\n"
-"PO-Revision-Date: 2025-01-14 07:46+0200\n"
+"PO-Revision-Date: 2025-01-24 09:23+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -500,7 +500,7 @@ msgstr "החלה"
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr "(רענון)"
+msgstr "(ריענון)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
