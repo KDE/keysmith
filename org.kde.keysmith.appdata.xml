@@ -65,6 +65,9 @@
     <control>keyboard</control>
     <control>touch</control>
   </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <summary>Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="ar">مولد رمز ثنائي العوامل للأجهزة المحمولة وأجهزة سطح المكتب</summary>
   <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mobile i l'escriptori</summary>
