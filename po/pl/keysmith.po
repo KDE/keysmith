@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-23 00:43+0000\n"
-"PO-Revision-Date: 2024-12-07 13:03+0100\n"
+"PO-Revision-Date: 2025-01-25 12:49+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -207,7 +207,7 @@ msgstr "Zaimportuj"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Zeskanuj kod QR"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -420,29 +420,25 @@ msgstr "O Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Zeskanuj kod QR"
 
 #: src/contents/ui/QRScanPage.qml:31
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "Wybierz plik"
+msgstr "Wybierz aparat"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "Wybierz plik"
+msgstr "Wybierz aparat"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Zamknij"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
