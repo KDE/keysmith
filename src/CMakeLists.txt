@@ -67,7 +67,6 @@ target_link_libraries(keysmith
         KF6::ConfigCore
         KF6::ConfigGui
         KF6::I18nQml
-        ${Qca_LIBRARY}
         keysmith_lib
 )
 

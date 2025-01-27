@@ -13,7 +13,6 @@ Dependencies:
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'frameworks/prison': '@latest-kf6'
     'frameworks/kconfig': '@latest-kf6'
-    'libraries/qca': '@latest-kf6'
 
 - 'on': ['Linux', 'FreeBSD']
   'require':
