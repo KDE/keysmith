@@ -14,8 +14,6 @@ apps:
     common-id: org.kde.keysmith.desktop
     desktop: usr/share/applications/org.kde.keysmith.desktop
     command: usr/bin/keysmith
-    plugs:
-      - audio-record
 slots:
   session-dbus-interface:
     interface: dbus
