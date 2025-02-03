@@ -1,16 +1,16 @@
 # Translation for keysmith.po to Euskara/Basque (eu)
-# Copyright (C) 2023-2024 This file is copyright:
+# Copyright (C) 2023-2025 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
-"PO-Revision-Date: 2024-11-18 22:40+0100\n"
+"POT-Creation-Date: 2025-01-23 00:43+0000\n"
+"PO-Revision-Date: 2025-01-14 06:43+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -29,13 +29,13 @@ msgstr ""
 "Gehitu beharreko aukerako kontua, «otpauth://» URI gisa eratua (adib. QR "
 "kode batetik)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
+#: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "Kontu baliogabea"
 
-#: src/app/flows_p.cpp:109
+#: src/app/flows_p.cpp:112
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -45,7 +45,7 @@ msgstr ""
 "Gehitzen saiatzen ari zaren kontua baliogabea da. Aplikaziotik irten, edo "
 "kontua gehitu gabe jarrai dezakezu."
 
-#: src/app/flows_p.cpp:283
+#: src/app/flows_p.cpp:286
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -150,13 +150,13 @@ msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr "Tokena arbelera kopiatu da!"
 
-#: src/contents/ui/AccountNameForm.qml:64
+#: src/contents/ui/AccountNameForm.qml:81
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Kontuaren izena:"
 
-#: src/contents/ui/AccountNameForm.qml:83
+#: src/contents/ui/AccountNameForm.qml:100
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -205,72 +205,79 @@ msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr "Inportatu"
 
+#: src/contents/ui/AccountsOverview.qml:189
+#, kde-format
+msgctxt ""
+"@action:button import an account by scanning a QR code, shown in toolbar"
+msgid "Scan QR Code"
+msgstr "Eskaneatu QR kodea"
+
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
 msgstr "Gehitu kontu berria"
 
-#: src/contents/ui/AddAccount.qml:45
+#: src/contents/ui/AddAccount.qml:50
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/contents/ui/AddAccount.qml:52
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Irten"
 
-#: src/contents/ui/AddAccount.qml:61
+#: src/contents/ui/AddAccount.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Gehitu"
 
-#: src/contents/ui/AddAccount.qml:81
+#: src/contents/ui/AddAccount.qml:86
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Kontu mota:"
 
-#: src/contents/ui/AddAccount.qml:90
+#: src/contents/ui/AddAccount.qml:95
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "Orduan oinarriko OTP"
 
-#: src/contents/ui/AddAccount.qml:101
+#: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "«Hash» oinarriko OTP"
 
-#: src/contents/ui/AddAccount.qml:113
+#: src/contents/ui/AddAccount.qml:118
 #, kde-format
 msgid "Token secret"
 msgstr "Tokenaren sekretua"
 
-#: src/contents/ui/AddAccount.qml:116
+#: src/contents/ui/AddAccount.qml:121
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Gako sekretua:"
 
-#: src/contents/ui/AddAccount.qml:132
+#: src/contents/ui/AddAccount.qml:137
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Xehetasunak"
 
-#: src/contents/ui/AddAccount.qml:140
+#: src/contents/ui/AddAccount.qml:145
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP xehetasunak:"
 
-#: src/contents/ui/AddAccount.qml:153
+#: src/contents/ui/AddAccount.qml:158
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -412,6 +419,30 @@ msgstr "Inportatu"
 msgid "About Keysmith"
 msgstr "Keysmith-eri buru"
 
+#: src/contents/ui/QRScanPage.qml:21
+#, kde-format
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "QR kode bat eskaneatu"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
+msgctxt "@action:intoolbar"
+msgid "Select Camera"
+msgstr "Hautatu kamera"
+
+#: src/contents/ui/QRScanPage.qml:42
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Select Camera"
+msgstr "Hautatu kamera"
+
+#: src/contents/ui/QRScanPage.qml:61
+#, kde-format
+msgctxt "@action:button"
+msgid "Close"
+msgstr "Itxi"
+
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
@@ -533,23 +564,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Giltzapetik askatu"
 
-#: src/main.cpp:68
+#: src/main.cpp:70
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith (giltza-arotza)"
 
-#: src/main.cpp:71
+#: src/main.cpp:73
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "sortu kautotzeko bi faktoreko (2FA) tokenak"
 
-#: src/main.cpp:74
+#: src/main.cpp:76
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:80
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE Komunitatea"

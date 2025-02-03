@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
+"POT-Creation-Date: 2025-01-23 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 16:56+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -24,13 +24,13 @@ msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr "추가할 계정, otpauth:// URI 형식 사용(예: QR 코드)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
+#: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "잘못된 계정"
 
-#: src/app/flows_p.cpp:109
+#: src/app/flows_p.cpp:112
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -40,7 +40,7 @@ msgstr ""
 "추가하려는 계정이 잘못되었습니다. 앱을 끝내거나 계정을 추가하지 않고 계속할 "
 "수 있습니다."
 
-#: src/app/flows_p.cpp:283
+#: src/app/flows_p.cpp:286
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -141,13 +141,13 @@ msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr "토큰을 클립보드에 복사했습니다!"
 
-#: src/contents/ui/AccountNameForm.qml:64
+#: src/contents/ui/AccountNameForm.qml:81
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "계정 이름:"
 
-#: src/contents/ui/AccountNameForm.qml:83
+#: src/contents/ui/AccountNameForm.qml:100
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -196,72 +196,79 @@ msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr "가져오기"
 
+#: src/contents/ui/AccountsOverview.qml:189
+#, kde-format
+msgctxt ""
+"@action:button import an account by scanning a QR code, shown in toolbar"
+msgid "Scan QR Code"
+msgstr ""
+
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
 msgstr "새 계정 추가"
 
-#: src/contents/ui/AddAccount.qml:45
+#: src/contents/ui/AddAccount.qml:50
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "취소"
 
-#: src/contents/ui/AddAccount.qml:52
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "끝내기"
 
-#: src/contents/ui/AddAccount.qml:61
+#: src/contents/ui/AddAccount.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "추가"
 
-#: src/contents/ui/AddAccount.qml:81
+#: src/contents/ui/AddAccount.qml:86
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "계정 종류:"
 
-#: src/contents/ui/AddAccount.qml:90
+#: src/contents/ui/AddAccount.qml:95
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "시간 기반 OTP"
 
-#: src/contents/ui/AddAccount.qml:101
+#: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "해시 기반 OTP"
 
-#: src/contents/ui/AddAccount.qml:113
+#: src/contents/ui/AddAccount.qml:118
 #, kde-format
 msgid "Token secret"
 msgstr "토큰 비밀 정보"
 
-#: src/contents/ui/AddAccount.qml:116
+#: src/contents/ui/AddAccount.qml:121
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "비밀 키:"
 
-#: src/contents/ui/AddAccount.qml:132
+#: src/contents/ui/AddAccount.qml:137
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "자세한 정보"
 
-#: src/contents/ui/AddAccount.qml:140
+#: src/contents/ui/AddAccount.qml:145
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP 정보:"
 
-#: src/contents/ui/AddAccount.qml:153
+#: src/contents/ui/AddAccount.qml:158
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -403,6 +410,34 @@ msgstr "가져오기"
 msgid "About Keysmith"
 msgstr "Keysmith 정보"
 
+#: src/contents/ui/QRScanPage.qml:21
+#, kde-format
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr ""
+
+#: src/contents/ui/QRScanPage.qml:31
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Select file"
+msgctxt "@action:intoolbar"
+msgid "Select Camera"
+msgstr "파일 선택"
+
+#: src/contents/ui/QRScanPage.qml:42
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Select file"
+msgctxt "@title:dialog"
+msgid "Select Camera"
+msgstr "파일 선택"
+
+#: src/contents/ui/QRScanPage.qml:61
+#, kde-format
+msgctxt "@action:button"
+msgid "Close"
+msgstr ""
+
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
@@ -523,23 +558,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "잠금 해제"
 
-#: src/main.cpp:68
+#: src/main.cpp:70
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:73
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "2단계 인증(2FA) 토큰 생성"
 
-#: src/main.cpp:74
+#: src/main.cpp:76
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:80
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE Community"

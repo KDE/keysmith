@@ -27,7 +27,8 @@ public:
         RenameAccount,
         AccountsOverview,
         SetupPassword,
-        UnlockAccounts
+        UnlockAccounts,
+        ScanQR,
     };
     Q_ENUM(Page)
 public:
@@ -36,9 +37,12 @@ public:
 public Q_SLOTS:
     void push(app::Navigation::Page page, QObject *modelToTransfer);
     void navigate(app::Navigation::Page page, QObject *modelToTransfer);
+    void pop();
+
 Q_SIGNALS:
     void routed(app::Navigation::Page route, QObject *transferred);
     void pushed(app::Navigation::Page route, QObject *transferred);
+    void popped(void);
 
 private:
     QQmlEngine *const m_engine;

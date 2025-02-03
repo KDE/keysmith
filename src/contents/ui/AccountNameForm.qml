@@ -28,7 +28,17 @@ FormCard.FormCard {
         revalidate();
     }
 
+    Component.onCompleted: {
+        doValidation = true;
+    }
+
     property bool acceptable : accountName.acceptableInput && issuerName.acceptableInput
+
+    /**
+     * Property used to delay validation until the fields have been set to their initial values.
+     * Otherwise the validator sets the issuer to an empty string, which overwrites the initial isser.
+     */
+    property bool doValidation: false
 
     /*
      * When accounts are added/removed from the model, the account name and issuer should be revalidated as well.
@@ -38,21 +48,28 @@ FormCard.FormCard {
      * Unfortunately there seems to be nothing to explicitly trigger revalidation on the text field.
      * Work around is to force revalidation to happen by "editing" the value in the text field(s) directly.
      */
-    data: Connections {
-        target: accounts
-        function onRowsInserted() {
-            revalidate();
+    data: [
+        Connections {
+            target: accounts
+            function onRowsInserted() {
+                revalidate();
+            }
+            function onRowsRemoved() {
+                revalidate();
+            }
+            function onModelReset() {
+                revalidate();
+            }
+        },
+        Binding {
+            root.validatedInput.issuer: issuerName.text
         }
-        function onRowsRemoved() {
-            revalidate();
-        }
-        function onModelReset() {
-            revalidate();
-        }
-    }
+    ]
     function revalidate() {
         // because of how issuer revalidation works, this also implicitly covers the account name as well
-        issuerName.insert(issuerName.text.length, "");
+        if (doValidation) {
+            issuerName.insert(issuerName.text.length, "");
+        }
     }
     function forceActiveFocus() {
         accountName.forceActiveFocus()
@@ -96,7 +113,7 @@ FormCard.FormCard {
              * This signal handler may run before property bindings have been fully (re-)evaluated.
              * First update the account name validator to the correct new issuer value before triggering revalidation.
              */
-            accountNameValidator.issuer = issuerName.text;
+            accountNameValidator.issuer = text;
             accountName.insert(accountName.text.length, "");
             if (acceptableInput) {
                 validatedInput.issuer = text;

@@ -158,12 +158,33 @@ public:
 public Q_SLOTS:
     void addNewAccount(void);
     void importAccount(void);
+    void scanQRCode(void);
 Q_SIGNALS:
     void actionsEnabledChanged(void);
 
 private:
     Keysmith *const m_app;
     model::SimpleAccountListModel *const m_accounts;
+};
+
+class ScanQRViewModel : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(bool active READ active WRITE setActive NOTIFY activeChanged)
+
+public:
+    explicit ScanQRViewModel(QObject *parent = nullptr);
+    [[nodiscard]] bool active(void) const;
+    void setActive(bool active_);
+
+Q_SIGNALS:
+    void activeChanged(void);
+    void scanComplete(const QByteArray &uri);
+    void scanCompleteText(const QString &uri);
+    void cancelled(void);
+
+private:
+    bool m_active = false;
 };
 }
 

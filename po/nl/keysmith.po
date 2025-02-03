@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
-# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 00:43+0000\n"
-"PO-Revision-Date: 2024-11-18 12:04+0100\n"
+"POT-Creation-Date: 2025-01-23 00:43+0000\n"
+"PO-Revision-Date: 2025-01-14 11:16+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -23,16 +23,16 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
-"Optioneel account om toe te voegen, geformatteerd als otpauth:// URI (e.g. "
+"Optioneel account om toe te voegen, geformatteerd als otpauth:// URI (bijv. "
 "uit een QR-code)"
 
-#: src/app/flows_p.cpp:108 src/app/flows_p.cpp:282
+#: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
 msgctxt "@title:window"
 msgid "Invalid account"
 msgstr "Ongeldig account"
 
-#: src/app/flows_p.cpp:109
+#: src/app/flows_p.cpp:112
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -42,7 +42,7 @@ msgstr ""
 "Het account dat u probeert toe te voegen is ongeldig. U kunt ofwel de "
 "toepassing verlaten of doorgaan zonder het account toe te voegen."
 
-#: src/app/flows_p.cpp:283
+#: src/app/flows_p.cpp:286
 #, kde-format
 msgctxt "@info:label"
 msgid ""
@@ -147,13 +147,13 @@ msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
 msgstr "Token gekopieerd naar klembord!"
 
-#: src/contents/ui/AccountNameForm.qml:64
+#: src/contents/ui/AccountNameForm.qml:81
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Accountnaam:"
 
-#: src/contents/ui/AccountNameForm.qml:83
+#: src/contents/ui/AccountNameForm.qml:100
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
@@ -202,72 +202,79 @@ msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr "Importeren"
 
+#: src/contents/ui/AccountsOverview.qml:189
+#, kde-format
+msgctxt ""
+"@action:button import an account by scanning a QR code, shown in toolbar"
+msgid "Scan QR Code"
+msgstr "QR-code scannen"
+
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
 msgctxt "@title:window"
 msgid "Add new account"
 msgstr "Nieuw account toevoegen"
 
-#: src/contents/ui/AddAccount.qml:45
+#: src/contents/ui/AddAccount.qml:50
 #, kde-format
 msgctxt "@action:button cancel and dismiss the add account form"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/contents/ui/AddAccount.qml:52
+#: src/contents/ui/AddAccount.qml:57
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/contents/ui/AddAccount.qml:61
+#: src/contents/ui/AddAccount.qml:66
 #, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Toevoegen"
 
-#: src/contents/ui/AddAccount.qml:81
+#: src/contents/ui/AddAccount.qml:86
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Accounttype:"
 
-#: src/contents/ui/AddAccount.qml:90
+#: src/contents/ui/AddAccount.qml:95
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
 msgstr "Op tijd gebaseerde OTP"
 
-#: src/contents/ui/AddAccount.qml:101
+#: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
 msgstr "Op hash gebaseerde OTP"
 
-#: src/contents/ui/AddAccount.qml:113
+#: src/contents/ui/AddAccount.qml:118
 #, kde-format
 msgid "Token secret"
 msgstr "Tokengeheim"
 
-#: src/contents/ui/AddAccount.qml:116
+#: src/contents/ui/AddAccount.qml:121
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Geheime sleutel: "
 
-#: src/contents/ui/AddAccount.qml:132
+#: src/contents/ui/AddAccount.qml:137
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Details"
 
-#: src/contents/ui/AddAccount.qml:140
+#: src/contents/ui/AddAccount.qml:145
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP-details:"
 
-#: src/contents/ui/AddAccount.qml:153
+#: src/contents/ui/AddAccount.qml:158
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -409,6 +416,30 @@ msgstr "Importeren"
 msgid "About Keysmith"
 msgstr "Info over Keysmith"
 
+#: src/contents/ui/QRScanPage.qml:21
+#, kde-format
+msgctxt "@title"
+msgid "Scan a QR code"
+msgstr "Een QR-code scannen"
+
+#: src/contents/ui/QRScanPage.qml:31
+#, kde-format
+msgctxt "@action:intoolbar"
+msgid "Select Camera"
+msgstr "Camera selecteren"
+
+#: src/contents/ui/QRScanPage.qml:42
+#, kde-format
+msgctxt "@title:dialog"
+msgid "Select Camera"
+msgstr "Camera selecteren"
+
+#: src/contents/ui/QRScanPage.qml:61
+#, kde-format
+msgctxt "@action:button"
+msgid "Close"
+msgstr "Sluiten"
+
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
@@ -530,23 +561,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Ontgrendelen"
 
-#: src/main.cpp:68
+#: src/main.cpp:70
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:71
+#: src/main.cpp:73
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "twee-factor authenticatie-tokens genereren"
 
-#: src/main.cpp:74
+#: src/main.cpp:76
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:78
+#: src/main.cpp:80
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE gemeenschap"

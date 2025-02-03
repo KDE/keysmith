@@ -30,6 +30,8 @@ configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/keysmith-features.h.in" "${CMAKE_CU
 
 add_executable(keysmith main.cpp)
 
+kconfig_add_kcfg_files(keysmith GENERATE_MOC stateconfig.kcfgc)
+
 ecm_add_qml_module(keysmith URI "org.kde.keysmith" VERSION 1.0)
 
 ecm_target_qml_sources(keysmith SOURCES
@@ -49,6 +51,7 @@ ecm_target_qml_sources(keysmith SOURCES
     contents/ui/HOTPAccountEntryView.qml
     contents/ui/TOTPAccountEntryView.qml
     contents/ui/KeysmithGlobalDrawer.qml
+    contents/ui/QRScanPage.qml
 )
 
 target_link_libraries(keysmith
@@ -61,7 +64,9 @@ target_link_libraries(keysmith
         Qt6::QuickControls2
         KF6::CoreAddons
         KF6::I18n
-        ${Qca_LIBRARY}
+        KF6::ConfigCore
+        KF6::ConfigGui
+        KF6::I18nQml
         keysmith_lib
 )
 
@@ -79,6 +84,7 @@ if(ANDROID)
         list-add
         unlock
         lock
+        view-barcode-qr-symbolic
     )
 
     ecm_add_android_apk(keysmith ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)

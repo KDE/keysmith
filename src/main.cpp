@@ -19,6 +19,7 @@
 
 #include <KAboutData>
 #include <KLocalizedContext>
+#include <KLocalizedQmlContext>
 #include <KLocalizedString>
 
 #include "app/cli.h"
@@ -32,6 +33,7 @@
 #include "validators/secretvalidator.h"
 
 #include "keysmith-features.h"
+#include "stateconfig.h"
 #include "version.h"
 
 /*
@@ -113,8 +115,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 #endif
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-
+    KLocalization::setupLocalizedContext(&engine);
     qmlRegisterUncreatableType<app::AddAccountViewModel>("Keysmith.Application",
                                                          1,
                                                          0,
@@ -150,6 +151,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                                0,
                                                                "AccountsOverviewViewModel",
                                                                QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
+    qmlRegisterUncreatableType<app::ScanQRViewModel>("Keysmith.Application",
+                                                     1,
+                                                     0,
+                                                     "ScanQRViewModel",
+                                                     QStringLiteral("Should be automatically provided through Keysmith.Navigation signals"));
     qmlRegisterUncreatableType<app::Navigation>("Keysmith.Application",
                                                 1,
                                                 0,
@@ -197,6 +203,12 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
                                                           return new app::CommandLineOptions(cliParser, parseOk);
                                                       });
+
+    qmlRegisterSingletonType<StateConfig>("Keysmith.Application", 1, 0, "StateConfig", [](QQmlEngine *qml, QJSEngine *js) -> QObject * {
+        Q_UNUSED(js);
+
+        return StateConfig::self();
+    });
 
     engine.loadFromModule("org.kde.keysmith", "Main");
     if (engine.rootObjects().isEmpty()) {

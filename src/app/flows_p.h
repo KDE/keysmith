@@ -1,6 +1,7 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2025 Jack Hill <jackhill3103@gmail.com>
  */
 #ifndef APP_FLOWS_P_H
 #define APP_FLOWS_P_H
@@ -87,6 +88,33 @@ private Q_SLOTS:
 private:
     Keysmith * const m_app;
     model::ImportInput * const m_input;
+};
+
+class AddAccountFromQRFlow : public QObject
+{
+    Q_OBJECT
+public:
+    explicit AddAccountFromQRFlow(Keysmith *app);
+
+public:
+    void run(void);
+
+private:
+    void startScan(void);
+
+private Q_SLOTS:
+    void scanComplete(const QByteArray &uri);
+    void scanCompleteText(const QString &uri);
+    void parseComplete(void);
+    void onAccepted(void);
+    void back(void);
+    void exit(void);
+
+private:
+    Keysmith *const m_app;
+    model::AccountInput *const m_input;
+    ScanQRViewModel *const m_scan_vm;
+    bool m_scanned = false;
 };
 }
 

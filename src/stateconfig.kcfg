@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+
+<!--
+SPDX-FileCopyrightText: Carl Schwan <carl@carlschwan.eu>
+SPDX-License-Identifier: CC0-1.0
+-->
+  <kcfgfile name="keysmithstaterc" stateConfig="true" />
+  <group name="Camera">
+    <entry name="LastCameraId" type="string">
+      <label>Last </label>
+      <default></default>
+    </entry>
+  </group>
+</kcfg>

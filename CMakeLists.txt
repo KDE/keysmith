@@ -14,7 +14,7 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(keysmith VERSION ${RELEASE_SERVICE_VERSION})
 
-set(KF_MIN_VERSION "6.0.0")
+set(KF_MIN_VERSION "6.8.0")
 set(QT_MIN_VERSION "6.5.0")
 set(SODIUM_MIN_VERSION "1.0.16")
 
@@ -36,6 +36,7 @@ include(KDEClangFormat)
 include(KDEGitCommitHooks)
 include(ECMQmlModule)
 include(ECMDeprecationSettings)
+include(ECMFindQmlModule)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -44,9 +45,12 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Quick Gui 
 find_package(KF6Kirigami ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6CoreAddons ${KF_MIN_VERSION} REQUIRED)
 find_package(KF6I18n ${KF_MIN_VERSION} REQUIRED)
+find_package(KF6Config ${KF_MIN_VERSION} REQUIRED)
+
+ecm_find_qmlmodule(org.kde.prison.scanner REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0
-    KF 6.7
+    KF 6.10
 )
 
 
