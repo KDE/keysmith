@@ -29,20 +29,22 @@ Kirigami.Page {
         }
     }
 
-    actions.main: Kirigami.Action {
-        text: i18nc("@action:button Button to dismiss the error page", "Continue")
-        iconName: "answer-correct"
-        onTriggered: {
-            vm.dismissed();
+    actions: [
+        Kirigami.Action {
+            text: i18nc("@action:button Button to dismiss the error page", "Continue")
+            icon.name: "answer-correct"
+            onTriggered: {
+                vm.dismissed();
+            }
+        },
+        Kirigami.Action {
+            text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
+            icon.name: "application-exit"
+            enabled: vm.quitEnabled
+            visible: vm.quitEnabled
+            onTriggered: {
+                Qt.quit();
+            }
         }
-    }
-    actions.right: Kirigami.Action {
-        text: i18nc("@action:button Dismiss the error page and quit Keysmtih", "Quit")
-        iconName: "application-exit"
-        enabled: vm.quitEnabled
-        visible: vm.quitEnabled
-        onTriggered: {
-            Qt.quit();
-        }
-    }
+    ]
 }
