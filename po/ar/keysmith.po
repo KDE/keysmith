@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 02:34+0000\n"
 "PO-Revision-Date: 2025-01-12 14:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -265,13 +265,13 @@ msgctxt "@label"
 msgid "TOTP Details:"
 msgstr "تفاصيل كلمة المرور المستندة على الوقت TOTP"
 
-#: src/contents/ui/ErrorPage.qml:33
+#: src/contents/ui/ErrorPage.qml:34
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
 msgstr "تابع"
 
-#: src/contents/ui/ErrorPage.qml:40
+#: src/contents/ui/ErrorPage.qml:41
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"

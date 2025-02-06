@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-27 00:42+0000\n"
+"POT-Creation-Date: 2025-02-06 02:34+0000\n"
 "PO-Revision-Date: 2024-09-28 12:44+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -270,13 +270,13 @@ msgctxt "@label"
 msgid "TOTP Details:"
 msgstr "TOTP xehetasunak:"
 
-#: src/contents/ui/ErrorPage.qml:33
+#: src/contents/ui/ErrorPage.qml:34
 #, kde-format
 msgctxt "@action:button Button to dismiss the error page"
 msgid "Continue"
 msgstr "Jarraitu"
 
-#: src/contents/ui/ErrorPage.qml:40
+#: src/contents/ui/ErrorPage.qml:41
 #, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmtih"
 msgid "Quit"
