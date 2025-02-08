@@ -205,6 +205,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                       });
 
     qmlRegisterSingletonType<StateConfig>("Keysmith.Application", 1, 0, "StateConfig", [](QQmlEngine *qml, QJSEngine *js) -> QObject * {
+        Q_UNUSED(qml);
         Q_UNUSED(js);
 
         return StateConfig::self();

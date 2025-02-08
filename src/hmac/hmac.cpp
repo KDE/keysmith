@@ -21,7 +21,7 @@ static QByteArray hmac_stage(QCryptographicHash::Algorithm algorithm,
         keyBuf[count] ^= xorKey;
     }
 
-    hash.addData(keyBuf, count);
+    hash.addData(QByteArrayView(keyBuf, count));
 
     if (ksize < blockSize) {
         QByteArray pad(blockSize - ksize, fillPad);
@@ -122,7 +122,7 @@ std::optional<QByteArray> compute(QCryptographicHash::Algorithm algorithm, char 
 
     if (ksize > bs) {
         QCryptographicHash khash(algorithm);
-        khash.addData(rawKey, ksize);
+        khash.addData(QByteArrayView(rawKey, ksize));
         hashedKey = khash.result();
         rawKey = hashedKey.data();
         ksize = hashedKey.size();
