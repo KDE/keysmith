@@ -44,15 +44,17 @@ FormCard.FormCardPage {
     }
 
     FormCard.FormCard {
-        FormCard.FormTextFieldDelegate {
+        FormCard.FormPasswordFieldDelegate {
             id: existingPassword
-            echoMode: TextInput.Password
             label: i18nc("@label:textbox", "Password:")
             enabled: !vm.busy
             onAccepted: unlockButton.clicked()
         }
 
-        FormCard.FormDelegateSeparator { above: unlockButton }
+        FormCard.FormDelegateSeparator {
+            below: existingPassword
+            above: unlockButton
+        }
 
         FormCard.FormButtonDelegate {
             id: unlockButton

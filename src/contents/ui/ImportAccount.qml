@@ -93,12 +93,11 @@ FormCard.FormCardPage {
             visible: root.passwordRequired
         }
 
-        FormCard.FormTextFieldDelegate {
+        FormCard.FormPasswordFieldDelegate {
             id: password
             visible: root.passwordRequired
             placeholderText: i18nc("@info:placeholder", "Decryption password")
             text: vm.input.password
-            echoMode: TextInput.Password
             label: i18nc("@label:textbox", "Password:")
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             onTextChanged: vm.input.password = text;

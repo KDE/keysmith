@@ -43,25 +43,29 @@ FormCard.FormCardPage {
     }
 
     FormCard.FormCard {
-        FormCard.FormTextFieldDelegate {
+        FormCard.FormPasswordFieldDelegate {
             id: newPassword
-            echoMode: TextInput.Password
             label: i18nc("@label:textbox", "New Password:")
             enabled: !vm.busy
             onAccepted: newPasswordCopy.trigger()
         }
 
-        FormCard.FormDelegateSeparator {}
+        FormCard.FormDelegateSeparator {
+            below: newPassword
+            above: newPasswordCopy
+        }
 
-        FormCard.FormTextFieldDelegate {
+        FormCard.FormPasswordFieldDelegate {
             id: newPasswordCopy
-            echoMode: TextInput.Password
             enabled: !vm.busy
             label: i18nc("@label:textbox", "Verify password:")
             onAccepted: applyButton.clicked()
         }
 
-        FormCard.FormDelegateSeparator { above: applyButton }
+        FormCard.FormDelegateSeparator {
+            below: newPasswordCopy
+            above: applyButton
+        }
 
         FormCard.FormButtonDelegate {
             id: applyButton

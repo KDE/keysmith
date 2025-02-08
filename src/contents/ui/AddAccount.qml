@@ -113,11 +113,10 @@ FormCard.FormCardPage {
 
         FormCard.FormDelegateSeparator { below: hotpRadio }
 
-        FormCard.FormTextFieldDelegate {
+        FormCard.FormPasswordFieldDelegate {
             id: accountSecret
             placeholderText: i18n("Token secret")
             text: vm.input.secret
-            echoMode: TextInput.Password
             label: i18nc("@label:textbox", "Secret key:")
             validator: Validators.Base32SecretValidator {
                 id: secretValidator
@@ -130,7 +129,10 @@ FormCard.FormCardPage {
             }
         }
 
-        FormCard.FormDelegateSeparator { above: toggleDetails }
+        FormCard.FormDelegateSeparator {
+            below: accountSecret
+            above: toggleDetails
+        }
 
         FormCard.FormButtonDelegate {
             id: toggleDetails
