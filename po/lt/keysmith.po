@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:43+0000\n"
+"POT-Creation-Date: 2025-02-09 00:43+0000\n"
 "PO-Revision-Date: 2024-02-26 18:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -256,25 +256,25 @@ msgstr "Maiša grįstas vienkartinis slaptažodis (HOTP)"
 msgid "Token secret"
 msgstr "Prieigos rakto paslaptis"
 
-#: src/contents/ui/AddAccount.qml:121
+#: src/contents/ui/AddAccount.qml:120
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Slaptas raktas:"
 
-#: src/contents/ui/AddAccount.qml:137
+#: src/contents/ui/AddAccount.qml:139
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Išsamiau"
 
-#: src/contents/ui/AddAccount.qml:145
+#: src/contents/ui/AddAccount.qml:147
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "Išsamiau apie HOTP:"
 
-#: src/contents/ui/AddAccount.qml:158
+#: src/contents/ui/AddAccount.qml:160
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -402,13 +402,13 @@ msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Pakartokite slaptažodį:"
 
-#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Slaptažodis:"
 
-#: src/contents/ui/ImportAccount.qml:113
+#: src/contents/ui/ImportAccount.qml:112
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
@@ -491,19 +491,19 @@ msgstr "Nepavyko nustatyti slaptažodžio"
 msgid "Choose a password to protect your accounts"
 msgstr "Pasirinkite slaptažodį, skirtą apsaugoti paskyras"
 
-#: src/contents/ui/SetupPassword.qml:49
+#: src/contents/ui/SetupPassword.qml:48
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Naujas slaptažodis:"
 
-#: src/contents/ui/SetupPassword.qml:60
+#: src/contents/ui/SetupPassword.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Pakartokite slaptažodį:"
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:72
 #, kde-format
 msgctxt "@action:button"
 msgid "Apply"
@@ -561,7 +561,7 @@ msgstr "Nepavyko atrakinti paskyrų"
 msgid "Please provide the password to unlock your accounts"
 msgstr "Įveskite slaptažodį, kad atrakintumėte paskyras"
 
-#: src/contents/ui/UnlockAccounts.qml:59
+#: src/contents/ui/UnlockAccounts.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Unlock"

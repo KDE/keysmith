@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:43+0000\n"
+"POT-Creation-Date: 2025-02-09 00:43+0000\n"
 "PO-Revision-Date: 2020-01-02 12:19-0800\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -240,25 +240,25 @@ msgstr ""
 msgid "Token secret"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:121
+#: src/contents/ui/AddAccount.qml:120
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:137
+#: src/contents/ui/AddAccount.qml:139
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:145
+#: src/contents/ui/AddAccount.qml:147
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr ""
 
-#: src/contents/ui/AddAccount.qml:158
+#: src/contents/ui/AddAccount.qml:160
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -382,13 +382,13 @@ msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr ""
 
-#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr ""
 
-#: src/contents/ui/ImportAccount.qml:113
+#: src/contents/ui/ImportAccount.qml:112
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
@@ -467,19 +467,19 @@ msgstr ""
 msgid "Choose a password to protect your accounts"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:49
+#: src/contents/ui/SetupPassword.qml:48
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:60
+#: src/contents/ui/SetupPassword.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr ""
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:72
 #, kde-format
 msgctxt "@action:button"
 msgid "Apply"
@@ -537,7 +537,7 @@ msgstr ""
 msgid "Please provide the password to unlock your accounts"
 msgstr ""
 
-#: src/contents/ui/UnlockAccounts.qml:59
+#: src/contents/ui/UnlockAccounts.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Unlock"

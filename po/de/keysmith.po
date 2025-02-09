@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:43+0000\n"
+"POT-Creation-Date: 2025-02-09 00:43+0000\n"
 "PO-Revision-Date: 2024-12-29 11:25+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -259,25 +259,25 @@ msgstr "Hash-basiertes Einmalpasswort"
 msgid "Token secret"
 msgstr "Token-Passwort"
 
-#: src/contents/ui/AddAccount.qml:121
+#: src/contents/ui/AddAccount.qml:120
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Geheimer Schlüssel:"
 
-#: src/contents/ui/AddAccount.qml:137
+#: src/contents/ui/AddAccount.qml:139
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Details"
 
-#: src/contents/ui/AddAccount.qml:145
+#: src/contents/ui/AddAccount.qml:147
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP-Details:"
 
-#: src/contents/ui/AddAccount.qml:158
+#: src/contents/ui/AddAccount.qml:160
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -401,13 +401,13 @@ msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Verschlüsselungspasswort"
 
-#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Passwort:"
 
-#: src/contents/ui/ImportAccount.qml:113
+#: src/contents/ui/ImportAccount.qml:112
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
@@ -492,19 +492,19 @@ msgstr "Ihr Passwort konnte nicht eingerichtet werden"
 msgid "Choose a password to protect your accounts"
 msgstr "Wählen Sie ein Passwort zum Schutz Ihrer Konten"
 
-#: src/contents/ui/SetupPassword.qml:49
+#: src/contents/ui/SetupPassword.qml:48
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Neues Passwort:"
 
-#: src/contents/ui/SetupPassword.qml:60
+#: src/contents/ui/SetupPassword.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Passwort überprüfen:"
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:72
 #, kde-format
 msgctxt "@action:button"
 msgid "Apply"
@@ -562,7 +562,7 @@ msgstr "Konten können nicht entsperrt werden"
 msgid "Please provide the password to unlock your accounts"
 msgstr "Bitte geben Sie das Passwort zum Entsperren Ihrer Konten an"
 
-#: src/contents/ui/UnlockAccounts.qml:59
+#: src/contents/ui/UnlockAccounts.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Unlock"

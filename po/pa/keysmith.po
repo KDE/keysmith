@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:43+0000\n"
+"POT-Creation-Date: 2025-02-09 00:43+0000\n"
 "PO-Revision-Date: 2021-01-20 21:44-0800\n"
 "Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
@@ -273,19 +273,19 @@ msgstr "ਹੈਸ਼-ਅਧਾਰਿਤ OTP"
 msgid "Token secret"
 msgstr "ਟੋਕਨ ਭੇਤ"
 
-#: src/contents/ui/AddAccount.qml:121
+#: src/contents/ui/AddAccount.qml:120
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "ਭੇਤ ਕੁੰਜੀ:"
 
-#: src/contents/ui/AddAccount.qml:137
+#: src/contents/ui/AddAccount.qml:139
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "ਵੇਰਵੇ"
 
-#: src/contents/ui/AddAccount.qml:145
+#: src/contents/ui/AddAccount.qml:147
 #, fuzzy, kde-format
 #| msgctxt "Button to reveal form for configuring additional token details"
 #| msgid "Details"
@@ -293,7 +293,7 @@ msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "ਵੇਰਵੇ"
 
-#: src/contents/ui/AddAccount.qml:158
+#: src/contents/ui/AddAccount.qml:160
 #, fuzzy, kde-format
 #| msgctxt "Button to reveal form for configuring additional token details"
 #| msgid "Details"
@@ -429,13 +429,13 @@ msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "ਪਾਸਵਰਡ ਤਸਦੀਕ ਕਰੋ:"
 
-#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "ਪਾਸਵਰਡ:"
 
-#: src/contents/ui/ImportAccount.qml:113
+#: src/contents/ui/ImportAccount.qml:112
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
@@ -518,7 +518,7 @@ msgstr "ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਸੈਟ ਅੱਪ ਕਰਨ ਲ�
 msgid "Choose a password to protect your accounts"
 msgstr "ਆਪਣੇ ਖਾਤਿਆਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰਨ ਲਈ ਪਾਸਵਰਡ ਚੁਣਨ ਕਰਕੇ ਸ਼ੁਰੂਆਤ ਕਰੋ"
 
-#: src/contents/ui/SetupPassword.qml:49
+#: src/contents/ui/SetupPassword.qml:48
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "New password:"
@@ -526,13 +526,13 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "ਨਵਾਂ ਪਾਸਵਰਡ:"
 
-#: src/contents/ui/SetupPassword.qml:60
+#: src/contents/ui/SetupPassword.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "ਪਾਸਵਰਡ ਤਸਦੀਕ ਕਰੋ:"
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:72
 #, fuzzy, kde-format
 #| msgid "Apply"
 msgctxt "@action:button"
@@ -591,7 +591,7 @@ msgstr "ਤੁਹਾਡੇ ਖਾਤੇ ਅਣ-ਲਾਕ ਕਰਨ ਲਈ ਅਸ
 msgid "Please provide the password to unlock your accounts"
 msgstr "ਆਪਣੇ ਖਾਤਿਆਂ ਨੂੰ ਅਣ-ਲਾਕ ਕਰਨ ਲਈ ਪਾਸਵਰਡ ਦਿਓ ਜੀ"
 
-#: src/contents/ui/UnlockAccounts.qml:59
+#: src/contents/ui/UnlockAccounts.qml:61
 #, fuzzy, kde-format
 #| msgid "Unlock"
 msgctxt "@action:button"

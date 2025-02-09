@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:43+0000\n"
+"POT-Creation-Date: 2025-02-09 00:43+0000\n"
 "PO-Revision-Date: 2025-01-14 05:20+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -256,25 +256,25 @@ msgstr "ჰეშით-გენერირებული OTP"
 msgid "Token secret"
 msgstr "კოდის პაროლი"
 
-#: src/contents/ui/AddAccount.qml:121
+#: src/contents/ui/AddAccount.qml:120
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "სადუმლო გასაღებ:"
 
-#: src/contents/ui/AddAccount.qml:137
+#: src/contents/ui/AddAccount.qml:139
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "დეტალები"
 
-#: src/contents/ui/AddAccount.qml:145
+#: src/contents/ui/AddAccount.qml:147
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "HOTP-ის დეტალები:"
 
-#: src/contents/ui/AddAccount.qml:158
+#: src/contents/ui/AddAccount.qml:160
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
@@ -398,13 +398,13 @@ msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "გაშიფვრის პაროლი"
 
-#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "პაროლი:"
 
-#: src/contents/ui/ImportAccount.qml:113
+#: src/contents/ui/ImportAccount.qml:112
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
@@ -485,19 +485,19 @@ msgstr "პაროლის დაყენების შეცდომა"
 msgid "Choose a password to protect your accounts"
 msgstr "ანგარიშების დასაცავად შეიყვანეთ პაროლი"
 
-#: src/contents/ui/SetupPassword.qml:49
+#: src/contents/ui/SetupPassword.qml:48
 #, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "ახალი პაროლი:"
 
-#: src/contents/ui/SetupPassword.qml:60
+#: src/contents/ui/SetupPassword.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "პაროლის გადამოწმება:"
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:72
 #, kde-format
 msgctxt "@action:button"
 msgid "Apply"
@@ -555,7 +555,7 @@ msgstr "თქვენი ანგარიშების განბლო�
 msgid "Please provide the password to unlock your accounts"
 msgstr "ანგარიშების განსაბლოკად საჭიროა პაროლის მითითება"
 
-#: src/contents/ui/UnlockAccounts.qml:59
+#: src/contents/ui/UnlockAccounts.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Unlock"

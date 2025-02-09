@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-06 00:43+0000\n"
+"POT-Creation-Date: 2025-02-09 00:43+0000\n"
 "PO-Revision-Date: 2020-10-07 11:05+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -281,19 +281,19 @@ msgstr "Räsipõhine OTP"
 msgid "Token secret"
 msgstr "Pääsmiku saladus"
 
-#: src/contents/ui/AddAccount.qml:121
+#: src/contents/ui/AddAccount.qml:120
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Secret key:"
 msgstr "Salavõti:"
 
-#: src/contents/ui/AddAccount.qml:137
+#: src/contents/ui/AddAccount.qml:139
 #, kde-format
 msgctxt "Button to reveal form for configuring additional token details"
 msgid "Details"
 msgstr "Üksikasjad"
 
-#: src/contents/ui/AddAccount.qml:145
+#: src/contents/ui/AddAccount.qml:147
 #, fuzzy, kde-format
 #| msgctxt "Button to reveal form for configuring additional token details"
 #| msgid "Details"
@@ -301,7 +301,7 @@ msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "Üksikasjad"
 
-#: src/contents/ui/AddAccount.qml:158
+#: src/contents/ui/AddAccount.qml:160
 #, fuzzy, kde-format
 #| msgctxt "Button to reveal form for configuring additional token details"
 #| msgid "Details"
@@ -437,13 +437,13 @@ msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Parooli kontroll:"
 
-#: src/contents/ui/ImportAccount.qml:102 src/contents/ui/UnlockAccounts.qml:50
+#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Parool:"
 
-#: src/contents/ui/ImportAccount.qml:113
+#: src/contents/ui/ImportAccount.qml:112
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
@@ -529,7 +529,7 @@ msgstr "Parooli määramine nurjus"
 msgid "Choose a password to protect your accounts"
 msgstr "Alustamiseks vali parool oma kontode kaitseks"
 
-#: src/contents/ui/SetupPassword.qml:49
+#: src/contents/ui/SetupPassword.qml:48
 #, fuzzy, kde-format
 #| msgctxt "@label:textbox"
 #| msgid "New password:"
@@ -537,13 +537,13 @@ msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Uus parool:"
 
-#: src/contents/ui/SetupPassword.qml:60
+#: src/contents/ui/SetupPassword.qml:61
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Verify password:"
 msgstr "Parooli kontroll:"
 
-#: src/contents/ui/SetupPassword.qml:68
+#: src/contents/ui/SetupPassword.qml:72
 #, fuzzy, kde-format
 #| msgid "Apply"
 msgctxt "@action:button"
@@ -602,7 +602,7 @@ msgstr "Kontode lukustusest vabastamine nurjus"
 msgid "Please provide the password to unlock your accounts"
 msgstr "Palun anna parool oma kontode lukustusest vabastamiseks"
 
-#: src/contents/ui/UnlockAccounts.qml:59
+#: src/contents/ui/UnlockAccounts.qml:61
 #, fuzzy, kde-format
 #| msgid "Unlock"
 msgctxt "@action:button"
