@@ -380,12 +380,10 @@ msgid "Select file"
 msgstr "Vybrat soubor"
 
 #: src/contents/ui/ImportAccount.qml:99
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Ověřit heslo:"
+msgstr ""
 
 #: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -412,20 +410,16 @@ msgid "Scan a QR code"
 msgstr ""
 
 #: src/contents/ui/QRScanPage.qml:31
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "Vybrat soubor"
+msgstr ""
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "Vybrat soubor"
+msgstr ""
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
