@@ -50,7 +50,7 @@ find_package(KF6Config ${KF_MIN_VERSION} REQUIRED)
 ecm_find_qmlmodule(org.kde.prison.scanner REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 6.0.0
-    KF 6.11.0
+    KF 6.12.0
 )
 
 
