@@ -1,5 +1,5 @@
 # Spanish translations for keysmith.po package.
-# Copyright (C) 2020 This file is copyright:
+# Copyright (C) 2020-2025 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
 #
 # Automatically generated, 2020.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-09 00:43+0000\n"
-"PO-Revision-Date: 2025-01-14 11:58+0100\n"
+"PO-Revision-Date: 2025-03-21 01:34+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -584,44 +584,3 @@ msgstr "Keysmith"
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 La comunidad KDE"
-
-#~ msgctxt "Button cancelling account removal"
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgctxt "@label:check"
-#~ msgid "Checksum:"
-#~ msgstr "Suma de verificación:"
-
-#~ msgctxt "@label:check"
-#~ msgid "Truncation:"
-#~ msgstr "Truncamiento:"
-
-#~ msgctxt "placeholder text if no account name is available"
-#~ msgid "(untitled)"
-#~ msgstr "(sin título)"
-
-#~ msgid "OTP"
-#~ msgstr "OTP"
-
-#~ msgctxt "%1 is current counter numerical value"
-#~ msgid "Refresh (%1)"
-#~ msgstr "Refrescar (%1)"
-
-#~ msgid "Show"
-#~ msgstr "Mostrar"
-
-#~ msgid "Hide"
-#~ msgstr "Ocultar"
-
-#~ msgctxt "@action:button"
-#~ msgid "Generate Token"
-#~ msgstr "Generar token"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
-
-#~ msgctxt "Text shown when no accounts are added"
-#~ msgid "No account set up. Use the Add button to add accounts."
-#~ msgstr ""
-#~ "Ninguna cuenta configurada. Use el botón «Añadir» para añadir cuentas."
