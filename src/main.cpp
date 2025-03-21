@@ -6,6 +6,7 @@
  */
 
 #include <QCommandLineParser>
+#include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QUrl>
@@ -82,6 +83,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     about.addAuthor(QStringLiteral("Johan Ouwerkerk"), QString(), QStringLiteral("jm.ouwerkerk@gmail.com"));
     about.addAuthor(QStringLiteral("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"));
     KAboutData::setApplicationData(about);
+
+#ifndef Q_OS_ANDROID
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("keysmith")));
+#endif
 
     QCommandLineParser cliParser;
 
