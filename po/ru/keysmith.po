@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the keysmith package.
 #
 # Alexander Yavorsky <kekcuha@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2023, 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-09 00:43+0000\n"
-"PO-Revision-Date: 2024-12-10 15:12+0300\n"
+"PO-Revision-Date: 2025-04-04 10:38+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -203,14 +203,14 @@ msgstr "Добавить"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Импорт"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Cканировать QR-код"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -341,65 +341,65 @@ msgid "Truncation offset:"
 msgstr "Смещение усечения:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Учётные записи"
+msgstr "Импорт учётных записей"
 
 #: src/contents/ui/ImportAccount.qml:52
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Формат импорта"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:58
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "JSON с шифрованием andOTP"
 
 #: src/contents/ui/ImportAccount.qml:59
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "JSON без шифрования andOTP"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:61
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "JSON без шифрования Aegis"
 
 #: src/contents/ui/ImportAccount.qml:62
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "URI-адреса FreeOTP"
 
 #: src/contents/ui/ImportAccount.qml:78
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Файл резервной копии:"
 
 #: src/contents/ui/ImportAccount.qml:81
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Файл не выбран"
 
 #: src/contents/ui/ImportAccount.qml:85
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Выбор файла"
 
 #: src/contents/ui/ImportAccount.qml:99
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Подтверждение пароля:"
+msgstr "Пароль для расшифровки"
 
 #: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -411,7 +411,7 @@ msgstr "Пароль:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Импорт"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
@@ -423,25 +423,25 @@ msgstr "О Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Сканирование QR-кода"
 
 #: src/contents/ui/QRScanPage.qml:31
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Выбрать камеру"
 
 #: src/contents/ui/QRScanPage.qml:42
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Выбор камеры"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
