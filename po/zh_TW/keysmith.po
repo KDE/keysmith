@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2020.
 # pan93412 <pan93412@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-09 00:43+0000\n"
-"PO-Revision-Date: 2024-12-30 17:05+0900\n"
+"PO-Revision-Date: 2025-04-07 14:33+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -207,7 +207,7 @@ msgstr "匯入"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "掃描 QR 碼"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -420,29 +420,25 @@ msgstr "關於 Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "掃描一個 QR 碼"
 
 #: src/contents/ui/QRScanPage.qml:31
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "選擇檔案"
+msgstr "選擇相機"
 
 #: src/contents/ui/QRScanPage.qml:42
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Select file"
+#, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "選擇檔案"
+msgstr "選擇相機"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
