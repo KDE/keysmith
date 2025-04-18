@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-02-09 00:43+0000\n"
+"POT-Creation-Date: 2025-04-18 00:44+0000\n"
 "PO-Revision-Date: 2024-11-23 12:04+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -564,23 +564,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Unlock"
 
-#: src/main.cpp:70
+#: src/main.cpp:71
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:73
+#: src/main.cpp:74
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "generate two-factor authentication (2FA) tokens"
 
-#: src/main.cpp:76
+#: src/main.cpp:77
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:80
+#: src/main.cpp:81
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE Community"
