@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-18 00:44+0000\n"
+"POT-Creation-Date: 2025-05-14 00:46+0000\n"
 "PO-Revision-Date: 2025-01-15 12:10+0100\n"
 "Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -346,68 +346,68 @@ msgctxt "@title:window"
 msgid "Import Accounts"
 msgstr "Konten importieren"
 
-#: src/contents/ui/ImportAccount.qml:52
+#: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
 msgstr "Import-Format"
 
 #. i18n strings
-#: src/contents/ui/ImportAccount.qml:58
+#: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
 msgstr "andOTP verschlüsseltes JSON"
 
-#: src/contents/ui/ImportAccount.qml:59
+#: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
 msgstr "andOTP einfaches JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
-#: src/contents/ui/ImportAccount.qml:61
+#: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
 msgstr "Aegis einfaches JSON"
 
-#: src/contents/ui/ImportAccount.qml:62
+#: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
 msgstr "FreeOTP-Adressen"
 
-#: src/contents/ui/ImportAccount.qml:78
+#: src/contents/ui/ImportAccount.qml:83
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
 msgstr "Sicherungsdatei:"
 
-#: src/contents/ui/ImportAccount.qml:81
+#: src/contents/ui/ImportAccount.qml:86
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
 msgstr "Keine Datei ausgewählt"
 
-#: src/contents/ui/ImportAccount.qml:85
+#: src/contents/ui/ImportAccount.qml:90
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
 msgstr "Datei auswählen"
 
-#: src/contents/ui/ImportAccount.qml:99
+#: src/contents/ui/ImportAccount.qml:104
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Verschlüsselungspasswort"
 
-#: src/contents/ui/ImportAccount.qml:101 src/contents/ui/UnlockAccounts.qml:49
+#: src/contents/ui/ImportAccount.qml:106 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Passwort:"
 
-#: src/contents/ui/ImportAccount.qml:112
+#: src/contents/ui/ImportAccount.qml:117
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
