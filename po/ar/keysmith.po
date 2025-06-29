@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-02-09 00:43+0000\n"
-"PO-Revision-Date: 2025-01-14 18:33+0400\n"
+"PO-Revision-Date: 2025-06-28 17:25+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -505,7 +505,7 @@ msgstr "طبّق"
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr "(أنعش)"
+msgstr "(حدّث)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
