@@ -2,13 +2,13 @@
 # This file is distributed under the same license as the keysmith package.
 #
 # Kristóf Kiszel <kiszel.kristof@gmail.com>, 2021.
-# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2024, 2025 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:46+0000\n"
-"PO-Revision-Date: 2024-10-10 21:40+0200\n"
+"PO-Revision-Date: 2025-07-09 22:40+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.04.3\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -200,14 +200,14 @@ msgstr "Hozzáadás"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Importálás"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "QR-kód beolvasása"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -338,69 +338,65 @@ msgid "Truncation offset:"
 msgstr "Levágás eltolása:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Fiókok"
+msgstr "Fiókok importálása"
 
 #: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Importformátum"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP titkosított JSON"
 
 #: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP egyszerű JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis egyszerű JSON"
 
 #: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP URI-k"
 
 #: src/contents/ui/ImportAccount.qml:83
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Mentési fájl:"
 
 #: src/contents/ui/ImportAccount.qml:86
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Nincs kijelölve fájl"
 
 #: src/contents/ui/ImportAccount.qml:90
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Fájl kiválasztása"
 
 #: src/contents/ui/ImportAccount.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Jelszó megerősítése:"
+msgstr "Visszafejtési jelszó"
 
 #: src/contents/ui/ImportAccount.qml:106 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -412,7 +408,7 @@ msgstr "Jelszó:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importálás"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
@@ -424,25 +420,25 @@ msgstr "A Keysmith névjegye"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "QR-kód beolvasása"
 
 #: src/contents/ui/QRScanPage.qml:31
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Kamera kiválasztása"
 
 #: src/contents/ui/QRScanPage.qml:42
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Kamera kiválasztása"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
