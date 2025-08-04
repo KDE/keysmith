@@ -76,13 +76,13 @@ msgstr "الوضع:"
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr "كلمة المرور المستندة على التلبيدة HOTP"
+msgstr "كلمة السر المستندة على التلبيدة HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr "كلمة المرور المستندة على الوقت TOTP"
+msgstr "كلمة السر المستندة على الوقت TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
@@ -205,7 +205,7 @@ msgstr "استورد"
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr "امسح رمز الاستجابة السريعة"
+msgstr "امحُ رمز الاستجابة السريعة"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -270,13 +270,13 @@ msgstr "التفاصيل"
 #, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
-msgstr "تفاصيل كلمة المرور المستندة على التلبيدة HOTP"
+msgstr "تفاصيل كلمة السر المستندة على التلبيدة HOTP"
 
 #: src/contents/ui/AddAccount.qml:160
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "تفاصيل كلمة المرور المستندة على الوقت TOTP"
+msgstr "تفاصيل كلمة السر المستندة على الوقت TOTP"
 
 #: src/contents/ui/ErrorPage.qml:34
 #, kde-format
@@ -418,7 +418,7 @@ msgstr "عن صانع المفاتيح"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr "امسح رمز الاستجابة السريعة"
+msgstr "امحُ رمز الاستجابة السريعة"
 
 #: src/contents/ui/QRScanPage.qml:31
 #, kde-format
