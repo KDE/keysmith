@@ -150,7 +150,7 @@
     <p xml:lang="zh-TW">Keysmith 會產生用於兩步驟登入 (2FA) 的憑證</p>
     <ul>
       <li>Time and Hash-based OTP</li>
-      <li xml:lang="ar">الوقت وكلمة المرور لمرة واحدة (OTP) القائمة على التجزئة</li>
+      <li xml:lang="ar">الوقت وكلمة السر لمرة واحدة (OTP) القائمة على التجزئة</li>
       <li xml:lang="ca">OTP basat en l'hora i en el resum</li>
       <li xml:lang="ca-valencia">OTP basat en l'hora i en el resum</li>
       <li xml:lang="de">Zeit- und Hashbasiertes Einmalpasswort</li>
