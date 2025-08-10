@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:46+0000\n"
-"PO-Revision-Date: 2025-06-28 17:25+0400\n"
+"PO-Revision-Date: 2025-08-09 22:11+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -241,13 +241,13 @@ msgstr "نوع الحساب:"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr "كلمة مرور المستندة على الوقت"
+msgstr "كلمة سر المستندة على الوقت"
 
 #: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr "كلمة مرور معتمدة على التلبيدة"
+msgstr "كلمة سر معتمدة على التلبيدة"
 
 #: src/contents/ui/AddAccount.qml:118
 #, kde-format
