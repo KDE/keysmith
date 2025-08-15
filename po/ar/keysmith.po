@@ -453,7 +453,7 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
-"وجد حساب آخر بنفس الاسم بالفعل. يرجى تصحيح الاسم أو الجهة المصدرة للحساب "
+"وجد حساب آخر بنفس الاسم فعلًا. يرجى تصحيح الاسم أو الجهة المصدرة للحساب "
 "الجديد."
 
 #: src/contents/ui/RenameAccount.qml:49
