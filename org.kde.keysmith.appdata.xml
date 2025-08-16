@@ -111,7 +111,7 @@
   </developer>
   <description>
     <p>Keysmith generates tokens for your two-factor logins (2FA)</p>
-    <p xml:lang="ar">يقوم صانع المفاتيح بإنشاء رموز الولوج ثنائي العوامل (2FA)</p>
+    <p xml:lang="ar">ينشئ صانع المفاتيح رموز الولوج ثنائي العوامل (2FA)</p>
     <p xml:lang="ca">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="ca-valencia">Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="de">Keysmith generiert Token für die Zwei-Faktor-Authentisierung (FA)</p>
