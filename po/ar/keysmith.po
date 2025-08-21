@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-14 00:46+0000\n"
-"PO-Revision-Date: 2025-08-09 22:11+0400\n"
+"PO-Revision-Date: 2025-08-20 20:02+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -126,12 +126,12 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"460 / 5,000<p><ul><li>اسم الحساب: %1</li><li>جهة إصدار الحساب: %2</li></ul></"
-"p><p>لن يؤدي إزالة هذا الحساب من صانع المفاتيح إلى تعطيل المصادقة الثنائية "
-"(2FA). تأكد من أنه لا يزال بإمكانك الوصول إلى حسابك دون استخدام صانع "
-"المفاتيح قبل المتابعة:</p><ul><li>تأكد من إعداد تطبيق مصادقة ثنائية آخر "
-"لحسابك، أو:</li><li>تأكد من وجود رموز استرداد لحسابك، أو:</li><li>تعطيل "
-"المصادقة الثنائية على حسابك</li></ul>"
+"<p><ul><li>اسم الحساب: %1</li><li>جهة إصدار الحساب: %2</li></ul></p><p>لن "
+"يؤدي إزالة هذا الحساب من صانع المفاتيح إلى تعطيل الاستيثاق الثنائي (2FA). "
+"تأكد من أنه لا يزال بإمكانك الوصول إلى حسابك دون استخدام صانع المفاتيح قبل "
+"المتابعة:</p><ul><li>تأكد من إعداد تطبيق استيثاق ثنائي آخر لحسابك، أو:</"
+"li><li>تأكد من وجود رموز استرداد لحسابك، أو:</li><li>تعطيل الاستيثاق الثنائي "
+"على حسابك</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:116
 #, kde-format
@@ -568,7 +568,7 @@ msgstr "صانع المفاتيح"
 #: src/main.cpp:74
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr "إنشاء رموز المصادقة الثنائية (2FA)"
+msgstr "إنشاء رموز الاستيثاق الثنائي (2FA)"
 
 #: src/main.cpp:77
 #, kde-format
