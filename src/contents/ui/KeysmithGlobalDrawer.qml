@@ -10,7 +10,7 @@ Kirigami.GlobalDrawer {
     actions: [
         Kirigami.Action {
             text: i18n("About Keysmith")
-            icon.name: "keysmith"
+            icon.name: "org.kde.keysmith"
             onTriggered: pageStack.layers.push(Qt.createComponent('org.kde.kirigamiaddons.formcard', 'AboutPage'))
             enabled: pageStack.layers.currentItem.title !== i18n("About Keysmith")
         }
