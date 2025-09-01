@@ -393,7 +393,7 @@ msgstr "No s'ha seleccionat cap fitxer"
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr "Seleccioneu un fitxer"
+msgstr "Trieu un fitxer"
 
 #: src/contents/ui/ImportAccount.qml:104
 #, kde-format
@@ -429,13 +429,13 @@ msgstr "Escaneja un codi QR"
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr "Selecciona una càmera"
+msgstr "Tria una càmera"
 
 #: src/contents/ui/QRScanPage.qml:42
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr "Seleccioneu la càmera"
+msgstr "Trieu la càmera"
 
 #: src/contents/ui/QRScanPage.qml:61
 #, kde-format
@@ -486,7 +486,7 @@ msgstr "No s'ha pogut establir la contrasenya"
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr "Seleccioneu una contrasenya per a protegir els comptes"
+msgstr "Trieu una contrasenya per a protegir els comptes"
 
 #: src/contents/ui/SetupPassword.qml:48
 #, kde-format
