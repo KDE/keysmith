@@ -85,7 +85,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     KAboutData::setApplicationData(about);
 
 #ifndef Q_OS_ANDROID
-    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("keysmith")));
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.keysmith")));
 #endif
 
     QCommandLineParser cliParser;
@@ -127,9 +127,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
                                                          "AddAccountViewModel",
                                                          QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals"));
 
-    qmlRegisterUncreatableType<app::ImportAccountViewModel>("Keysmith.Application", 1, 0, "ImportAccountViewModel",
-        QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals")
-    );
+    qmlRegisterUncreatableType<app::ImportAccountViewModel>("Keysmith.Application",
+                                                            1,
+                                                            0,
+                                                            "ImportAccountViewModel",
+                                                            QStringLiteral("Should be automatically provided through Keysmith.Application.Navigation signals"));
 
     qmlRegisterUncreatableType<app::RenameAccountViewModel>("Keysmith.Application",
                                                             1,
