@@ -45,7 +45,6 @@
   <name xml:lang="sv">Keysmith</name>
   <name xml:lang="tr">Çilingir</name>
   <name xml:lang="uk">Keysmith</name>
-  <name xml:lang="x-test">xxKeysmithxx</name>
   <name xml:lang="zh-CN">Keysmith</name>
   <name xml:lang="zh-TW">Keysmith</name>
   <metadata_license>CC0-1.0</metadata_license>
@@ -103,7 +102,6 @@
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
   <summary xml:lang="tr">İki Aşamalı Kod Üreteci</summary>
   <summary xml:lang="uk">Засіб для створення двофакторних кодів для мобільної і стільничної Плазми</summary>
-  <summary xml:lang="x-test">xxTwo-factor code generator for Plasma Mobile and Desktopxx</summary>
   <summary xml:lang="zh-CN">Plasma 移动和桌面环境的双重验证码生成器</summary>
   <summary xml:lang="zh-TW">適用於 Plasma 行動版及桌面版的兩步驟驗證碼產生器</summary>
   <developer id="kde.org">
@@ -145,7 +143,6 @@
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
     <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar üretir</p>
     <p xml:lang="uk">Keysmith створює ключі для двофакторного входу (2FA)</p>
-    <p xml:lang="x-test">xxKeysmith generates tokens for your two-factor logins (2FA)xx</p>
     <p xml:lang="zh-CN">Keysmith 用于为您的双因验证 (2FA) 登录生成令牌</p>
     <p xml:lang="zh-TW">Keysmith 會產生用於兩步驟登入 (2FA) 的憑證</p>
     <ul>
@@ -184,7 +181,6 @@
       <li xml:lang="sv">Tids- och kondensatbaserad OTP</li>
       <li xml:lang="tr">Zaman ve Sağlama tabanlı tek kerelik parola</li>
       <li xml:lang="uk">OTP на основі часових даних і хешів</li>
-      <li xml:lang="x-test">xxTime and Hash-based OTPxx</li>
       <li xml:lang="zh-CN">基于时间和哈希值的 OTP</li>
       <li xml:lang="zh-TW">基於時間及雜湊值的 OTP</li>
     </ul>
@@ -229,7 +225,6 @@
       <caption xml:lang="sv">Keysmith</caption>
       <caption xml:lang="tr">Çilingir</caption>
       <caption xml:lang="uk">Keysmith</caption>
-      <caption xml:lang="x-test">xxKeysmithxx</caption>
       <caption xml:lang="zh-CN">Keysmith</caption>
       <caption xml:lang="zh-TW">Keysmith</caption>
       <image>https://cdn.kde.org/screenshots/keysmith/keysmith.png</image>
