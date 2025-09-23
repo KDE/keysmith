@@ -76,18 +76,26 @@ endif()
 
 if(ANDROID)
     kirigami_package_breeze_icons(ICONS
-        application-quit
+        ${KIRIGAMI_ADDONS_ICONS}
+
         answer-correct
+        answer-correct-symbolic
+        application-exit
+        camera-video-symbolic
+        dialog-close
+        documentinfo
+        document-import
         edit-delete
         edit-undo
         go-next
         list-add
-        unlock
         lock
+        unlock
         view-barcode-qr-symbolic
     )
 
     ecm_add_android_apk(keysmith ANDROID_DIR ${CMAKE_SOURCE_DIR}/android)
+    install(FILES ${CMAKE_SOURCE_DIR}/org.kde.keysmith.svg DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/kirigami/breeze-internal/icons/)
 else()
     target_link_libraries(keysmith PUBLIC Qt6::Widgets)
 endif()
