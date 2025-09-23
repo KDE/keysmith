@@ -61,7 +61,6 @@ FormCard.FormCardPage {
             text: i18nc("@action:button", "Unlock")
             icon.name: "unlock"
             enabled: !vm.busy && existingPassword.text && existingPassword.text.length > 0
-            visible: !Kirigami.Settings.isMobile
             onClicked: vm.unlock(existingPassword.text);
         }
     }
