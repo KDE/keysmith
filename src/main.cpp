@@ -83,10 +83,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     about.addAuthor(QStringLiteral("Johan Ouwerkerk"), QString(), QStringLiteral("jm.ouwerkerk@gmail.com"));
     about.addAuthor(QStringLiteral("Devin Lin"), QString(), QStringLiteral("espidev@gmail.com"));
     KAboutData::setApplicationData(about);
-
-#ifndef Q_OS_ANDROID
-    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.keysmith")));
-#endif
+    QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("org.kde.keysmith")));
 
     QCommandLineParser cliParser;
 
