@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2025 Jack Hill <jackhill3103@gmail.com>
  */
 
+import QtCore
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
@@ -21,6 +22,8 @@ Kirigami.Page {
     title: i18nc("@title", "Scan a QR code")
 
     required property Application.ScanQRViewModel vm
+
+    padding: 0
 
     onBackRequested: event => {
         event.accepted = true;
@@ -128,6 +131,7 @@ Kirigami.Page {
     VideoOutput {
         id: viewFinder
         anchors.fill: parent
+        fillMode: VideoOutput.PreserveAspectCrop
     }
 
     Prison.VideoScanner {
@@ -143,5 +147,18 @@ Kirigami.Page {
                 vm.scanComplete(result.binaryData);
             }
         }
+    }
+
+    CameraPermission {
+        id: permission
+        onStatusChanged: {
+            if (status == Qt.PermissionStatus.Granted) {
+                camera.start();
+            }
+        }
+    }
+    Component.onCompleted: {
+        if (permission.status == Qt.PermissionStatus.Undetermined)
+            permission.request();
     }
 }
