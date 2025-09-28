@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-14 00:46+0000\n"
+"POT-Creation-Date: 2025-09-28 02:50+0000\n"
 "PO-Revision-Date: 2024-10-01 16:41+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -403,25 +403,25 @@ msgstr "Importovat"
 msgid "About Keysmith"
 msgstr "O aplikaci Keysmith"
 
-#: src/contents/ui/QRScanPage.qml:21
+#: src/contents/ui/QRScanPage.qml:22
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
 msgstr ""
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
 msgstr ""
 
-#: src/contents/ui/QRScanPage.qml:42
+#: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
 msgstr ""
 
-#: src/contents/ui/QRScanPage.qml:61
+#: src/contents/ui/QRScanPage.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-14 00:46+0000\n"
+"POT-Creation-Date: 2025-09-28 02:50+0000\n"
 "PO-Revision-Date: 2025-04-07 14:33+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -416,25 +416,25 @@ msgstr "匯入"
 msgid "About Keysmith"
 msgstr "關於 Keysmith"
 
-#: src/contents/ui/QRScanPage.qml:21
+#: src/contents/ui/QRScanPage.qml:22
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
 msgstr "掃描一個 QR 碼"
 
-#: src/contents/ui/QRScanPage.qml:31
+#: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
 msgstr "選擇相機"
 
-#: src/contents/ui/QRScanPage.qml:42
+#: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
 msgstr "選擇相機"
 
-#: src/contents/ui/QRScanPage.qml:61
+#: src/contents/ui/QRScanPage.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
