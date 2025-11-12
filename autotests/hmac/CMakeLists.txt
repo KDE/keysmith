@@ -10,4 +10,4 @@ set(hmac_test_SRCS
     hmac-validate-keysize.cpp
 )
 
-ecm_add_tests(${hmac_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS} NAME_PREFIX hmac-)
+ecm_add_tests(${hmac_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS})
