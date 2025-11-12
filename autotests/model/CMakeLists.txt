@@ -10,4 +10,4 @@ set(model_test_SRCS
     qr-input.cpp
 )
 
-ecm_add_tests(${model_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS} NAME_PREFIX model-)
+ecm_add_tests(${model_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS})

@@ -10,4 +10,4 @@ set(uri_test_SRCS
     qr-parsing.cpp
 )
 
-ecm_add_tests(${uri_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS} NAME_PREFIX uri-)
+ecm_add_tests(${uri_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS})

@@ -8,4 +8,4 @@ set(app_test_SRCS
     commandline-options.cpp
 )
 
-ecm_add_tests(${app_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS} NAME_PREFIX app-)
+ecm_add_tests(${app_test_SRCS} LINK_LIBRARIES ${Test_DEP_LIBS})

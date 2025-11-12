@@ -27,5 +27,4 @@ ecm_add_tests(
     LINK_LIBRARIES
         Qt::Core Qt::Gui Qt::Test
         validator_lib
-    NAME_PREFIX validators-
 )

@@ -13,5 +13,4 @@ set(secrets_lib_test_SRCS
 ecm_add_tests(
     ${secrets_lib_test_SRCS}
     LINK_LIBRARIES ${Test_DEP_LIBS}
-    NAME_PREFIX secrets-
 )
