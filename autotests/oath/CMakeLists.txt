@@ -16,5 +16,4 @@ set(oath_lib_test_SRCS
 ecm_add_tests(
     ${oath_lib_test_SRCS}
     LINK_LIBRARIES ${Test_DEP_LIBS}
-    NAME_PREFIX oath-
 )
