@@ -457,6 +457,43 @@ bool SortedAccountsListModel::lessThan(const QModelIndex &source_left, const QMo
     int issuer = leftIssuer.localeAwareCompare(rightIssuer);
     return issuer == 0 ? leftAccount->name().localeAwareCompare(rightAccount->name()) < 0 : issuer < 0;
 }
+
+void SortedAccountsListModel::setFilterText(const QString &text)
+{
+    if (text == m_filterText) {
+        return;
+    }
+    m_filterText = text;
+    Q_EMIT filterTextChanged();
+    invalidateFilter();
+}
+
+bool SortedAccountsListModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+{
+    if (m_filterText.isEmpty()) {
+        return true;
+    }
+
+    const QAbstractItemModel *source = sourceModel();
+    if (!source) {
+        return true;
+    }
+
+    const SimpleAccountListModel *model = qobject_cast<const SimpleAccountListModel *>(source);
+    if (!model) {
+        return true;
+    }
+
+    const QModelIndex index = model->index(source_row, 0, source_parent);
+    const QVariant value = model->data(index, SimpleAccountListModel::NonStandardRoles::AccountRole);
+    const AccountView *account = value.isNull() ? nullptr : value.value<AccountView *>();
+    if (!account) {
+        return true;
+    }
+
+    const QString query = m_filterText.toLower();
+    return account->name().contains(query, Qt::CaseInsensitive) || account->issuer().contains(query, Qt::CaseInsensitive);
+}
 }
 
 #include "moc_accounts.cpp"
