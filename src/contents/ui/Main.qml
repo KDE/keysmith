@@ -6,11 +6,16 @@
 
 import QtQml 2.15
 import org.kde.kirigami 2.20 as Kirigami
+import org.kde.config as KConfig
 
 import Keysmith.Application 1.0 as Application
 
 Kirigami.ApplicationWindow {
     id: root
+
+    KConfig.WindowStateSaver {
+        configGroupName: "MainWindow"
+    }
 
     width: Kirigami.Units.gridUnit * 20
     height: Kirigami.Units.gridUnit * 30
