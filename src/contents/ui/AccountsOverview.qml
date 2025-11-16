@@ -27,7 +27,14 @@ Kirigami.ScrollablePage {
     property string loadingErrorMessage: i18nc("error message shown when loading accounts from storage failed", "Some accounts failed to load.")
     property string errorMessage: loadingErrorMessage
     property string filterText: ""
+    property int accountCount: vm.accounts.rowCount()
 
+    Connections {
+        target: vm.accounts
+        function onRowsInserted() { root.accountCount = vm.accounts.rowCount() }
+        function onRowsRemoved() { root.accountCount = vm.accounts.rowCount() }
+        function onModelReset() { root.accountCount = vm.accounts.rowCount() }
+    }
 
     header: ColumnLayout {        
         Kirigami.SearchField {
@@ -37,7 +44,7 @@ Kirigami.ScrollablePage {
             placeholderText: i18nc("@info:placeholder", "Filter accounts…")
             onTextChanged: root.filterText = text
             focus: true
-            visible: vm.accounts.loaded
+            visible: vm.accounts.loaded && root.accountCount > 0
             Shortcut {
                 sequence: StandardKey.Find
                 onActivated: filter.forceActiveFocus()
