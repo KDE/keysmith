@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:55+0000\n"
+"POT-Creation-Date: 2025-12-01 00:46+0000\n"
 "PO-Revision-Date: 2024-12-20 21:52+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -504,7 +504,7 @@ msgctxt "@action:button"
 msgid "Apply"
 msgstr "आचरतु"
 
-#: src/contents/ui/TokenEntryViewLabels.qml:40
+#: src/contents/ui/TokenEntryViewLabels.qml:42
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
