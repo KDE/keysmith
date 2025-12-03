@@ -172,13 +172,13 @@ msgstr "Comptes"
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr "No s'han pogut actualitzar els comptes"
+msgstr "Ha fallat mentre s'actualitzaven els comptes"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr "No s'ha pogut carregar alguns comptes."
+msgstr "Ha fallat mentre es carregaven alguns comptes."
 
 #: src/contents/ui/AccountsOverview.qml:91
 #, kde-format
@@ -481,7 +481,7 @@ msgstr "Contrasenya"
 #: src/contents/ui/SetupPassword.qml:27
 #, kde-format
 msgid "Failed to set up your password"
-msgstr "No s'ha pogut establir la contrasenya"
+msgstr "Ha fallat mentre s'establia la contrasenya"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
