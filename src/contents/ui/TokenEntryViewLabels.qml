@@ -31,6 +31,8 @@ Item {
         text: accountName
         color: labelColor
         anchors.left: root.left
+        anchors.right: tokenValueLabel.left
+        anchors.rightMargin: Kirigami.Units.smallSpacing
         anchors.verticalCenter: root.verticalCenter
     }
     Controls.Label {
