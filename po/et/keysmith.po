@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 14:43+0000\n"
+"POT-Creation-Date: 2025-12-08 02:35+0000\n"
 "PO-Revision-Date: 2020-10-07 11:05+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -550,7 +550,7 @@ msgctxt "@action:button"
 msgid "Apply"
 msgstr "Rakenda"
 
-#: src/contents/ui/TokenEntryViewLabels.qml:40
+#: src/contents/ui/TokenEntryViewLabels.qml:42
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
