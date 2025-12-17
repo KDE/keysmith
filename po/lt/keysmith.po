@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 02:35+0000\n"
-"PO-Revision-Date: 2024-02-26 18:18+0200\n"
+"PO-Revision-Date: 2025-12-16 22:25+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -207,7 +207,7 @@ msgstr ""
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Skenuoti QR kodą"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -338,69 +338,65 @@ msgid "Truncation offset:"
 msgstr "Apkirpimo poslinkis:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Paskyros"
+msgstr "Importuoti paskyras"
 
 #: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Importavimo formatas"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP šifruotas JSON"
 
 #: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP grynasis JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis grynasis JSON"
 
 #: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP URI"
 
 #: src/contents/ui/ImportAccount.qml:83
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Atsarginės kopijos failas:"
 
 #: src/contents/ui/ImportAccount.qml:86
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Nepasirinktas joks failas"
 
 #: src/contents/ui/ImportAccount.qml:90
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Pasirinkti failą"
 
 #: src/contents/ui/ImportAccount.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Pakartokite slaptažodį:"
+msgstr "Iššifravimo slaptažodis"
 
 #: src/contents/ui/ImportAccount.qml:106 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -412,39 +408,37 @@ msgstr "Slaptažodis:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importuoti"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "About Keysmith"
-msgstr "Keysmith"
+msgstr "Apie Keysmith"
 
 #: src/contents/ui/QRScanPage.qml:22
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Skenuoti QR kodą"
 
 #: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Pasirinkti kamerą"
 
 #: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Pasirinkti kamerą"
 
 #: src/contents/ui/QRScanPage.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Užverti"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -576,19 +570,17 @@ msgstr "Keysmith"
 #: src/main.cpp:74
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "generuoti dviejų faktorių tapatybės nustatymo (2FA) prieigos raktus"
 
 #: src/main.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
 #: src/main.cpp:81
 #, kde-format
 msgid "© 2019 KDE Community"
-msgstr ""
+msgstr "© 2019 KDE bendruomenė"
 
 #~ msgctxt "Button cancelling account removal"
 #~ msgid "Cancel"
