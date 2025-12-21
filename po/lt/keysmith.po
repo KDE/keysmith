@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 02:35+0000\n"
-"PO-Revision-Date: 2025-12-16 22:25+0200\n"
+"PO-Revision-Date: 2025-12-20 18:24+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: lt\n"
@@ -200,7 +200,7 @@ msgstr "Pridėti"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Importuoti"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
