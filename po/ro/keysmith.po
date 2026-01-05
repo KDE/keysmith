@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# Sergiu Bivol <sergiu@cip.md>, 2022, 2024.
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 02:35+0000\n"
-"PO-Revision-Date: 2024-02-25 13:43+0000\n"
+"PO-Revision-Date: 2025-12-12 10:39+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -200,14 +200,14 @@ msgstr "Adaugă"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Importă"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Scanează cod QR"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -338,69 +338,65 @@ msgid "Truncation offset:"
 msgstr "Decalaj trunchiere:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Conturi"
+msgstr "Importă conturi"
 
 #: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Formatul importului"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "JSON criptat andOTP"
 
 #: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "JSON simplu andOTP"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "JSON simplu Aegis"
 
 #: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "URI-uri FreeOTP"
 
 #: src/contents/ui/ImportAccount.qml:83
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Fișier de rezervă:"
 
 #: src/contents/ui/ImportAccount.qml:86
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Niciun fișier ales"
 
 #: src/contents/ui/ImportAccount.qml:90
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Alege fișier"
 
 #: src/contents/ui/ImportAccount.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Verificați parola:"
+msgstr "Parolă pentru decriptare"
 
 #: src/contents/ui/ImportAccount.qml:106 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -412,39 +408,37 @@ msgstr "Parolă:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importă"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "About Keysmith"
-msgstr "Keysmith"
+msgstr "Despre Keysmith"
 
 #: src/contents/ui/QRScanPage.qml:22
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Scanați un cod QR"
 
 #: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Alegeți camera"
 
 #: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Alegeți camera"
 
 #: src/contents/ui/QRScanPage.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Închide"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
@@ -576,19 +570,17 @@ msgstr "Keysmith"
 #: src/main.cpp:74
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "generează jetoane pentru autentificarea în doi factori (2FA)"
 
 #: src/main.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
 #: src/main.cpp:81
 #, kde-format
 msgid "© 2019 KDE Community"
-msgstr ""
+msgstr "© 2019 Comunitatea KDE"
 
 #~ msgctxt "Button cancelling account removal"
 #~ msgid "Cancel"
