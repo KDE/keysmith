@@ -149,6 +149,12 @@ Kirigami.Page {
         }
     }
 
+    Kirigami.PlaceholderMessage {
+        anchors.fill: parent
+        text: i18n("No camera available.")
+        visible: camera.error !== Camera.NoError
+    }
+
     CameraPermission {
         id: permission
         onStatusChanged: {
