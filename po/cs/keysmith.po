@@ -1,28 +1,28 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the keysmith package.
-# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2020, 2021, 2023, 2024, 2026 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-12-08 02:35+0000\n"
-"PO-Revision-Date: 2024-10-01 16:41+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-01-15 08:48+0100\n"
+"Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
-msgstr ""
+msgstr "Volitelný účet k přidání, ve formátu otpauth:// URI (např. z QR kódu)"
 
 #: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
@@ -37,6 +37,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
+"Účet, který se pokoušíte přidat, je neplatný. Můžete buď aplikaci ukončit, "
+"nebo pokračovat bez přidání účtu."
 
 #: src/app/flows_p.cpp:286
 #, kde-format
@@ -45,6 +47,7 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
+"Účet, který se pokoušíte přidat, je neplatný. Pokračujte bez přidání účtu."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
 #, kde-format
@@ -121,6 +124,13 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
+"<p><ul><li>Název účtu: %1</li><li>Vydavatel účtu: %2</li></ul></p> "
+"<p>Odstranění tohoto účtu z aplikace Keysmith nezruší dvoufaktorové "
+"ověřování (2FA). Než budete pokračovat, ujistěte se, že máte k účtu přístup "
+"i bez použití aplikace Keysmith:</p><ul><li>Ujistěte se, že máte pro svůj "
+"účet nastavenou jinou aplikaci 2FA , nebo:</li> <li>Ujistěte se, že máte k "
+"dispozici obnovovací kódy pro svůj účet, nebo:</li><li>Deaktivujte "
+"dvoufaktorové ověřování pro svůj účet</li> </ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:116
 #, kde-format
@@ -162,7 +172,7 @@ msgstr "Selhala aktualizace účtů"
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr ""
+msgstr "Některé účty se nepodařilo načíst."
 
 #: src/contents/ui/AccountsOverview.qml:91
 #, kde-format
@@ -187,14 +197,14 @@ msgstr "Přidat"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Naskenovat QR kód"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -230,13 +240,13 @@ msgstr "Typ účtu:"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr ""
+msgstr "OTP závislé na času"
 
 #: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr ""
+msgstr "OTP závislé na hashi"
 
 #: src/contents/ui/AddAccount.qml:118
 #, kde-format
@@ -310,19 +320,19 @@ msgstr "Délka tokenu:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "Přidat kontrolní součet"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "Použít vlastní zkrácení offsetu"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "Zkrácení offsetu:"
 
 #: src/contents/ui/ImportAccount.qml:21
 #, kde-format
@@ -333,45 +343,45 @@ msgstr "Importovat účty"
 #: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Importovat formát"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP šifrovaný JSON"
 
 #: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP prostý JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis prostý JSON"
 
 #: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP URIs"
 
 #: src/contents/ui/ImportAccount.qml:83
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Soubor zálohy:"
 
 #: src/contents/ui/ImportAccount.qml:86
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Není vybrán žádný soubor"
 
 #: src/contents/ui/ImportAccount.qml:90
 #, kde-format
@@ -383,7 +393,7 @@ msgstr "Vybrat soubor"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr ""
+msgstr "Heslo pro dešifrování"
 
 #: src/contents/ui/ImportAccount.qml:106 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -407,19 +417,19 @@ msgstr "O aplikaci Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Naskenovat QR kód"
 
 #: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Vybrat kameru"
 
 #: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Vybrat kameru"
 
 #: src/contents/ui/QRScanPage.qml:64
 #, kde-format
@@ -431,7 +441,7 @@ msgstr "Zavřít"
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr ""
+msgstr "Přejmenujte účet, který chcete přidat"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -442,6 +452,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
+"Účet se stejným názvem již existuje. Opravte prosím název nebo vydavatele "
+"nového účtu."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
@@ -463,7 +475,7 @@ msgstr "Heslo"
 #: src/contents/ui/SetupPassword.qml:27
 #, kde-format
 msgid "Failed to set up your password"
-msgstr ""
+msgstr "Nastavení hesla se nezdařilo"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
@@ -504,13 +516,13 @@ msgstr "Časovač:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr ""
+msgstr "Start v:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
-msgstr ""
+msgstr "Hash algoritmus:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
@@ -533,12 +545,12 @@ msgstr "SHA-512"
 #: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
 msgid "Failed to unlock your accounts"
-msgstr ""
+msgstr "Nepodařilo se odemknout vaše účty"
 
 #: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
-msgstr ""
+msgstr "Zadejte heslo pro odemčení svých účtů"
 
 #: src/contents/ui/UnlockAccounts.qml:61
 #, kde-format
