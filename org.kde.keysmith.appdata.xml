@@ -71,6 +71,7 @@
   <summary xml:lang="ar">مولد رمز ثنائي العوامل للأجهزة المحمولة وأجهزة سطح المكتب</summary>
   <summary xml:lang="ca">Generador del codi de dos factors per al Plasma Mobile i l'escriptori</summary>
   <summary xml:lang="ca-valencia">Generador del codi de dos factors per a Plasma Mobile i l'escriptori</summary>
+  <summary xml:lang="cs">Generátor dvoufaktorového kódu pro Plasma Mobile a Desktop</summary>
   <summary xml:lang="de">Zwei-Faktor-Code-Generator für Plasma Mobile und die Plasma-Arbeitsfläche</summary>
   <summary xml:lang="en-GB">Two-factor code generator for Plasma Mobile and Desktop</summary>
   <summary xml:lang="eo">Dufaktora kodgenerilo por Plasma Mobile kaj Desktop</summary>
@@ -112,6 +113,7 @@
     <p xml:lang="ar">ينشئ صانع المفاتيح رموز الولوج ثنائي العوامل (2FA)</p>
     <p xml:lang="ca">El Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
     <p xml:lang="ca-valencia">Keysmith genera testimonis per als inicis de sessió de dos factors (2FA)</p>
+    <p xml:lang="cs">Keysmith generuje tokeny pro vaše dvoufaktorové přihlášení (2FA)</p>
     <p xml:lang="de">Keysmith generiert Token für die Zwei-Faktor-Authentisierung (FA)</p>
     <p xml:lang="en-GB">Keysmith generates tokens for your two-factor logins (2FA)</p>
     <p xml:lang="eo">Keysmith generas ĵetonojn por viaj dufaktoraj ensalutoj (2FA)</p>
@@ -150,6 +152,7 @@
       <li xml:lang="ar">الوقت وكلمة السر لمرة واحدة (OTP) القائمة على التجزئة</li>
       <li xml:lang="ca">OTP basat en l'hora i en el resum</li>
       <li xml:lang="ca-valencia">OTP basat en l'hora i en el resum</li>
+      <li xml:lang="cs">OTP založené na času a hashi</li>
       <li xml:lang="de">Zeit- und Hashbasiertes Einmalpasswort</li>
       <li xml:lang="en-GB">Time and Hash-based OTP</li>
       <li xml:lang="eo">Temp- kaj Haket-bazita OTP</li>
