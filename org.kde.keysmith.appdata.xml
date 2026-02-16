@@ -285,6 +285,10 @@
       <description>
         <ul>
           <li>General code improvements and bugfixing</li>
+          <li xml:lang="ca">Millores generals del codi i correcció d'errors</li>
+          <li xml:lang="ca-valencia">Millores generals del codi i esmena d'errors</li>
+          <li xml:lang="he">שיפורי קוד ותיקוני תקלות כלליים</li>
+          <li xml:lang="pt-BR">Melhorias gerais no código e correção de bugs</li>
         </ul>
       </description>
     </release>
@@ -296,7 +300,15 @@
       <description>
         <ul>
           <li>Reduce default size of main window</li>
+          <li xml:lang="ca">Redueix la mida predeterminada de la finestra principal</li>
+          <li xml:lang="ca-valencia">Reduïx la mida predeterminada de la finestra principal</li>
+          <li xml:lang="he">הקטנת גודל ברירת המחדל של החלון הראשי</li>
+          <li xml:lang="pt-BR">Redução do tamanho padrão da janela principal</li>
           <li>Focus password field by default on launch</li>
+          <li xml:lang="ca">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
+          <li xml:lang="ca-valencia">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
+          <li xml:lang="he">התמקדות בשדה הסיסמה כברירת מחדל עם העלייה</li>
+          <li xml:lang="pt-BR">Ao iniciar o aplicativo, o campo de senha fica em foco por padrão</li>
         </ul>
       </description>
     </release>
@@ -312,16 +324,56 @@
     <release version="21.06" date="2021-06-10">
       <description>
         <p>Plasma Mobile Gear 21.06 release</p>
+        <p xml:lang="ca">Llançament del Plasma Mobile Gear 21.06</p>
+        <p xml:lang="ca-valencia">Llançament de Plasma Mobile Gear 21.06</p>
+        <p xml:lang="he">מהדורת 21.06 של Plasma Mobile Gear</p>
+        <p xml:lang="pt-BR">Lançamento do Plasma Mobile Gear 21.06</p>
         <ul>
           <li>Basic support for account issuer property in keysmith</li>
+          <li xml:lang="ca">Suport bàsic per a la propietat d'emissor de comptes al Keysmith</li>
+          <li xml:lang="ca-valencia">Suport bàsic per a la propietat d'emissor de comptes a Keysmith</li>
+          <li xml:lang="he">תמיכה בסיסי למאפיין מנפיק חשבון ב־keysmith</li>
+          <li xml:lang="pt-BR">Suporte básico para a propriedade do emissor da conta no keysmith</li>
           <li>Support configuring issuer when adding new account</li>
+          <li xml:lang="ca">Permet configurar l'emissor quan s'afegeix un compte nou</li>
+          <li xml:lang="ca-valencia">Permet configurar l'emissor quan s'afig un compte nou</li>
+          <li xml:lang="he">תמיכה בהגדרת מנפיק בעת הוספת חשבון חדש</li>
+          <li xml:lang="pt-BR">Suporte para configuração da entidade emissora ao adicionar uma nova conta</li>
           <li>Support for configuring advanced HOTP/TOTP token details</li>
+          <li xml:lang="ca">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
+          <li xml:lang="ca-valencia">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
+          <li xml:lang="he">תמיכה בהגדרת פרטים מתקדמים לאסימוני HOTP/TOTP</li>
+          <li xml:lang="pt-BR">Suporte para configuração de detalhes avançados de tokens HOTP/TOTP</li>
           <li>Reduce latency when re-computing tokens</li>
+          <li xml:lang="ca">Redueix la latència en tornar a calcular els testimonis</li>
+          <li xml:lang="ca-valencia">Reduïx la latència en tornar a calcular els testimonis</li>
+          <li xml:lang="he">הפחתת העיכוב בעת חישוב אסימונים מחדש</li>
+          <li xml:lang="pt-BR">Redução da latência ao recalcular tokens</li>
           <li>Add basic support for otpauth:// URI parsing</li>
+          <li xml:lang="ca">Afegeix la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
+          <li xml:lang="ca-valencia">Afig la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
+          <li xml:lang="he">נוספה תמיכה בסיסית לפיענוח כתובות otpauth://‎</li>
+          <li xml:lang="pt-BR">Adicionado suporte básico para análise de URI otpauth://</li>
           <li>Allow to accept otpauth:// URI from command line</li>
+          <li xml:lang="ca">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
+          <li xml:lang="ca-valencia">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
+          <li xml:lang="he">אפשר לקבל כתובות otpauth://‎ משורת הפקודות</li>
+          <li xml:lang="pt-BR">Permite aceitar o URI otpauth:// da linha de comando</li>
           <li>Add a page to recover when account turns out to be already used while adding it</li>
+          <li xml:lang="ca">Afegeix una pàgina a recuperar quan el compte ja s'utilitza mentre s'afegeix</li>
+          <li xml:lang="ca-valencia">Afig una pàgina a recuperar quan el compte ja s'utilitza mentre s'afig</li>
+          <li xml:lang="he">נוסף עמוד לשחזור כשמתברר שהחשבון כבר בשימוש בזמן הניסיון להוספתו</li>
+          <li xml:lang="pt-BR">Adicionada uma página para recuperação de conta caso ela já esteja em uso durante o processo de cadastro</li>
           <li>Add actions to dismiss/cancel an add account form</li>
+          <li xml:lang="ca">Afegeix accions per descartar/cancel·lar un formulari d'afegir un compte</li>
+          <li xml:lang="ca-valencia">Afig accions per descartar/cancel·lar un formulari d'afegir un compte</li>
+          <li xml:lang="he">נוספו פעולות לסילוק/ביטול טופס הוספת חשבון</li>
+          <li xml:lang="pt-BR">Adicionadas ações para fechar/cancelar um formulário de adição de conta</li>
           <li>Respond to D-Bus activation, allows to open keysmith when already running</li>
+          <li xml:lang="ca">Respon a l'activació del D-Bus, permet obrir el Keysmith quan ja s'està executant</li>
+          <li xml:lang="ca-valencia">Respon a l'activació de D-Bus, permet obrir Keysmith quan ja s'està executant</li>
+          <li xml:lang="he">תגובה להפעלת D-Bus, מאפשר לפתוח את keysmith כשהוא כבר פעיל</li>
+          <li xml:lang="pt-BR">Responde à ativação do D-Bus, permitindo abrir o keysmith mesmo quando ele já estiver em execução</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/06/10/plasma-mobile-update-june/</url>
