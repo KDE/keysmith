@@ -289,6 +289,7 @@
           <li xml:lang="ca">Millores generals del codi i correcció d'errors</li>
           <li xml:lang="ca-valencia">Millores generals del codi i esmena d'errors</li>
           <li xml:lang="he">שיפורי קוד ותיקוני תקלות כלליים</li>
+          <li xml:lang="ia">Melioramento general de codice e correctiones de faltas</li>
           <li xml:lang="pt-BR">Melhorias gerais no código e correção de bugs</li>
           <li xml:lang="ru">Общие улучшения кода и исправление ошибок;</li>
           <li xml:lang="zh-CN">常规代码改进和程序缺陷修复</li>
@@ -307,6 +308,7 @@
           <li xml:lang="ca">Redueix la mida predeterminada de la finestra principal</li>
           <li xml:lang="ca-valencia">Reduïx la mida predeterminada de la finestra principal</li>
           <li xml:lang="he">הקטנת גודל ברירת המחדל של החלון הראשי</li>
+          <li xml:lang="ia">Reduce grandor predefinite de fenestra principal</li>
           <li xml:lang="pt-BR">Redução do tamanho padrão da janela principal</li>
           <li xml:lang="ru">Уменьшен размер главного окна по умолчанию;</li>
           <li xml:lang="zh-CN">减小主窗口的默认大小</li>
@@ -315,6 +317,7 @@
           <li xml:lang="ca">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
           <li xml:lang="ca-valencia">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
           <li xml:lang="he">התמקדות בשדה הסיסמה כברירת מחדל עם העלייה</li>
+          <li xml:lang="ia">Campo do focalisar de contrasigno predefinite al lancear</li>
           <li xml:lang="pt-BR">Ao iniciar o aplicativo, o campo de senha fica em foco por padrão</li>
           <li xml:lang="ru">При запуске по умолчанию фокус передаётся на поле пароля;</li>
           <li xml:lang="zh-CN">启动时默认聚焦密码字段</li>
@@ -337,6 +340,7 @@
         <p xml:lang="ca">Llançament del Plasma Mobile Gear 21.06</p>
         <p xml:lang="ca-valencia">Llançament de Plasma Mobile Gear 21.06</p>
         <p xml:lang="he">מהדורת 21.06 של Plasma Mobile Gear</p>
+        <p xml:lang="ia">Plasma Mobile Gear version 21.06</p>
         <p xml:lang="pt-BR">Lançamento do Plasma Mobile Gear 21.06</p>
         <p xml:lang="ru">Выпуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="zh-CN">Plasma Mobile Gear 21.06</p>
@@ -346,6 +350,7 @@
           <li xml:lang="ca">Suport bàsic per a la propietat d'emissor de comptes al Keysmith</li>
           <li xml:lang="ca-valencia">Suport bàsic per a la propietat d'emissor de comptes a Keysmith</li>
           <li xml:lang="he">תמיכה בסיסי למאפיין מנפיק חשבון ב־keysmith</li>
+          <li xml:lang="ia">Supportoo basic per proprietate de emissor de conto in keysmith</li>
           <li xml:lang="pt-BR">Suporte básico para a propriedade do emissor da conta no keysmith</li>
           <li xml:lang="ru">Базовая поддержка свойства эмитента учётной записи в Keysmith;</li>
           <li xml:lang="zh-CN">Keysmith 账户发行者属性的基本支持</li>
@@ -354,6 +359,7 @@
           <li xml:lang="ca">Permet configurar l'emissor quan s'afegeix un compte nou</li>
           <li xml:lang="ca-valencia">Permet configurar l'emissor quan s'afig un compte nou</li>
           <li xml:lang="he">תמיכה בהגדרת מנפיק בעת הוספת חשבון חדש</li>
+          <li xml:lang="ia">Supporto a configurar emissor quando adde nove conto</li>
           <li xml:lang="pt-BR">Suporte para configuração da entidade emissora ao adicionar uma nova conta</li>
           <li xml:lang="ru">Настройка издателя при добавлении новой учётной записи;</li>
           <li xml:lang="zh-CN">在添加新账户时支持配置发行者</li>
@@ -362,6 +368,7 @@
           <li xml:lang="ca">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
           <li xml:lang="ca-valencia">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
           <li xml:lang="he">תמיכה בהגדרת פרטים מתקדמים לאסימוני HOTP/TOTP</li>
+          <li xml:lang="ia">Supporto per configurationavantiate de detalios de indicios HOTP/TOTP</li>
           <li xml:lang="pt-BR">Suporte para configuração de detalhes avançados de tokens HOTP/TOTP</li>
           <li xml:lang="ru">Поддержка настройки расширенных параметров токенов HOTP/TOTP;</li>
           <li xml:lang="zh-CN">支持配置高级 HOTP/TOTP 令牌详细信息</li>
@@ -370,6 +377,7 @@
           <li xml:lang="ca">Redueix la latència en tornar a calcular els testimonis</li>
           <li xml:lang="ca-valencia">Reduïx la latència en tornar a calcular els testimonis</li>
           <li xml:lang="he">הפחתת העיכוב בעת חישוב אסימונים מחדש</li>
+          <li xml:lang="ia">Reduce latentia quando recalcula indicios (tokens)</li>
           <li xml:lang="pt-BR">Redução da latência ao recalcular tokens</li>
           <li xml:lang="ru">Снижение задержки при повторном вычислении токенов;</li>
           <li xml:lang="zh-CN">在重新计算令牌时减少延迟</li>
@@ -378,6 +386,7 @@
           <li xml:lang="ca">Afegeix la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
           <li xml:lang="ca-valencia">Afig la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
           <li xml:lang="he">נוספה תמיכה בסיסית לפיענוח כתובות otpauth://‎</li>
+          <li xml:lang="ia">Adde supporto basic per analysar le syntoxe de tpauth:// URI </li>
           <li xml:lang="pt-BR">Adicionado suporte básico para análise de URI otpauth://</li>
           <li xml:lang="ru">Добавлена базовая поддержка анализа URI otpauth://;</li>
           <li xml:lang="zh-CN">添加 otpauth:// URI 解析的基本支持</li>
@@ -386,6 +395,7 @@
           <li xml:lang="ca">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
           <li xml:lang="ca-valencia">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
           <li xml:lang="he">אפשר לקבל כתובות otpauth://‎ משורת הפקודות</li>
+          <li xml:lang="ia">Permitte acceptar otpauth:// URI  ab linea de commando</li>
           <li xml:lang="pt-BR">Permite aceitar o URI otpauth:// da linha de comando</li>
           <li xml:lang="ru">Добавлена поддержка указания otpauth:// URI из командной строки;</li>
           <li xml:lang="zh-CN">允许从命令行接受 otpauth:// URI</li>
@@ -394,6 +404,7 @@
           <li xml:lang="ca">Afegeix una pàgina a recuperar quan el compte ja s'utilitza mentre s'afegeix</li>
           <li xml:lang="ca-valencia">Afig una pàgina a recuperar quan el compte ja s'utilitza mentre s'afig</li>
           <li xml:lang="he">נוסף עמוד לשחזור כשמתברר שהחשבון כבר בשימוש בזמן הניסיון להוספתו</li>
+          <li xml:lang="ia">Adde un pagina per recuperar quando il resulta esser ja usate durante que lo addeva </li>
           <li xml:lang="pt-BR">Adicionada uma página para recuperação de conta caso ela já esteja em uso durante o processo de cadastro</li>
           <li xml:lang="ru">Добавлена страница для восстановления, если учётная запись уже используется при её добавлении;</li>
           <li xml:lang="zh-CN">添加一个页面以便在账户已经被使用时恢复并添加它</li>
@@ -402,6 +413,7 @@
           <li xml:lang="ca">Afegeix accions per descartar/cancel·lar un formulari d'afegir un compte</li>
           <li xml:lang="ca-valencia">Afig accions per descartar/cancel·lar un formulari d'afegir un compte</li>
           <li xml:lang="he">נוספו פעולות לסילוק/ביטול טופס הוספת חשבון</li>
+          <li xml:lang="ia">Adde actiones per dimitter/cancellar un forma de adder conto</li>
           <li xml:lang="pt-BR">Adicionadas ações para fechar/cancelar um formulário de adição de conta</li>
           <li xml:lang="ru">Добавлены действия для закрытия формы добавления учётной записи;</li>
           <li xml:lang="zh-CN">添加操作以解除/取消一个新增账户表单</li>
@@ -410,6 +422,7 @@
           <li xml:lang="ca">Respon a l'activació del D-Bus, permet obrir el Keysmith quan ja s'està executant</li>
           <li xml:lang="ca-valencia">Respon a l'activació de D-Bus, permet obrir Keysmith quan ja s'està executant</li>
           <li xml:lang="he">תגובה להפעלת D-Bus, מאפשר לפתוח את keysmith כשהוא כבר פעיל</li>
+          <li xml:lang="ia">Responde a activation de D-Bus, permitte aperir keysmith quando ja executante</li>
           <li xml:lang="pt-BR">Responde à ativação do D-Bus, permitindo abrir o keysmith mesmo quando ele já estiver em execução</li>
           <li xml:lang="ru">Ответ на активацию через D-Bus; позволяет открыть Keysmith при уже запущенном приложении.</li>
           <li xml:lang="zh-CN">响应 D-Bus 激活，允许在已经运行时打开 keysmith。</li>
