@@ -289,6 +289,7 @@
           <li xml:lang="ca">Millores generals del codi i correcció d'errors</li>
           <li xml:lang="ca-valencia">Millores generals del codi i esmena d'errors</li>
           <li xml:lang="es">Mejoras generales del código y corrección de errores.</li>
+          <li xml:lang="fr">Améliorations générales du code et correction de bogues</li>
           <li xml:lang="he">שיפורי קוד ותיקוני תקלות כלליים</li>
           <li xml:lang="ia">Melioramento general de codice e correctiones de faltas</li>
           <li xml:lang="ka">ზოგადი კოდის გაუმჯობესება და შეცდომების გასწორება</li>
@@ -313,6 +314,7 @@
           <li xml:lang="ca">Redueix la mida predeterminada de la finestra principal</li>
           <li xml:lang="ca-valencia">Reduïx la mida predeterminada de la finestra principal</li>
           <li xml:lang="es">Se ha reducido el tamaño predeterminado de la ventana principal.</li>
+          <li xml:lang="fr">Réduire la taille par défaut de la fenêtre principale</li>
           <li xml:lang="he">הקטנת גודל ברירת המחדל של החלון הראשי</li>
           <li xml:lang="ia">Reduce grandor predefinite de fenestra principal</li>
           <li xml:lang="ka">შემცირდა მთავარი ფანჯრის ნაგულისხმევი ზომა</li>
@@ -327,6 +329,7 @@
           <li xml:lang="ca">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
           <li xml:lang="ca-valencia">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
           <li xml:lang="es">Situar el foco en el campo de contraseña de forma predeterminada tras el inicio.</li>
+          <li xml:lang="fr">Donner le focus au champ du mot de passe par défaut au lancement</li>
           <li xml:lang="he">התמקדות בשדה הסיסמה כברירת מחדל עם העלייה</li>
           <li xml:lang="ia">Campo do focalisar de contrasigno predefinite al lancear</li>
           <li xml:lang="ka">გაშვებისას ფოკუსის ნაგულისხმევად პაროლის ველზე დაყენება</li>
@@ -355,6 +358,7 @@
         <p xml:lang="ca">Llançament del Plasma Mobile Gear 21.06</p>
         <p xml:lang="ca-valencia">Llançament de Plasma Mobile Gear 21.06</p>
         <p xml:lang="es">Versión para Plasma Mobile Gear 21.06</p>
+        <p xml:lang="fr">Publication de Plasma Mobile Gear 21.06</p>
         <p xml:lang="he">מהדורת 21.06 של Plasma Mobile Gear</p>
         <p xml:lang="ia">Plasma Mobile Gear version 21.06</p>
         <p xml:lang="ka">გამოშვება Plasma Mobile Gear 21.06</p>
@@ -370,6 +374,7 @@
           <li xml:lang="ca">Suport bàsic per a la propietat d'emissor de comptes al Keysmith</li>
           <li xml:lang="ca-valencia">Suport bàsic per a la propietat d'emissor de comptes a Keysmith</li>
           <li xml:lang="es">Compatibilidad básica con la propiedad del emisor de la cuenta en keysmith.</li>
+          <li xml:lang="fr">Prise en charge basique de la propriété de l’émetteur de compte dans Keysmith</li>
           <li xml:lang="he">תמיכה בסיסי למאפיין מנפיק חשבון ב־keysmith</li>
           <li xml:lang="ia">Supportoo basic per proprietate de emissor de conto in keysmith</li>
           <li xml:lang="ka">ანგარიშის გამომცემლის თვისების საბაზისო მხარდაჭერა keysmith-ში</li>
@@ -384,6 +389,7 @@
           <li xml:lang="ca">Permet configurar l'emissor quan s'afegeix un compte nou</li>
           <li xml:lang="ca-valencia">Permet configurar l'emissor quan s'afig un compte nou</li>
           <li xml:lang="es">Permitir configurar el emisor cuando se añade una nueva cuenta.</li>
+          <li xml:lang="fr">Prise en charge de la configuration de l’émetteur lors de l’ajout d’un nouveau compte</li>
           <li xml:lang="he">תמיכה בהגדרת מנפיק בעת הוספת חשבון חדש</li>
           <li xml:lang="ia">Supporto a configurar emissor quando adde nove conto</li>
           <li xml:lang="ka">გამომცემლის მორგების მხარდაჭერა ახალი ანგარიშის დამატებისას</li>
@@ -398,6 +404,7 @@
           <li xml:lang="ca">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
           <li xml:lang="ca-valencia">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
           <li xml:lang="es">Permitir la configuración avanzada de los detalles del token HOTP/TOTP.</li>
+          <li xml:lang="fr">Prise en charge de la configuration des détails avancés pour les jetons « HOTP / TOTP »</li>
           <li xml:lang="he">תמיכה בהגדרת פרטים מתקדמים לאסימוני HOTP/TOTP</li>
           <li xml:lang="ia">Supporto per configurationavantiate de detalios de indicios HOTP/TOTP</li>
           <li xml:lang="ka">HOTP/TOTP ტოკენის დამატებითი დეტალების მორგების მხარდაჭერა</li>
@@ -412,6 +419,7 @@
           <li xml:lang="ca">Redueix la latència en tornar a calcular els testimonis</li>
           <li xml:lang="ca-valencia">Reduïx la latència en tornar a calcular els testimonis</li>
           <li xml:lang="es">Reducir la latencia cuando de recalculan tókenes.</li>
+          <li xml:lang="fr">Réduire la latence lors du re-calcul des jetons</li>
           <li xml:lang="he">הפחתת העיכוב בעת חישוב אסימונים מחדש</li>
           <li xml:lang="ia">Reduce latentia quando recalcula indicios (tokens)</li>
           <li xml:lang="ka">შემცირდა დაყოვნება ტოკენების თავიდან გამოთვლისას</li>
@@ -426,6 +434,7 @@
           <li xml:lang="ca">Afegeix la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
           <li xml:lang="ca-valencia">Afig la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
           <li xml:lang="es">Se ha añadido compatibilidad básica para el análisis de URI de tipo otpauth://</li>
+          <li xml:lang="fr">Ajouter la prise en charge basique pour l'analyse des URI « otpauth:// »</li>
           <li xml:lang="he">נוספה תמיכה בסיסית לפיענוח כתובות otpauth://‎</li>
           <li xml:lang="ia">Adde supporto basic per analysar le syntoxe de tpauth:// URI </li>
           <li xml:lang="ka">დაემატა otpauth:// ტიპის URI-ის დამუშავების მხარდაჭერა</li>
@@ -440,6 +449,7 @@
           <li xml:lang="ca">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
           <li xml:lang="ca-valencia">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
           <li xml:lang="es">Permitir que se acepten URI de tipo otpauth:// en la línea de órdenes.</li>
+          <li xml:lang="fr">Autoriser l'acceptation de l'URI « otpauth:// » depuis la ligne de commandes</li>
           <li xml:lang="he">אפשר לקבל כתובות otpauth://‎ משורת הפקודות</li>
           <li xml:lang="ia">Permitte acceptar otpauth:// URI  ab linea de commando</li>
           <li xml:lang="ka">otpauth:// URI-ის ბრძანების სტრიქონიდან მიღების დაშვება</li>
@@ -454,6 +464,7 @@
           <li xml:lang="ca">Afegeix una pàgina a recuperar quan el compte ja s'utilitza mentre s'afegeix</li>
           <li xml:lang="ca-valencia">Afig una pàgina a recuperar quan el compte ja s'utilitza mentre s'afig</li>
           <li xml:lang="es">Añadir una página de recuperación cuando ocurre que una cuenta ya se ha usado cuando se está añadiendo.</li>
+          <li xml:lang="fr">Ajouter une page de récupération du compte lorsque celui-ci est déjà utilisé lors de son ajout</li>
           <li xml:lang="he">נוסף עמוד לשחזור כשמתברר שהחשבון כבר בשימוש בזמן הניסיון להוספתו</li>
           <li xml:lang="ia">Adde un pagina per recuperar quando il resulta esser ja usate durante que lo addeva </li>
           <li xml:lang="ka">დაემატა აღდგენის გვერდი, როცა აღმოჩნდება, რომ ანგარიში მისი დამატებისას უკვე არსებობდა</li>
@@ -468,6 +479,7 @@
           <li xml:lang="ca">Afegeix accions per descartar/cancel·lar un formulari d'afegir un compte</li>
           <li xml:lang="ca-valencia">Afig accions per descartar/cancel·lar un formulari d'afegir un compte</li>
           <li xml:lang="es">Añadir acciones para descartar/cancelar formularios de añadir cuenta.</li>
+          <li xml:lang="fr">Ajouter des actions pour fermer / annuler un formulaire d'ajout de compte</li>
           <li xml:lang="he">נוספו פעולות לסילוק/ביטול טופס הוספת חשבון</li>
           <li xml:lang="ia">Adde actiones per dimitter/cancellar un forma de adder conto</li>
           <li xml:lang="ka">დაემატა ანგარიშის დამატების ფორმის მოცილების/გაუქმების ქმედებები</li>
@@ -482,6 +494,7 @@
           <li xml:lang="ca">Respon a l'activació del D-Bus, permet obrir el Keysmith quan ja s'està executant</li>
           <li xml:lang="ca-valencia">Respon a l'activació de D-Bus, permet obrir Keysmith quan ja s'està executant</li>
           <li xml:lang="es">Responder a la activación D-BUS, permite abrir keysmith cuando ya está en ejecución.</li>
+          <li xml:lang="fr">Répondre à l'activation « D-Bus ». Cela permet d'ouvrir Keysmith lorsqu'il est déjà en cours d'exécution</li>
           <li xml:lang="he">תגובה להפעלת D-Bus, מאפשר לפתוח את keysmith כשהוא כבר פעיל</li>
           <li xml:lang="ia">Responde a activation de D-Bus, permitte aperir keysmith quando ja executante</li>
           <li xml:lang="ka">პასუხი D-Bus-ით აქტივაციაზე. საშუალებას გაძლევთ, გაიხსნას keysmith, თუ ის უკვე გაშვებულია</li>
