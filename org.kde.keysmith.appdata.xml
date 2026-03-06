@@ -101,7 +101,7 @@
   <summary xml:lang="sa">प्लाज्मा मोबाईल् तथा डेस्कटॉप् इत्येतयोः कृते द्वि-कारक-सङ्केत-जनरेटरः</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
-  <summary xml:lang="tr">İki Aşamalı Kod Üreteci</summary>
+  <summary xml:lang="tr">Plasma Cep ve Masaüstü için iki aşamalı kod üreteci</summary>
   <summary xml:lang="uk">Засіб для створення двофакторних кодів для мобільної і стільничної Плазми</summary>
   <summary xml:lang="zh-CN">Plasma 移动和桌面环境的双重验证码生成器</summary>
   <summary xml:lang="zh-TW">適用於 Plasma 行動版及桌面版的兩步驟驗證碼產生器</summary>
@@ -182,7 +182,7 @@
       <li xml:lang="sa">समयः तथा हैश-आधारितः ओटीपी</li>
       <li xml:lang="sl">Časovno in razsuto osnovana enkratna gesla</li>
       <li xml:lang="sv">Tids- och kondensatbaserad OTP</li>
-      <li xml:lang="tr">Zaman ve Sağlama tabanlı tek kerelik parola</li>
+      <li xml:lang="tr">Zaman ve Sağlama tabanlı tek kullanımlık parola</li>
       <li xml:lang="uk">OTP на основі часових даних і хешів</li>
       <li xml:lang="zh-CN">基于时间和哈希值的 OTP</li>
       <li xml:lang="zh-TW">基於時間及雜湊值的 OTP</li>
@@ -298,7 +298,7 @@
           <li xml:lang="pt-BR">Melhorias gerais no código e correção de bugs</li>
           <li xml:lang="ru">Общие улучшения кода и исправление ошибок;</li>
           <li xml:lang="sl">Splošne izboljšave kode in odpravljanje napak</li>
-          <li xml:lang="tr">General code improvements and bugfixing</li>
+          <li xml:lang="tr">Genel kod iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Загальне удосконалення програмного коду та виправлення вад</li>
           <li xml:lang="zh-CN">常规代码改进和程序缺陷修复</li>
         </ul>
@@ -324,7 +324,7 @@
           <li xml:lang="pt-BR">Redução do tamanho padrão da janela principal</li>
           <li xml:lang="ru">Уменьшен размер главного окна по умолчанию;</li>
           <li xml:lang="sl">Zmanjša privzeto velikost glavnega okna</li>
-          <li xml:lang="tr">Reduce default size of main window</li>
+          <li xml:lang="tr">Ana pencerenin öntanımlı boyutunu küçült</li>
           <li xml:lang="uk">Зменшено типовий розмір головного вікна</li>
           <li xml:lang="zh-CN">减小主窗口的默认大小</li>
           <li>Focus password field by default on launch</li>
@@ -340,7 +340,7 @@
           <li xml:lang="pt-BR">Ao iniciar o aplicativo, o campo de senha fica em foco por padrão</li>
           <li xml:lang="ru">При запуске по умолчанию фокус передаётся на поле пароля;</li>
           <li xml:lang="sl">Privzeto fokus na polju za geslo ob zagonu</li>
-          <li xml:lang="tr">Focus password field by default on launch</li>
+          <li xml:lang="tr">Başlangıçta parola alanına öntanımlı olarak odaklan</li>
           <li xml:lang="uk">Реалізовано типове фокусування поля пароля після запуску</li>
           <li xml:lang="zh-CN">启动时默认聚焦密码字段</li>
         </ul>
@@ -370,7 +370,7 @@
         <p xml:lang="pt-BR">Lançamento do Plasma Mobile Gear 21.06</p>
         <p xml:lang="ru">Выпуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="sl">Izdaja Plasma Mobile Gear 21.06</p>
-        <p xml:lang="tr">Plasma Mobile Gear 21.06 release</p>
+        <p xml:lang="tr">Plasma Mobile Gear 21.06 yayımı</p>
         <p xml:lang="uk">Випуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="zh-CN">Plasma Mobile Gear 21.06</p>
         <ul>
@@ -387,7 +387,7 @@
           <li xml:lang="pt-BR">Suporte básico para a propriedade do emissor da conta no keysmith</li>
           <li xml:lang="ru">Базовая поддержка свойства эмитента учётной записи в Keysmith;</li>
           <li xml:lang="sl">Osnovna podpora za lastnost izdajatelja računa v Keysmithu</li>
-          <li xml:lang="tr">Basic support for account issuer property in keysmith</li>
+          <li xml:lang="tr">Çilingir’de hesap sağlayıcı özelliği için temel destek</li>
           <li xml:lang="uk">Базова підтримка властивості видавця облікового запису у keysmith</li>
           <li xml:lang="zh-CN">Keysmith 账户发行者属性的基本支持</li>
           <li>Support configuring issuer when adding new account</li>
@@ -403,7 +403,7 @@
           <li xml:lang="pt-BR">Suporte para configuração da entidade emissora ao adicionar uma nova conta</li>
           <li xml:lang="ru">Настройка издателя при добавлении новой учётной записи;</li>
           <li xml:lang="sl">Podpora za konfiguriranje izdajatelja pri dodajanju novega računa</li>
-          <li xml:lang="tr">Support configuring issuer when adding new account</li>
+          <li xml:lang="tr">Yeni hesap eklerken sağlayıcıyı yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування видавця при додаванні нового облікового запису</li>
           <li xml:lang="zh-CN">在添加新账户时支持配置发行者</li>
           <li>Support for configuring advanced HOTP/TOTP token details</li>
@@ -419,7 +419,7 @@
           <li xml:lang="pt-BR">Suporte para configuração de detalhes avançados de tokens HOTP/TOTP</li>
           <li xml:lang="ru">Поддержка настройки расширенных параметров токенов HOTP/TOTP;</li>
           <li xml:lang="sl">Podpora za konfiguriranje naprednih podrobnosti žetonov HOTP/TOTP</li>
-          <li xml:lang="tr">Support for configuring advanced HOTP/TOTP token details</li>
+          <li xml:lang="tr">Gelişmiş HOTP/TOTP jeton ayrıntılarını yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування додаткових параметрів жетона HOTP/TOTP</li>
           <li xml:lang="zh-CN">支持配置高级 HOTP/TOTP 令牌详细信息</li>
           <li>Reduce latency when re-computing tokens</li>
@@ -435,7 +435,7 @@
           <li xml:lang="pt-BR">Redução da latência ao recalcular tokens</li>
           <li xml:lang="ru">Снижение задержки при повторном вычислении токенов;</li>
           <li xml:lang="sl">Zmanjšajte zakasnitev pri ponovnem izračunu žetonov</li>
-          <li xml:lang="tr">Reduce latency when re-computing tokens</li>
+          <li xml:lang="tr">Jetonları yeniden hesaplarken gecikmeyi azalt</li>
           <li xml:lang="uk">Зменшено латентність при повторному обчисленні жетонів</li>
           <li xml:lang="zh-CN">在重新计算令牌时减少延迟</li>
           <li>Add basic support for otpauth:// URI parsing</li>
@@ -451,7 +451,7 @@
           <li xml:lang="pt-BR">Adicionado suporte básico para análise de URI otpauth://</li>
           <li xml:lang="ru">Добавлена базовая поддержка анализа URI otpauth://;</li>
           <li xml:lang="sl">Doda osnovno podporo za razčlenjevanje URI-jev otpauth://</li>
-          <li xml:lang="tr">Add basic support for otpauth:// URI parsing</li>
+          <li xml:lang="tr">otpauth:// URI ayrıştırması için temel destek ekle</li>
           <li xml:lang="uk">Додано підтримку обробки адрес otpauth://</li>
           <li xml:lang="zh-CN">添加 otpauth:// URI 解析的基本支持</li>
           <li>Allow to accept otpauth:// URI from command line</li>
@@ -467,7 +467,7 @@
           <li xml:lang="pt-BR">Permite aceitar o URI otpauth:// da linha de comando</li>
           <li xml:lang="ru">Добавлена поддержка указания otpauth:// URI из командной строки;</li>
           <li xml:lang="sl">Dovoli sprejemanje URI-ja otpauth:// iz ukazne vrstice</li>
-          <li xml:lang="tr">Allow to accept otpauth:// URI from command line</li>
+          <li xml:lang="tr">Komut satırından otpauth:// URI’sinin kabul edilmesine izin ver</li>
           <li xml:lang="uk">Уможливлено прийняття адреси otpauth:// з командного рядка</li>
           <li xml:lang="zh-CN">允许从命令行接受 otpauth:// URI</li>
           <li>Add a page to recover when account turns out to be already used while adding it</li>
@@ -483,7 +483,7 @@
           <li xml:lang="pt-BR">Adicionada uma página para recuperação de conta caso ela já esteja em uso durante o processo de cadastro</li>
           <li xml:lang="ru">Добавлена страница для восстановления, если учётная запись уже используется при её добавлении;</li>
           <li xml:lang="sl">Doda stran za obnovitev, ko se izkaže, da je račun že uporabljen med dodajanjem</li>
-          <li xml:lang="tr">Add a page to recover when account turns out to be already used while adding it</li>
+          <li xml:lang="tr">Hesap eklenirken zaten kullanımda olduğu anlaşıldığında kurtarma için bir sayfa ekle</li>
           <li xml:lang="uk">Додано сторінку відновлення при роботі з обліковими записами, які вже було використано, під час додавання записів</li>
           <li xml:lang="zh-CN">添加一个页面以便在账户已经被使用时恢复并添加它</li>
           <li>Add actions to dismiss/cancel an add account form</li>
@@ -499,7 +499,7 @@
           <li xml:lang="pt-BR">Adicionadas ações para fechar/cancelar um formulário de adição de conta</li>
           <li xml:lang="ru">Добавлены действия для закрытия формы добавления учётной записи;</li>
           <li xml:lang="sl">Doda dejanje za zavrnitev/preklic obrazca za dodajanje računa</li>
-          <li xml:lang="tr">Add actions to dismiss/cancel an add account form</li>
+          <li xml:lang="tr">Hesap ekleme formunu kapatma/iptal etme eylemleri ekle</li>
           <li xml:lang="uk">Додано дії для закриття або скасування форми додавання облікового запису</li>
           <li xml:lang="zh-CN">添加操作以解除/取消一个新增账户表单</li>
           <li>Respond to D-Bus activation, allows to open keysmith when already running</li>
@@ -515,7 +515,7 @@
           <li xml:lang="pt-BR">Responde à ativação do D-Bus, permitindo abrir o keysmith mesmo quando ele já estiver em execução</li>
           <li xml:lang="ru">Ответ на активацию через D-Bus; позволяет открыть Keysmith при уже запущенном приложении.</li>
           <li xml:lang="sl">Odzove se na aktivacijo D-Busa, omogoči odpiranje Keysmitha, ko je že zagnan</li>
-          <li xml:lang="tr">Respond to D-Bus activation, allows to open keysmith when already running</li>
+          <li xml:lang="tr">D-Bus etkinleştirmesine yanıt ver, zaten çalışırken Çilingir’in açılmasına izin verir</li>
           <li xml:lang="uk">Реалізовано відповідь на активацію D-Bus, що уможливлює відкриття keysmith, якщо програму вже запущено</li>
           <li xml:lang="zh-CN">响应 D-Bus 激活，允许在已经运行时打开 keysmith。</li>
         </ul>
