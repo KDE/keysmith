@@ -584,7 +584,3 @@ msgstr "Keysmith"
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE Community"
-
-#~ msgctxt "Button cancelling account removal"
-#~ msgid "Cancel"
-#~ msgstr "Cancel·la"
