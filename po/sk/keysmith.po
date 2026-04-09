@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.08.3\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -21,6 +21,7 @@ msgctxt "@info (<uri> placeholder)"
 msgid ""
 "Optional account to add, formatted as otpauth:// URI (e.g. from a QR code)"
 msgstr ""
+"Voliteľný účet na pridanie, formátovaný ako otpauth:// URI (napr. z QR kódu)"
 
 #: src/app/flows_p.cpp:111 src/app/flows_p.cpp:285
 #, kde-format
@@ -35,6 +36,8 @@ msgid ""
 "The account you are trying to add is invalid. You can either quit the app, "
 "or continue without adding the account."
 msgstr ""
+"Účet, ktorý sa pokúšate pridať, je neplatný. Môžete buď ukončiť aplikáciu, "
+"alebo pokračovať bez pridania účtu."
 
 #: src/app/flows_p.cpp:286
 #, kde-format
@@ -43,75 +46,71 @@ msgid ""
 "The account you are trying to add is invalid. Continue without adding the "
 "account."
 msgstr ""
+"Účet, ktorý sa pokúšate pridať, je neplatný. Pokračovať bez pridania účtu."
 
 #: src/contents/ui/AccountEntryViewBase.qml:35
-#, fuzzy, kde-format
-#| msgctxt "Button for removal of a single account"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Details dialog title: %1 is the name of the account"
 msgid "Details of account: %1"
-msgstr "Odstrániť účet"
+msgstr "Details of account: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:42
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Názov:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:49
 #, kde-format
 msgid "Issuer:"
-msgstr ""
+msgstr "Vydavateľ:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:56
 #, kde-format
 msgid "Mode:"
-msgstr ""
+msgstr "Režim:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "HOTP"
-msgstr ""
+msgstr "HOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:57
 #, kde-format
 msgctxt "Mode of 2fa"
 msgid "TOTP"
-msgstr ""
+msgstr "TOTP"
 
 #: src/contents/ui/AccountEntryViewBase.qml:63
 #, kde-format
 msgid "Epoch:"
-msgstr ""
+msgstr "Epocha:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:70
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Timer:"
+#, kde-format
 msgid "Time Step:"
 msgstr "Časovač:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:77
 #, kde-format
 msgid "Offset:"
-msgstr ""
+msgstr "Posun:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:84
-#, fuzzy, kde-format
-#| msgid "Token secret"
+#, kde-format
 msgid "Token Length:"
 msgstr "Tajomstvo tokenu"
 
 #: src/contents/ui/AccountEntryViewBase.qml:91
 #, kde-format
 msgid "Hash:"
-msgstr ""
+msgstr "Hash:"
 
 #: src/contents/ui/AccountEntryViewBase.qml:100
 #, kde-format
 msgctxt "Confirm dialog title: %1 is the name of the account to remove"
 msgid "Removing account: %1"
-msgstr ""
+msgstr "Odstránenie účtu: %1"
 
 #: src/contents/ui/AccountEntryViewBase.qml:105
 #, kde-format
@@ -124,11 +123,15 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
+"<p><ul><li>Názov účtu: %1</li><li>Vydavateľ účtu: %2</li></ul></"
+"p><p>Odstránenie tohto účtu z Keysmith nevypne dvojfaktorové overenie (2FA). "
+"Pred pokračovaním sa uistite, že máte stále prístup k svojmu účtu bez "
+"použitia Keysmith:</p><ul><li>Uistite sa, že máte pre svoj účet nastavenú "
+"inú aplikáciu 2FA, alebo:</li><li>Uistite sa, že máte záložné kódy pre svoj "
+"účet, alebo:</li><li>Vypnite dvojfaktorové overenie pre svoj účet</li></ul>"
 
 #: src/contents/ui/AccountEntryViewBase.qml:116
-#, fuzzy, kde-format
-#| msgctxt "Button confirming account removal"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "Button confirming account removal"
 msgid "Delete Account"
 msgstr "Odstrániť účet"
@@ -137,20 +140,16 @@ msgstr "Odstrániť účet"
 #, kde-format
 msgctxt "Notification shown in a passive notification"
 msgid "Token copied to clipboard!"
-msgstr ""
+msgstr "Token bol skopírovaný do schránky!"
 
 #: src/contents/ui/AccountNameForm.qml:81
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account name:"
 msgstr "Názov účt&u:"
 
 #: src/contents/ui/AccountNameForm.qml:100
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Account Name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Názov účt&u:"
@@ -165,25 +164,21 @@ msgstr "Účty"
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
-msgstr ""
+msgstr "Nepodarilo sa aktualizovať účty"
 
 #: src/contents/ui/AccountsOverview.qml:26
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
-msgstr ""
+msgstr "Niektoré účty sa nepodarilo načítať."
 
 #: src/contents/ui/AccountsOverview.qml:91
 #, kde-format
 msgid "No accounts added"
-msgstr ""
+msgstr "Žiadne pridané účty"
 
 #: src/contents/ui/AccountsOverview.qml:96
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "@action:button add new account, shown instead of overview list when no "
-#| "accounts have been added yet"
-#| msgid "Add account"
+#, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
 "accounts have been added yet"
@@ -200,14 +195,14 @@ msgstr "Pridať"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Importovať"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Skenovať QR kód"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -222,24 +217,19 @@ msgid "Cancel"
 msgstr "Zrušiť"
 
 #: src/contents/ui/AddAccount.qml:57
-#, fuzzy, kde-format
-#| msgctxt "@action:button Dismiss the error page and quit Keysmtih"
-#| msgid "Quit"
+#, kde-format
 msgctxt "@action:button Dismiss the error page and quit Keysmith"
 msgid "Quit"
 msgstr "Ukončiť"
 
 #: src/contents/ui/AddAccount.qml:66
-#, fuzzy, kde-format
-#| msgid "Add"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add"
 msgstr "Pridať"
 
 #: src/contents/ui/AddAccount.qml:86
-#, fuzzy, kde-format
-#| msgctxt "@label:chooser"
-#| msgid "Account Type:"
+#, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
 msgstr "Typ účtu:"
@@ -248,13 +238,13 @@ msgstr "Typ účtu:"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Time-based OTP"
-msgstr ""
+msgstr "Časovo založené OTP"
 
 #: src/contents/ui/AddAccount.qml:106
 #, kde-format
 msgctxt "@option:radio"
 msgid "Hash-based OTP"
-msgstr ""
+msgstr "Hašovo založené OTP"
 
 #: src/contents/ui/AddAccount.qml:118
 #, kde-format
@@ -274,17 +264,13 @@ msgid "Details"
 msgstr "Podrobnosti"
 
 #: src/contents/ui/AddAccount.qml:147
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@title:group"
 msgid "HOTP Details:"
 msgstr "Podrobnosti"
 
 #: src/contents/ui/AddAccount.qml:160
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
 msgstr "Podrobnosti"
@@ -303,9 +289,7 @@ msgstr "Ukončiť"
 
 #: src/contents/ui/HOTPAccountEntryView.qml:19
 #: src/contents/ui/TOTPAccountEntryView.qml:23
-#, fuzzy, kde-format
-#| msgctxt "Button to reveal form for configuring additional token details"
-#| msgid "Details"
+#, kde-format
 msgctxt "Button to show details of a single account"
 msgid "Show details"
 msgstr "Podrobnosti"
@@ -328,87 +312,83 @@ msgstr "Počítadlo:"
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Token length:"
-msgstr ""
+msgstr "Dĺžka tokenu:"
 
 #: src/contents/ui/HOTPDetailsForm.qml:63
 #, kde-format
 msgctxt "@option:check"
 msgid "Add checksum digit"
-msgstr ""
+msgstr "Pridať kontrolnú číslicu"
 
 #: src/contents/ui/HOTPDetailsForm.qml:75
 #, kde-format
 msgctxt "@option:check"
 msgid "Use custom truncation offset"
-msgstr ""
+msgstr "Použiť vlastný odsek skrátenia"
 
 #: src/contents/ui/HOTPDetailsForm.qml:89
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Truncation offset:"
-msgstr ""
+msgstr "Odsek skrátenia:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Accounts"
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Účty"
+msgstr "Pridať účet"
 
 #: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Importovať format"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP šifrovaný JSON"
 
 #: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP nešifrovaný JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis nešifrovaný JSON"
 
 #: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP URI"
 
 #: src/contents/ui/ImportAccount.qml:83
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Záložný súbor:"
 
 #: src/contents/ui/ImportAccount.qml:86
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Nie je vybraný žiadny súbor"
 
 #: src/contents/ui/ImportAccount.qml:90
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Vybrať súbor"
 
 #: src/contents/ui/ImportAccount.qml:104
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Verify password:"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Overenie hesla:"
@@ -423,13 +403,11 @@ msgstr "Heslo:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importovať"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "About Keysmith"
 msgstr "Keysmith"
 
@@ -437,31 +415,31 @@ msgstr "Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Naskenovať QR kód"
 
 #: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Vybrať kameru"
 
 #: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Vybrať kameru"
 
 #: src/contents/ui/QRScanPage.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Zavrieť"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
 msgctxt "@title:window"
 msgid "Rename account to add"
-msgstr ""
+msgstr "Premenovať pridávaný účet"
 
 #: src/contents/ui/RenameAccount.qml:35
 #, kde-format
@@ -472,6 +450,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
+"Iný účet s rovnakým názvom už existuje. Prosím, opravte názov alebo "
+"vydavateľa pre nový účet."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
@@ -493,17 +473,15 @@ msgstr "Heslo"
 #: src/contents/ui/SetupPassword.qml:27
 #, kde-format
 msgid "Failed to set up your password"
-msgstr ""
+msgstr "Nepodarilo sa nastaviť vaše heslo"
 
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr ""
+msgstr "Vyberte si heslo na ochranu vašich účtov"
 
 #: src/contents/ui/SetupPassword.qml:48
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "New password:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "New Password:"
 msgstr "Nové heslo:"
@@ -515,8 +493,7 @@ msgid "Verify password:"
 msgstr "Overenie hesla:"
 
 #: src/contents/ui/SetupPassword.qml:72
-#, fuzzy, kde-format
-#| msgid "Apply"
+#, kde-format
 msgctxt "@action:button"
 msgid "Apply"
 msgstr "Použiť"
@@ -537,13 +514,13 @@ msgstr "Časovač:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Starting at:"
-msgstr ""
+msgstr "Začínajúc na:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:79
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Hash algorithm:"
-msgstr ""
+msgstr "Algoritmus hash:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:86
 #, kde-format
@@ -566,16 +543,15 @@ msgstr "SHA-512"
 #: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
 msgid "Failed to unlock your accounts"
-msgstr ""
+msgstr "Nepodarilo sa odomknúť vaše účty"
 
 #: src/contents/ui/UnlockAccounts.qml:43
 #, kde-format
 msgid "Please provide the password to unlock your accounts"
-msgstr ""
+msgstr "Zadajte heslo na odomknutie vašich účtov"
 
 #: src/contents/ui/UnlockAccounts.qml:61
-#, fuzzy, kde-format
-#| msgid "Unlock"
+#, kde-format
 msgctxt "@action:button"
 msgid "Unlock"
 msgstr "Odomknúť"
@@ -589,19 +565,17 @@ msgstr "Keysmith"
 #: src/main.cpp:74
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
-msgstr ""
+msgstr "generovanie tokenov dvojfaktorovej autentifikácie (2FA)"
 
 #: src/main.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Keysmith"
+#, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
 #: src/main.cpp:81
 #, kde-format
 msgid "© 2019 KDE Community"
-msgstr ""
+msgstr "© 2019 Komunita KDE"
 
 #~ msgctxt "Button cancelling account removal"
 #~ msgid "Cancel"
