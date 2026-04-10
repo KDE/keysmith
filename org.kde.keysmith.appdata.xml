@@ -99,6 +99,7 @@
   <summary xml:lang="ro">Generator de coduri cu doi factori pentru Plasma Mobile și Desktop</summary>
   <summary xml:lang="ru">Средство создания двухфакторных кодов для Plasma для мобильных устройств и настольных компьютеров</summary>
   <summary xml:lang="sa">प्लाज्मा मोबाईल् तथा डेस्कटॉप् इत्येतयोः कृते द्वि-कारक-सङ्केत-जनरेटरः</summary>
+  <summary xml:lang="sk">Generátor dvojfaktorových kódov pre Plasma Mobile a Desktop</summary>
   <summary xml:lang="sl">Dvofaktorski generator kod za Plasma Mobile in Desktop</summary>
   <summary xml:lang="sv">Tvåfaktors kodgenerator för Plasma mobil och skrivbord</summary>
   <summary xml:lang="tr">Plasma Cep ve Masaüstü için iki aşamalı kod üreteci</summary>
@@ -141,6 +142,7 @@
     <p xml:lang="ro">Keysmith generează jetoane pentru autentificare cu doi factori (2FA)</p>
     <p xml:lang="ru">Keysmith создаёт маркеры для входа с использованием двухфакторной аутентификации (2FA)</p>
     <p xml:lang="sa">कीस्मिथः भवतः द्वि-कारक-प्रवेशानां कृते टोकन-जनयति (2FA) ।</p>
+    <p xml:lang="sk">Keysmith generuje tokeny pre vaše dvojfaktorové prihlásenia (2FA)</p>
     <p xml:lang="sl">Keysmith ustvari žetone za vaše dvo-faktorske prijave (2FA)</p>
     <p xml:lang="sv">Keysmith genererar symboler för tvåfaktors inloggningar (2FA)</p>
     <p xml:lang="tr">Çilingir, iki aşamalı oturum açmalar (2FA) için jetonlar üretir</p>
@@ -180,6 +182,7 @@
       <li xml:lang="ro">OTP bazat pe oră și hash</li>
       <li xml:lang="ru">OTP на основе данных времени и хеша</li>
       <li xml:lang="sa">समयः तथा हैश-आधारितः ओटीपी</li>
+      <li xml:lang="sk">Časové a hašové jednorazové heslá (OTP)</li>
       <li xml:lang="sl">Časovno in razsuto osnovana enkratna gesla</li>
       <li xml:lang="sv">Tids- och kondensatbaserad OTP</li>
       <li xml:lang="tr">Zaman ve Sağlama tabanlı tek kullanımlık parola</li>
@@ -300,6 +303,7 @@
           <li xml:lang="nl">Algemene verbeteringen aan de code en reparatie van fouten</li>
           <li xml:lang="pt-BR">Melhorias gerais no código e correção de bugs</li>
           <li xml:lang="ru">Общие улучшения кода и исправление ошибок;</li>
+          <li xml:lang="sk">Všeobecné vylepšenia kódu a opravy chýb</li>
           <li xml:lang="sl">Splošne izboljšave kode in odpravljanje napak</li>
           <li xml:lang="tr">Genel kod iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Загальне удосконалення програмного коду та виправлення вад</li>
@@ -328,6 +332,7 @@
           <li xml:lang="nl">Standaard grootte van hoofdvenster verminderen</li>
           <li xml:lang="pt-BR">Redução do tamanho padrão da janela principal</li>
           <li xml:lang="ru">Уменьшен размер главного окна по умолчанию;</li>
+          <li xml:lang="sk">Zmenšenie predvolenej veľkosti hlavného okna</li>
           <li xml:lang="sl">Zmanjša privzeto velikost glavnega okna</li>
           <li xml:lang="tr">Ana pencerenin öntanımlı boyutunu küçült</li>
           <li xml:lang="uk">Зменшено типовий розмір головного вікна</li>
@@ -346,6 +351,7 @@
           <li xml:lang="nl">Standaard op wachtwoordveld focussen bij opstarten</li>
           <li xml:lang="pt-BR">Ao iniciar o aplicativo, o campo de senha fica em foco por padrão</li>
           <li xml:lang="ru">При запуске по умолчанию фокус передаётся на поле пароля;</li>
+          <li xml:lang="sk">Zameranie poľa hesla pri spustení v predvolenom nastavení</li>
           <li xml:lang="sl">Privzeto fokus na polju za geslo ob zagonu</li>
           <li xml:lang="tr">Başlangıçta parola alanına öntanımlı olarak odaklan</li>
           <li xml:lang="uk">Реалізовано типове фокусування поля пароля після запуску</li>
@@ -378,6 +384,7 @@
         <p xml:lang="nl">Plasma Mobile Gear 21.06 uitgave</p>
         <p xml:lang="pt-BR">Lançamento do Plasma Mobile Gear 21.06</p>
         <p xml:lang="ru">Выпуск Plasma Mobile Gear 21.06</p>
+        <p xml:lang="sk">Plasma Mobile Gear 21.06 release</p>
         <p xml:lang="sl">Izdaja Plasma Mobile Gear 21.06</p>
         <p xml:lang="tr">Plasma Mobile Gear 21.06 yayımı</p>
         <p xml:lang="uk">Випуск Plasma Mobile Gear 21.06</p>
@@ -397,6 +404,7 @@
           <li xml:lang="nl">Basis ondersteuning voor eigenschap van uitgever van account in keysmith</li>
           <li xml:lang="pt-BR">Suporte básico para a propriedade do emissor da conta no keysmith</li>
           <li xml:lang="ru">Базовая поддержка свойства эмитента учётной записи в Keysmith;</li>
+          <li xml:lang="sk">Základná podpora vlastnosti vydavateľa účtu v Keysmith</li>
           <li xml:lang="sl">Osnovna podpora za lastnost izdajatelja računa v Keysmithu</li>
           <li xml:lang="tr">Çilingir’de hesap sağlayıcı özelliği için temel destek</li>
           <li xml:lang="uk">Базова підтримка властивості видавця облікового запису у keysmith</li>
@@ -415,6 +423,7 @@
           <li xml:lang="nl">Ondersteuning voor configureren van uitgever van account bij toevoegen van nieuw account</li>
           <li xml:lang="pt-BR">Suporte para configuração da entidade emissora ao adicionar uma nova conta</li>
           <li xml:lang="ru">Настройка издателя при добавлении новой учётной записи;</li>
+          <li xml:lang="sk">Podpora nastavenia vydavateľa pri pridávaní nového účtu</li>
           <li xml:lang="sl">Podpora za konfiguriranje izdajatelja pri dodajanju novega računa</li>
           <li xml:lang="tr">Yeni hesap eklerken sağlayıcıyı yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування видавця при додаванні нового облікового запису</li>
@@ -433,6 +442,7 @@
           <li xml:lang="nl">Ondersteuning voor het configureren van geavanceerde HOTP/TOTP-tokendetails</li>
           <li xml:lang="pt-BR">Suporte para configuração de detalhes avançados de tokens HOTP/TOTP</li>
           <li xml:lang="ru">Поддержка настройки расширенных параметров токенов HOTP/TOTP;</li>
+          <li xml:lang="sk">Podpora nastavenia pokročilých podrobností tokenov HOTP/TOTP</li>
           <li xml:lang="sl">Podpora za konfiguriranje naprednih podrobnosti žetonov HOTP/TOTP</li>
           <li xml:lang="tr">Gelişmiş HOTP/TOTP jeton ayrıntılarını yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування додаткових параметрів жетона HOTP/TOTP</li>
@@ -451,6 +461,7 @@
           <li xml:lang="nl">Verminder de latentie bij het opnieuw berekenen van tokens</li>
           <li xml:lang="pt-BR">Redução da latência ao recalcular tokens</li>
           <li xml:lang="ru">Снижение задержки при повторном вычислении токенов;</li>
+          <li xml:lang="sk">Zníženie latencie pri prepočítavaní tokenov</li>
           <li xml:lang="sl">Zmanjšajte zakasnitev pri ponovnem izračunu žetonov</li>
           <li xml:lang="tr">Jetonları yeniden hesaplarken gecikmeyi azalt</li>
           <li xml:lang="uk">Зменшено латентність при повторному обчисленні жетонів</li>
@@ -469,6 +480,7 @@
           <li xml:lang="nl">Voeg basisondersteuning toe voor het ontleden van otpauth:// URI's</li>
           <li xml:lang="pt-BR">Adicionado suporte básico para análise de URI otpauth://</li>
           <li xml:lang="ru">Добавлена базовая поддержка анализа URI otpauth://;</li>
+          <li xml:lang="sk">Pridanie základnej podpory spracovania otpauth:// URI</li>
           <li xml:lang="sl">Doda osnovno podporo za razčlenjevanje URI-jev otpauth://</li>
           <li xml:lang="tr">otpauth:// URI ayrıştırması için temel destek ekle</li>
           <li xml:lang="uk">Додано підтримку обробки адрес otpauth://</li>
@@ -487,6 +499,7 @@
           <li xml:lang="nl">Sta toe dat otpauth:// URI's vanaf de commandoregel worden geaccepteerd</li>
           <li xml:lang="pt-BR">Permite aceitar o URI otpauth:// da linha de comando</li>
           <li xml:lang="ru">Добавлена поддержка указания otpauth:// URI из командной строки;</li>
+          <li xml:lang="sk">Umožnenie prijatia otpauth:// URI z príkazového riadka</li>
           <li xml:lang="sl">Dovoli sprejemanje URI-ja otpauth:// iz ukazne vrstice</li>
           <li xml:lang="tr">Komut satırından otpauth:// URI’sinin kabul edilmesine izin ver</li>
           <li xml:lang="uk">Уможливлено прийняття адреси otpauth:// з командного рядка</li>
@@ -505,6 +518,7 @@
           <li xml:lang="nl">Voeg een herstelpagina toe voor het geval blijkt dat het account al in gebruik is tijdens het toevoegen</li>
           <li xml:lang="pt-BR">Adicionada uma página para recuperação de conta caso ela já esteja em uso durante o processo de cadastro</li>
           <li xml:lang="ru">Добавлена страница для восстановления, если учётная запись уже используется при её добавлении;</li>
+          <li xml:lang="sk">Pridanie stránky na obnovenie, keď sa pri pridávaní účtu zistí, že sa už používa</li>
           <li xml:lang="sl">Doda stran za obnovitev, ko se izkaže, da je račun že uporabljen med dodajanjem</li>
           <li xml:lang="tr">Hesap eklenirken zaten kullanımda olduğu anlaşıldığında kurtarma için bir sayfa ekle</li>
           <li xml:lang="uk">Додано сторінку відновлення при роботі з обліковими записами, які вже було використано, під час додавання записів</li>
@@ -523,6 +537,7 @@
           <li xml:lang="nl">Voeg acties toe om een ​​formulier voor het toevoegen van een account te sluiten/annuleren</li>
           <li xml:lang="pt-BR">Adicionadas ações para fechar/cancelar um formulário de adição de conta</li>
           <li xml:lang="ru">Добавлены действия для закрытия формы добавления учётной записи;</li>
+          <li xml:lang="sk">Pridanie akcií na zavretie/zrušenie formulára pridania účtu</li>
           <li xml:lang="sl">Doda dejanje za zavrnitev/preklic obrazca za dodajanje računa</li>
           <li xml:lang="tr">Hesap ekleme formunu kapatma/iptal etme eylemleri ekle</li>
           <li xml:lang="uk">Додано дії для закриття або скасування форми додавання облікового запису</li>
@@ -541,6 +556,7 @@
           <li xml:lang="nl">Reageert op D-Bus-activering, waardoor Keysmith geopend kan worden terwijl het programma al actief is.</li>
           <li xml:lang="pt-BR">Responde à ativação do D-Bus, permitindo abrir o keysmith mesmo quando ele já estiver em execução</li>
           <li xml:lang="ru">Ответ на активацию через D-Bus; позволяет открыть Keysmith при уже запущенном приложении.</li>
+          <li xml:lang="sk">Reakcia na aktiváciu D-Bus, umožňuje otvoriť Keysmith, keď už beží</li>
           <li xml:lang="sl">Odzove se na aktivacijo D-Busa, omogoči odpiranje Keysmitha, ko je že zagnan</li>
           <li xml:lang="tr">D-Bus etkinleştirmesine yanıt ver, zaten çalışırken Çilingir’in açılmasına izin verir</li>
           <li xml:lang="uk">Реалізовано відповідь на активацію D-Bus, що уможливлює відкриття keysmith, якщо програму вже запущено</li>
