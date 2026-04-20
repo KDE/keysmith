@@ -47,5 +47,6 @@ AccountEntryViewBase {
         accountName: account.name
         tokenValue: account.token
         labelColor: listItem.labelColor
+        actionsOverlayWidth: listItem.overlayWidth
     }
 }
