@@ -299,6 +299,7 @@
           <li xml:lang="he">שיפורי קוד ותיקוני תקלות כלליים</li>
           <li xml:lang="ia">Melioramento general de codice e correctiones de faltas</li>
           <li xml:lang="ka">ზოგადი კოდის გაუმჯობესება და შეცდომების გასწორება</li>
+          <li xml:lang="ko">일반 코드 개선과 버그 수정</li>
           <li xml:lang="lt">Bendri kodo patobulinimai ir klaidų pataisymai</li>
           <li xml:lang="nl">Algemene verbeteringen aan de code en reparatie van fouten</li>
           <li xml:lang="pt-BR">Melhorias gerais no código e correção de bugs</li>
@@ -328,6 +329,7 @@
           <li xml:lang="he">הקטנת גודל ברירת המחדל של החלון הראשי</li>
           <li xml:lang="ia">Reduce grandor predefinite de fenestra principal</li>
           <li xml:lang="ka">შემცირდა მთავარი ფანჯრის ნაგულისხმევი ზომა</li>
+          <li xml:lang="ko">주 창 기본 크기 축소</li>
           <li xml:lang="lt">Sumažintas numatytasis pagrindinio lango dydis</li>
           <li xml:lang="nl">Standaard grootte van hoofdvenster verminderen</li>
           <li xml:lang="pt-BR">Redução do tamanho padrão da janela principal</li>
@@ -347,6 +349,7 @@
           <li xml:lang="he">התמקדות בשדה הסיסמה כברירת מחדל עם העלייה</li>
           <li xml:lang="ia">Campo do focalisar de contrasigno predefinite al lancear</li>
           <li xml:lang="ka">გაშვებისას ფოკუსის ნაგულისხმევად პაროლის ველზე დაყენება</li>
+          <li xml:lang="ko">실행할 때 기본값으로 암호 필드에 포커스 맞추기</li>
           <li xml:lang="lt">Paleidimo metu pagal numatymą fokusuojamas slaptažodžio laukas</li>
           <li xml:lang="nl">Standaard op wachtwoordveld focussen bij opstarten</li>
           <li xml:lang="pt-BR">Ao iniciar o aplicativo, o campo de senha fica em foco por padrão</li>
@@ -380,6 +383,7 @@
         <p xml:lang="he">מהדורת 21.06 של Plasma Mobile Gear</p>
         <p xml:lang="ia">Plasma Mobile Gear version 21.06</p>
         <p xml:lang="ka">გამოშვება Plasma Mobile Gear 21.06</p>
+        <p xml:lang="ko">Plasma 모바일 기어 21.06 릴리스</p>
         <p xml:lang="lt">Plasma Mobile Gear 21.06 laida</p>
         <p xml:lang="nl">Plasma Mobile Gear 21.06 uitgave</p>
         <p xml:lang="pt-BR">Lançamento do Plasma Mobile Gear 21.06</p>
