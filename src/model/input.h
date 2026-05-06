@@ -113,7 +113,9 @@ public:
     enum ImportFormat {
         FreeOTPURIs,
         AndOTPPlainJSON, AndOTPEncryptedJSON,
-        AegisPlainJSON, AegisEncryptedJSON,
+        AegisPlainJSON,
+        AegisEncryptedJSON,
+        SailOTPDecryptedJson
     };
     Q_ENUM(ImportFormat)
     ImportInput(QObject *parent = nullptr);

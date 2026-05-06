@@ -388,6 +388,45 @@ static void readAndOTP(QVector<AccountInput *> &ret, const QByteArray &data)
     }
 }
 
+static void readSailOtpDecryptedJson(QVector<AccountInput *> &ret, const QByteArray &data)
+{
+    QJsonDocument json = QJsonDocument::fromJson(data);
+    QJsonArray array(json.object()["otplist"_L1].toArray());
+    ret.reserve(array.size());
+    for (const auto &obj : array) {
+        const QJsonObject &otp(obj.toObject());
+        AccountInput *account = new AccountInput;
+
+        QStringList tokens(otp["title"_L1].toString().split(':'_L1));
+        if (tokens.size() >= 2) {
+            account->setIssuer(tokens[0]);
+            account->setName(tokens[1]);
+        } else {
+            account->setName(tokens[0]);
+        }
+        account->setTokenLength(otp["len"_L1].toInt());
+
+        QString type(otp["type"_L1].toString());
+        if (type == "TOTP"_L1) {
+            account->setType(AccountInput::Totp);
+            account->setTimeStep(otp["period"_L1].toInt());
+        } else if (type == "HOTP"_L1) {
+            account->setType(AccountInput::Hotp);
+            account->setCounter(otp["counter"_L1].toInt());
+        }
+
+        QString secret(otp["secret"_L1].toString());
+        if (secret.size() % 8 != 0) {
+            secret.resize((secret.size() + 7) & -8, '='_L1);
+        }
+        account->setSecret(secret);
+
+        account->setAlgorithm(AccountInput::Sha1);
+
+        ret.push_back(account);
+    }
+}
+
 static void readAegis(QVector<AccountInput *> &ret, const QByteArray &data)
 {
     QJsonDocument json = QJsonDocument::fromJson(data);
@@ -459,6 +498,8 @@ QVector<AccountInput *> ImportInput::importAccounts() const
     case AegisPlainJSON:
         readAegis(ret, data);
         break;
+    case SailOTPDecryptedJson:
+        readSailOtpDecryptedJson(ret, data);
     default:
         break;
     }

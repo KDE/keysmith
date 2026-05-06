@@ -65,6 +65,7 @@ FormCard.FormCardPage {
                     //append({name: i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
                     append({name: i18nc("@item:inlistbox", "Aegis Plain JSON"), value: Models.ValidatedImportInput.AegisPlainJSON});
                     append({name: i18nc("@item:inlistbox", "FreeOTP URIs"), value: Models.ValidatedImportInput.FreeOTPURIs});
+                    append({name: i18nc("@item:inlistbox", "SailOTP manually decrypted json"), value: Models.ValidatedImportInput.SailOTPDecryptedJson});
 
                     formatCombobox.currentIndex = 0;
                 }
