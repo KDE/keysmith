@@ -127,7 +127,7 @@ public:
     void setFormat(model::ImportInput::ImportFormat format);
     QString password(void) const;
     void setPassword(const QString &password);
-    QVector<AccountInput *> importAccounts() const;
+    std::vector<std::unique_ptr<AccountInput>> importAccounts() const;
 Q_SIGNALS:
     void fileChanged(void);
     void formatChanged(void);

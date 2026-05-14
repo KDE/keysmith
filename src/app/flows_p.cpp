@@ -230,8 +230,8 @@ void ManualImportAccountFlow::run(void)
 
 void ManualImportAccountFlow::onAccepted(void)
 {
-    for (model::AccountInput *input : m_input->importAccounts()) {
-        accountListOf(m_app)->addAccount(input);
+    for (std::unique_ptr<model::AccountInput> &input : m_input->importAccounts()) {
+        accountListOf(m_app)->addAccount(input.get());
     }
     QTimer::singleShot(0, this, &ManualImportAccountFlow::back);
 }

@@ -315,26 +315,26 @@ void ImportInput::setPassword(const QString &password)
     }
 }
 
-static void readUris(QVector<AccountInput *> &ret, QByteArray &data)
+static void readUris(std::vector<std::unique_ptr<AccountInput>> &ret, QByteArray &data)
 {
     QBuffer buf(&data);
     buf.open(QIODevice::ReadOnly);
     while (!buf.atEnd()) {
-        AccountInput *account = new AccountInput;
+        auto account = std::make_unique<AccountInput>();
         std::optional<QrParameters> params(QrParameters::parse(buf.readLine()));
-        params->populate(account);
-        ret.push_back(account);
+        params->populate(account.get());
+        ret.push_back(std::move(account));
     }
 }
 
-static void readAndOTP(QVector<AccountInput *> &ret, const QByteArray &data)
+static void readAndOTP(std::vector<std::unique_ptr<AccountInput>> &ret, const QByteArray &data)
 {
     QJsonDocument json = QJsonDocument::fromJson(data);
     QJsonArray array(json.array());
     ret.reserve(array.size());
     for (const auto& obj : array) {
         const QJsonObject& otp(obj.toObject());
-        AccountInput *account = new AccountInput;
+        auto account = std::make_unique<AccountInput>();
 
         QString secret(otp["secret"_L1].toString());
         if (secret.size() % 8 != 0) {
@@ -384,18 +384,18 @@ static void readAndOTP(QVector<AccountInput *> &ret, const QByteArray &data)
             account->setAlgorithm(AccountInput::Sha512);
         }
 
-        ret.push_back(account);
+        ret.push_back(std::move(account));
     }
 }
 
-static void readSailOtpDecryptedJson(QVector<AccountInput *> &ret, const QByteArray &data)
+static void readSailOtpDecryptedJson(std::vector<std::unique_ptr<AccountInput>> &ret, const QByteArray &data)
 {
     QJsonDocument json = QJsonDocument::fromJson(data);
     QJsonArray array(json.object()["otplist"_L1].toArray());
     ret.reserve(array.size());
     for (const auto &obj : array) {
         const QJsonObject &otp(obj.toObject());
-        AccountInput *account = new AccountInput;
+        auto account = std::make_unique<AccountInput>();
 
         QStringList tokens(otp["title"_L1].toString().split(':'_L1));
         if (tokens.size() >= 2) {
@@ -423,18 +423,18 @@ static void readSailOtpDecryptedJson(QVector<AccountInput *> &ret, const QByteAr
 
         account->setAlgorithm(AccountInput::Sha1);
 
-        ret.push_back(account);
+        ret.push_back(std::move(account));
     }
 }
 
-static void readAegis(QVector<AccountInput *> &ret, const QByteArray &data)
+static void readAegis(std::vector<std::unique_ptr<AccountInput>> &ret, const QByteArray &data)
 {
     QJsonDocument json = QJsonDocument::fromJson(data);
     QJsonArray array(json.object()["db"_L1].toObject()["entries"_L1].toArray());
     ret.reserve(array.size());
     for (const auto& obj : array) {
         const QJsonObject& otp(obj.toObject());
-        AccountInput *account = new AccountInput;
+        auto account = std::make_unique<AccountInput>();
 
         account->setIssuer(otp["issuer"_L1].toString());
         account->setName(otp["name"_L1].toString());
@@ -474,17 +474,17 @@ static void readAegis(QVector<AccountInput *> &ret, const QByteArray &data)
             account->setAlgorithm(AccountInput::Sha512);
         }
 
-        ret.push_back(account);
+        ret.push_back(std::move(account));
     }
 }
 
-QVector<AccountInput *> ImportInput::importAccounts() const
+std::vector<std::unique_ptr<AccountInput>> ImportInput::importAccounts() const
 {
     // TODO(yakoyoku): Find a way to propagate import errors back to the app flow
     QFile file(m_file);
     if (!file.open(QIODevice::ReadOnly)) return {};
     QByteArray data(file.readAll());
-    QVector<AccountInput *> ret;
+    std::vector<std::unique_ptr<AccountInput>> ret;
     switch (m_format) {
     case FreeOTPURIs:
         readUris(ret, data);
