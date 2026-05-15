@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-21 00:49+0000\n"
+"POT-Creation-Date: 2026-05-15 00:48+0000\n"
 "PO-Revision-Date: 2024-10-06 14:07+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -375,37 +375,43 @@ msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
 msgstr ""
 
-#: src/contents/ui/ImportAccount.qml:83
+#: src/contents/ui/ImportAccount.qml:68
+#, kde-format
+msgctxt "@item:inlistbox"
+msgid "SailOTP manually decrypted json"
+msgstr ""
+
+#: src/contents/ui/ImportAccount.qml:84
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
 msgstr ""
 
-#: src/contents/ui/ImportAccount.qml:86
+#: src/contents/ui/ImportAccount.qml:87
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
 msgstr ""
 
-#: src/contents/ui/ImportAccount.qml:90
+#: src/contents/ui/ImportAccount.qml:91
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
 msgstr ""
 
-#: src/contents/ui/ImportAccount.qml:104
+#: src/contents/ui/ImportAccount.qml:105
 #, fuzzy, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
 msgstr "Stadfest passordet:"
 
-#: src/contents/ui/ImportAccount.qml:106 src/contents/ui/UnlockAccounts.qml:49
+#: src/contents/ui/ImportAccount.qml:107 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Password:"
 msgstr "Passord:"
 
-#: src/contents/ui/ImportAccount.qml:117
+#: src/contents/ui/ImportAccount.qml:118
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
