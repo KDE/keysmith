@@ -372,7 +372,7 @@ msgstr "FreeOTP URI"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "SailOTP manually decrypted json"
-msgstr ""
+msgstr "SailOTP 手动解密 json"
 
 #: src/contents/ui/ImportAccount.qml:84
 #, kde-format
