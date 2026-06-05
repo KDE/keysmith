@@ -11,6 +11,7 @@ Item {
     property string accountName
     property string tokenValue
     property color labelColor
+    property real actionsOverlayWidth: 0
 
     id: root
     /*
@@ -42,6 +43,7 @@ Item {
         text: tokenValue && tokenValue.length > 0 ? tokenValue : i18nc("placeholder text if no token is available", "(refresh)")
         color: labelColor
         anchors.right: root.right
+        anchors.rightMargin: actionsOverlayWidth + Kirigami.Units.largeSpacing
         anchors.verticalCenter: root.verticalCenter
     }
 }
