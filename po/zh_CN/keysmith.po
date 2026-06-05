@@ -481,7 +481,7 @@ msgstr "设置密码失败"
 #: src/contents/ui/SetupPassword.qml:42
 #, kde-format
 msgid "Choose a password to protect your accounts"
-msgstr "输入用于保护您的账户的密码"
+msgstr "请输入密码以保护您的账户"
 
 #: src/contents/ui/SetupPassword.qml:48
 #, kde-format
