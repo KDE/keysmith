@@ -300,6 +300,7 @@
           <li xml:lang="fr">Améliorations générales du code et correction de bogues</li>
           <li xml:lang="he">שיפורי קוד ותיקוני תקלות כלליים</li>
           <li xml:lang="ia">Melioramento general de codice e correctiones de faltas</li>
+          <li xml:lang="it">Miglioramenti generali al codice e correzione di bug</li>
           <li xml:lang="ka">ზოგადი კოდის გაუმჯობესება და შეცდომების გასწორება</li>
           <li xml:lang="ko">일반 코드 개선과 버그 수정</li>
           <li xml:lang="lt">Bendri kodo patobulinimai ir klaidų pataisymai</li>
@@ -330,6 +331,7 @@
           <li xml:lang="fr">Réduire la taille par défaut de la fenêtre principale</li>
           <li xml:lang="he">הקטנת גודל ברירת המחדל של החלון הראשי</li>
           <li xml:lang="ia">Reduce grandor predefinite de fenestra principal</li>
+          <li xml:lang="it">Ridotta la dimensione predefinita della finestra principale</li>
           <li xml:lang="ka">შემცირდა მთავარი ფანჯრის ნაგულისხმევი ზომა</li>
           <li xml:lang="ko">주 창 기본 크기 축소</li>
           <li xml:lang="lt">Sumažintas numatytasis pagrindinio lango dydis</li>
@@ -350,6 +352,7 @@
           <li xml:lang="fr">Donner le focus au champ du mot de passe par défaut au lancement</li>
           <li xml:lang="he">התמקדות בשדה הסיסמה כברירת מחדל עם העלייה</li>
           <li xml:lang="ia">Campo do focalisar de contrasigno predefinite al lancear</li>
+          <li xml:lang="it">Campo della password attivato per impostazione predefinita all'avvio</li>
           <li xml:lang="ka">გაშვებისას ფოკუსის ნაგულისხმევად პაროლის ველზე დაყენება</li>
           <li xml:lang="ko">실행할 때 기본값으로 암호 필드에 포커스 맞추기</li>
           <li xml:lang="lt">Paleidimo metu pagal numatymą fokusuojamas slaptažodžio laukas</li>
@@ -384,6 +387,7 @@
         <p xml:lang="fr">Publication de Plasma Mobile Gear 21.06</p>
         <p xml:lang="he">מהדורת 21.06 של Plasma Mobile Gear</p>
         <p xml:lang="ia">Plasma Mobile Gear version 21.06</p>
+        <p xml:lang="it">Rilascio di Plasma Mobile Gear 21.06</p>
         <p xml:lang="ka">გამოშვება Plasma Mobile Gear 21.06</p>
         <p xml:lang="ko">Plasma 모바일 기어 21.06 릴리스</p>
         <p xml:lang="lt">Plasma Mobile Gear 21.06 laida</p>
@@ -405,6 +409,7 @@
           <li xml:lang="fr">Prise en charge basique de la propriété de l’émetteur de compte dans Keysmith</li>
           <li xml:lang="he">תמיכה בסיסי למאפיין מנפיק חשבון ב־keysmith</li>
           <li xml:lang="ia">Supportoo basic per proprietate de emissor de conto in keysmith</li>
+          <li xml:lang="it">Supporto di base per la proprietà dell'emittente dell'account in Keysmith</li>
           <li xml:lang="ka">ანგარიშის გამომცემლის თვისების საბაზისო მხარდაჭერა keysmith-ში</li>
           <li xml:lang="ko">Keysmith의 계정 발급자 속성 기본 지원</li>
           <li xml:lang="lt">Bazinis paskyros leidėjo savybės palaikymas programoje Keysmith</li>
@@ -445,6 +450,7 @@
           <li xml:lang="fr">Prise en charge de la configuration des détails avancés pour les jetons « HOTP / TOTP »</li>
           <li xml:lang="he">תמיכה בהגדרת פרטים מתקדמים לאסימוני HOTP/TOTP</li>
           <li xml:lang="ia">Supporto per configurationavantiate de detalios de indicios HOTP/TOTP</li>
+          <li xml:lang="it">Supporto per la configurazione dei dettagli avanzati dei token HOTP/TOTP</li>
           <li xml:lang="ka">HOTP/TOTP ტოკენის დამატებითი დეტალების მორგების მხარდაჭერა</li>
           <li xml:lang="ko">고급 HOTP/TOTP 토큰 정보 설정 지원</li>
           <li xml:lang="lt">Palaikomas išsamesnės informacijos apie išplėstinius HOTP/TOTP prieigos raktus konfigūravimas</li>
@@ -485,6 +491,7 @@
           <li xml:lang="fr">Ajouter la prise en charge basique pour l'analyse des URI « otpauth:// »</li>
           <li xml:lang="he">נוספה תמיכה בסיסית לפיענוח כתובות otpauth://‎</li>
           <li xml:lang="ia">Adde supporto basic per analysar le syntoxe de tpauth:// URI </li>
+          <li xml:lang="it">Aggiungere il supporto di base per l'analisi degli URI otpauth://</li>
           <li xml:lang="ka">დაემატა otpauth:// ტიპის URI-ის დამუშავების მხარდაჭერა</li>
           <li xml:lang="ko">기본적인 otpauth:// URI 처리 지원 추가</li>
           <li xml:lang="lt">Pridėtas bazinis otpauth:// URI nagrinėjimo palaikymas</li>
@@ -505,6 +512,7 @@
           <li xml:lang="fr">Autoriser l'acceptation de l'URI « otpauth:// » depuis la ligne de commandes</li>
           <li xml:lang="he">אפשר לקבל כתובות otpauth://‎ משורת הפקודות</li>
           <li xml:lang="ia">Permitte acceptar otpauth:// URI  ab linea de commando</li>
+          <li xml:lang="it">L'accettazione degli URI otpauth:// dalla riga di comando è permessa</li>
           <li xml:lang="ka">otpauth:// URI-ის ბრძანების სტრიქონიდან მიღების დაშვება</li>
           <li xml:lang="ko">명령행에서 otpauth:// URI 처리 허용</li>
           <li xml:lang="lt">Leidžiama priimti otpauth:// URI iš komandų eilutės</li>
@@ -525,6 +533,7 @@
           <li xml:lang="fr">Ajouter une page de récupération du compte lorsque celui-ci est déjà utilisé lors de son ajout</li>
           <li xml:lang="he">נוסף עמוד לשחזור כשמתברר שהחשבון כבר בשימוש בזמן הניסיון להוספתו</li>
           <li xml:lang="ia">Adde un pagina per recuperar quando il resulta esser ja usate durante que lo addeva </li>
+          <li xml:lang="it">È stata aggiunta una pagina di recupero nel caso in cui, durante l'aggiunta, risultasse che l'account è già in uso</li>
           <li xml:lang="ka">დაემატა აღდგენის გვერდი, როცა აღმოჩნდება, რომ ანგარიში მისი დამატებისას უკვე არსებობდა</li>
           <li xml:lang="ko">계정을 추가할 때 이미 사용 중인 것으로 판단되었을 때 계정 복구 페이지 추가</li>
           <li xml:lang="lt">Pridėtas atkūrimo puslapis, kai pridedant paskyrą pasirodo, jog ji jau yra naudojama</li>
@@ -545,6 +554,7 @@
           <li xml:lang="fr">Ajouter des actions pour fermer / annuler un formulaire d'ajout de compte</li>
           <li xml:lang="he">נוספו פעולות לסילוק/ביטול טופס הוספת חשבון</li>
           <li xml:lang="ia">Adde actiones per dimitter/cancellar un forma de adder conto</li>
+          <li xml:lang="it">Sono state aggiunte delle azioni per chiudere/annullare il modulo di aggiunta di un account</li>
           <li xml:lang="ka">დაემატა ანგარიშის დამატების ფორმის მოცილების/გაუქმების ქმედებები</li>
           <li xml:lang="ko">계정 추가 양식의 취소 동작 추가</li>
           <li xml:lang="lt">Pridėti veiksmai, skirti atmesti/nutraukti paskyros pridėjimo formą</li>
