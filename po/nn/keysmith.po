@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-15 00:48+0000\n"
-"PO-Revision-Date: 2024-10-06 14:07+0200\n"
+"PO-Revision-Date: 2026-06-23 18:03+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 26.07.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -201,14 +201,14 @@ msgstr "Legg til"
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/contents/ui/AccountsOverview.qml:189
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
 msgid "Scan QR Code"
-msgstr ""
+msgstr "Skann QR-kode"
 
 #: src/contents/ui/AddAccount.qml:22
 #, kde-format
@@ -339,71 +339,71 @@ msgid "Truncation offset:"
 msgstr "Trunkerings­forskyving:"
 
 #: src/contents/ui/ImportAccount.qml:21
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Import Accounts"
-msgstr "Kontoar"
+msgstr "Importer kontoar"
 
 #: src/contents/ui/ImportAccount.qml:57
 #, kde-format
 msgid "Import format"
-msgstr ""
+msgstr "Importer format"
 
 #. i18n strings
 #: src/contents/ui/ImportAccount.qml:63
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Encrypted JSON"
-msgstr ""
+msgstr "andOTP-kryptert JSON"
 
 #: src/contents/ui/ImportAccount.qml:64
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "andOTP Plain JSON"
-msgstr ""
+msgstr "andOTP rein JSON"
 
 #. i18nc("@item:inlistbox", "Aegis Encrypted JSON"), value: Models.ValidatedImportInput.AegisEncryptedJSON});
 #: src/contents/ui/ImportAccount.qml:66
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Aegis Plain JSON"
-msgstr ""
+msgstr "Aegis rein JSON"
 
 #: src/contents/ui/ImportAccount.qml:67
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "FreeOTP URIs"
-msgstr ""
+msgstr "FreeOTP-URI-ar"
 
 #: src/contents/ui/ImportAccount.qml:68
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "SailOTP manually decrypted json"
-msgstr ""
+msgstr "SailOTP manuelt dekryptert JSON"
 
 #: src/contents/ui/ImportAccount.qml:84
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Backup file:"
-msgstr ""
+msgstr "Reservekopi-fil:"
 
 #: src/contents/ui/ImportAccount.qml:87
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "No file selected"
-msgstr ""
+msgstr "Inga fil er vald"
 
 #: src/contents/ui/ImportAccount.qml:91
 #, kde-format
 msgctxt "@title:window"
 msgid "Select file"
-msgstr ""
+msgstr "Vel fil"
 
 #: src/contents/ui/ImportAccount.qml:105
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Stadfest passordet:"
+msgstr "Passord for dekryptering"
 
 #: src/contents/ui/ImportAccount.qml:107 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -415,7 +415,7 @@ msgstr "Passord:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src/contents/ui/KeysmithGlobalDrawer.qml:12
 #: src/contents/ui/KeysmithGlobalDrawer.qml:15
@@ -427,25 +427,25 @@ msgstr "Om Keysmith"
 #, kde-format
 msgctxt "@title"
 msgid "Scan a QR code"
-msgstr ""
+msgstr "Skann QR-kode"
 
 #: src/contents/ui/QRScanPage.qml:34
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select Camera"
-msgstr ""
+msgstr "Vel kamera"
 
 #: src/contents/ui/QRScanPage.qml:45
 #, kde-format
 msgctxt "@title:dialog"
 msgid "Select Camera"
-msgstr ""
+msgstr "Vel kamera"
 
 #: src/contents/ui/QRScanPage.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Lukk"
 
 #: src/contents/ui/RenameAccount.qml:17
 #, kde-format
