@@ -311,6 +311,7 @@
           <li xml:lang="ru">Общие улучшения кода и исправление ошибок;</li>
           <li xml:lang="sk">Všeobecné vylepšenia kódu a opravy chýb</li>
           <li xml:lang="sl">Splošne izboljšave kode in odpravljanje napak</li>
+          <li xml:lang="sv">Allmänna förbättringar och felrättningar</li>
           <li xml:lang="tr">Genel kod iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Загальне удосконалення програмного коду та виправлення вад</li>
           <li xml:lang="zh-CN">常规代码改进和程序缺陷修复</li>
@@ -343,6 +344,7 @@
           <li xml:lang="ru">Уменьшен размер главного окна по умолчанию;</li>
           <li xml:lang="sk">Zmenšenie predvolenej veľkosti hlavného okna</li>
           <li xml:lang="sl">Zmanjša privzeto velikost glavnega okna</li>
+          <li xml:lang="sv">Reducera huvudfönstrets standardstorlek</li>
           <li xml:lang="tr">Ana pencerenin öntanımlı boyutunu küçült</li>
           <li xml:lang="uk">Зменшено типовий розмір головного вікна</li>
           <li xml:lang="zh-CN">减小主窗口的默认大小</li>
@@ -365,6 +367,7 @@
           <li xml:lang="ru">При запуске по умолчанию фокус передаётся на поле пароля;</li>
           <li xml:lang="sk">Zameranie poľa hesla pri spustení v predvolenom nastavení</li>
           <li xml:lang="sl">Privzeto fokus na polju za geslo ob zagonu</li>
+          <li xml:lang="sv">Fokusera normalt lösenordsfältet vid start</li>
           <li xml:lang="tr">Başlangıçta parola alanına öntanımlı olarak odaklan</li>
           <li xml:lang="uk">Реалізовано типове фокусування поля пароля після запуску</li>
           <li xml:lang="zh-CN">启动时默认聚焦密码字段</li>
@@ -401,6 +404,7 @@
         <p xml:lang="ru">Выпуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="sk">Vydanie Plasma Mobile Gear 21.06</p>
         <p xml:lang="sl">Izdaja Plasma Mobile Gear 21.06</p>
+        <p xml:lang="sv">Plasma Mobile Gear 21.06 utgåva</p>
         <p xml:lang="tr">Plasma Mobile Gear 21.06 yayımı</p>
         <p xml:lang="uk">Випуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="zh-CN">Plasma Mobile Gear 21.06</p>
@@ -424,6 +428,7 @@
           <li xml:lang="ru">Базовая поддержка свойства эмитента учётной записи в Keysmith;</li>
           <li xml:lang="sk">Základná podpora vlastnosti vydavateľa účtu v Keysmith</li>
           <li xml:lang="sl">Osnovna podpora za lastnost izdajatelja računa v Keysmithu</li>
+          <li xml:lang="sv">Grundstöd för egenskapen kontoutfärdare i keysmith</li>
           <li xml:lang="tr">Çilingir’de hesap sağlayıcı özelliği için temel destek</li>
           <li xml:lang="uk">Базова підтримка властивості видавця облікового запису у keysmith</li>
           <li xml:lang="zh-CN">Keysmith 账户发行者属性的基本支持</li>
@@ -445,6 +450,7 @@
           <li xml:lang="ru">Настройка издателя при добавлении новой учётной записи;</li>
           <li xml:lang="sk">Podpora nastavenia vydavateľa pri pridávaní nového účtu</li>
           <li xml:lang="sl">Podpora za konfiguriranje izdajatelja pri dodajanju novega računa</li>
+          <li xml:lang="sv">Stöd anpassning av utfärdare när nytt konto läggs till</li>
           <li xml:lang="tr">Yeni hesap eklerken sağlayıcıyı yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування видавця при додаванні нового облікового запису</li>
           <li xml:lang="zh-CN">在添加新账户时支持配置发行者</li>
@@ -467,6 +473,7 @@
           <li xml:lang="ru">Поддержка настройки расширенных параметров токенов HOTP/TOTP;</li>
           <li xml:lang="sk">Podpora nastavenia pokročilých podrobností tokenov HOTP/TOTP</li>
           <li xml:lang="sl">Podpora za konfiguriranje naprednih podrobnosti žetonov HOTP/TOTP</li>
+          <li xml:lang="sv">Stöd för inställning av avancerad HOTP/TOTP-symbolinformation</li>
           <li xml:lang="tr">Gelişmiş HOTP/TOTP jeton ayrıntılarını yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування додаткових параметрів жетона HOTP/TOTP</li>
           <li xml:lang="zh-CN">支持配置高级 HOTP/TOTP 令牌详细信息</li>
@@ -488,6 +495,7 @@
           <li xml:lang="ru">Снижение задержки при повторном вычислении токенов;</li>
           <li xml:lang="sk">Zníženie latencie pri prepočítavaní tokenov</li>
           <li xml:lang="sl">Zmanjšajte zakasnitev pri ponovnem izračunu žetonov</li>
+          <li xml:lang="sv">Reducera latens vid omberäkning av symboler</li>
           <li xml:lang="tr">Jetonları yeniden hesaplarken gecikmeyi azalt</li>
           <li xml:lang="uk">Зменшено латентність при повторному обчисленні жетонів</li>
           <li xml:lang="zh-CN">在重新计算令牌时减少延迟</li>
@@ -510,6 +518,7 @@
           <li xml:lang="ru">Добавлена базовая поддержка анализа URI otpauth://;</li>
           <li xml:lang="sk">Pridanie základnej podpory spracovania otpauth:// URI</li>
           <li xml:lang="sl">Doda osnovno podporo za razčlenjevanje URI-jev otpauth://</li>
+          <li xml:lang="sv">Lägg till grundstöd för tolkning av webbadressen otpauth://</li>
           <li xml:lang="tr">otpauth:// URI ayrıştırması için temel destek ekle</li>
           <li xml:lang="uk">Додано підтримку обробки адрес otpauth://</li>
           <li xml:lang="zh-CN">添加 otpauth:// URI 解析的基本支持</li>
@@ -532,6 +541,7 @@
           <li xml:lang="ru">Добавлена поддержка указания otpauth:// URI из командной строки;</li>
           <li xml:lang="sk">Umožnenie prijatia otpauth:// URI z príkazového riadka</li>
           <li xml:lang="sl">Dovoli sprejemanje URI-ja otpauth:// iz ukazne vrstice</li>
+          <li xml:lang="sv">Tillåt att acceptera webbadressen otpauth:// från kommandoraden</li>
           <li xml:lang="tr">Komut satırından otpauth:// URI’sinin kabul edilmesine izin ver</li>
           <li xml:lang="uk">Уможливлено прийняття адреси otpauth:// з командного рядка</li>
           <li xml:lang="zh-CN">允许从命令行接受 otpauth:// URI</li>
@@ -554,6 +564,7 @@
           <li xml:lang="ru">Добавлена страница для восстановления, если учётная запись уже используется при её добавлении;</li>
           <li xml:lang="sk">Pridanie stránky na obnovenie, keď sa pri pridávaní účtu zistí, že sa už používa</li>
           <li xml:lang="sl">Doda stran za obnovitev, ko se izkaže, da je račun že uporabljen med dodajanjem</li>
+          <li xml:lang="sv">Lägg till en sida för återhämtning när kontot visar sig redan användas när det läggs till</li>
           <li xml:lang="tr">Hesap eklenirken zaten kullanımda olduğu anlaşıldığında kurtarma için bir sayfa ekle</li>
           <li xml:lang="uk">Додано сторінку відновлення при роботі з обліковими записами, які вже було використано, під час додавання записів</li>
           <li xml:lang="zh-CN">添加一个页面以便在账户已经被使用时恢复并添加它</li>
@@ -576,6 +587,7 @@
           <li xml:lang="ru">Добавлены действия для закрытия формы добавления учётной записи;</li>
           <li xml:lang="sk">Pridanie akcií na zavretie/zrušenie formulára pridania účtu</li>
           <li xml:lang="sl">Doda dejanje za zavrnitev/preklic obrazca za dodajanje računa</li>
+          <li xml:lang="sv">Lägg till åtgärder för att avvisa/avbryta ett kontotilläggsformulär</li>
           <li xml:lang="tr">Hesap ekleme formunu kapatma/iptal etme eylemleri ekle</li>
           <li xml:lang="uk">Додано дії для закриття або скасування форми додавання облікового запису</li>
           <li xml:lang="zh-CN">添加操作以解除/取消一个新增账户表单</li>
@@ -597,6 +609,7 @@
           <li xml:lang="ru">Ответ на активацию через D-Bus; позволяет открыть Keysmith при уже запущенном приложении.</li>
           <li xml:lang="sk">Reakcia na aktiváciu D-Bus, umožňuje otvoriť Keysmith, keď už beží</li>
           <li xml:lang="sl">Odzove se na aktivacijo D-Busa, omogoči odpiranje Keysmitha, ko je že zagnan</li>
+          <li xml:lang="sv">Svara på D-Bus-aktivering, vilket tillåter att öppna keysmith när det redan kör</li>
           <li xml:lang="tr">D-Bus etkinleştirmesine yanıt ver, zaten çalışırken Çilingir’in açılmasına izin verir</li>
           <li xml:lang="uk">Реалізовано відповідь на активацію D-Bus, що уможливлює відкриття keysmith, якщо програму вже запущено</li>
           <li xml:lang="zh-CN">响应 D-Bus 激活，允许在已经运行时打开 keysmith。</li>
