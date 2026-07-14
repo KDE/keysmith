@@ -10,7 +10,8 @@
 
 #include <KLocalizedString>
 #include <QCommandLineOption>
-#include <QtConcurrent>
+#include <QTimer>
+#include <QtConcurrentRun>
 
 #ifdef ENABLE_DBUS_INTERFACE
 #include <KDBusService>
