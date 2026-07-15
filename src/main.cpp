@@ -10,7 +10,6 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QUrl>
-#include <QtQml>
 
 #ifdef Q_OS_ANDROID
 #include <QGuiApplication>
