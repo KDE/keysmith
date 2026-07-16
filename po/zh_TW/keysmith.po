@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-15 00:48+0000\n"
+"POT-Creation-Date: 2026-07-16 00:48+0000\n"
 "PO-Revision-Date: 2025-04-07 14:33+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Lokalize 24.12.3\n"
 
-#: src/app/cli.cpp:133
+#: src/app/cli.cpp:134
 #, kde-format
 msgctxt "@info (<uri> placeholder)"
 msgid ""
@@ -565,23 +565,23 @@ msgctxt "@action:button"
 msgid "Unlock"
 msgstr "解除鎖定"
 
-#: src/main.cpp:71
+#: src/main.cpp:70
 #, kde-format
 msgctxt "@title"
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:74
+#: src/main.cpp:73
 #, kde-format
 msgid "generate two-factor authentication (2FA) tokens"
 msgstr "產生兩步驟驗證 (2FA) 權杖"
 
-#: src/main.cpp:77
+#: src/main.cpp:76
 #, kde-format
 msgid "Keysmith"
 msgstr "Keysmith"
 
-#: src/main.cpp:81
+#: src/main.cpp:80
 #, kde-format
 msgid "© 2019 KDE Community"
 msgstr "© 2019 KDE 社群"
