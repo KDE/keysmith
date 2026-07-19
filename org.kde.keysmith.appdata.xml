@@ -307,6 +307,7 @@
           <li xml:lang="ko">일반 코드 개선과 버그 수정</li>
           <li xml:lang="lt">Bendri kodo patobulinimai ir klaidų pataisymai</li>
           <li xml:lang="nl">Algemene verbeteringen aan de code en reparatie van fouten</li>
+          <li xml:lang="nn">Generelle kodeforbetringar og feilrettingar</li>
           <li xml:lang="pt-BR">Melhorias gerais no código e correção de bugs</li>
           <li xml:lang="ru">Общие улучшения кода и исправление ошибок;</li>
           <li xml:lang="sk">Všeobecné vylepšenia kódu a opravy chýb</li>
@@ -340,6 +341,7 @@
           <li xml:lang="ko">주 창 기본 크기 축소</li>
           <li xml:lang="lt">Sumažintas numatytasis pagrindinio lango dydis</li>
           <li xml:lang="nl">Standaard grootte van hoofdvenster verminderen</li>
+          <li xml:lang="nn">Redusert storleik på hovudvindauget</li>
           <li xml:lang="pt-BR">Redução do tamanho padrão da janela principal</li>
           <li xml:lang="ru">Уменьшен размер главного окна по умолчанию;</li>
           <li xml:lang="sk">Zmenšenie predvolenej veľkosti hlavného okna</li>
@@ -364,6 +366,7 @@
           <li xml:lang="ko">실행할 때 기본값으로 암호 필드에 포커스 맞추기</li>
           <li xml:lang="lt">Paleidimo metu pagal numatymą fokusuojamas slaptažodžio laukas</li>
           <li xml:lang="nl">Standaard op wachtwoordveld focussen bij opstarten</li>
+          <li xml:lang="nn">Automatisk fokus på passordfeltet ved oppstart</li>
           <li xml:lang="pt-BR">Ao iniciar o aplicativo, o campo de senha fica em foco por padrão</li>
           <li xml:lang="ru">При запуске по умолчанию фокус передаётся на поле пароля;</li>
           <li xml:lang="sk">Zameranie poľa hesla pri spustení v predvolenom nastavení</li>
@@ -401,6 +404,7 @@
         <p xml:lang="ko">Plasma 모바일 기어 21.06 릴리스</p>
         <p xml:lang="lt">Plasma Mobile Gear 21.06 laida</p>
         <p xml:lang="nl">Plasma Mobile Gear 21.06 uitgave</p>
+        <p xml:lang="nn">Plasma Mobile Gear 21.06-utgåve</p>
         <p xml:lang="pt-BR">Lançamento do Plasma Mobile Gear 21.06</p>
         <p xml:lang="ru">Выпуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="sk">Plasma Mobile Gear 21.06 release</p>
@@ -425,6 +429,7 @@
           <li xml:lang="ko">Keysmith의 계정 발급자 속성 기본 지원</li>
           <li xml:lang="lt">Bazinis paskyros leidėjo savybės palaikymas programoje Keysmith</li>
           <li xml:lang="nl">Basis ondersteuning voor eigenschap van uitgever van account in keysmith</li>
+          <li xml:lang="nn">Grunnleggjande støte for kontoutferdar-eigenskapen i keysmith</li>
           <li xml:lang="pt-BR">Suporte básico para a propriedade do emissor da conta no keysmith</li>
           <li xml:lang="ru">Базовая поддержка свойства эмитента учётной записи в Keysmith;</li>
           <li xml:lang="sk">Základná podpora vlastnosti vydavateľa účtu v Keysmith</li>
@@ -447,6 +452,7 @@
           <li xml:lang="ko">새 계정을 추가할 때 발급자 설정 지원 추가</li>
           <li xml:lang="lt">Leidėjo konfigūravimo palaikymas, kai pridedama nauja paskyra</li>
           <li xml:lang="nl">Ondersteuning voor configureren van uitgever van account bij toevoegen van nieuw account</li>
+          <li xml:lang="nn">Støtte for oppsett av utferdar ved opprettning av ny konto</li>
           <li xml:lang="pt-BR">Suporte para configuração da entidade emissora ao adicionar uma nova conta</li>
           <li xml:lang="ru">Настройка издателя при добавлении новой учётной записи;</li>
           <li xml:lang="sk">Podpora nastavenia vydavateľa pri pridávaní nového účtu</li>
@@ -470,6 +476,7 @@
           <li xml:lang="ko">고급 HOTP/TOTP 토큰 정보 설정 지원</li>
           <li xml:lang="lt">Palaikomas išsamesnės informacijos apie išplėstinius HOTP/TOTP prieigos raktus konfigūravimas</li>
           <li xml:lang="nl">Ondersteuning voor het configureren van geavanceerde HOTP/TOTP-tokendetails</li>
+          <li xml:lang="nn">Støtte for oppsett av avanserte HOTP/TOTP-pollettdetaljar</li>
           <li xml:lang="pt-BR">Suporte para configuração de detalhes avançados de tokens HOTP/TOTP</li>
           <li xml:lang="ru">Поддержка настройки расширенных параметров токенов HOTP/TOTP;</li>
           <li xml:lang="sk">Podpora nastavenia pokročilých podrobností tokenov HOTP/TOTP</li>
@@ -492,6 +499,7 @@
           <li xml:lang="ko">토큰을 다시 계산할 때 지연 시간 감소</li>
           <li xml:lang="lt">Sumažinta delsa, kai prieigos raktus</li>
           <li xml:lang="nl">Verminder de latentie bij het opnieuw berekenen van tokens</li>
+          <li xml:lang="nn">Redusert ventetid ved utrekning av pollettar på nytt</li>
           <li xml:lang="pt-BR">Redução da latência ao recalcular tokens</li>
           <li xml:lang="ru">Снижение задержки при повторном вычислении токенов;</li>
           <li xml:lang="sk">Zníženie latencie pri prepočítavaní tokenov</li>
@@ -515,6 +523,7 @@
           <li xml:lang="ko">기본적인 otpauth:// URI 처리 지원 추가</li>
           <li xml:lang="lt">Pridėtas bazinis otpauth:// URI nagrinėjimo palaikymas</li>
           <li xml:lang="nl">Voeg basisondersteuning toe voor het ontleden van otpauth:// URI's</li>
+          <li xml:lang="nn">Lagt til grunnleggjande støtte for tolking av otpauth://-adresser</li>
           <li xml:lang="pt-BR">Adicionado suporte básico para análise de URI otpauth://</li>
           <li xml:lang="ru">Добавлена базовая поддержка анализа URI otpauth://;</li>
           <li xml:lang="sk">Pridanie základnej podpory spracovania otpauth:// URI</li>
@@ -538,6 +547,7 @@
           <li xml:lang="ko">명령행에서 otpauth:// URI 처리 허용</li>
           <li xml:lang="lt">Leidžiama priimti otpauth:// URI iš komandų eilutės</li>
           <li xml:lang="nl">Sta toe dat otpauth:// URI's vanaf de commandoregel worden geaccepteerd</li>
+          <li xml:lang="nn">Gjort det mogleg å godta otpauth://-adresser frå kommandolinja</li>
           <li xml:lang="pt-BR">Permite aceitar o URI otpauth:// da linha de comando</li>
           <li xml:lang="ru">Добавлена поддержка указания otpauth:// URI из командной строки;</li>
           <li xml:lang="sk">Umožnenie prijatia otpauth:// URI z príkazového riadka</li>
@@ -561,6 +571,7 @@
           <li xml:lang="ko">계정을 추가할 때 이미 사용 중인 것으로 판단되었을 때 계정 복구 페이지 추가</li>
           <li xml:lang="lt">Pridėtas atkūrimo puslapis, kai pridedant paskyrą pasirodo, jog ji jau yra naudojama</li>
           <li xml:lang="nl">Voeg een herstelpagina toe voor het geval blijkt dat het account al in gebruik is tijdens het toevoegen</li>
+          <li xml:lang="nn">Lagt til side for gjenoppretting når kontoen finst frå før samtidig som ein prøver å leggja han til</li>
           <li xml:lang="pt-BR">Adicionada uma página para recuperação de conta caso ela já esteja em uso durante o processo de cadastro</li>
           <li xml:lang="ru">Добавлена страница для восстановления, если учётная запись уже используется при её добавлении;</li>
           <li xml:lang="sk">Pridanie stránky na obnovenie, keď sa pri pridávaní účtu zistí, že sa už používa</li>
@@ -584,6 +595,7 @@
           <li xml:lang="ko">계정 추가 양식의 취소 동작 추가</li>
           <li xml:lang="lt">Pridėti veiksmai, skirti atmesti/nutraukti paskyros pridėjimo formą</li>
           <li xml:lang="nl">Voeg acties toe om een ​​formulier voor het toevoegen van een account te sluiten/annuleren</li>
+          <li xml:lang="nn">Lagt til handlingar for å avbryta kontoregistrering</li>
           <li xml:lang="pt-BR">Adicionadas ações para fechar/cancelar um formulário de adição de conta</li>
           <li xml:lang="ru">Добавлены действия для закрытия формы добавления учётной записи;</li>
           <li xml:lang="sk">Pridanie akcií na zavretie/zrušenie formulára pridania účtu</li>
@@ -606,6 +618,7 @@
           <li xml:lang="ko">D-Bus 활성화에 응답, Keysmith가 이미 실행 중일 때 열기 허용</li>
           <li xml:lang="lt">Atsakas į D-Bus aktyvavimą, leidžia atverti Keysmith programą, kai ji jau paleista</li>
           <li xml:lang="nl">Reageert op D-Bus-activering, waardoor Keysmith geopend kan worden terwijl het programma al actief is.</li>
+          <li xml:lang="nn">Svar på D-Bus-aktivering, slik at ein kan opna keysmith når programmet alt køyrer</li>
           <li xml:lang="pt-BR">Responde à ativação do D-Bus, permitindo abrir o keysmith mesmo quando ele já estiver em execução</li>
           <li xml:lang="ru">Ответ на активацию через D-Bus; позволяет открыть Keysmith при уже запущенном приложении.</li>
           <li xml:lang="sk">Reakcia na aktiváciu D-Bus, umožňuje otvoriť Keysmith, keď už beží</li>
