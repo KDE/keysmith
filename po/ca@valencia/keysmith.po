@@ -589,4 +589,4 @@ msgstr "Keysmith"
 #: src/main.cpp:80
 #, kde-format
 msgid "© 2019 KDE Community"
-msgstr "© 2019 Comunitat KDE"
+msgstr "© 2019 La comunitat KDE"
