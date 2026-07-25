@@ -448,6 +448,7 @@
           <li xml:lang="he">תמיכה בהגדרת מנפיק בעת הוספת חשבון חדש</li>
           <li xml:lang="hu">Támogatás a kibocsátó beállításához új fiók hozzáadásakor</li>
           <li xml:lang="ia">Supporto a configurar emissor quando adde nove conto</li>
+          <li xml:lang="it">Supporto alla configurazione dell'emittente durante l'aggiunta di un nuovo account</li>
           <li xml:lang="ka">გამომცემლის მორგების მხარდაჭერა ახალი ანგარიშის დამატებისას</li>
           <li xml:lang="ko">새 계정을 추가할 때 발급자 설정 지원 추가</li>
           <li xml:lang="lt">Leidėjo konfigūravimo palaikymas, kai pridedama nauja paskyra</li>
@@ -495,6 +496,7 @@
           <li xml:lang="he">הפחתת העיכוב בעת חישוב אסימונים מחדש</li>
           <li xml:lang="hu">Késleltetés csökkentése tokenek újraszámolásakor</li>
           <li xml:lang="ia">Reduce latentia quando recalcula indicios (tokens)</li>
+          <li xml:lang="it">Riduzione della latenza durante il ricalcolo dei token</li>
           <li xml:lang="ka">შემცირდა დაყოვნება ტოკენების თავიდან გამოთვლისას</li>
           <li xml:lang="ko">토큰을 다시 계산할 때 지연 시간 감소</li>
           <li xml:lang="lt">Sumažinta delsa, kai prieigos raktus</li>
@@ -614,6 +616,7 @@
           <li xml:lang="he">תגובה להפעלת D-Bus, מאפשר לפתוח את keysmith כשהוא כבר פעיל</li>
           <li xml:lang="hu">Válasz a D-Bus aktiválásra, lehetővé teszi a Keysmith megnyitását, ha az már fut</li>
           <li xml:lang="ia">Responde a activation de D-Bus, permitte aperir keysmith quando ja executante</li>
+          <li xml:lang="it">Risposta all'attivazione tramite D-Bus, permette di aprire Keysmith quando è già in esecuzione</li>
           <li xml:lang="ka">პასუხი D-Bus-ით აქტივაციაზე. საშუალებას გაძლევთ, გაიხსნას keysmith, თუ ის უკვე გაშვებულია</li>
           <li xml:lang="ko">D-Bus 활성화에 응답, Keysmith가 이미 실행 중일 때 열기 허용</li>
           <li xml:lang="lt">Atsakas į D-Bus aktyvavimą, leidžia atverti Keysmith programą, kai ji jau paleista</li>
