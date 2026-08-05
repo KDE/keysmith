@@ -316,6 +316,7 @@
           <li xml:lang="tr">Genel kod iyileştirmeleri ve hata düzeltmeleri</li>
           <li xml:lang="uk">Загальне удосконалення програмного коду та виправлення вад</li>
           <li xml:lang="zh-CN">常规代码改进和程序缺陷修复</li>
+          <li xml:lang="zh-TW">程式碼改進與錯誤修正</li>
         </ul>
       </description>
     </release>
@@ -351,6 +352,7 @@
           <li xml:lang="ug">ئاساسىي كۆزنەكنىڭ كۆڭۈلدىكى چوڭلۇقىنى كىچىكلىتىدۇ</li>
           <li xml:lang="uk">Зменшено типовий розмір головного вікна</li>
           <li xml:lang="zh-CN">减小主窗口的默认大小</li>
+          <li xml:lang="zh-TW">降低主視窗的預設大小</li>
           <li>Focus password field by default on launch</li>
           <li xml:lang="ar">تركيز حقل كلمة السر مبدئيًا عند التشغيل</li>
           <li xml:lang="ca">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
@@ -375,6 +377,7 @@
           <li xml:lang="tr">Başlangıçta parola alanına öntanımlı olarak odaklan</li>
           <li xml:lang="uk">Реалізовано типове фокусування поля пароля після запуску</li>
           <li xml:lang="zh-CN">启动时默认聚焦密码字段</li>
+          <li xml:lang="zh-TW">啟動時預設聚焦密碼欄位</li>
         </ul>
       </description>
     </release>
@@ -413,6 +416,7 @@
         <p xml:lang="tr">Plasma Mobile Gear 21.06 yayımı</p>
         <p xml:lang="uk">Випуск Plasma Mobile Gear 21.06</p>
         <p xml:lang="zh-CN">Plasma Mobile Gear 21.06</p>
+        <p xml:lang="zh-TW">Plasma 行動 Gear 21.06 釋出</p>
         <ul>
           <li>Basic support for account issuer property in keysmith</li>
           <li xml:lang="ar">دعم أساسي لخاصية مُصدر الحساب في صانع المفاتيح</li>
@@ -438,6 +442,7 @@
           <li xml:lang="tr">Çilingir’de hesap sağlayıcı özelliği için temel destek</li>
           <li xml:lang="uk">Базова підтримка властивості видавця облікового запису у keysmith</li>
           <li xml:lang="zh-CN">Keysmith 账户发行者属性的基本支持</li>
+          <li xml:lang="zh-TW">在 keysmith 提供對帳號發行者屬性的基礎支援</li>
           <li>Support configuring issuer when adding new account</li>
           <li xml:lang="ar">دعم ضبط المُصدر عند إضافة حساب جديد</li>
           <li xml:lang="ca">Permet configurar l'emissor quan s'afegeix un compte nou</li>
@@ -462,6 +467,7 @@
           <li xml:lang="tr">Yeni hesap eklerken sağlayıcıyı yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування видавця при додаванні нового облікового запису</li>
           <li xml:lang="zh-CN">在添加新账户时支持配置发行者</li>
+          <li xml:lang="zh-TW">支援在新增帳號時設定發行者</li>
           <li>Support for configuring advanced HOTP/TOTP token details</li>
           <li xml:lang="ar">دعم ضبط تفاصيل رموز HOTP/TOTP المتقدمة</li>
           <li xml:lang="ca">Suport per a configurar els detalls avançats de testimoni HOTP/TOTP</li>
@@ -486,6 +492,7 @@
           <li xml:lang="tr">Gelişmiş HOTP/TOTP jeton ayrıntılarını yapılandırma desteği</li>
           <li xml:lang="uk">Реалізовано підтримку налаштовування додаткових параметрів жетона HOTP/TOTP</li>
           <li xml:lang="zh-CN">支持配置高级 HOTP/TOTP 令牌详细信息</li>
+          <li xml:lang="zh-TW">支援設定進階的 HOTP/TOTP 權杖細節</li>
           <li>Reduce latency when re-computing tokens</li>
           <li xml:lang="ar">تقليل زمن التأخير عند إعادة حساب الرموز</li>
           <li xml:lang="ca">Redueix la latència en tornar a calcular els testimonis</li>
@@ -510,6 +517,7 @@
           <li xml:lang="tr">Jetonları yeniden hesaplarken gecikmeyi azalt</li>
           <li xml:lang="uk">Зменшено латентність при повторному обчисленні жетонів</li>
           <li xml:lang="zh-CN">在重新计算令牌时减少延迟</li>
+          <li xml:lang="zh-TW">降低重新計算權杖時的延遲</li>
           <li>Add basic support for otpauth:// URI parsing</li>
           <li xml:lang="ar">إضافة دعم أساسي لتحليل معرفات otpauth://</li>
           <li xml:lang="ca">Afegeix la implementació bàsica per a l'anàlisi d'URI otpauth://</li>
@@ -534,6 +542,7 @@
           <li xml:lang="tr">otpauth:// URI ayrıştırması için temel destek ekle</li>
           <li xml:lang="uk">Додано підтримку обробки адрес otpauth://</li>
           <li xml:lang="zh-CN">添加 otpauth:// URI 解析的基本支持</li>
+          <li xml:lang="zh-TW">新增對 otpauth:// URI 剖析的基礎支援</li>
           <li>Allow to accept otpauth:// URI from command line</li>
           <li xml:lang="ar">السماح بقبول معرفات otpauth:// من سطر الأوامر</li>
           <li xml:lang="ca">Permet acceptar URI otpauth:// des de la línia d'ordres</li>
@@ -558,6 +567,7 @@
           <li xml:lang="tr">Komut satırından otpauth:// URI’sinin kabul edilmesine izin ver</li>
           <li xml:lang="uk">Уможливлено прийняття адреси otpauth:// з командного рядка</li>
           <li xml:lang="zh-CN">允许从命令行接受 otpauth:// URI</li>
+          <li xml:lang="zh-TW">在命令列接受 otpauth:// URI</li>
           <li>Add a page to recover when account turns out to be already used while adding it</li>
           <li xml:lang="ar">إضافة صفحة للاستعادة عند ظهور أن الحساب مُستخدم بالفعل أثناء إضافته</li>
           <li xml:lang="ca">Afegeix una pàgina a recuperar quan el compte ja s'utilitza mentre s'afegeix</li>
@@ -582,6 +592,7 @@
           <li xml:lang="tr">Hesap eklenirken zaten kullanımda olduğu anlaşıldığında kurtarma için bir sayfa ekle</li>
           <li xml:lang="uk">Додано сторінку відновлення при роботі з обліковими записами, які вже було використано, під час додавання записів</li>
           <li xml:lang="zh-CN">添加一个页面以便在账户已经被使用时恢复并添加它</li>
+          <li xml:lang="zh-TW">新增帳號時如果該帳號已被使用，現在有頁面可以回復</li>
           <li>Add actions to dismiss/cancel an add account form</li>
           <li xml:lang="ar">إضافة إجراءات لصرف أو إلغاء استمارة إضافة الحساب</li>
           <li xml:lang="ca">Afegeix accions per descartar/cancel·lar un formulari d'afegir un compte</li>
@@ -606,6 +617,7 @@
           <li xml:lang="tr">Hesap ekleme formunu kapatma/iptal etme eylemleri ekle</li>
           <li xml:lang="uk">Додано дії для закриття або скасування форми додавання облікового запису</li>
           <li xml:lang="zh-CN">添加操作以解除/取消一个新增账户表单</li>
+          <li xml:lang="zh-TW">新增忽略/取消帳號新增表單的動作</li>
           <li>Respond to D-Bus activation, allows to open keysmith when already running</li>
           <li xml:lang="ar">الاستجابة لتنشيط D-Bus، مما يسمح بفتح صانع المفاتيح عندما يكون قيد التشغيل بالفعل</li>
           <li xml:lang="ca">Respon a l'activació del D-Bus, permet obrir el Keysmith quan ja s'està executant</li>
@@ -630,6 +642,7 @@
           <li xml:lang="tr">D-Bus etkinleştirmesine yanıt ver, zaten çalışırken Çilingir’in açılmasına izin verir</li>
           <li xml:lang="uk">Реалізовано відповідь на активацію D-Bus, що уможливлює відкриття keysmith, якщо програму вже запущено</li>
           <li xml:lang="zh-CN">响应 D-Bus 激活，允许在已经运行时打开 keysmith。</li>
+          <li xml:lang="zh-TW">回應 D-Bus 觸發，讓 Keysmith 已在執行中的時候也能開啟</li>
         </ul>
       </description>
       <url>https://www.plasma-mobile.org/2021/06/10/plasma-mobile-update-june/</url>
