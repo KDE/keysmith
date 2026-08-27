@@ -4,21 +4,21 @@
 Dependencies:
  - 'on': ['@all']
    'require':
-    'frameworks/extra-cmake-modules': '@latest-kf6'
-    'frameworks/ki18n': '@latest-kf6'
-    'frameworks/kirigami': '@latest-kf6'
-    'frameworks/kconfig': '@latest-kf6'
-    'frameworks/kcoreaddons': '@latest-kf6'
-    'frameworks/kguiaddons': '@latest-kf6'
-    'frameworks/kwidgetsaddons': '@latest-kf6'
-    'frameworks/prison': '@latest-kf6'
-    'libraries/kirigami-addons': '@latest-kf6'
+    'frameworks/extra-cmake-modules': 'Frameworks/6.24'
+    'frameworks/ki18n': 'Frameworks/6.24'
+    'frameworks/kirigami': 'Frameworks/6.24'
+    'frameworks/kconfig': 'Frameworks/6.24'
+    'frameworks/kcoreaddons': 'Frameworks/6.24'
+    'frameworks/kguiaddons': 'Frameworks/6.24'
+    'frameworks/kwidgetsaddons': 'Frameworks/6.24'
+    'frameworks/prison': 'Frameworks/6.24'
+    'libraries/kirigami-addons': 'v1.11.0'
 
  - 'on': ['Linux', 'FreeBSD']
    'require':
-    'frameworks/kdbusaddons': '@latest-kf6'
-    'frameworks/kwindowsystem': '@latest-kf6'
-    'frameworks/qqc2-desktop-style': '@latest-kf6'
+    'frameworks/kdbusaddons': 'Frameworks/6.24'
+    'frameworks/kwindowsystem': 'Frameworks/6.24'
+    'frameworks/qqc2-desktop-style': 'Frameworks/6.24'
 
 Options:
  require-passing-tests-on: ['Linux', 'FreeBSD']
