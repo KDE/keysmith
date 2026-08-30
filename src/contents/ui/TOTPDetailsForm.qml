@@ -42,7 +42,7 @@ FormCard.FormCard {
     FormCard.FormTextFieldDelegate {
         id: epochField
 
-        label: i18nc("@label:textbox", "Starting at:")
+        label: i18nc("@label:textbox Start a timer at a specific point in time given in the textbox", "Starting at:")
         text: validatedInput ? validatedInput.epoch : ""
         validator: Validators.TOTPEpochValidator {}
         onTextChanged: {
