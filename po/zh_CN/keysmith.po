@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:48+0000\n"
+"POT-Creation-Date: 2026-09-01 00:50+0000\n"
 "PO-Revision-Date: 2024-04-23 19:24\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -369,9 +369,11 @@ msgid "FreeOTP URIs"
 msgstr "FreeOTP URI"
 
 #: src/contents/ui/ImportAccount.qml:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "SailOTP manually decrypted json"
 msgctxt "@item:inlistbox"
-msgid "SailOTP manually decrypted json"
+msgid "SailOTP manually decrypted JSON"
 msgstr "SailOTP 手动解密 json"
 
 #: src/contents/ui/ImportAccount.qml:84
@@ -514,8 +516,11 @@ msgid "Timer:"
 msgstr "计时器："
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
-#, kde-format
-msgctxt "@label:textbox"
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Starting at:"
+msgctxt ""
+"@label:textbox Start a timer at a specific point in time given in the textbox"
 msgid "Starting at:"
 msgstr "开始时间："
 

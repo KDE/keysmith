@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:48+0000\n"
+"POT-Creation-Date: 2026-09-01 00:50+0000\n"
 "PO-Revision-Date: 2024-12-20 21:52+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -373,10 +373,12 @@ msgid "FreeOTP URIs"
 msgstr "FreeOTP URIs इति"
 
 #: src/contents/ui/ImportAccount.qml:68
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "andOTP Encrypted JSON"
 msgctxt "@item:inlistbox"
-msgid "SailOTP manually decrypted json"
-msgstr ""
+msgid "SailOTP manually decrypted JSON"
+msgstr "andOTP एन्क्रिप्टेड JSON"
 
 #: src/contents/ui/ImportAccount.qml:84
 #, kde-format
@@ -523,8 +525,11 @@ msgid "Timer:"
 msgstr "समयनिर्धारकः :"
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
-#, kde-format
-msgctxt "@label:textbox"
+#, fuzzy, kde-format
+#| msgctxt "@label:textbox"
+#| msgid "Starting at:"
+msgctxt ""
+"@label:textbox Start a timer at a specific point in time given in the textbox"
 msgid "Starting at:"
 msgstr "इतः आरभ्य :"
 
