@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-01 00:50+0000\n"
-"PO-Revision-Date: 2026-05-16 10:43+0200\n"
+"PO-Revision-Date: 2026-09-01 12:16+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -376,12 +376,10 @@ msgid "FreeOTP URIs"
 msgstr "FreeOTP URIs"
 
 #: src/contents/ui/ImportAccount.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "SailOTP manually decrypted json"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "SailOTP manually decrypted JSON"
-msgstr "SailOTP json decryptate manualmente"
+msgstr "SailOTP JSON decryptate manualmente"
 
 #: src/contents/ui/ImportAccount.qml:84
 #, kde-format
@@ -525,9 +523,7 @@ msgid "Timer:"
 msgstr "Temporisator:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Starting at:"
+#, kde-format
 msgctxt ""
 "@label:textbox Start a timer at a specific point in time given in the textbox"
 msgid "Starting at:"

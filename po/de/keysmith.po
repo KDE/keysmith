@@ -3,20 +3,21 @@
 # SPDX-FileCopyrightText: 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2022-2023 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2024-2025 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-01 00:50+0000\n"
-"PO-Revision-Date: 2025-01-15 12:10+0100\n"
-"Last-Translator: Johannes Obermayr <johannesobermayr@gmx.de>\n"
+"PO-Revision-Date: 2026-08-30 23:15+0200\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #: src/app/cli.cpp:134
 #, kde-format
@@ -128,7 +129,7 @@ msgid ""
 "for your account, or:</li><li>Disable two-factor authentication on your "
 "account</li></ul>"
 msgstr ""
-"<p><ul><li>Kontenname: %1</li><li>Kontenaussteller: %2</li></ul></p><p>Das "
+"<p><ul><li>Kontoname: %1</li><li>Kontoaussteller: %2</li></ul></p><p>Das "
 "Entfernen dieses Kontos aus Keysmith wird die Zwei-Faktor-Authentifizierung "
 "(2FA) nicht deaktivieren. Stellen Sie sicher, dass Sie immer noch auf Ihr "
 "Konto zugreifen können, ohne Keysmith zu verwenden, bevor Sie fortfahren:</"
@@ -239,7 +240,7 @@ msgstr "Hinzufügen"
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
-msgstr "Kontentyp:"
+msgstr "Kontotyp:"
 
 #: src/contents/ui/AddAccount.qml:95
 #, kde-format
@@ -280,7 +281,7 @@ msgstr "HOTP-Details:"
 #, kde-format
 msgctxt "@label"
 msgid "TOTP Details:"
-msgstr "Details zum TOTP:"
+msgstr "TOTP-Details:"
 
 #: src/contents/ui/ErrorPage.qml:34
 #, kde-format
@@ -406,7 +407,7 @@ msgstr "Datei auswählen"
 #, kde-format
 msgctxt "@info:placeholder"
 msgid "Decryption password"
-msgstr "Verschlüsselungspasswort"
+msgstr "Entschlüsselungspasswort"
 
 #: src/contents/ui/ImportAccount.qml:107 src/contents/ui/UnlockAccounts.qml:49
 #, kde-format
@@ -465,8 +466,8 @@ msgid ""
 "Another account with the same name already exists. Please correct the name "
 "or issuer for the new account."
 msgstr ""
-"Es existiert bereits ein anderes Konto mit demselben Namen. Bitte "
-"korrigieren Sie den Namen oder den Aussteller für das neue Konto."
+"Es existiert bereits ein anderes Konto mit demselben Namen. Bitte ändern Sie "
+"den Namen oder den Aussteller für das neue Konto."
 
 #: src/contents/ui/RenameAccount.qml:49
 #, kde-format
@@ -517,13 +518,13 @@ msgstr "Anwenden"
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr "(Aktualisieren)"
+msgstr "(aktualisieren)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Timer:"
-msgstr "Zeitmesser:"
+msgstr "Timer:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
 #, fuzzy, kde-format
