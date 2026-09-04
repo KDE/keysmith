@@ -369,12 +369,10 @@ msgid "FreeOTP URIs"
 msgstr "FreeOTP URI"
 
 #: src/contents/ui/ImportAccount.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "SailOTP manually decrypted json"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "SailOTP manually decrypted JSON"
-msgstr "SailOTP 手动解密 json"
+msgstr "SailOTP 手动解密 JSON"
 
 #: src/contents/ui/ImportAccount.qml:84
 #, kde-format
@@ -516,9 +514,7 @@ msgid "Timer:"
 msgstr "计时器："
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Starting at:"
+#, kde-format
 msgctxt ""
 "@label:textbox Start a timer at a specific point in time given in the textbox"
 msgid "Starting at:"
