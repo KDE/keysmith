@@ -512,7 +512,7 @@ msgstr "Appliquer"
 #, kde-format
 msgctxt "placeholder text if no token is available"
 msgid "(refresh)"
-msgstr "(Rafraîchir)"
+msgstr "(Rafraichir)"
 
 #: src/contents/ui/TOTPDetailsForm.qml:27
 #, kde-format
