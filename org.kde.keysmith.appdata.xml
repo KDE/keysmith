@@ -431,7 +431,7 @@
           <li xml:lang="cs">Základní podpora vlastnosti vydavatele účtu v keysmith</li>
           <li xml:lang="es">Compatibilidad básica con la propiedad del emisor de la cuenta en keysmith.</li>
           <li xml:lang="fi">perustuki Keysmithin tilinjulkaisijaominaisuudelle</li>
-          <li xml:lang="fr">Prise en charge basique de la propriété de l’émetteur de compte dans Keysmith</li>
+          <li xml:lang="fr">Prise en charge basique de la propriété de l'émetteur de compte dans Keysmith</li>
           <li xml:lang="he">תמיכה בסיסי למאפיין מנפיק חשבון ב־keysmith</li>
           <li xml:lang="hu">Fiókkibocsátó tulajdonságok alapvető támogatása Keysmithben</li>
           <li xml:lang="ia">Supportoo basic per proprietate de emissor de conto in keysmith</li>
@@ -457,7 +457,7 @@
           <li xml:lang="cs">Podpora nastavení vydavatele při přidávání nového účtu</li>
           <li xml:lang="es">Permitir configurar el emisor cuando se añade una nueva cuenta.</li>
           <li xml:lang="fi">tuki julkaisujan asettamiselle uutta tiliä lisättäessä</li>
-          <li xml:lang="fr">Prise en charge de la configuration de l’émetteur lors de l’ajout d’un nouveau compte</li>
+          <li xml:lang="fr">Prise en charge de la configuration de l'émetteur lors de l'ajout d'un nouveau compte</li>
           <li xml:lang="he">תמיכה בהגדרת מנפיק בעת הוספת חשבון חדש</li>
           <li xml:lang="hu">Támogatás a kibocsátó beállításához új fiók hozzáadásakor</li>
           <li xml:lang="ia">Supporto a configurar emissor quando adde nove conto</li>
