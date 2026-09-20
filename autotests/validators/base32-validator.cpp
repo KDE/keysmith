@@ -49,12 +49,13 @@ static void define_conversion_table(void)
      * check that case conversion is applied for better UX
      * check that leading and trailing whitespace is stripped for better UX
      */
-    define_test_case(QLatin1String(" v"), QLatin1String("V"), QValidator::Invalid);
-    define_test_case(QLatin1String("va  "), QLatin1String("VA======"), QValidator::Invalid);
-    define_test_case(QLatin1String("\tkeybytes\n "), QLatin1String("KEYBYTES"), QValidator::Invalid);
-    define_test_case(QLatin1String("key \t\r\nbytes"), QLatin1String("KEYBYTES"), QValidator::Invalid);
-    define_test_case(QLatin1String("\t\n\r value===\r\t \n"), QLatin1String("VALUE==="), QValidator::Invalid);
-    define_test_case(QLatin1String("\t\n\r value \t\r\n===\r\t \n"), QLatin1String("VALUE==="), QValidator::Invalid);
+    define_test_case(QLatin1String(" v"), QLatin1String("V"), QValidator::Intermediate);
+    define_test_case(QLatin1String("va  "), QLatin1String("VA======"), QValidator::Intermediate);
+    define_test_case(QLatin1String("\tkeybytes\n "), QLatin1String("KEYBYTES"), QValidator::Acceptable);
+    define_test_case(QLatin1String("key \t\r\nbytes"), QLatin1String("KEYBYTES"), QValidator::Acceptable);
+    define_test_case(QLatin1String("\t\n\r value===\r\t \n"), QLatin1String("VALUE==="), QValidator::Acceptable);
+    define_test_case(QLatin1String("\t\n\r value \t\r\n===\r\t \n"), QLatin1String("VALUE==="), QValidator::Acceptable);
+    define_test_case(QLatin1String("ABCD EFGH ASDF LAMO"), QLatin1String("ABCDEFGHASDFLAMO"), QValidator::Acceptable);
 }
 
 static void define_valid_table(void)

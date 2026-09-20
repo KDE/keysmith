@@ -69,10 +69,21 @@ void Base32Validator::fixup(QString &input) const
 
 QValidator::State Base32Validator::validate(QString &input, int &cursor) const
 {
-    QValidator::State s = m_pattern.validate(input, cursor);
+    const int originalPosition = cursor;
+    QString cleanedInput = input;
+    validators::strip_spaces(cleanedInput);
+
+    if (cleanedInput.isEmpty()) {
+        return input.isEmpty() ? QValidator::Intermediate : QValidator::Invalid;
+    }
+
+    int position = 0;
+    QValidator::State s = m_pattern.validate(cleanedInput, position);
+    cursor = originalPosition;
+
     if (s == QValidator::Acceptable) {
         // if the basics are covered, check the padding & alignment
-        return base32::validate(input) ? QValidator::Acceptable : QValidator::Intermediate;
+        return base32::validate(cleanedInput) ? QValidator::Acceptable : QValidator::Intermediate;
     } else {
         return s;
     }

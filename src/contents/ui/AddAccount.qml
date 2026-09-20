@@ -124,7 +124,7 @@ FormCard.FormCardPage {
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText | Qt.ImhSensitiveData | Qt.ImhHiddenText
             onTextChanged: {
                 if (acceptableInput) {
-                    vm.input.secret = text;
+                    vm.input.secret = text.replace(/\s+/g, '');
                 }
             }
         }
