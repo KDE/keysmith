@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-01 00:50+0000\n"
-"PO-Revision-Date: 2026-06-26 17:50+0200\n"
+"PO-Revision-Date: 2026-09-19 16:43+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.07.70\n"
+"X-Generator: Lokalize 26.08.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -377,9 +377,7 @@ msgid "FreeOTP URIs"
 msgstr "FreeOTP-URI-ar"
 
 #: src/contents/ui/ImportAccount.qml:68
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "SailOTP manually decrypted json"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "SailOTP manually decrypted JSON"
 msgstr "SailOTP manuelt dekryptert JSON"
@@ -526,9 +524,7 @@ msgid "Timer:"
 msgstr "Teljar:"
 
 #: src/contents/ui/TOTPDetailsForm.qml:45
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Starting at:"
+#, kde-format
 msgctxt ""
 "@label:textbox Start a timer at a specific point in time given in the textbox"
 msgid "Starting at:"
