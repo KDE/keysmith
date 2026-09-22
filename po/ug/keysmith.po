@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-01 00:50+0000\n"
-"PO-Revision-Date: 2026-05-31 18:29-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -225,7 +225,7 @@ msgstr "قوش"
 #, kde-format
 msgctxt "@label:chooser"
 msgid "Account type:"
-msgstr ""
+msgstr "ھېساب تۈرى:"
 
 #: src/contents/ui/AddAccount.qml:95
 #, kde-format
@@ -524,19 +524,19 @@ msgstr ""
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-1"
-msgstr "SHA-1"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:98
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-256"
-msgstr "SHA-256"
+msgstr ""
 
 #: src/contents/ui/TOTPDetailsForm.qml:110
 #, kde-format
 msgctxt "@option:radio"
 msgid "SHA-512"
-msgstr "SHA-512"
+msgstr ""
 
 #: src/contents/ui/UnlockAccounts.qml:25
 #, kde-format
