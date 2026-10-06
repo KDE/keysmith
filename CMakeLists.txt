@@ -66,12 +66,10 @@ if(NOT ANDROID)
     find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets)
 endif()
 
-if(NOT BUILD_EXTERNAL)
-    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
-    message(STATUS "Will build against system version of: libsodium")
-    find_package(sodium ${SODIUM_MIN_VERSION} REQUIRED)
-endif()
+message(STATUS "Will build against system version of: libsodium")
+find_package(sodium ${SODIUM_MIN_VERSION} REQUIRED)
 
 find_package(OpenSSL)
 set_package_properties(OpenSSL PROPERTIES
