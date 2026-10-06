@@ -86,8 +86,8 @@ android {
     defaultConfig {
         minSdkVersion qtMinSdkVersion
         targetSdkVersion qtTargetSdkVersion
-        applicationId "org.kde.itinerary"
-        namespace "org.kde.itinerary"
+        applicationId "org.kde.keysmith"
+        namespace "org.kde.keysmith"
         versionCode timestamp
         versionName projectVersionFull
         manifestPlaceholders = [versionName: projectVersionFull, versionCode: timestamp]
