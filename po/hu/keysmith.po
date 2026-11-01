@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-15 00:48+0000\n"
-"PO-Revision-Date: 2026-06-18 21:49+0200\n"
+"PO-Revision-Date: 2026-10-31 23:09+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #: src/app/cli.cpp:133
 #, kde-format
@@ -378,7 +378,7 @@ msgstr "FreeOTP URI-k"
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "SailOTP manually decrypted json"
-msgstr ""
+msgstr "SailOTP saját kezűleg visszafejtett JSON"
 
 #: src/contents/ui/ImportAccount.qml:84
 #, kde-format
