@@ -361,8 +361,8 @@
           <li xml:lang="zh-TW">降低主視窗的預設大小</li>
           <li>Focus password field by default on launch</li>
           <li xml:lang="ar">تركيز حقل كلمة السر مبدئيًا عند التشغيل</li>
-          <li xml:lang="ca">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
-          <li xml:lang="ca-valencia">Focus a l camp de contrasenya de manera predeterminada en el llançament</li>
+          <li xml:lang="ca">Focus al camp de contrasenya de manera predeterminada en el llançament</li>
+          <li xml:lang="ca-valencia">Focus al camp de contrasenya de manera predeterminada en el llançament</li>
           <li xml:lang="cs">Při spuštění se pole pro heslo automaticky aktivuje</li>
           <li xml:lang="es">Situar el foco en el campo de contraseña de forma predeterminada tras el inicio.</li>
           <li xml:lang="fi">kohdista käynnistettäessä oletuksena salasanakenttään</li>
