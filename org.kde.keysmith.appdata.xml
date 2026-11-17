@@ -238,6 +238,9 @@
   </screenshots>
   <url type="homepage">https://apps.kde.org/keysmith/</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?product=Keysmith</url>
+  <url type="vcs-browser">https://invent.kde.org/utilities/keysmith</url>
+  <url type="contribute">https://community.kde.org/Get_Involved</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=keysmith&amp;source=appdata</url>
   <releases>
     <release version="26.08.3" date="2026-11-05"/>
     <release version="26.08.2" date="2026-10-08"/>
