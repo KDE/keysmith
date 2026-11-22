@@ -321,7 +321,7 @@ static void readUris(std::vector<std::unique_ptr<AccountInput>> &ret, QByteArray
     buf.open(QIODevice::ReadOnly);
     while (!buf.atEnd()) {
         auto account = std::make_unique<AccountInput>();
-        std::optional<QrParameters> params(QrParameters::parse(buf.readLine()));
+        std::optional<QrParameters> params(QrParameters::parse(buf.readLine().trimmed()));
         params->populate(account.get());
         ret.push_back(std::move(account));
     }
