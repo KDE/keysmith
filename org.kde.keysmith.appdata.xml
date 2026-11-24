@@ -385,7 +385,7 @@
           <li xml:lang="sr-ijekavian">Смањена подразумијевана величина главног прозора</li>
           <li xml:lang="sr-ijekavianlatin">Smanjena podrazumijevana veličina glavnog prozora</li>
           <li xml:lang="sv">Reducera huvudfönstrets standardstorlek</li>
-          <li xml:lang="tr">Ana pencerenin öntanımlı boyutunu küçült</li>
+          <li xml:lang="tr">Ana pencerenin varsayılan boyutunu küçült</li>
           <li xml:lang="ug">ئاساسىي كۆزنەكنىڭ كۆڭۈلدىكى چوڭلۇقىنى كىچىكلىتىدۇ</li>
           <li xml:lang="uk">Зменшено типовий розмір головного вікна</li>
           <li xml:lang="zh-CN">减小主窗口的默认大小</li>
@@ -416,7 +416,7 @@
           <li xml:lang="sr-ijekavian">Поље лозинке подразумијевано у фокусу при покретању</li>
           <li xml:lang="sr-ijekavianlatin">Polje lozinke podrazumijevano u fokusu pri pokretanju</li>
           <li xml:lang="sv">Fokusera normalt lösenordsfältet vid start</li>
-          <li xml:lang="tr">Başlangıçta parola alanına öntanımlı olarak odaklan</li>
+          <li xml:lang="tr">Başlangıçta parola alanına varsayılan olarak odaklan</li>
           <li xml:lang="uk">Реалізовано типове фокусування поля пароля після запуску</li>
           <li xml:lang="zh-CN">启动时默认聚焦密码字段</li>
           <li xml:lang="zh-TW">啟動時預設聚焦密碼欄位</li>
