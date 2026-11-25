@@ -1,6 +1,7 @@
 /*
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
+ * SPDX-FileCopyrightText: 2025 Shubham Arora <shubhamarora@proton.me>
  */
 #ifndef MODEL_ACCOUNTS_H
 #define MODEL_ACCOUNTS_H
@@ -119,12 +120,21 @@ private:
 class SortedAccountsListModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    Q_PROPERTY(QString filterText WRITE setFilterText NOTIFY filterTextChanged)
 public:
     explicit SortedAccountsListModel(QObject *parent = nullptr);
     void setSourceModel(QAbstractItemModel *sourceModel) override;
+    void setFilterText(const QString &text);
 
 protected:
     bool lessThan(const QModelIndex &source_left, const QModelIndex &source_right) const override;
+    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
+
+Q_SIGNALS:
+    void filterTextChanged();
+
+private:
+    QString m_filterText;
 };
 
 class AccountNameValidator : public QValidator

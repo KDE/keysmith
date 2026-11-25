@@ -2,10 +2,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: 2020-2021 Johan Ouwerkerk <jm.ouwerkerk@gmail.com>
  * SPDX-FileCopyrightText: 2021 Devin Lin <espidev@gmail.com>
+ * SPDX-FileCopyrightText: 2025 Shubham Arora <shubhamarora@proton.me>
  */
 
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls as QQC2
 import org.kde.kirigami as Kirigami
 
 import Keysmith.Application as Application
@@ -25,31 +27,56 @@ Kirigami.ScrollablePage {
     property string accountErrorMessage: i18nc("generic error shown when adding or updating an account failed", "Failed to update accounts")
     property string loadingErrorMessage: i18nc("error message shown when loading accounts from storage failed", "Some accounts failed to load.")
     property string errorMessage: loadingErrorMessage
+    property string filterText: ""
+    property int accountCount: vm.accounts.rowCount()
 
-    header: Kirigami.InlineMessage {
-        id: message
-        visible: vm.accounts.error // FIXME : should be managed via vm
-        type: Kirigami.MessageType.Error
-        position: Kirigami.InlineMessage.Header
-        text: root.errorMessage // FIXME : should be managed via vm
-        /*
-         * There is supposed to be a more Kirigami-way to allow the user to dismiss the error message: showCloseButton
-         * Unfortunately:
-         *
-         *  - Kirigami doesn't really offer a direct API for detecting when the close button is clicked.
-         *    Observing the close button's effect via the visible property works just as well, but it is a bit of a hack.
-         *  - It results in a rather unattractive vertical sizing problem: the close button is rather big for inline text
-         *    This makes the internal horizontal spacing look completely out of proportion with the vertical spacing.
-         *  - The actual click/tap target is only a small fraction of the entire message (banner).
-         *    In this case, making the entire message click/tap target would be much better.
-         *
-         * Solution: add a MouseArea for dismissing the message via click/tap.
-         */
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                // FIXME : should be managed via vm
-                vm.accounts.error = false;
+    Connections {
+        target: vm.accounts
+        function onRowsInserted() { root.accountCount = vm.accounts.rowCount() }
+        function onRowsRemoved() { root.accountCount = vm.accounts.rowCount() }
+        function onModelReset() { root.accountCount = vm.accounts.rowCount() }
+    }
+
+    header: ColumnLayout {
+        Kirigami.SearchField {
+            id: filter
+            Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
+            placeholderText: i18nc("@info:placeholder", "Filter accounts…")
+            onTextChanged: root.filterText = text
+            focus: true
+            visible: vm.accounts.loaded && root.accountCount > 0
+            Shortcut {
+                sequence: StandardKey.Find
+                onActivated: filter.forceActiveFocus()
+            }
+        }
+
+        Kirigami.InlineMessage {
+            id: message
+            visible: vm.accounts.error // FIXME : should be managed via vm
+            type: Kirigami.MessageType.Error
+            position: Kirigami.InlineMessage.Header
+            text: root.errorMessage // FIXME : should be managed via vm
+            /*
+            * There is supposed to be a more Kirigami-way to allow the user to dismiss the error message: showCloseButton
+            * Unfortunately:
+            *
+            *  - Kirigami doesn't really offer a direct API for detecting when the close button is clicked.
+            *    Observing the close button's effect via the visible property works just as well, but it is a bit of a hack.
+            *  - It results in a rather unattractive vertical sizing problem: the close button is rather big for inline text
+            *    This makes the internal horizontal spacing look completely out of proportion with the vertical spacing.
+            *  - The actual click/tap target is only a small fraction of the entire message (banner).
+            *    In this case, making the entire message click/tap target would be much better.
+            *
+            * Solution: add a MouseArea for dismissing the message via click/tap.
+            */
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    // FIXME : should be managed via vm
+                    vm.accounts.error = false;
+                }
             }
         }
     }
@@ -82,12 +109,72 @@ Kirigami.ScrollablePage {
         id: mainList
         model: Models.SortedAccountListModel {
             sourceModel: vm.accounts
+            filterText: root.filterText
+        }
+
+        function canAcceptFilterInput(event) {
+            if (event.modifiers !== Qt.NoModifier) {
+                return false;
+            }
+
+            if (!event.text || event.text.length === 0) {
+                return false;
+            }
+
+            if (event.key >= Qt.Key_F1 && event.key <= Qt.Key_F35) {
+                return false;
+            }
+
+            switch (event.key) {
+            case Qt.Key_Escape:
+            case Qt.Key_Backspace:
+            case Qt.Key_Tab:
+            case Qt.Key_Backtab:
+            case Qt.Key_Return:
+            case Qt.Key_Enter:
+            case Qt.Key_Up:
+            case Qt.Key_Down:
+            case Qt.Key_Left:
+            case Qt.Key_Right:
+            case Qt.Key_Home:
+            case Qt.Key_End:
+            case Qt.Key_PageUp:
+            case Qt.Key_PageDown:
+            case Qt.Key_Insert:
+            case Qt.Key_Delete:
+                return false;
+            default:
+                break;
+            }
+
+            for (let i = 0; i < event.text.length; ++i) {
+                const charCode = event.text.charCodeAt(i);
+
+                if (charCode < 0x20 || (charCode >= 0x7f && charCode <= 0x9f)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        Keys.onPressed: (event) => {
+            if (canAcceptFilterInput(event)) {
+                filter.text = event.text;
+                filter.forceActiveFocus();
+                event.accepted = true;
+                return;
+            }
+
+            if (event.text && !event.modifiers) {
+                event.accepted = true;
+            }
         }
 
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
-            visible: vm.accounts.loaded && mainList.count == 0
+            visible: vm.accounts.loaded && mainList.count == 0 && root.filterText === ""
             text: i18n("No accounts added")
             icon.name: "unlock"
 
@@ -101,6 +188,14 @@ Kirigami.ScrollablePage {
                     vm.addNewAccount();
                 }
             }
+        }
+
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+            visible: vm.accounts.loaded && mainList.count == 0 && root.filterText !== ""
+            text: i18n("No accounts found")
+            icon.name: "search"
         }
 
         /*
