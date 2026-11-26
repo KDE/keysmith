@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:50+0000\n"
+"POT-Creation-Date: 2026-11-25 01:20+0000\n"
 "PO-Revision-Date: 2020-10-07 11:05+0200\n"
 "Last-Translator: Mihkel Tõnnov <mihhkel@gmail.com>\n"
 "Language-Team: Estonian <>\n"
@@ -174,32 +174,40 @@ msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Konto väljastaja:"
 
-#: src/contents/ui/AccountsOverview.qml:21
+#: src/contents/ui/AccountsOverview.qml:23
 #, kde-format
 msgctxt "@title:window"
 msgid "Accounts"
 msgstr "Kontod"
 
-#: src/contents/ui/AccountsOverview.qml:25
+#: src/contents/ui/AccountsOverview.qml:27
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
 msgstr "Kontode uuendamine nurjus"
 
-#: src/contents/ui/AccountsOverview.qml:26
+#: src/contents/ui/AccountsOverview.qml:28
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
 msgstr "Mõne konto laadimine nurjus."
 
-#: src/contents/ui/AccountsOverview.qml:91
+#: src/contents/ui/AccountsOverview.qml:45
+#, fuzzy, kde-format
+#| msgctxt "Button for removal of a single account"
+#| msgid "Delete account"
+msgctxt "@info:placeholder"
+msgid "Filter accounts…"
+msgstr "Kustuta konto"
+
+#: src/contents/ui/AccountsOverview.qml:178
 #, fuzzy, kde-format
 #| msgctxt "error message shown when loading accounts from storage failed"
 #| msgid "Some accounts failed to load."
 msgid "No accounts added"
 msgstr "Mõne konto laadimine nurjus."
 
-#: src/contents/ui/AccountsOverview.qml:96
+#: src/contents/ui/AccountsOverview.qml:183
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Add new account"
@@ -209,20 +217,27 @@ msgctxt ""
 msgid "Add Account"
 msgstr "Uue konto lisamine"
 
-#: src/contents/ui/AccountsOverview.qml:163
+#: src/contents/ui/AccountsOverview.qml:197
+#, fuzzy, kde-format
+#| msgctxt "error message shown when loading accounts from storage failed"
+#| msgid "Some accounts failed to load."
+msgid "No accounts found"
+msgstr "Mõne konto laadimine nurjus."
+
+#: src/contents/ui/AccountsOverview.qml:258
 #, fuzzy, kde-format
 #| msgid "Add"
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
 msgstr "Lisa"
 
-#: src/contents/ui/AccountsOverview.qml:176
+#: src/contents/ui/AccountsOverview.qml:271
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr ""
 
-#: src/contents/ui/AccountsOverview.qml:189
+#: src/contents/ui/AccountsOverview.qml:284
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"

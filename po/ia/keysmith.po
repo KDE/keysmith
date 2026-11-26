@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-01 00:50+0000\n"
+"POT-Creation-Date: 2026-11-25 01:20+0000\n"
 "PO-Revision-Date: 2026-09-01 12:16+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -160,30 +160,38 @@ msgctxt "@label:textbox"
 msgid "Account issuer:"
 msgstr "Emissor de conto:"
 
-#: src/contents/ui/AccountsOverview.qml:21
+#: src/contents/ui/AccountsOverview.qml:23
 #, kde-format
 msgctxt "@title:window"
 msgid "Accounts"
 msgstr "Contos"
 
-#: src/contents/ui/AccountsOverview.qml:25
+#: src/contents/ui/AccountsOverview.qml:27
 #, kde-format
 msgctxt "generic error shown when adding or updating an account failed"
 msgid "Failed to update accounts"
 msgstr "Il falleva a actualisar conto"
 
-#: src/contents/ui/AccountsOverview.qml:26
+#: src/contents/ui/AccountsOverview.qml:28
 #, kde-format
 msgctxt "error message shown when loading accounts from storage failed"
 msgid "Some accounts failed to load."
 msgstr "Alcun contos falleva a cargar."
 
-#: src/contents/ui/AccountsOverview.qml:91
+#: src/contents/ui/AccountsOverview.qml:45
+#, fuzzy, kde-format
+#| msgctxt "Button for removal of a single account"
+#| msgid "Delete account"
+msgctxt "@info:placeholder"
+msgid "Filter accounts…"
+msgstr "Dele conto"
+
+#: src/contents/ui/AccountsOverview.qml:178
 #, kde-format
 msgid "No accounts added"
 msgstr "Necun contos addite"
 
-#: src/contents/ui/AccountsOverview.qml:96
+#: src/contents/ui/AccountsOverview.qml:183
 #, kde-format
 msgctxt ""
 "@action:button add new account, shown instead of overview list when no "
@@ -191,19 +199,25 @@ msgctxt ""
 msgid "Add Account"
 msgstr "Adde conto"
 
-#: src/contents/ui/AccountsOverview.qml:163
+#: src/contents/ui/AccountsOverview.qml:197
+#, fuzzy, kde-format
+#| msgid "No accounts added"
+msgid "No accounts found"
+msgstr "Necun contos addite"
+
+#: src/contents/ui/AccountsOverview.qml:258
 #, kde-format
 msgctxt "@action:button add new account, shown in toolbar"
 msgid "Add"
 msgstr "Adde"
 
-#: src/contents/ui/AccountsOverview.qml:176
+#: src/contents/ui/AccountsOverview.qml:271
 #, kde-format
 msgctxt "@action:button import accounts, shown in toolbar"
 msgid "Import"
 msgstr "Importa"
 
-#: src/contents/ui/AccountsOverview.qml:189
+#: src/contents/ui/AccountsOverview.qml:284
 #, kde-format
 msgctxt ""
 "@action:button import an account by scanning a QR code, shown in toolbar"
