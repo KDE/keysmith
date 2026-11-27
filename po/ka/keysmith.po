@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:20+0000\n"
-"PO-Revision-Date: 2026-09-01 04:43+0200\n"
+"PO-Revision-Date: 2026-11-26 06:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #: src/app/cli.cpp:134
 #, kde-format
@@ -178,12 +178,10 @@ msgid "Some accounts failed to load."
 msgstr "ზოგიერთი ანგარიშის ჩატვირთვის შეცდომა."
 
 #: src/contents/ui/AccountsOverview.qml:45
-#, fuzzy, kde-format
-#| msgctxt "Button for removal of a single account"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Filter accounts…"
-msgstr "ანგარიშის წაშლა"
+msgstr "ანგარიშების გაფილტვრა…"
 
 #: src/contents/ui/AccountsOverview.qml:178
 #, kde-format
@@ -199,10 +197,9 @@ msgid "Add Account"
 msgstr "ანგარიშის დამატება"
 
 #: src/contents/ui/AccountsOverview.qml:197
-#, fuzzy, kde-format
-#| msgid "No accounts added"
+#, kde-format
 msgid "No accounts found"
-msgstr "ანგარიშები დამატებული არაა"
+msgstr "ანგარიშები აღმოჩენილი არაა"
 
 #: src/contents/ui/AccountsOverview.qml:258
 #, kde-format

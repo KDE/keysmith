@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: keysmith\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:20+0000\n"
-"PO-Revision-Date: 2026-09-01 11:37+0200\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"PO-Revision-Date: 2026-11-26 14:29+0100\n"
+"Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #: src/app/cli.cpp:134
 #, kde-format
@@ -178,12 +178,10 @@ msgid "Some accounts failed to load."
 msgstr "Laden van enkele accounts is mislukt."
 
 #: src/contents/ui/AccountsOverview.qml:45
-#, fuzzy, kde-format
-#| msgctxt "Button for removal of a single account"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Filter accounts…"
-msgstr "Account verwijderen"
+msgstr "Accounts filteren…"
 
 #: src/contents/ui/AccountsOverview.qml:178
 #, kde-format
@@ -199,10 +197,9 @@ msgid "Add Account"
 msgstr "Account toevoegen"
 
 #: src/contents/ui/AccountsOverview.qml:197
-#, fuzzy, kde-format
-#| msgid "No accounts added"
+#, kde-format
 msgid "No accounts found"
-msgstr "Geen accounts toegevoegd"
+msgstr "Geen accounts gevonden"
 
 #: src/contents/ui/AccountsOverview.qml:258
 #, kde-format

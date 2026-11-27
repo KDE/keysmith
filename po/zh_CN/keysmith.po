@@ -172,12 +172,10 @@ msgid "Some accounts failed to load."
 msgstr "某些账户加载失败。"
 
 #: src/contents/ui/AccountsOverview.qml:45
-#, fuzzy, kde-format
-#| msgctxt "Button for removal of a single account"
-#| msgid "Delete account"
+#, kde-format
 msgctxt "@info:placeholder"
 msgid "Filter accounts…"
-msgstr "删除账户"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:178
 #, kde-format
@@ -193,10 +191,9 @@ msgid "Add Account"
 msgstr "添加账户"
 
 #: src/contents/ui/AccountsOverview.qml:197
-#, fuzzy, kde-format
-#| msgid "No accounts added"
+#, kde-format
 msgid "No accounts found"
-msgstr "尚未添加任何账户"
+msgstr ""
 
 #: src/contents/ui/AccountsOverview.qml:258
 #, kde-format
